@@ -1,9 +1,9 @@
 __author__ = 'gt'
 
-from edu.sbu.shell.rules Previous import Previous
-from edu.sbu.shell.rules ArgString import ArgString
-from edu.sbu.shell.rules DerivationallyRelated import DerivationallyRelated
-from edu.sbu.shell.rules GlossBased import GlossBased
+from edu.sbu.shell.rules.Previous import Previous
+from edu.sbu.shell.rules.ArgString import ArgString
+from edu.sbu.shell.rules.DerivationallyRelated import DerivationallyRelated
+from edu.sbu.shell.rules.GlossBased import GlossBased
 
 class RuleEngine:
   def __init__(self):

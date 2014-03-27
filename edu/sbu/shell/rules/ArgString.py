@@ -1,7 +1,7 @@
 __author__ = 'gt'
 
 
-class ArgStringMatch:
+class ArgString:
   def __init__(self):
     pass
 

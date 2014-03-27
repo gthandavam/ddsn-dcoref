@@ -5,16 +5,18 @@ __author__ = 'gt'
 class RNode:
 
   def __init__(self):
+    self.argType = ''
     self.text = ''
-    self.snum = - #sentence number
-    self.pnum = -1 #predicate number in the document : because it is needed to generate graph
-    self.reference = {}#tracks stepwise reference predicate num
+    self.sentNum = -1 #sentence number
+    self.predNum = -1 #predicate number in the document : because it is needed to generate graph
+    self.reference = []#tracks stepwise reference predicate num
     pass
 
-  def __init__(self, text, snum, pnum):
+  def __init__(self, text, argType, snum, pnum):
     self.text = text
-    self.snum = snum
-    self.pnum = pnum
+    self.argType = argType
+    self.sentNum = snum
+    self.predNum = pnum
     self.reference = []
     pass
 

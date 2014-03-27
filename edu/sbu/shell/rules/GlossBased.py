@@ -1,6 +1,6 @@
 __author__ = 'gt'
 
-class GlossBasedMatch:
+class GlossBased:
   def __init__(self):
     pass
 
