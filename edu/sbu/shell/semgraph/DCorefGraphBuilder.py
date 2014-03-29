@@ -3,6 +3,7 @@ __author__ = 'gt'
 from edu.sbu.shell.semgraph.PNode import PNode
 from edu.sbu.shell.semgraph.RNode import RNode
 import nltk
+from nltk.corpus import wordnet as wn
 #Parses senna output to build PNodes and RNodes
 
 '''
@@ -138,11 +139,9 @@ class DCorefGraphBuilder:
           text += ' ' + srl_args[0][i]
       elif(srl_args[idx][i].endswith('-A1')):
         if(srl_args[idx][i] == 'S-A1'):
-          r_node = RNode(srl_args[0][i], 'arg1', sent_num, pred_num )
-          self.RNodes[sent_num][pred_num][1] = r_node
+          self.RNodes[sent_num][pred_num][1] = self.make_rnode('arg1', srl_args[0][i], pred_num, sent_num)
         elif(srl_args[idx][i] == 'E-A1'):
-          r_node = RNode(text +' ' + srl_args[0][i], 'arg1', sent_num, pred_num)
-          self.RNodes[sent_num][pred_num][1] = r_node
+          self.RNodes[sent_num][pred_num][1] = self.make_rnode('arg1', text + ' ' + srl_args[0][i], pred_num, sent_num)
           text = ""
         elif(srl_args[idx][i] == 'B-A1'):
           text = srl_args[0][i]
@@ -150,11 +149,9 @@ class DCorefGraphBuilder:
           text += ' ' + srl_args[0][i]
       elif(srl_args[idx][i].endswith('-A2')):
         if(srl_args[idx][i] == 'S-A2'):
-          r_node = RNode(srl_args[0][i], 'arg2', sent_num, pred_num )
-          self.RNodes[sent_num][pred_num][2] = r_node
+          self.RNodes[sent_num][pred_num][2] = self.make_rnode('arg2', srl_args[0][i], pred_num, sent_num)
         elif(srl_args[idx][i] == 'E-A2'):
-          r_node = RNode(text +' ' + srl_args[0][i], 'arg2', sent_num, pred_num)
-          self.RNodes[sent_num][pred_num][2] = r_node
+          self.RNodes[sent_num][pred_num][2] = self.make_rnode('arg2', text + ' ' + srl_args[0][i], pred_num, sent_num)
           text = ""
         elif(srl_args[idx][i] == 'B-A2'):
           text = srl_args[0][i]
@@ -162,7 +159,10 @@ class DCorefGraphBuilder:
           text += ' ' + srl_args[0][i]
 
   def make_pnode(self, arg_type, arg, pred_num, sent_num):
-    if self.is_light_verb(arg):
+    if not wn.morphy(arg) is None:
+      arg = wn.morphy(arg)
+
+    if arg in self.light_verbs:
       return None
     else:
       return PNode(pred_num, sent_num, arg)
@@ -177,7 +177,7 @@ class DCorefGraphBuilder:
       return PNode(pred_num, sent_num, arg)
     else:
       arg = self.cleanse_arg(arg)
-      return RNode(arg, argType, sent_num, pred_num)
+      return RNode(arg, arg_type, sent_num, pred_num)
     pass
 
   def cleanse_arg(self, arg):
@@ -196,10 +196,9 @@ class DCorefGraphBuilder:
         continue
 
       syn_word = syn_word[0]
-
       dv = syn_word.derivationally_related_forms()
 
-      if(len(dv) == 0)
+      if(len(dv) == 0):
         continue
 
       return dv[0].name

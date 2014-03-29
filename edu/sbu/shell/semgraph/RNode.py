@@ -9,7 +9,7 @@ class RNode:
     self.text = ''
     self.sent_num = -1 #sentence number
     self.pred_num = -1 #predicate number in the document : because it is needed to generate graph
-    self.ShellCoref = []#tracks stepwise reference predicate num
+    self.shell_coref = []#tracks stepwise reference predicate num
     self.to_delete = False
     pass
 

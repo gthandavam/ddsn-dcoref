@@ -74,7 +74,7 @@ def main():
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph_builder)
 
     graph_builder = DotGraphBuilder()
-    gv_file = graph_builder.write_gv(pnodes_resolved, rnodes_resolved)
+    # gv_file = graph_builder.write_gv(pnodes_resolved, rnodes_resolved)
 
     # make_svg(gv_file)
   pass

@@ -27,102 +27,67 @@
     <favorites_list name="ShellDCoref" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="DCorefGraphBuilder.py" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/DCorefGraphBuilder.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="131" column="41" selection-start="3613" selection-end="3613" vertical-scroll-proportion="0.59859157" vertical-offset="2193" max-vertical-offset="4114">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PNode.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/PNode.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="21" column="26" selection-start="436" selection-end="436" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="544">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DotGraphBuilder.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/DotGraphBuilder.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="18" column="8" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
-                  <folding>
-                    <marker date="1396113209262" expanded="true" signature="97:290" placeholder="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="RNode.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/RNode.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="21" column="26" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Transformer.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/edu/sbu/shell/Transformer.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="44" column="45" selection-start="1227" selection-end="1227" vertical-scroll-proportion="0.0" vertical-offset="890" max-vertical-offset="1445">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="RuleEngine.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/edu/sbu/shell/rules/RuleEngine.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="18" column="21" selection-start="504" selection-end="504" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Previous.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/edu/sbu/shell/rules/Previous.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="15" column="25" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-                  <folding>
-                    <marker date="1396060052867" expanded="true" signature="35:338" placeholder="..." />
-                    <marker date="1396060052867" expanded="true" signature="333:338" placeholder="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Constants.py" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/edu/sbu/shell/Constants.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="4" column="8" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="DCorefGraphBuilder.py" pinned="false" current="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/DCorefGraphBuilder.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="126" column="53" selection-start="3333" selection-end="3333" vertical-scroll-proportion="-1.0631068" vertical-offset="3071" max-vertical-offset="4114">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="DCorefGraphBuilder.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/DCorefGraphBuilder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="179" column="29" selection-start="5652" selection-end="5652" vertical-scroll-proportion="0.033333335" vertical-offset="3044" max-vertical-offset="3876">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PNode.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/PNode.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="26" selection-start="436" selection-end="436" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DotGraphBuilder.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/DotGraphBuilder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="8" selection-start="454" selection-end="454" vertical-scroll-proportion="0.28478965" vertical-offset="130" max-vertical-offset="748">
+              <folding>
+                <marker date="1396113209262" expanded="true" signature="97:290" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RuleEngine.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/edu/sbu/shell/rules/RuleEngine.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="0" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="629">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Previous.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/edu/sbu/shell/rules/Previous.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="12" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+              <folding>
+                <marker date="1396117781766" expanded="true" signature="35:412" placeholder="..." />
+                <marker date="1396117781766" expanded="true" signature="407:412" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Constants.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/edu/sbu/shell/Constants.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="8" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -151,13 +116,13 @@
         <option value="$PROJECT_DIR$/../SchematicSummary/VR/verbs/test/TestVRVerbs.py" />
         <option value="$PROJECT_DIR$/../SchematicSummary/get_frequency_and_levin.py" />
         <option value="$PROJECT_DIR$/edu/sbu/shell/semgraph/PNode.py" />
-        <option value="$PROJECT_DIR$/edu/sbu/shell/semgraph/RNode.py" />
         <option value="$PROJECT_DIR$/edu/sbu/shell/rules/RuleEngine.py" />
-        <option value="$PROJECT_DIR$/edu/sbu/shell/rules/Previous.py" />
         <option value="$PROJECT_DIR$/../SchematicSummary/VR/verbs/VRVerbs.py" />
-        <option value="$PROJECT_DIR$/edu/sbu/shell/Transformer.py" />
         <option value="$PROJECT_DIR$/edu/sbu/shell/semgraph/DotGraphBuilder.py" />
+        <option value="$PROJECT_DIR$/edu/sbu/shell/Transformer.py" />
         <option value="$PROJECT_DIR$/edu/sbu/shell/semgraph/DCorefGraphBuilder.py" />
+        <option value="$PROJECT_DIR$/edu/sbu/shell/semgraph/RNode.py" />
+        <option value="$PROJECT_DIR$/edu/sbu/shell/rules/Previous.py" />
       </list>
     </option>
   </component>
@@ -596,18 +561,18 @@
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21604939" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21604939" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39814815" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39814815" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39969134" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24960877" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960877" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3271605" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -644,8 +609,13 @@
           <line>161</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/edu/sbu/shell/Transformer.py</url>
+          <line>75</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="19" />
+      <option name="time" value="22" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -687,7 +657,9 @@
     <entry file="file://$PROJECT_DIR$/edu/sbu/shell/Transformer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="68" column="55" selection-start="2013" selection-end="2013" vertical-scroll-proportion="0.0" vertical-offset="1179" max-vertical-offset="1513">
-          <folding />
+          <folding>
+            <element signature="e#19#85#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -754,7 +726,9 @@
     <entry file="file://$PROJECT_DIR$/edu/sbu/shell/Transformer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="0" selection-start="729" selection-end="729" vertical-scroll-proportion="0.0" vertical-offset="493" max-vertical-offset="1088">
-          <folding />
+          <folding>
+            <element signature="e#19#85#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -814,7 +788,9 @@
     <entry file="file://$PROJECT_DIR$/edu/sbu/shell/Transformer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="0" selection-start="729" selection-end="729" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1088">
-          <folding />
+          <folding>
+            <element signature="e#19#85#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -904,43 +880,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/edu/sbu/shell/Constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="8" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/edu/sbu/shell/rules/RuleEngine.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="21" selection-start="504" selection-end="504" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/edu/sbu/shell/rules/Previous.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="25" selection-start="359" selection-end="359" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <folding>
-            <marker date="1396060052867" expanded="true" signature="35:338" placeholder="..." />
-            <marker date="1396060052867" expanded="true" signature="333:338" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../SchematicSummary/VR/verbs/VRVerbs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="131" column="13" selection-start="3804" selection-end="3804" vertical-scroll-proportion="0.07565012" vertical-offset="2212" max-vertical-offset="2635">
           <folding>
-            <element signature="e#19#34#0" expanded="true" />
+            <element signature="e#19#34#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/edu/sbu/shell/Transformer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="45" selection-start="1227" selection-end="1227" vertical-scroll-proportion="0.0" vertical-offset="890" max-vertical-offset="1445">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -951,18 +896,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/DotGraphBuilder.py">
+    <entry file="file://$PROJECT_DIR$/edu/sbu/shell/Transformer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="8" selection-start="454" selection-end="454" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+        <state line="75" column="0" selection-start="2194" selection-end="2194" vertical-scroll-proportion="0.3313433" vertical-offset="1300" max-vertical-offset="1700">
           <folding>
-            <marker date="1396113209262" expanded="true" signature="97:290" placeholder="..." />
+            <element signature="e#19#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/RNode.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="26" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
+        <state line="11" column="20" selection-start="257" selection-end="257" vertical-scroll-proportion="0.36645964" vertical-offset="86" max-vertical-offset="595">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/DCorefGraphBuilder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="179" column="29" selection-start="5652" selection-end="5652" vertical-scroll-proportion="0.033333335" vertical-offset="3044" max-vertical-offset="3876">
           <folding />
         </state>
       </provider>
@@ -974,10 +926,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/DCorefGraphBuilder.py">
+    <entry file="file://$PROJECT_DIR$/edu/sbu/shell/rules/RuleEngine.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="131" column="41" selection-start="3613" selection-end="3613" vertical-scroll-proportion="0.59859157" vertical-offset="2193" max-vertical-offset="4114">
+        <state line="20" column="0" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0" vertical-offset="226" max-vertical-offset="561">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/edu/sbu/shell/rules/Previous.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="12" selection-start="354" selection-end="354" vertical-scroll-proportion="0.0" vertical-offset="39" max-vertical-offset="391">
+          <folding>
+            <marker date="1396117781766" expanded="true" signature="35:412" placeholder="..." />
+            <marker date="1396117781766" expanded="true" signature="407:412" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/edu/sbu/shell/Constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="8" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/edu/sbu/shell/semgraph/DotGraphBuilder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="8" selection-start="454" selection-end="454" vertical-scroll-proportion="0.28478965" vertical-offset="130" max-vertical-offset="748">
+          <folding>
+            <marker date="1396113209262" expanded="true" signature="97:290" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
