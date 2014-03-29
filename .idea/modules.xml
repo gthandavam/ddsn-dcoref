@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../SchematicSummary/.idea/SchematicSummary.iml" filepath="$PROJECT_DIR$/../SchematicSummary/.idea/SchematicSummary.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ShellDCoref.iml" filepath="$PROJECT_DIR$/.idea/ShellDCoref.iml" />
       <module fileurl="file://$USER_HOME$/git-hub-dir/brat/.idea/brat.iml" filepath="$USER_HOME$/git-hub-dir/brat/.idea/brat.iml" />
     </modules>

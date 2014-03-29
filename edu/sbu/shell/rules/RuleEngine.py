@@ -8,17 +8,17 @@ from edu.sbu.shell.rules.GlossBased import GlossBased
 class RuleEngine:
   def __init__(self):
     #tuple of rules - Immutable
-    rules = (
+    self.rules = (
       'Previous',
-      'ArgString',
-      'DerivationallyRelated',
-      'GlossBased'
+      # 'ArgString',
+      # 'DerivationallyRelated',
+      # 'GlossBased',
     )
 
-  def apply_rules(self, pnodes, rnodes):
-    for rule in rules:
+  def apply_rules(self, dcoref_graph):
+    for rule in self.rules:
       rule_obj = globals()[rule]()
-      pnodes, rnodes = rule_obj.run(pnodes, rnodes)
+      pnodes, rnodes = rule_obj.run(dcoref_graph.PNodes, dcoref_graph.RNodes)
 
 
     return pnodes, rnodes

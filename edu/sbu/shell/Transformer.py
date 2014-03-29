@@ -43,8 +43,9 @@ def make_nodes(srl_list):
   (graph builder depends on the SRL tool used)
   """
   dcoref_graph_builder = DCorefGraphBuilder()
+  dcoref_graph_builder.make_nodes(srl_list)
 
-  return dcoref_graph_builder.make_nodes(srl_list)
+  return dcoref_graph_builder
 
 def make_svg(gv_file):
   of_name = gv_file.replace('.gv', '.svg')
@@ -65,14 +66,16 @@ def main():
     if recipe_srl.startswith("NONE"):
       print "error getting SRL roles " + recipe_file + " skipping..."
       continue
-    pnodes, rnodes = make_nodes(recipe_srl.split('\n'))
 
-    # rule_engine = RuleEngine()
-    # pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(pnodes, rnodes)
-    #
-    # graph_builder = DotGraphBuilder()
-    # gv_file = graph_builder.write_gv(pnodes_resolved, rnodes_resolved)
-    #
+    dcoref_graph_builder = make_nodes(recipe_srl.split('\n'))
+    # print dcoref_graph_builder
+
+    rule_engine = RuleEngine()
+    pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph_builder)
+
+    graph_builder = DotGraphBuilder()
+    gv_file = graph_builder.write_gv(pnodes_resolved, rnodes_resolved)
+
     # make_svg(gv_file)
   pass
 

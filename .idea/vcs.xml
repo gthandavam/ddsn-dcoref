@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="" />
+    <mapping directory="$PROJECT_DIR$/../SchematicSummary" vcs="Git" />
     <mapping directory="$USER_HOME$/git-hub-dir/brat" vcs="Git" />
   </component>
 </project>
