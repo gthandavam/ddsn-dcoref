@@ -35,7 +35,7 @@ class DotGraphBuilder:
       for j in xrange(len(rnodes[i])):
         #TODO: dont fix argument slots : process based on arg_type in RNode
         for k in xrange(1,3):
-          if not rnodes[i][j][k] is None:
+          if not rnodes[i][j][k].is_null:
             node_id = 'T'+str(self.node_num)
             line = node_id
             if rnodes[i][j][k].arg_type == 'arg1':
@@ -62,22 +62,29 @@ class DotGraphBuilder:
     for i in xrange(len(rnodes)):
       for j in xrange(len(rnodes[i])):
         for k in xrange(1,3):
-          if rnodes[i][j][k] is None:
-            continue
+          if rnodes[i][j][k].is_null:
+            #implicit arg edge
+            if len(rnodes[i][j][k].shell_coref) != 0:
+              shell_node = self.pred_node_list[rnodes[i][j][k].shell_coref[0]]
+              pred_node  = self.pred_node_list[(i,j)]
+              line = '{} -> {}'.format(shell_node, pred_node)
+              self.graph_lines.append(line)
 
-          if rnodes[i][j][k].arg_type == 'arg1':
-            arg_node = self.arg1_node_list[(i,j,k)]
-          elif rnodes[i][j][k].arg_type == 'arg2':
-            arg_node = self.arg2_node_list[(i,j,k)]
+
           else:
-            print 'unknown arg type'
-          line =  '{} -> {}'.format(arg_node, self.pred_node_list[(i,j)])
-          self.graph_lines.append(line)
-
-          if len(rnodes[i][j][k].shell_coref) > 0:
-            shell_node = self.pred_node_list[rnodes[i][j][k].shell_coref[0]]
-            line = '{} -> {}'.format(shell_node, arg_node)
+            if rnodes[i][j][k].arg_type == 'arg1':
+              arg_node = self.arg1_node_list[(i,j,k)]
+            elif rnodes[i][j][k].arg_type == 'arg2':
+              arg_node = self.arg2_node_list[(i,j,k)]
+            else:
+              print 'unknown arg type'
+            line =  '{} -> {}'.format(arg_node, self.pred_node_list[(i,j)])
             self.graph_lines.append(line)
+
+            if len(rnodes[i][j][k].shell_coref) > 0:
+              shell_node = self.pred_node_list[rnodes[i][j][k].shell_coref[0]]
+              line = '{} -> {}'.format(shell_node, arg_node)
+              self.graph_lines.append(line)
     pass
 
   def get_header(self):

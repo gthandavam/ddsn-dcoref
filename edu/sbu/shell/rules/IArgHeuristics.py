@@ -1,6 +1,8 @@
 __author__ = 'gt'
 
-class GlossBased:
+
+
+class IArgHeuristics:
   def __init__(self):
     pass
 

@@ -4,7 +4,6 @@ from edu.sbu.shell.semgraph.PNode import PNode
 from edu.sbu.shell.semgraph.RNode import RNode
 import nltk
 from nltk.corpus import wordnet as wn
-from string import punctuation as punct
 #Parses senna output to build PNodes and RNodes
 
 '''
@@ -18,19 +17,15 @@ senna was run with the following flags
 
 class DCorefGraphBuilder:
 
-  def is_stopword(self, string):
-    if string.lower() in nltk.corpus.stopwords.words('english'):
-        return True
-    else:
-        return False
-
   def __init__(self):
     self.sent_num = -1
     self.pred_num = -1
     self.encoding = 'UTF-8'
     self.PNodes = []
     self.RNodes = []
-    self.light_verbs = ('do', 'let', 'give', 'make', 'decide', 'set')
+    self.light_verbs = ('do', 'let', 'give', 'make', 'decide', 'set', 'be')
+
+    self.cook_verbs = ('add', 'bake', 'beat', 'blend', 'boil', 'bone', 'braise', 'break', 'broil', 'brown', 'brush', 'chill', 'chop', 'coat', 'combine', 'cook', 'cover', 'curdle', 'cut', 'decorate', 'deep-fry', 'defrost', 'dice', 'dilute', 'dissolve', 'drain', 'dry', 'eat', 'empty', 'farm', 'feed', 'fill', 'flip', 'fold', 'freeze', 'fry', 'glaze', 'grate', 'grease', 'grill', 'grind', 'grow', 'halve', 'heat', 'knead', 'liquidize', 'mash', 'measure', 'melt', 'mince', 'mix', 'parboil', 'peel', 'pinch', 'pour', 'prepare', 'press', 'put', 'refrigerate', 'remove', 'rinse', 'roast', 'roll', 'saute', 'scald', 'scoop', 'seal', 'season', 'serve', 'shake', 'sharpen', 'sieve', 'sift', 'simmer', 'skin', 'slice', 'smoke', 'soak', 'spill', 'spread', 'sprinkle', 'squeeze', 'steam', 'stew', 'stir', 'stir-fry', 'strain', 'stuff', 'thicken', 'toast', 'toss', 'trim', 'turn', 'waste', 'whip', 'whisk')
     #Also ignore verbs that have arg0
     pass
 
@@ -118,25 +113,45 @@ class DCorefGraphBuilder:
     return
 
   def make_nodes(self, sem_group, sent_num, pred_num):
+    """
+    Decides whether to make nodes for this predicate and its arguments(sem_group)
+    """
     nodes = {'pred' : None, 'arg1' : None, 'arg2' : None}
     if sem_group['pred'] is None:
       return False
     nodes['pred'] = self.make_pnode('pred', sem_group['pred'], pred_num, sent_num)
+
+    if nodes['pred'] is None:
+      return False
 
     if not sem_group['arg1'] is None:
       nodes['arg1'] = self.make_rnode('arg1', sem_group['arg1'], pred_num, sent_num)
 
     if nodes['pred'].light:
       if not sem_group['arg2'] is None:
-        sem_group['arg2'] = self.get_derivationally_related(sem_group['arg2'])
+        sem_group['arg2'] = self.get_verbal_form(sem_group['arg2'])
 
         nodes['pred'] = self.make_pnode('pred', sem_group['arg2'], pred_num, sent_num)
+        if nodes['pred'] is None:
+          return False
+      else:
+        return False #not considering a light verb without arg2
+
     else:
       if not sem_group['arg2'] is None:
         nodes['arg2'] = self.make_rnode('arg2', sem_group['arg2'], pred_num, sent_num)
 
     if(nodes['arg1'] is None and nodes['arg2'] is None):
       return False
+
+    #if only one of the args is None then treat it as null instantiation
+    if nodes['arg1'] is None:
+      nodes['arg1'] = self.make_rnode('arg1', None, pred_num, sent_num, True)
+
+
+    if nodes['arg2'] is None:
+      nodes['arg2'] = self.make_rnode('arg2', None, pred_num, sent_num, True)
+
 
     self.PNodes[sent_num].append(nodes['pred'])
     self.RNodes[sent_num].append([None, nodes['arg1'], nodes['arg2']])
@@ -230,9 +245,11 @@ class DCorefGraphBuilder:
         elif(srl_args[idx][i] == 'I-A2'):
           text += ' ' + srl_args[0][i]
 
-    ret['pred'] = self.cleanse_arg(ret['pred'])
-    ret['arg1'] = self.cleanse_arg(ret['arg1'])
-    ret['arg2'] = self.cleanse_arg(ret['arg2'])
+    #pred are not cleansed (to capture verb phrases)
+    #arg1 and arg2 cleansed in RNode constructor
+    # ret['pred'] = self.cleanse_arg(ret['pred'])
+    # ret['arg1'] = self.cleanse_arg(ret['arg1'])
+    # ret['arg2'] = self.cleanse_arg(ret['arg2'])
     if len(self.RNodes[sent_num]) != len(self.PNodes[sent_num]):
       print ' RP not equal here'
 
@@ -240,20 +257,24 @@ class DCorefGraphBuilder:
 
   def make_pnode(self, arg_type, arg, pred_num, sent_num):
     arg = arg.lower()
-    if not wn.morphy(arg) is None:
-      arg = wn.morphy(arg)
+
+    #not doing morphy for verbal phrases
+    if not wn.morphy(arg, wn.VERB) is None:
+      arg = wn.morphy(arg, wn.VERB)
 
     light = False
     if arg in self.light_verbs:
       light = True
 
+    #ignoring single word non-cook non-light verbs
+    if not light and arg not in self.cook_verbs and len(arg.split()) == 1:
+      return None
+
     return PNode(arg, pred_num, sent_num, light)
     # return PNode(pred_num, sent_num, arg)
     pass
 
-  def make_rnode(self, arg_type, arg, pred_num, sent_num):
-    #based on the assumption made in generate_nodes method
-    arg = arg.lower()
+  def make_rnode(self, arg_type, arg, pred_num, sent_num, is_null = False):
     # if arg_type == 'arg2' and self.PNodes[sent_num][pred_num].predicate in  self.light_verbs:
     #   #light verbs
     #   arg = self.cleanse_arg(arg)
@@ -262,43 +283,52 @@ class DCorefGraphBuilder:
     # else:
     #   arg = self.cleanse_arg(arg)
     #   return RNode(arg, arg_type, sent_num, pred_num)
-    return RNode(arg, pred_num, sent_num, arg_type)
+    return RNode(arg, pred_num, sent_num, arg_type, is_null)
     pass
 
-  def cleanse_arg(self, arg):
-    if arg is None:
-      return None
 
-    arg = unicode(arg)
-    punct_translate_map = dict( (ord(char), None) for char in punct )
-    arg = arg.translate(punct_translate_map)
+  def get_verbal_form(self, noun_phrase):
 
-    ret = []
-    for word in arg.split():
-      if self.is_stopword(word):
-        continue
-      else:
-        ret.append(word)
-    return ' '.join(ret)
+    for word in noun_phrase.split():
+      verb, converted = self.verbify(word)
+      if converted:
+        return verb
 
-  def get_derivationally_related(self, arg):
-    for word in arg.split():
-      if not wn.morphy(word) is None:
-        word = wn.morphy(word)
-      syn_word = wn.synsets(word, wn.NOUN)
-      if len(syn_word) == 0:
-        continue
 
-      syn_word = syn_word[0]
-      if len(syn_word.lemmas) == 0:
-        continue
-      lemma = syn_word.lemmas[0]
-      dv = lemma.derivationally_related_forms()
+    return noun_phrase
 
-      if(len(dv) == 0):
-        continue
-
-      return dv[0].name
-
-    return arg
     pass
+
+  def verbify(self, noun_word):
+    """ Transform a noun to the closest verb: mixture -> mix; boiling -> boil """
+    noun_synsets = wn.synsets(noun_word, pos="n")
+
+    # Word not found
+    if not noun_synsets:
+      return noun_word, False
+
+    # Get all noun lemmas of the word
+    noun_lemmas = [l for s in noun_synsets \
+                   for l in s.lemmas if s.name.split('.')[1] == 'n']
+
+    # Get related forms
+    derivationally_related_forms = [(l, l.derivationally_related_forms()) \
+                                    for l in    noun_lemmas]
+
+    # filter only the verbs
+    related_verb_lemmas = [l for drf in derivationally_related_forms \
+                           for l in drf[1] if l.synset.name.split('.')[1] == 'v']
+
+    # Extract the words from the lemmas
+    words = [l.name for l in related_verb_lemmas]
+    len_words = len(words)
+
+    if len_words == 0:
+      return noun_word, False
+
+    # Build the result in the form of a list containing tuples (word, probability)
+    result = [(w, float(words.count(w))/len_words) for w in set(words)]
+    result.sort(key=lambda w: -w[1])
+
+    # return the verb with max probability
+    return result[0][0], True
