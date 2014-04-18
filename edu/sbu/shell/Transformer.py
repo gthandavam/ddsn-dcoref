@@ -60,13 +60,8 @@ def make_svg(gv_file):
 
 def main():
 
-  exclusion_list = ('/home/gt/NewSchematicSummary/recipe-split/Discada---How-to-Feed-30-People-with-$40.txt', '/home/gt/NewSchematicSummary/recipe-split/hearty-chicken-noodle-soup.txt')
   #files sentence split using stanford sentence splitter - fsm based
-  for recipe_file in commands.getoutput('ls /home/gt/NewSchematicSummary/recipe-split/*.txt').split('\n'):
-    if recipe_file in exclusion_list :
-      #recipe 1 in the list got error getting SRL roles - because of $ in file-name
-      #recipe2 had S-V, BIE-V in the same column - this was violating the one verb per senna output column assumption
-      continue
+  for recipe_file in commands.getoutput('ls /home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/Coleslaw-steps/*.txt').split('\n'):
 
     # print recipe_file
     # recipe_file = '/home/gt/NewSchematicSummary/recipe-split/Asian-Garlic-Toast.txt'
@@ -82,7 +77,7 @@ def main():
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph_builder)
 
     graph_builder = DotGraphBuilder()
-    gv_file_name = recipe_file.replace('recipe-split','dot-files')
+    gv_file_name = recipe_file.replace('Coleslaw-steps','Coleslaw-dot-files')
     gv_file_name = gv_file_name.replace('.txt', '.gv')
     graph_builder.write_gv(pnodes_resolved, rnodes_resolved, gv_file_name)
 
