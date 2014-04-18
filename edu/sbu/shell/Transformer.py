@@ -68,7 +68,8 @@ def main():
       #recipe2 had S-V, BIE-V in the same column - this was violating the one verb per senna output column assumption
       continue
 
-    print recipe_file
+    # print recipe_file
+    # recipe_file = '/home/gt/NewSchematicSummary/recipe-split/Asian-Garlic-Toast.txt'
     recipe_srl = get_semantic_roles(recipe_file)
     if recipe_srl.startswith("NONE"):
       print "error getting SRL roles " + recipe_file + " skipping..."

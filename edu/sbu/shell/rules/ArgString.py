@@ -72,13 +72,14 @@ class ArgString:
       for j in xrange(len(rnodes[i])):
         if i == 0 and j == 0:
           continue
-        for k in xrange(1,2):
+        for k in xrange(1,3):#applying arg string match for arg1 and arg2
           #applies only for non-null instantiations of args
           if not rnodes[i][j][k].is_null:
             ret_i, ret_j = self.find_arg_string_match(pnodes, rnodes, rnodes[i][j][k], i, j)
             if ret_i != -1 and ret_j != -1:
               rnodes[i][j][k].shell_coref.append((ret_i, ret_j))
-              print 'ArgString applied'
-              print rnodes[i][j][k].text + ' pred:' + pnodes[ret_i][ret_j].predicate
+
+              # print 'ArgString applied'
+              # print rnodes[i][j][k].text + ' pred:' + pnodes[ret_i][ret_j].predicate
 
     return pnodes, rnodes

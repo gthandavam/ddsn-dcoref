@@ -15,7 +15,7 @@ class Previous:
     for i in xrange(find_i, -1, -1):
       for j in xrange(len(pnodes[i]) - 1, -1, -1):
         if i == find_i and j >= find_j:
-          break
+          continue
 
         if not pnodes[i][j] is None:
           return i, j
@@ -35,5 +35,6 @@ class Previous:
         for k in xrange(1,3):
           if rnodes[i][j][k].is_null:
             rnodes[i][j][k].shell_coref.append((prev_i, prev_j))
+
 
     return pnodes, rnodes

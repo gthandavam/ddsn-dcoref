@@ -41,6 +41,29 @@ class DerivationallyRelated:
     # return noun with max probability
     return result[0][0]
 
+  def find_derivationally_related(self, pnodes, snum, pnum, rnode):
+    ret_i = -1
+    ret_j = -1
+
+    for i in xrange(snum, -1, -1):
+      for j in xrange(len(pnodes[i]) - 1, -1, -1):
+        if i == snum and j >= pnum:
+          continue
+
+        if not pnodes[i][j] is None:
+          if self.nounify(pnodes[i][j].predicate) in rnode.text.split():
+            # print 'Derivationally related applied'
+            # print 'pred: ' + pnodes[i][j].predicate
+            # print 'Nominalize: ' + self.nounify(pnodes[i][j].predicate)
+            # print rnode.text
+            return i,j
+          pass
+        else:
+          print 'None predicate found!!!'
+
+    return ret_i, ret_j
+
+
 
   def run(self, pnodes, rnodes):
 
@@ -48,9 +71,10 @@ class DerivationallyRelated:
       for j in xrange(len(pnodes[i])):
         for k in xrange(1,3): #for arg1 and arg2
           if not rnodes[i][j][k].is_null:
-            if self.nounify(pnodes[i][j].predicate) in rnodes[i][j][k].text.split():
+            ret_i, ret_j = self.find_derivationally_related(pnodes, i, j, rnodes[i][j][k])
+            if(not (ret_i == - 1 and ret_j == -1) ):
               rnodes[i][j][k].shell_coref.append((i,j))
-              print 'Derivationally Related applied'
-              print rnodes[i][j][k].raw_text + ' pred: ' + pnodes[i][j].predicate
+              # print 'Derivationally Related applied'
+              # print rnodes[i][j][k].raw_text + ' pred: ' + pnodes[i][j].predicate
 
     return pnodes, rnodes
