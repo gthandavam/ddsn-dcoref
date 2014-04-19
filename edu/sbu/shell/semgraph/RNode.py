@@ -53,5 +53,3 @@ class RNode:
         return True
     else:
         return False
-
-

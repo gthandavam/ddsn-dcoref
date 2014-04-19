@@ -18,15 +18,15 @@ class DotGraphBuilder:
     self.logger = logging.getLogger('root')
 
 
-  #TODO replace string concat with .format()
   def process_pnodes(self, pnodes):
     for i in xrange(len(pnodes)):
       for j in xrange(len(pnodes[i])):
         self.pred_node_list[(i,j)] = 'T' + str(self.node_num)
 
-        line = self.pred_node_list[(i,j)] + '[label=\"' + pnodes[i][j].predicate + '\"'
+        line = '{}[label=\"{}\"'.format(self.pred_node_list[(i,j)], pnodes[i][j].predicate)
+        # line = self.pred_node_list[(i,j)] + '[label=\"' + pnodes[i][j].predicate + '\"'
         for key in self.pred_props.keys():
-          line += ', ' + key + '=' + self.pred_props[key]
+          line += ', {}={}'.format(key,self.pred_props[key])
 
         line += ']'
         self.graph_lines.append(line)
