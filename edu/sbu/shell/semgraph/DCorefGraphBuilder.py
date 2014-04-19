@@ -161,10 +161,32 @@ class DCorefGraphBuilder:
 
     self.PNodes[sent_num].append(nodes['pred'])
     self.RNodes[sent_num].append([None, nodes['arg1'], nodes['arg2']])
+
+    self.capture_ingredients(nodes['pred'], nodes['arg1'], nodes['arg2'])
     # print 'Yes'
     return True
 
 
+    pass
+
+  def capture_ingredients(self, pNode, arg1Node, arg2Node):
+    """
+    Method to capture the discourse entities(ingredients in cooking) for
+    a predicate
+    """
+    #hardcoding ingredients file for now
+    ing_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/Coleslaw-uniqueIng'
+    f = open(ing_file)
+    ings = [line.strip().rstrip('\n') for line in f.readlines()]
+    f.close()
+
+    pIngs = []
+    arg1Words = [] if arg1Node.text is None else arg1Node.text.split()
+    arg2Words = [] if arg2Node.text is None else arg2Node.text.split()
+
+    pIngs = [ing for ing in ings if ing in arg2Words or ing in arg1Words]
+
+    pNode.pIngs = pIngs
     pass
 
   def get_column_args(self, arg_lines):

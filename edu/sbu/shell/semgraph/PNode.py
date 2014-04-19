@@ -12,6 +12,7 @@ class PNode:
     self.snum = snum
     self.predicate = self.cleanse_arg(predicate)
     self.light = light
+    self.pIngs = []
     self.logger = logging.getLogger('root')
 
   def add_arg(self, argType, rnode):
