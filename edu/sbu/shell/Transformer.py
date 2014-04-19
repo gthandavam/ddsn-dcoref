@@ -8,6 +8,10 @@ from edu.sbu.shell.semgraph.DCorefGraphBuilder import DCorefGraphBuilder
 
 import codecs
 import commands
+import logging
+
+mod_logger = logging.getLogger(__name__)
+logging.basicConfig()
 
 def get_text(senna_file):
   ret = ""
@@ -23,7 +27,7 @@ def get_semantic_roles(recipe_file):
   returns pnodes and rnodes
   """
   ret = ""
-  senna_file = recipe_file.replace('recipe-split', 'senna-files')
+  senna_file = recipe_file.replace('Coleslaw-steps', 'Coleslaw-senna-files')
   cmd = 'cd /home/gt/Downloads/senna/; ./senna-linux64 -srl -posvbs -offsettags < \"' \
         + recipe_file + '\" > \"' + senna_file + '\"'
   status, output = commands.getstatusoutput(cmd)
@@ -49,13 +53,13 @@ def make_nodes(srl_list):
 
 def make_svg(gv_file):
   of_name = gv_file.replace('.gv', '.svg')
-  of_name = of_name.replace('dot-files', 'svg-files')
+  of_name = of_name.replace('Coleslaw-dot-files', 'Coleslaw-svg-files')
   #dot is in path
   status, output = commands.getstatusoutput('dot -Tsvg \"' + gv_file + '\" -o\"' + of_name + '\"')
 
   #print output in case of any error
   if(status != 0):
-    print output
+    mod_logger.error(output)
   return status
 
 def main():
@@ -67,7 +71,7 @@ def main():
     # recipe_file = '/home/gt/NewSchematicSummary/recipe-split/Asian-Garlic-Toast.txt'
     recipe_srl = get_semantic_roles(recipe_file)
     if recipe_srl.startswith("NONE"):
-      print "error getting SRL roles " + recipe_file + " skipping..."
+      mod_logger.warn("error getting SRL roles " + recipe_file + " skipping...")
       continue
 
     dcoref_graph_builder = make_nodes(recipe_srl.split('\n'))

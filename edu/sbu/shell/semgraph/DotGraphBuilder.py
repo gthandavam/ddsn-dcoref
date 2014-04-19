@@ -1,5 +1,6 @@
 __author__ = 'gt'
 import codecs
+import logging
 encoding = 'UTF-8'
 
 class DotGraphBuilder:
@@ -14,6 +15,8 @@ class DotGraphBuilder:
     self.arg1_node_list = {}
     self.arg2_node_list = {}
     self.node_num = 0
+    self.logger = logging.getLogger(__name__)
+    logging.basicConfig()
 
   #TODO replace string concat with .format()
   def process_pnodes(self, pnodes):
@@ -51,7 +54,7 @@ class DotGraphBuilder:
                 line +=', {}={}'.format(key, self.arg2_props[key])
               line += ']'
             else:
-              print 'unknown arg type process_rnodes'
+              self.logger.warn('unknown arg type process_rnodes')
               continue
 
             self.node_num += 1
@@ -77,7 +80,7 @@ class DotGraphBuilder:
             elif rnodes[i][j][k].arg_type == 'arg2':
               arg_node = self.arg2_node_list[(i,j,k)]
             else:
-              print 'unknown arg type'
+              self.logger.warn('unknown arg type')
             line =  '{} -> {}'.format(arg_node, self.pred_node_list[(i,j)])
             self.graph_lines.append(line)
 

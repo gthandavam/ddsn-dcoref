@@ -1,10 +1,12 @@
 __author__ = 'gt'
 
 from nltk.corpus import wordnet as wn
-
+import logging
 
 class DerivationallyRelated:
   def __init__(self):
+    self.logger = logging.getLogger(__name__)
+    logging.basicConfig()
     pass
 
   def nounify(self, verb_word):
@@ -59,7 +61,7 @@ class DerivationallyRelated:
             return i,j
           pass
         else:
-          print 'None predicate found!!!'
+          self.logger.warn('None predicate found!!!')
 
     return ret_i, ret_j
 

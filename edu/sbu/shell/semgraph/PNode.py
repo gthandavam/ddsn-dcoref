@@ -2,7 +2,7 @@ __author__ = 'gt'
 
 
 from edu.sbu.shell.Constants import argTypes
-
+import logging
 
 class PNode:
 
@@ -11,6 +11,8 @@ class PNode:
     self.snum = -1
     self.predicate = ''
     self.light = False
+    self.logger = logging.getLogger(__name__)
+    logging.basicConfig()
     pass
 
   def __init__(self,  predicate, pnum, snum, light):
@@ -18,6 +20,8 @@ class PNode:
     self.snum = snum
     self.predicate = self.cleanse_arg(predicate)
     self.light = light
+    self.logger = logging.getLogger(__name__)
+    logging.basicConfig()
 
   def add_arg(self, argType, rnode):
     pass

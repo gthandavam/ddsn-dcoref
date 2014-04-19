@@ -1,12 +1,14 @@
 __author__ = 'gt'
 
-
+import logging
 class Previous:
 
   def __init__(self):
     """
     Rule for handling null instantiations
     """
+    self.logger = logging.getLogger(__name__)
+    logging.basicConfig()
     pass
 
 
@@ -20,7 +22,7 @@ class Previous:
         if not pnodes[i][j] is None:
           return i, j
         else:
-          print 'None Predicate found!!! ' + str(i) + ',' + str(j)
+          self.logger.warn('None Predicate found!!! ' + str(i) + ',' + str(j))
 
     return -1, -1
 

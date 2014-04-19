@@ -1,6 +1,7 @@
 __author__ = 'gt'
 
 import nltk
+import logging
 
 class RNode:
 
@@ -13,6 +14,8 @@ class RNode:
     self.shell_coref = []#tracks stepwise reference predicate num
     self.to_delete = False
     self.is_null = False
+    self.logger = logging.getLogger(__name__)
+    logging.basicConfig()
     pass
 
   def __init__(self, text, pnum, snum, arg_type, is_null=False):
@@ -24,6 +27,8 @@ class RNode:
     self.shell_coref = []
     self.to_delete = False
     self.is_null = is_null
+    self.logger = logging.getLogger(__name__)
+    logging.basicConfig()
     pass
 
   def add_shell_coref(self, stepnum, pnum):

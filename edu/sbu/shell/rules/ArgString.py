@@ -1,9 +1,12 @@
 __author__ = 'gt'
 
 import nltk
+import logging
 class ArgString:
   def __init__(self):
     self.stopwords = nltk.corpus.stopwords.words('english')
+    self.logger = logging.getLogger(__name__)
+    logging.basicConfig()
     pass
 
 
@@ -57,11 +60,11 @@ class ArgString:
             if not rnodes[i][j][k].is_null:
 
               if self.find_overlap(rnodes[i][j][k].text, rnode.text):
-                print rnodes[i][j][k].text + ' referring arg:' + rnode.text
+                self.logger.warn(rnodes[i][j][k].text + ' referring arg:' + rnode.text)
                 return i,j
           pass
         else:
-          print 'None predicate found!!!'
+          self.logger.warn('None predicate found!!!')
 
     return ret_i, ret_j
 
