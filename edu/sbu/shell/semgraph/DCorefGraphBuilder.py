@@ -28,8 +28,8 @@ class DCorefGraphBuilder:
 
     self.cook_verbs = ('add', 'bake', 'beat', 'blend', 'boil', 'bone', 'braise', 'break', 'broil', 'brown', 'brush', 'chill', 'chop', 'coat', 'combine', 'cook', 'cover', 'curdle', 'cut', 'decorate', 'deep-fry', 'defrost', 'dice', 'dilute', 'dissolve', 'drain', 'dry', 'eat', 'empty', 'farm', 'feed', 'fill', 'flip', 'fold', 'freeze', 'fry', 'glaze', 'grate', 'grease', 'grill', 'grind', 'grow', 'halve', 'heat', 'knead', 'liquidize', 'mash', 'measure', 'melt', 'mince', 'mix', 'parboil', 'peel', 'pinch', 'pour', 'prepare', 'press', 'put', 'refrigerate', 'remove', 'rinse', 'roast', 'roll', 'saute', 'scald', 'scoop', 'seal', 'season', 'serve', 'shake', 'sharpen', 'sieve', 'sift', 'simmer', 'skin', 'slice', 'smoke', 'soak', 'spill', 'spread', 'sprinkle', 'squeeze', 'steam', 'stew', 'stir', 'stir-fry', 'strain', 'stuff', 'thicken', 'toast', 'toss', 'trim', 'turn', 'waste', 'whip', 'whisk')
     #Also ignore verbs that have arg0
-    self.logger = logging.getLogger(__name__)
-    logging.basicConfig()
+    self.logger = logging.getLogger('root')
+
     pass
 
 

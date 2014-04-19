@@ -5,8 +5,8 @@ import logging
 class ArgString:
   def __init__(self):
     self.stopwords = nltk.corpus.stopwords.words('english')
-    self.logger = logging.getLogger(__name__)
-    logging.basicConfig()
+    self.logger = logging.getLogger('root')
+
     pass
 
 

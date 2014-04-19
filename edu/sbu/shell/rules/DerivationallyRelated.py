@@ -5,8 +5,8 @@ import logging
 
 class DerivationallyRelated:
   def __init__(self):
-    self.logger = logging.getLogger(__name__)
-    logging.basicConfig()
+    self.logger = logging.getLogger('root')
+
     pass
 
   def nounify(self, verb_word):

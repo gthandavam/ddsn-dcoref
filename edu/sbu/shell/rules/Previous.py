@@ -7,8 +7,8 @@ class Previous:
     """
     Rule for handling null instantiations
     """
-    self.logger = logging.getLogger(__name__)
-    logging.basicConfig()
+    self.logger = logging.getLogger('root')
+
     pass
 
 

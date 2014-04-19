@@ -2,16 +2,12 @@ __author__ = 'gt'
 
 from edu.sbu.shell.semgraph.DotGraphBuilder import DotGraphBuilder
 from edu.sbu.shell.rules.RuleEngine import RuleEngine
-from edu.sbu.shell.semgraph.PNode import PNode
-from edu.sbu.shell.semgraph.RNode import RNode
 from edu.sbu.shell.semgraph.DCorefGraphBuilder import DCorefGraphBuilder
-
-import codecs
 import commands
-import logging
+import edu.sbu.shell.logger.log as log
 
-mod_logger = logging.getLogger(__name__)
-logging.basicConfig()
+
+mod_logger = log.setup_custom_logger('root')
 
 def get_text(senna_file):
   ret = ""
@@ -90,5 +86,7 @@ def main():
 
 
 if __name__ == '__main__':
+
+
   main()
 

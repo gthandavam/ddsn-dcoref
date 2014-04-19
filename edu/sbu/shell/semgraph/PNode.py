@@ -6,22 +6,13 @@ import logging
 
 class PNode:
 
-  def __init__(self):
-    self.pnum = -1
-    self.snum = -1
-    self.predicate = ''
-    self.light = False
-    self.logger = logging.getLogger(__name__)
-    logging.basicConfig()
-    pass
 
-  def __init__(self,  predicate, pnum, snum, light):
+  def __init__(self,  predicate='', pnum=-1, snum=-1, light=False):
     self.pnum = pnum
     self.snum = snum
     self.predicate = self.cleanse_arg(predicate)
     self.light = light
-    self.logger = logging.getLogger(__name__)
-    logging.basicConfig()
+    self.logger = logging.getLogger('root')
 
   def add_arg(self, argType, rnode):
     pass

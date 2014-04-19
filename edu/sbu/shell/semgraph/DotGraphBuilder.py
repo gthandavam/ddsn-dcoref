@@ -15,8 +15,8 @@ class DotGraphBuilder:
     self.arg1_node_list = {}
     self.arg2_node_list = {}
     self.node_num = 0
-    self.logger = logging.getLogger(__name__)
-    logging.basicConfig()
+    self.logger = logging.getLogger('root')
+
 
   #TODO replace string concat with .format()
   def process_pnodes(self, pnodes):
