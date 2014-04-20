@@ -26,7 +26,7 @@ class DCorefGraphBuilder:
     self.RNodes = []
     self.light_verbs = ('do', 'let', 'give', 'make', 'decide', 'set', 'be')
 
-    self.cook_verbs = ('add', 'bake', 'beat', 'blend', 'boil', 'bone', 'braise', 'break', 'broil', 'brown', 'brush', 'chill', 'chop', 'coat', 'combine', 'cook', 'cover', 'curdle', 'cut', 'decorate', 'deep-fry', 'defrost', 'dice', 'dilute', 'dissolve', 'drain', 'dry', 'eat', 'empty', 'farm', 'feed', 'fill', 'flip', 'fold', 'freeze', 'fry', 'glaze', 'grate', 'grease', 'grill', 'grind', 'grow', 'halve', 'heat', 'knead', 'liquidize', 'mash', 'measure', 'melt', 'mince', 'mix', 'parboil', 'peel', 'pinch', 'pour', 'prepare', 'press', 'put', 'refrigerate', 'remove', 'rinse', 'roast', 'roll', 'saute', 'scald', 'scoop', 'seal', 'season', 'serve', 'shake', 'sharpen', 'sieve', 'sift', 'simmer', 'skin', 'slice', 'smoke', 'soak', 'spill', 'spread', 'sprinkle', 'squeeze', 'steam', 'stew', 'stir', 'stir-fry', 'strain', 'stuff', 'thicken', 'toast', 'toss', 'trim', 'turn', 'waste', 'whip', 'whisk')
+    self.cook_verbs = ('add', 'bake', 'beat', 'blend', 'boil', 'bone', 'braise', 'break', 'broil', 'brown', 'brush', 'chill', 'chop', 'coat', 'combine', 'cook', 'cover', 'curdle', 'cut', 'decorate', 'deep-fry', 'defrost', 'dice', 'dilute', 'dissolve', 'drain', 'dry', 'eat', 'empty', 'farm', 'feed', 'fill', 'flip', 'fold', 'freeze', 'fry', 'glaze', 'grate', 'grease', 'grill', 'grind', 'grow', 'halve', 'heat', 'knead', 'liquidize', 'mash', 'measure', 'melt', 'mince', 'mix', 'parboil', 'peel', 'pinch', 'pour', 'prepare', 'press', 'put', 'refrigerate', 'remove', 'rinse', 'roast', 'roll', 'saute', 'scald', 'scoop', 'seal', 'season', 'serve', 'shake', 'sharpen', 'sieve', 'sift', 'simmer', 'skin', 'slice', 'smoke', 'soak', 'spill', 'spread', 'sprinkle', 'squeeze', 'steam', 'stew', 'stir', 'stir-fry', 'strain', 'stuff', 'thicken', 'toast', 'toss', 'trim', 'turn', 'waste', 'whip', 'whisk', 'drizzle')
     #Also ignore verbs that have arg0
     self.logger = logging.getLogger('root')
 
@@ -180,13 +180,11 @@ class DCorefGraphBuilder:
     ings = [line.strip().rstrip('\n') for line in f.readlines()]
     f.close()
 
-    pIngs = []
     arg1Words = [] if arg1Node.text is None else arg1Node.text.split()
     arg2Words = [] if arg2Node.text is None else arg2Node.text.split()
 
-    pIngs = [ing for ing in ings if ing in arg2Words or ing in arg1Words]
+    pNode.pIngs = set([ing for ing in ings if ing in arg2Words or ing in arg1Words])
 
-    pNode.pIngs = pIngs
     pass
 
   def get_column_args(self, arg_lines):

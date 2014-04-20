@@ -20,7 +20,8 @@ class Previous:
           continue
 
         if not pnodes[i][j] is None:
-          return i, j
+          if len(set.intersection(pnodes[i][j].pIngs, pnodes[find_i][find_j].pIngs)) > 0:
+            return i, j
         else:
           self.logger.warn('None Predicate found!!! ' + str(i) + ',' + str(j))
 
