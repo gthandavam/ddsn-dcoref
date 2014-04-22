@@ -10,6 +10,12 @@ def setup_custom_logger(name):
   handler.setFormatter(formatter)
 
   logger = logging.getLogger(name)
-  logger.setLevel(logging.WARN)
+
+  #enable a few log messages
+  # logger.setLevel(logging.WARN)
+
+  #suppress log messages
+  logger.setLevel(logging.ERROR)
+
   logger.addHandler(handler)
   return logger

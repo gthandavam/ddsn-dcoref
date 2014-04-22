@@ -5,6 +5,8 @@ from edu.sbu.shell.rules.RuleEngine import RuleEngine
 from edu.sbu.shell.semgraph.DCorefGraphBuilder import DCorefGraphBuilder
 import commands
 import edu.sbu.shell.logger.log as log
+from edu.sbu.mst.MSTGraphAdapter import MSTGraphAdapter
+from edu.sbu.mst.MSTSolver import MSTSolver
 
 
 mod_logger = log.setup_custom_logger('root')
@@ -76,6 +78,20 @@ def main():
 
     rule_engine = RuleEngine()
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph_builder)
+
+    #apply MST Here
+
+    mst_adapter = MSTGraphAdapter()
+
+    mst_graph = mst_adapter.transform(pnodes_resolved, rnodes_resolved)
+
+    mst_solver = MSTSolver()
+
+    mst_solution = mst_solver.solve(mst_graph)
+
+    pnodes_resolved, rnodes_resolved = mst_adapter.reverse_transform(mst_solution)
+
+    #End of MST Section
 
     graph_builder = DotGraphBuilder()
     gv_file_name = recipe_file.replace('MacAndCheese-steps','MacAndCheese-dot-files')

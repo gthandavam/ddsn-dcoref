@@ -124,7 +124,7 @@ class DotGraphBuilder:
           line += '\n'
 
           self.logger.warn(pnodes[i][j].predicate)
-          self.logger.error(len(pnodes[i][j].pIngs))
+          # self.logger.error(len(pnodes[i][j].pIngs))
           f.write(line)
 
 
