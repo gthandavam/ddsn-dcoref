@@ -54,7 +54,7 @@ class DotGraphBuilder:
                 line +=', {}={}'.format(key, self.arg2_props[key])
               line += ']'
             else:
-              self.logger.warn('unknown arg type process_rnodes')
+              self.logger.warn('unknown arg type')
               continue
 
             self.node_num += 1
@@ -72,8 +72,6 @@ class DotGraphBuilder:
               pred_node  = self.pred_node_list[(i,j)]
               line = '{} -> {}'.format(shell_node, pred_node)
               self.graph_lines.append(line)
-
-
           else:
             if rnodes[i][j][k].arg_type == 'arg1':
               arg_node = self.arg1_node_list[(i,j,k)]
@@ -106,3 +104,27 @@ class DotGraphBuilder:
     with codecs.open(file_name, 'w', encoding) as f:
       for line in self.graph_lines:
         f.write(line+'\n')
+
+    #to prepare dish network
+    ing_flow_file = file_name.replace('-dot-files', '-ing-flow')
+    ing_flow_file = ing_flow_file.replace('.gv','.txt')
+    self.write_ingredient_flow(pnodes, ing_flow_file)
+
+
+  def write_ingredient_flow(self, pnodes, file_name):
+    with open(file_name, 'w') as f:
+      for i in xrange(len(pnodes)):
+        for j in xrange(len(pnodes[i])):
+
+          line = '{}[label=\"{}\"'.format(self.pred_node_list[(i,j)], pnodes[i][j].predicate)
+          # line = self.pred_node_list[(i,j)] + '[label=\"' + pnodes[i][j].predicate + '\"'
+          for ing in pnodes[i][j].pIngs:
+            line += ', {}'.format(ing)
+
+          line += '\n'
+
+          self.logger.warn(pnodes[i][j].predicate)
+          self.logger.error(len(pnodes[i][j].pIngs))
+          f.write(line)
+
+

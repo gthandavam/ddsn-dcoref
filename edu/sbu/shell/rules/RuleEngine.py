@@ -1,10 +1,9 @@
 __author__ = 'gt'
 
-from edu.sbu.shell.rules.Previous import Previous
+from edu.sbu.shell.rules.IArgHeuristics import Previous
 from edu.sbu.shell.rules.ArgString import ArgString
 from edu.sbu.shell.rules.DerivationallyRelated import DerivationallyRelated
 from edu.sbu.shell.rules.GlossBased import GlossBased
-from edu.sbu.shell.rules.IArgHeuristics import IArgHeuristics
 from edu.sbu.shell.rules.HeadWordArgString import HeadWordArgString
 
 class RuleEngine:
@@ -15,7 +14,7 @@ class RuleEngine:
       'DerivationallyRelated',
       'HeadWordArgString',
       'ArgString',
-      'Previous', #'IArgHeuristics' -> IArg same as previous
+      # 'IArgHeuristics' #-> IArg same as previous
     )
 
   def apply_rules(self, dcoref_graph):

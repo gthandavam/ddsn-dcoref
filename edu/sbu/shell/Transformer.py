@@ -23,7 +23,7 @@ def get_semantic_roles(recipe_file):
   returns pnodes and rnodes
   """
   ret = ""
-  senna_file = recipe_file.replace('Coleslaw-steps', 'Coleslaw-senna-files')
+  senna_file = recipe_file.replace('MacAndCheese-steps', 'MacAndCheese-senna-files')
   cmd = 'cd /home/gt/Downloads/senna/; ./senna-linux64 -srl -posvbs -offsettags < \"' \
         + recipe_file + '\" > \"' + senna_file + '\"'
   status, output = commands.getstatusoutput(cmd)
@@ -49,19 +49,20 @@ def make_nodes(srl_list):
 
 def make_svg(gv_file):
   of_name = gv_file.replace('.gv', '.svg')
-  of_name = of_name.replace('Coleslaw-dot-files', 'Coleslaw-svg-files')
+  of_name = of_name.replace('MacAndCheese-dot-files', 'MacAndCheese-svg-files')
   #dot is in path
   status, output = commands.getstatusoutput('dot -Tsvg \"' + gv_file + '\" -o\"' + of_name + '\"')
 
   #print output in case of any error
   if(status != 0):
     mod_logger.error(output)
+
   return status
 
 def main():
 
   #files sentence split using stanford sentence splitter - fsm based
-  for recipe_file in commands.getoutput('ls /home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/Coleslaw-steps/*.txt').split('\n'):
+  for recipe_file in commands.getoutput('ls /home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/*.txt').split('\n'):
 
     # print recipe_file
     # recipe_file = '/home/gt/NewSchematicSummary/recipe-split/Asian-Garlic-Toast.txt'
@@ -77,7 +78,7 @@ def main():
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph_builder)
 
     graph_builder = DotGraphBuilder()
-    gv_file_name = recipe_file.replace('Coleslaw-steps','Coleslaw-dot-files')
+    gv_file_name = recipe_file.replace('MacAndCheese-steps','MacAndCheese-dot-files')
     gv_file_name = gv_file_name.replace('.txt', '.gv')
     graph_builder.write_gv(pnodes_resolved, rnodes_resolved, gv_file_name)
 

@@ -175,7 +175,7 @@ class DCorefGraphBuilder:
     a predicate
     """
     #hardcoding ingredients file for now
-    ing_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/Coleslaw-uniqueIng'
+    ing_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-uniqueIng'
     f = open(ing_file)
     ings = [line.strip().rstrip('\n') for line in f.readlines()]
     f.close()
