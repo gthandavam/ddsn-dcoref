@@ -130,8 +130,8 @@ class DCorefGraphBuilder:
     if not sem_group['arg1'] is None:
       nodes['arg1'] = self.make_rnode('arg1', sem_group['arg1'], pred_num, sent_num)
 
-    #Assumption - LVC have pred, arg1, arg2 compulsarily - effectively we are not handling pronoun drops
-    #in case of LVC
+    #Assumption - LVC have pred, arg1, arg2 compulsarily - effectively we are replacing light verb with
+    #verb in arg2, if exists; if no meaningful verb in arg2, ignore the semgroup
     if nodes['pred'].light:
       if not sem_group['arg2'] is None:
         sem_group['arg2'] = self.get_verbal_form(sem_group['arg2'])
@@ -140,7 +140,7 @@ class DCorefGraphBuilder:
         if nodes['pred'] is None:
           return False
       else:
-        return False #not considering a light verb without arg2
+        return False #not considering a light verb without arg2 having a valid verb form
 
     else:
       if not sem_group['arg2'] is None:
@@ -150,7 +150,7 @@ class DCorefGraphBuilder:
     # if(nodes['arg1'] is None and nodes['arg2'] is None):
     #   return False
 
-    #if only one of the args is None then treat it as null instantiation
+    #if only one of the args is None then treat it as null instantiation - see the TODO above
     if nodes['arg1'] is None:
       # print nodes['pred'].predicate + ' # ' + nodes['arg2'].raw_text + ' # ' + nodes['arg2'].text
       nodes['arg1'] = self.make_rnode('arg1', None, pred_num, sent_num, True)

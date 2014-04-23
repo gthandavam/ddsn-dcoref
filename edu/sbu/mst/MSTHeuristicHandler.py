@@ -11,7 +11,6 @@ class MSTHeuristicHandler:
 
   def get_weights(self, pNodes, rNodes, edge_list):
 
-
     return edge_list
     pass
 

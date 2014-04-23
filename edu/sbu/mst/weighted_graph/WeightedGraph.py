@@ -12,7 +12,9 @@ class WeightedGraph:
   def get_edge_list(self, rNodes):
     ret = []
     #process rNodes to get edges
-
     return ret
+
+  def add_edges(self, edge_list):
+    self.edge_list.extend(edge_list)
 
   pass
