@@ -8,7 +8,6 @@ import edu.sbu.shell.logger.log as log
 from edu.sbu.mst.MSTGraphAdapter import MSTGraphAdapter
 from edu.sbu.mst.MSTSolver import MSTSolver
 
-
 mod_logger = log.setup_custom_logger('root')
 
 def get_text(senna_file):
@@ -61,6 +60,18 @@ def make_svg(gv_file):
 
   return status
 
+def connect_mst(pnodes_resolved, rnodes_resolved):
+  mst_adapter = MSTGraphAdapter()
+
+  mst_graph = mst_adapter.transform(pnodes_resolved, rnodes_resolved)
+
+  mst_solver = MSTSolver()
+
+  mst_solution = mst_solver.solve(mst_graph)
+
+  return mst_adapter.reverse_transform(mst_solution)
+  pass
+
 def main():
 
   #files sentence split using stanford sentence splitter - fsm based
@@ -80,17 +91,7 @@ def main():
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph_builder)
 
     #apply MST Here
-
-    mst_adapter = MSTGraphAdapter()
-
-    mst_graph = mst_adapter.transform(pnodes_resolved, rnodes_resolved)
-
-    mst_solver = MSTSolver()
-
-    mst_solution = mst_solver.solve(mst_graph)
-
-    pnodes_resolved, rnodes_resolved = mst_adapter.reverse_transform(mst_solution)
-
+    # pnodes_resolved, rnodes_resolved = connect_mst(pnodes_resolved, rnodes_resolved)
     #End of MST Section
 
     graph_builder = DotGraphBuilder()

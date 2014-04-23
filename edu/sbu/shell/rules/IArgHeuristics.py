@@ -20,8 +20,9 @@ class Previous:
           continue
 
         if not pnodes[i][j] is None:
+          # return i, j
           if len(set.intersection(pnodes[i][j].pIngs, pnodes[find_i][find_j].pIngs)) > 0:
-            #TODO - pnodes[i][j].pIngs = pnodes[i][j].pIngs union pnodes findi findj pIngs)
+            pnodes[find_i][find_j].pIngs = set.union(pnodes[i][j].pIngs, pnodes[find_i][find_j].pIngs)
             return i, j
         else:
           self.logger.warn('None Predicate found!!! ' + str(i) + ',' + str(j))
@@ -39,6 +40,7 @@ class Previous:
         for k in xrange(1,3):
           if rnodes[i][j][k].is_null:
             rnodes[i][j][k].shell_coref.append((prev_i, prev_j))
+            break #only one of arg1 or arg2 needs to use prev as IArg
 
 
     return pnodes, rnodes

@@ -5,7 +5,7 @@ from edu.sbu.shell.rules.ArgString import ArgString
 from edu.sbu.shell.rules.DerivationallyRelated import DerivationallyRelated
 from edu.sbu.shell.rules.GlossBased import GlossBased
 from edu.sbu.shell.rules.HeadWordArgString import HeadWordArgString
-
+import logging
 class RuleEngine:
   def __init__(self):
     #tuple of rules - Immutable
@@ -14,8 +14,9 @@ class RuleEngine:
       'DerivationallyRelated',
       'HeadWordArgString',
       'ArgString',
-      # 'IArgHeuristics' #-> IArg same as previous
+      'Previous' #-> IArgHeuristics here
     )
+    self.logger = logging.getLogger('root')
 
   def apply_rules(self, dcoref_graph):
     """
