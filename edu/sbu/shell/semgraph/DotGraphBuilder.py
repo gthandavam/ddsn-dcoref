@@ -16,6 +16,9 @@ class DotGraphBuilder:
     self.arg2_node_list = {}
     self.node_num = 0
     self.logger = logging.getLogger('root')
+    ###MST specific
+    self.adj_list = []
+    self.id_node_map = {}
 
 
   def process_pnodes(self, pnodes):
@@ -23,6 +26,8 @@ class DotGraphBuilder:
       for j in xrange(len(pnodes[i])):
         #assuming pred node can never be null
         self.pred_node_list[(i,j)] = 'T' + str(self.node_num)
+
+        self.id_node_map[self.pred_node_list[(i,j)]] = pnodes[i][j]
 
         line = '{}[label=\"{}\"'.format(self.pred_node_list[(i,j)], pnodes[i][j].predicate)
         # line = self.pred_node_list[(i,j)] + '[label=\"' + pnodes[i][j].predicate + '\"'
@@ -39,8 +44,10 @@ class DotGraphBuilder:
       for j in xrange(len(rnodes[i])):
         #TODO: dont fix argument slots : process based on arg_type in RNode
         for k in xrange(1,3):
+          node_id = 'T'+str(self.node_num)
+          self.id_node_map[node_id] = rnodes[i][j][k]
           if not rnodes[i][j][k].is_null:
-            node_id = 'T'+str(self.node_num)
+
             line = node_id
             if rnodes[i][j][k].arg_type == 'arg1':
               self.arg1_node_list[(i,j,k)] = node_id
@@ -62,7 +69,7 @@ class DotGraphBuilder:
           else:
             #handling the null instantiations to identify active nodes in connected components
             #a node is active when it can be connected
-            node_id = 'T'+str(self.node_num)
+
             if rnodes[i][j][k].arg_type == 'arg1':
               self.arg1_node_list[(i,j,k)] = node_id
             elif rnodes[i][j][k].arg_type == 'arg2':
@@ -87,6 +94,7 @@ class DotGraphBuilder:
               line = '{} -> {}'.format(shell_node, pred_node)
               self.graph_lines.append(line)
               self.logger.error(line + ' shell')
+              self.adj_list.append((shell_node, pred_node))
             else:
               #null instant edge
               if rnodes[i][j][k].arg_type == 'arg1':
@@ -97,6 +105,7 @@ class DotGraphBuilder:
                 self.logger.error('unknown arg type')
 
               self.logger.error('{} -> {} null'.format(null_node, self.pred_node_list[(i,j)]))
+              self.adj_list.append((null_node, self.pred_node_list[(i,j)]))
               pass
           else:
             if rnodes[i][j][k].arg_type == 'arg1':
@@ -107,6 +116,7 @@ class DotGraphBuilder:
               self.logger.warn('unknown arg type')
             line =  '{} -> {}'.format(arg_node, self.pred_node_list[(i,j)])
             self.logger.error(line)
+            self.adj_list.append((arg_node, self.pred_node_list[(i,j)]))
             self.graph_lines.append(line)
 
             if len(rnodes[i][j][k].shell_coref) > 0:
@@ -114,6 +124,7 @@ class DotGraphBuilder:
               line = '{} -> {}'.format(shell_node, arg_node)
               self.graph_lines.append(line)
               self.logger.error(line + ' shell')
+              self.adj_list.append((shell_node, arg_node))
     pass
 
   def get_header(self):
@@ -122,12 +133,17 @@ class DotGraphBuilder:
   def get_footer(self):
     self.graph_lines.append('};')
 
+  def get_edge_list_mst(self, pnodes, rnodes):
+    self.process_pnodes(pnodes)
+    self.process_rnodes(rnodes)
+    self.get_edges(rnodes)
+    return self.adj_list
+
   def write_gv(self, pnodes, rnodes, file_name):
     self.get_header()
     self.process_pnodes(pnodes)
     self.process_rnodes(rnodes)
     self.get_edges(rnodes)
-    self.logger.error("end of graph edges")
     self.get_footer()
 
     with codecs.open(file_name, 'w', encoding) as f:
