@@ -23,6 +23,7 @@ class Previous:
           # return i, j
           if len(set.intersection(pnodes[i][j].pIngs, pnodes[find_i][find_j].pIngs)) > 0:
             pnodes[find_i][find_j].pIngs = set.union(pnodes[i][j].pIngs, pnodes[find_i][find_j].pIngs)
+
             return i, j
         else:
           self.logger.warn('None Predicate found!!! ' + str(i) + ',' + str(j))
@@ -40,6 +41,8 @@ class Previous:
         for k in xrange(1,3):
           if rnodes[i][j][k].is_null:
             rnodes[i][j][k].shell_coref.append((prev_i, prev_j))
+            #Updating ing flow upon resolving null arg
+            rnodes[i][j][k].argIngs = set.union(rnodes[i][j][k].argIngs, pnodes[prev_i][prev_j].pIngs)
             break #only one of arg1 or arg2 needs to use prev as IArg
 
 

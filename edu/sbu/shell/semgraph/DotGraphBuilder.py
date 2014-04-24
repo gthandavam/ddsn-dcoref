@@ -21,6 +21,7 @@ class DotGraphBuilder:
   def process_pnodes(self, pnodes):
     for i in xrange(len(pnodes)):
       for j in xrange(len(pnodes[i])):
+        #assuming pred node can never be null
         self.pred_node_list[(i,j)] = 'T' + str(self.node_num)
 
         line = '{}[label=\"{}\"'.format(self.pred_node_list[(i,j)], pnodes[i][j].predicate)
@@ -45,7 +46,7 @@ class DotGraphBuilder:
               self.arg1_node_list[(i,j,k)] = node_id
               line += '[label=\"{}\"'.format(rnodes[i][j][k].text)
               for key in self.arg1_props.keys():
-                line +=', {}={}'.format(key, self.arg_props[key])
+                line +=', {}={}'.format(key, self.arg1_props[key])
               line += ']'
             elif rnodes[i][j][k].arg_type == 'arg2':
               self.arg2_node_list[(i,j,k)] = node_id
@@ -54,11 +55,24 @@ class DotGraphBuilder:
                 line +=', {}={}'.format(key, self.arg2_props[key])
               line += ']'
             else:
-              self.logger.warn('unknown arg type')
+              self.logger.error('unknown arg type')
               continue
 
-            self.node_num += 1
             self.graph_lines.append(line)
+          else:
+            #handling the null instantiations to identify active nodes in connected components
+            #a node is active when it can be connected
+            node_id = 'T'+str(self.node_num)
+            if rnodes[i][j][k].arg_type == 'arg1':
+              self.arg1_node_list[(i,j,k)] = node_id
+            elif rnodes[i][j][k].arg_type == 'arg2':
+              self.arg2_node_list[(i,j,k)] = node_id
+            else:
+              self.logger.error('unknown arg type')
+            pass
+            #not appending this node to the graph for display
+
+          self.node_num += 1
     pass
 
   def get_edges(self, rnodes):
@@ -72,6 +86,18 @@ class DotGraphBuilder:
               pred_node  = self.pred_node_list[(i,j)]
               line = '{} -> {}'.format(shell_node, pred_node)
               self.graph_lines.append(line)
+              self.logger.error(line + ' shell')
+            else:
+              #null instant edge
+              if rnodes[i][j][k].arg_type == 'arg1':
+                null_node = self.arg1_node_list[(i,j,k)]
+              elif rnodes[i][j][k].arg_type == 'arg2':
+                null_node = self.arg2_node_list[(i,j,k)]
+              else:
+                self.logger.error('unknown arg type')
+
+              self.logger.error('{} -> {} null'.format(null_node, self.pred_node_list[(i,j)]))
+              pass
           else:
             if rnodes[i][j][k].arg_type == 'arg1':
               arg_node = self.arg1_node_list[(i,j,k)]
@@ -80,12 +106,14 @@ class DotGraphBuilder:
             else:
               self.logger.warn('unknown arg type')
             line =  '{} -> {}'.format(arg_node, self.pred_node_list[(i,j)])
+            self.logger.error(line)
             self.graph_lines.append(line)
 
             if len(rnodes[i][j][k].shell_coref) > 0:
               shell_node = self.pred_node_list[rnodes[i][j][k].shell_coref[0]]
               line = '{} -> {}'.format(shell_node, arg_node)
               self.graph_lines.append(line)
+              self.logger.error(line + ' shell')
     pass
 
   def get_header(self):
@@ -99,6 +127,7 @@ class DotGraphBuilder:
     self.process_pnodes(pnodes)
     self.process_rnodes(rnodes)
     self.get_edges(rnodes)
+    self.logger.error("end of graph edges")
     self.get_footer()
 
     with codecs.open(file_name, 'w', encoding) as f:
@@ -108,10 +137,10 @@ class DotGraphBuilder:
     #to prepare dish network
     ing_flow_file = file_name.replace('-dot-files', '-ing-flow')
     ing_flow_file = ing_flow_file.replace('.gv','.txt')
-    self.write_ingredient_flow(pnodes, ing_flow_file)
+    self.write_ingredient_flow(pnodes, rnodes, ing_flow_file)
 
 
-  def write_ingredient_flow(self, pnodes, file_name):
+  def write_ingredient_flow(self, pnodes, rnodes, file_name):
     with open(file_name, 'w') as f:
       for i in xrange(len(pnodes)):
         for j in xrange(len(pnodes[i])):
@@ -121,10 +150,28 @@ class DotGraphBuilder:
           for ing in pnodes[i][j].pIngs:
             line += ', {}'.format(ing)
 
+          line += ']'
+
           line += '\n'
 
           self.logger.warn(pnodes[i][j].predicate)
           # self.logger.error(len(pnodes[i][j].pIngs))
           f.write(line)
 
+      for i in xrange(len(rnodes)):
+        for j in xrange(len(rnodes[i])):
+          for k in xrange(1,3):
+            # if not rnodes[i][j][k].is_null:
+            #   rnode_label = self.arg1_node_list[(i,j, k)] if k == 1 else self.arg2_node_list[(i,j,k)]
+            # else:
+            #   rnode_label = 'NULL_INST'
 
+            #since even null nodes are tracked now
+            rnode_label = self.arg1_node_list[(i,j, k)] if k == 1 else self.arg2_node_list[(i,j,k)]
+            line = '{}[label=\"{}\"'.format(rnode_label, rnodes[i][j][k].text)
+            for ing in rnodes[i][j][k].argIngs:
+              line += ', {}'.format(ing)
+
+            line += ']'
+            line += '\n'
+            f.write(line)

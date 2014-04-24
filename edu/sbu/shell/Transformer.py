@@ -78,6 +78,7 @@ def main():
   for recipe_file in commands.getoutput('ls /home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/*.txt').split('\n'):
 
     # print recipe_file
+    mod_logger.error(recipe_file)
     # recipe_file = '/home/gt/NewSchematicSummary/recipe-split/Asian-Garlic-Toast.txt'
     recipe_srl = get_semantic_roles(recipe_file)
     if recipe_srl.startswith("NONE"):
