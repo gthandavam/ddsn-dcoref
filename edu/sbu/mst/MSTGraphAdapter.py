@@ -20,13 +20,15 @@ class MSTGraphAdapter:
 
   def transform(self, pnodes, rnodes):
     transformer = MSTGraphTransformer()
+    self.pnodes = pnodes
+    self.rnodes = rnodes
     self.mst_graph = transformer.transform(pnodes, rnodes)
     return self.mst_graph
     pass
 
-  def reverse_transform(self, mst_graph):
-    r_transformer = MSTGraphReverseTransformer()
-    self.pnodes, self.rnodes = r_transformer.transform(mst_graph)
+  def reverse_transform(self):
+    transformer = MSTGraphTransformer()
+    self.pnodes, self.rnodes = transformer.reverse_transform()
     return self.pnodes,self.rnodes
     pass
   pass

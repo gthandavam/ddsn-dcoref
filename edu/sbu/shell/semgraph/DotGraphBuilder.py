@@ -17,7 +17,7 @@ class DotGraphBuilder:
     self.node_num = 0
     self.logger = logging.getLogger('root')
     ###MST specific
-    self.adj_list = []
+    self.adj_list = {}
     self.id_node_map = {}
 
 
@@ -82,6 +82,12 @@ class DotGraphBuilder:
           self.node_num += 1
     pass
 
+  def add_to_adj_list(self, fro, to):
+    if fro in self.adj_list.keys():
+      self.adj_list[fro].append(to)
+    else:
+      self.adj_list[fro] = [to]
+
   def get_edges(self, rnodes):
     for i in xrange(len(rnodes)):
       for j in xrange(len(rnodes[i])):
@@ -93,8 +99,8 @@ class DotGraphBuilder:
               pred_node  = self.pred_node_list[(i,j)]
               line = '{} -> {}'.format(shell_node, pred_node)
               self.graph_lines.append(line)
-              self.logger.error(line + ' shell')
-              self.adj_list.append((shell_node, pred_node))
+              # self.logger.error(line + ' shell')
+              self.add_to_adj_list(shell_node, pred_node)
             else:
               #null instant edge
               if rnodes[i][j][k].arg_type == 'arg1':
@@ -104,8 +110,9 @@ class DotGraphBuilder:
               else:
                 self.logger.error('unknown arg type')
 
-              self.logger.error('{} -> {} null'.format(null_node, self.pred_node_list[(i,j)]))
-              self.adj_list.append((null_node, self.pred_node_list[(i,j)]))
+              # self.logger.error('{} -> {} null'.format(null_node, self.pred_node_list[(i,j)]))
+
+              self.add_to_adj_list(null_node, self.pred_node_list[(i,j)])
               pass
           else:
             if rnodes[i][j][k].arg_type == 'arg1':
@@ -115,16 +122,17 @@ class DotGraphBuilder:
             else:
               self.logger.warn('unknown arg type')
             line =  '{} -> {}'.format(arg_node, self.pred_node_list[(i,j)])
-            self.logger.error(line)
-            self.adj_list.append((arg_node, self.pred_node_list[(i,j)]))
+            # self.logger.error(line)
+            self.add_to_adj_list(arg_node, self.pred_node_list[(i,j)])
             self.graph_lines.append(line)
 
             if len(rnodes[i][j][k].shell_coref) > 0:
               shell_node = self.pred_node_list[rnodes[i][j][k].shell_coref[0]]
               line = '{} -> {}'.format(shell_node, arg_node)
               self.graph_lines.append(line)
-              self.logger.error(line + ' shell')
-              self.adj_list.append((shell_node, arg_node))
+              # self.logger.error(line + ' shell')
+              self.add_to_adj_list(shell_node, arg_node)
+
     pass
 
   def get_header(self):
@@ -136,8 +144,12 @@ class DotGraphBuilder:
   def get_edge_list_mst(self, pnodes, rnodes):
     self.process_pnodes(pnodes)
     self.process_rnodes(rnodes)
+    for key in self.id_node_map.keys():
+      self.adj_list[key] = []
+
     self.get_edges(rnodes)
-    return self.adj_list
+
+    return self.adj_list, self.id_node_map
 
   def write_gv(self, pnodes, rnodes, file_name):
     self.get_header()

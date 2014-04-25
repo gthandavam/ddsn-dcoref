@@ -75,7 +75,7 @@ class DerivationallyRelated:
           if not rnodes[i][j][k].is_null:
             ret_i, ret_j = self.find_derivationally_related(pnodes, i, j, rnodes[i][j][k])
             if(not (ret_i == - 1 and ret_j == -1) ):
-              rnodes[i][j][k].shell_coref.append((i,j))
+              rnodes[i][j][k].shell_coref.append((ret_i,ret_j))
               # print 'Derivationally Related applied'
               # print rnodes[i][j][k].raw_text + ' pred: ' + pnodes[i][j].predicate
 
