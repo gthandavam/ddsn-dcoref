@@ -50,6 +50,7 @@ class MSTGraphTransformer:
 
     weighted_graph.print_edges()
 
+    return weighted_graph
     # self.print_ccs()
     # self.print_v_props()
     pass

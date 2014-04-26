@@ -10,7 +10,6 @@ class WeightedGraph:
     self.edge_list = []
     self.mst_nodes = []
     self.ccs_top = []
-    #one bottom node per cc - Incorrect assumption
     self.ccs_bottom = []
     self.identify_ccs(ccs)
     self.get_edge_list()
@@ -24,27 +23,28 @@ class WeightedGraph:
     edge is represented as
       [from, to, weight]
     """
-    for i in xrange(len(self.ccs_bottom)):
-      for j in xrange(len(self.ccs_bottom)):
-        if i == j:
-          continue
+    for i in xrange(len(self.ccs_bottom)-1):
+      for j in xrange(i+1, len(self.ccs_bottom)):
 
         #i before j
         #edge from i bottom to all j tops
         for k in xrange(len(self.ccs_top[j])):
+          for l in xrange(len(self.ccs_bottom[i])):
 
-          self.edge_list.append([self.ccs_bottom[i],self.ccs_top[j][k],random.randint(1,100)])
+            self.edge_list.append((random.randint(1,100),self.ccs_bottom[i][l],self.ccs_top[j][k]))
 
         #j before i
         #edge from j bottom to all i tops
         for k in xrange(len(self.ccs_top[i])):
-          self.edge_list.append([self.ccs_bottom[j], self.ccs_top[i][k], random.randint(1,100)])
+          for l in xrange(len(self.ccs_bottom[j])):
+            self.edge_list.append((random.randint(1,100), self.ccs_bottom[j][l], self.ccs_top[i][k]))
 
     pass
 
   def print_edges(self):
-    for i in xrange(len(self.edge_list)):
-      self.logger.error("{} - > {} : {}".format(self.edge_list[i][0],self.edge_list[i][1],self.edge_list[i][2]))
+    self.logger.error(len(self.edge_list))
+    # for i in xrange(len(self.edge_list)):
+    #   self.logger.error("{} - > {} : {}".format(self.edge_list[i][0],self.edge_list[i][1],self.edge_list[i][2]))
 
   def identify_ccs(self, g_ccs):
     """
@@ -63,7 +63,7 @@ class WeightedGraph:
         continue
 
       self.ccs_top.append([])
-      # self.ccs_bottom.append([])
+      self.ccs_bottom.append([])
       for j in xrange(len(ccs[i])):
         #top and bottom nodes have diff flags
         if not (self.v_props[ccs[i][j]][1] == self.v_props[ccs[i][j]][2]):
@@ -77,26 +77,10 @@ class WeightedGraph:
             #bottom node
             #only one bottom node per cc
             self.mst_nodes.append(ccs[i][j])
-            self.ccs_bottom.append(ccs[i][j])
+            self.ccs_bottom[-1].append(ccs[i][j])
             pass
           pass
 
     return
-
-  def get_vertex_list(self):
-    """
-    process pNodes and rNodes to get island vertices
-    """
-    ret = []
-    return ret
-
-  def add_edges(self, edge_list):
-    self.edge_list.extend(edge_list)
-
-  def identify_islands(self):
-    pass
-
-  def add_edges_between_islands(self, island1, island2):
-    pass
 
   pass

@@ -5,8 +5,8 @@ from edu.sbu.shell.rules.RuleEngine import RuleEngine
 from edu.sbu.shell.semgraph.DCorefGraphBuilder import DCorefGraphBuilder
 import commands
 import edu.sbu.shell.logger.log as log
-from edu.sbu.mst.MSTGraphAdapter import MSTGraphAdapter
-from edu.sbu.mst.MSTSolver import MSTSolver
+from edu.sbu.mst.MSTGraphTransformer import MSTGraphTransformer
+from edu.sbu.mst.weighted_graph.solver.kruskal import kruskal_mst
 
 mod_logger = log.setup_custom_logger('root')
 
@@ -61,15 +61,12 @@ def make_svg(gv_file):
   return status
 
 def connect_mst(pnodes_resolved, rnodes_resolved):
-  mst_adapter = MSTGraphAdapter()
-
+  mst_adapter = MSTGraphTransformer
   mst_graph = mst_adapter.transform(pnodes_resolved, rnodes_resolved)
 
-  mst_solver = MSTSolver()
+  mst_edges = kruskal_mst(mst_graph.edge_list)
 
-  mst_solution = mst_solver.solve(mst_graph)
-
-  return mst_adapter.reverse_transform()
+  return mst_adapter.reverse_transform(mst_graph, mst_edges)
   pass
 
 def main():
@@ -90,7 +87,7 @@ def main():
 
     # print recipe_file
     mod_logger.error(recipe_file)
-    # recipe_file = '/home/gt/NewSchematicSummary/recipe-split/Asian-Garlic-Toast.txt'
+
     recipe_srl = get_semantic_roles(recipe_file)
     if recipe_srl.startswith("NONE"):
       mod_logger.warn("error getting SRL roles " + recipe_file + " skipping...")
@@ -103,7 +100,7 @@ def main():
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph_builder)
 
     #apply MST Here
-    # pnodes_d, rnodes_d = connect_mst(pnodes_resolved, rnodes_resolved)
+    pnodes_d, rnodes_d = connect_mst(pnodes_resolved, rnodes_resolved)
     #End of MST Section
 
     graph_builder = DotGraphBuilder()
