@@ -153,7 +153,7 @@ class DotGraphBuilder:
     pass
 
   def get_header(self):
-    self.graph_lines.append('Digraph G {')
+    self.graph_lines.insert(0, 'Digraph G {')
 
   def get_footer(self):
     self.graph_lines.append('};')
@@ -170,9 +170,9 @@ class DotGraphBuilder:
 
   def write_gv(self, pnodes, rnodes, file_name):
     self.get_header()
-    self.process_pnodes(pnodes)
-    self.process_rnodes(rnodes)
-    self.get_edges(rnodes)
+    # self.process_pnodes(pnodes)
+    # self.process_rnodes(rnodes)
+    # self.get_edges(rnodes)
     self.get_cc_edges(pnodes)
     self.get_footer()
 
@@ -196,9 +196,9 @@ class DotGraphBuilder:
             arg_node = self.pred_node_list[(arg_node.sent_num,arg_node.pred_num)]
           else:
             if arg_node.arg_type == 'arg1':
-              arg_node = self.arg1_node_list[(arg_node.sent_num,arg_node.pred_num)]
+              arg_node = self.arg1_node_list[(arg_node.sent_num,arg_node.pred_num, 1)]
             elif arg_node.arg_type == 'arg2':
-              arg_node = self.arg2_node_list[(arg_node.sent_num,arg_node.pred_num)]
+              arg_node = self.arg2_node_list[(arg_node.sent_num,arg_node.pred_num, 2)]
             else:
               self.logger.error('Unknown arg type')
 

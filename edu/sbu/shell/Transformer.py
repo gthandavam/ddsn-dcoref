@@ -1,6 +1,6 @@
 __author__ = 'gt'
 
-from edu.sbu.shell.semgraph.DotGraphBuilder import DotGraphBuilder
+# from edu.sbu.shell.semgraph.DotGraphBuilder import DotGraphBuilder
 from edu.sbu.shell.rules.RuleEngine import RuleEngine
 from edu.sbu.shell.semgraph.DCorefGraphBuilder import DCorefGraphBuilder
 import commands
@@ -63,10 +63,10 @@ def make_svg(gv_file):
 def connect_mst(pnodes_resolved, rnodes_resolved):
   mst_adapter = MSTGraphTransformer()
   mst_graph = mst_adapter.transform(pnodes_resolved, rnodes_resolved)
-
   mst_edges = kruskal_mst(mst_graph.edge_list)
 
-  return mst_adapter.reverse_transform(mst_graph, mst_edges)
+  pnodes_resolved, rnodes_resolved = mst_adapter.reverse_transform(mst_graph, mst_edges)
+  return pnodes_resolved, rnodes_resolved, mst_adapter.dot_builder
   pass
 
 def main():
@@ -87,10 +87,9 @@ def main():
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph_builder)
 
     #apply MST Here
-    pnodes_d, rnodes_d = connect_mst(pnodes_resolved, rnodes_resolved)
+    pnodes_resolved, rnodes_resolved,graph_builder = connect_mst(pnodes_resolved, rnodes_resolved)
     #End of MST Section
 
-    graph_builder = DotGraphBuilder()
     gv_file_name = recipe_file.replace('MacAndCheese-steps','MacAndCheese-dot-files')
     gv_file_name = gv_file_name.replace('.txt', '.gv')
     graph_builder.write_gv(pnodes_resolved, rnodes_resolved, gv_file_name)

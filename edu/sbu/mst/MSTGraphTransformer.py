@@ -3,6 +3,7 @@ __author__ = 'gt'
 from edu.sbu.mst.MSTHeuristicHandler import MSTHeuristicHandler
 from edu.sbu.shell.semgraph.DotGraphBuilder import DotGraphBuilder
 from edu.sbu.mst.weighted_graph.WeightedGraph import WeightedGraph
+from edu.sbu.shell.semgraph.PNode import PNode
 import logging
 class MSTGraphTransformer:
   """
@@ -15,12 +16,23 @@ class MSTGraphTransformer:
     self.adj_list = {}
     self.v_props = {}
     self.id_node_map = {}
+    self.dot_builder = None
+
     self.ccs = []
 
 
   def reverse_transform(self, mst_graph, mst_edges):
-    self.logger.error( str(len(mst_edges)) + ' mst edges ')
-    return None, None
+
+    for mst_edge in mst_edges:
+      from_node = self.id_node_map[mst_edge[0]]
+
+      if not isinstance(from_node, PNode):
+        self.logger.error('CC Edge starting from an RNode ?')
+        continue
+
+      from_node.cc_edge.append(mst_edge[1])
+
+    return mst_graph.pNodes, mst_graph.rNodes
     pass
 
   def print_ccs(self):
@@ -39,8 +51,8 @@ class MSTGraphTransformer:
           self.logger.error('null instant replaced with a pred (shell coref) node number {} ; cc {}'.format(key, self.v_props[key][0]))
 
   def transform(self, pnodes, rnodes):
-    dot_builder = DotGraphBuilder()
-    self.adj_list, self.id_node_map  = dot_builder.get_edge_list_mst(pnodes, rnodes)
+    self.dot_builder = DotGraphBuilder()
+    self.adj_list, self.id_node_map  = self.dot_builder.get_edge_list_mst(pnodes, rnodes)
 
     for key in self.adj_list.keys():
       self.v_props[key] = [-1,0,0]
