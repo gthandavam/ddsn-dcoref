@@ -11,10 +11,10 @@ class DotGraphBuilder:
     self.arg1_props = {}
     self.arg2_props = {'shape':'rectangle','style':'filled','fillcolor':'goldenrod'}
     self.edge_props = {
-      'DerivationallyRelated' : {'color': 'blue', 'style' : 'dotted'},
-      'ArgString' : {'color' : 'black'},
-      'IArgHeuristics' : {'color':'red', 'style':'dashed'},
-      'MST' : {'color' : 'green'}
+      'DerivationallyRelated' : {'label':'DerivationallyRelated', 'color': 'blue', 'style' : 'dotted'},
+      'ArgString' : {'label':'ArgString', 'color' : 'gray'},
+      'IArgHeuristics' : {'label' : 'IArg','color':'red', 'style':'dashed'},
+      'CC' : {'label' : 'CC', 'color' : 'green', 'style':'bold'}
     }
     self.graph_lines = []
     self.pred_node_list = {}
@@ -102,9 +102,12 @@ class DotGraphBuilder:
             #implicit arg edge
             if len(rnodes[i][j][k].shell_coref) != 0:
               shell_node = self.pred_node_list[rnodes[i][j][k].shell_coref[0][0]]
-              edge_props = self.edge_props[rnodes[i][j][k].shell_coref[0][1]]
+              edge_type = rnodes[i][j][k].shell_coref[0][1]
               pred_node  = self.pred_node_list[(i,j)]
-              line = '{} -> {}'.format(shell_node, pred_node)
+              line = '{} -> {}[label=\"{}\"'.format(shell_node, pred_node, edge_type)
+              for prop in self.edge_props[edge_type]:
+                line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
+              line += ']'
               self.graph_lines.append(line)
               # self.logger.error(line + ' shell')
               self.add_to_adj_list(shell_node, pred_node)
@@ -128,14 +131,21 @@ class DotGraphBuilder:
               arg_node = self.arg2_node_list[(i,j,k)]
             else:
               self.logger.warn('unknown arg type')
-            line =  '{} -> {}'.format(arg_node, self.pred_node_list[(i,j)])
+            line =  '{} -> {}[label={}]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL')
             # self.logger.error(line)
             self.add_to_adj_list(arg_node, self.pred_node_list[(i,j)])
             self.graph_lines.append(line)
 
             if len(rnodes[i][j][k].shell_coref) > 0:
               shell_node = self.pred_node_list[rnodes[i][j][k].shell_coref[0][0]]
-              line = '{} -> {}'.format(shell_node, arg_node)
+              edge_type = rnodes[i][j][k].shell_coref[0][1]
+
+              line = '{} -> {}[label=\"{}\"'.format(shell_node, arg_node, edge_type)
+
+              for prop in self.edge_props[edge_type]:
+                line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
+              line += ']'
+
               self.graph_lines.append(line)
               # self.logger.error(line + ' shell')
               self.add_to_adj_list(shell_node, arg_node)
@@ -163,17 +173,46 @@ class DotGraphBuilder:
     self.process_pnodes(pnodes)
     self.process_rnodes(rnodes)
     self.get_edges(rnodes)
+    self.get_cc_edges(pnodes)
     self.get_footer()
 
     with codecs.open(file_name, 'w', encoding) as f:
       for line in self.graph_lines:
         f.write(line+'\n')
 
-    #to prepare dish network
-    ing_flow_file = file_name.replace('-dot-files', '-ing-flow')
-    ing_flow_file = ing_flow_file.replace('.gv','.txt')
-    self.write_ingredient_flow(pnodes, rnodes, ing_flow_file)
+    # #to prepare dish network
+    # ing_flow_file = file_name.replace('-dot-files', '-ing-flow')
+    # ing_flow_file = ing_flow_file.replace('.gv','.txt')
+    # self.write_ingredient_flow(pnodes, rnodes, ing_flow_file)
 
+  def get_cc_edges(self, pnodes):
+    for i in xrange(len(pnodes)):
+      for j in xrange(len(pnodes[i])):
+        if len(pnodes[i][j].cc_edge) > 0:
+          start_node = self.pred_node_list[(i,j)]
+          arg_node = self.id_node_map[pnodes[i][j].cc_edge[0]]
+
+          if arg_node.is_null:
+            arg_node = self.pred_node_list[(arg_node.sent_num,arg_node.pred_num)]
+          else:
+            if arg_node.arg_type == 'arg1':
+              arg_node = self.arg1_node_list[(arg_node.sent_num,arg_node.pred_num)]
+            elif arg_node.arg_type == 'arg2':
+              arg_node = self.arg2_node_list[(arg_node.sent_num,arg_node.pred_num)]
+            else:
+              self.logger.error('Unknown arg type')
+
+          line = '{} -> {} [label=\"{}\"'.format(start_node, arg_node, 'CC')
+
+          for prop in self.edge_props['CC'].keys():
+            line += ',{}={}'.format(prop, self.edge_props['CC'][prop])
+
+          line += ']'
+
+          self.graph_lines.append(line)
+
+          pass
+        pass
 
   def write_ingredient_flow(self, pnodes, rnodes, file_name):
     with open(file_name, 'w') as f:
@@ -201,7 +240,7 @@ class DotGraphBuilder:
             # else:
             #   rnode_label = 'NULL_INST'
 
-            #since even null nodes are tracked now
+            #commented the above lines since even null nodes have IDs
             rnode_label = self.arg1_node_list[(i,j, k)] if k == 1 else self.arg2_node_list[(i,j,k)]
             line = '{}[label=\"{}\"'.format(rnode_label, rnodes[i][j][k].text)
             for ing in rnodes[i][j][k].argIngs:

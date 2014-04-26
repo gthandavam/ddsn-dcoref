@@ -21,7 +21,7 @@ class WeightedGraph:
     """
     Process MST CCs to get the edge list
     edge is represented as
-      [from, to, weight]
+      [weight, from to]
     """
     for i in xrange(len(self.ccs_bottom)-1):
       for j in xrange(i+1, len(self.ccs_bottom)):
