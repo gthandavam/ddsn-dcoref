@@ -12,7 +12,7 @@ class ArgString:
 
   def is_word(self, word):
     """
-    1. Should not contain any punctuation - punctuation reatained by RNode for display purposes
+    1. Should not contain any punctuation - punctuation retained by RNode for display purposes
     so cleaning it here during comparison
     "carrot , beetroot and tomato".split() gives "," as a word
     so we need to remove punctuation from comparison
@@ -80,7 +80,7 @@ class ArgString:
           if not rnodes[i][j][k].is_null:
             ret_i, ret_j = self.find_arg_string_match(pnodes, rnodes, rnodes[i][j][k], i, j)
             if ret_i != -1 and ret_j != -1:
-              rnodes[i][j][k].shell_coref.append((ret_i, ret_j))
+              rnodes[i][j][k].shell_coref.append(((ret_i, ret_j), 'ArgString'))
 
               # print 'ArgString applied'
               # print rnodes[i][j][k].text + ' pred:' + pnodes[ret_i][ret_j].predicate

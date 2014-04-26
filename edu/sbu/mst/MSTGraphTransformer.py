@@ -17,7 +17,9 @@ class MSTGraphTransformer:
     self.id_node_map = {}
     self.ccs = []
 
-  def reverse_transform(self):
+
+  def reverse_transform(self, mst_graph, mst_edges):
+    self.logger.error( str(len(mst_edges)) + ' mst edges ')
     return None, None
     pass
 
@@ -43,7 +45,7 @@ class MSTGraphTransformer:
     for key in self.adj_list.keys():
       self.v_props[key] = [-1,0,0]
 
-    self.get_top_bottom_nodes()
+    self.mark_top_bottom_nodes()
     self.adj_list = self.directed_to_undirected()
     self.ccs = self.get_connected_components()
     weighted_graph = WeightedGraph(pnodes, rnodes, self.adj_list, self.ccs, self.v_props, self.id_node_map)
@@ -51,8 +53,6 @@ class MSTGraphTransformer:
     weighted_graph.print_edges()
 
     return weighted_graph
-    # self.print_ccs()
-    # self.print_v_props()
     pass
 
   def dfs(self, node, tkr, ccs):
@@ -80,7 +80,10 @@ class MSTGraphTransformer:
     return ccs
     pass
 
-  def get_top_bottom_nodes(self):
+  def mark_top_bottom_nodes(self):
+    """
+    marks the flags to find 'active' nodes per connected component
+    """
     for key in self.adj_list.keys():
       for neighbor in self.adj_list[key]:
         self.v_props[key][1] = 1

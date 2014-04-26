@@ -61,7 +61,7 @@ def make_svg(gv_file):
   return status
 
 def connect_mst(pnodes_resolved, rnodes_resolved):
-  mst_adapter = MSTGraphTransformer
+  mst_adapter = MSTGraphTransformer()
   mst_graph = mst_adapter.transform(pnodes_resolved, rnodes_resolved)
 
   mst_edges = kruskal_mst(mst_graph.edge_list)
@@ -71,21 +71,9 @@ def connect_mst(pnodes_resolved, rnodes_resolved):
 
 def main():
 
-  # skip_list = [
-  #   '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/butternut-squash-mac-and-cheese.txt',
-  #   '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/chipotle-mac-and-cheese.txt',
-  #   '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/classic-smoked-sausage-mac-and-cheese.txt',
-  #   '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/easy-weeknight-bacon-mac-n-cheese.txt',
-  #   '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/game-day-mac-and-mex.txt',
-  # ]
   #files sentence split using stanford sentence splitter - fsm based
   for recipe_file in commands.getoutput('ls /home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/*.txt').split('\n'):
-    #
-    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/beef-mac-casserole.txt'
-    # if recipe_file in skip_list :
-    #   continue
 
-    # print recipe_file
     mod_logger.error(recipe_file)
 
     recipe_srl = get_semantic_roles(recipe_file)
@@ -94,7 +82,6 @@ def main():
       continue
 
     dcoref_graph_builder = make_nodes(recipe_srl.split('\n'))
-    # print dcoref_graph_builder
 
     rule_engine = RuleEngine()
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph_builder)
@@ -109,12 +96,9 @@ def main():
     graph_builder.write_gv(pnodes_resolved, rnodes_resolved, gv_file_name)
 
     make_svg(gv_file_name)
-
   pass
 
 
 if __name__ == '__main__':
-
-
   main()
 

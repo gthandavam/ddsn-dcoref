@@ -10,6 +10,12 @@ class DotGraphBuilder:
     self.pred_props = {'shape':'diamond','style':'filled','fillcolor':'gray'}
     self.arg1_props = {}
     self.arg2_props = {'shape':'rectangle','style':'filled','fillcolor':'goldenrod'}
+    self.edge_props = {
+      'DerivationallyRelated' : {'color': 'blue', 'style' : 'dotted'},
+      'ArgString' : {'color' : 'black'},
+      'IArgHeuristics' : {'color':'red', 'style':'dashed'},
+      'MST' : {'color' : 'green'}
+    }
     self.graph_lines = []
     self.pred_node_list = {}
     self.arg1_node_list = {}
@@ -51,13 +57,13 @@ class DotGraphBuilder:
             line = node_id
             if rnodes[i][j][k].arg_type == 'arg1':
               self.arg1_node_list[(i,j,k)] = node_id
-              line += '[label=\"{}\"'.format(rnodes[i][j][k].text)
+              line += '[label=\"{}\"'.format(rnodes[i][j][k].raw_text)
               for key in self.arg1_props.keys():
                 line +=', {}={}'.format(key, self.arg1_props[key])
               line += ']'
             elif rnodes[i][j][k].arg_type == 'arg2':
               self.arg2_node_list[(i,j,k)] = node_id
-              line += '[label=\"{}\"'.format(rnodes[i][j][k].text)
+              line += '[label=\"{}\"'.format(rnodes[i][j][k].raw_text)
               for key in self.arg2_props.keys():
                 line +=', {}={}'.format(key, self.arg2_props[key])
               line += ']'
@@ -95,7 +101,8 @@ class DotGraphBuilder:
           if rnodes[i][j][k].is_null:
             #implicit arg edge
             if len(rnodes[i][j][k].shell_coref) != 0:
-              shell_node = self.pred_node_list[rnodes[i][j][k].shell_coref[0]]
+              shell_node = self.pred_node_list[rnodes[i][j][k].shell_coref[0][0]]
+              edge_props = self.edge_props[rnodes[i][j][k].shell_coref[0][1]]
               pred_node  = self.pred_node_list[(i,j)]
               line = '{} -> {}'.format(shell_node, pred_node)
               self.graph_lines.append(line)
@@ -127,7 +134,7 @@ class DotGraphBuilder:
             self.graph_lines.append(line)
 
             if len(rnodes[i][j][k].shell_coref) > 0:
-              shell_node = self.pred_node_list[rnodes[i][j][k].shell_coref[0]]
+              shell_node = self.pred_node_list[rnodes[i][j][k].shell_coref[0][0]]
               line = '{} -> {}'.format(shell_node, arg_node)
               self.graph_lines.append(line)
               # self.logger.error(line + ' shell')

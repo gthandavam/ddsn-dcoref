@@ -19,10 +19,6 @@ class RNode:
 
     pass
 
-  def add_shell_coref(self, stepnum, pnum):
-    #not tracking the step num - assuming one assignment in one step
-    self.shell_coref.append(pnum)
-
   def cleanse_arg(self, arg):
     """
     remove undesired punctuation and stopwords

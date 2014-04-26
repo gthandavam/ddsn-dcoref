@@ -40,7 +40,7 @@ class Previous:
 
         for k in xrange(1,3):
           if rnodes[i][j][k].is_null:
-            rnodes[i][j][k].shell_coref.append((prev_i, prev_j))
+            rnodes[i][j][k].shell_coref.append(((prev_i, prev_j), 'IArgHeuristics'))
             #Updating ing flow upon resolving null arg
             rnodes[i][j][k].argIngs = set.union(rnodes[i][j][k].argIngs, pnodes[prev_i][prev_j].pIngs)
             break #only one of arg1 or arg2 needs to use prev as IArg
