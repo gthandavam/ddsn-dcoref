@@ -7,7 +7,7 @@ Kruskal's algorithm for minimum spanning trees. D. Eppstein, April 2006.
 
 from UnionFind import UnionFind
 
-def kruskal_mst(edges):
+def kruskal_mst(edges, ccs_top, ccs_bottom):
   """
   Return the minimum spanning tree of an undirected graph G.
   G should be represented in such a way that G[u][v] gives the
@@ -21,9 +21,21 @@ def kruskal_mst(edges):
   # part (the sort) is sped up by being built in to Python.
   subtrees = UnionFind()
   mst_edges = []
+
+
+  #to avoid cycles in the display
+  #grouping the nodes in the connected component
+  for i in xrange(len(ccs_top)):
+    rep = ccs_top[i][0]
+    for k in xrange(1, len(ccs_top[i])):
+      subtrees.union(rep, ccs_top[i][k])
+
+    for k in xrange(len(ccs_bottom[i])):
+      subtrees.union(rep, ccs_bottom[i][k])
+
   edges.sort()
   for W,u,v in edges:
-      if subtrees[u] != subtrees[v]:
-          mst_edges.append((u,v))
-          subtrees.union(u,v)
+    if subtrees[u] != subtrees[v]:
+      mst_edges.append((u,v))
+      subtrees.union(u,v)
   return mst_edges

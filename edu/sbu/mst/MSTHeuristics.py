@@ -22,6 +22,6 @@ def order_close_together(pNode_id, rNode_id, id_node_map):
     if pNode.pnum > rNode.pred_num:
       return 10000000000
 
-  return math.pow(2, pNode.snum - rNode.sent_num)
+  return math.pow(2, rNode.sent_num - pNode.snum)
 
   pass

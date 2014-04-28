@@ -63,7 +63,7 @@ def make_svg(gv_file):
 def connect_mst(pnodes_resolved, rnodes_resolved):
   mst_adapter = MSTGraphTransformer()
   mst_graph = mst_adapter.transform(pnodes_resolved, rnodes_resolved, 'order_close_together')
-  # mst_edges = kruskal_mst(mst_graph.edge_list)
+  # mst_edges = kruskal_mst(mst_graph.edge_list, mst_graph.ccs_top, mst_graph.ccs_bottom)
   #
   # pnodes_resolved, rnodes_resolved = mst_adapter.reverse_transform(mst_graph, mst_edges)
   return pnodes_resolved, rnodes_resolved, mst_adapter.dot_builder
