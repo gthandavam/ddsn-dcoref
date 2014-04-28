@@ -62,10 +62,10 @@ def make_svg(gv_file):
 
 def connect_mst(pnodes_resolved, rnodes_resolved):
   mst_adapter = MSTGraphTransformer()
-  mst_graph = mst_adapter.transform(pnodes_resolved, rnodes_resolved)
-  mst_edges = kruskal_mst(mst_graph.edge_list)
-
-  pnodes_resolved, rnodes_resolved = mst_adapter.reverse_transform(mst_graph, mst_edges)
+  mst_graph = mst_adapter.transform(pnodes_resolved, rnodes_resolved, 'order_close_together')
+  # mst_edges = kruskal_mst(mst_graph.edge_list)
+  #
+  # pnodes_resolved, rnodes_resolved = mst_adapter.reverse_transform(mst_graph, mst_edges)
   return pnodes_resolved, rnodes_resolved, mst_adapter.dot_builder
   pass
 
@@ -87,7 +87,7 @@ def main():
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph_builder)
 
     #apply MST Here
-    pnodes_resolved, rnodes_resolved,graph_builder = connect_mst(pnodes_resolved, rnodes_resolved)
+    pnodes_resolved_, rnodes_resolved_,graph_builder = connect_mst(pnodes_resolved, rnodes_resolved)
     #End of MST Section
 
     gv_file_name = recipe_file.replace('MacAndCheese-steps','MacAndCheese-dot-files')

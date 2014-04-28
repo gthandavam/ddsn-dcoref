@@ -1,8 +1,8 @@
 __author__ = 'gt'
 import logging
-import random
+import edu.sbu.mst.MSTHeuristics as Heuristics
 class WeightedGraph:
-  def __init__(self, pNodes, rNodes, adj_list, ccs, v_props, id_node_map):
+  def __init__(self, pNodes, rNodes, adj_list, ccs, v_props, id_node_map, heuristic):
     self.pNodes = pNodes
     self.rNodes = rNodes
     self.id_node_map = id_node_map
@@ -12,32 +12,33 @@ class WeightedGraph:
     self.ccs_top = []
     self.ccs_bottom = []
     self.identify_ccs(ccs)
-    self.get_edge_list()
+    self.get_edge_list(heuristic)
+
 
     self.logger = logging.getLogger('root')
     pass
 
-  def get_edge_list(self):
+  def get_edge_list(self, heuristic):
     """
     Process MST CCs to get the edge list
     edge is represented as
-      [weight, from to]
+      [weight, from, to]
     """
+    weight_heuristic = getattr(Heuristics, heuristic)
     for i in xrange(len(self.ccs_bottom)-1):
       for j in xrange(i+1, len(self.ccs_bottom)):
-
         #i before j
         #edge from i bottom to all j tops
         for k in xrange(len(self.ccs_top[j])):
           for l in xrange(len(self.ccs_bottom[i])):
 
-            self.edge_list.append((random.randint(1,100),self.ccs_bottom[i][l],self.ccs_top[j][k]))
+            self.edge_list.append((weight_heuristic(self.ccs_bottom[i][l], self.ccs_top[j][k], self.id_node_map),self.ccs_bottom[i][l],self.ccs_top[j][k]))
 
         #j before i
         #edge from j bottom to all i tops
         for k in xrange(len(self.ccs_top[i])):
           for l in xrange(len(self.ccs_bottom[j])):
-            self.edge_list.append((random.randint(1,100), self.ccs_bottom[j][l], self.ccs_top[i][k]))
+            self.edge_list.append((weight_heuristic(self.ccs_bottom[j][l], self.ccs_top[i][k], self.id_node_map), self.ccs_bottom[j][l], self.ccs_top[i][k]))
 
     pass
 
@@ -54,7 +55,6 @@ class WeightedGraph:
     #hack to work with list indices
     for i in xrange(len(g_ccs)):
       ccs.append([x for x in iter(g_ccs[i])])
-
 
     for i in xrange(len(ccs)):
       if len(ccs[i]) == 1:

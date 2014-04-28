@@ -1,6 +1,5 @@
 __author__ = 'gt'
 
-from edu.sbu.mst.MSTHeuristicHandler import MSTHeuristicHandler
 from edu.sbu.shell.semgraph.DotGraphBuilder import DotGraphBuilder
 from edu.sbu.mst.weighted_graph.WeightedGraph import WeightedGraph
 from edu.sbu.shell.semgraph.PNode import PNode
@@ -50,7 +49,7 @@ class MSTGraphTransformer:
         else:
           self.logger.error('null instant replaced with a pred (shell coref) node number {} ; cc {}'.format(key, self.v_props[key][0]))
 
-  def transform(self, pnodes, rnodes):
+  def transform(self, pnodes, rnodes, heuristic):
     self.dot_builder = DotGraphBuilder()
     self.adj_list, self.id_node_map  = self.dot_builder.get_edge_list_mst(pnodes, rnodes)
 
@@ -60,7 +59,7 @@ class MSTGraphTransformer:
     self.mark_top_bottom_nodes()
     self.adj_list = self.directed_to_undirected()
     self.ccs = self.get_connected_components()
-    weighted_graph = WeightedGraph(pnodes, rnodes, self.adj_list, self.ccs, self.v_props, self.id_node_map)
+    weighted_graph = WeightedGraph(pnodes, rnodes, self.adj_list, self.ccs, self.v_props, self.id_node_map, heuristic)
 
     weighted_graph.print_edges()
 
