@@ -43,9 +43,23 @@ class WeightedGraph:
     pass
 
   def print_edges(self):
-    self.logger.error(len(self.edge_list))
-    # for i in xrange(len(self.edge_list)):
-    #   self.logger.error("{} - > {} : {}".format(self.edge_list[i][0],self.edge_list[i][1],self.edge_list[i][2]))
+    # self.logger.error(len(self.edge_list))
+    adj_list = {}
+    for i in xrange(len(self.edge_list)):
+      if self.edge_list[i][1] in adj_list.keys():
+        adj_list[self.edge_list[i][1]][self.edge_list[i][2]] = self.edge_list[i][0]
+      else:
+        adj_list[self.edge_list[i][1]] = {self.edge_list[i][2] : self.edge_list[i][0]}
+      self.logger.error("{} - > {} : {}".format(self.edge_list[i][1],self.edge_list[i][2],self.edge_list[i][0]))
+
+
+    # a = set(adj_list.keys())
+    # b = set(['T2','T3', 'T4'])
+    # if len(set.intersection(a,b)) == 3 and len(a) == 3:
+    #   self.logger.error("here")
+    # for k in adj_list.keys():
+    #   for k1 in adj_list[k].keys():
+    #     self.logger.error("{} -> {}[label={}, color=cyan, style=dashed]".format(k,k1,adj_list[k][k1]))
 
   def identify_ccs(self, g_ccs):
     """

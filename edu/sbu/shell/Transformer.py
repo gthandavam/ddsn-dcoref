@@ -63,9 +63,9 @@ def make_svg(gv_file):
 def connect_mst(pnodes_resolved, rnodes_resolved):
   mst_adapter = MSTGraphTransformer()
   mst_graph = mst_adapter.transform(pnodes_resolved, rnodes_resolved, 'order_close_together')
-  # mst_edges = kruskal_mst(mst_graph.edge_list, mst_graph.ccs_top, mst_graph.ccs_bottom)
-  #
-  # pnodes_resolved, rnodes_resolved = mst_adapter.reverse_transform(mst_graph, mst_edges)
+  mst_edges = kruskal_mst(mst_graph.edge_list, mst_graph.ccs_top, mst_graph.ccs_bottom)
+
+  pnodes_resolved, rnodes_resolved = mst_adapter.reverse_transform(mst_graph, mst_edges)
   return pnodes_resolved, rnodes_resolved, mst_adapter.dot_builder
   pass
 
@@ -76,23 +76,25 @@ def main():
 
     mod_logger.error(recipe_file)
 
+    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/best-ever-mac-and-cheese.txt'
+
     recipe_srl = get_semantic_roles(recipe_file)
     if recipe_srl.startswith("NONE"):
       mod_logger.warn("error getting SRL roles " + recipe_file + " skipping...")
       continue
 
-    dcoref_graph_builder = make_nodes(recipe_srl.split('\n'))
+    dcoref_graph = make_nodes(recipe_srl.split('\n'))
 
     rule_engine = RuleEngine()
-    pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph_builder)
+    pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph)
 
     #apply MST Here
-    pnodes_resolved_, rnodes_resolved_,graph_builder = connect_mst(pnodes_resolved, rnodes_resolved)
+    pnodes_resolved_, rnodes_resolved_,dot_graph = connect_mst(pnodes_resolved, rnodes_resolved)
     #End of MST Section
 
     gv_file_name = recipe_file.replace('MacAndCheese-steps','MacAndCheese-dot-files')
     gv_file_name = gv_file_name.replace('.txt', '.gv')
-    graph_builder.write_gv(pnodes_resolved, rnodes_resolved, gv_file_name)
+    dot_graph.write_gv(pnodes_resolved, rnodes_resolved, gv_file_name)
 
     make_svg(gv_file_name)
   pass
