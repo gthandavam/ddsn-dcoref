@@ -76,7 +76,7 @@ def main():
 
     mod_logger.error(recipe_file)
 
-    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/best-ever-mac-and-cheese.txt'
+    recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/best-mac-n-cheese-ever.txt'
 
     recipe_srl = get_semantic_roles(recipe_file)
     if recipe_srl.startswith("NONE"):
@@ -89,7 +89,7 @@ def main():
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph)
 
     #apply MST Here
-    pnodes_resolved_, rnodes_resolved_,dot_graph = connect_mst(pnodes_resolved, rnodes_resolved)
+    pnodes_resolved, rnodes_resolved,dot_graph = connect_mst(pnodes_resolved, rnodes_resolved)
     #End of MST Section
 
     gv_file_name = recipe_file.replace('MacAndCheese-steps','MacAndCheese-dot-files')

@@ -52,7 +52,6 @@ class WeightedGraph:
         adj_list[self.edge_list[i][1]] = {self.edge_list[i][2] : self.edge_list[i][0]}
       self.logger.error("{} - > {} : {}".format(self.edge_list[i][1],self.edge_list[i][2],self.edge_list[i][0]))
 
-
     # a = set(adj_list.keys())
     # b = set(['T2','T3', 'T4'])
     # if len(set.intersection(a,b)) == 3 and len(a) == 3:
