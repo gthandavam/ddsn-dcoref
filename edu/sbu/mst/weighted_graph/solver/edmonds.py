@@ -181,14 +181,14 @@ def arborescence(root, g):
 
 if __name__ == '__main__':
   g= {}
-  g['TD'] = {'T2t' : sys.maxint, 'T3t' : sys.maxint, 'T4t' : sys.maxint, 'T2b' : sys.maxint, 'T3b' : sys.maxint, 'T4b' : sys.maxint}
+  g['TD'] = {'T2t' : sys.maxint - 1, 'T3t' : sys.maxint - 1, 'T4t' : sys.maxint - 1, 'T2b' : sys.maxint - 1, 'T3b' : sys.maxint - 1, 'T4b' : sys.maxint - 1}
   g['T2t'] = {'T2b' : -100}
   g['T3t'] = {'T3b' : -100}
   g['T4t'] = {'T4b' : -100}
 
   g['T2b'] = {'T3t' : 40, 'T4t' : 60}
   g['T3b'] = {'T4t': 50}
-  g['T4b'] = {'T3t' : sys.maxint}
+  g['T4b'] = {'T3t' : sys.maxint - 1}
   root = 'T2t'
 
   arborescence(root, g)
