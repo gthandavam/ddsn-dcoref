@@ -44,6 +44,7 @@ class Previous:
         for k in xrange(1,3):
           if rnodes[i][j][k].is_null:
             rnodes[i][j][k].shell_coref.append(((prev_i, prev_j), 'IArgHeuristics'))
+            self.logger.error('IArg Edge')
             #Updating ing flow upon resolving null arg
             pnodes[i][j].pIngs = set.union(pnodes[i][j].pIngs, pnodes[prev_i][prev_j].pIngs)
             #updating rnode argIngs as well, just in case
@@ -58,6 +59,9 @@ class Previous:
   def allow_Iarg(self, pnodes, rnodes, i, j, prev_i, prev_j):
     '''
     Method to avoid (indirect) IArg parallel edges between predicate nodes
+
+    Test Case:
+    kicked-up-mac-and-cheese (All Recipes Mac And Cheese data
     '''
     for k in xrange(1,3):
       if len(rnodes[i][j][k].shell_coref) > 0:
