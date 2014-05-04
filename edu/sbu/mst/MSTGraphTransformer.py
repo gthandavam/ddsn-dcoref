@@ -22,14 +22,14 @@ class MSTGraphTransformer:
 
   def reverse_transform(self, mst_graph, mst_edges):
 
-    for mst_edge in mst_edges:
-      from_node = self.id_node_map[mst_edge[0]]
-
-      if not isinstance(from_node, PNode):
-        self.logger.error('CC Edge starting from an RNode ?')
-        continue
-
-      from_node.cc_edge.append(mst_edge[1])
+    # for mst_edge in mst_edges:
+    #   from_node = self.id_node_map[mst_edge[0]]
+    #
+    #   if not isinstance(from_node, PNode):
+    #     self.logger.error('CC Edge starting from an RNode ?')
+    #     continue
+    #
+    #   from_node.cc_edge.append(mst_edge[1])
 
     return mst_graph.pNodes, mst_graph.rNodes
     pass
@@ -49,7 +49,7 @@ class MSTGraphTransformer:
         else:
           self.logger.error('null instant replaced with a pred (shell coref) node number {} ; cc {}'.format(key, self.v_props[key][0]))
 
-  def transform(self, pnodes, rnodes, heuristic):
+  def transform(self, pnodes, rnodes):
     self.dot_builder = DotGraphBuilder()
     self.adj_list, self.id_node_map  = self.dot_builder.get_edge_list_mst(pnodes, rnodes)
 
@@ -59,7 +59,7 @@ class MSTGraphTransformer:
     self.mark_top_bottom_nodes()
     self.adj_list = self.directed_to_undirected()
     self.ccs = self.get_connected_components()
-    weighted_graph = WeightedGraph(pnodes, rnodes, self.adj_list, self.ccs, self.v_props, self.id_node_map, heuristic)
+    weighted_graph = WeightedGraph(pnodes, rnodes, self.ccs, self.v_props, self.id_node_map)
 
     weighted_graph.print_edges()
 
@@ -67,7 +67,6 @@ class MSTGraphTransformer:
     pass
 
   def dfs(self, node, tkr, ccs):
-
     # global adj_list #not needed for reading
     self.v_props[node][0] = tkr
     for neighbor in self.adj_list[node]:

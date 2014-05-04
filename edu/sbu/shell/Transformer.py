@@ -6,7 +6,7 @@ from edu.sbu.shell.semgraph.DCorefGraphBuilder import DCorefGraphBuilder
 import commands
 import edu.sbu.shell.logger.log as log
 from edu.sbu.mst.MSTGraphTransformer import MSTGraphTransformer
-from edu.sbu.mst.weighted_graph.solver.kruskal import kruskal_mst
+from edu.sbu.mst.weighted_graph.solver.edmonds import arborescence
 
 mod_logger = log.setup_custom_logger('root')
 
@@ -60,13 +60,17 @@ def make_svg(gv_file):
 
   return status
 
-def connect_mst(pnodes_resolved, rnodes_resolved):
-  mst_adapter = MSTGraphTransformer()
-  mst_graph = mst_adapter.transform(pnodes_resolved, rnodes_resolved, 'order_close_together')
-  mst_edges = kruskal_mst(mst_graph.edge_list, mst_graph.ccs_top, mst_graph.ccs_bottom)
+def connect_arbor(pnodes_resolved, rnodes_resolved):
+  arbor_adapter = MSTGraphTransformer()
+  weighted_graph = arbor_adapter.transform(pnodes_resolved, rnodes_resolved)
+  g = weighted_graph.get_adj_dict('order_close_together')
+  root = weighted_graph.get_root()
+  print 'root' + root
+  arbor_edges = arborescence(root, g)
 
-  pnodes_resolved, rnodes_resolved = mst_adapter.reverse_transform(mst_graph, mst_edges)
-  return pnodes_resolved, rnodes_resolved, mst_adapter.dot_builder
+  pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, arbor_edges)
+
+  return pnodes_resolved, rnodes_resolved, arbor_adapter.dot_builder
   pass
 
 def main():
@@ -76,7 +80,9 @@ def main():
 
     mod_logger.error(recipe_file)
 
-    recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/best-mac-n-cheese-ever.txt'
+    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/best-mac-n-cheese-ever.txt'
+
+    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/fancy-but-easy-mac-n-cheese.txt'
 
     recipe_srl = get_semantic_roles(recipe_file)
     if recipe_srl.startswith("NONE"):
@@ -89,7 +95,7 @@ def main():
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph)
 
     #apply MST Here
-    pnodes_resolved, rnodes_resolved,dot_graph = connect_mst(pnodes_resolved, rnodes_resolved)
+    pnodes_resolved, rnodes_resolved,dot_graph = connect_arbor(pnodes_resolved, rnodes_resolved)
     #End of MST Section
 
     gv_file_name = recipe_file.replace('MacAndCheese-steps','MacAndCheese-dot-files')

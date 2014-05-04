@@ -2,7 +2,7 @@ __author__ = 'gt'
 import logging
 import edu.sbu.mst.MSTHeuristics as Heuristics
 class WeightedGraph:
-  def __init__(self, pNodes, rNodes, adj_list, ccs, v_props, id_node_map, heuristic):
+  def __init__(self, pNodes, rNodes, ccs, v_props, id_node_map):
     self.pNodes = pNodes
     self.rNodes = rNodes
     self.id_node_map = id_node_map
@@ -11,35 +11,58 @@ class WeightedGraph:
     self.mst_nodes = []
     self.ccs_top = []
     self.ccs_bottom = []
-    self.identify_ccs(ccs)
-    self.get_edge_list(heuristic)
-
+    self.find_active_nodes_per_cc(ccs)
+    self.root = None
 
     self.logger = logging.getLogger('root')
     pass
 
-  def get_edge_list(self, heuristic):
+  def get_root(self):
+    """
+    processes the top nodes in the connected components and returns the root node
+    """
+    import random
+    if self.root is None:
+      i = random.randint(0, len(self.ccs_top) - 1)
+      self.root =  str(i) + 't'
+
+    return self.root
+
+  def get_adj_dict(self, heuristic):
     """
     Process MST CCs to get the edge list
     edge is represented as
       [weight, from, to]
     """
-    weight_heuristic = getattr(Heuristics, heuristic)
-    for i in xrange(len(self.ccs_bottom)-1):
-      for j in xrange(i+1, len(self.ccs_bottom)):
-        #i before j
-        #edge from i bottom to all j tops
-        for k in xrange(len(self.ccs_top[j])):
-          for l in xrange(len(self.ccs_bottom[i])):
+    import random, sys
+    # weight_heuristic = getattr(Heuristics, heuristic)
 
-            self.edge_list.append((weight_heuristic(self.ccs_bottom[i][l], self.ccs_top[j][k], self.id_node_map),self.ccs_bottom[i][l],self.ccs_top[j][k]))
+    root = self.get_root()
+    g = {}
+    #len of ccs_top == len of ccs_bottom == no of ccs
+    for i in xrange(len(self.ccs_top)):
+      g[ str(i) + 'b' ] = {}
+      for j in xrange(len(self.ccs_top)):
+        if not i == j:
+          if i < j:
+            wt = random.randint(1,100)
+          else:
+            wt = sys.maxint - 1
 
-        #j before i
-        #edge from j bottom to all i tops
-        for k in xrange(len(self.ccs_top[i])):
-          for l in xrange(len(self.ccs_bottom[j])):
-            self.edge_list.append((weight_heuristic(self.ccs_bottom[j][l], self.ccs_top[i][k], self.id_node_map), self.ccs_bottom[j][l], self.ccs_top[i][k]))
+          #skipping all edges leading to root
+          if root != str(j) + 't':
+            g[str(i) + 'b'][str(j) + 't'] = wt
 
+    for i in xrange(len(self.ccs_top)):
+      g[str(i) + 't'] = {str(i) + 'b' : -1000}
+
+    g['Ghost'] = {}
+    #add dummy node:
+    for i in xrange(len(self.ccs_top)):
+      g['Ghost'][str(i) + 't'] = sys.maxint - 1
+      g['Ghost'][str(i) + 'b'] = sys.maxint - 1
+
+    return g
     pass
 
   def print_edges(self):
@@ -60,9 +83,9 @@ class WeightedGraph:
     #   for k1 in adj_list[k].keys():
     #     self.logger.error("{} -> {}[label={}, color=cyan, style=dashed]".format(k,k1,adj_list[k][k1]))
 
-  def identify_ccs(self, g_ccs):
+  def find_active_nodes_per_cc(self, g_ccs):
     """
-    Transform DCoref CCs to MST CCs
+    Identify nodes with in/out degree zero per CC
     """
     ccs = []
     #hack to work with list indices

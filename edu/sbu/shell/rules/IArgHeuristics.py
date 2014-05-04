@@ -5,7 +5,9 @@ class Previous:
 
   def __init__(self):
     """
-    Rule for handling null instantiations
+    Rule for handling null instantiations. Handles head word match
+    on ingredients. Ingredient flow is captured by making use of
+    head word processed list of ingredients while building the DCorefGraph
     """
     self.logger = logging.getLogger('root')
 

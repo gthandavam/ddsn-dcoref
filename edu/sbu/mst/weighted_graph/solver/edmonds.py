@@ -133,7 +133,6 @@ def mst(root,G):
   for instance a wrapper in which vertices are URLs
   and a call to G[v] loads the web page and finds its links.
   """
-
   RG = _reverse(G)
   if root not in RG:
     return None
@@ -170,35 +169,26 @@ def mst(root,G):
 
 # --------------------------------------------------------------------------------- #
 
-if __name__ == "__main__":
-  # try:
-  #   filename = sys.argv[1]
-  #   root = sys.argv[2]
-  # except IndexError:
-  #   sys.stderr.write('no input and/or root node specified\n')
-  #   sys.stderr.write('usage: python edmonds.py <file> <root>\n')
-  #   sys.exit(1)
-  #
-  # prices,names = _input(filename)
-  # g = _load(prices,prices)
-  g= {}
-  g['TD'] = {'T2':1000, 'T3': 1000,'T4':1000, 'T5':1000, 'T6' : 1000, 'T7':1000, 'T11': 1000, 'T12' : 1000, 'T13' : 1000, 'T14' : 1000, }
-  g['T2'] = {'T14' : 2, 'T13':42, 'T12':74, 'T11':44, 'TD' : 100}
-  g['T4'] = {'T6' : 55, 'T7' : 2, 'T5' : 40, 'T12' : 40, 'T11' : 42, 'TD' : 100}
-  g['T3'] = {'T6': 8, 'T7' : 46, 'T5':12, 'T14' : 96, 'T13' : 100, 'TD' : 100}
-  g['T5'] = {'T2' : -100}
-  g['T6'] = {'T2' : -100}
-  g['T7'] = {'T2' : -100}
+def arborescence(root, g):
+  h = mst(root, g)
 
-  g['T11'] = {'T3' : -100}
-  g['T12'] = {'T3' : -100}
-
-  g['T13'] = {'T4' : -100}
-  g['T14'] = {'T4' : -100}
-
-  root = 'TD'
-
-  h = mst(root,g)
   for s in h:
     for t in h[s]:
-      print "{} -> {}".format(s,t)
+      print "{}->{}".format(s,t)
+
+  return h
+
+
+if __name__ == '__main__':
+  g= {}
+  g['TD'] = {'T2t' : sys.maxint, 'T3t' : sys.maxint, 'T4t' : sys.maxint, 'T2b' : sys.maxint, 'T3b' : sys.maxint, 'T4b' : sys.maxint}
+  g['T2t'] = {'T2b' : -100}
+  g['T3t'] = {'T3b' : -100}
+  g['T4t'] = {'T4b' : -100}
+
+  g['T2b'] = {'T3t' : 40, 'T4t' : 60}
+  g['T3b'] = {'T4t': 50}
+  g['T4b'] = {'T3t' : sys.maxint}
+  root = 'T2t'
+
+  arborescence(root, g)
