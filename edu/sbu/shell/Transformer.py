@@ -64,7 +64,7 @@ def connect_arbor(pnodes_resolved, rnodes_resolved):
   arbor_adapter = MSTGraphTransformer()
   weighted_graph = arbor_adapter.transform(pnodes_resolved, rnodes_resolved)
   g = weighted_graph.get_adj_dict('order_close_together')
-  root = weighted_graph.get_root()
+  root = weighted_graph.get_simple_components_root()
   print 'root' + root
   arbor_edges = arborescence(root, g)
 

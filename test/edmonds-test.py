@@ -172,10 +172,9 @@ def mst(root,G):
 def arborescence(root, g):
   h = mst(root, g)
 
-  if not h is None:
-    for s in h:
-      for t in h[s]:
-        print "{}->{}".format(s,t)
+  for s in h:
+    for t in h[s]:
+      print "{}->{}".format(s,t)
 
   return h
 
@@ -187,9 +186,15 @@ if __name__ == '__main__':
   g['T3t'] = {'T3b' : -100}
   g['T4t'] = {'T4b' : -100}
 
-  g['T2b'] = {'T3t' : 40, 'T4t' : 60}
+  g['T2b'] = {'T3t' : 40, 'T4t' : 30}
   g['T3b'] = {'T4t': 50}
-  g['T4b'] = {'T3t' : sys.maxint - 1}
+  g['T4b'] = {'T3t' : 20}
   root = 'T2t'
 
+  # g = _reverse(g)
+  # g = {}
+  # g['b'] = { 'c' : 10, 'a' : sys.maxint - 1}
+  # g['c'] = { 'b' : 100, 'a' : sys.maxint - 1 }
+  # g['a'] = {'b' : 10, 'c' : 1000}
+  # root = 'a'
   arborescence(root, g)

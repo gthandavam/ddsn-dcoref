@@ -14,53 +14,108 @@ class WeightedGraph:
     self.find_active_nodes_per_cc(ccs)
     self.root = None
 
+    #for single top/bottom node per CC
+    self.ccs_rep_top = []
+    self.ccs_rep_bottom = []
+
     self.logger = logging.getLogger('root')
     pass
 
-  def get_root(self):
+  def get_simple_components_root(self):
     """
-    processes the top nodes in the connected components and returns the root node
+    processes the top nodes in the connected components and returns the root node.
+    Also simplifies the connected components to have one top and one bottom node
     """
-    import random
-    if self.root is None:
-      i = random.randint(0, len(self.ccs_top) - 1)
-      self.root =  str(i) + 't'
+    import sys
+    if not self.root is None:
+      return self.root
+
+    r_min_s = sys.maxint
+    r_min_p = sys.maxint
+    self.ccs_rep_top = [None for i in xrange(len(self.ccs_top))]
+    self.ccs_rep_bottom = [None for i in xrange(len(self.ccs_bottom))]
+
+    root = None
+    for i in xrange(len(self.ccs_top)):
+      rep_min_s = sys.maxint
+      rep_min_p = sys.maxint
+      for j in xrange(len(self.ccs_top[i])):
+        #for identifying root
+        top = self.id_node_map[self.ccs_top[i][j]]
+        if top.sent_num < r_min_s:
+          r_min_s = top.sent_num
+          r_min_p = top.pred_num
+          root = self.ccs_top[i][j]
+        elif top.sent_num == r_min_s:
+          if top.pred_num < r_min_p:
+            r_min_p = top.pred_num
+            root = self.ccs_top[i][j]
+
+        #for identifying top rep
+        if top.sent_num < rep_min_s:
+          rep_min_s = top.sent_num
+          rep_min_p = top.pred_num
+          self.ccs_rep_top[i] = self.ccs_top[i][j]
+        elif top.sent_num == rep_min_s:
+          if top.pred_num < rep_min_p:
+            rep_min_p = top.pred_num
+            self.ccs_rep_top[i] = self.ccs_top[i][j]
+
+
+    #for identifying bottom rep
+    for i in xrange(len(self.ccs_bottom)):
+      rep_max_p = - sys.maxint
+      rep_max_s = - sys.maxint
+      for j in xrange(len(self.ccs_bottom[i])):
+        bottom = self.id_node_map[self.ccs_bottom[i][j]]
+        if bottom.snum > rep_max_s:
+          rep_max_s = bottom.snum
+          rep_max_p = bottom.pnum
+          self.ccs_rep_bottom[i] = self.ccs_bottom[i][j]
+        elif bottom.snum == rep_max_s:
+          if bottom.pnum > rep_max_p:
+            rep_max_p = bottom.pnum
+            self.ccs_rep_bottom[i] = self.ccs_bottom[i][j]
+        pass
+
+    self.root = root
 
     return self.root
 
   def get_adj_dict(self, heuristic):
     """
-    Process MST CCs to get the edge list
-    edge is represented as
-      [weight, from, to]
+    Process the representatives per component and generate the adj dictionary.
+    Add ghost node at the end to facilitate edmonds.py #not sure why this is needed
     """
-    import random, sys
-    # weight_heuristic = getattr(Heuristics, heuristic)
+    import sys
+    weight_heuristic = getattr(Heuristics, heuristic)
 
-    root = self.get_root()
+    root = self.get_simple_components_root()
     g = {}
     #len of ccs_top == len of ccs_bottom == no of ccs
-    for i in xrange(len(self.ccs_top)):
-      g[ str(i) + 'b' ] = {}
-      for j in xrange(len(self.ccs_top)):
-        if not i == j:
-          if i < j:
-            wt = random.randint(1,100)
-          else:
-            wt = sys.maxint - 1
-
-          #skipping all edges leading to root
-          if root != str(j) + 't':
-            g[str(i) + 'b'][str(j) + 't'] = wt
+    for i in xrange(len(self.ccs_rep_bottom)):
+      bottom = self.id_node_map[self.ccs_rep_bottom[i]]
+      g[ bottom ] = {}
+      for j in xrange(len(self.ccs_rep_top)):
+        top = self.id_node_map[self.ccs_rep_top[j]]
+        if not i == j: #avoiding bottom to top edge within component
+          #only considering edges not incident on root
+          if root != top:
+            wt = weight_heuristic(self.ccs_rep_bottom[i], self.ccs_rep_top[i], self.id_node_map)
+            g[bottom][top] = 100 + wt
 
     for i in xrange(len(self.ccs_top)):
-      g[str(i) + 't'] = {str(i) + 'b' : -1000}
+      bottom = self.id_node_map[self.ccs_rep_bottom[i]]
+      top = self.id_node_map[self.ccs_rep_top[i]]
+      g[top] = {bottom : 100}
 
     g['Ghost'] = {}
     #add dummy node:
     for i in xrange(len(self.ccs_top)):
-      g['Ghost'][str(i) + 't'] = sys.maxint - 1
-      g['Ghost'][str(i) + 'b'] = sys.maxint - 1
+      bottom = self.id_node_map[self.ccs_rep_bottom[i]]
+      top = self.id_node_map[self.ccs_rep_top[i]]
+      g['Ghost'][top] = sys.maxint - 1
+      g['Ghost'][bottom] = sys.maxint - 1
 
     return g
     pass
