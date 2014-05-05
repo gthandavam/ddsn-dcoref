@@ -188,9 +188,10 @@ class DotGraphBuilder:
   def get_cc_edges(self, pnodes):
     for i in xrange(len(pnodes)):
       for j in xrange(len(pnodes[i])):
-        if len(pnodes[i][j].cc_edge) > 0:
+        # if len(pnodes[i][j].cc_edge) > 0:
+        for k in xrange(len(pnodes[i][j].cc_edge)):
           start_node = self.pred_node_list[(i,j)]
-          arg_node = self.id_node_map[pnodes[i][j].cc_edge[0]]
+          arg_node = self.id_node_map[pnodes[i][j].cc_edge[k]]
 
           if arg_node.is_null:
             arg_node = self.pred_node_list[(arg_node.sent_num,arg_node.pred_num)]

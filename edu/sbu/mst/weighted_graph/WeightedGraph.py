@@ -170,4 +170,15 @@ class WeightedGraph:
 
     return
 
+
+  def connected_component(self, id):
+    for i in xrange(len(self.ccs_rep_top)):
+      if id == self.ccs_rep_top[i]:
+        return i
+
+    for i in xrange(len(self.ccs_rep_bottom)):
+      if id == self.ccs_rep_bottom[i]:
+        return i
+
+    self.logger.error("Code should never reach here!!!")
   pass
