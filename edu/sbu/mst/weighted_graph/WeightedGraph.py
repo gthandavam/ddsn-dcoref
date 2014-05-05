@@ -95,27 +95,23 @@ class WeightedGraph:
     #len of ccs_top == len of ccs_bottom == no of ccs
     for i in xrange(len(self.ccs_rep_bottom)):
       bottom = self.id_node_map[self.ccs_rep_bottom[i]]
-      g[ bottom ] = {}
+      g[ self.ccs_rep_bottom[i] ] = {}
       for j in xrange(len(self.ccs_rep_top)):
         top = self.id_node_map[self.ccs_rep_top[j]]
         if not i == j: #avoiding bottom to top edge within component
           #only considering edges not incident on root
           if root != top:
             wt = weight_heuristic(self.ccs_rep_bottom[i], self.ccs_rep_top[i], self.id_node_map)
-            g[bottom][top] = 100 + wt
+            g[self.ccs_rep_bottom[i]][self.ccs_rep_top[j]] = 100 + wt
 
     for i in xrange(len(self.ccs_top)):
-      bottom = self.id_node_map[self.ccs_rep_bottom[i]]
-      top = self.id_node_map[self.ccs_rep_top[i]]
-      g[top] = {bottom : 100}
+      g[self.ccs_rep_top[i]] = {self.ccs_rep_bottom[i] : 100}
 
     g['Ghost'] = {}
     #add dummy node:
     for i in xrange(len(self.ccs_top)):
-      bottom = self.id_node_map[self.ccs_rep_bottom[i]]
-      top = self.id_node_map[self.ccs_rep_top[i]]
-      g['Ghost'][top] = sys.maxint - 1
-      g['Ghost'][bottom] = sys.maxint - 1
+      g['Ghost'][self.ccs_rep_bottom[i]] = sys.maxint - 1
+      g['Ghost'][self.ccs_rep_top[i]] = sys.maxint - 1
 
     return g
     pass
