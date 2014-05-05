@@ -18,11 +18,11 @@ def order_close_together(pNode_id, rNode_id, id_node_map):
   #as sometimes when numbers exceed this limit, they get promoted as long and so on
   #Ref: http://stackoverflow.com/a/7604981/1019673
   if pNode.snum > rNode.sent_num:
-    return sys.maxint - 1
+    return sys.maxint - 10
 
   if pNode.snum == rNode.sent_num:
     if pNode.pnum > rNode.pred_num:
-      return sys.maxint - 1
+      return sys.maxint - 10
 
   return math.pow(2, rNode.sent_num - pNode.snum)
 
