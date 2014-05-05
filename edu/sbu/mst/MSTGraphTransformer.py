@@ -57,13 +57,20 @@ class MSTGraphTransformer:
           self.logger.error('null instant replaced with a pred (shell coref) node number {} ; cc {}'.format(key, self.v_props[key][0]))
 
   def transform(self, pnodes, rnodes):
+    #bad piece of code. DotGraphBuilder is used here
+    #to aid the transformation.
+    #We use Node IDs in the form of T8, T9 etc..,
+    #to formulate the MST/arbor and so we call
+    #DotGraphBuilder to generate IDs and to get adj_list representation of the graph
     self.dot_builder = DotGraphBuilder()
     self.adj_list, self.id_node_map  = self.dot_builder.get_edge_list_mst(pnodes, rnodes)
 
+    #we use v_props to identify top and bottom nodes in a connected component.
     for key in self.adj_list.keys():
       self.v_props[key] = [-1,0,0]
 
     self.mark_top_bottom_nodes()
+    #we change directed to undirected adj_list to easily identify connected components. they are equivalent.
     self.adj_list = self.directed_to_undirected()
     self.ccs = self.get_connected_components()
     weighted_graph = WeightedGraph(pnodes, rnodes, self.ccs, self.v_props, self.id_node_map)

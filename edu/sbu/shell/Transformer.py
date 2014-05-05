@@ -82,7 +82,7 @@ def main():
 
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/best-mac-n-cheese-ever.txt'
 
-    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/fancy-but-easy-mac-n-cheese.txt'
+    recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/mexican-mac-and-cheese.txt'
 
     recipe_srl = get_semantic_roles(recipe_file)
     if recipe_srl.startswith("NONE"):
