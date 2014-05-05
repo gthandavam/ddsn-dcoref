@@ -5,6 +5,7 @@ from edu.sbu.shell.rules.RuleEngine import RuleEngine
 from edu.sbu.shell.semgraph.DCorefGraphBuilder import DCorefGraphBuilder
 import commands
 import edu.sbu.shell.logger.log as log
+import os
 from edu.sbu.mst.MSTGraphTransformer import MSTGraphTransformer
 from edu.sbu.mst.weighted_graph.solver.edmonds import arborescence
 
