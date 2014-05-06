@@ -156,7 +156,11 @@ class DotGraphBuilder:
     self.graph_lines.insert(0, 'Digraph G {')
 
   def get_footer(self):
-    self.graph_lines.append('}')
+    import sys
+    if sys.platform != 'linux2':
+      self.graph_lines.append('}')
+    else:
+      self.graph_lines.append('};')
 
   def get_edge_list_mst(self, pnodes, rnodes):
     self.process_pnodes(pnodes)
