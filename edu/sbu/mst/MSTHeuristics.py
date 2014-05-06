@@ -9,7 +9,7 @@ def random(pNode_id, rNode_id, id_node_map):
   pass
 
 
-def order_close_together(pNode_id, rNode_id, id_node_map):
+def order_close_together(pNode_id, rNode_id, id_node_map, pNodes, rNodes):
   pNode = id_node_map[pNode_id]
   rNode = id_node_map[rNode_id]
 
@@ -24,6 +24,13 @@ def order_close_together(pNode_id, rNode_id, id_node_map):
     if pNode.pnum > rNode.pred_num:
       return sys.maxint - 10
 
-  return math.pow(2, rNode.sent_num - pNode.snum)
+  dist = len(pNodes[pNode.snum]) - pNode.pnum - 1 #accounting for zero based index
+  for i in xrange(pNode.snum + 1, rNode.sent_num):
+    dist += len(pNodes[pNode.snum])
+    pass
+
+  dist -= len(pNodes[rNode.sent_num]) - rNode.pred_num
+
+  return math.pow(2, dist)
 
   pass

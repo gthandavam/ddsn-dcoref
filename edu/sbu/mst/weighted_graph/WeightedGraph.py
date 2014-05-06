@@ -100,7 +100,7 @@ class WeightedGraph:
         if not i == j: #avoiding bottom to top edge within component
           #only considering edges not incident on root
           if root != self.ccs_rep_top[j]:
-            wt = weight_heuristic(self.ccs_rep_bottom[i], self.ccs_rep_top[j], self.id_node_map)
+            wt = weight_heuristic(self.ccs_rep_bottom[i], self.ccs_rep_top[j], self.id_node_map, self.pNodes, self.rNodes)
             g[self.ccs_rep_bottom[i]][self.ccs_rep_top[j]] = 100 + wt
 
     #adding top->bottom edge within the same component
