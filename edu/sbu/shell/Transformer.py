@@ -5,6 +5,7 @@ from edu.sbu.shell.rules.RuleEngine import RuleEngine
 from edu.sbu.shell.semgraph.DCorefGraphBuilder import DCorefGraphBuilder
 import commands
 import edu.sbu.shell.logger.log as log
+import os
 from edu.sbu.mst.MSTGraphTransformer import MSTGraphTransformer
 from edu.sbu.mst.weighted_graph.solver.edmonds import arborescence
 
@@ -25,7 +26,9 @@ def get_semantic_roles(recipe_file):
   """
   ret = ""
   senna_file = recipe_file.replace('MacAndCheese-steps', 'MacAndCheese-senna-files')
-  cmd = 'cd /home/gt/Downloads/senna/; ./senna-linux64 -srl -posvbs -offsettags < \"' \
+  if os.name=="posix":
+      senna_cmd = "senna-osx"
+  cmd = 'cd /home/gt/Downloads/senna/; ./' + senna_cmd + ' -srl -posvbs -offsettags < \"' \
         + recipe_file + '\" > \"' + senna_file + '\"'
   status, output = commands.getstatusoutput(cmd)
 
