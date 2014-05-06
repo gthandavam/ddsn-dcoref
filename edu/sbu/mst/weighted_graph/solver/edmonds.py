@@ -176,6 +176,8 @@ def arborescence(root, g):
     for s in h:
       for t in h[s]:
         print "{}->{}".format(s,t)
+  else:
+    print '*** None Arborescence ***'
 
   return h
 
