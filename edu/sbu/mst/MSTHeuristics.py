@@ -24,12 +24,15 @@ def order_close_together(pNode_id, rNode_id, id_node_map, pNodes, rNodes):
     if pNode.pnum > rNode.pred_num:
       return sys.maxint - 10
 
-  dist = len(pNodes[pNode.snum]) - pNode.pnum - 1 #accounting for zero based index
+  dist = len(pNodes[pNode.snum]) - pNode.pnum  - 1#accounting for zero based index
   for i in xrange(pNode.snum + 1, rNode.sent_num):
     dist += len(pNodes[pNode.snum])
     pass
 
-  dist -= len(pNodes[rNode.sent_num]) - rNode.pred_num
+  dist += rNode.pred_num
+
+  if dist < 0:
+    print 'MST Heuristic bug: dist negative'
 
   return math.pow(2, dist)
 
