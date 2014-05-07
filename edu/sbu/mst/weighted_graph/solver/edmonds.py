@@ -39,14 +39,16 @@ def _reverse(graph):
         r[dst] = { src : c }
   return r
 
-def _getCycle(n,g,visited=set(),cycle=[]):
+# def _getCycle(n,g,visited=set(),cycle=[]):
+def _getCycle(n,g,cycle,visited=set()):
   visited.add(n)
+  # cycle = []
   cycle += [n]
   if n not in g:
     return cycle
   for e in g[n]:
     if e not in visited:
-      cycle = _getCycle(e,g,visited,cycle)
+      cycle = _getCycle(e,g,cycle,visited)
   return cycle
 
 def _mergeCycles(cycle,G,RG,g,rg):
@@ -156,7 +158,7 @@ def mst(root,G):
   visited = set()
   for n in g:
     if n not in visited:
-      cycle = _getCycle(n,g,visited)
+      cycle = _getCycle(n,g,[],visited)
       cycles.append(cycle)
 
   rg = _reverse(g)
@@ -168,14 +170,41 @@ def mst(root,G):
   return g
 
 # --------------------------------------------------------------------------------- #
+def adjust_graph(g):
+  a = {}
+  nodes = {}
+  for nd in g:
+    nodes[nd] = 1
+    for ch in g[nd]:
+      nodes[ch] = 1
+  for nd in g:
+    a[nd] = {}
+    for ch in nodes.keys():
+      if ch in g[nd]:
+        a[nd][ch] = g[nd][ch]
+        # if g[nd][ch]<0:
+        #   a[nd][ch] = 10
+        # else:
+        #   a[nd][ch] = g[nd][ch]
+      else:
+        a[nd][ch] = sys.maxint
+  return a
+# --------------------------------------------------------------------------------- #
+def print_graph(g):
+  for s in g:
+    for t in g[s]:
+      print "{}->({})->{}".format(s,g[s][t],t)
+# --------------------------------------------------------------------------------- #
 
 def arborescence(root, g):
   h = mst(root, g)
 
+  # print "-----Graph-----"
+  # print_graph(g)
+  # print "-----Arborescence-----"
+  # print "root="+root
   # if not h is None:
-  #   for s in h:
-  #     for t in h[s]:
-  #       print "{}->{}".format(s,t)
+  #   print_graph(h)
   # else:
   #   print '*** None Arborescence ***'
 
