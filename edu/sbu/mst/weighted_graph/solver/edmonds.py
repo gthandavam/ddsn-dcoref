@@ -197,7 +197,8 @@ def print_graph(g):
 # --------------------------------------------------------------------------------- #
 
 def arborescence(root, g):
-  h = mst(root, g)
+  h = mst(root, adjust_graph(g))
+  # h = mst(root, g)
 
   # print "-----Graph-----"
   # print_graph(g)
