@@ -70,7 +70,7 @@ def connect_arbor(pnodes_resolved, rnodes_resolved):
   weighted_graph = arbor_adapter.transform(pnodes_resolved, rnodes_resolved)
   g = weighted_graph.get_adj_dict('order_close_together')
   root = weighted_graph.get_simple_components_root()
-  print 'root' + root
+  # print 'root' + root
   arbor_edges = arborescence(root, g)
 
   pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, arbor_edges)
@@ -85,9 +85,9 @@ def main():
 
     mod_logger.error(recipe_file)
 
-    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/best-mac-n-cheese-ever.txt'
+    recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/mac-and-cheese-bake.txt'
 
-    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/mexican-mac-and-cheese.txt'
+    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/pumpkin-lobster-mac-and-cheese.txt'
 
     recipe_srl = get_semantic_roles(recipe_file)
     if recipe_srl.startswith("NONE"):

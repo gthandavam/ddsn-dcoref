@@ -134,9 +134,9 @@ def mst(root,G):
   and a call to G[v] loads the web page and finds its links.
   """
   RG = _reverse(G)
-  if root not in RG:
-    return None
-  RG[root].clear()
+  # if root not in RG:
+  #   return None
+  RG[root] = {}
   g = {}
   for n in RG:
     if len(RG[n]) == 0:
@@ -172,19 +172,19 @@ def mst(root,G):
 def arborescence(root, g):
   h = mst(root, g)
 
-  if not h is None:
-    for s in h:
-      for t in h[s]:
-        print "{}->{}".format(s,t)
-  else:
-    print '*** None Arborescence ***'
+  # if not h is None:
+  #   for s in h:
+  #     for t in h[s]:
+  #       print "{}->{}".format(s,t)
+  # else:
+  #   print '*** None Arborescence ***'
 
   return h
 
 
 if __name__ == '__main__':
   g= {}
-  g['TD'] = {'T2t' : sys.maxint - 1, 'T3t' : sys.maxint - 1, 'T4t' : sys.maxint - 1, 'T2b' : sys.maxint - 1, 'T3b' : sys.maxint - 1, 'T4b' : sys.maxint - 1}
+  # g['TD'] = {'T2t' : sys.maxint - 1, 'T3t' : sys.maxint - 1, 'T4t' : sys.maxint - 1, 'T2b' : sys.maxint - 1, 'T3b' : sys.maxint - 1, 'T4b' : sys.maxint - 1}
   g['T2t'] = {'T2b' : -100}
   g['T3t'] = {'T3b' : -100}
   g['T4t'] = {'T4b' : -100}
