@@ -1,16 +1,19 @@
 __author__ = 'gt'
 import logging
 import edu.sbu.mst.MSTHeuristics as Heuristics
+import sys
 class WeightedGraph:
-  def __init__(self, pNodes, rNodes, ccs, v_props, id_node_map):
+  def __init__(self, pNodes, rNodes, ccs, v_props, adj_list, id_node_map):
     self.pNodes = pNodes
     self.rNodes = rNodes
     self.id_node_map = id_node_map
     self.v_props = v_props
+    self.adj_list = adj_list
     self.edge_list = []
     self.mst_nodes = []
     self.ccs_top = []
     self.ccs_bottom = []
+    self.ccs = ccs
     self.find_active_nodes_per_cc(ccs)
     self.root = None
 
@@ -26,7 +29,7 @@ class WeightedGraph:
     processes the top nodes in the connected components and returns the root node.
     Also simplifies the connected components to have one top and one bottom node
     """
-    import sys
+    # import sys
     if not self.root is None:
       return self.root
 
@@ -116,6 +119,53 @@ class WeightedGraph:
     return g
     pass
 
+  # --- get graph plus ghost node with incoming edges from all connected components.
+  # graph will serve as an input to "upside-down" arborescence
+  def get_adj_ghost_graph(self, heuristic):
+    weight_heuristic = getattr(Heuristics, heuristic)
+
+    root = self.get_simple_components_root()
+    g = {}
+    for node in self.adj_list:
+      g[node] = {}
+      for ch in self.adj_list[node]:
+        g[node][ch] = -100
+
+    #len of ccs_top == len of ccs_bottom == no of ccs
+    for i in xrange(len(self.ccs_bottom)):
+      for b in xrange(len(self.ccs_bottom[i])):
+        g[ b ] = {}
+        for j in xrange(len(self.ccs_top)):
+          if not i == j: #avoiding bottom to top edge within component
+            for t in xrange(len(self.ccs_top[j])):
+              #only considering edges not incident on root
+              # also disallow edges from bottom nodes of later sentences to top nodes of previous sentences
+              bottom = self.id_node_map[self.ccs_bottom[i][b]]
+              top = self.id_node_map[self.ccs_top[j][t]]
+              if root != self.ccs_rep_top[j] and bottom.snum < top.sent_num:
+                wt = weight_heuristic(self.ccs_rep_bottom[i], self.ccs_rep_top[j], self.id_node_map, self.pNodes, self.rNodes)
+                g[self.ccs_rep_bottom[i]][self.ccs_rep_top[j]] = wt
+
+    # #adding top->bottom edge within the same component
+    # for i in xrange(len(self.ccs_top)):
+    #   g[self.ccs_rep_top[i]] = {self.ccs_rep_bottom[i] : -100}
+
+    # adding Ghost node
+    g['Ghost'] = {}
+    # connect all bottom nodes to Ghost node
+    for i in xrange(len(self.ccs_bottom)):
+      for j in xrange(len(self.ccs_bottom[i])):
+        g[self.ccs_bottom[i][j]]['Ghost'] = sys.maxint - 1
+
+    # g['Ghost'] = {}
+    # #add dummy node:
+    # for i in xrange(len(self.ccs_top)):
+    #   g['Ghost'][self.ccs_rep_bottom[i]] = sys.maxint - 1
+    #   g['Ghost'][self.ccs_rep_top[i]] = sys.maxint - 1
+
+    return g
+    pass
+
   def print_edges(self):
     # self.logger.error(len(self.edge_list))
     adj_list = {}
@@ -152,18 +202,22 @@ class WeightedGraph:
       self.ccs_top.append([])
       self.ccs_bottom.append([])
       for j in xrange(len(ccs[i])):
-        #top and bottom nodes have diff flags
-        if not (self.v_props[ccs[i][j]][1] == self.v_props[ccs[i][j]][2]):
+        self.mst_nodes.append(ccs[i][j])
+        #top and bottom nodes have diff flags (different in and out degree)
+        # @Ganesa: what about components with a single node? in and out degree are both 0
+        # if not (self.v_props[ccs[i][j]][1] == self.v_props[ccs[i][j]][2]):
+        # Covers cases 0,0; 1,0 and 0,1
+        if self.v_props[ccs[i][j]][1] + self.v_props[ccs[i][j]][2] < 2:
           #process the top or bottom nodes
           if self.v_props[ccs[i][j]][1] == 1:
             #top node
-            self.mst_nodes.append(ccs[i][j])
+            # self.mst_nodes.append(ccs[i][j])
             self.ccs_top[-1].append(ccs[i][j])
             pass
           else:
             #bottom node
             #only one bottom node per cc
-            self.mst_nodes.append(ccs[i][j])
+            # self.mst_nodes.append(ccs[i][j])
             self.ccs_bottom[-1].append(ccs[i][j])
             pass
           pass
@@ -172,12 +226,18 @@ class WeightedGraph:
 
 
   def connected_component(self, id):
-    for i in xrange(len(self.ccs_rep_top)):
-      if id == self.ccs_rep_top[i]:
-        return i
+    if id=='Ghost':
+      return -1
+    # for i in xrange(len(self.ccs_rep_top)):
+    #   if id == self.ccs_rep_top[i]:
+    #     return i
+    #
+    # for i in xrange(len(self.ccs_rep_bottom)):
+    #   if id == self.ccs_rep_bottom[i]:
+    #     return i
 
-    for i in xrange(len(self.ccs_rep_bottom)):
-      if id == self.ccs_rep_bottom[i]:
+    for i in xrange(len(self.ccs)):
+      if id in self.ccs[i]:
         return i
 
     self.logger.error("Code should never reach here!!!")

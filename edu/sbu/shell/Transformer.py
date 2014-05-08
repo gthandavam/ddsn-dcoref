@@ -7,7 +7,7 @@ import commands
 import edu.sbu.shell.logger.log as log
 import sys
 from edu.sbu.mst.MSTGraphTransformer import MSTGraphTransformer
-from edu.sbu.mst.weighted_graph.solver.edmonds import arborescence
+from edu.sbu.mst.weighted_graph.solver.edmonds import upside_down_arborescence
 
 mod_logger = log.setup_custom_logger('root')
 
@@ -68,10 +68,10 @@ def make_svg(gv_file):
 def connect_arbor(pnodes_resolved, rnodes_resolved):
   arbor_adapter = MSTGraphTransformer()
   weighted_graph = arbor_adapter.transform(pnodes_resolved, rnodes_resolved)
-  g = weighted_graph.get_adj_dict('order_close_together')
+  g = weighted_graph.get_adj_ghost_graph('order_close_together')
   root = weighted_graph.get_simple_components_root()
   # print 'root' + root
-  arbor_edges = arborescence(root, g)
+  arbor_edges = upside_down_arborescence(root, g)
 
   pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, arbor_edges)
 
@@ -81,13 +81,19 @@ def connect_arbor(pnodes_resolved, rnodes_resolved):
 def main():
 
   #files sentence split using stanford sentence splitter - fsm based
+  i=0
   for recipe_file in commands.getoutput('ls /home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/*.txt').split('\n'):
+    i+=1
+    if i>10:
+      break
 
     mod_logger.error(recipe_file)
 
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/mac-and-cheese-bake.txt'
 
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/pumpkin-lobster-mac-and-cheese.txt'
+
+    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
 
     recipe_srl = get_semantic_roles(recipe_file)
     if recipe_srl.startswith("NONE"):

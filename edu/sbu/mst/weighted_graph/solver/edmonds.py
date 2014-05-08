@@ -136,8 +136,11 @@ def mst(root,G):
   and a call to G[v] loads the web page and finds its links.
   """
   RG = _reverse(G)
-  # if root not in RG:
-  #   return None
+  rmst(root,G,RG)
+
+def rmst(root,G,RG):
+  if root not in RG:
+    return None
   RG[root] = {}
   g = {}
   for n in RG:
@@ -149,6 +152,8 @@ def mst(root,G):
       if RG[n][e] < minimum:
         minimum = RG[n][e]
         s,d = n,e
+    if s==None:
+      continue
     if d in g:
       g[d][s] = RG[s][d]
     else:
@@ -182,10 +187,6 @@ def adjust_graph(g):
     for ch in nodes.keys():
       if ch in g[nd]:
         a[nd][ch] = g[nd][ch]
-        # if g[nd][ch]<0:
-        #   a[nd][ch] = 10
-        # else:
-        #   a[nd][ch] = g[nd][ch]
       else:
         a[nd][ch] = sys.maxint
   return a
@@ -195,6 +196,25 @@ def print_graph(g):
     for t in g[s]:
       print "{}->({})->{}".format(s,g[s][t],t)
 # --------------------------------------------------------------------------------- #
+
+def upside_down_arborescence(root, g):
+  # if True:
+  #   return g
+  ag = adjust_graph(g)
+  rag = _reverse(ag)
+  h = rmst("Ghost", rag, ag)
+  # h = mst(root, g)
+
+  # print "-----Graph-----"
+  # print_graph(g)
+  # print "-----Arborescence-----"
+  # print "root="+root
+  # if not h is None:
+  #   print_graph(h)
+  # else:
+  #   print '*** None Arborescence ***'
+
+  return _reverse(h)
 
 def arborescence(root, g):
   h = mst(root, adjust_graph(g))

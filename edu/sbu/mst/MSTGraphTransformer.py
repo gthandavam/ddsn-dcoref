@@ -3,6 +3,7 @@ __author__ = 'gt'
 from edu.sbu.shell.semgraph.DotGraphBuilder import DotGraphBuilder
 from edu.sbu.mst.weighted_graph.WeightedGraph import WeightedGraph
 from edu.sbu.shell.semgraph.PNode import PNode
+from edu.sbu.shell.semgraph.RNode import RNode
 import logging
 class MSTGraphTransformer:
   """
@@ -21,14 +22,16 @@ class MSTGraphTransformer:
 
 
   def reverse_transform(self, mst_graph, mst_edges):
+    gh = RNode('Ghost')
+    self.id_node_map['Ghost'] = gh
+    mst_graph.rNodes.append([[gh]])
     for s in mst_edges:
       if s == 'Ghost':
         continue
       for d in mst_edges[s]:
-        if d == 'Ghost':
-          #not expected - but just in case
-          self.logger.error("Ghost as edge destination")
-          continue
+        # if d == 'Ghost':
+          # self.logger.error("Ghost as edge destination")
+          # continue
         if mst_graph.connected_component(s) != mst_graph.connected_component(d):
           bottom = self.id_node_map[s]
           if not isinstance(bottom, PNode):
@@ -71,9 +74,10 @@ class MSTGraphTransformer:
 
     self.mark_top_bottom_nodes()
     #we change directed to undirected adj_list to easily identify connected components. they are equivalent.
+    a_list = self.adj_list
     self.adj_list = self.directed_to_undirected()
     self.ccs = self.get_connected_components()
-    weighted_graph = WeightedGraph(pnodes, rnodes, self.ccs, self.v_props, self.id_node_map)
+    weighted_graph = WeightedGraph(pnodes, rnodes, self.ccs, self.v_props, a_list, self.id_node_map)
 
     weighted_graph.print_edges()
 

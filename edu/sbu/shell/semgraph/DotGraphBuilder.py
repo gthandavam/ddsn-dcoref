@@ -205,6 +205,7 @@ class DotGraphBuilder:
             elif arg_node.arg_type == 'arg2':
               arg_node = self.arg2_node_list[(arg_node.sent_num,arg_node.pred_num, 2)]
             else:
+              arg_node = arg_node.text
               self.logger.error('Unknown arg type')
 
           line = '{} -> {} [label=\"{}\"'.format(start_node, arg_node, 'CC')
