@@ -5,7 +5,7 @@ from edu.sbu.shell.semgraph.RNode import RNode
 import nltk
 from nltk.corpus import wordnet as wn
 import logging
-#Parses senna output to build PNodes and RNodes
+#Parses swirl output to build PNodes and RNodes
 
 '''
 swirl was run with the following flags
@@ -67,7 +67,7 @@ class SwirlCorefGraphBuilder:
       if not skip:
         sem_group = self.get_sem_role_group(srl_per_sent, col, sent_num, pred_num)
 
-        print sem_group
+        self.logger.error(sem_group)
         inc = self.make_nodes(sem_group, sent_num, pred_num)
         #TODO: dont fix argument slots : append nodes and capture arg_type in RNode
         if inc:
