@@ -33,87 +33,45 @@ class SwirlCorefGraphBuilder:
     pass
 
 
-  def build_graph(self, srl_text):
-    sentences = self.get_sentences(srl_text)
-    srl_args_per_sentence = []
+  def build_graph(self, srl_matrix):
 
-    #convert senna output columns to rows for each sentence
-    for sentence in sentences:
-      if(len(sentence) != 0):
-        srl_args_per_sentence.append(self.get_column_args(sentence))
+    for sent_num in xrange(len(srl_matrix)):
+      self.get_semrole_groups(srl_matrix[sent_num], sent_num)
 
-    print srl_args_per_sentence
-    #standoff_lines for the document
-    self.get_semrole_groups(srl_args_per_sentence)
+    '''
+    Change of behavior in swirl from senna in the way we deal with the output;
+    If we dont identify any predicates in a sentence, we totally ignore such sentences
+    in swirl; we were not ignoring in senna(it contributes to sent-count and affects
+    arbor weights order_close_together)
+    '''
 
     return
 
-  def get_sentences(self, lines):
+  def get_semrole_groups(self, srl_per_sent, sent_num):
     '''
-    API to segregate the senna output into chunks per sentence
-    '''
-    ret = []
-    ret.append([])
-    i=0
-    for line in lines:
-      if(len(line.strip()) == 0):
-        i += 1
-        ret.append([])
-        continue
-      ret[i].extend([line])
-
-    return ret
-
-
-  def get_semrole_groups(self, srl_args_per_sentence):
-    '''
-     srl_args_per_sentence - columns in senna output
-     are converted into rows for further processing
-     Col1  - Only verbs - otherwise '-'
-     From col2 onwards:
-     Col(even)  - Arg structure for verbs in a sentence
-     Col(odd)   - Log probability values for identified args
 
     '''
-    offset = 0
-    for s_idx in xrange(len(srl_args_per_sentence)):
-      no_of_tokens = len(srl_args_per_sentence[s_idx][0])
-      #per sentence processing:
-      pred_num = 0
-      self.PNodes.append([])
-      self.RNodes.append([])
-      for i in xrange(1, len(srl_args_per_sentence[s_idx])):
-        skip = False
-        for sem_role in srl_args_per_sentence[s_idx][i]:
-          #skipping a combination having -A0
-          if sem_role.beginswith('(A0'):
-            skip = True
-            break
+    #per sentence processing
+    pred_num = 0
+    self.PNodes.append([])
+    self.RNodes.append([])
 
-        if skip:
-          continue
+    #any sentence without a predicate identified will be skipped
+    for col in xrange(2, len(srl_per_sent[0]), 2):
+      skip = False
+      for row in xrange(len(srl_per_sent)):
+        #skip a predicate with arg0
+        if srl_per_sent[row][col].endswith('-A0'):
+          skip = True
 
-        skip = True
+      if not skip:
+        sem_group = self.get_sem_role_group(srl_per_sent, col, sent_num, pred_num)
 
-        for sem_role in srl_args_per_sentence[s_idx][i]:
-          #skipping a combination having no -V
-          if sem_role.endswith('-V'):
-            skip = False
-            break
-
-        if skip:
-          continue
-
-        sem_group = self.get_sem_role_group(srl_args_per_sentence[s_idx], i, offset, s_idx, pred_num)
-        inc = True
         print sem_group
-        # inc = self.make_nodes(sem_group, s_idx, pred_num)
+        inc = self.make_nodes(sem_group, sent_num, pred_num)
         #TODO: dont fix argument slots : append nodes and capture arg_type in RNode
         if inc:
           pred_num += 1
-
-      # +1 to account for newline char
-      offset += int(srl_args_per_sentence[s_idx][1][-1].split()[1]) + 1
 
     return
 
@@ -194,23 +152,7 @@ class SwirlCorefGraphBuilder:
 
     pass
 
-  def get_column_args(self, arg_lines):
-    '''
-    API to transform the senna output column into a row
-
-    arg_lines : chunk of lines for one sentence
-    '''
-    ret = []
-    col_count = len(arg_lines[0].strip().split('\t'))
-    for col in xrange(0, col_count):
-      ret.append([])
-      for arg_line in arg_lines:
-        ret[-1].extend([arg_line.split('\t')[col].strip()])
-
-    return ret
-
-
-  def get_sem_role_group(self, srl_args, idx, offset, sent_num, pred_num):
+  def get_sem_role_group(self, srl_args, col, sent_num, pred_num):
     """
     Assuming a grammar here:
     *-V is a predicate senna srl identifying VPs such as swipe out as verb
@@ -218,72 +160,37 @@ class SwirlCorefGraphBuilder:
     *-A0 translates to arg0
     *-A1 translates to arg1
     *-A2 translates to arg2
-    Parse the IOBES format
-
-    Baked-Char-Siu-Bao----Buns-With-Minced-BBQ-Pork -> Gives a case when args can be present without a predicate. Eg: 1 egg beaten B-A1, E-A1, O
-    => Need to skip arg groups when no predicate is present
-
-    '/home/gt/NewSchematicSummary/recipe-split/hearty-chicken-noodle-soup.txt'
-    -> arg group having S-V and BIE-V separately in a column causing confusion
+    Parse the IOB format
 
     Assuming predicate always occurs before arg2 -> useful assumption
     for handling light verbs
 
     """
-    tokens = len(srl_args[idx])
-
+    # print srl_args
     ret = {'pred':None, 'arg1':None, 'arg2': None}
 
-    for i in xrange(0, tokens):
-      if(srl_args[idx][i].endswith('-V')):
-        if(srl_args[idx][i] == 'S-V'):
-          ret['pred'] = srl_args[0][i]
-        elif(srl_args[idx][i] == 'E-V'):
-          ret['pred'] = text + ' ' + srl_args[0][i]
-          text = ""
-        elif(srl_args[idx][i] == 'B-V'):
-          text = srl_args[0][i]
-        elif(srl_args[idx][i] == 'I-V'):
-          text += ' ' + srl_args[0][i]
-      # elif(srl_args[idx][i].endswith('-A0')):
-      #   if(srl_args[idx][i] == 'S-A0'):
-      #     ret['arg0'] = srl_args[0][i]
-      #   elif(srl_args[idx][i] == 'E-A0'):
-      #     ret['arg0'] = text + ' ' + srl_args[0][i]
-      #     text = ""
-      #   elif(srl_args[idx][i] == 'B-A0'):
-      #     text = srl_args[0][i]
-      #   elif(srl_args[idx][i] == 'I-A0'):
-      #     text += ' ' + srl_args[0][i]
-      elif(srl_args[idx][i].endswith('-A1')):
-        if(srl_args[idx][i] == 'S-A1'):
-          ret['arg1'] = srl_args[0][i]
-        elif(srl_args[idx][i] == 'E-A1'):
-          ret['arg1'] = text + ' ' + srl_args[0][i]
-          text = ""
-        elif(srl_args[idx][i] == 'B-A1'):
-          text = srl_args[0][i]
-        elif(srl_args[idx][i] == 'I-A1'):
-          text += ' ' + srl_args[0][i]
-      elif(srl_args[idx][i].endswith('-A2')):
-        if(srl_args[idx][i] == 'S-A2'):
-          ret['arg2'] = srl_args[0][i]
-
-        elif(srl_args[idx][i] == 'E-A2'):
-          ret['arg2'] = text + ' ' + srl_args[0][i]
-          text = ""
-        elif(srl_args[idx][i] == 'B-A2'):
-          text = srl_args[0][i]
-        elif(srl_args[idx][i] == 'I-A2'):
-          text += ' ' + srl_args[0][i]
+    for i in xrange(len(srl_args)):
+      if(srl_args[i][0].startswith('V#')):
+        ret['pred'] = srl_args[i][0][2:]
+      elif(srl_args[i][col].startswith('*')):
+        #do nothing - token to be avoided
+        pass
+      elif(srl_args[i][col].endswith('-A1')):
+        if(srl_args[i][col] == 'B-A1'):
+          ret['arg1'] = srl_args[i][0]
+        elif(srl_args[i][col] == 'I-A1'):
+          ret['arg1'] += ' ' + srl_args[i][0]
+      elif(srl_args[i][col].endswith('-A2')):
+        if(srl_args[i][col] == 'B-A2'):
+          ret['arg2'] = srl_args[i][0]
+        elif(srl_args[i][col] == 'I-A2'):
+          ret['arg2'] += ' ' + srl_args[i][0]
 
     #pred are not cleansed (to capture verb phrases)
     #arg1 and arg2 cleansed in RNode constructor
     # ret['pred'] = self.cleanse_arg(ret['pred'])
     # ret['arg1'] = self.cleanse_arg(ret['arg1'])
     # ret['arg2'] = self.cleanse_arg(ret['arg2'])
-    if len(self.RNodes[sent_num]) != len(self.PNodes[sent_num]):
-      self.logger.warn(' RP not equal here')
 
     return ret
 
