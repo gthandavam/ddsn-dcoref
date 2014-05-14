@@ -5,7 +5,7 @@ import logging
 
 class RNode:
 
-  def __init__(self, text='', pnum=-1, snum=-1, arg_type='', is_null=False):
+  def __init__(self, text='', pnum=-1, snum=-1, arg_type='', is_null=False, arg_prob = -1.0):
     self.raw_text = text
     self.text = self.cleanse_arg(text)
     self.arg_type = arg_type
@@ -15,6 +15,7 @@ class RNode:
     self.to_delete = False
     self.is_null = is_null
     self.argIngs = []
+    self.arg_prob = arg_prob
     self.logger = logging.getLogger('root')
 
     pass

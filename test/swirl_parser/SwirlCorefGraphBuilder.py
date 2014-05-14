@@ -88,7 +88,7 @@ class SwirlCorefGraphBuilder:
       return False
 
     if not sem_group['arg1'] is None:
-      nodes['arg1'] = self.make_rnode('arg1', sem_group['arg1'], pred_num, sent_num)
+      nodes['arg1'] = self.make_rnode('arg1', sem_group['arg1'], pred_num, sent_num, sem_group['arg1Prob'])
 
     #Assumption - LVC have pred, arg1, arg2 compulsarily - effectively we are replacing light verb with
     #verb in arg2, if exists; if no meaningful verb in arg2, ignore the semgroup
@@ -104,7 +104,7 @@ class SwirlCorefGraphBuilder:
 
     else:
       if not sem_group['arg2'] is None:
-        nodes['arg2'] = self.make_rnode('arg2', sem_group['arg2'], pred_num, sent_num)
+        nodes['arg2'] = self.make_rnode('arg2', sem_group['arg2'], pred_num, sent_num, sem_group['arg2Prob'])
 
     #TODO: Allowing null instantiations for now - will come back here later
     # if(nodes['arg1'] is None and nodes['arg2'] is None):
@@ -165,12 +165,16 @@ class SwirlCorefGraphBuilder:
     Assuming predicate always occurs before arg2 -> useful assumption
     for handling light verbs
 
+    Special case:
+    reduce identified as verb; but also forms A1 for another verb
+    /home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-swirl-files/avocado-mac-and-cheese.txt
+
     """
     # print srl_args
-    ret = {'pred':None, 'arg1':None, 'arg2': None}
+    ret = {'pred':None, 'arg1':None, 'arg2': None, 'arg1Prob': -1.0, 'arg2Prob' : -1.0}
 
     for i in xrange(len(srl_args)):
-      if(srl_args[i][0].startswith('V#')):
+      if(srl_args[i][0].startswith('V#') and ret['pred'] is None):
         ret['pred'] = srl_args[i][0][2:]
       elif(srl_args[i][col].startswith('*')):
         #do nothing - token to be avoided
@@ -178,11 +182,13 @@ class SwirlCorefGraphBuilder:
       elif(srl_args[i][col].endswith('-A1')):
         if(srl_args[i][col] == 'B-A1'):
           ret['arg1'] = srl_args[i][0]
+          ret['arg1Prob'] = srl_args[i][col+1]
         elif(srl_args[i][col] == 'I-A1'):
           ret['arg1'] += ' ' + srl_args[i][0]
       elif(srl_args[i][col].endswith('-A2')):
         if(srl_args[i][col] == 'B-A2'):
           ret['arg2'] = srl_args[i][0]
+          ret['arg2Prob'] = srl_args[i][col+1]
         elif(srl_args[i][col] == 'I-A2'):
           ret['arg2'] += ' ' + srl_args[i][0]
 
@@ -213,7 +219,7 @@ class SwirlCorefGraphBuilder:
     # return PNode(pred_num, sent_num, arg)
     pass
 
-  def make_rnode(self, arg_type, arg, pred_num, sent_num, is_null = False):
+  def make_rnode(self, arg_type, arg, pred_num, sent_num, is_null = False, arg_prob=-1.0):
     # if arg_type == 'arg2' and self.PNodes[sent_num][pred_num].predicate in  self.light_verbs:
     #   #light verbs
     #   arg = self.cleanse_arg(arg)
@@ -222,7 +228,7 @@ class SwirlCorefGraphBuilder:
     # else:
     #   arg = self.cleanse_arg(arg)
     #   return RNode(arg, arg_type, sent_num, pred_num)
-    return RNode(arg, pred_num, sent_num, arg_type, is_null)
+    return RNode(arg, pred_num, sent_num, arg_type, is_null, arg_prob)
     pass
 
 

@@ -42,7 +42,17 @@ def get_semantic_roles(recipe_file):
   returns pnodes and rnodes
   """
   ret = []
-  swirl_file = recipe_file.replace('MacAndCheese-3-steps', 'MacAndCheese-swirl-files')
+
+  #pre-process
+  with open(recipe_file) as f:
+    lines = f.readlines()
+
+  with open(recipe_file, 'w') as f:
+    for line in lines:
+      f.write('3 ' + line)
+
+
+  swirl_file = recipe_file.replace('MacAndCheese-steps', 'MacAndCheese-swirl-files')
   #Polina - I need to setup swirl on your mac for you to be able to run this directly
   #I had to make changes to Swirl to get it running; on top of it I have made changes to
   #get output in the required format as well; so for now we could exchange swirl output files
@@ -106,7 +116,7 @@ def main():
 
   #files sentence split using stanford sentence splitter - fsm based
   # i=0
-  for recipe_file in commands.getoutput('ls /home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-3-steps/*.txt').split('\n'):
+  for recipe_file in commands.getoutput('ls /home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/*.txt').split('\n'):
     # i+=1
     # if i>10:
     #   break
@@ -133,7 +143,7 @@ def main():
     pnodes_resolved, rnodes_resolved,dot_graph = connect_arbor(pnodes_resolved, rnodes_resolved)
     #End of MST Section
 
-    gv_file_name = recipe_file.replace('MacAndCheese-3-steps','MacAndCheese-dot-files')
+    gv_file_name = recipe_file.replace('MacAndCheese-steps','MacAndCheese-dot-files')
     gv_file_name = gv_file_name.replace('.txt', '.gv')
     dot_graph.write_gv(pnodes_resolved, rnodes_resolved, gv_file_name)
 
