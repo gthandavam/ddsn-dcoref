@@ -24,6 +24,7 @@ public class RecipeArgs {
   public static void main(String[] args) throws IOException {
     
     Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/MacAndCheese-Isteps/ -type f");
+    
     BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
     String fileName;
     Properties props = new Properties();
@@ -31,7 +32,8 @@ public class RecipeArgs {
     StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
     
     while( (fileName = reader.readLine()) != null) {
-     
+//      fileName = "/home/gt/Documents/MacAndCheese-Isteps/baked-macaroni-and-cheese-with-tomato.txt";
+      System.out.println("Processing Recipe " + fileName);
       Annotation annotation = new Annotation(IOUtils.slurpFileNoExceptions(fileName));
       
       String argsFile = fileName.replace("MacAndCheese-Isteps", "MacAndCheeseArgs");
@@ -42,15 +44,15 @@ public class RecipeArgs {
       List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
       
       //separating individual VPs
-      int predNum = 0;
-      int sentNum = 0;
+      
+      int sentNum = -1;
       for (CoreMap sentence : sentences) {
         System.out.println("sentence:" + sentence);
         Tree tree = sentence.get(TreeCoreAnnotations.TreeAnnotation.class);
         sentNum++;
         
-        
-        TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  !>>PP <<# /VB.?/=verb [ [ < NP=arg1 < PP=arg2] | [ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <: /VBP/ ] ]");
+        int predNum = -1;
+        TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  !>>PP <<# /VBP/=verb [ [ < NP=arg1 < PP=arg2] | [ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <: /VBP/ ] ]");
   
         TregexMatcher matcher = VPpattern.matcher(tree);
   
@@ -93,7 +95,10 @@ public class RecipeArgs {
       
       }
       
+      
+      
       fw.close();
+//      break;
     }
     reader.close();
     
