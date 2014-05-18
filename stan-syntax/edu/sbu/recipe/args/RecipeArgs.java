@@ -33,6 +33,7 @@ public class RecipeArgs {
     
     while( (fileName = reader.readLine()) != null) {
 //      fileName = "/home/gt/Documents/MacAndCheese-Isteps/baked-macaroni-and-cheese-with-tomato.txt";
+//      fileName = "/home/gt/Documents/MacAndCheese-Isteps/canadian-bacon-macaroni-and-cheese.txt";
       System.out.println("Processing Recipe " + fileName);
       Annotation annotation = new Annotation(IOUtils.slurpFileNoExceptions(fileName));
       
@@ -52,16 +53,36 @@ public class RecipeArgs {
         sentNum++;
         
         int predNum = -1;
-        TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  !>>PP <<# /VBP/=verb [ [ < NP=arg1 < PP=arg2] | [ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <: /VBP/ ] ]");
+        TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  !>>PP <<# /VBP/=verb [ [ < NP=arg1 < PP=arg2] | [ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <: /VBP/=verb1 ] ]");
   
         TregexMatcher matcher = VPpattern.matcher(tree);
+        
+        Tree verb = null;
+        Tree arg1 = null;
+        Tree arg2 = null;
   
         while (matcher.findNextMatchingNode()) {
           predNum++;
           Tree match = matcher.getMatch();
-          Tree verb = matcher.getNode("verb");
-          Tree arg1 = matcher.getNode("arg1");
-          Tree arg2 = matcher.getNode("arg2");
+         
+          verb = matcher.getNode("verb");
+          
+          if( arg1 != null && arg1 == matcher.getNode("arg1")){
+            arg1 = null;
+            System.out.println("clearing previous arg1");
+          }
+          else 
+            arg1 = matcher.getNode("arg1");
+          
+          if( arg2 != null && arg2 == matcher.getNode("arg2")) {
+            arg2 = null;
+            System.out.println("clearing previous arg2");
+          } 
+          else
+            arg2 = matcher.getNode("arg2");
+          
+          if(matcher.getNode("verb1") != null)
+            System.out.println("VERB1");
           
           System.out.println("sentNum: " + sentNum);
           System.out.println("predNum: " + predNum);
@@ -98,7 +119,7 @@ public class RecipeArgs {
       
       
       fw.close();
-//      break;
+//      break; //for debugging
     }
     reader.close();
     
