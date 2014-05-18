@@ -180,7 +180,7 @@ class DotGraphBuilder:
     self.get_cc_edges(pnodes)
     self.get_footer()
 
-    with codecs.open(file_name, 'w', encoding) as f:
+    with codecs.open(file_name, 'w') as f:
       for line in self.graph_lines:
         f.write(line+'\n')
 

@@ -19,10 +19,10 @@ class ArgString:
     2. checks if the word contains only alphabets
     """
     word = word.lower()
-    word = unicode(word)
-    punct = '".\'()[]'
-    punct_translate_map = dict( (ord(char), None) for char in punct )
-    word = word.translate(punct_translate_map)
+    # word = unicode(word)
+    # punct = '".\'()[]'
+    # punct_translate_map = dict( (ord(char), None) for char in punct )
+    # word = word.translate(punct_translate_map)
 
     for char in word:
       if char not in ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', \

@@ -31,10 +31,10 @@ class RNode:
 
     arg = arg.lower()
 
-    arg = unicode(arg)
-    punct = '".\'()[]'
-    punct_translate_map = dict( (ord(char), None) for char in punct )
-    arg = arg.translate(punct_translate_map)
+    # arg = unicode(arg)
+    # punct = '".\'()[]'
+    # punct_translate_map = dict( (char, None) for char in punct )
+    # arg = arg.translate(punct_translate_map)
 
     ret = []
     for word in arg.split():

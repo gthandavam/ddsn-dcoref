@@ -290,16 +290,16 @@ class DCorefGraphBuilder:
     arg = arg.lower()
 
     #not doing morphy for verbal phrases
-    if not wn.morphy(arg, wn.VERB) is None:
-      arg = wn.morphy(arg, wn.VERB)
+    # if not wn.morphy(arg, wn.VERB) is None:
+    #   arg = wn.morphy(arg, wn.VERB)
 
     light = False
-    if arg in self.light_verbs:
-      light = True
-
-    #ignoring single word non-cook non-light verbs
-    if not light and arg not in self.cook_verbs and len(arg.split()) == 1:
-      return None
+    # if arg in self.light_verbs:
+    #   light = True
+    #
+    # #ignoring single word non-cook non-light verbs
+    # if not light and arg not in self.cook_verbs and len(arg.split()) == 1:
+    #   return None
 
     return PNode(arg, pred_num, sent_num, light)
     # return PNode(pred_num, sent_num, arg)

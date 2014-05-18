@@ -75,16 +75,36 @@ def get_semantic_roles(recipe_file):
   return ret
 
 
-def make_nodes(srl_matrix):
+def make_nodes(args_file):
   """
-  takes the srl list - with each sentence separated by empty string in the list
-  returns PNodes and RNodes list by invoking the respective graph builder
-  (graph builder depends on the SRL tool used)
+  Reads args for th recipe and builds nodes
   """
-  from test.swirl_parser.SwirlCorefGraphBuilder import SwirlCorefGraphBuilder
-  dcoref_graph_builder = SwirlCorefGraphBuilder()
-  dcoref_graph_builder.build_graph(srl_matrix)
+  dcoref_graph_builder = DCorefGraphBuilder()
+  dcoref_graph_builder.PNodes.append([])
+  dcoref_graph_builder.RNodes.append([])
+  sent_num = -1
 
+
+  with open(args_file) as f:
+    lines = f.readlines()
+    for i in xrange(0, len(lines), 5):
+      for j in xrange(abs(sent_num  - int(lines[i].split(':')[-1].strip()))):
+        dcoref_graph_builder.PNodes.append([])
+        dcoref_graph_builder.RNodes.append([])
+
+      sent_num = int(lines[i].split(':')[-1].strip())
+      pred_num = int(lines[i+1].split(':')[-1].strip())
+      sem_group = {'pred':None, 'arg1':None, 'arg2':None}
+      pred = lines[i+2].split(':')[-1].strip()
+      arg1 = lines[i+3].split(':')[-1].strip()
+      arg2 = lines[i+4].split(':')[-1].strip()
+      if(pred != 'NULL'):
+        sem_group['pred'] = pred
+      if(arg1 != 'NULL'):
+        sem_group['arg1'] = arg1
+      if(arg2 != 'NULL'):
+        sem_group['arg2'] = arg2
+      dcoref_graph_builder.make_nodes(sem_group, sent_num, pred_num)
   return dcoref_graph_builder
 
 def make_svg(gv_file):
@@ -116,12 +136,12 @@ def main():
 
   #files sentence split using stanford sentence splitter - fsm based
   # i=0
-  for recipe_file in commands.getoutput('ls /home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-3-steps/*.txt').split('\n'):
+  for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheeseArgs/*.txt').split('\n'):
     # i+=1
     # if i>10:
     #   break
 
-    mod_logger.error(recipe_file)
+    mod_logger.error(recipe_args_file)
 
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/mac-and-cheese-bake.txt'
 
@@ -129,12 +149,7 @@ def main():
 
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
 
-    recipe_srl = get_semantic_roles(recipe_file)
-    if len(recipe_srl) == 0:
-      mod_logger.warn("Empty SRL roles " + recipe_file + " skipping...")
-      continue
-
-    dcoref_graph = make_nodes(recipe_srl)
+    dcoref_graph = make_nodes(recipe_args_file)
 
     rule_engine = RuleEngine()
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph)
@@ -143,7 +158,7 @@ def main():
     pnodes_resolved, rnodes_resolved,dot_graph = connect_arbor(pnodes_resolved, rnodes_resolved)
     #End of MST Section
 
-    gv_file_name = recipe_file.replace('MacAndCheese-3-steps','MacAndCheese-dot-files')
+    gv_file_name = recipe_args_file.replace('MacAndCheeseArgs','MacAndCheese-dot-files')
     gv_file_name = gv_file_name.replace('.txt', '.gv')
     dot_graph.write_gv(pnodes_resolved, rnodes_resolved, gv_file_name)
 
