@@ -6,6 +6,8 @@ import logging
 class RNode:
 
   def __init__(self, text='', pnum=-1, snum=-1, arg_type='', is_null=False, arg_prob = -1.0):
+    if not text is None:
+      text = text.replace('V#', '')
     self.raw_text = text
     self.text = self.cleanse_arg(text)
     self.arg_type = arg_type

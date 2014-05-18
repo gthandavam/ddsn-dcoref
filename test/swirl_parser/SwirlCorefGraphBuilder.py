@@ -23,7 +23,7 @@ class SwirlCorefGraphBuilder:
     self.encoding = 'UTF-8'
     self.PNodes = []
     self.RNodes = []
-    self.light_verbs = ('do', 'let', 'give', 'make', 'decide', 'set', 'be', 'bring')
+    self.light_verbs = ('do', 'let', 'give', 'make', 'decide', 'set', 'be')
 
     #From TAABLE
     self.cook_verbs = ('add', 'bake', 'beat', 'blend', 'boil', 'bone', 'braise', 'break', 'broil', 'brown', 'brush', 'chill', 'chop', 'coat', 'combine', 'cook', 'cover', 'curdle', 'cut', 'decorate', 'deep-fry', 'defrost', 'dice', 'dilute', 'dissolve', 'drain', 'dry', 'eat', 'empty', 'farm', 'feed', 'fill', 'flip', 'fold', 'freeze', 'fry', 'glaze', 'grate', 'grease', 'grill', 'grind', 'grow', 'halve', 'heat', 'knead', 'liquidize', 'mash', 'measure', 'melt', 'mince', 'mix', 'parboil', 'peel', 'pinch', 'pour', 'prepare', 'press', 'put', 'refrigerate', 'remove', 'rinse', 'roast', 'roll', 'saute', 'scald', 'scoop', 'seal', 'season', 'serve', 'shake', 'sharpen', 'sieve', 'sift', 'simmer', 'skin', 'slice', 'smoke', 'soak', 'spill', 'spread', 'sprinkle', 'squeeze', 'steam', 'stew', 'stir', 'stir-fry', 'strain', 'stuff', 'thicken', 'toast', 'toss', 'trim', 'turn', 'waste', 'whip', 'whisk')
@@ -67,10 +67,12 @@ class SwirlCorefGraphBuilder:
       if not skip:
         sem_group = self.get_sem_role_group(srl_per_sent, col, sent_num, pred_num)
 
-        self.logger.error(sem_group)
+
         inc = self.make_nodes(sem_group, sent_num, pred_num)
         #TODO: dont fix argument slots : append nodes and capture arg_type in RNode
         if inc:
+          # self.logger.error('nodes created')
+          self.logger.error(sem_group)
           pred_num += 1
 
     return
@@ -88,7 +90,7 @@ class SwirlCorefGraphBuilder:
       return False
 
     if not sem_group['arg1'] is None:
-      nodes['arg1'] = self.make_rnode('arg1', sem_group['arg1'], pred_num, sent_num, sem_group['arg1Prob'])
+      nodes['arg1'] = self.make_rnode('arg1', sem_group['arg1'], pred_num, sent_num, False, sem_group['arg1Prob'])
 
     #Assumption - LVC have pred, arg1, arg2 compulsarily - effectively we are replacing light verb with
     #verb in arg2, if exists; if no meaningful verb in arg2, ignore the semgroup
@@ -104,11 +106,11 @@ class SwirlCorefGraphBuilder:
 
     else:
       if not sem_group['arg2'] is None:
-        nodes['arg2'] = self.make_rnode('arg2', sem_group['arg2'], pred_num, sent_num, sem_group['arg2Prob'])
+        nodes['arg2'] = self.make_rnode('arg2', sem_group['arg2'], pred_num, sent_num, False, sem_group['arg2Prob'])
 
     #TODO: Allowing null instantiations for now - will come back here later
-    # if(nodes['arg1'] is None and nodes['arg2'] is None):
-    #   return False
+    if(nodes['arg1'] is None and nodes['arg2'] is None):
+      return False
 
     #if only one of the args is None then treat it as null instantiation - see the TODO above
     if nodes['arg1'] is None:
