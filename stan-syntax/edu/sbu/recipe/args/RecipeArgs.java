@@ -25,6 +25,7 @@ public class RecipeArgs {
     
     Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/MacAndCheese-Isteps/ -type f");
     
+    
     BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
     String fileName;
     Properties props = new Properties();
@@ -32,8 +33,10 @@ public class RecipeArgs {
     StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
     
     while( (fileName = reader.readLine()) != null) {
-//      fileName = "/home/gt/Documents/MacAndCheese-Isteps/baked-macaroni-and-cheese-with-tomato.txt";
-//      fileName = "/home/gt/Documents/MacAndCheese-Isteps/canadian-bacon-macaroni-and-cheese.txt";
+//      fileName = "/home/gt/Documents/MacAndCheese-Isteps/"
+//          + "baked-macaroni-and-cheese-with-tomato.txt";
+//      fileName = "/home/gt/Documents/MacAndCheese-Isteps/
+//      canadian-bacon-macaroni-and-cheese.txt";
       System.out.println("Processing Recipe " + fileName);
       Annotation annotation = new Annotation(IOUtils.slurpFileNoExceptions(fileName));
       
@@ -45,7 +48,11 @@ public class RecipeArgs {
       List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
       
       //separating individual VPs
-      
+      TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  !>>PP "
+          + "<<# /VBP/=verb [ [ < NP=arg1 < PP=arg2] | [ < NP=arg1 !<<PRN ] |"
+          + " [ < (PP=arg2  !<: IN) ] | [ <: /VBP/=verb1 ] ]");
+      TregexPattern headPattern = TregexPattern.compile("NN ># NP");
+      TregexPattern detPattern = TregexPattern.compile("DT > NP");
       int sentNum = -1;
       for (CoreMap sentence : sentences) {
         System.out.println("sentence:" + sentence);
@@ -53,7 +60,6 @@ public class RecipeArgs {
         sentNum++;
         
         int predNum = -1;
-        TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  !>>PP <<# /VBP/=verb [ [ < NP=arg1 < PP=arg2] | [ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <: /VBP/=verb1 ] ]");
   
         TregexMatcher matcher = VPpattern.matcher(tree);
         
@@ -98,7 +104,26 @@ public class RecipeArgs {
           
           if(arg1 != null) {
             System.out.println("Arg1: "  + Sentence.listToString(arg1.yield()));
-            fw.write("Arg1: "  + Sentence.listToString(arg1.yield()) + "\n");
+            fw.write("Arg1: "  + Sentence.listToString(arg1.yield()) + "##");
+            TregexMatcher headMatcher = headPattern.matcher(arg1);
+            TregexMatcher detMatcher = detPattern.matcher(arg1);
+            while(headMatcher.findNextMatchingNode()) {
+              Tree head = headMatcher.getMatch();
+              System.out.println("Arg1Head: " + Sentence.listToString(
+                  headMatcher.getMatch().yield()));
+              fw.write(Sentence.listToString(head.yield()) + "HH");
+            }
+            
+            fw.write("##");
+            
+            while(detMatcher.findNextMatchingNode()) {
+              Tree det = detMatcher.getMatch();
+              System.out.println("Arg1Det: " + Sentence.listToString(
+                  det.yield()));
+              fw.write(Sentence.listToString(det.yield()) + "DD");
+            }
+            
+            fw.write("\n");
           } else {
             System.out.println("Arg1: NULL");
             fw.write("Arg1: NULL" + "\n");
@@ -106,7 +131,25 @@ public class RecipeArgs {
           
           if(arg2 != null) {
             System.out.println("Arg2: "  + Sentence.listToString(arg2.yield()));
-            fw.write("Arg2: "  + Sentence.listToString(arg2.yield()) + "\n");
+            fw.write("Arg2: "  + Sentence.listToString(arg2.yield()) + "##");
+            TregexMatcher headMatcher = headPattern.matcher(arg2);
+            TregexMatcher detMatcher = detPattern.matcher(arg2);
+            while(headMatcher.findNextMatchingNode()) {
+              Tree head = headMatcher.getMatch();
+              System.out.println("Arg2Head: " + Sentence.listToString(
+                  head.yield()));
+              fw.write(Sentence.listToString(head.yield()) + "HH");
+            }
+            
+            fw.write("##");
+            while(detMatcher.findNextMatchingNode()) {
+              Tree det = detMatcher.getMatch();
+              System.out.println("Arg2Det: " + Sentence.listToString(
+                  det.yield()));
+              fw.write(Sentence.listToString(det.yield()) + "DD");
+            }
+            
+            fw.write("\n");
           } else {
             System.out.println("Arg2: NULL");
             fw.write("Arg2: NULL" + "\n");
@@ -115,8 +158,6 @@ public class RecipeArgs {
         }
       
       }
-      
-      
       
       fw.close();
 //      break; //for debugging
