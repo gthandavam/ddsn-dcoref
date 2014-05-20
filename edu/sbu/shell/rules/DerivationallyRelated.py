@@ -40,6 +40,7 @@ class DerivationallyRelated:
     result = [(w, float(words.count(w))/len_words) for w in set(words)]
     result.sort(key=lambda w: -w[1])
 
+    #TODO: Should we return top N instead of the top most ?
     # return noun with max probability
     return result[0][0]
 

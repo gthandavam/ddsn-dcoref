@@ -5,11 +5,11 @@ import logging
 
 class RNode:
 
-  def __init__(self, text='', pnum=-1, snum=-1, arg_type='', is_null=False, arg_prob = -1.0):
+  def __init__(self, text='', pnum=-1, snum=-1, arg_type='' ,argPOS='', is_null=False, arg_prob = -1.0):
     if not text is None:
       text = text.replace('V#', '')
     self.raw_text = text
-    self.text = self.cleanse_arg(text)
+    self.text = text #self.cleanse_arg(text)
     self.arg_type = arg_type
     self.sent_num = snum
     self.pred_num = pnum
@@ -18,6 +18,7 @@ class RNode:
     self.is_null = is_null
     self.argIngs = []
     self.arg_prob = arg_prob
+    self.argPOS = argPOS
     self.logger = logging.getLogger('root')
 
     pass

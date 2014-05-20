@@ -129,7 +129,7 @@ class DCorefGraphBuilder:
       return False
 
     if not sem_group['arg1'] is None:
-      nodes['arg1'] = self.make_rnode('arg1', sem_group['arg1'], pred_num, sent_num)
+      nodes['arg1'] = self.make_rnode('arg1', sem_group['arg1'], pred_num, sent_num, sem_group['arg1POS'])
 
     #Assumption - LVC have pred, arg1, arg2 compulsarily - effectively we are replacing light verb with
     #verb in arg2, if exists; if no meaningful verb in arg2, ignore the semgroup
@@ -145,7 +145,9 @@ class DCorefGraphBuilder:
 
     else:
       if not sem_group['arg2'] is None:
-        nodes['arg2'] = self.make_rnode('arg2', sem_group['arg2'], pred_num, sent_num)
+        nodes['arg2'] = self.make_rnode('arg2', sem_group['arg2'], pred_num, sent_num, sem_group['arg2POS'])
+
+    #TODO: Not handling light verbs for now in this syntactic feature formulation
 
     #TODO: Allowing null instantiations for now - will come back here later
     # if(nodes['arg1'] is None and nodes['arg2'] is None):
@@ -154,11 +156,11 @@ class DCorefGraphBuilder:
     #if only one of the args is None then treat it as null instantiation - see the TODO above
     if nodes['arg1'] is None:
       # print nodes['pred'].predicate + ' # ' + nodes['arg2'].raw_text + ' # ' + nodes['arg2'].text
-      nodes['arg1'] = self.make_rnode('arg1', None, pred_num, sent_num, True)
+      nodes['arg1'] = self.make_rnode('arg1', None, pred_num, sent_num,'', True)
 
     if nodes['arg2'] is None:
       # print nodes['pred'].predicate + ' # ' + nodes['arg1'].raw_text + ' # ' + nodes['arg1'].text
-      nodes['arg2'] = self.make_rnode('arg2', None, pred_num, sent_num, True)
+      nodes['arg2'] = self.make_rnode('arg2', None, pred_num, sent_num,'', True)
 
     self.PNodes[sent_num].append(nodes['pred'])
     self.RNodes[sent_num].append([None, nodes['arg1'], nodes['arg2']])
@@ -305,7 +307,7 @@ class DCorefGraphBuilder:
     # return PNode(pred_num, sent_num, arg)
     pass
 
-  def make_rnode(self, arg_type, arg, pred_num, sent_num, is_null = False):
+  def make_rnode(self, arg_type, arg, pred_num, sent_num,argPOS, is_null = False):
     # if arg_type == 'arg2' and self.PNodes[sent_num][pred_num].predicate in  self.light_verbs:
     #   #light verbs
     #   arg = self.cleanse_arg(arg)
@@ -314,7 +316,7 @@ class DCorefGraphBuilder:
     # else:
     #   arg = self.cleanse_arg(arg)
     #   return RNode(arg, arg_type, sent_num, pred_num)
-    return RNode(arg, pred_num, sent_num, arg_type, is_null)
+    return RNode(arg, pred_num, sent_num, arg_type,argPOS, is_null)
     pass
 
 

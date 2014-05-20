@@ -85,25 +85,31 @@ def make_nodes(args_file):
   sent_num = -1
 
 
+  my_separator = 'TheGT'
   with open(args_file) as f:
     lines = f.readlines()
-    for i in xrange(0, len(lines), 5):
-      for j in xrange(abs(sent_num  - int(lines[i].split(':')[-1].strip()))):
+    for i in xrange(0, len(lines), 7):
+      for j in xrange(abs(sent_num  - int(lines[i].split(my_separator)[-1].strip()))):
         dcoref_graph_builder.PNodes.append([])
         dcoref_graph_builder.RNodes.append([])
 
-      sent_num = int(lines[i].split(':')[-1].strip())
-      pred_num = int(lines[i+1].split(':')[-1].strip())
-      sem_group = {'pred':None, 'arg1':None, 'arg2':None}
-      pred = lines[i+2].split(':')[-1].strip()
-      arg1 = lines[i+3].split(':')[-1].strip()
-      arg2 = lines[i+4].split(':')[-1].strip()
+      #TODO: For now splitting based on ':' it could become a problem when text contains ':'
+      sent_num = int(lines[i].split(my_separator)[-1].strip())
+      pred_num = int(lines[i+1].split(my_separator)[-1].strip())
+      sem_group = {'pred':None, 'arg1':None, 'arg2':None, 'arg1POS': None, 'arg2POS' : None}
+      pred = lines[i+2].split(my_separator)[-1].strip()
+      arg1 = lines[i+3].split(my_separator)[-1].strip()
+      arg1POS = lines[i+4].split(my_separator)[-1].strip()
+      arg2 = lines[i+5].split(my_separator)[-1].strip()
+      arg2POS = lines[i+6].split(my_separator)[-1].strip()
       if(pred != 'NULL'):
         sem_group['pred'] = pred
       if(arg1 != 'NULL'):
         sem_group['arg1'] = arg1
+        sem_group['arg1POS'] = arg1POS
       if(arg2 != 'NULL'):
         sem_group['arg2'] = arg2
+        sem_group['arg2POS'] = arg2POS
       dcoref_graph_builder.make_nodes(sem_group, sent_num, pred_num)
   return dcoref_graph_builder
 
@@ -148,7 +154,7 @@ def main():
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/pumpkin-lobster-mac-and-cheese.txt'
 
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
-
+    # recipe_args_file = '/home/gt/Documents/MacAndCheeseArgs/cheesy-salsa-mac.txt'
     dcoref_graph = make_nodes(recipe_args_file)
 
     rule_engine = RuleEngine()
@@ -163,6 +169,7 @@ def main():
     dot_graph.write_gv(pnodes_resolved, rnodes_resolved, gv_file_name)
 
     make_svg(gv_file_name)
+    # break
   pass
 
 

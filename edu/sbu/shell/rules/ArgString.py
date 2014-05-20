@@ -6,7 +6,8 @@ class ArgString:
   def __init__(self):
     self.stopwords = nltk.corpus.stopwords.words('english')
     self.logger = logging.getLogger('root')
-
+    #ignore Adjective and determiner in arg string match
+    self.ignorePOS = ['DT', 'JJ']
     pass
 
 
@@ -19,6 +20,8 @@ class ArgString:
     2. checks if the word contains only alphabets
     """
     word = word.lower()
+
+    #TODO: remove punctuation from comparison
     # word = unicode(word)
     # punct = '".\'()[]'
     # punct_translate_map = dict( (ord(char), None) for char in punct )
@@ -31,17 +34,25 @@ class ArgString:
 
     return True
 
-  def find_overlap(self, txt1, txt2):
+  def find_overlap(self, txt1, txt2, txt1POS, txt2POS):
     """
-    find overlap in content words
+    find overlap in content words - Only noun overlap - ignore DT and JJ
     """
-    for word1 in txt1.split():
-      for word2 in txt2.split():
-        if word1 in self.stopwords or word2 in self.stopwords:
+    txt1 = txt1.split()
+    txt2 = txt2.split()
+    txt1POS = txt1POS.split()
+    txt2POS = txt2POS.split()
+    for i in xrange(len(txt1)):
+      for j in xrange(len(txt2)):
+        if txt1[i] in self.stopwords or txt2[j] in self.stopwords:
           continue
-        if not self.is_word(word1) or not self.is_word(word2):
+        if not self.is_word(txt1[i]) or not self.is_word(txt2[j]):
           continue
-        if word1 == word2:
+
+        if txt1POS[i].split('/')[-1] in self.ignorePOS or txt2POS[j].split('/')[-1] in self.ignorePOS:
+          continue
+
+        if txt1[i] == txt2[j]:
           return True
 
     return False
@@ -59,9 +70,20 @@ class ArgString:
           for k in xrange(1,3):
             if not rnodes[i][j][k].is_null:
 
-              if self.find_overlap(rnodes[i][j][k].text, rnode.text):
+              if self.find_overlap(rnodes[i][j][k].text, rnode.text, rnodes[i][j][k].argPOS, rnode.argPOS):
                 self.logger.warn(rnodes[i][j][k].text + ' referring arg:' + rnode.text)
                 return i,j
+            else:
+              #perform string match from shell node and above
+              if(len(rnodes[i][j][k].shell_coref) > 0):
+                shell, rule = rnodes[i][j][k].shell_coref[0]
+                shell_i, shell_j = shell
+                tmp_i, tmp_j = self.find_arg_string_match(pnodes, rnodes, rnode, shell_i, shell_j + 1)
+
+                if (tmp_i != -1 and tmp_j != -1):
+                  return i,j
+
+                pass
           pass
         else:
           self.logger.warn('None predicate found!!!')

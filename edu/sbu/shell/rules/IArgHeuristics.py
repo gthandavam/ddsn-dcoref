@@ -5,12 +5,10 @@ class Previous:
 
   def __init__(self):
     """
-    Rule for handling null instantiations. Handles head word match
-    on ingredients. Ingredient flow is captured by making use of
-    head word processed list of ingredients while building the DCorefGraph
+    IArg rule doesnt (and may be shouldnt rely) on ingredients involved.
+    It implicitly refers to the preceding sentence
     """
     self.logger = logging.getLogger('root')
-
     pass
 
 
@@ -22,9 +20,9 @@ class Previous:
           continue
 
         if not pnodes[i][j] is None:
-          # return i, j
-          if len(set.intersection(pnodes[i][j].pIngs, pnodes[find_i][find_j].pIngs)) > 0:
-            return i, j
+          return i, j
+          # if len(set.intersection(pnodes[i][j].pIngs, pnodes[find_i][find_j].pIngs)) > 0:
+          #   return i, j
         else:
           self.logger.warn('None Predicate found!!! ' + str(i) + ',' + str(j))
 
@@ -63,6 +61,7 @@ class Previous:
     Test Case:
     kicked-up-mac-and-cheese (All Recipes Mac And Cheese data
     '''
+    #TODO: Once IArg rule is run first, this method becomes obviated
     for k in xrange(1,3):
       if len(rnodes[i][j][k].shell_coref) > 0:
         shell_i, shell_j = rnodes[i][j][k].shell_coref[0][0]

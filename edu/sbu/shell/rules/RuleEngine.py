@@ -10,11 +10,11 @@ class RuleEngine:
   def __init__(self):
     #tuple of rules - Immutable
     self.rules = (
+      'Previous', #-> IArgHeuristics here
       'GlossBased',
       'DerivationallyRelated',
       'HeadWordArgString',
-      'ArgString',
-      'Previous' #-> IArgHeuristics here
+      # 'ArgString',
     )
     self.logger = logging.getLogger('root')
 
@@ -28,4 +28,3 @@ class RuleEngine:
       pnodes, rnodes = rule_obj.run(dcoref_graph.PNodes, dcoref_graph.RNodes)
 
     return pnodes, rnodes
-
