@@ -1,4 +1,6 @@
 import sys
+from edu.sbu.shell.semgraph.PNode import PNode
+from edu.sbu.shell.semgraph.RNode import RNode
 
 # --------------------------------------------------------------------------------- #
 
@@ -40,18 +42,31 @@ def _reverse(graph):
   return r
 
 # def _getCycle(n,g,visited=set(),cycle=[]):
-def _getCycle(n,g,cycle,visited=set()):
-  visited.add(n)
+def _getCycle(n,start_n,g,cycle,visited,global_visited,cycles,visited_in_cycle):
+  global_visited.add(n)
   # cycle = []
-  cycle += [n]
+  new_cycle = []
+  for e in cycle:
+    new_cycle += [e]
+  new_cycle += [n]
+  new_visited = set()
+  for e in visited:
+    new_visited.add(e)
+  new_visited.add(n)
+  # visited.add(n)
   if n not in g:
-    return cycle
+    return
   for e in g[n]:
+    if e==start_n and visited_in_cycle!=len(cycle):
+      cycles += [new_cycle]
+    d = 0
+    if e in global_visited:
+      d+=1
     if e not in visited:
-      cycle = _getCycle(e,g,cycle,visited)
-  return cycle
+      _getCycle(e,start_n,g,new_cycle,new_visited,global_visited,cycles,visited_in_cycle+d)
+  return
 
-def _mergeCycles(cycle,G,RG,g,rg):
+def _mergeCycles(cycle,connected_nodes,G,RG,g,rg):
   allInEdges = []
   minInternal = None
   minInternalWeight = sys.maxint
@@ -64,7 +79,8 @@ def _mergeCycles(cycle,G,RG,g,rg):
           minInternal = (n,e)
           minInternalWeight = RG[n][e]
           continue
-      else:
+      if e not in connected_nodes:
+      # else:
         allInEdges.append((n,e))
 
   # find the incoming edge with minimum modified cost
@@ -162,19 +178,122 @@ def rmst(root,G,RG):
   cycles = []
   visited = set()
   for n in g:
-    if n not in visited:
-      cycle = _getCycle(n,g,[],visited)
-      cycles.append(cycle)
+    # if n not in visited:
+      _getCycle(n,n,g,[],set(),visited,cycles,0)
+      # cycle = _getCycle(n,g,[],visited)
+      # cycles.append(cycle)
 
   rg = _reverse(g)
   for cycle in cycles:
     if root in cycle:
       continue
-    _mergeCycles(cycle, G, RG, g, rg)
+    _mergeCycles(cycle, get_connected_nodes(cycle,g), G, RG, g, rg)
 
   return g
 
+def get_connected_nodes(cycle,g,visited=set()):
+  for n in cycle:
+    visited.add(n)
+    if n in g:
+      for e in g[n]:
+        if e not in visited:
+          get_connected_nodes([e],g,visited)
+  return visited
+
 # --------------------------------------------------------------------------------- #
+
+# import types
+# from heap import pri_q
+#
+# def mst(g, w):
+#
+#     in_edge = {} # incoming edge
+#     const = {} # constant to add to weights
+#     prev = {} # vertex preceeding in constructed path
+#     parent = {} # owning super-vertex
+#     children = {} # sub-(super-)vertices
+#     P = {} # priority queues
+#
+#     def initialise():
+#         for u in g:
+#           init_vertex(u)
+#           for w in g[u]:
+#             P[w] += g[u][w]
+#
+#     def init_vertex(u):
+#         in_edge[u] = None
+#         const[u] = 0
+#         prev[u] = None
+#         parent[u] = None
+#         children[u] = set()
+#         P[u] = pri_q(weight)
+#
+#     def find(u):
+#         while parent[u] is not None:
+#             u = parent[u]
+#         return u
+#
+#     def weight(e):
+#         weight = w[e]
+#         v = e.target()
+#         while parent[v] is not None:
+#             weight += const[v]
+#             v = parent[v]
+#         return weight
+#
+#     def contract():
+#         initialise()
+#
+#         a = next(g.vertices()) # start with arbitrary vertex
+#
+#         while P[a]:
+#             e = P[a].extract_min()
+#             b = find(e.source())
+#             if a != b:
+#                 in_edge[a] = e
+#                 prev[a] = b
+#                 if in_edge[e.source()] is None:
+#                     # path extended
+#                     a = b
+#                 else:
+#                     # new cycle formed
+#                     c = object() # make new super-vertex
+#                     init_vertex(c)
+#                     while parent[a] is None:
+#                         parent[a] = c
+#                         const[a] = -w[in_edge[a]]
+#                         children[c].add(a)
+#                         P[c] += P[a]
+#                         a = prev[a]
+#                     a = c
+#
+#     def expand(r):
+#         R = set()
+#
+#         def dismantle(u):
+#             while parent[u] is not None:
+#                 for v in children[parent[u]] - {u}:
+#                     parent[v] = None
+#                     if children[v]:
+#                         R.add(v)
+#                 u = parent[u]
+#
+#         dismantle(r)
+#
+#         while R:
+#             c = next(iter(R))
+#             R -= {c}
+#             e = in_edge[c]
+#             in_edge[e.target()] = e
+#             dismantle(e.target())
+#
+#         return {in_edge[u] for u in in_edge.keys()
+#                             if type(u) != type(object()) and u != r}
+#
+#     contract()
+#     return expand(next(g.vertices()))
+# --------------------------------------------------------------------------------- #
+
 def adjust_graph(g):
   a = {}
   nodes = {}
@@ -182,39 +301,54 @@ def adjust_graph(g):
     nodes[nd] = 1
     for ch in g[nd]:
       nodes[ch] = 1
-  for nd in g:
-    a[nd] = {}
-    for ch in nodes.keys():
-      if ch in g[nd]:
-        a[nd][ch] = g[nd][ch]
-      else:
-        a[nd][ch] = sys.maxint
-  return a
+  for n in nodes:
+    if n not in g:
+      g[n] = {}
+  # for nd in g:
+  #   a[nd] = {}
+  #   for ch in nodes.keys():
+  #     if ch in g[nd]:
+  #       a[nd][ch] = g[nd][ch]
+  #     else:
+  #       a[nd][ch] = sys.maxint
+  # return a
+  return g
 # --------------------------------------------------------------------------------- #
-def print_graph(g):
+def getNodeText(label, id_node_map):
+    node = id_node_map.get(label)
+    text = str(label)
+    if isinstance(node, PNode):
+      text += "-"+str(node.predicate)
+    elif isinstance(node, RNode):
+      text += "-"+str(node.text)
+    return text
+
+def print_graph(g, id_node_map):
   for s in g:
     for t in g[s]:
-      print "{}->({})->{}".format(s,g[s][t],t)
+      print "{}->({})->{}".format(getNodeText(s,id_node_map),getNodeText(g[s][t],id_node_map),getNodeText(t,id_node_map))
 # --------------------------------------------------------------------------------- #
 
-def upside_down_arborescence(root, g):
+def upside_down_arborescence(root, g, id_node_map):
   # if True:
   #   return g
   ag = adjust_graph(g)
-  rag = _reverse(ag)
+  rag = adjust_graph(_reverse(ag))
   h = rmst("Ghost", rag, ag)
   # h = mst(root, g)
 
   # print "-----Graph-----"
-  # print_graph(g)
+  # print_graph(g, id_node_map)
   # print "-----Arborescence-----"
-  # print "root="+root
+  # print "root=Ghost"
   # if not h is None:
-  #   print_graph(h)
+  #   res = _reverse(h)
+  #   print_graph(res, id_node_map)
+  #   return res
   # else:
   #   print '*** None Arborescence ***'
 
-  return _reverse(h)
+  return None
 
 def arborescence(root, g):
   h = mst(root, adjust_graph(g))
