@@ -14,7 +14,7 @@ class RuleEngine:
       'GlossBased',
       'DerivationallyRelated',
       'HeadWordArgString',
-      # 'ArgString',
+      'ArgString',
     )
     self.logger = logging.getLogger('root')
 

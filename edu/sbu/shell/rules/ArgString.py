@@ -6,8 +6,8 @@ class ArgString:
   def __init__(self):
     self.stopwords = nltk.corpus.stopwords.words('english')
     self.logger = logging.getLogger('root')
-    #ignore Adjective and determiner in arg string match
-    self.ignorePOS = ['DT', 'JJ']
+    #ignore determiner, adjective, adverb in arg string match
+    self.ignorePOS = ['DT', 'JJ', 'RB']
     pass
 
 
@@ -57,7 +57,7 @@ class ArgString:
 
     return False
 
-  def find_arg_string_match(self, pnodes, rnodes, rnode, snum, pnum):
+  def find_arg_string_match(self, pnodes, rnodes, rnode, snum, pnum, arg_num):
     ret_i = -1
     ret_j = -1
 
@@ -71,17 +71,22 @@ class ArgString:
             if not rnodes[i][j][k].is_null:
 
               if self.find_overlap(rnodes[i][j][k].text, rnode.text, rnodes[i][j][k].argPOS, rnode.argPOS):
-                self.logger.warn(rnodes[i][j][k].text + ' referring arg:' + rnode.text)
+                self.logger.error(rnodes[i][j][k].text + ' referring arg:' + rnode.text)
                 return i,j
             else:
               #perform string match from shell node and above
               if(len(rnodes[i][j][k].shell_coref) > 0):
                 shell, rule = rnodes[i][j][k].shell_coref[0]
                 shell_i, shell_j = shell
-                tmp_i, tmp_j = self.find_arg_string_match(pnodes, rnodes, rnode, shell_i, shell_j + 1)
+                tmp_i, tmp_j = self.find_arg_string_match(pnodes, rnodes, rnode, shell_i, shell_j, k)
 
+                #logical bug: TODO: We should return tmp_i and tmp_j
+                #easy way to solve would be let the info flow through the nodes
+                #we should scan back from the current position to the top in search of a match
+                #if a preceding node is not helping (and has a null argument) - we should jump above
+                #the shell node
                 if (tmp_i != -1 and tmp_j != -1):
-                  return i,j
+                  return tmp_i, tmp_j
 
                 pass
           pass
@@ -100,8 +105,20 @@ class ArgString:
         for k in xrange(1,3):#applying arg string match for arg1 and arg2
           #applies only for non-null instantiations of args
           if not rnodes[i][j][k].is_null:
-            ret_i, ret_j = self.find_arg_string_match(pnodes, rnodes, rnodes[i][j][k], i, j)
+            ret_i, ret_j = self.find_arg_string_match(pnodes, rnodes, rnodes[i][j][k], i, j, k)
             if ret_i != -1 and ret_j != -1:
+              if k == 1:
+                if(len(rnodes[i][j][2].shell_coref) > 0):
+                  if rnodes[i][j][2].shell_coref[0][0] == (ret_i, ret_j):
+                    #avoid parallel edges
+                    continue
+                pass
+              elif k == 2:
+                if(len(rnodes[i][j][1].shell_coref) > 0):
+                  if rnodes[i][j][1].shell_coref[0][0] == (ret_i, ret_j):
+                    #avoid parallel edges
+                    continue
+                pass
               rnodes[i][j][k].shell_coref.append(((ret_i, ret_j), 'ArgString'))
 
               # print 'ArgString applied'
