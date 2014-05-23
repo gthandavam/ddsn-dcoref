@@ -131,21 +131,21 @@ def connect_arbor(pnodes_resolved, rnodes_resolved):
   g = weighted_graph.get_adj_ghost_graph('order_close_together')
   root = weighted_graph.get_simple_components_root()
   # print 'root' + root
-  arbor_edges = upside_down_arborescence(root, g)
+  arbor_edges = upside_down_arborescence(root, g, arbor_adapter.id_node_map)
 
   pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, arbor_edges)
 
-  return pnodes_resolved, rnodes_resolved, arbor_adapter.dot_builder
+  return pnodes_resolved, rnodes_resolved, arbor_adapter.dot_builder, arbor_edges
   pass
 
 def main():
 
   #files sentence split using stanford sentence splitter - fsm based
-  # i=0
+  i=0
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
-    # i+=1
-    # if i>10:
-    #   break
+    i+=1
+    if i>10:
+      break
 
     mod_logger.error(recipe_args_file)
 
@@ -161,12 +161,12 @@ def main():
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph)
 
     #apply MST Here
-    pnodes_resolved, rnodes_resolved,dot_graph = connect_arbor(pnodes_resolved, rnodes_resolved)
+    pnodes_resolved, rnodes_resolved,dot_graph, arbor_edges = connect_arbor(pnodes_resolved, rnodes_resolved)
     #End of MST Section
 
     gv_file_name = recipe_args_file.replace('MacAndCheeseArgs','MacAndCheese-dot-files')
     gv_file_name = gv_file_name.replace('.txt', '.gv')
-    dot_graph.write_gv(pnodes_resolved, rnodes_resolved, gv_file_name)
+    dot_graph.write_gv(pnodes_resolved, rnodes_resolved, arbor_edges, gv_file_name)
 
     make_svg(gv_file_name)
     # break

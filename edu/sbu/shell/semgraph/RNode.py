@@ -20,6 +20,7 @@ class RNode:
     self.arg_prob = arg_prob
     self.argPOS = argPOS
     self.logger = logging.getLogger('root')
+    self.id = ""
 
     pass
 

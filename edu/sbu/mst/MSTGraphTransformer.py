@@ -22,9 +22,6 @@ class MSTGraphTransformer:
 
 
   def reverse_transform(self, mst_graph, mst_edges):
-    gh = RNode('Ghost')
-    self.id_node_map['Ghost'] = gh
-    mst_graph.rNodes.append([[gh]])
     for s in mst_edges:
       if s == 'Ghost':
         continue
@@ -60,13 +57,16 @@ class MSTGraphTransformer:
           self.logger.error('null instant replaced with a pred (shell coref) node number {} ; cc {}'.format(key, self.v_props[key][0]))
 
   def transform(self, pnodes, rnodes):
+    gh = RNode('Ghost')
+    rnodes.append([[None,gh,None]])
     #bad piece of code. DotGraphBuilder is used here
     #to aid the transformation.
     #We use Node IDs in the form of T8, T9 etc..,
     #to formulate the MST/arbor and so we call
     #DotGraphBuilder to generate IDs and to get adj_list representation of the graph
     self.dot_builder = DotGraphBuilder()
-    self.adj_list, self.id_node_map  = self.dot_builder.get_edge_list_mst(pnodes, rnodes)
+    self.adj_list, self.id_node_map = self.dot_builder.get_edge_list_mst(pnodes, rnodes)
+    self.id_node_map['Ghost'] = gh
 
     #we use v_props to identify top and bottom nodes in a connected component.
     for key in self.adj_list.keys():

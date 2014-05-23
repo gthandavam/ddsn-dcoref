@@ -15,6 +15,7 @@ class PNode:
     self.pIngs = []
     self.cc_edge = []
     self.logger = logging.getLogger('root')
+    self.id = ""
 
   def add_arg(self, argType, rnode):
     pass

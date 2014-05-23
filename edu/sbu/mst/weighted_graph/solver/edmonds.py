@@ -301,18 +301,18 @@ def adjust_graph(g):
     nodes[nd] = 1
     for ch in g[nd]:
       nodes[ch] = 1
-  for n in nodes:
-    if n not in g:
-      g[n] = {}
-  # for nd in g:
-  #   a[nd] = {}
-  #   for ch in nodes.keys():
-  #     if ch in g[nd]:
-  #       a[nd][ch] = g[nd][ch]
-  #     else:
-  #       a[nd][ch] = sys.maxint
-  # return a
-  return g
+  # for n in nodes:
+  #   if n not in g:
+  #     g[n] = {}
+  for nd in g:
+    a[nd] = {}
+    for ch in nodes.keys():
+      if ch in g[nd]:
+        a[nd][ch] = g[nd][ch]
+      else:
+        a[nd][ch] = sys.maxint
+  return a
+  # return g
 # --------------------------------------------------------------------------------- #
 def getNodeText(label, id_node_map):
     node = id_node_map.get(label)
@@ -333,7 +333,7 @@ def upside_down_arborescence(root, g, id_node_map):
   # if True:
   #   return g
   ag = adjust_graph(g)
-  rag = adjust_graph(_reverse(ag))
+  rag = _reverse(ag)
   h = rmst("Ghost", rag, ag)
   # h = mst(root, g)
 
@@ -341,12 +341,12 @@ def upside_down_arborescence(root, g, id_node_map):
   # print_graph(g, id_node_map)
   # print "-----Arborescence-----"
   # print "root=Ghost"
-  # if not h is None:
-  #   res = _reverse(h)
-  #   print_graph(res, id_node_map)
-  #   return res
-  # else:
-  #   print '*** None Arborescence ***'
+  if not h is None:
+    res = _reverse(h)
+    # print_graph(res, id_node_map)
+    return res
+  else:
+    print '*** None Arborescence ***'
 
   return None
 
