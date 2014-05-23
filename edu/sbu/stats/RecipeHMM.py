@@ -61,13 +61,14 @@ class RecipeHMM:
     #TODO: log probability
     #TODO: remove punctuation in phrase ?
 
-    #Question: TODO:Check this
+    #Question: TODO: Check this
     #P(b1, b2, b3) = P(b3|b2) * P(b2|b1) * P(b1)
     #                or P(b1|b2) * P(b2|b3) * P(b3) ?
     #I guess they are not one and the same - verify
 
     #TODO: How to access the bigram probability
     for i in xrange(len(words) - 1):
+
 
 
       pass
