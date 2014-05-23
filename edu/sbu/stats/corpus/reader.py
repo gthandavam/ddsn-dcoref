@@ -12,6 +12,7 @@ class RecipeReader:
     + self.recipe_name + 'Args/'
     self.words = []
     self.verbs = []
+    self.read()
     pass
 
   def read_corpus(self):
