@@ -93,6 +93,7 @@ class RecipeHMM:
     self.calc_verbs_unigram()
     self.calc_words_bigram_prob()
     self.calc_verbs_bigram_prob()
+    self.calc_null_args_prob()
     pass
 
   def calc_null_args_prob(self):
@@ -114,9 +115,6 @@ class RecipeHMM:
 
 
       self.null_args_cond = ConditionalProbDist(null_args_cfd, MLEProbDist, 3)
-
-
-
       pass
     pass
 
