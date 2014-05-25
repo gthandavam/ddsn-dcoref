@@ -37,12 +37,12 @@ class RecipeReader:
           arg2 = lines[i+5].split(my_separator)[-1].strip()
           arg2POS = lines[i+6].split(my_separator)[-1].strip()
           if(pred != 'NULL'):
-            sem_group['pred'] = pred
+            sem_group['pred'] = pred.lower()
           if(arg1 != 'NULL'):
-            sem_group['arg1'] = arg1
+            sem_group['arg1'] = arg1.lower()
             sem_group['arg1POS'] = arg1POS
           if(arg2 != 'NULL'):
-            sem_group['arg2'] = arg2
+            sem_group['arg2'] = arg2.lower()
             sem_group['arg2POS'] = arg2POS
 
           self.verbs.append(pred)

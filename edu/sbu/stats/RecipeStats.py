@@ -14,7 +14,7 @@ from nltk.probability import ConditionalFreqDist
 from nltk.probability import ConditionalProbDist
 import logging
 
-class RecipeHMM:
+class RecipeStats:
 
   def __init__(self, recipe_name):
     #TODO: Smoothing on the language models constructed
@@ -30,6 +30,7 @@ class RecipeHMM:
     pass
 
   #TODO: I expect nltk to handle end of sentence marker cases - check!!!
+  #The current usage doesnt handle this case - TODO:Clean this up
   def calc_words_bigram_prob(self):
     bgm    = coll.BigramAssocMeasures()
     finder = coll.BigramCollocationFinder.from_words(self.reader.words)
@@ -113,12 +114,14 @@ class RecipeHMM:
       if sem_group['arg2'] is None:
         null_args_cfd['arg2null'].inc(sem_group['pred'])
 
-
       self.null_args_cond = ConditionalProbDist(null_args_cfd, MLEProbDist, 3)
+
       pass
     pass
 
   def save_all(self):
+
+    # print json.dumps(self.null_args_cond)
     pass
 
   pass

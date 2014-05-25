@@ -102,7 +102,7 @@ def make_nodes(args_file):
         dcoref_graph_builder.PNodes.append([])
         dcoref_graph_builder.RNodes.append([])
 
-      #TODO: For now splitting based on ':' it could become a problem when text contains ':'
+      #Note: Splitting based on a custom separator TheGT
       sent_num = int(lines[i].split(my_separator)[-1].strip())
       pred_num = int(lines[i+1].split(my_separator)[-1].strip())
       sem_group = {'pred':None, 'arg1':None, 'arg2':None, 'arg1POS': None, 'arg2POS' : None}
@@ -184,4 +184,3 @@ def main():
 
 if __name__ == '__main__':
   main()
-
