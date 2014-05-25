@@ -25,6 +25,9 @@ class RecipeStats:
     self.verb_unigram_prob = None
     self.word_unigram_prob = None
     self.null_args_cond    = None
+    self.v_prev_v_phrase_cond = None
+    self.v_phrase_cond = None
+    self.phrase_cond = None
     self.logger = logging.getLogger('root')
     ####Recipe frequencies calculated here
     pass
@@ -81,13 +84,6 @@ class RecipeStats:
 
     pass
 
-  def conditional_prob(self, arg_type):
-    """
-    nltk conditional prob notation:
-    cpd['condition'].prob(a) is P(a | condition)
-    """
-
-    pass
 
   def build_prob_dist(self):
     self.calc_words_unigram()
@@ -95,6 +91,52 @@ class RecipeStats:
     self.calc_words_bigram_prob()
     self.calc_verbs_bigram_prob()
     self.calc_null_args_prob()
+    self.calc_conditional_prob()
+    pass
+
+  def calc_conditional_prob(self):
+    """
+    nltk conditional prob notation:
+    cpd['condition'].prob(a) is P(a | condition)
+    """
+
+    prev_v = 'PREV'
+    v_prev_phrase_cfd = ConditionalFreqDist()
+    v_phrase_cfd = ConditionalFreqDist()
+    phrase_cfd = ConditionalFreqDist()
+    for sem_group in self.reader.sem_groups:
+      if(sem_group['pred'] is None):
+        self.logger.error("pred is none!!!")
+        continue
+
+      if(sem_group['arg1'] is None):
+        arg1 = 'NULL'
+      else:
+        arg1 = sem_group['arg1']
+
+      if(sem_group['arg2'] is None):
+        arg2 = 'NULL'
+      else:
+        arg2 = sem_group['arg2']
+
+      v_prev_phrase_cfd[(arg1, sem_group['pred'], prev_v)].inc('arg1')
+      v_prev_phrase_cfd[(arg2, sem_group['pred'], prev_v)].inc('arg2')
+      v_phrase_cfd[(arg1, sem_group['pred'])].inc('arg1')
+      v_phrase_cfd[(arg2, sem_group['pred'])].inc('arg2')
+      phrase_cfd[arg1].inc('arg1')
+      phrase_cfd[arg2].inc('arg2')
+
+      prev_v = sem_group['pred']
+
+      pass
+
+    self.v_prev_v_phrase_cond = ConditionalProbDist(v_prev_phrase_cfd, MLEProbDist, 2)
+
+    self.v_phrase_cond = ConditionalProbDist(v_phrase_cfd, MLEProbDist, 2)
+
+    self.phrase_cond = ConditionalProbDist(phrase_cfd, MLEProbDist, 2)
+
+
     pass
 
   def calc_null_args_prob(self):
