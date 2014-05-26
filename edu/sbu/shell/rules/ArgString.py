@@ -7,8 +7,8 @@ class ArgString:
     self.stopwords = nltk.corpus.stopwords.words('english')
     self.stopwords.append('minutes')
     self.logger = logging.getLogger('root')
-    #ignore determiner, adjective, adverb in arg string match
-    self.ignorePOS = ['DT', 'JJ', 'RB']
+    #ignore determiner, adjective, adverb, conjunction, preposition(TO,IN), count(CD) in arg string match
+    self.ignorePOS = ['DT', 'JJ', 'RB', 'CC', 'TO', 'IN', 'CD']
     pass
 
 
