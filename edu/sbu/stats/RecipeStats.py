@@ -25,9 +25,14 @@ class RecipeStats:
     self.verb_unigram_prob = None
     self.word_unigram_prob = None
     self.null_args_cond    = None
+
     self.v_prev_v_phrase_cond = None
     self.v_phrase_cond = None
     self.phrase_cond = None
+
+    self.v_prev_v_arg1_p_arg = None
+    self.v_prev_v_arg2_p_arg = None
+
     self.logger = logging.getLogger('root')
     ####Recipe frequencies calculated here
     pass
@@ -100,10 +105,13 @@ class RecipeStats:
     cpd['condition'].prob(a) is P(a | condition)
     """
 
-    prev_v = 'PREV'
+    prev_sg = {'pred': 'NULL', 'arg1' : 'NULL', 'arg2': 'NULL', 'arg1POS':'NULL', 'arg2POS' : 'NULL'}
     v_prev_phrase_cfd = ConditionalFreqDist()
     v_phrase_cfd = ConditionalFreqDist()
     phrase_cfd = ConditionalFreqDist()
+    v_prev_v_arg1_p_arg_cfd = ConditionalFreqDist()
+    v_prev_v_arg2_p_arg_cfd = ConditionalFreqDist()
+
     for sem_group in self.reader.sem_groups:
       if(sem_group['pred'] is None):
         self.logger.error("pred is none!!!")
@@ -119,23 +127,27 @@ class RecipeStats:
       else:
         arg2 = sem_group['arg2']
 
-      v_prev_phrase_cfd[(arg1, sem_group['pred'], prev_v)].inc('arg1')
-      v_prev_phrase_cfd[(arg2, sem_group['pred'], prev_v)].inc('arg2')
+      v_prev_phrase_cfd[(arg1, sem_group['pred'], prev_sg['pred'])].inc('arg1')
+      v_prev_phrase_cfd[(arg2, sem_group['pred'], prev_sg['pred'])].inc('arg2')
       v_phrase_cfd[(arg1, sem_group['pred'])].inc('arg1')
       v_phrase_cfd[(arg2, sem_group['pred'])].inc('arg2')
       phrase_cfd[arg1].inc('arg1')
       phrase_cfd[arg2].inc('arg2')
 
-      prev_v = sem_group['pred']
+      v_prev_v_arg1_p_arg_cfd[(sem_group['pred'], prev_sg['pred'], prev_sg['arg1'], arg1)].inc('arg1')
+      v_prev_v_arg1_p_arg_cfd[(sem_group['pred'], prev_sg['pred'], prev_sg['arg1'], arg2)].inc('arg2')
 
+      v_prev_v_arg2_p_arg_cfd[(sem_group['pred'], prev_sg['pred'], prev_sg['arg2'], arg1)].inc('arg1')
+      v_prev_v_arg2_p_arg_cfd[(sem_group['pred'], prev_sg['pred'], prev_sg['arg2'], arg2)].inc('arg2')
+
+      prev_sg = {'pred': sem_group['pred'], 'arg1' : arg1, 'arg2': arg2, 'arg1POS':'NULL', 'arg2POS' : 'NULL'}
       pass
 
     self.v_prev_v_phrase_cond = ConditionalProbDist(v_prev_phrase_cfd, MLEProbDist, 2)
-
     self.v_phrase_cond = ConditionalProbDist(v_phrase_cfd, MLEProbDist, 2)
-
     self.phrase_cond = ConditionalProbDist(phrase_cfd, MLEProbDist, 2)
-
+    self.v_prev_v_arg1_p_arg = ConditionalProbDist(v_prev_v_arg1_p_arg_cfd, MLEProbDist, 2)
+    self.v_prev_v_arg2_p_arg = ConditionalProbDist(v_prev_v_arg2_p_arg_cfd, MLEProbDist, 2)
 
     pass
 
