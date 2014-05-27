@@ -104,7 +104,6 @@ class RecipeStats:
     nltk conditional prob notation:
     cpd['condition'].prob(a) is P(a | condition)
     """
-
     prev_sg = {'pred': 'NULL', 'arg1' : 'NULL', 'arg2': 'NULL', 'arg1POS':'NULL', 'arg2POS' : 'NULL'}
     v_prev_phrase_cfd = ConditionalFreqDist()
     v_phrase_cfd = ConditionalFreqDist()
@@ -173,9 +172,51 @@ class RecipeStats:
       pass
     pass
 
-  def save_all(self):
+  def write(self):
+    print 1
+    pass
 
-    # print json.dumps(self.null_args_cond)
+  def save_all(self):
+    print 1
+    with open('arg_type_given_verb_and_phrase.csv', 'w') as f:
+      for key in self.v_phrase_cond.keys():
+        for i in xrange(len(key)):
+          f.write('\"' + key[i] + '\"'+ ',')
+        f.write(str(self.v_phrase_cond[key].prob('arg1'))+',')
+        f.write(str(self.v_phrase_cond[key].prob('arg2'))+'\n')
+        pass
+
+    with open('arg_type_given_verb_and_prev_verb_and_phrase.csv', 'w') as f:
+      for key in self.v_prev_v_phrase_cond.keys():
+        for i in xrange(len(key)):
+          f.write('\"' + key[i] + '\"'+ ',')
+        f.write(str(self.v_prev_v_phrase_cond[key].prob('arg1'))+',')
+        f.write(str(self.v_prev_v_phrase_cond[key].prob('arg2'))+'\n')
+        pass
+
+    with open('arg_type_given_verb_and_prev_verb_and_prev_verb_arg1_and_phrase.csv', 'w') as f:
+      for key in self.v_prev_v_arg1_p_arg.keys():
+        for i in xrange(len(key)):
+          f.write('\"' + key[i] + '\"'+ ',')
+        f.write(str(self.v_prev_v_arg1_p_arg[key].prob('arg1'))+',')
+        f.write(str(self.v_prev_v_arg1_p_arg[key].prob('arg2'))+'\n')
+        pass
+
+    with open('arg_type_given_verb_and_prev_verb_and_prev_verb_arg2_and_phrase.csv', 'w') as f:
+      for key in self.v_prev_v_arg2_p_arg.keys():
+        for i in xrange(len(key)):
+          f.write('\"' + key[i] + '\"' + ',')
+        f.write(str(self.v_prev_v_arg2_p_arg[key].prob('arg1'))+',')
+        f.write(str(self.v_prev_v_arg2_p_arg[key].prob('arg2'))+'\n')
+        pass
+
+    with open('arg_type_given_phrase.csv', 'w') as f:
+      for key in self.phrase_cond.keys():
+
+        f.write('\"' + key + '\"'+ ',')
+        f.write(str(self.phrase_cond[key].prob('arg1'))+',')
+        f.write(str(self.phrase_cond[key].prob('arg2'))+'\n')
+        pass
     pass
 
   pass
