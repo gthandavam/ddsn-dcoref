@@ -83,6 +83,28 @@ def get_semantic_roles(recipe_file):
   ret = get_text(swirl_file)
   return ret
 
+def special_predicate_processing(sem_group):
+  '''
+  To handle special cases
+  pour NP : None PP: in blah blah blah
+  whisk NP : None PP: in blah blah blah
+  stir NP: None PP: in blah blah blah
+  cases
+  '''
+  if(sem_group['pred'] is None):
+    return sem_group
+
+  if(sem_group['pred'].lower() in ('pour', 'whisk', 'stir')):
+    if(sem_group['arg1'] is None):
+      if(not sem_group['arg2'] is None and sem_group['arg2'].lower().startswith('in')):
+        sem_group['arg1'] = sem_group['arg2']
+        sem_group['arg1POS'] = sem_group['arg2POS']
+        sem_group['arg2'] = None
+        sem_group['arg2POS'] = None
+        pass
+
+  return sem_group
+  pass
 
 def make_nodes(args_file):
   """
@@ -92,7 +114,6 @@ def make_nodes(args_file):
   dcoref_graph_builder.PNodes.append([])
   dcoref_graph_builder.RNodes.append([])
   sent_num = -1
-
 
   my_separator = 'TheGT'
   with open(args_file) as f:
@@ -119,6 +140,9 @@ def make_nodes(args_file):
       if(arg2 != 'NULL'):
         sem_group['arg2'] = arg2
         sem_group['arg2POS'] = arg2POS
+
+      sem_group = special_predicate_processing(sem_group)
+
       dcoref_graph_builder.make_nodes(sem_group, sent_num, pred_num)
   return dcoref_graph_builder
 
