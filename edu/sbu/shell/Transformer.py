@@ -11,6 +11,15 @@ from edu.sbu.mst.weighted_graph.solver.edmonds import upside_down_arborescence
 
 mod_logger = log.setup_custom_logger('root')
 
+
+"""
+Test cases for trying different edge weights:
+chipotle-mac-and-cheese
+chipotle-macaroni-and-cheese
+dannys-macaroni-and-cheese
+reuben-mac-and-cheese
+"""
+
 def get_text(swirl_output):
   """
   Parse the swirl output and return the structured data in a 3darray sent, row, column
@@ -93,7 +102,7 @@ def make_nodes(args_file):
         dcoref_graph_builder.PNodes.append([])
         dcoref_graph_builder.RNodes.append([])
 
-      #TODO: For now splitting based on ':' it could become a problem when text contains ':'
+      #Note: Splitting based on a custom separator TheGT
       sent_num = int(lines[i].split(my_separator)[-1].strip())
       pred_num = int(lines[i+1].split(my_separator)[-1].strip())
       sem_group = {'pred':None, 'arg1':None, 'arg2':None, 'arg1POS': None, 'arg2POS' : None}
@@ -141,7 +150,7 @@ def connect_arbor(pnodes_resolved, rnodes_resolved):
 def main():
 
   #files sentence split using stanford sentence splitter - fsm based
-  i=0
+  # i=0
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
     i+=1
     if i>10:
@@ -177,4 +186,3 @@ def main():
 
 if __name__ == '__main__':
   main()
-

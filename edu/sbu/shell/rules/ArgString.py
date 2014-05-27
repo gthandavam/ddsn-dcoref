@@ -5,9 +5,10 @@ import logging
 class ArgString:
   def __init__(self):
     self.stopwords = nltk.corpus.stopwords.words('english')
+    self.stopwords.append('minutes')
     self.logger = logging.getLogger('root')
-    #ignore determiner, adjective, adverb in arg string match
-    self.ignorePOS = ['DT', 'JJ', 'RB']
+    #ignore determiner, adjective, adverb, conjunction, preposition(TO,IN), count(CD) in arg string match
+    self.ignorePOS = ['DT', 'JJ', 'RB', 'CC', 'TO', 'IN', 'CD']
     pass
 
 
@@ -80,7 +81,7 @@ class ArgString:
                 shell_i, shell_j = shell
                 tmp_i, tmp_j = self.find_arg_string_match(pnodes, rnodes, rnode, shell_i, shell_j, k)
 
-                #logical bug: TODO: We should return tmp_i and tmp_j
+                 #logical bug: TODO: We should return tmp_i and tmp_j - looks solved to me
                 #easy way to solve would be let the info flow through the nodes
                 #we should scan back from the current position to the top in search of a match
                 #if a preceding node is not helping (and has a null argument) - we should jump above

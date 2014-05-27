@@ -6,6 +6,7 @@ import logging
 class RNode:
 
   def __init__(self, text='', pnum=-1, snum=-1, arg_type='' ,argPOS='', is_null=False, arg_prob = -1.0):
+    #This line was added for swirl formulation
     if not text is None:
       text = text.replace('V#', '')
     self.raw_text = text

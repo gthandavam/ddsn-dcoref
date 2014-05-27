@@ -14,7 +14,7 @@ from nltk.probability import ConditionalFreqDist
 from nltk.probability import ConditionalProbDist
 import logging
 
-class RecipeHMM:
+class RecipeStats:
 
   def __init__(self, recipe_name):
     #TODO: Smoothing on the language models constructed
@@ -25,11 +25,20 @@ class RecipeHMM:
     self.verb_unigram_prob = None
     self.word_unigram_prob = None
     self.null_args_cond    = None
+
+    self.v_prev_v_phrase_cond = None
+    self.v_phrase_cond = None
+    self.phrase_cond = None
+
+    self.v_prev_v_arg1_p_arg = None
+    self.v_prev_v_arg2_p_arg = None
+
     self.logger = logging.getLogger('root')
     ####Recipe frequencies calculated here
     pass
 
   #TODO: I expect nltk to handle end of sentence marker cases - check!!!
+  #The current usage doesnt handle this case - TODO:Clean this up
   def calc_words_bigram_prob(self):
     bgm    = coll.BigramAssocMeasures()
     finder = coll.BigramCollocationFinder.from_words(self.reader.words)
@@ -80,19 +89,66 @@ class RecipeHMM:
 
     pass
 
-  def conditional_prob(self, arg_type):
-    """
-    nltk conditional prob notation:
-    cpd['condition'].prob(a) is P(a | condition)
-    """
-
-    pass
 
   def build_prob_dist(self):
     self.calc_words_unigram()
     self.calc_verbs_unigram()
     self.calc_words_bigram_prob()
     self.calc_verbs_bigram_prob()
+    self.calc_null_args_prob()
+    self.calc_conditional_prob()
+    pass
+
+  def calc_conditional_prob(self):
+    """
+    nltk conditional prob notation:
+    cpd['condition'].prob(a) is P(a | condition)
+    """
+
+    prev_sg = {'pred': 'NULL', 'arg1' : 'NULL', 'arg2': 'NULL', 'arg1POS':'NULL', 'arg2POS' : 'NULL'}
+    v_prev_phrase_cfd = ConditionalFreqDist()
+    v_phrase_cfd = ConditionalFreqDist()
+    phrase_cfd = ConditionalFreqDist()
+    v_prev_v_arg1_p_arg_cfd = ConditionalFreqDist()
+    v_prev_v_arg2_p_arg_cfd = ConditionalFreqDist()
+
+    for sem_group in self.reader.sem_groups:
+      if(sem_group['pred'] is None):
+        self.logger.error("pred is none!!!")
+        continue
+
+      if(sem_group['arg1'] is None):
+        arg1 = 'NULL'
+      else:
+        arg1 = sem_group['arg1']
+
+      if(sem_group['arg2'] is None):
+        arg2 = 'NULL'
+      else:
+        arg2 = sem_group['arg2']
+
+      v_prev_phrase_cfd[(arg1, sem_group['pred'], prev_sg['pred'])].inc('arg1')
+      v_prev_phrase_cfd[(arg2, sem_group['pred'], prev_sg['pred'])].inc('arg2')
+      v_phrase_cfd[(arg1, sem_group['pred'])].inc('arg1')
+      v_phrase_cfd[(arg2, sem_group['pred'])].inc('arg2')
+      phrase_cfd[arg1].inc('arg1')
+      phrase_cfd[arg2].inc('arg2')
+
+      v_prev_v_arg1_p_arg_cfd[(sem_group['pred'], prev_sg['pred'], prev_sg['arg1'], arg1)].inc('arg1')
+      v_prev_v_arg1_p_arg_cfd[(sem_group['pred'], prev_sg['pred'], prev_sg['arg1'], arg2)].inc('arg2')
+
+      v_prev_v_arg2_p_arg_cfd[(sem_group['pred'], prev_sg['pred'], prev_sg['arg2'], arg1)].inc('arg1')
+      v_prev_v_arg2_p_arg_cfd[(sem_group['pred'], prev_sg['pred'], prev_sg['arg2'], arg2)].inc('arg2')
+
+      prev_sg = {'pred': sem_group['pred'], 'arg1' : arg1, 'arg2': arg2, 'arg1POS':'NULL', 'arg2POS' : 'NULL'}
+      pass
+
+    self.v_prev_v_phrase_cond = ConditionalProbDist(v_prev_phrase_cfd, MLEProbDist, 2)
+    self.v_phrase_cond = ConditionalProbDist(v_phrase_cfd, MLEProbDist, 2)
+    self.phrase_cond = ConditionalProbDist(phrase_cfd, MLEProbDist, 2)
+    self.v_prev_v_arg1_p_arg = ConditionalProbDist(v_prev_v_arg1_p_arg_cfd, MLEProbDist, 2)
+    self.v_prev_v_arg2_p_arg = ConditionalProbDist(v_prev_v_arg2_p_arg_cfd, MLEProbDist, 2)
+
     pass
 
   def calc_null_args_prob(self):
@@ -112,15 +168,14 @@ class RecipeHMM:
       if sem_group['arg2'] is None:
         null_args_cfd['arg2null'].inc(sem_group['pred'])
 
-
       self.null_args_cond = ConditionalProbDist(null_args_cfd, MLEProbDist, 3)
-
-
 
       pass
     pass
 
   def save_all(self):
+
+    # print json.dumps(self.null_args_cond)
     pass
 
   pass
