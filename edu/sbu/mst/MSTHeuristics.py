@@ -32,6 +32,13 @@ def order_close_together_pp(pNode, pNode2, id_node_map, pNodes, rNodes):
     if pNode.pnum > pNode2.pnum:
       return sys.maxint - 10
 
+  ##### Test (Polina)
+  if True:
+    if pNode2.snum==pNode.snum:
+      return float(pNode2.pnum-pNode.pnum)/(pNode2.pnum+pNode.pnum)
+    return float(pNode2.snum-pNode.snum)/(pNode2.snum+pNode.snum)
+  ######
+
   dist = len(pNodes[pNode.snum]) - pNode.pnum  - 1#accounting for zero based index
   for i in xrange(pNode.snum + 1, pNode2.snum):
     dist += len(pNodes[pNode.snum])
@@ -57,6 +64,13 @@ def order_close_together_pr(pNode, rNode, id_node_map, pNodes, rNodes):
   if pNode.snum == rNode.sent_num:
     if pNode.pnum > rNode.pred_num:
       return sys.maxint - 10
+
+  #### Test (Polina)
+  if True:
+    if rNode.sent_num==pNode.snum:
+      return float(rNode.pred_num-pNode.pnum)/(rNode.pred_num+pNode.pnum)
+    return float(rNode.sent_num-pNode.snum)/(rNode.sent_num+pNode.snum)
+  ######
 
   dist = len(pNodes[pNode.snum]) - pNode.pnum  - 1#accounting for zero based index
   for i in xrange(pNode.snum + 1, rNode.sent_num):

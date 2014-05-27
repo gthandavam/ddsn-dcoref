@@ -21,7 +21,7 @@ class MSTGraphTransformer:
     self.ccs = []
 
 
-  def reverse_transform(self, mst_graph, mst_edges):
+  def reverse_transform(self, mst_graph, mst_edges, adj_list):
     for s in mst_edges:
       if s == 'Ghost':
         continue
@@ -29,7 +29,8 @@ class MSTGraphTransformer:
         # if d == 'Ghost':
           # self.logger.error("Ghost as edge destination")
           # continue
-        if mst_graph.connected_component(s) != mst_graph.connected_component(d):
+        # if mst_graph.connected_component(s) != mst_graph.connected_component(d):
+        if s not in adj_list or d not in adj_list[s]:
           bottom = self.id_node_map[s]
           if not isinstance(bottom, PNode):
             self.logger.error("CC edge originating from a nonPNode!!!")
