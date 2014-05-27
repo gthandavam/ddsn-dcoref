@@ -302,15 +302,15 @@ class DotGraphBuilder:
               else:
                 target_node = target_node.text
                 self.logger.error('Unknown arg type')
-
-            line = '{} -> {} [label=\"{}\"'.format(start_node, target_node, 'CC')
-
-            for prop in self.edge_props['CC'].keys():
-              line += ',{}={}'.format(prop, self.edge_props['CC'][prop])
-
-            line += ']'
           else:
-            target_node = target_node.predicate
+            target_node = target_node.id
+
+          line = '{} -> {} [label=\"{}\"'.format(start_node, target_node, 'CC')
+
+          for prop in self.edge_props['CC'].keys():
+            line += ',{}={}'.format(prop, self.edge_props['CC'][prop])
+
+          line += ']'
 
           self.graph_lines.append(line)
 

@@ -33,10 +33,11 @@ class MSTGraphTransformer:
           bottom = self.id_node_map[s]
           if not isinstance(bottom, PNode):
             self.logger.error("CC edge originating from a nonPNode!!!")
+            continue
 
           bottom.cc_edge.append(d)
 
-        pass
+        # pass
 
     return mst_graph.pNodes, mst_graph.rNodes
     pass

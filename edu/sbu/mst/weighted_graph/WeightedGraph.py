@@ -1,6 +1,8 @@
 __author__ = 'gt'
 import logging
 import edu.sbu.mst.MSTHeuristics as Heuristics
+from edu.sbu.shell.semgraph.RNode import RNode
+from edu.sbu.shell.semgraph.PNode import PNode
 import sys
 class WeightedGraph:
   def __init__(self, pNodes, rNodes, ccs, v_props, adj_list, id_node_map):
@@ -131,20 +133,41 @@ class WeightedGraph:
       for ch in self.adj_list[node]:
         g[node][ch] = -100
 
+    # #len of ccs_top == len of ccs_bottom == no of ccs
+    # for i in xrange(len(self.ccs_bottom)):
+    #   for b in xrange(len(self.ccs_bottom[i])):
+    #     g[ b ] = {}
+    #     for j in xrange(len(self.ccs_top)):
+    #       if not i == j: #avoiding bottom to top edge within component
+    #         for t in xrange(len(self.ccs_top[j])):
+    #           #only considering edges not incident on root
+    #           # also disallow edges from bottom nodes of later sentences to top nodes of previous sentences
+    #           bottom = self.id_node_map[self.ccs_bottom[i][b]]
+    #           top = self.id_node_map[self.ccs_top[j][t]]
+    #           if root != self.ccs_rep_top[j] and bottom.snum < top.sent_num:
+    #             wt = weight_heuristic(self.ccs_rep_bottom[i], self.ccs_rep_top[j], self.id_node_map, self.pNodes, self.rNodes)
+    #             g[self.ccs_rep_bottom[i]][self.ccs_rep_top[j]] = wt
+
     #len of ccs_top == len of ccs_bottom == no of ccs
     for i in xrange(len(self.ccs_bottom)):
       for b in xrange(len(self.ccs_bottom[i])):
         g[ b ] = {}
-        for j in xrange(len(self.ccs_top)):
+        bottom = self.id_node_map[self.ccs_bottom[i][b]]
+        for j in xrange(len(self.ccs)):
           if not i == j: #avoiding bottom to top edge within component
-            for t in xrange(len(self.ccs_top[j])):
-              #only considering edges not incident on root
-              # also disallow edges from bottom nodes of later sentences to top nodes of previous sentences
-              bottom = self.id_node_map[self.ccs_bottom[i][b]]
-              top = self.id_node_map[self.ccs_top[j][t]]
-              if root != self.ccs_rep_top[j] and bottom.snum < top.sent_num:
-                wt = weight_heuristic(self.ccs_rep_bottom[i], self.ccs_rep_top[j], self.id_node_map, self.pNodes, self.rNodes)
-                g[self.ccs_rep_bottom[i]][self.ccs_rep_top[j]] = wt
+            for t in self.ccs[j]:
+              top = self.id_node_map[t]
+              if isinstance(top,PNode) and bottom.snum < top.snum:
+              # if root != self.ccs_rep_top[j] and bottom.snum < top.sent_num:
+                wt = weight_heuristic(self.ccs_rep_bottom[i], t, self.id_node_map, self.pNodes, self.rNodes)
+                # g[self.ccs_rep_bottom[i]][t] = wt
+                g[self.ccs_bottom[i][b]][t] = wt
+              elif isinstance(top,RNode) and bottom.snum < top.sent_num and top.arg_type!='arg2':
+              # if root != self.ccs_rep_top[j] and bottom.snum < top.sent_num:
+              #   wt = weight_heuristic(self.ccs_rep_bottom[i], self.ccs_rep_top[j], self.id_node_map, self.pNodes, self.rNodes)
+                wt = weight_heuristic(self.ccs_rep_bottom[i], t, self.id_node_map, self.pNodes, self.rNodes)
+                # g[self.ccs_rep_bottom[i]][t] = wt
+                g[self.ccs_bottom[i][b]][t] = wt
 
     # #adding top->bottom edge within the same component
     # for i in xrange(len(self.ccs_top)):
