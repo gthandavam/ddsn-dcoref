@@ -1,7 +1,10 @@
 __author__ = 'gt'
 import logging
 import edu.sbu.mst.MSTHeuristics as Heuristics
-import sys
+from edu.sbu.shell.semgraph.RNode import RNode
+from edu.sbu.shell.semgraph.PNode import PNode
+from edu.sbu.stats.RecipeStats2 import RecipeStats2
+import sys, math
 class WeightedGraph:
   def __init__(self, pNodes, rNodes, ccs, v_props, adj_list, id_node_map):
     self.pNodes = pNodes
@@ -16,6 +19,7 @@ class WeightedGraph:
     self.ccs = ccs
     self.find_active_nodes_per_cc(ccs)
     self.root = None
+    self.recipe_stats = RecipeStats2("")
 
     #for single top/bottom node per CC
     self.ccs_rep_top = []
@@ -126,36 +130,112 @@ class WeightedGraph:
 
     root = self.get_simple_components_root()
     g = {}
+    reverse_g = {}
     for node in self.adj_list:
       g[node] = {}
       for ch in self.adj_list[node]:
         g[node][ch] = -100
+        if ch not in reverse_g:
+          reverse_g[ch] = {}
+        reverse_g[ch][node] = -100
 
-    #len of ccs_top == len of ccs_bottom == no of ccs
-    for i in xrange(len(self.ccs_bottom)):
-      for b in xrange(len(self.ccs_bottom[i])):
-        g[ b ] = {}
-        for j in xrange(len(self.ccs_top)):
-          if not i == j: #avoiding bottom to top edge within component
-            for t in xrange(len(self.ccs_top[j])):
-              #only considering edges not incident on root
-              # also disallow edges from bottom nodes of later sentences to top nodes of previous sentences
-              bottom = self.id_node_map[self.ccs_bottom[i][b]]
-              top = self.id_node_map[self.ccs_top[j][t]]
-              if root != self.ccs_rep_top[j] and bottom.snum < top.sent_num:
-                wt = weight_heuristic(self.ccs_rep_bottom[i], self.ccs_rep_top[j], self.id_node_map, self.pNodes, self.rNodes)
-                g[self.ccs_rep_bottom[i]][self.ccs_rep_top[j]] = wt
+    # #len of ccs_top == len of ccs_bottom == no of ccs
+    # for i in xrange(len(self.ccs_bottom)):
+    #   for b in xrange(len(self.ccs_bottom[i])):
+    #     g[ b ] = {}
+    #     for j in xrange(len(self.ccs_top)):
+    #       if not i == j: #avoiding bottom to top edge within component
+    #         for t in xrange(len(self.ccs_top[j])):
+    #           #only considering edges not incident on root
+    #           # also disallow edges from bottom nodes of later sentences to top nodes of previous sentences
+    #           bottom = self.id_node_map[self.ccs_bottom[i][b]]
+    #           top = self.id_node_map[self.ccs_top[j][t]]
+    #           if root != self.ccs_rep_top[j] and bottom.snum < top.sent_num:
+    #             wt = weight_heuristic(self.ccs_rep_bottom[i], self.ccs_rep_top[j], self.id_node_map, self.pNodes, self.rNodes)
+    #             g[self.ccs_rep_bottom[i]][self.ccs_rep_top[j]] = wt
+
+    # #len of ccs_top == len of ccs_bottom == no of ccs
+    # for i in xrange(len(self.ccs_bottom)):
+    #   for b in xrange(len(self.ccs_bottom[i])):
+    #     g[ b ] = {}
+    #     bottom = self.id_node_map[self.ccs_bottom[i][b]]
+    #     for j in xrange(len(self.ccs)):
+    #       if not i == j: #avoiding bottom to top edge within component
+    #         for t in self.ccs[j]:
+    #           top = self.id_node_map[t]
+    #           if isinstance(top,PNode) and bottom.snum < top.snum:
+    #           # if root != self.ccs_rep_top[j] and bottom.snum < top.sent_num:
+    #             wt = weight_heuristic(self.ccs_rep_bottom[i], t, self.id_node_map, self.pNodes, self.rNodes)
+    #             # g[self.ccs_rep_bottom[i]][t] = wt
+    #             g[self.ccs_bottom[i][b]][t] = wt
+    #           elif isinstance(top,RNode) and bottom.snum < top.sent_num and top.arg_type!='arg2':
+    #           # if root != self.ccs_rep_top[j] and bottom.snum < top.sent_num:
+    #           #   wt = weight_heuristic(self.ccs_rep_bottom[i], self.ccs_rep_top[j], self.id_node_map, self.pNodes, self.rNodes)
+    #             wt = weight_heuristic(self.ccs_rep_bottom[i], t, self.id_node_map, self.pNodes, self.rNodes)
+    #             # g[self.ccs_rep_bottom[i]][t] = wt
+    #             g[self.ccs_bottom[i][b]][t] = wt
 
     # #adding top->bottom edge within the same component
     # for i in xrange(len(self.ccs_top)):
     #   g[self.ccs_rep_top[i]] = {self.ccs_rep_bottom[i] : -100}
 
-    # adding Ghost node
     g['Ghost'] = {}
-    # connect all bottom nodes to Ghost node
-    for i in xrange(len(self.ccs_bottom)):
-      for j in xrange(len(self.ccs_bottom[i])):
-        g[self.ccs_bottom[i][j]]['Ghost'] = sys.maxint - 1
+    # for i in range(len(self.pNodes)):
+    #   for p in range(len(self.pNodes[i])):
+    for i in range(len(self.ccs_bottom)):
+      for p in range(len(self.ccs_bottom[i])):
+        node1 = self.id_node_map[self.ccs_bottom[i][p]]
+        # consider only nodes with 0 out degree
+        if len(g[node1.id])>0:
+          continue
+        g[node1.id] = {}
+        g[node1.id]['Ghost'] = sys.maxint - 1
+        # extract input argument of type arg1
+        input_node = None
+        for node_id in reverse_g[node1.id]:
+          node3 = self.id_node_map[node_id]
+          if isinstance(node3,RNode) and node3.arg_type=="arg1":
+            input_node = node3
+        # Predicate-Predicate edges
+        for j in range(len(self.pNodes)):
+          for q in range(len(self.pNodes[j])):
+            # if i==j and p==q:
+            #   continue
+            node2 = self.pNodes[j][q]
+            if node1.id == node2.id:
+              continue
+            if node1==node2 or node1.snum>node2.snum or node1.snum==node2.snum and node1.pnum>node2.pnum:
+              continue
+            wt = weight_heuristic(node1.id, node2.id, self.id_node_map, self.pNodes, self.rNodes)
+            arg_probability = self.recipe_stats.getPredPredProb(node1,input_node,node2)
+            g[node1.id][node2.id] = math.log(wt) + math.log(1-arg_probability)
+        # Predicate-Argument edges
+        for j in range(len(self.ccs_top)):
+          # skip arguments from the same connected component
+          if i==j:
+            continue
+          for q in range(len(self.ccs_top[j])):
+            # for k in range(2):
+              # node2 = self.ccs_top[j][q][k+1]
+              node2 = self.id_node_map[self.ccs_top[j][q]]
+              if not isinstance(node2,RNode) or node2.arg_type=="arg2" or len(node2.shell_coref)>0:
+                continue
+              # consider only argument nodes with 0 in degree
+              if node2.id in reverse_g and len(reverse_g[node2.id])>0:
+                continue
+              if node1.snum>node2.sent_num or node1.snum==node2.sent_num and node1.pnum>node2.pred_num:
+                continue
+              wt = weight_heuristic(node1.id, node2.id, self.id_node_map, self.pNodes, self.rNodes)
+              # probability of argument being the output of the predicate
+              arg_probability = self.recipe_stats.getPredOuputArgProb(node1,input_node,node2)
+              g[node1.id][node2.id] = math.log(wt) + math.log(1-arg_probability)
+
+    # # adding Ghost node
+    # g['Ghost'] = {}
+    # # connect all bottom nodes to Ghost node
+    # for i in xrange(len(self.ccs_bottom)):
+    #   for j in xrange(len(self.ccs_bottom[i])):
+    #     g[self.ccs_bottom[i][j]]['Ghost'] = sys.maxint - 1
 
     # g['Ghost'] = {}
     # #add dummy node:

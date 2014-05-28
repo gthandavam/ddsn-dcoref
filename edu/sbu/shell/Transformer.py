@@ -166,7 +166,7 @@ def connect_arbor(pnodes_resolved, rnodes_resolved):
   # print 'root' + root
   arbor_edges = upside_down_arborescence(root, g, arbor_adapter.id_node_map)
 
-  pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, arbor_edges)
+  pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, arbor_edges, weighted_graph.adj_list)
 
   return pnodes_resolved, rnodes_resolved, arbor_adapter.dot_builder, arbor_edges
   pass
@@ -174,11 +174,13 @@ def connect_arbor(pnodes_resolved, rnodes_resolved):
 def main():
 
   #files sentence split using stanford sentence splitter - fsm based
-  # i=0
+  i=0
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
-    # i+=1
-    # if i>10:
-    #   break
+    i+=1
+    if i>10:
+      break
+    # if i!=4:
+    #   continue
 
     mod_logger.error(recipe_args_file)
 
