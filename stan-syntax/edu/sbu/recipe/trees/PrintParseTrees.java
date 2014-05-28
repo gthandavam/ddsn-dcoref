@@ -25,7 +25,7 @@ public class PrintParseTrees {
 
   public static void main(String[] args) throws IOException {
     // TODO Auto-generated method stub
-    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/MacAndCheese-Isteps/ -type f");
+    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/MacAndCheese/MacAndCheese-Isteps/ -type f");
     BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
     
     Properties props = new Properties();

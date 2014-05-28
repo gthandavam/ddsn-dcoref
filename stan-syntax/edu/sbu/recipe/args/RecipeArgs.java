@@ -31,7 +31,7 @@ public class RecipeArgs {
 
   public static void main(String[] args) throws IOException {
     
-    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/MacAndCheese-Isteps/ -type f");
+    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/CheeseBurger/CheeseBurger-Isteps/ -type f");
     
     
     BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -45,17 +45,18 @@ public class RecipeArgs {
 //          + "baked-macaroni-and-cheese-with-tomato.txt";
 //      fileName = "/home/gt/Documents/MacAndCheese-Isteps/"
 //          + "canadian-bacon-macaroni-and-cheese.txt";
-      fileName = "/home/gt/Documents/MacAndCheese-Isteps/"
-          + "best-mac-n-cheese-ever.txt";
+//      fileName = "/home/gt/Documents/MacAndCheese-Isteps/"
+//          + "best-mac-n-cheese-ever.txt";
       System.out.println("Processing Recipe " + fileName);
       Annotation annotation = new Annotation(IOUtils.slurpFileNoExceptions(fileName));
       
-      String argsFile = fileName.replace("MacAndCheese-Isteps", "MacAndCheeseArgs");
+      String argsFile = fileName.replace("CheeseBurger-Isteps", "CheeseBurgerArgs");
       
       FileWriter fw = new FileWriter(argsFile);
       
       pipeline.annotate(annotation);
       List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
+      
       
       //separating individual VPs
       //TODO: 1. Check "Stir in pasta" - cases
@@ -64,6 +65,11 @@ public class RecipeArgs {
       //This corpus has this usage of in to talk about arg1
       //Ref: http://www.macmillandictionary.com/us/dictionary/american/stir-in
       // Looks like an american usage! snap!
+      /*handle the following
+       * whisk in
+       * stir in
+       * pour in
+      */
       
       //TODO: 2. Modify NP ! << PRN -> use tregex to filter and later on post 
       //process PRN and all
@@ -72,12 +78,6 @@ public class RecipeArgs {
       TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  !>>PP "
           + "<<# /VBP/=verb [ [ < NP=arg1 < PP=arg2] | [ < NP=arg1 !<<PRN ] |"
           + " [ < (PP=arg2  !<: IN) ] | [ <: /VBP/=verb1 ] ]");
-      
-      /*handle the following
-       * whisk in
-       * stir in
-       * pour in
-      */
 
 //      TregexPattern syntFeaturesPattern = TregexPattern.compile(
 //          "NN=head > NP [$-- /NN/=appos | $-- JJ=adj | $-- DT=det]");
@@ -93,9 +93,11 @@ public class RecipeArgs {
           greased 2-quart baking dish
           large pot of lightly salted water
        */
+      
+      String mySeparator = "TheGT";
       int sentNum = -1;
       for (CoreMap sentence : sentences) {
-        System.out.println("sentence:" + sentence);
+        System.out.println("sentence" + mySeparator + sentence);
         Tree tree = sentence.get(TreeCoreAnnotations.TreeAnnotation.class);
         sentNum++;
         
@@ -127,37 +129,36 @@ public class RecipeArgs {
           else
             arg2 = matcher.getNode("arg2");
           
-//          if(matcher.getNode("verb1") != null)
-//            System.out.println("VERB1");
+          if(matcher.getNode("verb1") != null)
+            System.out.println("VERB1");
+          
+          if(matcher.getNode("verb1") != null && 
+              !matcher.getNode("verb1").equals(matcher.getNode("verb")))
+            System.out.println("GGGG verb1 != verb");
           
           System.out.println("sentNum: " + sentNum);
           System.out.println("predNum: " + predNum);
-          fw.write("sentNum: " + sentNum + "\n");
-          fw.write("predNum: " + predNum + "\n");
+          fw.write("sentNum: " + mySeparator + sentNum + "\n");
+          fw.write("predNum: " + mySeparator + predNum + "\n");
 //          if(match!=null)
 //            System.out.println("match: " + Sentence.listToString(match.yield()));
           
           if(verb != null) {
 //            System.out.println("verb: "  + Sentence.listToString(verb.yield()));
-            fw.write("verb: "  + Sentence.listToString(verb.yield()) + "\n");
+            fw.write("verb: " + mySeparator + Sentence.listToString(verb.yield()) + "\n");
           }
           
           if(arg1 != null) {
             System.out.println("Arg1: "  + Sentence.listToString(arg1.yield()));
-            fw.write("Arg1: "  + Sentence.listToString(arg1.yield()) + "##");
-            
-            GrammaticalStructure gs = gsf.newGrammaticalStructure(arg1);
-            Collection<TypedDependency> tdl = gs.allTypedDependencies();
-            
-            for(TypedDependency dep : tdl) {
-              System.out.println(dep.reln()+"~~~~~"+dep.gov()+"~~~~~"+dep.dep());
-            }
+            fw.write("Arg1: " + mySeparator + Sentence.listToString(arg1.yield()) + "\n");
             
             ArrayList<TaggedWord> arr = arg1.taggedYield();
             
+            fw.write("Arg1POS:" + mySeparator);
             for(TaggedWord w: arr)
             {
-              System.out.print(" "+w.word()+"*****"+w.tag());  
+              System.out.print(" "+w);
+              fw.write(" " + w);
             }
             
             System.out.println();
@@ -165,31 +166,32 @@ public class RecipeArgs {
             fw.write("\n");
           } else {
 //            System.out.println("Arg1: NULL");
-            fw.write("Arg1: NULL" + "\n");
+            fw.write("Arg1:"  + mySeparator + "NULL" + "\n");
+            fw.write("Arg1POS:"  + mySeparator +"NULL" + "\n");
+            
           }
           
           if(arg2 != null) {
             System.out.println("Arg2: "  + Sentence.listToString(arg2.yield()));
-            fw.write("Arg2: "  + Sentence.listToString(arg2.yield()) + "##");
-            GrammaticalStructure gs = gsf.newGrammaticalStructure(arg2);
-            Collection<TypedDependency> tdl = gs.allTypedDependencies();
-            
-            for(TypedDependency dep : tdl) {
-              System.out.println(dep.reln()+"~~~~~"+dep.gov()+"~~~~~"+dep.dep());
-            }
-            
+            fw.write("Arg2: "  + mySeparator + Sentence.listToString(arg2.yield()) + "\n");
+//            GrammaticalStructure gs = gsf.newGrammaticalStructure(arg2);
+//            Collection<TypedDependency> tdl = gs.allTypedDependencies();
+//          
+            fw.write("Arg2POS:" + mySeparator);
             ArrayList<TaggedWord> arr = arg2.taggedYield();
             
             for(TaggedWord w: arr)
             {
-              System.out.print(" "+w.word()+"*****"+w.tag());
+              fw.write(" " + w);
+              System.out.print(" "+w);
             }
             System.out.println();
             
             fw.write("\n");
           } else {
 //            System.out.println("Arg2: NULL");
-            fw.write("Arg2: NULL" + "\n");
+            fw.write("Arg2: "  + mySeparator + "NULL" + "\n");
+            fw.write("Arg2POS:"  + mySeparator +" NULL" + "\n");
           }
           
         }
@@ -197,7 +199,7 @@ public class RecipeArgs {
       }
       
       fw.close();
-      break; //for debugging
+//      break; //for debugging
     }
     reader.close();
     

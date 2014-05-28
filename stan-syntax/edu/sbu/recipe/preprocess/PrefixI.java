@@ -17,7 +17,9 @@ public class PrefixI {
 
   public static void main(String[] args) throws IOException {
     // TODO Auto-generated method stub
-    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/MacAndCheese-steps/ -type f");
+    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/MacAndCheese/MacAndCheese-steps/ -type f");
+//    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/Coleslaw/Coleslaw-steps/ -type f");
+//    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/CheeseBurger/CheeseBurger-steps/ -type f");
     BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
     
     Properties props = new Properties();
@@ -41,9 +43,23 @@ public class PrefixI {
       for(CoreMap sentence : sentences) {
         String sent = sentence.toString();
         
-        sent = sent.replaceAll(";", "; I ");
+        StringBuilder processedSent = new StringBuilder();
+        String parts[] = sent.split(";");
+        for(int i=0 ; i < parts.length; i++) {
+          parts[i] = Character.toLowerCase(
+              parts[i].charAt(0)) + (parts[i].length() > 1 ? parts[i].substring(1) : ""); 
+          
+        }
         
-        outF.write("I " + sent);
+        for(int i=0 ; i < parts.length; i++) {
+          if(i != parts.length - 1)
+            processedSent.append(" I would " + parts[i] + ";");
+          else
+            processedSent.append(" I would " + parts[i]);
+          
+        }
+        
+        outF.write(processedSent.toString());
         outF.write("\n");
       }
       outF.close();
