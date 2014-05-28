@@ -72,11 +72,18 @@ def get_features(sents, vec=1):
 
 def test_features():
   sents = [
-    'pour milk over entire casserole#SENTENCE#spread half the macaroni into a 9x13-inch casserole dish#LABEL#-',
-'spread half the macaroni into a 9x13-inch casserole dish#SENTENCE#pour milk over entire casserole#LABEL#+',
-'bake NULL in the preheated oven#SENTENCE#spread half the macaroni into a 9x13-inch casserole dish#LABEL#-',
-'pour milk over entire casserole#SENTENCE#spread half the macaroni into a 9x13-inch casserole dish#LABEL#-',
-'spread half the macaroni into a 9x13-inch casserole dish#SENTENCE#pour milk over entire casserole#LABEL#+'
+    'preheat oven to 350 degrees F#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#+',
+'preheat oven to 350 degrees F#SENTENCE#cook elbow macaroni in the boiling water#LABEL#+',
+'preheat oven to 350 degrees F#SENTENCE#spread half the macaroni into a 9x13-inch casserole dish#LABEL#+',
+'top NULL with half the tomatoes and half the Cheddar cheese#SENTENCE#preheat oven to 350 degrees F#LABEL#-',
+'pour milk over entire casserole#SENTENCE#preheat oven to 350 degrees F#LABEL#-',
+'preheat oven to 350 degrees F#SENTENCE#sprinkle NULL with crushed crackers#LABEL#+',
+'preheat oven to 350 degrees F#SENTENCE#bake NULL in the preheated oven#LABEL#+',
+'are NULL about 30 minutes#SENTENCE#preheat oven to 350 degrees F#LABEL#-',
+'bring a large pot of lightly salted water to a boil#SENTENCE#cook elbow macaroni in the boiling water#LABEL#+',
+'bring a large pot of lightly salted water to a boil#SENTENCE#spread half the macaroni into a 9x13-inch casserole dish#LABEL#+',
+'top NULL with half the tomatoes and half the Cheddar cheese#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-',
+'pour milk over entire casserole#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-,',
   ]
   vec, X = get_features(sents)
 

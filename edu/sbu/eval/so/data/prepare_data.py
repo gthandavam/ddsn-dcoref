@@ -147,8 +147,8 @@ def repl(m):
 
 def prepare_tsp_experiment_data(inpFileList, outFile):
 
-  print 'data already prepared'
-  return
+  # print 'data already prepared'
+  # return
 
   samples      = open(outFile, 'w')
   files        = open(inpFileList)
@@ -166,29 +166,27 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
     with open(arg_file) as f:
       lines = f.readlines()
       for i in xrange(0, len(lines), 7):
-        for j in xrange(abs(sent_num  - int(lines[i].split(my_separator)[-1].strip()))):
+        #Note: Splitting based on a custom separator TheGT
+        sent_num = int(lines[i].split(my_separator)[-1].strip())
+        pred_num = int(lines[i+1].split(my_separator)[-1].strip())
+        sem_group = {'pred':None, 'arg1':None, 'arg2':None, 'arg1POS': None, 'arg2POS' : None}
+        pred = lines[i+2].split(my_separator)[-1].strip()
+        arg1 = lines[i+3].split(my_separator)[-1].strip()
+        arg1POS = lines[i+4].split(my_separator)[-1].strip()
+        arg2 = lines[i+5].split(my_separator)[-1].strip()
+        arg2POS = lines[i+6].split(my_separator)[-1].strip()
+        if(pred != 'NULL'):
+          sem_group['pred'] = pred
+        if(arg1 != 'NULL'):
+          sem_group['arg1'] = arg1
+          sem_group['arg1POS'] = arg1POS
+        if(arg2 != 'NULL'):
+          sem_group['arg2'] = arg2
+          sem_group['arg2POS'] = arg2POS
 
-          #Note: Splitting based on a custom separator TheGT
-          sent_num = int(lines[i].split(my_separator)[-1].strip())
-          pred_num = int(lines[i+1].split(my_separator)[-1].strip())
-          sem_group = {'pred':None, 'arg1':None, 'arg2':None, 'arg1POS': None, 'arg2POS' : None}
-          pred = lines[i+2].split(my_separator)[-1].strip()
-          arg1 = lines[i+3].split(my_separator)[-1].strip()
-          arg1POS = lines[i+4].split(my_separator)[-1].strip()
-          arg2 = lines[i+5].split(my_separator)[-1].strip()
-          arg2POS = lines[i+6].split(my_separator)[-1].strip()
-          if(pred != 'NULL'):
-            sem_group['pred'] = pred
-          if(arg1 != 'NULL'):
-            sem_group['arg1'] = arg1
-            sem_group['arg1POS'] = arg1POS
-          if(arg2 != 'NULL'):
-            sem_group['arg2'] = arg2
-            sem_group['arg2POS'] = arg2POS
-
-          sem_group = special_predicate_processing(sem_group)
-          exp_line = pred + ' ' + arg1 + ' ' + arg2
-          sentences.append(exp_line)
+        sem_group = special_predicate_processing(sem_group)
+        exp_line = pred + ' ' + arg1 + ' ' + arg2
+        sentences.append(exp_line)
 
     # for line in f.readlines():
     #   line = line.replace('\n', ' ')
@@ -248,15 +246,15 @@ def get_stat(expFile):
 
 
 def main():
-  # prepare_tsp_experiment_data(trainFileList, trainTSPFile)
-  # prepare_tsp_experiment_data(devFileList, devTSPFile)
-  # prepare_tsp_experiment_data(testFileList, testTSPFile)
-  # print '~~~Training Set~~~'
-  # get_stat(trainTSPFile)
-  # print '~~~Dev Set~~~'
-  # get_stat(devTSPFile)
-  # print '~~~Test Set~~~'
-  # get_stat(testTSPFile)
+  prepare_tsp_experiment_data(trainFileList, trainTSPFile)
+  prepare_tsp_experiment_data(devFileList, devTSPFile)
+  prepare_tsp_experiment_data(testFileList, testTSPFile)
+  print '~~~Training Set~~~'
+  get_stat(trainTSPFile)
+  print '~~~Dev Set~~~'
+  get_stat(devTSPFile)
+  print '~~~Test Set~~~'
+  get_stat(testTSPFile)
   pass
 
 
@@ -266,14 +264,15 @@ if __name__ == '__main__':
 
 '''
 ~~~Training Set~~~
-Number of positives 1921
-Number of samples 3782
+Number of positives 2290
+Number of samples 4484
 
 ~~~Dev Set~~~
-Number of positives 390
-Number of samples 765
+Number of positives 456
+Number of samples 922
 
 ~~~Test Set~~~
-Number of positives 496
-Number of samples 1010
+Number of positives 607
+Number of samples 1212
+#############
 '''
