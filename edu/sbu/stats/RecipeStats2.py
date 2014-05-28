@@ -24,6 +24,10 @@ class RecipeStats2:
     return self.getTextSim(input_argument.text, predicate2.predicate)
 
   def getTextSim(self, text1, text2):
+    if text1 is None:
+      text1 = ''
+    if text2 is None:
+      text2 = ''
     d1 = Counter(map(lambda k: self.stemmer.stem(k), text1.lower().split(" ")))
     d2 = Counter(map(lambda k: self.stemmer.stem(k), text2.lower().split(" ")))
     sum1 = 0

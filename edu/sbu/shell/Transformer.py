@@ -174,11 +174,11 @@ def connect_arbor(pnodes_resolved, rnodes_resolved):
 def main():
 
   #files sentence split using stanford sentence splitter - fsm based
-  i=0
+  # i=0
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
-    i+=1
-    if i>10:
-      break
+    # i+=1
+    # if i>10:
+    #   break
     # if i!=4:
     #   continue
 
