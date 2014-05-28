@@ -1,0 +1,938 @@
+bring NULL to a boil#SENTENCE#combine milk , garlic , nutmeg and chili powder NULL#LABEL#-#PAIR#1,0
+reduce heat NULL#SENTENCE#combine milk , garlic , nutmeg and chili powder NULL#LABEL#-#PAIR#2,0
+simmer NULL for 5 minutes#SENTENCE#combine milk , garlic , nutmeg and chili powder NULL#LABEL#-#PAIR#3,0
+combine milk , garlic , nutmeg and chili powder NULL#SENTENCE#drain pasta and return to sauce pot#LABEL#+#PAIR#0,4
+pour cheese sauce over pasta#SENTENCE#combine milk , garlic , nutmeg and chili powder NULL#LABEL#-#PAIR#5,0
+combine milk , garlic , nutmeg and chili powder NULL#SENTENCE#add chives and remaining NULL#LABEL#+#PAIR#0,6
+bring NULL to a boil#SENTENCE#reduce heat NULL#LABEL#+#PAIR#1,2
+simmer NULL for 5 minutes#SENTENCE#bring NULL to a boil#LABEL#-#PAIR#3,1
+drain pasta and return to sauce pot#SENTENCE#bring NULL to a boil#LABEL#-#PAIR#4,1
+bring NULL to a boil#SENTENCE#pour cheese sauce over pasta#LABEL#+#PAIR#1,5
+bring NULL to a boil#SENTENCE#add chives and remaining NULL#LABEL#+#PAIR#1,6
+simmer NULL for 5 minutes#SENTENCE#reduce heat NULL#LABEL#-#PAIR#3,2
+drain pasta and return to sauce pot#SENTENCE#reduce heat NULL#LABEL#-#PAIR#4,2
+pour cheese sauce over pasta#SENTENCE#reduce heat NULL#LABEL#-#PAIR#5,2
+reduce heat NULL#SENTENCE#add chives and remaining NULL#LABEL#+#PAIR#2,6
+simmer NULL for 5 minutes#SENTENCE#drain pasta and return to sauce pot#LABEL#+#PAIR#3,4
+pour cheese sauce over pasta#SENTENCE#simmer NULL for 5 minutes#LABEL#-#PAIR#5,3
+add chives and remaining NULL#SENTENCE#simmer NULL for 5 minutes#LABEL#-#PAIR#6,3
+drain pasta and return to sauce pot#SENTENCE#pour cheese sauce over pasta#LABEL#+#PAIR#4,5
+drain pasta and return to sauce pot#SENTENCE#add chives and remaining NULL#LABEL#+#PAIR#4,6
+pour cheese sauce over pasta#SENTENCE#add chives and remaining NULL#LABEL#+#PAIR#5,6
+7,21#RECIPE#
+preheat oven to 350 degrees F#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#+#PAIR#0,1
+cook elbow macaroni in the boiling water#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#2,0
+return macaroni to pot#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#3,0
+stir tomatoes into the macaroni#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#4,0
+cook NULL over medium heat#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#5,0
+remove NULL from heat#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#6,0
+preheat oven to 350 degrees F#SENTENCE#melt butter in a large saucepan over medium-high heat#LABEL#+#PAIR#0,7
+stir flour into melted butter and cook#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#8,0
+bring 2 to 3 minutes NULL#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#9,0
+preheat oven to 350 degrees F#SENTENCE#bring the mixture to a boil#LABEL#+#PAIR#0,10
+remove saucepan from heat#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#11,0
+melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#12,0
+pour NULL over the macaroni#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#13,0
+preheat oven to 350 degrees F#SENTENCE#stir NULL to coat pasta#LABEL#+#PAIR#0,14
+transfer the mixture to the prepared baking dish and top#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#15,0
+bake NULL in preheated oven#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#16,0
+cool 10 minutes before serving#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#17,0
+bring a large pot of lightly salted water to a boil#SENTENCE#cook elbow macaroni in the boiling water#LABEL#+#PAIR#1,2
+return macaroni to pot#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#3,1
+stir tomatoes into the macaroni#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#4,1
+cook NULL over medium heat#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#5,1
+remove NULL from heat#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#6,1
+bring a large pot of lightly salted water to a boil#SENTENCE#melt butter in a large saucepan over medium-high heat#LABEL#+#PAIR#1,7
+bring a large pot of lightly salted water to a boil#SENTENCE#stir flour into melted butter and cook#LABEL#+#PAIR#1,8
+bring 2 to 3 minutes NULL#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#9,1
+bring a large pot of lightly salted water to a boil#SENTENCE#bring the mixture to a boil#LABEL#+#PAIR#1,10
+bring a large pot of lightly salted water to a boil#SENTENCE#remove saucepan from heat#LABEL#+#PAIR#1,11
+bring a large pot of lightly salted water to a boil#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#+#PAIR#1,12
+pour NULL over the macaroni#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#13,1
+stir NULL to coat pasta#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#14,1
+bring a large pot of lightly salted water to a boil#SENTENCE#transfer the mixture to the prepared baking dish and top#LABEL#+#PAIR#1,15
+bring a large pot of lightly salted water to a boil#SENTENCE#bake NULL in preheated oven#LABEL#+#PAIR#1,16
+cool 10 minutes before serving#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#17,1
+cook elbow macaroni in the boiling water#SENTENCE#return macaroni to pot#LABEL#+#PAIR#2,3
+cook elbow macaroni in the boiling water#SENTENCE#stir tomatoes into the macaroni#LABEL#+#PAIR#2,4
+cook elbow macaroni in the boiling water#SENTENCE#cook NULL over medium heat#LABEL#+#PAIR#2,5
+cook elbow macaroni in the boiling water#SENTENCE#remove NULL from heat#LABEL#+#PAIR#2,6
+cook elbow macaroni in the boiling water#SENTENCE#melt butter in a large saucepan over medium-high heat#LABEL#+#PAIR#2,7
+cook elbow macaroni in the boiling water#SENTENCE#stir flour into melted butter and cook#LABEL#+#PAIR#2,8
+bring 2 to 3 minutes NULL#SENTENCE#cook elbow macaroni in the boiling water#LABEL#-#PAIR#9,2
+cook elbow macaroni in the boiling water#SENTENCE#bring the mixture to a boil#LABEL#+#PAIR#2,10
+cook elbow macaroni in the boiling water#SENTENCE#remove saucepan from heat#LABEL#+#PAIR#2,11
+melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#SENTENCE#cook elbow macaroni in the boiling water#LABEL#-#PAIR#12,2
+pour NULL over the macaroni#SENTENCE#cook elbow macaroni in the boiling water#LABEL#-#PAIR#13,2
+stir NULL to coat pasta#SENTENCE#cook elbow macaroni in the boiling water#LABEL#-#PAIR#14,2
+cook elbow macaroni in the boiling water#SENTENCE#transfer the mixture to the prepared baking dish and top#LABEL#+#PAIR#2,15
+bake NULL in preheated oven#SENTENCE#cook elbow macaroni in the boiling water#LABEL#-#PAIR#16,2
+cook elbow macaroni in the boiling water#SENTENCE#cool 10 minutes before serving#LABEL#+#PAIR#2,17
+return macaroni to pot#SENTENCE#stir tomatoes into the macaroni#LABEL#+#PAIR#3,4
+return macaroni to pot#SENTENCE#cook NULL over medium heat#LABEL#+#PAIR#3,5
+return macaroni to pot#SENTENCE#remove NULL from heat#LABEL#+#PAIR#3,6
+return macaroni to pot#SENTENCE#melt butter in a large saucepan over medium-high heat#LABEL#+#PAIR#3,7
+stir flour into melted butter and cook#SENTENCE#return macaroni to pot#LABEL#-#PAIR#8,3
+bring 2 to 3 minutes NULL#SENTENCE#return macaroni to pot#LABEL#-#PAIR#9,3
+bring the mixture to a boil#SENTENCE#return macaroni to pot#LABEL#-#PAIR#10,3
+return macaroni to pot#SENTENCE#remove saucepan from heat#LABEL#+#PAIR#3,11
+return macaroni to pot#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#+#PAIR#3,12
+pour NULL over the macaroni#SENTENCE#return macaroni to pot#LABEL#-#PAIR#13,3
+stir NULL to coat pasta#SENTENCE#return macaroni to pot#LABEL#-#PAIR#14,3
+return macaroni to pot#SENTENCE#transfer the mixture to the prepared baking dish and top#LABEL#+#PAIR#3,15
+bake NULL in preheated oven#SENTENCE#return macaroni to pot#LABEL#-#PAIR#16,3
+return macaroni to pot#SENTENCE#cool 10 minutes before serving#LABEL#+#PAIR#3,17
+stir tomatoes into the macaroni#SENTENCE#cook NULL over medium heat#LABEL#+#PAIR#4,5
+stir tomatoes into the macaroni#SENTENCE#remove NULL from heat#LABEL#+#PAIR#4,6
+stir tomatoes into the macaroni#SENTENCE#melt butter in a large saucepan over medium-high heat#LABEL#+#PAIR#4,7
+stir tomatoes into the macaroni#SENTENCE#stir flour into melted butter and cook#LABEL#+#PAIR#4,8
+stir tomatoes into the macaroni#SENTENCE#bring 2 to 3 minutes NULL#LABEL#+#PAIR#4,9
+stir tomatoes into the macaroni#SENTENCE#bring the mixture to a boil#LABEL#+#PAIR#4,10
+remove saucepan from heat#SENTENCE#stir tomatoes into the macaroni#LABEL#-#PAIR#11,4
+stir tomatoes into the macaroni#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#+#PAIR#4,12
+pour NULL over the macaroni#SENTENCE#stir tomatoes into the macaroni#LABEL#-#PAIR#13,4
+stir NULL to coat pasta#SENTENCE#stir tomatoes into the macaroni#LABEL#-#PAIR#14,4
+stir tomatoes into the macaroni#SENTENCE#transfer the mixture to the prepared baking dish and top#LABEL#+#PAIR#4,15
+stir tomatoes into the macaroni#SENTENCE#bake NULL in preheated oven#LABEL#+#PAIR#4,16
+cool 10 minutes before serving#SENTENCE#stir tomatoes into the macaroni#LABEL#-#PAIR#17,4
+cook NULL over medium heat#SENTENCE#remove NULL from heat#LABEL#+#PAIR#5,6
+melt butter in a large saucepan over medium-high heat#SENTENCE#cook NULL over medium heat#LABEL#-#PAIR#7,5
+stir flour into melted butter and cook#SENTENCE#cook NULL over medium heat#LABEL#-#PAIR#8,5
+cook NULL over medium heat#SENTENCE#bring 2 to 3 minutes NULL#LABEL#+#PAIR#5,9
+bring the mixture to a boil#SENTENCE#cook NULL over medium heat#LABEL#-#PAIR#10,5
+remove saucepan from heat#SENTENCE#cook NULL over medium heat#LABEL#-#PAIR#11,5
+cook NULL over medium heat#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#+#PAIR#5,12
+pour NULL over the macaroni#SENTENCE#cook NULL over medium heat#LABEL#-#PAIR#13,5
+cook NULL over medium heat#SENTENCE#stir NULL to coat pasta#LABEL#+#PAIR#5,14
+cook NULL over medium heat#SENTENCE#transfer the mixture to the prepared baking dish and top#LABEL#+#PAIR#5,15
+bake NULL in preheated oven#SENTENCE#cook NULL over medium heat#LABEL#-#PAIR#16,5
+cook NULL over medium heat#SENTENCE#cool 10 minutes before serving#LABEL#+#PAIR#5,17
+melt butter in a large saucepan over medium-high heat#SENTENCE#remove NULL from heat#LABEL#-#PAIR#7,6
+remove NULL from heat#SENTENCE#stir flour into melted butter and cook#LABEL#+#PAIR#6,8
+bring 2 to 3 minutes NULL#SENTENCE#remove NULL from heat#LABEL#-#PAIR#9,6
+bring the mixture to a boil#SENTENCE#remove NULL from heat#LABEL#-#PAIR#10,6
+remove NULL from heat#SENTENCE#remove saucepan from heat#LABEL#+#PAIR#6,11
+remove NULL from heat#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#+#PAIR#6,12
+pour NULL over the macaroni#SENTENCE#remove NULL from heat#LABEL#-#PAIR#13,6
+remove NULL from heat#SENTENCE#stir NULL to coat pasta#LABEL#+#PAIR#6,14
+remove NULL from heat#SENTENCE#transfer the mixture to the prepared baking dish and top#LABEL#+#PAIR#6,15
+remove NULL from heat#SENTENCE#bake NULL in preheated oven#LABEL#+#PAIR#6,16
+cool 10 minutes before serving#SENTENCE#remove NULL from heat#LABEL#-#PAIR#17,6
+melt butter in a large saucepan over medium-high heat#SENTENCE#stir flour into melted butter and cook#LABEL#+#PAIR#7,8
+bring 2 to 3 minutes NULL#SENTENCE#melt butter in a large saucepan over medium-high heat#LABEL#-#PAIR#9,7
+bring the mixture to a boil#SENTENCE#melt butter in a large saucepan over medium-high heat#LABEL#-#PAIR#10,7
+remove saucepan from heat#SENTENCE#melt butter in a large saucepan over medium-high heat#LABEL#-#PAIR#11,7
+melt butter in a large saucepan over medium-high heat#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#+#PAIR#7,12
+melt butter in a large saucepan over medium-high heat#SENTENCE#pour NULL over the macaroni#LABEL#+#PAIR#7,13
+stir NULL to coat pasta#SENTENCE#melt butter in a large saucepan over medium-high heat#LABEL#-#PAIR#14,7
+transfer the mixture to the prepared baking dish and top#SENTENCE#melt butter in a large saucepan over medium-high heat#LABEL#-#PAIR#15,7
+melt butter in a large saucepan over medium-high heat#SENTENCE#bake NULL in preheated oven#LABEL#+#PAIR#7,16
+melt butter in a large saucepan over medium-high heat#SENTENCE#cool 10 minutes before serving#LABEL#+#PAIR#7,17
+bring 2 to 3 minutes NULL#SENTENCE#stir flour into melted butter and cook#LABEL#-#PAIR#9,8
+bring the mixture to a boil#SENTENCE#stir flour into melted butter and cook#LABEL#-#PAIR#10,8
+stir flour into melted butter and cook#SENTENCE#remove saucepan from heat#LABEL#+#PAIR#8,11
+melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#SENTENCE#stir flour into melted butter and cook#LABEL#-#PAIR#12,8
+pour NULL over the macaroni#SENTENCE#stir flour into melted butter and cook#LABEL#-#PAIR#13,8
+stir flour into melted butter and cook#SENTENCE#stir NULL to coat pasta#LABEL#+#PAIR#8,14
+transfer the mixture to the prepared baking dish and top#SENTENCE#stir flour into melted butter and cook#LABEL#-#PAIR#15,8
+stir flour into melted butter and cook#SENTENCE#bake NULL in preheated oven#LABEL#+#PAIR#8,16
+stir flour into melted butter and cook#SENTENCE#cool 10 minutes before serving#LABEL#+#PAIR#8,17
+bring the mixture to a boil#SENTENCE#bring 2 to 3 minutes NULL#LABEL#-#PAIR#10,9
+bring 2 to 3 minutes NULL#SENTENCE#remove saucepan from heat#LABEL#+#PAIR#9,11
+bring 2 to 3 minutes NULL#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#+#PAIR#9,12
+bring 2 to 3 minutes NULL#SENTENCE#pour NULL over the macaroni#LABEL#+#PAIR#9,13
+bring 2 to 3 minutes NULL#SENTENCE#stir NULL to coat pasta#LABEL#+#PAIR#9,14
+transfer the mixture to the prepared baking dish and top#SENTENCE#bring 2 to 3 minutes NULL#LABEL#-#PAIR#15,9
+bake NULL in preheated oven#SENTENCE#bring 2 to 3 minutes NULL#LABEL#-#PAIR#16,9
+bring 2 to 3 minutes NULL#SENTENCE#cool 10 minutes before serving#LABEL#+#PAIR#9,17
+bring the mixture to a boil#SENTENCE#remove saucepan from heat#LABEL#+#PAIR#10,11
+bring the mixture to a boil#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#+#PAIR#10,12
+bring the mixture to a boil#SENTENCE#pour NULL over the macaroni#LABEL#+#PAIR#10,13
+bring the mixture to a boil#SENTENCE#stir NULL to coat pasta#LABEL#+#PAIR#10,14
+transfer the mixture to the prepared baking dish and top#SENTENCE#bring the mixture to a boil#LABEL#-#PAIR#15,10
+bake NULL in preheated oven#SENTENCE#bring the mixture to a boil#LABEL#-#PAIR#16,10
+bring the mixture to a boil#SENTENCE#cool 10 minutes before serving#LABEL#+#PAIR#10,17
+remove saucepan from heat#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#+#PAIR#11,12
+pour NULL over the macaroni#SENTENCE#remove saucepan from heat#LABEL#-#PAIR#13,11
+stir NULL to coat pasta#SENTENCE#remove saucepan from heat#LABEL#-#PAIR#14,11
+remove saucepan from heat#SENTENCE#transfer the mixture to the prepared baking dish and top#LABEL#+#PAIR#11,15
+bake NULL in preheated oven#SENTENCE#remove saucepan from heat#LABEL#-#PAIR#16,11
+remove saucepan from heat#SENTENCE#cool 10 minutes before serving#LABEL#+#PAIR#11,17
+pour NULL over the macaroni#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#-#PAIR#13,12
+stir NULL to coat pasta#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#-#PAIR#14,12
+transfer the mixture to the prepared baking dish and top#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#-#PAIR#15,12
+melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#SENTENCE#bake NULL in preheated oven#LABEL#+#PAIR#12,16
+cool 10 minutes before serving#SENTENCE#melt mild Cheddar cheese and sharp Cheddar cheese into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next#LABEL#-#PAIR#17,12
+pour NULL over the macaroni#SENTENCE#stir NULL to coat pasta#LABEL#+#PAIR#13,14
+pour NULL over the macaroni#SENTENCE#transfer the mixture to the prepared baking dish and top#LABEL#+#PAIR#13,15
+pour NULL over the macaroni#SENTENCE#bake NULL in preheated oven#LABEL#+#PAIR#13,16
+cool 10 minutes before serving#SENTENCE#pour NULL over the macaroni#LABEL#-#PAIR#17,13
+transfer the mixture to the prepared baking dish and top#SENTENCE#stir NULL to coat pasta#LABEL#-#PAIR#15,14
+bake NULL in preheated oven#SENTENCE#stir NULL to coat pasta#LABEL#-#PAIR#16,14
+stir NULL to coat pasta#SENTENCE#cool 10 minutes before serving#LABEL#+#PAIR#14,17
+transfer the mixture to the prepared baking dish and top#SENTENCE#bake NULL in preheated oven#LABEL#+#PAIR#15,16
+transfer the mixture to the prepared baking dish and top#SENTENCE#cool 10 minutes before serving#LABEL#+#PAIR#15,17
+cool 10 minutes before serving#SENTENCE#bake NULL in preheated oven#LABEL#-#PAIR#17,16
+18,153#RECIPE#
+preheat oven to 350 degrees F#SENTENCE#fill a large pot with lightly salted water#LABEL#+#PAIR#0,1
+bring NULL to a rolling boil over high heat#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#2,0
+preheat oven to 350 degrees F#SENTENCE#stir in the macaroni , and return NULL#LABEL#+#PAIR#0,3
+cook the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm , about 8 minutes#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#4,0
+combine the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish NULL#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#5,0
+stir in the Cheddar cheese NULL#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#6,0
+preheat oven to 350 degrees F#SENTENCE#arrange the tomatoes on top#LABEL#+#PAIR#0,7
+pour the tomato liquid over the casserole NULL#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#8,0
+bake NULL in the preheated oven for 20 minutes#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#9,0
+mix the macaroni and cheese NULL#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#10,0
+preheat oven to 350 degrees F#SENTENCE#continue NULL about 15 minutes more#LABEL#+#PAIR#0,11
+fill a large pot with lightly salted water#SENTENCE#bring NULL to a rolling boil over high heat#LABEL#+#PAIR#1,2
+stir in the macaroni , and return NULL#SENTENCE#fill a large pot with lightly salted water#LABEL#-#PAIR#3,1
+cook the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm , about 8 minutes#SENTENCE#fill a large pot with lightly salted water#LABEL#-#PAIR#4,1
+fill a large pot with lightly salted water#SENTENCE#combine the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish NULL#LABEL#+#PAIR#1,5
+fill a large pot with lightly salted water#SENTENCE#stir in the Cheddar cheese NULL#LABEL#+#PAIR#1,6
+fill a large pot with lightly salted water#SENTENCE#arrange the tomatoes on top#LABEL#+#PAIR#1,7
+fill a large pot with lightly salted water#SENTENCE#pour the tomato liquid over the casserole NULL#LABEL#+#PAIR#1,8
+fill a large pot with lightly salted water#SENTENCE#bake NULL in the preheated oven for 20 minutes#LABEL#+#PAIR#1,9
+fill a large pot with lightly salted water#SENTENCE#mix the macaroni and cheese NULL#LABEL#+#PAIR#1,10
+fill a large pot with lightly salted water#SENTENCE#continue NULL about 15 minutes more#LABEL#+#PAIR#1,11
+stir in the macaroni , and return NULL#SENTENCE#bring NULL to a rolling boil over high heat#LABEL#-#PAIR#3,2
+cook the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm , about 8 minutes#SENTENCE#bring NULL to a rolling boil over high heat#LABEL#-#PAIR#4,2
+combine the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish NULL#SENTENCE#bring NULL to a rolling boil over high heat#LABEL#-#PAIR#5,2
+stir in the Cheddar cheese NULL#SENTENCE#bring NULL to a rolling boil over high heat#LABEL#-#PAIR#6,2
+arrange the tomatoes on top#SENTENCE#bring NULL to a rolling boil over high heat#LABEL#-#PAIR#7,2
+pour the tomato liquid over the casserole NULL#SENTENCE#bring NULL to a rolling boil over high heat#LABEL#-#PAIR#8,2
+bake NULL in the preheated oven for 20 minutes#SENTENCE#bring NULL to a rolling boil over high heat#LABEL#-#PAIR#9,2
+bring NULL to a rolling boil over high heat#SENTENCE#mix the macaroni and cheese NULL#LABEL#+#PAIR#2,10
+bring NULL to a rolling boil over high heat#SENTENCE#continue NULL about 15 minutes more#LABEL#+#PAIR#2,11
+stir in the macaroni , and return NULL#SENTENCE#cook the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm , about 8 minutes#LABEL#+#PAIR#3,4
+stir in the macaroni , and return NULL#SENTENCE#combine the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish NULL#LABEL#+#PAIR#3,5
+stir in the macaroni , and return NULL#SENTENCE#stir in the Cheddar cheese NULL#LABEL#+#PAIR#3,6
+stir in the macaroni , and return NULL#SENTENCE#arrange the tomatoes on top#LABEL#+#PAIR#3,7
+stir in the macaroni , and return NULL#SENTENCE#pour the tomato liquid over the casserole NULL#LABEL#+#PAIR#3,8
+stir in the macaroni , and return NULL#SENTENCE#bake NULL in the preheated oven for 20 minutes#LABEL#+#PAIR#3,9
+stir in the macaroni , and return NULL#SENTENCE#mix the macaroni and cheese NULL#LABEL#+#PAIR#3,10
+continue NULL about 15 minutes more#SENTENCE#stir in the macaroni , and return NULL#LABEL#-#PAIR#11,3
+cook the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm , about 8 minutes#SENTENCE#combine the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish NULL#LABEL#+#PAIR#4,5
+cook the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm , about 8 minutes#SENTENCE#stir in the Cheddar cheese NULL#LABEL#+#PAIR#4,6
+arrange the tomatoes on top#SENTENCE#cook the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm , about 8 minutes#LABEL#-#PAIR#7,4
+pour the tomato liquid over the casserole NULL#SENTENCE#cook the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm , about 8 minutes#LABEL#-#PAIR#8,4
+bake NULL in the preheated oven for 20 minutes#SENTENCE#cook the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm , about 8 minutes#LABEL#-#PAIR#9,4
+mix the macaroni and cheese NULL#SENTENCE#cook the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm , about 8 minutes#LABEL#-#PAIR#10,4
+cook the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm , about 8 minutes#SENTENCE#continue NULL about 15 minutes more#LABEL#+#PAIR#4,11
+combine the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish NULL#SENTENCE#stir in the Cheddar cheese NULL#LABEL#+#PAIR#5,6
+combine the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish NULL#SENTENCE#arrange the tomatoes on top#LABEL#+#PAIR#5,7
+pour the tomato liquid over the casserole NULL#SENTENCE#combine the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish NULL#LABEL#-#PAIR#8,5
+combine the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish NULL#SENTENCE#bake NULL in the preheated oven for 20 minutes#LABEL#+#PAIR#5,9
+mix the macaroni and cheese NULL#SENTENCE#combine the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish NULL#LABEL#-#PAIR#10,5
+combine the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish NULL#SENTENCE#continue NULL about 15 minutes more#LABEL#+#PAIR#5,11
+arrange the tomatoes on top#SENTENCE#stir in the Cheddar cheese NULL#LABEL#-#PAIR#7,6
+pour the tomato liquid over the casserole NULL#SENTENCE#stir in the Cheddar cheese NULL#LABEL#-#PAIR#8,6
+bake NULL in the preheated oven for 20 minutes#SENTENCE#stir in the Cheddar cheese NULL#LABEL#-#PAIR#9,6
+mix the macaroni and cheese NULL#SENTENCE#stir in the Cheddar cheese NULL#LABEL#-#PAIR#10,6
+stir in the Cheddar cheese NULL#SENTENCE#continue NULL about 15 minutes more#LABEL#+#PAIR#6,11
+arrange the tomatoes on top#SENTENCE#pour the tomato liquid over the casserole NULL#LABEL#+#PAIR#7,8
+arrange the tomatoes on top#SENTENCE#bake NULL in the preheated oven for 20 minutes#LABEL#+#PAIR#7,9
+mix the macaroni and cheese NULL#SENTENCE#arrange the tomatoes on top#LABEL#-#PAIR#10,7
+arrange the tomatoes on top#SENTENCE#continue NULL about 15 minutes more#LABEL#+#PAIR#7,11
+pour the tomato liquid over the casserole NULL#SENTENCE#bake NULL in the preheated oven for 20 minutes#LABEL#+#PAIR#8,9
+pour the tomato liquid over the casserole NULL#SENTENCE#mix the macaroni and cheese NULL#LABEL#+#PAIR#8,10
+continue NULL about 15 minutes more#SENTENCE#pour the tomato liquid over the casserole NULL#LABEL#-#PAIR#11,8
+mix the macaroni and cheese NULL#SENTENCE#bake NULL in the preheated oven for 20 minutes#LABEL#-#PAIR#10,9
+continue NULL about 15 minutes more#SENTENCE#bake NULL in the preheated oven for 20 minutes#LABEL#-#PAIR#11,9
+continue NULL about 15 minutes more#SENTENCE#mix the macaroni and cheese NULL#LABEL#-#PAIR#11,10
+12,66#RECIPE#
+prepare both boxes of macaroni and cheese according to package directions#SENTENCE#mix NULL in prepared macaroni and cheese#LABEL#+#PAIR#0,1
+prepare both boxes of macaroni and cheese according to package directions#SENTENCE#incorporate ingredients NULL#LABEL#+#PAIR#0,2
+pour into a 9x13 inch baking dish NULL#SENTENCE#prepare both boxes of macaroni and cheese according to package directions#LABEL#-#PAIR#3,0
+prepare both boxes of macaroni and cheese according to package directions#SENTENCE#bake NULL in a preheated 350 degree F -LRB- 175 degree C -RRB- oven for 45 to 60 minutes , or until crispy on top#LABEL#+#PAIR#0,4
+mix NULL in prepared macaroni and cheese#SENTENCE#incorporate ingredients NULL#LABEL#+#PAIR#1,2
+mix NULL in prepared macaroni and cheese#SENTENCE#pour into a 9x13 inch baking dish NULL#LABEL#+#PAIR#1,3
+mix NULL in prepared macaroni and cheese#SENTENCE#bake NULL in a preheated 350 degree F -LRB- 175 degree C -RRB- oven for 45 to 60 minutes , or until crispy on top#LABEL#+#PAIR#1,4
+pour into a 9x13 inch baking dish NULL#SENTENCE#incorporate ingredients NULL#LABEL#-#PAIR#3,2
+incorporate ingredients NULL#SENTENCE#bake NULL in a preheated 350 degree F -LRB- 175 degree C -RRB- oven for 45 to 60 minutes , or until crispy on top#LABEL#+#PAIR#2,4
+pour into a 9x13 inch baking dish NULL#SENTENCE#bake NULL in a preheated 350 degree F -LRB- 175 degree C -RRB- oven for 45 to 60 minutes , or until crispy on top#LABEL#+#PAIR#3,4
+5,10#RECIPE#
+add macaroni and cook for 8 to 10 minutes or until al dente#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#1,0
+bring a large pot of lightly salted water to a boil#SENTENCE#cut NULL into bite size pieces#LABEL#+#PAIR#0,2
+melt margarine in a large saucepan over medium low heat#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#3,0
+bring a large pot of lightly salted water to a boil#SENTENCE#stir in flour , then tomatoes NULL#LABEL#+#PAIR#0,4
+bring a large pot of lightly salted water to a boil#SENTENCE#wait NULL for sauce#LABEL#+#PAIR#0,5
+bring a large pot of lightly salted water to a boil#SENTENCE#stir in cheese NULL#LABEL#+#PAIR#0,6
+stir in cooked macaroni and bacon and heat NULL#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#7,0
+cut NULL into bite size pieces#SENTENCE#add macaroni and cook for 8 to 10 minutes or until al dente#LABEL#-#PAIR#2,1
+melt margarine in a large saucepan over medium low heat#SENTENCE#add macaroni and cook for 8 to 10 minutes or until al dente#LABEL#-#PAIR#3,1
+add macaroni and cook for 8 to 10 minutes or until al dente#SENTENCE#stir in flour , then tomatoes NULL#LABEL#+#PAIR#1,4
+wait NULL for sauce#SENTENCE#add macaroni and cook for 8 to 10 minutes or until al dente#LABEL#-#PAIR#5,1
+stir in cheese NULL#SENTENCE#add macaroni and cook for 8 to 10 minutes or until al dente#LABEL#-#PAIR#6,1
+add macaroni and cook for 8 to 10 minutes or until al dente#SENTENCE#stir in cooked macaroni and bacon and heat NULL#LABEL#+#PAIR#1,7
+cut NULL into bite size pieces#SENTENCE#melt margarine in a large saucepan over medium low heat#LABEL#+#PAIR#2,3
+stir in flour , then tomatoes NULL#SENTENCE#cut NULL into bite size pieces#LABEL#-#PAIR#4,2
+wait NULL for sauce#SENTENCE#cut NULL into bite size pieces#LABEL#-#PAIR#5,2
+stir in cheese NULL#SENTENCE#cut NULL into bite size pieces#LABEL#-#PAIR#6,2
+cut NULL into bite size pieces#SENTENCE#stir in cooked macaroni and bacon and heat NULL#LABEL#+#PAIR#2,7
+melt margarine in a large saucepan over medium low heat#SENTENCE#stir in flour , then tomatoes NULL#LABEL#+#PAIR#3,4
+melt margarine in a large saucepan over medium low heat#SENTENCE#wait NULL for sauce#LABEL#+#PAIR#3,5
+stir in cheese NULL#SENTENCE#melt margarine in a large saucepan over medium low heat#LABEL#-#PAIR#6,3
+stir in cooked macaroni and bacon and heat NULL#SENTENCE#melt margarine in a large saucepan over medium low heat#LABEL#-#PAIR#7,3
+wait NULL for sauce#SENTENCE#stir in flour , then tomatoes NULL#LABEL#-#PAIR#5,4
+stir in flour , then tomatoes NULL#SENTENCE#stir in cheese NULL#LABEL#+#PAIR#4,6
+stir in cooked macaroni and bacon and heat NULL#SENTENCE#stir in flour , then tomatoes NULL#LABEL#-#PAIR#7,4
+wait NULL for sauce#SENTENCE#stir in cheese NULL#LABEL#+#PAIR#5,6
+wait NULL for sauce#SENTENCE#stir in cooked macaroni and bacon and heat NULL#LABEL#+#PAIR#5,7
+stir in cooked macaroni and bacon and heat NULL#SENTENCE#stir in cheese NULL#LABEL#-#PAIR#7,6
+8,28#RECIPE#
+cook sausage and onions 3 to 5 minutes NULL#SENTENCE#melt 1 tablespoon butter in large saucepan on medium heat#LABEL#-#PAIR#1,0
+are tender until onions#SENTENCE#melt 1 tablespoon butter in large saucepan on medium heat#LABEL#-#PAIR#2,0
+stir in Alfredo sauce , and half and half NULL#SENTENCE#melt 1 tablespoon butter in large saucepan on medium heat#LABEL#-#PAIR#3,0
+bring NULL to boiling , stirring constantly#SENTENCE#melt 1 tablespoon butter in large saucepan on medium heat#LABEL#-#PAIR#4,0
+reduce heat NULL#SENTENCE#melt 1 tablespoon butter in large saucepan on medium heat#LABEL#-#PAIR#5,0
+simmer 1 minute NULL#SENTENCE#melt 1 tablespoon butter in large saucepan on medium heat#LABEL#-#PAIR#6,0
+remove saucepan from heat#SENTENCE#melt 1 tablespoon butter in large saucepan on medium heat#LABEL#-#PAIR#7,0
+melt 1 tablespoon butter in large saucepan on medium heat#SENTENCE#stir in cheese and black pepper NULL#LABEL#+#PAIR#0,8
+melt 1 tablespoon butter in large saucepan on medium heat#SENTENCE#stir in pasta and sausage mixture NULL#LABEL#+#PAIR#0,9
+pour mixture into lightly sprayed 139-inch baking dish NULL#SENTENCE#melt 1 tablespoon butter in large saucepan on medium heat#LABEL#-#PAIR#10,0
+melt 1 tablespoon butter in large saucepan on medium heat#SENTENCE#sprinkle NULL with combined bread crumbs and 1/4 cup melted butter#LABEL#+#PAIR#0,11
+cook sausage and onions 3 to 5 minutes NULL#SENTENCE#are tender until onions#LABEL#+#PAIR#1,2
+stir in Alfredo sauce , and half and half NULL#SENTENCE#cook sausage and onions 3 to 5 minutes NULL#LABEL#-#PAIR#3,1
+cook sausage and onions 3 to 5 minutes NULL#SENTENCE#bring NULL to boiling , stirring constantly#LABEL#+#PAIR#1,4
+reduce heat NULL#SENTENCE#cook sausage and onions 3 to 5 minutes NULL#LABEL#-#PAIR#5,1
+cook sausage and onions 3 to 5 minutes NULL#SENTENCE#simmer 1 minute NULL#LABEL#+#PAIR#1,6
+cook sausage and onions 3 to 5 minutes NULL#SENTENCE#remove saucepan from heat#LABEL#+#PAIR#1,7
+stir in cheese and black pepper NULL#SENTENCE#cook sausage and onions 3 to 5 minutes NULL#LABEL#-#PAIR#8,1
+cook sausage and onions 3 to 5 minutes NULL#SENTENCE#stir in pasta and sausage mixture NULL#LABEL#+#PAIR#1,9
+cook sausage and onions 3 to 5 minutes NULL#SENTENCE#pour mixture into lightly sprayed 139-inch baking dish NULL#LABEL#+#PAIR#1,10
+sprinkle NULL with combined bread crumbs and 1/4 cup melted butter#SENTENCE#cook sausage and onions 3 to 5 minutes NULL#LABEL#-#PAIR#11,1
+are tender until onions#SENTENCE#stir in Alfredo sauce , and half and half NULL#LABEL#+#PAIR#2,3
+bring NULL to boiling , stirring constantly#SENTENCE#are tender until onions#LABEL#-#PAIR#4,2
+are tender until onions#SENTENCE#reduce heat NULL#LABEL#+#PAIR#2,5
+are tender until onions#SENTENCE#simmer 1 minute NULL#LABEL#+#PAIR#2,6
+remove saucepan from heat#SENTENCE#are tender until onions#LABEL#-#PAIR#7,2
+stir in cheese and black pepper NULL#SENTENCE#are tender until onions#LABEL#-#PAIR#8,2
+stir in pasta and sausage mixture NULL#SENTENCE#are tender until onions#LABEL#-#PAIR#9,2
+are tender until onions#SENTENCE#pour mixture into lightly sprayed 139-inch baking dish NULL#LABEL#+#PAIR#2,10
+sprinkle NULL with combined bread crumbs and 1/4 cup melted butter#SENTENCE#are tender until onions#LABEL#-#PAIR#11,2
+stir in Alfredo sauce , and half and half NULL#SENTENCE#bring NULL to boiling , stirring constantly#LABEL#+#PAIR#3,4
+stir in Alfredo sauce , and half and half NULL#SENTENCE#reduce heat NULL#LABEL#+#PAIR#3,5
+stir in Alfredo sauce , and half and half NULL#SENTENCE#simmer 1 minute NULL#LABEL#+#PAIR#3,6
+remove saucepan from heat#SENTENCE#stir in Alfredo sauce , and half and half NULL#LABEL#-#PAIR#7,3
+stir in cheese and black pepper NULL#SENTENCE#stir in Alfredo sauce , and half and half NULL#LABEL#-#PAIR#8,3
+stir in Alfredo sauce , and half and half NULL#SENTENCE#stir in pasta and sausage mixture NULL#LABEL#+#PAIR#3,9
+pour mixture into lightly sprayed 139-inch baking dish NULL#SENTENCE#stir in Alfredo sauce , and half and half NULL#LABEL#-#PAIR#10,3
+sprinkle NULL with combined bread crumbs and 1/4 cup melted butter#SENTENCE#stir in Alfredo sauce , and half and half NULL#LABEL#-#PAIR#11,3
+reduce heat NULL#SENTENCE#bring NULL to boiling , stirring constantly#LABEL#-#PAIR#5,4
+simmer 1 minute NULL#SENTENCE#bring NULL to boiling , stirring constantly#LABEL#-#PAIR#6,4
+bring NULL to boiling , stirring constantly#SENTENCE#remove saucepan from heat#LABEL#+#PAIR#4,7
+bring NULL to boiling , stirring constantly#SENTENCE#stir in cheese and black pepper NULL#LABEL#+#PAIR#4,8
+stir in pasta and sausage mixture NULL#SENTENCE#bring NULL to boiling , stirring constantly#LABEL#-#PAIR#9,4
+pour mixture into lightly sprayed 139-inch baking dish NULL#SENTENCE#bring NULL to boiling , stirring constantly#LABEL#-#PAIR#10,4
+bring NULL to boiling , stirring constantly#SENTENCE#sprinkle NULL with combined bread crumbs and 1/4 cup melted butter#LABEL#+#PAIR#4,11
+reduce heat NULL#SENTENCE#simmer 1 minute NULL#LABEL#+#PAIR#5,6
+reduce heat NULL#SENTENCE#remove saucepan from heat#LABEL#+#PAIR#5,7
+stir in cheese and black pepper NULL#SENTENCE#reduce heat NULL#LABEL#-#PAIR#8,5
+reduce heat NULL#SENTENCE#stir in pasta and sausage mixture NULL#LABEL#+#PAIR#5,9
+reduce heat NULL#SENTENCE#pour mixture into lightly sprayed 139-inch baking dish NULL#LABEL#+#PAIR#5,10
+reduce heat NULL#SENTENCE#sprinkle NULL with combined bread crumbs and 1/4 cup melted butter#LABEL#+#PAIR#5,11
+simmer 1 minute NULL#SENTENCE#remove saucepan from heat#LABEL#+#PAIR#6,7
+stir in cheese and black pepper NULL#SENTENCE#simmer 1 minute NULL#LABEL#-#PAIR#8,6
+simmer 1 minute NULL#SENTENCE#stir in pasta and sausage mixture NULL#LABEL#+#PAIR#6,9
+simmer 1 minute NULL#SENTENCE#pour mixture into lightly sprayed 139-inch baking dish NULL#LABEL#+#PAIR#6,10
+simmer 1 minute NULL#SENTENCE#sprinkle NULL with combined bread crumbs and 1/4 cup melted butter#LABEL#+#PAIR#6,11
+remove saucepan from heat#SENTENCE#stir in cheese and black pepper NULL#LABEL#+#PAIR#7,8
+stir in pasta and sausage mixture NULL#SENTENCE#remove saucepan from heat#LABEL#-#PAIR#9,7
+remove saucepan from heat#SENTENCE#pour mixture into lightly sprayed 139-inch baking dish NULL#LABEL#+#PAIR#7,10
+remove saucepan from heat#SENTENCE#sprinkle NULL with combined bread crumbs and 1/4 cup melted butter#LABEL#+#PAIR#7,11
+stir in cheese and black pepper NULL#SENTENCE#stir in pasta and sausage mixture NULL#LABEL#+#PAIR#8,9
+stir in cheese and black pepper NULL#SENTENCE#pour mixture into lightly sprayed 139-inch baking dish NULL#LABEL#+#PAIR#8,10
+sprinkle NULL with combined bread crumbs and 1/4 cup melted butter#SENTENCE#stir in cheese and black pepper NULL#LABEL#-#PAIR#11,8
+stir in pasta and sausage mixture NULL#SENTENCE#pour mixture into lightly sprayed 139-inch baking dish NULL#LABEL#+#PAIR#9,10
+stir in pasta and sausage mixture NULL#SENTENCE#sprinkle NULL with combined bread crumbs and 1/4 cup melted butter#LABEL#+#PAIR#9,11
+sprinkle NULL with combined bread crumbs and 1/4 cup melted butter#SENTENCE#pour mixture into lightly sprayed 139-inch baking dish NULL#LABEL#-#PAIR#11,10
+12,66#RECIPE#
+stir in chili , and cook over medium heat NULL#SENTENCE#cook macaroni and cheese in a saucepan on the stovetop according to package directions#LABEL#-#PAIR#1,0
+sprinkle NULL with shredded cheese#SENTENCE#cook macaroni and cheese in a saucepan on the stovetop according to package directions#LABEL#-#PAIR#2,0
+sprinkle NULL with shredded cheese#SENTENCE#stir in chili , and cook over medium heat NULL#LABEL#-#PAIR#2,1
+3,3#RECIPE#
+preheat oven to 350 degrees F#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#+#PAIR#0,1
+cook the rotini at a boil until tender yet firm#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#2,0
+preheat oven to 350 degrees F#SENTENCE#drain pasta and return to pot#LABEL#+#PAIR#0,3
+preheat oven to 350 degrees F#SENTENCE#stir Alfredo sauce and 3/4 pound Cheddar cheese into pasta#LABEL#+#PAIR#0,4
+preheat oven to 350 degrees F#SENTENCE#pour pasta mixture into a 9x13-inch baking dish#LABEL#+#PAIR#0,5
+top NULL with bread crumbs and 2 tablespoons Cheddar cheese#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#6,0
+bake NULL in the preheated oven#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#7,0
+cook the rotini at a boil until tender yet firm#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#2,1
+drain pasta and return to pot#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#3,1
+stir Alfredo sauce and 3/4 pound Cheddar cheese into pasta#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#4,1
+bring a large pot of lightly salted water to a boil#SENTENCE#pour pasta mixture into a 9x13-inch baking dish#LABEL#+#PAIR#1,5
+bring a large pot of lightly salted water to a boil#SENTENCE#top NULL with bread crumbs and 2 tablespoons Cheddar cheese#LABEL#+#PAIR#1,6
+bake NULL in the preheated oven#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#7,1
+cook the rotini at a boil until tender yet firm#SENTENCE#drain pasta and return to pot#LABEL#+#PAIR#2,3
+cook the rotini at a boil until tender yet firm#SENTENCE#stir Alfredo sauce and 3/4 pound Cheddar cheese into pasta#LABEL#+#PAIR#2,4
+cook the rotini at a boil until tender yet firm#SENTENCE#pour pasta mixture into a 9x13-inch baking dish#LABEL#+#PAIR#2,5
+cook the rotini at a boil until tender yet firm#SENTENCE#top NULL with bread crumbs and 2 tablespoons Cheddar cheese#LABEL#+#PAIR#2,6
+cook the rotini at a boil until tender yet firm#SENTENCE#bake NULL in the preheated oven#LABEL#+#PAIR#2,7
+drain pasta and return to pot#SENTENCE#stir Alfredo sauce and 3/4 pound Cheddar cheese into pasta#LABEL#+#PAIR#3,4
+pour pasta mixture into a 9x13-inch baking dish#SENTENCE#drain pasta and return to pot#LABEL#-#PAIR#5,3
+drain pasta and return to pot#SENTENCE#top NULL with bread crumbs and 2 tablespoons Cheddar cheese#LABEL#+#PAIR#3,6
+bake NULL in the preheated oven#SENTENCE#drain pasta and return to pot#LABEL#-#PAIR#7,3
+stir Alfredo sauce and 3/4 pound Cheddar cheese into pasta#SENTENCE#pour pasta mixture into a 9x13-inch baking dish#LABEL#+#PAIR#4,5
+stir Alfredo sauce and 3/4 pound Cheddar cheese into pasta#SENTENCE#top NULL with bread crumbs and 2 tablespoons Cheddar cheese#LABEL#+#PAIR#4,6
+stir Alfredo sauce and 3/4 pound Cheddar cheese into pasta#SENTENCE#bake NULL in the preheated oven#LABEL#+#PAIR#4,7
+top NULL with bread crumbs and 2 tablespoons Cheddar cheese#SENTENCE#pour pasta mixture into a 9x13-inch baking dish#LABEL#-#PAIR#6,5
+pour pasta mixture into a 9x13-inch baking dish#SENTENCE#bake NULL in the preheated oven#LABEL#+#PAIR#5,7
+bake NULL in the preheated oven#SENTENCE#top NULL with bread crumbs and 2 tablespoons Cheddar cheese#LABEL#-#PAIR#7,6
+8,28#RECIPE#
+stir the bread crumbs , olive oil and salt NULL#SENTENCE#preheat the oven to 350 degrees F#LABEL#-#PAIR#1,0
+preheat the oven to 350 degrees F#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#+#PAIR#0,2
+preheat the oven to 350 degrees F#SENTENCE#add the macaroni and cook for about 8 minutes#LABEL#+#PAIR#0,3
+preheat the oven to 350 degrees F#SENTENCE#be a little bit firm NULL#LABEL#+#PAIR#0,4
+remove NULL from the heat , drain and return to the pan#SENTENCE#preheat the oven to 350 degrees F#LABEL#-#PAIR#5,0
+preheat the oven to 350 degrees F#SENTENCE#stir in the butter and egg NULL#LABEL#+#PAIR#0,6
+reserve 1/2 cup of sharp Cheddar cheese NULL#SENTENCE#preheat the oven to 350 degrees F#LABEL#-#PAIR#7,0
+preheat the oven to 350 degrees F#SENTENCE#stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#LABEL#+#PAIR#0,8
+spoon NULL into the prepared muffin tin#SENTENCE#preheat the oven to 350 degrees F#LABEL#-#PAIR#9,0
+sprinkle the reserved cheese and the bread crumb mixture over the tops#SENTENCE#preheat the oven to 350 degrees F#LABEL#-#PAIR#10,0
+cool NULL for a few minutes#SENTENCE#preheat the oven to 350 degrees F#LABEL#-#PAIR#11,0
+preheat the oven to 350 degrees F#SENTENCE#allow the cheese to set NULL#LABEL#+#PAIR#0,12
+hold their muffin shape NULL#SENTENCE#preheat the oven to 350 degrees F#LABEL#-#PAIR#13,0
+bring a large pot of lightly salted water to a boil#SENTENCE#stir the bread crumbs , olive oil and salt NULL#LABEL#-#PAIR#2,1
+stir the bread crumbs , olive oil and salt NULL#SENTENCE#add the macaroni and cook for about 8 minutes#LABEL#+#PAIR#1,3
+stir the bread crumbs , olive oil and salt NULL#SENTENCE#be a little bit firm NULL#LABEL#+#PAIR#1,4
+stir the bread crumbs , olive oil and salt NULL#SENTENCE#remove NULL from the heat , drain and return to the pan#LABEL#+#PAIR#1,5
+stir in the butter and egg NULL#SENTENCE#stir the bread crumbs , olive oil and salt NULL#LABEL#-#PAIR#6,1
+stir the bread crumbs , olive oil and salt NULL#SENTENCE#reserve 1/2 cup of sharp Cheddar cheese NULL#LABEL#+#PAIR#1,7
+stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#SENTENCE#stir the bread crumbs , olive oil and salt NULL#LABEL#-#PAIR#8,1
+spoon NULL into the prepared muffin tin#SENTENCE#stir the bread crumbs , olive oil and salt NULL#LABEL#-#PAIR#9,1
+stir the bread crumbs , olive oil and salt NULL#SENTENCE#sprinkle the reserved cheese and the bread crumb mixture over the tops#LABEL#+#PAIR#1,10
+stir the bread crumbs , olive oil and salt NULL#SENTENCE#cool NULL for a few minutes#LABEL#+#PAIR#1,11
+stir the bread crumbs , olive oil and salt NULL#SENTENCE#allow the cheese to set NULL#LABEL#+#PAIR#1,12
+hold their muffin shape NULL#SENTENCE#stir the bread crumbs , olive oil and salt NULL#LABEL#-#PAIR#13,1
+add the macaroni and cook for about 8 minutes#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#3,2
+be a little bit firm NULL#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#4,2
+remove NULL from the heat , drain and return to the pan#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#5,2
+bring a large pot of lightly salted water to a boil#SENTENCE#stir in the butter and egg NULL#LABEL#+#PAIR#2,6
+bring a large pot of lightly salted water to a boil#SENTENCE#reserve 1/2 cup of sharp Cheddar cheese NULL#LABEL#+#PAIR#2,7
+stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#8,2
+spoon NULL into the prepared muffin tin#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#9,2
+bring a large pot of lightly salted water to a boil#SENTENCE#sprinkle the reserved cheese and the bread crumb mixture over the tops#LABEL#+#PAIR#2,10
+bring a large pot of lightly salted water to a boil#SENTENCE#cool NULL for a few minutes#LABEL#+#PAIR#2,11
+bring a large pot of lightly salted water to a boil#SENTENCE#allow the cheese to set NULL#LABEL#+#PAIR#2,12
+bring a large pot of lightly salted water to a boil#SENTENCE#hold their muffin shape NULL#LABEL#+#PAIR#2,13
+be a little bit firm NULL#SENTENCE#add the macaroni and cook for about 8 minutes#LABEL#-#PAIR#4,3
+add the macaroni and cook for about 8 minutes#SENTENCE#remove NULL from the heat , drain and return to the pan#LABEL#+#PAIR#3,5
+add the macaroni and cook for about 8 minutes#SENTENCE#stir in the butter and egg NULL#LABEL#+#PAIR#3,6
+reserve 1/2 cup of sharp Cheddar cheese NULL#SENTENCE#add the macaroni and cook for about 8 minutes#LABEL#-#PAIR#7,3
+stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#SENTENCE#add the macaroni and cook for about 8 minutes#LABEL#-#PAIR#8,3
+add the macaroni and cook for about 8 minutes#SENTENCE#spoon NULL into the prepared muffin tin#LABEL#+#PAIR#3,9
+add the macaroni and cook for about 8 minutes#SENTENCE#sprinkle the reserved cheese and the bread crumb mixture over the tops#LABEL#+#PAIR#3,10
+add the macaroni and cook for about 8 minutes#SENTENCE#cool NULL for a few minutes#LABEL#+#PAIR#3,11
+add the macaroni and cook for about 8 minutes#SENTENCE#allow the cheese to set NULL#LABEL#+#PAIR#3,12
+hold their muffin shape NULL#SENTENCE#add the macaroni and cook for about 8 minutes#LABEL#-#PAIR#13,3
+be a little bit firm NULL#SENTENCE#remove NULL from the heat , drain and return to the pan#LABEL#+#PAIR#4,5
+be a little bit firm NULL#SENTENCE#stir in the butter and egg NULL#LABEL#+#PAIR#4,6
+reserve 1/2 cup of sharp Cheddar cheese NULL#SENTENCE#be a little bit firm NULL#LABEL#-#PAIR#7,4
+be a little bit firm NULL#SENTENCE#stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#LABEL#+#PAIR#4,8
+spoon NULL into the prepared muffin tin#SENTENCE#be a little bit firm NULL#LABEL#-#PAIR#9,4
+be a little bit firm NULL#SENTENCE#sprinkle the reserved cheese and the bread crumb mixture over the tops#LABEL#+#PAIR#4,10
+cool NULL for a few minutes#SENTENCE#be a little bit firm NULL#LABEL#-#PAIR#11,4
+allow the cheese to set NULL#SENTENCE#be a little bit firm NULL#LABEL#-#PAIR#12,4
+be a little bit firm NULL#SENTENCE#hold their muffin shape NULL#LABEL#+#PAIR#4,13
+remove NULL from the heat , drain and return to the pan#SENTENCE#stir in the butter and egg NULL#LABEL#+#PAIR#5,6
+remove NULL from the heat , drain and return to the pan#SENTENCE#reserve 1/2 cup of sharp Cheddar cheese NULL#LABEL#+#PAIR#5,7
+remove NULL from the heat , drain and return to the pan#SENTENCE#stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#LABEL#+#PAIR#5,8
+spoon NULL into the prepared muffin tin#SENTENCE#remove NULL from the heat , drain and return to the pan#LABEL#-#PAIR#9,5
+sprinkle the reserved cheese and the bread crumb mixture over the tops#SENTENCE#remove NULL from the heat , drain and return to the pan#LABEL#-#PAIR#10,5
+remove NULL from the heat , drain and return to the pan#SENTENCE#cool NULL for a few minutes#LABEL#+#PAIR#5,11
+allow the cheese to set NULL#SENTENCE#remove NULL from the heat , drain and return to the pan#LABEL#-#PAIR#12,5
+hold their muffin shape NULL#SENTENCE#remove NULL from the heat , drain and return to the pan#LABEL#-#PAIR#13,5
+reserve 1/2 cup of sharp Cheddar cheese NULL#SENTENCE#stir in the butter and egg NULL#LABEL#-#PAIR#7,6
+stir in the butter and egg NULL#SENTENCE#stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#LABEL#+#PAIR#6,8
+spoon NULL into the prepared muffin tin#SENTENCE#stir in the butter and egg NULL#LABEL#-#PAIR#9,6
+sprinkle the reserved cheese and the bread crumb mixture over the tops#SENTENCE#stir in the butter and egg NULL#LABEL#-#PAIR#10,6
+stir in the butter and egg NULL#SENTENCE#cool NULL for a few minutes#LABEL#+#PAIR#6,11
+stir in the butter and egg NULL#SENTENCE#allow the cheese to set NULL#LABEL#+#PAIR#6,12
+hold their muffin shape NULL#SENTENCE#stir in the butter and egg NULL#LABEL#-#PAIR#13,6
+reserve 1/2 cup of sharp Cheddar cheese NULL#SENTENCE#stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#LABEL#+#PAIR#7,8
+reserve 1/2 cup of sharp Cheddar cheese NULL#SENTENCE#spoon NULL into the prepared muffin tin#LABEL#+#PAIR#7,9
+reserve 1/2 cup of sharp Cheddar cheese NULL#SENTENCE#sprinkle the reserved cheese and the bread crumb mixture over the tops#LABEL#+#PAIR#7,10
+cool NULL for a few minutes#SENTENCE#reserve 1/2 cup of sharp Cheddar cheese NULL#LABEL#-#PAIR#11,7
+allow the cheese to set NULL#SENTENCE#reserve 1/2 cup of sharp Cheddar cheese NULL#LABEL#-#PAIR#12,7
+hold their muffin shape NULL#SENTENCE#reserve 1/2 cup of sharp Cheddar cheese NULL#LABEL#-#PAIR#13,7
+spoon NULL into the prepared muffin tin#SENTENCE#stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#LABEL#-#PAIR#9,8
+sprinkle the reserved cheese and the bread crumb mixture over the tops#SENTENCE#stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#LABEL#-#PAIR#10,8
+stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#SENTENCE#cool NULL for a few minutes#LABEL#+#PAIR#8,11
+allow the cheese to set NULL#SENTENCE#stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#LABEL#-#PAIR#12,8
+hold their muffin shape NULL#SENTENCE#stir the remaining Cheddar cheese , milk and mozzarella cheese into the pasta NULL#LABEL#-#PAIR#13,8
+spoon NULL into the prepared muffin tin#SENTENCE#sprinkle the reserved cheese and the bread crumb mixture over the tops#LABEL#+#PAIR#9,10
+spoon NULL into the prepared muffin tin#SENTENCE#cool NULL for a few minutes#LABEL#+#PAIR#9,11
+spoon NULL into the prepared muffin tin#SENTENCE#allow the cheese to set NULL#LABEL#+#PAIR#9,12
+spoon NULL into the prepared muffin tin#SENTENCE#hold their muffin shape NULL#LABEL#+#PAIR#9,13
+cool NULL for a few minutes#SENTENCE#sprinkle the reserved cheese and the bread crumb mixture over the tops#LABEL#-#PAIR#11,10
+allow the cheese to set NULL#SENTENCE#sprinkle the reserved cheese and the bread crumb mixture over the tops#LABEL#-#PAIR#12,10
+hold their muffin shape NULL#SENTENCE#sprinkle the reserved cheese and the bread crumb mixture over the tops#LABEL#-#PAIR#13,10
+cool NULL for a few minutes#SENTENCE#allow the cheese to set NULL#LABEL#+#PAIR#11,12
+hold their muffin shape NULL#SENTENCE#cool NULL for a few minutes#LABEL#-#PAIR#13,11
+hold their muffin shape NULL#SENTENCE#allow the cheese to set NULL#LABEL#-#PAIR#13,12
+14,91#RECIPE#
+stir in the sauce NULL#SENTENCE#cook macaroni according to package directions NULL#LABEL#-#PAIR#1,0
+cook macaroni according to package directions NULL#SENTENCE#combine NULL NULL#LABEL#+#PAIR#0,2
+cook macaroni according to package directions NULL#SENTENCE#bring NULL to a boil and cook#LABEL#+#PAIR#0,3
+stir in macaroni , cheese mixture NULL#SENTENCE#cook macaroni according to package directions NULL#LABEL#-#PAIR#4,0
+return NULL to a boil#SENTENCE#cook macaroni according to package directions NULL#LABEL#-#PAIR#5,0
+stir in the sauce NULL#SENTENCE#combine NULL NULL#LABEL#+#PAIR#1,2
+stir in the sauce NULL#SENTENCE#bring NULL to a boil and cook#LABEL#+#PAIR#1,3
+stir in macaroni , cheese mixture NULL#SENTENCE#stir in the sauce NULL#LABEL#-#PAIR#4,1
+return NULL to a boil#SENTENCE#stir in the sauce NULL#LABEL#-#PAIR#5,1
+bring NULL to a boil and cook#SENTENCE#combine NULL NULL#LABEL#-#PAIR#3,2
+stir in macaroni , cheese mixture NULL#SENTENCE#combine NULL NULL#LABEL#-#PAIR#4,2
+combine NULL NULL#SENTENCE#return NULL to a boil#LABEL#+#PAIR#2,5
+bring NULL to a boil and cook#SENTENCE#stir in macaroni , cheese mixture NULL#LABEL#+#PAIR#3,4
+bring NULL to a boil and cook#SENTENCE#return NULL to a boil#LABEL#+#PAIR#3,5
+return NULL to a boil#SENTENCE#stir in macaroni , cheese mixture NULL#LABEL#-#PAIR#5,4
+6,15#RECIPE#
+reduce heat to medium-low and simmer for about 8 min , stirring often , or until macaroni is almost tender#SENTENCE#stir in macaroni and 1/4 tsp -LRB- 1 mL -RRB- salt NULL#LABEL#-#PAIR#1,0
+whisk flour , mustard and pepper into milk#SENTENCE#stir in macaroni and 1/4 tsp -LRB- 1 mL -RRB- salt NULL#LABEL#-#PAIR#2,0
+stir into pot NULL#SENTENCE#stir in macaroni and 1/4 tsp -LRB- 1 mL -RRB- salt NULL#LABEL#-#PAIR#3,0
+increase heat to medium#SENTENCE#stir in macaroni and 1/4 tsp -LRB- 1 mL -RRB- salt NULL#LABEL#-#PAIR#4,0
+remove NULL from heat#SENTENCE#stir in macaroni and 1/4 tsp -LRB- 1 mL -RRB- salt NULL#LABEL#-#PAIR#5,0
+stir in macaroni and 1/4 tsp -LRB- 1 mL -RRB- salt NULL#SENTENCE#stir in cheese NULL#LABEL#+#PAIR#0,6
+stir in macaroni and 1/4 tsp -LRB- 1 mL -RRB- salt NULL#SENTENCE#taste NULL with salt#LABEL#+#PAIR#0,7
+whisk flour , mustard and pepper into milk#SENTENCE#reduce heat to medium-low and simmer for about 8 min , stirring often , or until macaroni is almost tender#LABEL#-#PAIR#2,1
+reduce heat to medium-low and simmer for about 8 min , stirring often , or until macaroni is almost tender#SENTENCE#stir into pot NULL#LABEL#+#PAIR#1,3
+reduce heat to medium-low and simmer for about 8 min , stirring often , or until macaroni is almost tender#SENTENCE#increase heat to medium#LABEL#+#PAIR#1,4
+reduce heat to medium-low and simmer for about 8 min , stirring often , or until macaroni is almost tender#SENTENCE#remove NULL from heat#LABEL#+#PAIR#1,5
+stir in cheese NULL#SENTENCE#reduce heat to medium-low and simmer for about 8 min , stirring often , or until macaroni is almost tender#LABEL#-#PAIR#6,1
+taste NULL with salt#SENTENCE#reduce heat to medium-low and simmer for about 8 min , stirring often , or until macaroni is almost tender#LABEL#-#PAIR#7,1
+whisk flour , mustard and pepper into milk#SENTENCE#stir into pot NULL#LABEL#+#PAIR#2,3
+whisk flour , mustard and pepper into milk#SENTENCE#increase heat to medium#LABEL#+#PAIR#2,4
+remove NULL from heat#SENTENCE#whisk flour , mustard and pepper into milk#LABEL#-#PAIR#5,2
+whisk flour , mustard and pepper into milk#SENTENCE#stir in cheese NULL#LABEL#+#PAIR#2,6
+whisk flour , mustard and pepper into milk#SENTENCE#taste NULL with salt#LABEL#+#PAIR#2,7
+stir into pot NULL#SENTENCE#increase heat to medium#LABEL#+#PAIR#3,4
+stir into pot NULL#SENTENCE#remove NULL from heat#LABEL#+#PAIR#3,5
+stir in cheese NULL#SENTENCE#stir into pot NULL#LABEL#-#PAIR#6,3
+taste NULL with salt#SENTENCE#stir into pot NULL#LABEL#-#PAIR#7,3
+remove NULL from heat#SENTENCE#increase heat to medium#LABEL#-#PAIR#5,4
+stir in cheese NULL#SENTENCE#increase heat to medium#LABEL#-#PAIR#6,4
+increase heat to medium#SENTENCE#taste NULL with salt#LABEL#+#PAIR#4,7
+remove NULL from heat#SENTENCE#stir in cheese NULL#LABEL#+#PAIR#5,6
+remove NULL from heat#SENTENCE#taste NULL with salt#LABEL#+#PAIR#5,7
+taste NULL with salt#SENTENCE#stir in cheese NULL#LABEL#-#PAIR#7,6
+8,28#RECIPE#
+preheat oven broiler NULL#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#+#PAIR#0,1
+preheat oven broiler NULL#SENTENCE#add pasta and cook for 8 to 10 minutes or until al dente#LABEL#+#PAIR#0,2
+stir macaroni , mac and cheese , milk and pepper in prepared dish#SENTENCE#preheat oven broiler NULL#LABEL#-#PAIR#3,0
+preheat oven broiler NULL#SENTENCE#sprinkle NULL with Cheddar and Parmesan and place#LABEL#+#PAIR#0,4
+add pasta and cook for 8 to 10 minutes or until al dente#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#2,1
+stir macaroni , mac and cheese , milk and pepper in prepared dish#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#3,1
+bring a large pot of lightly salted water to a boil#SENTENCE#sprinkle NULL with Cheddar and Parmesan and place#LABEL#+#PAIR#1,4
+stir macaroni , mac and cheese , milk and pepper in prepared dish#SENTENCE#add pasta and cook for 8 to 10 minutes or until al dente#LABEL#-#PAIR#3,2
+add pasta and cook for 8 to 10 minutes or until al dente#SENTENCE#sprinkle NULL with Cheddar and Parmesan and place#LABEL#+#PAIR#2,4
+sprinkle NULL with Cheddar and Parmesan and place#SENTENCE#stir macaroni , mac and cheese , milk and pepper in prepared dish#LABEL#-#PAIR#4,3
+5,10#RECIPE#
+place torn rye bread into a food processor#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#1,0
+preheat oven to 350 degrees F#SENTENCE#pulse several times NULL#LABEL#+#PAIR#0,2
+make crumbs into a food processor#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#3,0
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#4,0
+bring a large pot of lightly salted water to a boil#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#5,0
+preheat oven to 350 degrees F#SENTENCE#cook egg noodles in the boiling water#LABEL#+#PAIR#0,6
+preheat oven to 350 degrees F#SENTENCE#drain noodles NULL#LABEL#+#PAIR#0,7
+preheat oven to 350 degrees F#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#+#PAIR#0,8
+cook onion until lightly browned#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#9,0
+preheat oven to 350 degrees F#SENTENCE#stir in brown mustard NULL#LABEL#+#PAIR#0,10
+remove NULL from heat#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#11,0
+preheat oven to 350 degrees F#SENTENCE#stir in flour NULL#LABEL#+#PAIR#0,12
+preheat oven to 350 degrees F#SENTENCE#whisk in milk NULL#LABEL#+#PAIR#0,13
+whisk 1 1/2 cup Swiss cheese into the sauce#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#14,0
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#15,0
+preheat oven to 350 degrees F#SENTENCE#pour in the sauce NULL#LABEL#+#PAIR#0,16
+preheat oven to 350 degrees F#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#+#PAIR#0,17
+preheat oven to 350 degrees F#SENTENCE#remove casserole from oven#LABEL#+#PAIR#0,18
+preheat oven to 350 degrees F#SENTENCE#stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#LABEL#+#PAIR#0,19
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#20,0
+prevent burning NULL#SENTENCE#preheat oven to 350 degrees F#LABEL#-#PAIR#21,0
+place torn rye bread into a food processor#SENTENCE#pulse several times NULL#LABEL#+#PAIR#1,2
+make crumbs into a food processor#SENTENCE#place torn rye bread into a food processor#LABEL#-#PAIR#3,1
+place torn rye bread into a food processor#SENTENCE#combine rye crumbs with panko crumbs in a bowl#LABEL#+#PAIR#1,4
+place torn rye bread into a food processor#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#+#PAIR#1,5
+place torn rye bread into a food processor#SENTENCE#cook egg noodles in the boiling water#LABEL#+#PAIR#1,6
+place torn rye bread into a food processor#SENTENCE#drain noodles NULL#LABEL#+#PAIR#1,7
+place torn rye bread into a food processor#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#+#PAIR#1,8
+cook onion until lightly browned#SENTENCE#place torn rye bread into a food processor#LABEL#-#PAIR#9,1
+place torn rye bread into a food processor#SENTENCE#stir in brown mustard NULL#LABEL#+#PAIR#1,10
+remove NULL from heat#SENTENCE#place torn rye bread into a food processor#LABEL#-#PAIR#11,1
+stir in flour NULL#SENTENCE#place torn rye bread into a food processor#LABEL#-#PAIR#12,1
+whisk in milk NULL#SENTENCE#place torn rye bread into a food processor#LABEL#-#PAIR#13,1
+whisk 1 1/2 cup Swiss cheese into the sauce#SENTENCE#place torn rye bread into a food processor#LABEL#-#PAIR#14,1
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#place torn rye bread into a food processor#LABEL#-#PAIR#15,1
+place torn rye bread into a food processor#SENTENCE#pour in the sauce NULL#LABEL#+#PAIR#1,16
+place torn rye bread into a food processor#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#+#PAIR#1,17
+place torn rye bread into a food processor#SENTENCE#remove casserole from oven#LABEL#+#PAIR#1,18
+place torn rye bread into a food processor#SENTENCE#stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#LABEL#+#PAIR#1,19
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#place torn rye bread into a food processor#LABEL#-#PAIR#20,1
+prevent burning NULL#SENTENCE#place torn rye bread into a food processor#LABEL#-#PAIR#21,1
+pulse several times NULL#SENTENCE#make crumbs into a food processor#LABEL#+#PAIR#2,3
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#pulse several times NULL#LABEL#-#PAIR#4,2
+bring a large pot of lightly salted water to a boil#SENTENCE#pulse several times NULL#LABEL#-#PAIR#5,2
+pulse several times NULL#SENTENCE#cook egg noodles in the boiling water#LABEL#+#PAIR#2,6
+drain noodles NULL#SENTENCE#pulse several times NULL#LABEL#-#PAIR#7,2
+melt 3 tablespoons butter in a large saucepan over medium heat NULL#SENTENCE#pulse several times NULL#LABEL#-#PAIR#8,2
+pulse several times NULL#SENTENCE#cook onion until lightly browned#LABEL#+#PAIR#2,9
+pulse several times NULL#SENTENCE#stir in brown mustard NULL#LABEL#+#PAIR#2,10
+remove NULL from heat#SENTENCE#pulse several times NULL#LABEL#-#PAIR#11,2
+stir in flour NULL#SENTENCE#pulse several times NULL#LABEL#-#PAIR#12,2
+pulse several times NULL#SENTENCE#whisk in milk NULL#LABEL#+#PAIR#2,13
+whisk 1 1/2 cup Swiss cheese into the sauce#SENTENCE#pulse several times NULL#LABEL#-#PAIR#14,2
+pulse several times NULL#SENTENCE#stir sauerkraut with about 1 tablespoon of reserved juice#LABEL#+#PAIR#2,15
+pulse several times NULL#SENTENCE#pour in the sauce NULL#LABEL#+#PAIR#2,16
+pulse several times NULL#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#+#PAIR#2,17
+remove casserole from oven#SENTENCE#pulse several times NULL#LABEL#-#PAIR#18,2
+pulse several times NULL#SENTENCE#stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#LABEL#+#PAIR#2,19
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#pulse several times NULL#LABEL#-#PAIR#20,2
+pulse several times NULL#SENTENCE#prevent burning NULL#LABEL#+#PAIR#2,21
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#make crumbs into a food processor#LABEL#-#PAIR#4,3
+bring a large pot of lightly salted water to a boil#SENTENCE#make crumbs into a food processor#LABEL#-#PAIR#5,3
+cook egg noodles in the boiling water#SENTENCE#make crumbs into a food processor#LABEL#-#PAIR#6,3
+make crumbs into a food processor#SENTENCE#drain noodles NULL#LABEL#+#PAIR#3,7
+make crumbs into a food processor#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#+#PAIR#3,8
+make crumbs into a food processor#SENTENCE#cook onion until lightly browned#LABEL#+#PAIR#3,9
+stir in brown mustard NULL#SENTENCE#make crumbs into a food processor#LABEL#-#PAIR#10,3
+remove NULL from heat#SENTENCE#make crumbs into a food processor#LABEL#-#PAIR#11,3
+make crumbs into a food processor#SENTENCE#stir in flour NULL#LABEL#+#PAIR#3,12
+make crumbs into a food processor#SENTENCE#whisk in milk NULL#LABEL#+#PAIR#3,13
+whisk 1 1/2 cup Swiss cheese into the sauce#SENTENCE#make crumbs into a food processor#LABEL#-#PAIR#14,3
+make crumbs into a food processor#SENTENCE#stir sauerkraut with about 1 tablespoon of reserved juice#LABEL#+#PAIR#3,15
+make crumbs into a food processor#SENTENCE#pour in the sauce NULL#LABEL#+#PAIR#3,16
+bake casserole in the preheated oven until bubbling , about 20 minutes#SENTENCE#make crumbs into a food processor#LABEL#-#PAIR#17,3
+make crumbs into a food processor#SENTENCE#remove casserole from oven#LABEL#+#PAIR#3,18
+stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#SENTENCE#make crumbs into a food processor#LABEL#-#PAIR#19,3
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#make crumbs into a food processor#LABEL#-#PAIR#20,3
+make crumbs into a food processor#SENTENCE#prevent burning NULL#LABEL#+#PAIR#3,21
+bring a large pot of lightly salted water to a boil#SENTENCE#combine rye crumbs with panko crumbs in a bowl#LABEL#-#PAIR#5,4
+cook egg noodles in the boiling water#SENTENCE#combine rye crumbs with panko crumbs in a bowl#LABEL#-#PAIR#6,4
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#drain noodles NULL#LABEL#+#PAIR#4,7
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#+#PAIR#4,8
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#cook onion until lightly browned#LABEL#+#PAIR#4,9
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#stir in brown mustard NULL#LABEL#+#PAIR#4,10
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#remove NULL from heat#LABEL#+#PAIR#4,11
+stir in flour NULL#SENTENCE#combine rye crumbs with panko crumbs in a bowl#LABEL#-#PAIR#12,4
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#whisk in milk NULL#LABEL#+#PAIR#4,13
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#+#PAIR#4,14
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#combine rye crumbs with panko crumbs in a bowl#LABEL#-#PAIR#15,4
+pour in the sauce NULL#SENTENCE#combine rye crumbs with panko crumbs in a bowl#LABEL#-#PAIR#16,4
+bake casserole in the preheated oven until bubbling , about 20 minutes#SENTENCE#combine rye crumbs with panko crumbs in a bowl#LABEL#-#PAIR#17,4
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#remove casserole from oven#LABEL#+#PAIR#4,18
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#LABEL#+#PAIR#4,19
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#combine rye crumbs with panko crumbs in a bowl#LABEL#-#PAIR#20,4
+combine rye crumbs with panko crumbs in a bowl#SENTENCE#prevent burning NULL#LABEL#+#PAIR#4,21
+bring a large pot of lightly salted water to a boil#SENTENCE#cook egg noodles in the boiling water#LABEL#+#PAIR#5,6
+drain noodles NULL#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#7,5
+bring a large pot of lightly salted water to a boil#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#+#PAIR#5,8
+cook onion until lightly browned#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#9,5
+stir in brown mustard NULL#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#10,5
+bring a large pot of lightly salted water to a boil#SENTENCE#remove NULL from heat#LABEL#+#PAIR#5,11
+bring a large pot of lightly salted water to a boil#SENTENCE#stir in flour NULL#LABEL#+#PAIR#5,12
+bring a large pot of lightly salted water to a boil#SENTENCE#whisk in milk NULL#LABEL#+#PAIR#5,13
+bring a large pot of lightly salted water to a boil#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#+#PAIR#5,14
+bring a large pot of lightly salted water to a boil#SENTENCE#stir sauerkraut with about 1 tablespoon of reserved juice#LABEL#+#PAIR#5,15
+pour in the sauce NULL#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#16,5
+bake casserole in the preheated oven until bubbling , about 20 minutes#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#17,5
+bring a large pot of lightly salted water to a boil#SENTENCE#remove casserole from oven#LABEL#+#PAIR#5,18
+bring a large pot of lightly salted water to a boil#SENTENCE#stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#LABEL#+#PAIR#5,19
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-#PAIR#20,5
+bring a large pot of lightly salted water to a boil#SENTENCE#prevent burning NULL#LABEL#+#PAIR#5,21
+drain noodles NULL#SENTENCE#cook egg noodles in the boiling water#LABEL#-#PAIR#7,6
+cook egg noodles in the boiling water#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#+#PAIR#6,8
+cook onion until lightly browned#SENTENCE#cook egg noodles in the boiling water#LABEL#-#PAIR#9,6
+stir in brown mustard NULL#SENTENCE#cook egg noodles in the boiling water#LABEL#-#PAIR#10,6
+cook egg noodles in the boiling water#SENTENCE#remove NULL from heat#LABEL#+#PAIR#6,11
+stir in flour NULL#SENTENCE#cook egg noodles in the boiling water#LABEL#-#PAIR#12,6
+whisk in milk NULL#SENTENCE#cook egg noodles in the boiling water#LABEL#-#PAIR#13,6
+whisk 1 1/2 cup Swiss cheese into the sauce#SENTENCE#cook egg noodles in the boiling water#LABEL#-#PAIR#14,6
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#cook egg noodles in the boiling water#LABEL#-#PAIR#15,6
+pour in the sauce NULL#SENTENCE#cook egg noodles in the boiling water#LABEL#-#PAIR#16,6
+bake casserole in the preheated oven until bubbling , about 20 minutes#SENTENCE#cook egg noodles in the boiling water#LABEL#-#PAIR#17,6
+cook egg noodles in the boiling water#SENTENCE#remove casserole from oven#LABEL#+#PAIR#6,18
+stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#SENTENCE#cook egg noodles in the boiling water#LABEL#-#PAIR#19,6
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#cook egg noodles in the boiling water#LABEL#-#PAIR#20,6
+prevent burning NULL#SENTENCE#cook egg noodles in the boiling water#LABEL#-#PAIR#21,6
+drain noodles NULL#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#+#PAIR#7,8
+cook onion until lightly browned#SENTENCE#drain noodles NULL#LABEL#-#PAIR#9,7
+drain noodles NULL#SENTENCE#stir in brown mustard NULL#LABEL#+#PAIR#7,10
+drain noodles NULL#SENTENCE#remove NULL from heat#LABEL#+#PAIR#7,11
+stir in flour NULL#SENTENCE#drain noodles NULL#LABEL#-#PAIR#12,7
+whisk in milk NULL#SENTENCE#drain noodles NULL#LABEL#-#PAIR#13,7
+whisk 1 1/2 cup Swiss cheese into the sauce#SENTENCE#drain noodles NULL#LABEL#-#PAIR#14,7
+drain noodles NULL#SENTENCE#stir sauerkraut with about 1 tablespoon of reserved juice#LABEL#+#PAIR#7,15
+drain noodles NULL#SENTENCE#pour in the sauce NULL#LABEL#+#PAIR#7,16
+drain noodles NULL#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#+#PAIR#7,17
+drain noodles NULL#SENTENCE#remove casserole from oven#LABEL#+#PAIR#7,18
+drain noodles NULL#SENTENCE#stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#LABEL#+#PAIR#7,19
+drain noodles NULL#SENTENCE#sprinkle top of casserole with rye crumb mixture NULL#LABEL#+#PAIR#7,20
+drain noodles NULL#SENTENCE#prevent burning NULL#LABEL#+#PAIR#7,21
+cook onion until lightly browned#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#-#PAIR#9,8
+melt 3 tablespoons butter in a large saucepan over medium heat NULL#SENTENCE#stir in brown mustard NULL#LABEL#+#PAIR#8,10
+melt 3 tablespoons butter in a large saucepan over medium heat NULL#SENTENCE#remove NULL from heat#LABEL#+#PAIR#8,11
+melt 3 tablespoons butter in a large saucepan over medium heat NULL#SENTENCE#stir in flour NULL#LABEL#+#PAIR#8,12
+whisk in milk NULL#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#-#PAIR#13,8
+whisk 1 1/2 cup Swiss cheese into the sauce#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#-#PAIR#14,8
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#-#PAIR#15,8
+melt 3 tablespoons butter in a large saucepan over medium heat NULL#SENTENCE#pour in the sauce NULL#LABEL#+#PAIR#8,16
+melt 3 tablespoons butter in a large saucepan over medium heat NULL#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#+#PAIR#8,17
+remove casserole from oven#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#-#PAIR#18,8
+stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#SENTENCE#melt 3 tablespoons butter in a large saucepan over medium heat NULL#LABEL#-#PAIR#19,8
+melt 3 tablespoons butter in a large saucepan over medium heat NULL#SENTENCE#sprinkle top of casserole with rye crumb mixture NULL#LABEL#+#PAIR#8,20
+melt 3 tablespoons butter in a large saucepan over medium heat NULL#SENTENCE#prevent burning NULL#LABEL#+#PAIR#8,21
+stir in brown mustard NULL#SENTENCE#cook onion until lightly browned#LABEL#-#PAIR#10,9
+remove NULL from heat#SENTENCE#cook onion until lightly browned#LABEL#-#PAIR#11,9
+stir in flour NULL#SENTENCE#cook onion until lightly browned#LABEL#-#PAIR#12,9
+cook onion until lightly browned#SENTENCE#whisk in milk NULL#LABEL#+#PAIR#9,13
+cook onion until lightly browned#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#+#PAIR#9,14
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#cook onion until lightly browned#LABEL#-#PAIR#15,9
+pour in the sauce NULL#SENTENCE#cook onion until lightly browned#LABEL#-#PAIR#16,9
+bake casserole in the preheated oven until bubbling , about 20 minutes#SENTENCE#cook onion until lightly browned#LABEL#-#PAIR#17,9
+remove casserole from oven#SENTENCE#cook onion until lightly browned#LABEL#-#PAIR#18,9
+cook onion until lightly browned#SENTENCE#stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#LABEL#+#PAIR#9,19
+cook onion until lightly browned#SENTENCE#sprinkle top of casserole with rye crumb mixture NULL#LABEL#+#PAIR#9,20
+prevent burning NULL#SENTENCE#cook onion until lightly browned#LABEL#-#PAIR#21,9
+remove NULL from heat#SENTENCE#stir in brown mustard NULL#LABEL#-#PAIR#11,10
+stir in flour NULL#SENTENCE#stir in brown mustard NULL#LABEL#-#PAIR#12,10
+stir in brown mustard NULL#SENTENCE#whisk in milk NULL#LABEL#+#PAIR#10,13
+stir in brown mustard NULL#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#+#PAIR#10,14
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#stir in brown mustard NULL#LABEL#-#PAIR#15,10
+stir in brown mustard NULL#SENTENCE#pour in the sauce NULL#LABEL#+#PAIR#10,16
+bake casserole in the preheated oven until bubbling , about 20 minutes#SENTENCE#stir in brown mustard NULL#LABEL#-#PAIR#17,10
+remove casserole from oven#SENTENCE#stir in brown mustard NULL#LABEL#-#PAIR#18,10
+stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#SENTENCE#stir in brown mustard NULL#LABEL#-#PAIR#19,10
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#stir in brown mustard NULL#LABEL#-#PAIR#20,10
+prevent burning NULL#SENTENCE#stir in brown mustard NULL#LABEL#-#PAIR#21,10
+stir in flour NULL#SENTENCE#remove NULL from heat#LABEL#-#PAIR#12,11
+remove NULL from heat#SENTENCE#whisk in milk NULL#LABEL#+#PAIR#11,13
+remove NULL from heat#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#+#PAIR#11,14
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#remove NULL from heat#LABEL#-#PAIR#15,11
+pour in the sauce NULL#SENTENCE#remove NULL from heat#LABEL#-#PAIR#16,11
+remove NULL from heat#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#+#PAIR#11,17
+remove NULL from heat#SENTENCE#remove casserole from oven#LABEL#+#PAIR#11,18
+remove NULL from heat#SENTENCE#stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#LABEL#+#PAIR#11,19
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#remove NULL from heat#LABEL#-#PAIR#20,11
+prevent burning NULL#SENTENCE#remove NULL from heat#LABEL#-#PAIR#21,11
+stir in flour NULL#SENTENCE#whisk in milk NULL#LABEL#+#PAIR#12,13
+stir in flour NULL#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#+#PAIR#12,14
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#stir in flour NULL#LABEL#-#PAIR#15,12
+stir in flour NULL#SENTENCE#pour in the sauce NULL#LABEL#+#PAIR#12,16
+stir in flour NULL#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#+#PAIR#12,17
+remove casserole from oven#SENTENCE#stir in flour NULL#LABEL#-#PAIR#18,12
+stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#SENTENCE#stir in flour NULL#LABEL#-#PAIR#19,12
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#stir in flour NULL#LABEL#-#PAIR#20,12
+prevent burning NULL#SENTENCE#stir in flour NULL#LABEL#-#PAIR#21,12
+whisk in milk NULL#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#+#PAIR#13,14
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#whisk in milk NULL#LABEL#-#PAIR#15,13
+whisk in milk NULL#SENTENCE#pour in the sauce NULL#LABEL#+#PAIR#13,16
+whisk in milk NULL#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#+#PAIR#13,17
+remove casserole from oven#SENTENCE#whisk in milk NULL#LABEL#-#PAIR#18,13
+stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#SENTENCE#whisk in milk NULL#LABEL#-#PAIR#19,13
+whisk in milk NULL#SENTENCE#sprinkle top of casserole with rye crumb mixture NULL#LABEL#+#PAIR#13,20
+whisk in milk NULL#SENTENCE#prevent burning NULL#LABEL#+#PAIR#13,21
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#-#PAIR#15,14
+pour in the sauce NULL#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#-#PAIR#16,14
+whisk 1 1/2 cup Swiss cheese into the sauce#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#+#PAIR#14,17
+remove casserole from oven#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#-#PAIR#18,14
+stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#-#PAIR#19,14
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#-#PAIR#20,14
+prevent burning NULL#SENTENCE#whisk 1 1/2 cup Swiss cheese into the sauce#LABEL#-#PAIR#21,14
+pour in the sauce NULL#SENTENCE#stir sauerkraut with about 1 tablespoon of reserved juice#LABEL#-#PAIR#16,15
+bake casserole in the preheated oven until bubbling , about 20 minutes#SENTENCE#stir sauerkraut with about 1 tablespoon of reserved juice#LABEL#-#PAIR#17,15
+remove casserole from oven#SENTENCE#stir sauerkraut with about 1 tablespoon of reserved juice#LABEL#-#PAIR#18,15
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#LABEL#+#PAIR#15,19
+stir sauerkraut with about 1 tablespoon of reserved juice#SENTENCE#sprinkle top of casserole with rye crumb mixture NULL#LABEL#+#PAIR#15,20
+prevent burning NULL#SENTENCE#stir sauerkraut with about 1 tablespoon of reserved juice#LABEL#-#PAIR#21,15
+bake casserole in the preheated oven until bubbling , about 20 minutes#SENTENCE#pour in the sauce NULL#LABEL#-#PAIR#17,16
+pour in the sauce NULL#SENTENCE#remove casserole from oven#LABEL#+#PAIR#16,18
+pour in the sauce NULL#SENTENCE#stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#LABEL#+#PAIR#16,19
+pour in the sauce NULL#SENTENCE#sprinkle top of casserole with rye crumb mixture NULL#LABEL#+#PAIR#16,20
+pour in the sauce NULL#SENTENCE#prevent burning NULL#LABEL#+#PAIR#16,21
+remove casserole from oven#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#-#PAIR#18,17
+stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#-#PAIR#19,17
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#-#PAIR#20,17
+prevent burning NULL#SENTENCE#bake casserole in the preheated oven until bubbling , about 20 minutes#LABEL#-#PAIR#21,17
+remove casserole from oven#SENTENCE#stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#LABEL#+#PAIR#18,19
+remove casserole from oven#SENTENCE#sprinkle top of casserole with rye crumb mixture NULL#LABEL#+#PAIR#18,20
+remove casserole from oven#SENTENCE#prevent burning NULL#LABEL#+#PAIR#18,21
+stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#SENTENCE#sprinkle top of casserole with rye crumb mixture NULL#LABEL#+#PAIR#19,20
+stir 3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined NULL#SENTENCE#prevent burning NULL#LABEL#+#PAIR#19,21
+sprinkle top of casserole with rye crumb mixture NULL#SENTENCE#prevent burning NULL#LABEL#+#PAIR#20,21
+22,231#RECIPE#
+cook macaroni NULL#SENTENCE#return NULL to saucepan#LABEL#+#PAIR#0,1
+reduce heat NULL#SENTENCE#cook macaroni NULL#LABEL#-#PAIR#2,0
+stir in Cheddar cheese NULL#SENTENCE#cook macaroni NULL#LABEL#-#PAIR#3,0
+cook macaroni NULL#SENTENCE#pour sauce over macaroni#LABEL#+#PAIR#0,4
+stir in tomatoes and onions NULL#SENTENCE#cook macaroni NULL#LABEL#-#PAIR#5,0
+pour into baking dish NULL#SENTENCE#cook macaroni NULL#LABEL#-#PAIR#6,0
+cook macaroni NULL#SENTENCE#stir Parmesan cheese and bread crumbs NULL#LABEL#+#PAIR#0,7
+stir in oil NULL#SENTENCE#cook macaroni NULL#LABEL#-#PAIR#8,0
+cook macaroni NULL#SENTENCE#sprinkle NULL over top of macaroni mixture#LABEL#+#PAIR#0,9
+return NULL to saucepan#SENTENCE#reduce heat NULL#LABEL#+#PAIR#1,2
+return NULL to saucepan#SENTENCE#stir in Cheddar cheese NULL#LABEL#+#PAIR#1,3
+pour sauce over macaroni#SENTENCE#return NULL to saucepan#LABEL#-#PAIR#4,1
+stir in tomatoes and onions NULL#SENTENCE#return NULL to saucepan#LABEL#-#PAIR#5,1
+pour into baking dish NULL#SENTENCE#return NULL to saucepan#LABEL#-#PAIR#6,1
+return NULL to saucepan#SENTENCE#stir Parmesan cheese and bread crumbs NULL#LABEL#+#PAIR#1,7
+return NULL to saucepan#SENTENCE#stir in oil NULL#LABEL#+#PAIR#1,8
+sprinkle NULL over top of macaroni mixture#SENTENCE#return NULL to saucepan#LABEL#-#PAIR#9,1
+reduce heat NULL#SENTENCE#stir in Cheddar cheese NULL#LABEL#+#PAIR#2,3
+reduce heat NULL#SENTENCE#pour sauce over macaroni#LABEL#+#PAIR#2,4
+reduce heat NULL#SENTENCE#stir in tomatoes and onions NULL#LABEL#+#PAIR#2,5
+pour into baking dish NULL#SENTENCE#reduce heat NULL#LABEL#-#PAIR#6,2
+stir Parmesan cheese and bread crumbs NULL#SENTENCE#reduce heat NULL#LABEL#-#PAIR#7,2
+stir in oil NULL#SENTENCE#reduce heat NULL#LABEL#-#PAIR#8,2
+reduce heat NULL#SENTENCE#sprinkle NULL over top of macaroni mixture#LABEL#+#PAIR#2,9
+pour sauce over macaroni#SENTENCE#stir in Cheddar cheese NULL#LABEL#-#PAIR#4,3
+stir in tomatoes and onions NULL#SENTENCE#stir in Cheddar cheese NULL#LABEL#-#PAIR#5,3
+pour into baking dish NULL#SENTENCE#stir in Cheddar cheese NULL#LABEL#-#PAIR#6,3
+stir in Cheddar cheese NULL#SENTENCE#stir Parmesan cheese and bread crumbs NULL#LABEL#+#PAIR#3,7
+stir in Cheddar cheese NULL#SENTENCE#stir in oil NULL#LABEL#+#PAIR#3,8
+stir in Cheddar cheese NULL#SENTENCE#sprinkle NULL over top of macaroni mixture#LABEL#+#PAIR#3,9
+pour sauce over macaroni#SENTENCE#stir in tomatoes and onions NULL#LABEL#+#PAIR#4,5
+pour sauce over macaroni#SENTENCE#pour into baking dish NULL#LABEL#+#PAIR#4,6
+stir Parmesan cheese and bread crumbs NULL#SENTENCE#pour sauce over macaroni#LABEL#-#PAIR#7,4
+pour sauce over macaroni#SENTENCE#stir in oil NULL#LABEL#+#PAIR#4,8
+pour sauce over macaroni#SENTENCE#sprinkle NULL over top of macaroni mixture#LABEL#+#PAIR#4,9
+stir in tomatoes and onions NULL#SENTENCE#pour into baking dish NULL#LABEL#+#PAIR#5,6
+stir Parmesan cheese and bread crumbs NULL#SENTENCE#stir in tomatoes and onions NULL#LABEL#-#PAIR#7,5
+stir in oil NULL#SENTENCE#stir in tomatoes and onions NULL#LABEL#-#PAIR#8,5
+stir in tomatoes and onions NULL#SENTENCE#sprinkle NULL over top of macaroni mixture#LABEL#+#PAIR#5,9
+stir Parmesan cheese and bread crumbs NULL#SENTENCE#pour into baking dish NULL#LABEL#-#PAIR#7,6
+stir in oil NULL#SENTENCE#pour into baking dish NULL#LABEL#-#PAIR#8,6
+sprinkle NULL over top of macaroni mixture#SENTENCE#pour into baking dish NULL#LABEL#-#PAIR#9,6
+stir Parmesan cheese and bread crumbs NULL#SENTENCE#stir in oil NULL#LABEL#+#PAIR#7,8
+sprinkle NULL over top of macaroni mixture#SENTENCE#stir Parmesan cheese and bread crumbs NULL#LABEL#-#PAIR#9,7
+sprinkle NULL over top of macaroni mixture#SENTENCE#stir in oil NULL#LABEL#-#PAIR#9,8
+10,45#RECIPE#
+add the shell pasta and andouille sausage NULL#SENTENCE#stir the condensed soup and water in a slow cooker#LABEL#-#PAIR#1,0
+set the slow cooker to High#SENTENCE#stir the condensed soup and water in a slow cooker#LABEL#-#PAIR#2,0
+stir the condensed soup and water in a slow cooker#SENTENCE#cook 2 hours , stirring frequently to prevent sticking NULL#LABEL#+#PAIR#0,3
+stir the condensed soup and water in a slow cooker#SENTENCE#prevent sticking to High#LABEL#+#PAIR#0,4
+stir in the sour cream , Cheddar , and mozzarella NULL#SENTENCE#stir the condensed soup and water in a slow cooker#LABEL#-#PAIR#5,0
+taste NULL with salt and pepper#SENTENCE#stir the condensed soup and water in a slow cooker#LABEL#-#PAIR#6,0
+stir the condensed soup and water in a slow cooker#SENTENCE#remove NULL from heat#LABEL#+#PAIR#0,7
+rest 15 minutes before serving#SENTENCE#stir the condensed soup and water in a slow cooker#LABEL#-#PAIR#8,0
+add the shell pasta and andouille sausage NULL#SENTENCE#set the slow cooker to High#LABEL#+#PAIR#1,2
+cook 2 hours , stirring frequently to prevent sticking NULL#SENTENCE#add the shell pasta and andouille sausage NULL#LABEL#-#PAIR#3,1
+add the shell pasta and andouille sausage NULL#SENTENCE#prevent sticking to High#LABEL#+#PAIR#1,4
+stir in the sour cream , Cheddar , and mozzarella NULL#SENTENCE#add the shell pasta and andouille sausage NULL#LABEL#-#PAIR#5,1
+add the shell pasta and andouille sausage NULL#SENTENCE#taste NULL with salt and pepper#LABEL#+#PAIR#1,6
+add the shell pasta and andouille sausage NULL#SENTENCE#remove NULL from heat#LABEL#+#PAIR#1,7
+rest 15 minutes before serving#SENTENCE#add the shell pasta and andouille sausage NULL#LABEL#-#PAIR#8,1
+cook 2 hours , stirring frequently to prevent sticking NULL#SENTENCE#set the slow cooker to High#LABEL#-#PAIR#3,2
+set the slow cooker to High#SENTENCE#prevent sticking to High#LABEL#+#PAIR#2,4
+stir in the sour cream , Cheddar , and mozzarella NULL#SENTENCE#set the slow cooker to High#LABEL#-#PAIR#5,2
+set the slow cooker to High#SENTENCE#taste NULL with salt and pepper#LABEL#+#PAIR#2,6
+set the slow cooker to High#SENTENCE#remove NULL from heat#LABEL#+#PAIR#2,7
+rest 15 minutes before serving#SENTENCE#set the slow cooker to High#LABEL#-#PAIR#8,2
+cook 2 hours , stirring frequently to prevent sticking NULL#SENTENCE#prevent sticking to High#LABEL#+#PAIR#3,4
+cook 2 hours , stirring frequently to prevent sticking NULL#SENTENCE#stir in the sour cream , Cheddar , and mozzarella NULL#LABEL#+#PAIR#3,5
+taste NULL with salt and pepper#SENTENCE#cook 2 hours , stirring frequently to prevent sticking NULL#LABEL#-#PAIR#6,3
+remove NULL from heat#SENTENCE#cook 2 hours , stirring frequently to prevent sticking NULL#LABEL#-#PAIR#7,3
+cook 2 hours , stirring frequently to prevent sticking NULL#SENTENCE#rest 15 minutes before serving#LABEL#+#PAIR#3,8
+prevent sticking to High#SENTENCE#stir in the sour cream , Cheddar , and mozzarella NULL#LABEL#+#PAIR#4,5
+prevent sticking to High#SENTENCE#taste NULL with salt and pepper#LABEL#+#PAIR#4,6
+prevent sticking to High#SENTENCE#remove NULL from heat#LABEL#+#PAIR#4,7
+prevent sticking to High#SENTENCE#rest 15 minutes before serving#LABEL#+#PAIR#4,8
+stir in the sour cream , Cheddar , and mozzarella NULL#SENTENCE#taste NULL with salt and pepper#LABEL#+#PAIR#5,6
+stir in the sour cream , Cheddar , and mozzarella NULL#SENTENCE#remove NULL from heat#LABEL#+#PAIR#5,7
+rest 15 minutes before serving#SENTENCE#stir in the sour cream , Cheddar , and mozzarella NULL#LABEL#-#PAIR#8,5
+taste NULL with salt and pepper#SENTENCE#remove NULL from heat#LABEL#+#PAIR#6,7
+rest 15 minutes before serving#SENTENCE#taste NULL with salt and pepper#LABEL#-#PAIR#8,6
+remove NULL from heat#SENTENCE#rest 15 minutes before serving#LABEL#+#PAIR#7,8
+9,36#RECIPE#
+whisk in flour NULL#SENTENCE#heat oven to 350 degrees F. Melt 3 Tbsp butter#LABEL#-#PAIR#1,0
+heat oven to 350 degrees F. Melt 3 Tbsp butter#SENTENCE#cook 2 min. NULL#LABEL#+#PAIR#0,2
+heat oven to 350 degrees F. Melt 3 Tbsp butter#SENTENCE#stir in milk NULL#LABEL#+#PAIR#0,3
+cook 3 to 5 min NULL#SENTENCE#heat oven to 350 degrees F. Melt 3 Tbsp butter#LABEL#-#PAIR#4,0
+add VELVEETA NULL#SENTENCE#heat oven to 350 degrees F. Melt 3 Tbsp butter#LABEL#-#PAIR#5,0
+cook 3 min NULL#SENTENCE#heat oven to 350 degrees F. Melt 3 Tbsp butter#LABEL#-#PAIR#6,0
+stir in macaroni NULL#SENTENCE#heat oven to 350 degrees F. Melt 3 Tbsp butter#LABEL#-#PAIR#7,0
+spoon NULL into 2-qt#SENTENCE#heat oven to 350 degrees F. Melt 3 Tbsp butter#LABEL#-#PAIR#8,0
+sprinkle NULL with Cheddar#SENTENCE#heat oven to 350 degrees F. Melt 3 Tbsp butter#LABEL#-#PAIR#9,0
+heat oven to 350 degrees F. Melt 3 Tbsp butter#SENTENCE#melt remaining butter NULL#LABEL#+#PAIR#0,10
+toss NULL with cracker crumbs#SENTENCE#heat oven to 350 degrees F. Melt 3 Tbsp butter#LABEL#-#PAIR#11,0
+heat oven to 350 degrees F. Melt 3 Tbsp butter#SENTENCE#sprinkle NULL over casserole#LABEL#+#PAIR#0,12
+heat oven to 350 degrees F. Melt 3 Tbsp butter#SENTENCE#bake 20 min NULL#LABEL#+#PAIR#0,13
+whisk in flour NULL#SENTENCE#cook 2 min. NULL#LABEL#+#PAIR#1,2
+stir in milk NULL#SENTENCE#whisk in flour NULL#LABEL#-#PAIR#3,1
+cook 3 to 5 min NULL#SENTENCE#whisk in flour NULL#LABEL#-#PAIR#4,1
+whisk in flour NULL#SENTENCE#add VELVEETA NULL#LABEL#+#PAIR#1,5
+cook 3 min NULL#SENTENCE#whisk in flour NULL#LABEL#-#PAIR#6,1
+whisk in flour NULL#SENTENCE#stir in macaroni NULL#LABEL#+#PAIR#1,7
+whisk in flour NULL#SENTENCE#spoon NULL into 2-qt#LABEL#+#PAIR#1,8
+sprinkle NULL with Cheddar#SENTENCE#whisk in flour NULL#LABEL#-#PAIR#9,1
+whisk in flour NULL#SENTENCE#melt remaining butter NULL#LABEL#+#PAIR#1,10
+toss NULL with cracker crumbs#SENTENCE#whisk in flour NULL#LABEL#-#PAIR#11,1
+sprinkle NULL over casserole#SENTENCE#whisk in flour NULL#LABEL#-#PAIR#12,1
+bake 20 min NULL#SENTENCE#whisk in flour NULL#LABEL#-#PAIR#13,1
+cook 2 min. NULL#SENTENCE#stir in milk NULL#LABEL#+#PAIR#2,3
+cook 3 to 5 min NULL#SENTENCE#cook 2 min. NULL#LABEL#-#PAIR#4,2
+cook 2 min. NULL#SENTENCE#add VELVEETA NULL#LABEL#+#PAIR#2,5
+cook 3 min NULL#SENTENCE#cook 2 min. NULL#LABEL#-#PAIR#6,2
+cook 2 min. NULL#SENTENCE#stir in macaroni NULL#LABEL#+#PAIR#2,7
+spoon NULL into 2-qt#SENTENCE#cook 2 min. NULL#LABEL#-#PAIR#8,2
+sprinkle NULL with Cheddar#SENTENCE#cook 2 min. NULL#LABEL#-#PAIR#9,2
+melt remaining butter NULL#SENTENCE#cook 2 min. NULL#LABEL#-#PAIR#10,2
+cook 2 min. NULL#SENTENCE#toss NULL with cracker crumbs#LABEL#+#PAIR#2,11
+sprinkle NULL over casserole#SENTENCE#cook 2 min. NULL#LABEL#-#PAIR#12,2
+bake 20 min NULL#SENTENCE#cook 2 min. NULL#LABEL#-#PAIR#13,2
+cook 3 to 5 min NULL#SENTENCE#stir in milk NULL#LABEL#-#PAIR#4,3
+stir in milk NULL#SENTENCE#add VELVEETA NULL#LABEL#+#PAIR#3,5
+cook 3 min NULL#SENTENCE#stir in milk NULL#LABEL#-#PAIR#6,3
+stir in macaroni NULL#SENTENCE#stir in milk NULL#LABEL#-#PAIR#7,3
+spoon NULL into 2-qt#SENTENCE#stir in milk NULL#LABEL#-#PAIR#8,3
+sprinkle NULL with Cheddar#SENTENCE#stir in milk NULL#LABEL#-#PAIR#9,3
+stir in milk NULL#SENTENCE#melt remaining butter NULL#LABEL#+#PAIR#3,10
+stir in milk NULL#SENTENCE#toss NULL with cracker crumbs#LABEL#+#PAIR#3,11
+stir in milk NULL#SENTENCE#sprinkle NULL over casserole#LABEL#+#PAIR#3,12
+bake 20 min NULL#SENTENCE#stir in milk NULL#LABEL#-#PAIR#13,3
+cook 3 to 5 min NULL#SENTENCE#add VELVEETA NULL#LABEL#+#PAIR#4,5
+cook 3 to 5 min NULL#SENTENCE#cook 3 min NULL#LABEL#+#PAIR#4,6
+stir in macaroni NULL#SENTENCE#cook 3 to 5 min NULL#LABEL#-#PAIR#7,4
+cook 3 to 5 min NULL#SENTENCE#spoon NULL into 2-qt#LABEL#+#PAIR#4,8
+sprinkle NULL with Cheddar#SENTENCE#cook 3 to 5 min NULL#LABEL#-#PAIR#9,4
+cook 3 to 5 min NULL#SENTENCE#melt remaining butter NULL#LABEL#+#PAIR#4,10
+toss NULL with cracker crumbs#SENTENCE#cook 3 to 5 min NULL#LABEL#-#PAIR#11,4
+cook 3 to 5 min NULL#SENTENCE#sprinkle NULL over casserole#LABEL#+#PAIR#4,12
+cook 3 to 5 min NULL#SENTENCE#bake 20 min NULL#LABEL#+#PAIR#4,13
+cook 3 min NULL#SENTENCE#add VELVEETA NULL#LABEL#-#PAIR#6,5
+stir in macaroni NULL#SENTENCE#add VELVEETA NULL#LABEL#-#PAIR#7,5
+spoon NULL into 2-qt#SENTENCE#add VELVEETA NULL#LABEL#-#PAIR#8,5
+add VELVEETA NULL#SENTENCE#sprinkle NULL with Cheddar#LABEL#+#PAIR#5,9
+melt remaining butter NULL#SENTENCE#add VELVEETA NULL#LABEL#-#PAIR#10,5
+toss NULL with cracker crumbs#SENTENCE#add VELVEETA NULL#LABEL#-#PAIR#11,5
+add VELVEETA NULL#SENTENCE#sprinkle NULL over casserole#LABEL#+#PAIR#5,12
+add VELVEETA NULL#SENTENCE#bake 20 min NULL#LABEL#+#PAIR#5,13
+cook 3 min NULL#SENTENCE#stir in macaroni NULL#LABEL#+#PAIR#6,7
+spoon NULL into 2-qt#SENTENCE#cook 3 min NULL#LABEL#-#PAIR#8,6
+sprinkle NULL with Cheddar#SENTENCE#cook 3 min NULL#LABEL#-#PAIR#9,6
+melt remaining butter NULL#SENTENCE#cook 3 min NULL#LABEL#-#PAIR#10,6
+toss NULL with cracker crumbs#SENTENCE#cook 3 min NULL#LABEL#-#PAIR#11,6
+sprinkle NULL over casserole#SENTENCE#cook 3 min NULL#LABEL#-#PAIR#12,6
+cook 3 min NULL#SENTENCE#bake 20 min NULL#LABEL#+#PAIR#6,13
+spoon NULL into 2-qt#SENTENCE#stir in macaroni NULL#LABEL#-#PAIR#8,7
+sprinkle NULL with Cheddar#SENTENCE#stir in macaroni NULL#LABEL#-#PAIR#9,7
+stir in macaroni NULL#SENTENCE#melt remaining butter NULL#LABEL#+#PAIR#7,10
+stir in macaroni NULL#SENTENCE#toss NULL with cracker crumbs#LABEL#+#PAIR#7,11
+stir in macaroni NULL#SENTENCE#sprinkle NULL over casserole#LABEL#+#PAIR#7,12
+stir in macaroni NULL#SENTENCE#bake 20 min NULL#LABEL#+#PAIR#7,13
+spoon NULL into 2-qt#SENTENCE#sprinkle NULL with Cheddar#LABEL#+#PAIR#8,9
+melt remaining butter NULL#SENTENCE#spoon NULL into 2-qt#LABEL#-#PAIR#10,8
+spoon NULL into 2-qt#SENTENCE#toss NULL with cracker crumbs#LABEL#+#PAIR#8,11
+sprinkle NULL over casserole#SENTENCE#spoon NULL into 2-qt#LABEL#-#PAIR#12,8
+spoon NULL into 2-qt#SENTENCE#bake 20 min NULL#LABEL#+#PAIR#8,13
+melt remaining butter NULL#SENTENCE#sprinkle NULL with Cheddar#LABEL#-#PAIR#10,9
+toss NULL with cracker crumbs#SENTENCE#sprinkle NULL with Cheddar#LABEL#-#PAIR#11,9
+sprinkle NULL over casserole#SENTENCE#sprinkle NULL with Cheddar#LABEL#-#PAIR#12,9
+bake 20 min NULL#SENTENCE#sprinkle NULL with Cheddar#LABEL#-#PAIR#13,9
+melt remaining butter NULL#SENTENCE#toss NULL with cracker crumbs#LABEL#+#PAIR#10,11
+melt remaining butter NULL#SENTENCE#sprinkle NULL over casserole#LABEL#+#PAIR#10,12
+bake 20 min NULL#SENTENCE#melt remaining butter NULL#LABEL#-#PAIR#13,10
+sprinkle NULL over casserole#SENTENCE#toss NULL with cracker crumbs#LABEL#-#PAIR#12,11
+bake 20 min NULL#SENTENCE#toss NULL with cracker crumbs#LABEL#-#PAIR#13,11
+sprinkle NULL over casserole#SENTENCE#bake 20 min NULL#LABEL#+#PAIR#12,13
+14,91#RECIPE#
