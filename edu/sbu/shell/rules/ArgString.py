@@ -81,13 +81,10 @@ class ArgString:
                 shell_i, shell_j = shell
                 tmp_i, tmp_j = self.find_arg_string_match(pnodes, rnodes, rnode, shell_i, shell_j, k)
 
-                 #logical bug: TODO: We should return tmp_i and tmp_j - looks solved to me
-                #easy way to solve would be let the info flow through the nodes
-                #we should scan back from the current position to the top in search of a match
-                #if a preceding node is not helping (and has a null argument) - we should jump above
-                #the shell node
+
                 if (tmp_i != -1 and tmp_j != -1):
                   return tmp_i, tmp_j
+
 
                 pass
           pass
@@ -96,6 +93,22 @@ class ArgString:
 
     return ret_i, ret_j
 
+
+  def is_parallel_path(self, start_i, start_j, ret_i, ret_j, pnodes, rnodes):
+
+    for arg_num in xrange(1,3):
+      tmp_i, tmp_j = start_i, start_j
+      while(len(rnodes[tmp_i][tmp_j][arg_num].shell_coref) > 0):
+        if rnodes[tmp_i][tmp_j][arg_num].shell_coref[0][0] == (ret_i, ret_j) and rnodes[tmp_i][tmp_j][arg_num].shell_coref[0][1] == 'IArgHeuristics':
+          #avoid parallel edges
+          return True
+        else:
+          tmp_i, tmp_j = rnodes[tmp_i][tmp_j][arg_num].shell_coref[0][0]
+          return self.is_parallel_path(tmp_i, tmp_j, ret_i, ret_j, pnodes, rnodes)
+
+
+
+    return False
 
 
   def run(self, pnodes, rnodes):
@@ -108,19 +121,24 @@ class ArgString:
           if not rnodes[i][j][k].is_null:
             ret_i, ret_j = self.find_arg_string_match(pnodes, rnodes, rnodes[i][j][k], i, j, k)
             if ret_i != -1 and ret_j != -1:
-              if k == 1:
-                if(len(rnodes[i][j][2].shell_coref) > 0):
-                  if rnodes[i][j][2].shell_coref[0][0] == (ret_i, ret_j):
-                    #avoid parallel edges
-                    continue
+
+              #logical bug: Handling the case pointed out by Polina - parallel paths case
+              #Test case: baked-mac-and-cheese-with-sour-cream-and-cottage-cheese
+              #bug becomes evident when upside_down_arborescence is not called
+              #or lines 333 or 334 in edmonds.py is commented
+
+              if self.is_parallel_path(i, j, ret_i, ret_j, pnodes, rnodes):
+                #correct the edges
+                sibling = 1 if k == 2 else 2
+                save_i, save_j = rnodes[i][j][sibling].shell_coref[0][0]
+                rnodes[i][j][sibling].shell_coref = []
+                rnodes[i][j][k].shell_coref.insert(0, ((save_i, save_j), 'ArgString'))
+                self.logger.error('Arg string correct of parallel paths')
+                continue
                 pass
-              elif k == 2:
-                if(len(rnodes[i][j][1].shell_coref) > 0):
-                  if rnodes[i][j][1].shell_coref[0][0] == (ret_i, ret_j):
-                    #avoid parallel edges
-                    continue
-                pass
-              rnodes[i][j][k].shell_coref.append(((ret_i, ret_j), 'ArgString'))
+              else:
+
+                rnodes[i][j][k].shell_coref.append(((ret_i, ret_j), 'ArgString'))
 
               # print 'ArgString applied'
               # print rnodes[i][j][k].text + ' pred:' + pnodes[ret_i][ret_j].predicate

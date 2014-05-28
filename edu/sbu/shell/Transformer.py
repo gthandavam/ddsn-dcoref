@@ -187,17 +187,19 @@ def main():
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/pumpkin-lobster-mac-and-cheese.txt'
 
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
-    # recipe_args_file = '/home/gt/Documents/MacAndCheeseArgs/tasty-baked-mac-n-cheese.txt'
+    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
+    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/healthy-creamy-mac-and-cheese.txt'
     dcoref_graph = make_nodes(recipe_args_file)
 
     rule_engine = RuleEngine()
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph)
 
     #apply MST Here
-    pnodes_resolved, rnodes_resolved,dot_graph, arbor_edges = connect_arbor(pnodes_resolved, rnodes_resolved)
+    pnodes_resolved, rnodes_resolved, dot_graph, arbor_edges = connect_arbor(pnodes_resolved, rnodes_resolved)
     #End of MST Section
 
     gv_file_name = recipe_args_file.replace('MacAndCheeseArgs','MacAndCheese-dot-files')
+
     gv_file_name = gv_file_name.replace('.txt', '.gv')
     dot_graph.write_gv(pnodes_resolved, rnodes_resolved, arbor_edges, gv_file_name)
 
