@@ -31,7 +31,7 @@ public class RecipeArgs {
 
   public static void main(String[] args) throws IOException {
     
-    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/CheeseBurger/CheeseBurger-Isteps/ -type f");
+    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/MacAndCheese/MacAndCheese-Isteps/ -type f");
     
     
     BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -50,7 +50,7 @@ public class RecipeArgs {
       System.out.println("Processing Recipe " + fileName);
       Annotation annotation = new Annotation(IOUtils.slurpFileNoExceptions(fileName));
       
-      String argsFile = fileName.replace("CheeseBurger-Isteps", "CheeseBurgerArgs");
+      String argsFile = fileName.replace("MacAndCheese-Isteps", "MacAndCheeseArgs");
       
       FileWriter fw = new FileWriter(argsFile);
       
@@ -76,8 +76,8 @@ public class RecipeArgs {
       
       //TODO: 3. Handle "In a small bowl, VP NP cases"
       TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  !>>PP "
-          + "<<# /VBP/=verb [ [ < NP=arg1 < PP=arg2] | [ < NP=arg1 !<<PRN ] |"
-          + " [ < (PP=arg2  !<: IN) ] | [ <: /VBP/=verb1 ] ]");
+          + "[<<# /VBP/=verb | <<#VB=verb] [ [ < NP=arg1 < PP=arg2] | "
+          + "[ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <: /VBP/ ] ]");
 
 //      TregexPattern syntFeaturesPattern = TregexPattern.compile(
 //          "NN=head > NP [$-- /NN/=appos | $-- JJ=adj | $-- DT=det]");
