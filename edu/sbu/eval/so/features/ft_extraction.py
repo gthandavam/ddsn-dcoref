@@ -19,14 +19,15 @@ def nltk_filter(sent):
   b1 = b1.rstrip()
 
   b2 = b2.rstrip()
-  b2, label = b2.split(labelSeparator)
+
 
   b1            = b1.lower()
   tokens        = word_tokenize(b1)
   filtered_sent = ' '
   for token in tokens:
     #try without separating as 1 and 2
-    filtered_sent += stemmer.stem(token) + ' '
+    # filtered_sent += stemmer.stem(token) + ' '
+    filtered_sent += '1' + stemmer.stem(token) + ' '
   # for pos_t in pos_tags:
   #   if pos_t[1] in filterList:
   #     #filtered_sent += stemmer.stem(pos_t[0]) + ' '
@@ -44,8 +45,8 @@ def nltk_filter(sent):
   #     filtered_sent += '2' + stemmer.stem(pos_t[0]) + ' '
 
   for token in tokens:
-    filtered_sent += stemmer.stem(token) + ' '
-
+    # filtered_sent += stemmer.stem(token) + ' '
+    filtered_sent += '2' + stemmer.stem(token) + ' '
   return filtered_sent
 
 

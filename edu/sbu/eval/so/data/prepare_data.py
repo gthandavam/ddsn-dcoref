@@ -15,7 +15,6 @@ trainTSPFile    = 'TSPtrainSamples.txt'
 testTSPFile     = 'TSPtestSamples.txt'
 devTSPFile      = 'TSPdevSamples.txt'
 
-
 sentSeparator   = '#SENTENCE#'
 recipeSeparator = '#RECIPE#'
 pairSeparator   = '#PAIR#'
@@ -23,21 +22,6 @@ encoding        = 'utf-8' #encoding per website
 stopLimit       = 612 #dev parameter - to control the generation process
 labelSeparator  = '#LABEL#' # separates the block and the label
 ###Parameters
-
-def get_experiment_data(expFile):
-  expF   = codecs.open(expFile, 'r',encoding)
-  sents  = []
-  labels = []
-
-  for line in expF.readlines():
-
-    sent, label = line.split(labelSeparator)
-    label = label.rstrip()
-    sents.append(sent)
-    labels.append(label)
-
-  expF.close()
-  return sents, labels
 
 def get_tsp_experiment_data(expFile):
   expF   = codecs.open(expFile, 'r',encoding)
@@ -68,83 +52,6 @@ def get_tsp_experiment_data(expFile):
   return sents, labels, pairs, recipeLength
 
 
-
-def display_tsp_results(inpFileList, tspResultSet_file):
-  from bs4 import BeautifulSoup
-  from sklearn.externals import joblib
-
-  tspResultSet = joblib.load(tspResultSet_file)
-
-  files = open(inpFileList)
-  itr = 0
-
-  kTau = 0
-  kTauCtr = 0
-  for htmlf in files.readlines():
-
-    htmlf = htmlf.rstrip()
-    htmlf = htmlf.replace('\n', '')
-    f = codecs.open(htmlf, 'r', encoding)
-    text = ''
-    for line in f.readlines():
-      line = line.replace('\n', ' ')
-      text += line
-    f.close()
-
-    #TODO When moving between blockCoref and the rest remember to change this
-    #Also to update trainFileList, testFileList and valFileList
-    outhtmlf = htmlf.replace('transitions-2', 'Results/UBEGGist')
-    outf = codecs.open(outhtmlf, 'w', encoding)
-
-    name = outhtmlf.split('/')[-1]
-    my_html = '<html>'
-    my_html += '<head> <meta charset=\'' + encoding + '\'/>'
-    my_html += ('<title>' + name + '</title> </head>')
-    my_html += ('<body>')
-
-    my_html += ('<table border ="1">')
-    my_html += ('<tr>')
-    my_html += ('<th> Gold Standard Order </th> <th> Experiment Order </th>')
-    my_html += ('</tr>')
-
-    soup = BeautifulSoup(text)
-    tables = soup.findAll('table')
-    #first table contains the steps
-    trs = tables[0].findAll('tr')
-
-    if len(trs) <= 1 or len(tspResultSet[itr]) == 0:
-      print 'No data for ordering ' + htmlf
-      #dont break here - itr has to be incremented
-    else:
-      kTau += ktau(range(len(tspResultSet[itr])),\
-                                  tspResultSet[itr], False)[0]
-      kTauCtr += 1
-
-
-
-    print ' recipe from ' + htmlf
-    i=1
-    for j in tspResultSet[itr]:
-      my_html += '<tr> <td> ' + trs[i].findAll('td')[1].text + ' </td> '
-      my_html += ' <td> ' + trs[j + 1].findAll('td')[1].text + ' </td> </tr> '
-      i += 1
-
-    my_html += '</body></html>'
-
-    outf.write(my_html)
-    outf.close()
-    itr += 1
-
-  files.close()
-  print ' kTau average ' + str(kTau/kTauCtr)
-
-
-def repl(m):
-  one = m.group(1)
-  two = m.group(2)
-  three = m.group(3)
-  return one + two + ' ' + three
-
 def prepare_tsp_experiment_data(inpFileList, outFile):
 
   # print 'data already prepared'
@@ -157,8 +64,6 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
 
     arg_file = arg_file.rstrip()
     arg_file = arg_file.replace('\n','')
-    f = codecs.open(arg_file, 'r')
-
 
     my_separator = 'TheGT'
     sentences = []
@@ -167,8 +72,6 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
       lines = f.readlines()
       for i in xrange(0, len(lines), 7):
         #Note: Splitting based on a custom separator TheGT
-        sent_num = int(lines[i].split(my_separator)[-1].strip())
-        pred_num = int(lines[i+1].split(my_separator)[-1].strip())
         sem_group = {'pred':None, 'arg1':None, 'arg2':None, 'arg1POS': None, 'arg2POS' : None}
         pred = lines[i+2].split(my_separator)[-1].strip()
         arg1 = lines[i+3].split(my_separator)[-1].strip()
@@ -185,6 +88,21 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
           sem_group['arg2POS'] = arg2POS
 
         sem_group = special_predicate_processing(sem_group)
+
+        if(sem_group['pred'] is None):
+          continue
+        else:
+          pred = sem_group['pred']
+        if(sem_group['arg1'] is None):
+          arg1 = 'NULL'
+        else:
+          arg1 = sem_group['arg1']
+        if(sem_group['arg2'] is None):
+          arg2 = 'NULL'
+        else:
+          arg2 = sem_group['arg2'] = arg2
+
+
         exp_line = pred + ' ' + arg1 + ' ' + arg2
         sentences.append(exp_line)
 
@@ -192,7 +110,6 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
     #   line = line.replace('\n', ' ')
     #   re.sub(r'([\w\W])(\.+)([\w\W])', repl, line)
     #   text += line
-
 
     lines = sentences
     sampleCtr = 0
@@ -205,13 +122,14 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
 
         tP = round(random.random(),2)
         if tP >= negP:
-          sample = successor + sentSeparator + predecessor + labelSeparator + '-'
+          sample = successor + sentSeparator + predecessor + labelSeparator + '-' + pairSeparator + str(j) + ',' + str(i)
         else:
-          sample = predecessor + sentSeparator + successor + labelSeparator + '+'
+          sample = predecessor + sentSeparator + successor + labelSeparator + '+' + pairSeparator + str(i) + ',' + str(j)
         sampleCtr += 1
         samples.write(sample + '\n')
     #dont know why this is needed
-    # samples.write( str(len(lines)) + ',' + str(sampleCtr) + recipeSeparator + '\n' )
+    samples.write( str(len(lines)) + ',' + str(sampleCtr) + recipeSeparator + '\n' )
+    # break #for debugging
 
   files.close()
   samples.close()
@@ -232,13 +150,19 @@ def get_stat(expFile):
   p = 0
   ctr = 0
   for line in f.readlines():
-    ctr += 1
+    line = line.rstrip()
+    if(len(line.split()) == 0):
+      continue
 
+    if(line.find(recipeSeparator) != -1):
+      continue
+
+    ctr += 1
 
     label = line.split(labelSeparator)[1]
     label = label.rstrip()
     # print label
-    if label == '+':
+    if label.startswith('+'):
       p += 1
 
   print "Number of positives " + str(p)
@@ -264,15 +188,14 @@ if __name__ == '__main__':
 
 '''
 ~~~Training Set~~~
-Number of positives 2290
+Number of positives 2200
 Number of samples 4484
 
 ~~~Dev Set~~~
-Number of positives 456
+Number of positives 467
 Number of samples 922
 
 ~~~Test Set~~~
-Number of positives 607
+Number of positives 612
 Number of samples 1212
-#############
 '''
