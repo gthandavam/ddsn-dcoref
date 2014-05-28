@@ -11,12 +11,13 @@ class MSTGraphTransformer:
   Uses MST Heuristic Handler to assign weights to the edges
   """
 
-  def __init__(self):
+  def __init__(self, r_stats):
     self.logger = logging.getLogger('root')
     self.adj_list = {}
     self.v_props = {}
     self.id_node_map = {}
     self.dot_builder = None
+    self.recipe_stats = r_stats
 
     self.ccs = []
 
@@ -79,7 +80,7 @@ class MSTGraphTransformer:
     a_list = self.adj_list
     self.adj_list = self.directed_to_undirected()
     self.ccs = self.get_connected_components()
-    weighted_graph = WeightedGraph(pnodes, rnodes, self.ccs, self.v_props, a_list, self.id_node_map)
+    weighted_graph = WeightedGraph(pnodes, rnodes, self.ccs, self.v_props, a_list, self.id_node_map, self.recipe_stats)
 
     weighted_graph.print_edges()
 

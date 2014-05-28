@@ -101,7 +101,7 @@
 "NULL","cook","whisk",0.5,0.5
 "until well browned","cook","reduce",0.0,1.0
 "NULL","stir","whisk",1.0,0.0
-"in a food processor","combine","toast",0.0,1.0
+"until crisp","fry","bake",0.0,1.0
 "to saucepan","add","stir",0.0,1.0
 "NULL","combine","cook",0.0,1.0
 "macaroni","cook","serve",1.0,0.0
@@ -159,6 +159,7 @@
 "NULL","stir","stir",1.0,0.0
 "over top of macaroni mixture","sprinkle","stir",0.0,1.0
 "into the mixture","stir","pour",0.0,1.0
+"NULL","bake","toss",1.0,0.0
 "in preheated oven","bake","stir",0.0,1.0
 "for 8 minutes or until al dente","add","bring",0.0,1.0
 "rotini","stir","stir",1.0,0.0
@@ -190,6 +191,7 @@
 "NULL","top","toss",1.0,0.0
 "macaroni","place","bring",1.0,0.0
 "the cheddar and american cheeses","add","drain",1.0,0.0
+"bacon in a large skillet over medium-high heat","fry","bake",1.0,0.0
 "onion for 2 minutes","saute","melt",1.0,0.0
 "the cheddar cheese soup , havarti cheese , parmesan cheese and 1/3 cup of cheddar cheese","add","stir",1.0,0.0
 "NULL","sprinkle","cook",1.0,0.0
@@ -320,7 +322,6 @@
 "to 350 degrees f -lrb- 175 degrees c -rrb-","preheat","cook",0.0,1.0
 "NULL","bake","dot",0.0,1.0
 "1 min","cook","stir",1.0,0.0
-"tomatoes , water and taco seasoning","add","pour",1.0,0.0
 "NULL","top","sprinkle",1.0,0.0
 "NULL","combine","add",0.0,1.0
 "flour","add","melt",1.0,0.0
@@ -405,7 +406,7 @@
 "sauce","pour","stir",1.0,0.0
 "for 25 to 30 minutes or until browned and bubbly around edges","bake","sprinkle",0.0,1.0
 "into melted butter","whisk","melt",0.0,1.0
-"until crisp","fry","bring",0.0,1.0
+"tomatoes , water and taco seasoning","add","pour",1.0,0.0
 "to 350 degrees f -lrb- 175 degrees c -rrb-","preheat","bake",0.0,1.0
 "NULL","toss","melt",1.0,0.0
 "NULL","pour","uncover",1.0,0.0
@@ -424,7 +425,7 @@
 "the tomato liquid over the casserole","pour","arrange",1.0,0.0
 "NULL","cook","stir",0.4375,0.5625
 "until combined","stir","whisk",0.0,1.0
-"bacon in a large skillet over medium-high heat","fry","bring",1.0,0.0
+"at 300 degrees f -lrb- 150 degrees c -rrb-","bake","spread",1.0,0.0
 "with meat mixture","toss","simmer",0.0,1.0
 "macaroni","pour","add",1.0,0.0
 "6 to 7 minutes","reduce","pour",1.0,0.0
@@ -438,7 +439,6 @@
 "over top of casserole","sprinkle","preheat",0.0,1.0
 "quinoa , chicken stock , and water","add","cook",1.0,0.0
 "tuna and mushrooms","add","stir",1.0,0.0
-"at 300 degrees f -lrb- 150 degrees c -rrb-","bake","spread",1.0,0.0
 "the macaroni and cheese according to package directions","cook","drain",1.0,0.0
 "NULL","boil","bring",0.0,1.0
 "with bread crumbs and 2 tablespoons cheddar cheese","top","pour",0.0,1.0
@@ -583,6 +583,7 @@
 "3 cups cheese","add","remove",1.0,0.0
 "heat and cover","reduce","add",1.0,0.0
 "NULL","place","drain",0.0,1.0
+"in a food processor","combine","toast",0.0,1.0
 "into balls","scoop","remove",0.0,1.0
 "NULL","blend","mix",1.0,0.0
 "with mozzarella cheese","sprinkle","spread",0.0,1.0
@@ -725,7 +726,7 @@
 "the mac balls","fry","remove",1.0,0.0
 "in the milk","pour","stir",0.0,1.0
 "NULL","cook","bring",0.5,0.5
-"NULL","bake","toss",1.0,0.0
+"to 400 degrees f -lrb- 200 degrees c -rrb-","preheat","bring",0.0,1.0
 "in milk , salt , mustard and pepper","stir","stir",0.0,1.0
 "the bread crumbs","whisk","place",1.0,0.0
 "panko bread crumbs and olive oil","stir","drain",1.0,0.0

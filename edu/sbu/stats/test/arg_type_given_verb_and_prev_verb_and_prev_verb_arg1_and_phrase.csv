@@ -7,9 +7,10 @@
 "top","spread","half the macaroni","with half the tomatoes and half the cheddar cheese",0.0,1.0
 "bring","stir","NULL","to boiling , stirring constantly",0.0,1.0
 "stir","drain","NULL","in the 2 tablespoons butter , the 1/4 cup milk , and the cheese packet",0.0,1.0
+"remove","whisk","salt , white pepper , and nutmeg","sauce",1.0,0.0
 "combine","preheat","oven","dry pasta , spaghetti sauce , ham , garlic , onion powder and pepper",1.0,0.0
 "stir","stir","NULL","in pasta and remaining bacon",0.0,1.0
-"cook","melt","3 tablespoons butter in a large saucepan over medium heat","about 15 minutes",0.0,1.0
+"fry","bake","NULL","until crisp",0.0,1.0
 "preheat","pour","cheese mixture","oven",1.0,0.0
 "pour","toss","NULL","NULL",1.0,0.0
 "cook","stir","the softened butter","the onion in the oil",1.0,0.0
@@ -187,6 +188,7 @@
 "fill","bake","NULL","a pot",1.0,0.0
 "sprinkle","preheat","oven","over top of casserole",0.0,1.0
 "toss","simmer","5 minutes","pasta",1.0,0.0
+"drain","bake","at 400 degrees f -lrb- 205 degrees c -rrb-","NULL",0.5,0.5
 "remove","whisk","milk","from heat",0.0,1.0
 "stir","mix","NULL","in cooked pasta",0.0,1.0
 "pour","melt","mild cheddar cheese and sharp cheddar cheese","over the macaroni",0.0,1.0
@@ -225,6 +227,7 @@
 "stir","whisk","flour , mustard and pepper","into pot",0.0,1.0
 "pour","uncover","NULL","into a large saucepan",0.0,1.0
 "cook","cook","NULL","for 2 more minutes",0.0,1.0
+"cook","melt","3 tablespoons butter in a large saucepan over medium heat","about 15 minutes",0.0,1.0
 "are","bake","NULL","NULL",1.0,0.0
 "whisk","whisk","NULL","in the cheeses , about 1/2 cup at a time ,",0.0,1.0
 "bake","spread","NULL","at 300 degrees f -lrb- 150 degrees c -rrb-",1.0,0.0
@@ -253,7 +256,7 @@
 "pour","stir","rotini","cheese mixture",1.0,0.0
 "pour","bring","a large pot of lightly salted water","in pasta and cook",0.0,1.0
 "combine","drain","NULL","macaroni , soup , milk , cheese and 6 tablespoons butter",1.0,0.0
-"cook","drain","NULL","the macaroni and cheese according to package directions",1.0,0.0
+"place","bake","NULL","NULL",0.0,1.0
 "melt","combine","elbow macaroni and water in the bottom of a 9x11-inch baking dish","butter",1.0,0.0
 "melt","pour","sauce","NULL",0.0,1.0
 "add","whisk","NULL","butter and cheese ; i microwave on high for 5 minutes",1.0,0.0
@@ -322,6 +325,7 @@
 "preheat","drain","NULL","to 375 degrees f -lrb- 190 degrees c -rrb-",0.0,1.0
 "combine","place","a saucepan over medium-low heat","NULL",0.0,1.0
 "simmer","whisk","NULL","NULL",1.0,0.0
+"place","bake","NULL","the chopped bacon in a large , deep skillet",1.0,0.0
 "drain","remove","cover","NULL",0.5,0.5
 "fill","bake","30 minutes","a large pot",1.0,0.0
 "melt","drain","NULL","in a large pot over medium heat",0.0,1.0
@@ -331,6 +335,7 @@
 "add","stir","NULL","to roux",0.0,1.0
 "sprinkle","drain","NULL","NULL",1.0,0.0
 "stir","cook","2 min. , stirring constantly","in milk",0.0,1.0
+"preheat","bake","25","oven",1.0,0.0
 "spread","drain","NULL","into a 9x13-inch casserole dish",0.0,1.0
 "pour","stir","NULL","into baking dish",0.0,1.0
 "broil","bake","NULL","about 3 more minutes",0.0,1.0
@@ -338,7 +343,7 @@
 "stir","whisk","the eggs , the remaining 1 teaspoon of butter , and milk in a large bowl","in 1 cup of cheddar cheese , 1 cup of mozzarella cheese , the broccoli mixture and half of the potato nuggets",0.0,1.0
 "stir","cook","NULL","tomatoes and green onions",1.0,0.0
 "add","simmer","NULL","NULL",0.0,1.0
-"remove","whisk","salt , white pepper , and nutmeg","sauce",1.0,0.0
+"cook","drain","NULL","the macaroni and cheese according to package directions",1.0,0.0
 "bake","sprinkle","bread crumbs","until bubbly and lightly brown",0.0,1.0
 "cook","fill","a large pot","the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm ,",1.0,0.0
 "stir","stir","5 minutes","into chili , cover skillet , and simmer until macaroni is heated",0.0,1.0
@@ -503,6 +508,7 @@
 "dot","place","a quarter of the macaroni in the bottom","NULL",1.0,0.0
 "add","reduce","heat","cheddar cheese",1.0,0.0
 "reduce","cook","NULL","to low",0.0,1.0
+"sprinkle","pour","milk over entire casserole","with crushed crackers",0.0,1.0
 "bring","preheat","oven","a large pot of water",1.0,0.0
 "add","drain","NULL","the cheddar and american cheeses",1.0,0.0
 "place","stir","NULL","macaroni",1.0,0.0
@@ -548,7 +554,7 @@
 "serve","add","chives","NULL",0.0,1.0
 "cook","add","garlic","NULL",1.0,0.0
 "whisk","cook","NULL","the eggs , the remaining 1 teaspoon of butter , and milk in a large bowl",1.0,0.0
-"preheat","bake","25","oven",1.0,0.0
+"serve","sprinkle","NULL","NULL",0.5,0.5
 "increase","stir","NULL","heat",1.0,0.0
 "fill","stir","cheese","with lightly salted water",0.0,1.0
 "combine","cook","the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm ,","the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish",1.0,0.0
@@ -648,7 +654,7 @@
 "pour","place","macaroni in large baking dish","sauce",1.0,0.0
 "remove","bake","casserole in the preheated oven","casserole",1.0,0.0
 "cook","bring","a large pot of water","NULL",0.0,1.0
-"place","bake","at 400 degrees f -lrb- 205 degrees c -rrb-","NULL",0.0,1.0
+"stir","pour","NULL","in oil",0.0,1.0
 "stir","remove","NULL","in cheeses",0.0,1.0
 "cook","drain","NULL","onion , green bell peppers , and garlic",1.0,0.0
 "cook","combine","the rotini pasta , evaporated milk , american cheese , cheddar cheese , canned green chiles , and chili powder in a slow cooker","NULL",1.0,0.0
@@ -716,7 +722,7 @@
 "stir","stir","NULL","cheese sauce",1.0,0.0
 "top","stir","macaroni","with cheddar cheese and green onions",0.0,1.0
 "stir","whisk","NULL","pumpkin puree , lemon zest , salt , black pepper , garlic powder , paprika , nutmeg , and hot sauce into the sauce",1.0,0.0
-"sprinkle","pour","milk over entire casserole","with crushed crackers",0.0,1.0
+"preheat","bring","NULL","to 400 degrees f -lrb- 200 degrees c -rrb-",0.0,1.0
 "pour","cook","NULL","cheese sauce over macaroni",1.0,0.0
 "add","add","flour and some ground black pepper","to mixture",0.0,1.0
 "pour","fold","the pasta","into the prepared casserole dish",0.0,1.0
@@ -736,7 +742,6 @@
 "preheat","serve","hot or at room temperature","an oven",1.0,0.0
 "bake","drizzle","melted butter","NULL",1.0,0.0
 "stir","top","NULL","NULL",1.0,0.0
-"fry","bring","NULL","until crisp",0.0,1.0
 "stir","fill","a small saucepan","NULL",1.0,0.0
 "remove","cook","pasta as directed on package","from heat",0.0,1.0
 "melt","reduce","heat","NULL",0.0,1.0
@@ -795,10 +800,9 @@
 "cook","bake","NULL","pasta",1.0,0.0
 "bake","cover","NULL","in preheated 375 degrees f oven 30 minutes",0.0,1.0
 "pour","stir","NULL","into shallow 2 quart baking dish",0.0,1.0
-"place","bake","at 400 degrees f -lrb- 205 degrees c -rrb-","the chopped bacon in a large , deep skillet",1.0,0.0
 "sprinkle","pour","macaroni mixture","with the reserved 1/2 cup cheddar cheese",0.0,1.0
 "cover","pour","the sauce","NULL",0.0,1.0
-"serve","sprinkle","NULL","NULL",0.5,0.5
+"combine","preheat","oven","with panko crumbs in a bowl",0.0,1.0
 "roast","place","butternut squash , cut-side down , on a baking sheet","in the preheated oven until soft , 40 to 50 minutes",0.0,1.0
 "serve","top","NULL","NULL",1.0,0.0
 "cook","bring","water","macaroni",1.0,0.0
@@ -843,7 +847,7 @@
 "bring","serve","NULL","a large pot of lightly salted water",1.0,0.0
 "stir","pour","NULL","to coat pasta",0.0,1.0
 "melt","rinse","NULL","in same saucepan on medium heat",0.0,1.0
-"sprinkle","stir","macaroni , mac and cheese , milk and pepper","with cheddar and parmesan and place",0.0,1.0
+"fry","bake","NULL","bacon in a large skillet over medium-high heat",1.0,0.0
 "preheat","bake","NULL","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
 "mix","drain","NULL","NULL",1.0,0.0
 "preheat","stir","bacon and onions","to 400 degrees f -lrb- 200 degrees c -rrb-",0.0,1.0
@@ -872,7 +876,6 @@
 "sprinkle","pour","NULL","with panko bread crumbs",0.0,1.0
 "cook","stir","NULL","2 min",1.0,0.0
 "cook","bake","NULL","macaroni as directed on box",1.0,0.0
-"fry","bring","NULL","bacon in a large skillet over medium-high heat",1.0,0.0
 "bring","place","a steamer insert","to a boil",0.0,1.0
 "bake","combine","macaroni and cheese sauce","NULL",1.0,0.0
 "bake","sprinkle","NULL","for 30 minutes",0.0,1.0
@@ -1120,7 +1123,6 @@
 "stir","pour","sauce over macaroni","in tomatoes and onions",0.0,1.0
 "top","place","tomato slices","NULL",1.0,0.0
 "pour","drain","pasta and return","NULL",0.0,1.0
-"combine","preheat","oven","with panko crumbs in a bowl",0.0,1.0
 "reduce","add","kidney beans , black beans , and corn","heat",1.0,0.0
 "add","pour","the milk","the cheese food , blue cheese , cheddar cheese , salt , pepper , and mustard",1.0,0.0
 "add","add","cayenne pepper and cook","NULL",0.0,1.0
@@ -1205,7 +1207,7 @@
 "bake","sprinkle","bread crumbs","30 minutes in the preheated oven",1.0,0.0
 "spread","stir","flour , 1/2 teaspoon salt , cayenne pepper , and milk","1/4 cup sour cream sauce",1.0,0.0
 "sprinkle","pour","NULL","NULL",1.0,0.0
-"stir","pour","NULL","in oil",0.0,1.0
+"sprinkle","stir","macaroni , mac and cheese , milk and pepper","with cheddar and parmesan and place",0.0,1.0
 "sprinkle","combine","the toasted bread and parmesan cheese","NULL",1.0,0.0
 "reduce","stir","NULL","heat and cover skillet",1.0,0.0
 "roast","place","butternut squash , cut-side down , on a baking sheet","squash",1.0,0.0

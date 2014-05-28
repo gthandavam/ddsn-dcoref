@@ -8,6 +8,7 @@ import edu.sbu.shell.logger.log as log
 import sys
 from edu.sbu.mst.MSTGraphTransformer import MSTGraphTransformer
 from edu.sbu.mst.weighted_graph.solver.edmonds import upside_down_arborescence
+from edu.sbu.stats.RecipeStats2 import RecipeStats2
 
 mod_logger = log.setup_custom_logger('root')
 
@@ -158,8 +159,8 @@ def make_svg(gv_file):
 
   return status
 
-def connect_arbor(pnodes_resolved, rnodes_resolved):
-  arbor_adapter = MSTGraphTransformer()
+def connect_arbor(pnodes_resolved, rnodes_resolved, r_stats):
+  arbor_adapter = MSTGraphTransformer(r_stats)
   weighted_graph = arbor_adapter.transform(pnodes_resolved, rnodes_resolved)
   g = weighted_graph.get_adj_ghost_graph('order_close_together')
   root = weighted_graph.get_simple_components_root()
@@ -174,11 +175,12 @@ def connect_arbor(pnodes_resolved, rnodes_resolved):
 def main():
 
   #files sentence split using stanford sentence splitter - fsm based
-  # i=0
+  i=0
+  r_stats = RecipeStats2("MacAndCheese")
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
-    # i+=1
-    # if i>10:
-    #   break
+    i+=1
+    if i>20:
+      break
     # if i!=4:
     #   continue
 
@@ -191,13 +193,15 @@ def main():
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/healthy-creamy-mac-and-cheese.txt'
+    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/caroles-chili-mac.txt'
+
     dcoref_graph = make_nodes(recipe_args_file)
 
     rule_engine = RuleEngine()
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph)
 
     #apply MST Here
-    pnodes_resolved, rnodes_resolved, dot_graph, arbor_edges = connect_arbor(pnodes_resolved, rnodes_resolved)
+    pnodes_resolved, rnodes_resolved, dot_graph, arbor_edges = connect_arbor(pnodes_resolved, rnodes_resolved, r_stats)
     #End of MST Section
 
     gv_file_name = recipe_args_file.replace('MacAndCheeseArgs','MacAndCheese-dot-files')

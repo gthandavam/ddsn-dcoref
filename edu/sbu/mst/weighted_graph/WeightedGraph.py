@@ -3,10 +3,11 @@ import logging
 import edu.sbu.mst.MSTHeuristics as Heuristics
 from edu.sbu.shell.semgraph.RNode import RNode
 from edu.sbu.shell.semgraph.PNode import PNode
-from edu.sbu.stats.RecipeStats2 import RecipeStats2
 import sys, math
 class WeightedGraph:
-  def __init__(self, pNodes, rNodes, ccs, v_props, adj_list, id_node_map):
+  Wwt = 1
+  Warg = 1
+  def __init__(self, pNodes, rNodes, ccs, v_props, adj_list, id_node_map, r_stats):
     self.pNodes = pNodes
     self.rNodes = rNodes
     self.id_node_map = id_node_map
@@ -19,7 +20,7 @@ class WeightedGraph:
     self.ccs = ccs
     self.find_active_nodes_per_cc(ccs)
     self.root = None
-    self.recipe_stats = RecipeStats2("")
+    self.recipe_stats = r_stats
 
     #for single top/bottom node per CC
     self.ccs_rep_top = []
@@ -123,6 +124,24 @@ class WeightedGraph:
     return g
     pass
 
+  def findInputArgument(self, node, reverse_g):
+    if node.id not in reverse_g:
+      return None
+
+    for node_id in reverse_g[node.id]:
+      node2 = self.id_node_map[node_id]
+      if isinstance(node2,RNode) and node2.arg_type=="arg1":
+        return node2
+
+    for node_id in reverse_g[node.id]:
+      node2 = self.id_node_map[node_id]
+      if isinstance(node2,PNode):
+        node3 = self.findInputArgument(node2,reverse_g)
+        if node3!=None:
+          return node3
+
+    return None
+
   # --- get graph plus ghost node with incoming edges from all connected components.
   # graph will serve as an input to "upside-down" arborescence
   def get_adj_ghost_graph(self, heuristic):
@@ -138,6 +157,16 @@ class WeightedGraph:
         if ch not in reverse_g:
           reverse_g[ch] = {}
         reverse_g[ch][node] = -100
+
+    for node in self.adj_list:
+      node_obj = self.id_node_map[node]
+      input_node = self.findInputArgument(node_obj, reverse_g)
+      for ch in self.adj_list[node]:
+        ch_obj = self.id_node_map[ch]
+        if isinstance(node_obj,PNode) and isinstance(ch_obj,RNode):
+          score = self.recipe_stats.getPredOuputArgProb(node_obj,input_node,ch_obj)
+          g[node][ch] = score
+          reverse_g[ch][node] = score
 
     # #len of ccs_top == len of ccs_bottom == no of ccs
     # for i in xrange(len(self.ccs_bottom)):
@@ -191,11 +220,7 @@ class WeightedGraph:
         g[node1.id] = {}
         g[node1.id]['Ghost'] = sys.maxint - 1
         # extract input argument of type arg1
-        input_node = None
-        for node_id in reverse_g[node1.id]:
-          node3 = self.id_node_map[node_id]
-          if isinstance(node3,RNode) and node3.arg_type=="arg1":
-            input_node = node3
+        input_node = self.findInputArgument(node1,reverse_g)
         # Predicate-Predicate edges
         for j in range(len(self.pNodes)):
           for q in range(len(self.pNodes[j])):
@@ -207,28 +232,31 @@ class WeightedGraph:
             if node1==node2 or node1.snum>node2.snum or node1.snum==node2.snum and node1.pnum>node2.pnum:
               continue
             wt = weight_heuristic(node1.id, node2.id, self.id_node_map, self.pNodes, self.rNodes)
-            arg_probability = self.recipe_stats.getPredPredProb(node1,input_node,node2)
-            g[node1.id][node2.id] = math.log(wt) + math.log(1-arg_probability)
+            input_node2 = self.findInputArgument(node2,reverse_g)
+            arg_probability = self.recipe_stats.getPredPredProb(node1,input_node,node2,input_node2)
+            g[node1.id][node2.id] = self.Wwt*wt + self.Warg*arg_probability
         # Predicate-Argument edges
         for j in range(len(self.ccs_top)):
-          # skip arguments from the same connected component
-          if i==j:
-            continue
+          # skip arguments from the same connected component - temporally off
+          # if i==j:
+          #   continue
           for q in range(len(self.ccs_top[j])):
             # for k in range(2):
               # node2 = self.ccs_top[j][q][k+1]
               node2 = self.id_node_map[self.ccs_top[j][q]]
-              if not isinstance(node2,RNode) or node2.arg_type=="arg2" or len(node2.shell_coref)>0:
+              if not isinstance(node2,RNode) or len(node2.shell_coref)>0:
                 continue
               # consider only argument nodes with 0 in degree
               if node2.id in reverse_g and len(reverse_g[node2.id])>0:
                 continue
-              if node1.snum>node2.sent_num or node1.snum==node2.sent_num and node1.pnum>node2.pred_num:
+              if node1.snum>node2.sent_num or node1.snum==node2.sent_num and node1.pnum>=node2.pred_num:
                 continue
               wt = weight_heuristic(node1.id, node2.id, self.id_node_map, self.pNodes, self.rNodes)
+              if node1.id=="T6" and node2.id=="T29":
+                pass
               # probability of argument being the output of the predicate
               arg_probability = self.recipe_stats.getPredOuputArgProb(node1,input_node,node2)
-              g[node1.id][node2.id] = math.log(wt) + math.log(1-arg_probability)
+              g[node1.id][node2.id] = self.Wwt*wt + self.Warg*arg_probability
 
     # # adding Ghost node
     # g['Ghost'] = {}
