@@ -178,9 +178,9 @@ def main():
   i=0
   r_stats = RecipeStats2("MacAndCheese")
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
-    i+=1
-    if i>20:
-      break
+    # i+=1
+    # if i>20:
+    #   break
     # if i!=4:
     #   continue
 
@@ -193,7 +193,7 @@ def main():
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/healthy-creamy-mac-and-cheese.txt'
-    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/caroles-chili-mac.txt'
+    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/butternut-squash-mac-and-cheese.txt'
 
     dcoref_graph = make_nodes(recipe_args_file)
 

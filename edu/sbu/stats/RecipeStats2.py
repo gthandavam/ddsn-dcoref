@@ -15,7 +15,8 @@ class RecipeStats2:
   verbs_score = {}
   verb_args1_score = {}
   verb_args2_score = {}
-  sent_window = 4
+  args1_args1_score = {}
+  sent_window = 3
 
 
   def __init__(self, recipe_name):
@@ -33,6 +34,7 @@ class RecipeStats2:
   # 2. Compute average relative distance for verb and output argument in sentence numbers
   def computeVerbArgSentStat(self):
     cnt = {}
+    cnt_arg1 = {}
     for r in range(len(self.reader.recipe_verbs)):
       recipe = self.reader.recipe_verbs[r]
       arg1_recipe = self.reader.recipe_args1[r]
@@ -40,6 +42,7 @@ class RecipeStats2:
       verbs = {}
       verb_args1 = {}
       verb_args2 = {}
+      args1_args1 = {}
       sent_num = 0
       for sent in range(len(recipe)):
         for i in range(len(recipe[sent])):
@@ -56,26 +59,42 @@ class RecipeStats2:
                 continue
               #### Consider other verbs
               verb2 = self.stemmer.stem(recipe[sent+k][j])
-              score = None
-              if k==0:
-                score = float(j-i)/len(recipe[sent])
-              else:
-                score = float(k)/len(recipe)
-              if verb2 not in verbs[verb] or verbs[verb][verb2]<score:
-                verbs[verb][verb2] = score
-              #### Consider arguments
-              if k==0:
-                continue
-              args1 = arg1_recipe[sent+k]
+              verbs[verb][verb2] = 1
+              # score = None
+              # if k==0:
+              #   score = float(j-i)/len(recipe[sent])
+              # else:
+              #   score = float(k)/len(recipe)
+              # if verb2 not in verbs[verb] or verbs[verb][verb2]<score:
+              #   verbs[verb][verb2] = score
+            #### Consider arguments
+            if k==0:
+              continue
+            args1 = arg1_recipe[sent+k]
+            for a1 in args1:
+                arg1 = self.stemmer.stem(a1)
+                verb_args1[verb][arg1] = 1
+                # if arg1 not in verb_args1[verb] or verb_args1[verb][arg1]<score:
+                #   verb_args1[verb][arg1] = score
+            args2 = arg1_recipe[sent+k]
+            for a2 in args2:
+                arg2 = self.stemmer.stem(a2)
+                verb_args2[verb][arg2] = 1
+                # if arg2 not in verb_args2[verb] or verb_args2[verb][arg2]<score:
+                #   verb_args2[verb][arg2] = score
+        # Arg1 - Arg1 statistics
+        args1_0 = arg1_recipe[sent]
+        for k in range(self.sent_window-1):
+            if sent+k+1>=len(recipe):
+              break
+            args1 = arg1_recipe[sent+k+1]
+            for a1_0 in args1_0:
+              arg1_0 = self.stemmer.stem(a1_0)
+              if arg1_0 not in args1_args1:
+                args1_args1[arg1_0] = {}
               for a1 in args1:
                 arg1 = self.stemmer.stem(a1)
-                if arg1 not in verb_args1[verb] or verb_args1[verb][arg1]<score:
-                  verb_args1[verb][arg1] = score
-              args2 = arg1_recipe[sent+k]
-              for a2 in args2:
-                arg2 = self.stemmer.stem(a2)
-                if arg2 not in verb_args2[verb] or verb_args2[verb][arg2]<score:
-                  verb_args2[verb][arg2] = score
+                args1_args1[arg1_0][arg1] = 1
       for verb in verbs:
         if verb not in self.verbs_score:
           self.verbs_score[verb] = {}
@@ -101,6 +120,19 @@ class RecipeStats2:
           else:
             self.verb_args2_score[verb][arg2] += verb_args1[verb][arg2]
 
+      for arg1_0 in args1_args1:
+        if arg1_0 not in self.args1_args1_score:
+          self.args1_args1_score[arg1_0] = {}
+        if arg1_0 not in cnt_arg1:
+          cnt_arg1[arg1_0] = 1
+        else:
+          cnt_arg1[arg1_0] += 1
+        for arg1 in args1_args1[arg1_0]:
+          if arg1 not in self.args1_args1_score[arg1_0]:
+            self.args1_args1_score[arg1_0][arg1] = args1_args1[arg1_0][arg1]
+          else:
+            self.args1_args1_score[arg1_0][arg1] += args1_args1[arg1_0][arg1]
+
     for verb in self.verbs_score:
       for verb2 in self.verbs_score[verb]:
         self.verbs_score[verb][verb2] = float(self.verbs_score[verb][verb2])/cnt[verb]
@@ -108,6 +140,10 @@ class RecipeStats2:
         self.verb_args1_score[verb][arg1] = float(self.verb_args1_score[verb][arg1])/cnt[verb]
       for arg2 in self.verb_args2_score[verb]:
         self.verb_args2_score[verb][arg2] = float(self.verb_args2_score[verb][arg2])/cnt[verb]
+
+    for arg1_0 in self.args1_args1_score:
+      for arg1 in self.args1_args1_score[arg1_0]:
+        self.args1_args1_score[arg1_0][arg1] = float(self.args1_args1_score[arg1_0][arg1])/cnt_arg1[arg1_0]
 
   def getPredOuputArgProb(self, predicate, input_argument, output_argument):
     if input_argument==None:
@@ -118,7 +154,7 @@ class RecipeStats2:
       score += self.getPredOuputArg1Prob(predicate, input_argument, output_argument)
     elif output_argument.arg_type=="arg2":
       score += self.getPredOuputArg2Prob(predicate, input_argument, output_argument)
-    return score
+    return score/2
 
   def getPredOuputArg1Prob(self, predicate, input_argument, output_argument):
     ### Compute probability of edge predicate->arg1
@@ -136,8 +172,9 @@ class RecipeStats2:
       if len(d)!=0:
         for arg1 in self.verb_args1_score[verb]:
           if arg1 in d:
-            s +=  1-self.verb_args1_score[verb][arg1]
+            s +=  self.verb_args1_score[verb][arg1]
         return math.log(1-float(s)/len(d)+0.00000001)
+        # return math.log(1-s+0.00000001)
     return 0
 
   def getPredOuputArg2Prob(self, predicate, input_argument, output_argument):
@@ -156,9 +193,28 @@ class RecipeStats2:
       if len(d)!=0:
         for arg1 in self.verb_args2_score[verb]:
           if arg1 in d:
-            s +=  1-self.verb_args2_score[verb][arg1]
+            s +=  self.verb_args2_score[verb][arg1]
         return math.log(1-float(s)/len(d)+0.00000001)
+        # return math.log(1-s+0.00000001)
     return 0
+
+  def getArg1Arg1Prob(self, input_argument0, input_argument1):
+    ### Compute probability of edge predicate->arg2
+    args0 = input_argument0.argIngs
+    args1 = input_argument1.argIngs
+    s=0
+    cnt=0
+    for a0 in args0:
+      arg0 = self.stemmer.stem(a0)
+      if arg0 in self.args1_args1_score:
+        for a1 in args1:
+          arg1 = self.stemmer.stem(a1)
+          if arg1 in self.args1_args1_score[arg0]:
+            s +=  self.args1_args1_score[arg0][arg1]
+            cnt += 1
+    if s==0:
+      return 0
+    return math.log(1-float(s)/cnt+0.00000001)
 
   def getPredPredProb(self, predicate, input_argument, predicate2, input_argument2):
     if input_argument==None or input_argument2==None:
@@ -169,13 +225,14 @@ class RecipeStats2:
     verb = self.stemmer.stem(predicate.predicate)
     verb2 = self.stemmer.stem(predicate2.predicate)
     if verb in self.verbs_score and verb2 in self.verbs_score[verb]:
-      score += math.log(self.verbs_score[verb][verb2]+0.00000001)
+      score += math.log(1-self.verbs_score[verb][verb2]+0.00000001)
     else:
       score += 1
+    score += self.getArg1Arg1Prob(input_argument, input_argument2)
     #   score /=3
     # else:
     #   score /=2
-    return score
+    return score/3
 
   def stem(self, word):
     if word=="":
