@@ -228,6 +228,10 @@ class WeightedGraph:
               wt = weight_heuristic(node1.id, node2.id, self.id_node_map, self.pNodes, self.rNodes)
               # probability of argument being the output of the predicate
               arg_probability = self.recipe_stats.getPredOuputArgProb(node1,input_node,node2)
+              #hack to handle calculation of log(0) -> gives math domain error
+              arg_probability -= 0.000001
+
+
               g[node1.id][node2.id] = math.log(wt) + math.log(1-arg_probability)
 
     # # adding Ghost node

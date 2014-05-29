@@ -177,6 +177,9 @@ def train_and_save():
   ft_xtractor, clf = train(sents, labels)
 
   print 'number of features: ' + str(len(ft_xtractor.get_feature_names()))
+  # joblib.dump(ft_xtractor, 'models/fx_UB_TrainD_notag.pkl')
+  # joblib.dump(clf, 'models/clf_UB_TrainD_notag.pkl')
+  #
   joblib.dump(ft_xtractor, 'models/fx_UB_TrainD.pkl')
   joblib.dump(clf, 'models/clf_UB_TrainD.pkl')
 
@@ -200,6 +203,7 @@ def load_and_validate(ft_ext_file, clf_file):
 
   prevItr = 0
   tspResultSet = []
+  ktauSum = 0.0
   for i in xrange(len(recipeLength)):
     itr = recipeLength[i][1]
     test_sents = sents[prevItr: prevItr + itr-1]
@@ -223,7 +227,9 @@ def load_and_validate(ft_ext_file, clf_file):
     edge_weights = tsp.pick_edge_weights(weights, pred_labels, pairs[prevItr: prevItr + itr-1], recipeLength[i][0])
     print 'Ordering for Recipe No ' + str(i+1) + ' is '
     order = test_tsp_solver(edge_weights)
-    print ' tau is ' + str(ktau(range(recipeLength[i][0]), order, False))
+    ktau_calc = ktau(range(recipeLength[i][0]), order, False)
+    ktauSum += ktau_calc[0]
+    print ' tau is ' + str(ktau_calc)
     tspResultSet.append(order)
     prevItr += itr
 
@@ -231,6 +237,8 @@ def load_and_validate(ft_ext_file, clf_file):
 
   with open('results/Test_UB.pkl', 'w') as f:
     pickle.dump(tspResultSet, f)
+
+  print 'Average KTau: ' + str(ktauSum/len(recipeLength))
 
   f.close()
 
@@ -249,6 +257,7 @@ def main():
   #run_classifier()
   train_and_save()
   # load_and_validate('models/fx_UB_TrainD.pkl', 'models/clf_UB_TrainD.pkl')
+  # load_and_validate('models/fx_UB_TrainD_notag.pkl', 'models/clf_UB_TrainD_notag.pkl')
   # findEstimator('ft_xtractor_stemmed_words_moretrainSamples_tsp_EG.pkl')
   # test_tsp_solver([[0, 1, 100, 200], [100, 0, 1000, 1], [100, 1000, 0, 200], [100, 100, 2, 0]])
   pass
