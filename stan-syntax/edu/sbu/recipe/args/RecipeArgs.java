@@ -47,6 +47,8 @@ public class RecipeArgs {
 //          + "canadian-bacon-macaroni-and-cheese.txt";
 //      fileName = "/home/gt/Documents/MacAndCheese-Isteps/"
 //          + "best-mac-n-cheese-ever.txt";
+//      fileName = "/home/gt/Documents/MacAndCheese/MacAndCheese-Isteps/"
+//        + "baked-mac-and-cheese-for-one.txt";
       System.out.println("Processing Recipe " + fileName);
       Annotation annotation = new Annotation(IOUtils.slurpFileNoExceptions(fileName));
       
@@ -77,7 +79,7 @@ public class RecipeArgs {
       //TODO: 3. Handle "In a small bowl, VP NP cases"
       TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  !>>PP "
           + "[<<# /VBP/=verb | <<#VB=verb] [ [ < NP=arg1 < PP=arg2] | "
-          + "[ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <: /VBP/ ] ]");
+          + "[ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <, /VBP/=verb1 ] | [ <, /VB/=verb1 ] ]");
 
 //      TregexPattern syntFeaturesPattern = TregexPattern.compile(
 //          "NN=head > NP [$-- /NN/=appos | $-- JJ=adj | $-- DT=det]");
@@ -140,11 +142,11 @@ public class RecipeArgs {
           System.out.println("predNum: " + predNum);
           fw.write("sentNum: " + mySeparator + sentNum + "\n");
           fw.write("predNum: " + mySeparator + predNum + "\n");
-//          if(match!=null)
-//            System.out.println("match: " + Sentence.listToString(match.yield()));
+          if(match!=null)
+            System.out.println("match: " + Sentence.listToString(match.yield()));
           
           if(verb != null) {
-//            System.out.println("verb: "  + Sentence.listToString(verb.yield()));
+            System.out.println("verb: "  + Sentence.listToString(verb.yield()));
             fw.write("verb: " + mySeparator + Sentence.listToString(verb.yield()) + "\n");
           }
           
