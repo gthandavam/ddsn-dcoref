@@ -26,6 +26,7 @@ class DotGraphBuilder:
     ###MST specific
     self.adj_list = {}
     self.id_node_map = {}
+    self.debug = False
 
 
   def process_pnodes(self, pnodes):
@@ -50,7 +51,10 @@ class DotGraphBuilder:
   def print_pnodes(self, pnodes, arbo_edges):
     for i in xrange(len(pnodes)):
       for j in xrange(len(pnodes[i])):
-        line = '{}[label=\"{}\"'.format(self.pred_node_list[(i,j)], pnodes[i][j].predicate)
+        if self.debug:
+          line = '{}[label=\"{} ({})\"'.format(self.pred_node_list[(i,j)], pnodes[i][j].predicate, pnodes[i][j].id)
+        else:
+          line = '{}[label=\"{}\"'.format(self.pred_node_list[(i,j)], pnodes[i][j].predicate)
         # line = self.pred_node_list[(i,j)] + '[label=\"' + pnodes[i][j].predicate + '\"'
         for key in self.pred_props.keys():
           line += ', {}={}'.format(key,self.pred_props[key])
@@ -117,12 +121,18 @@ class DotGraphBuilder:
 
             line = rnodes[i][j][k].id
             if rnodes[i][j][k].arg_type == 'arg1':
-              line += '[label=\"{}\"'.format(rnodes[i][j][k].raw_text)
+              if self.debug:
+                line += '[label=\"{} ({})\"'.format(rnodes[i][j][k].raw_text, rnodes[i][j][k].id)
+              else:
+                line += '[label=\"{}\"'.format(rnodes[i][j][k].raw_text)
               for key in self.arg1_props.keys():
                 line +=', {}={}'.format(key, self.arg1_props[key])
               line += ']'
             elif rnodes[i][j][k].arg_type == 'arg2':
-              line += '[label=\"{}\"'.format(rnodes[i][j][k].raw_text)
+              if self.debug:
+                line += '[label=\"{} ({})\"'.format(rnodes[i][j][k].raw_text, rnodes[i][j][k].id)
+              else:
+                line += '[label=\"{}\"'.format(rnodes[i][j][k].raw_text)
               for key in self.arg2_props.keys():
                 line +=', {}={}'.format(key, self.arg2_props[key])
               line += ']'
@@ -200,8 +210,13 @@ class DotGraphBuilder:
               pred_node  = self.pred_node_list[(i,j)]
               if shell_node not in arbo_edges or pred_node not in arbo_edges[shell_node]:
                 continue
-              line = '{} -> {}[label=\"{}\"'.format(shell_node, pred_node, edge_type)
+              if self.debug:
+                line = '{} -> {}[label=\"{}({})\"'.format(shell_node, pred_node, edge_type,arbo_edges[shell_node][pred_node])
+              else:
+                line = '{} -> {}[label=\"{}\"'.format(shell_node, pred_node, edge_type)
               for prop in self.edge_props[edge_type]:
+                if prop=="label":
+                  continue
                 line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
               line += ']'
               self.graph_lines.append(line)
@@ -226,7 +241,10 @@ class DotGraphBuilder:
               self.logger.warn('unknown arg type')
             if arg_node not in arbo_edges or self.pred_node_list[(i,j)] not in arbo_edges[arg_node]:
               continue
-            line =  '{} -> {}[label={}]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL')
+            if self.debug:
+              line =  '{} -> {}[label=\"{}({})\"]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL',arbo_edges[arg_node][self.pred_node_list[(i,j)]])
+            else:
+              line =  '{} -> {}[label={}]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL')
             self.graph_lines.append(line)
 
             if len(rnodes[i][j][k].shell_coref) > 0:
@@ -235,9 +253,14 @@ class DotGraphBuilder:
                 continue
               edge_type = rnodes[i][j][k].shell_coref[0][1]
 
-              line = '{} -> {}[label=\"{}\"'.format(shell_node, arg_node, edge_type)
+              if self.debug:
+                line = '{} -> {}[label=\"{}({})\"'.format(shell_node, arg_node, edge_type,arbo_edges[shell_node][arg_node])
+              else:
+                line = '{} -> {}[label=\"{}\"'.format(shell_node, arg_node, edge_type)
 
               for prop in self.edge_props[edge_type]:
+                if prop=="label":
+                  continue
                 line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
               line += ']'
 
@@ -269,7 +292,7 @@ class DotGraphBuilder:
     self.print_pnodes(pnodes,arbo_edges)
     self.print_rnodes(rnodes,arbo_edges)
     self.print_edges(rnodes,arbo_edges)
-    self.get_cc_edges(pnodes)
+    self.get_cc_edges(pnodes,arbo_edges)
     self.get_footer()
 
     with codecs.open(file_name, 'w') as f:
@@ -281,7 +304,7 @@ class DotGraphBuilder:
     # ing_flow_file = ing_flow_file.replace('.gv','.txt')
     # self.write_ingredient_flow(pnodes, rnodes, ing_flow_file)
 
-  def get_cc_edges(self, pnodes):
+  def get_cc_edges(self, pnodes, arbo_edges):
     for i in xrange(len(pnodes)):
       for j in xrange(len(pnodes[i])):
         # if len(pnodes[i][j].cc_edge) > 0:
@@ -305,9 +328,14 @@ class DotGraphBuilder:
           else:
             target_node = target_node.id
 
-          line = '{} -> {} [label=\"{}\"'.format(start_node, target_node, 'CC')
+          if self.debug:
+            line = '{} -> {} [label=\"{}({})\"'.format(start_node, target_node, 'CC', arbo_edges[start_node][target_node])
+          else:
+            line = '{} -> {} [label=\"{}\"'.format(start_node, target_node, 'CC')
 
           for prop in self.edge_props['CC'].keys():
+            if prop=="label":
+              continue
             line += ',{}={}'.format(prop, self.edge_props['CC'][prop])
 
           line += ']'

@@ -35,8 +35,8 @@ def order_close_together_pp(pNode, pNode2, id_node_map, pNodes, rNodes):
   ##### Test (Polina)
   if True:
     if pNode2.snum==pNode.snum:
-      return float(pNode2.pnum-pNode.pnum)/(pNode2.pnum+pNode.pnum)
-    return float(pNode2.snum-pNode.snum)/(pNode2.snum+pNode.snum)
+      return math.log(float(pNode2.pnum-pNode.pnum)/(pNode2.pnum+pNode.pnum)+0.00000001)
+    return math.log(float(pNode2.snum-pNode.snum)/(pNode2.snum+pNode.snum)+0.00000001)
   ######
 
   dist = len(pNodes[pNode.snum]) - pNode.pnum  - 1#accounting for zero based index
@@ -68,8 +68,8 @@ def order_close_together_pr(pNode, rNode, id_node_map, pNodes, rNodes):
   #### Test (Polina)
   if True:
     if rNode.sent_num==pNode.snum:
-      return float(rNode.pred_num-pNode.pnum)/(rNode.pred_num+pNode.pnum)
-    return float(rNode.sent_num-pNode.snum)/(rNode.sent_num+pNode.snum)
+      return math.log(float(rNode.pred_num-pNode.pnum)/(rNode.pred_num+pNode.pnum)+0.00000001)
+    return math.log(float(rNode.sent_num-pNode.snum)/(rNode.sent_num+pNode.snum)+0.00000001)
   ######
 
   dist = len(pNodes[pNode.snum]) - pNode.pnum  - 1#accounting for zero based index
