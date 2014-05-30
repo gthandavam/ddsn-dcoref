@@ -294,7 +294,11 @@ class DCorefGraphBuilder:
     lemmatizer = WordNetLemmatizer()
     arg = sem_group['pred'].lower()
 
+
+    #lemmaitzer is good - when it cannot find lemma,
+    #it gracefully returns the arg passed
     arg = lemmatizer.lemmatize(arg, 'v')
+
 
     if arg in self.light_verbs:
       return None
