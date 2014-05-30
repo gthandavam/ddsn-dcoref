@@ -29,7 +29,7 @@ class Previous:
     return -1, -1
 
   def run(self, pnodes, rnodes):
-    for i in xrange(1, len(rnodes)):
+    for i in xrange(len(rnodes)):
       for j in xrange(len(rnodes[i])):
         prev_i, prev_j = self.find_previous(pnodes, i, j)
           # i if j!= 0 else i-1
