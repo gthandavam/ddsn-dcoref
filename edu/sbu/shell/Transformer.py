@@ -234,7 +234,7 @@ def run():
     # if i!=4:
     #   continue
 
-    mod_logger.error(recipe_args_file)
+    mod_logger.critical(recipe_args_file)
 
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/mac-and-cheese-bake.txt'
 

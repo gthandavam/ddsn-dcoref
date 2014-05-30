@@ -72,11 +72,16 @@ class DerivationallyRelated:
 
     for i in xrange(len(pnodes)):
       for j in xrange(len(pnodes[i])):
+        if i==0 and j==0:
+          continue
         for k in xrange(1,3): #for arg1 and arg2
           if not rnodes[i][j][k].is_null:
             ret_i, ret_j = self.find_derivationally_related(pnodes, i, j, rnodes[i][j][k])
             if(not (ret_i == - 1 and ret_j == -1) ):
               rnodes[i][j][k].shell_coref.append(((ret_i,ret_j), 'DerivationallyRelated'))
+
+              pnodes[i][j].arg_text_for_coref += ' ' + pnodes[ret_i][ret_j].arg_text_for_coref
+              pnodes[i][j].arg_text_POS_for_coref += ' ' + pnodes[ret_i][ret_j].arg_text_POS_for_coref
               # print 'Derivationally Related applied'
               # print rnodes[i][j][k].raw_text + ' pred: ' + pnodes[i][j].predicate
 

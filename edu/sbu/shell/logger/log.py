@@ -17,7 +17,7 @@ def setup_custom_logger(name):
   # logger.setLevel(logging.WARN)
 
   #suppress log messages
-  logger.setLevel(logging.ERROR)
+  logger.setLevel(logging.CRITICAL)
 
   logger.addHandler(handler)
   return logger
