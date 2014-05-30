@@ -5,6 +5,8 @@ from collections import Counter
 import math
 from nltk.stem.porter import *
 from edu.sbu.shell.rules.ArgString import ArgString
+from edu.sbu.shell.semgraph.RNode import RNode
+from edu.sbu.shell.semgraph.PNode import PNode
 
 class RecipeStats2:
 
@@ -19,12 +21,11 @@ class RecipeStats2:
   sent_window = 3
 
 
-  def __init__(self, recipe_name):
-    self.reader = RecipeReader2(recipe_name)
-    self.computeStat()
+  def __init__(self):
     pass
 
-  def computeStat(self):
+  def computeStat(self, recipe_name):
+    self.reader = RecipeReader2(recipe_name)
     self.reader.read()
     self.computeVerbArgSentStat()
 
@@ -120,18 +121,18 @@ class RecipeStats2:
           else:
             self.verb_args2_score[verb][arg2] += verb_args1[verb][arg2]
 
-      for arg1_0 in args1_args1:
-        if arg1_0 not in self.args1_args1_score:
-          self.args1_args1_score[arg1_0] = {}
-        if arg1_0 not in cnt_arg1:
-          cnt_arg1[arg1_0] = 1
+      for arg in args1_args1:
+        if arg not in self.args1_args1_score:
+          self.args1_args1_score[arg] = {}
+        if arg not in cnt_arg1:
+          cnt_arg1[arg] = 1
         else:
-          cnt_arg1[arg1_0] += 1
-        for arg1 in args1_args1[arg1_0]:
-          if arg1 not in self.args1_args1_score[arg1_0]:
-            self.args1_args1_score[arg1_0][arg1] = args1_args1[arg1_0][arg1]
+          cnt_arg1[arg] += 1
+        for arg1 in args1_args1[arg]:
+          if arg1 not in self.args1_args1_score[arg]:
+            self.args1_args1_score[arg][arg1] = args1_args1[arg][arg1]
           else:
-            self.args1_args1_score[arg1_0][arg1] += args1_args1[arg1_0][arg1]
+            self.args1_args1_score[arg][arg1] += args1_args1[arg][arg1]
 
     for verb in self.verbs_score:
       for verb2 in self.verbs_score[verb]:
@@ -141,9 +142,137 @@ class RecipeStats2:
       for arg2 in self.verb_args2_score[verb]:
         self.verb_args2_score[verb][arg2] = float(self.verb_args2_score[verb][arg2])/cnt[verb]
 
-    for arg1_0 in self.args1_args1_score:
-      for arg1 in self.args1_args1_score[arg1_0]:
-        self.args1_args1_score[arg1_0][arg1] = float(self.args1_args1_score[arg1_0][arg1])/cnt_arg1[arg1_0]
+    for arg in self.args1_args1_score:
+      for arg1 in self.args1_args1_score[arg]:
+        self.args1_args1_score[arg][arg1] = float(self.args1_args1_score[arg][arg1])/cnt_arg1[arg]
+
+
+  def calcStatFromGraph(self, stat_data):
+    self.verbs_score = {}
+    self.verb_args1_score = {}
+    self.verb_args2_score = {}
+    self.args1_args1_score = {}
+    self.cnt = {}
+    self.cnt_arg1 = {}
+    for [weighted_graph, arbor_adapter, arbor_edges] in stat_data:
+      self.updateStatFromGraph(weighted_graph, arbor_adapter, arbor_edges)
+    for verb in self.verbs_score:
+      for verb2 in self.verbs_score[verb]:
+        self.verbs_score[verb][verb2] = float(self.verbs_score[verb][verb2])/self.cnt[verb]
+      for arg1 in self.verb_args1_score[verb]:
+        self.verb_args1_score[verb][arg1] = float(self.verb_args1_score[verb][arg1])/self.cnt[verb]
+      for arg2 in self.verb_args2_score[verb]:
+        self.verb_args2_score[verb][arg2] = float(self.verb_args2_score[verb][arg2])/self.cnt[verb]
+
+    for arg in self.args1_args1_score:
+      for arg1 in self.args1_args1_score[arg]:
+        self.args1_args1_score[arg][arg1] = float(self.args1_args1_score[arg][arg1])/self.cnt_arg1[arg]
+
+
+  def findInputArgument(self, node, reverse_g, id_node_map):
+    if node.id not in reverse_g:
+      return None
+
+    for node_id in reverse_g[node.id]:
+      node2 = id_node_map[node_id]
+      if isinstance(node2,RNode) and node2.arg_type=="arg1":
+        return node2
+
+    for node_id in reverse_g[node.id]:
+      node2 = id_node_map[node_id]
+      if isinstance(node2,PNode):
+        node3 = self.findInputArgument(node2,reverse_g, id_node_map)
+        if node3!=None:
+          return node3
+
+    return None
+
+  def updateStatFromGraph(self, weighted_graph, arbor_adapter, arbor_edges):
+    verbs_score = {}
+    verb_args1_score = {}
+    verb_args2_score = {}
+    args1_args1_score = {}
+    reverse_g = {}
+    for s in weighted_graph.adj_list:
+      for d in weighted_graph.adj_list[s]:
+        if d not in reverse_g:
+          reverse_g[d] = {}
+        reverse_g[d][s] = 1
+
+    for s in weighted_graph.adj_list:
+      node1 = arbor_adapter.id_node_map[s]
+      verb1 = None
+      verb1arg = None
+      arg1 = None
+      if isinstance(node1,PNode):
+        verb1 = self.stemmer.stem(node1.predicate)
+        verb1_arg = self.findInputArgument(node1,reverse_g,weighted_graph.id_node_map)
+        if verb1 not in verbs_score:
+          verbs_score[verb1] = {}
+          verb_args1_score[verb1] = {}
+          verb_args2_score[verb1] = {}
+      elif isinstance(node1,RNode):
+        pass
+      for d in weighted_graph.adj_list:
+        node2 = arbor_adapter.id_node_map[d]
+        if isinstance(node1,PNode) and isinstance(node2,PNode):
+          verb2 = self.stemmer.stem(node2.predicate)
+          verb2_arg = self.findInputArgument(node2,reverse_g,weighted_graph.id_node_map)
+          verbs_score[verb1][verb2] = 1
+          verb1_args = verb1_arg.argIngs
+          verb2_args = verb2_arg.argIngs
+          for a in verb1_args:
+            arg = self.stemmer.stem(a)
+            if arg not in args1_args1_score:
+              args1_args1_score[arg] = {}
+            for a1 in verb2_args:
+              arg1 = self.stemmer.stem(a1)
+              args1_args1_score[arg][arg1] = 1
+        elif isinstance(node1,PNode) and isinstance(node2,RNode):
+          args = node2.argIngs
+          for a in args:
+            arg = self.stemmer.stem(a)
+            if node2.arg_type=="arg1":
+              verb_args1_score[verb1][arg] = 1
+            elif node2.arg_type=="arg2":
+              verb_args2_score[verb1][arg] = 1
+
+    for verb1 in verbs_score:
+      if verb1 in self.verbs_score:
+        self.cnt[verb1] += 1
+      else:
+        self.verbs_score[verb1] = {}
+        self.verb_args1_score[verb1] = {}
+        self.verb_args2_score[verb1] = {}
+        self.cnt[verb1] = 1
+      for verb2 in verbs_score[verb1]:
+        if verb2 in self.verbs_score[verb1]:
+          self.verbs_score[verb1][verb2] += verbs_score[verb1][verb2]
+        else:
+          self.verbs_score[verb1][verb2] = verbs_score[verb1][verb2]
+      for arg1 in verb_args1_score[verb1]:
+        if arg1 in self.verb_args1_score[verb1]:
+          self.verb_args1_score[verb1][arg1] += verb_args1_score[verb1][arg1]
+        else:
+          self.verb_args1_score[verb1][arg1] = verb_args1_score[verb1][arg1]
+      for arg2 in verb_args2_score[verb1]:
+        if arg2 in self.verb_args2_score[verb1]:
+          self.verb_args2_score[verb1][arg2] += verb_args2_score[verb1][arg2]
+        else:
+          self.verb_args2_score[verb1][arg2] = verb_args2_score[verb1][arg2]
+
+    for arg in args1_args1_score:
+        if arg not in self.cnt_arg1:
+          self.cnt_arg1[arg] = 1
+          self.args1_args1_score[arg] = {}
+        else:
+          self.cnt_arg1[arg] += 1
+        for arg1 in args1_args1_score[arg]:
+          if arg1 not in self.args1_args1_score[arg]:
+            self.args1_args1_score[arg][arg1] = args1_args1_score[arg][arg1]
+          else:
+            self.args1_args1_score[arg][arg1] += args1_args1_score[arg][arg1]
+
 
   def getPredOuputArgProb(self, predicate, input_argument, output_argument):
     if input_argument==None:

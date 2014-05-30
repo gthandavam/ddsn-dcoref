@@ -329,7 +329,8 @@ def print_graph(g, id_node_map):
       print "{}->({})->{}".format(getNodeText(s,id_node_map),getNodeText(g[s][t],id_node_map),getNodeText(t,id_node_map))
 # --------------------------------------------------------------------------------- #
 
-def upside_down_arborescence(root, g, id_node_map):
+# def upside_down_arborescence(root, g, id_node_map):
+def upside_down_arborescence(root, g):
   # if True:
   #   return g
   ag = adjust_graph(g)

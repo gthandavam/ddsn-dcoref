@@ -6,6 +6,7 @@ from edu.sbu.shell.semgraph.DCorefGraphBuilder import DCorefGraphBuilder
 import commands
 import edu.sbu.shell.logger.log as log
 import sys
+import pickle
 from edu.sbu.mst.MSTGraphTransformer import MSTGraphTransformer
 from edu.sbu.mst.weighted_graph.solver.edmonds import upside_down_arborescence
 from edu.sbu.stats.RecipeStats2 import RecipeStats2
@@ -20,6 +21,8 @@ chipotle-macaroni-and-cheese
 dannys-macaroni-and-cheese
 reuben-mac-and-cheese
 """
+
+statFile = "/home/gt/Documents/RecipeStats2.pickle"
 
 def get_text(swirl_output):
   """
@@ -159,24 +162,71 @@ def make_svg(gv_file):
 
   return status
 
-def connect_arbor(pnodes_resolved, rnodes_resolved, r_stats):
+def generate_graph(pnodes_resolved, rnodes_resolved, r_stats):
   arbor_adapter = MSTGraphTransformer(r_stats)
   weighted_graph = arbor_adapter.transform(pnodes_resolved, rnodes_resolved)
   g = weighted_graph.get_adj_ghost_graph('order_close_together')
+  return arbor_adapter, weighted_graph
+
+def connect_arbor(weighted_graph, arbor_adapter, r_stats):
+  g = weighted_graph.get_adj_ghost_graph('order_close_together')
   root = weighted_graph.get_simple_components_root()
   # print 'root' + root
-  arbor_edges = upside_down_arborescence(root, g, arbor_adapter.id_node_map)
+  arbor_edges = upside_down_arborescence(root, g)
 
   pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, arbor_edges, weighted_graph.adj_list)
 
-  return pnodes_resolved, rnodes_resolved, arbor_adapter.dot_builder, arbor_edges
+  return pnodes_resolved, rnodes_resolved, arbor_edges
   pass
 
 def main():
+  # learnInitStat()
+  run()
+
+def learnInitStat():
+  #files sentence split using stanford sentence splitter - fsm based
+  i=0
+  r_stats = RecipeStats2()
+  r_stats.computeStat("MacAndCheese")
+  stat_data = []
+  for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
+    i+=1
+    # if i>20:
+    #   break
+    # if i!=4:
+    #   continue
+
+    mod_logger.error(recipe_args_file)
+    dcoref_graph = make_nodes(recipe_args_file)
+
+    rule_engine = RuleEngine()
+    pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph)
+
+    # Generate weighted graph
+    arbor_adapter, weighted_graph = generate_graph(pnodes_resolved, rnodes_resolved, r_stats)
+
+    #apply MST Here
+    pnodes_resolved, rnodes_resolved, arbor_edges = connect_arbor(weighted_graph, arbor_adapter, r_stats)
+    #End of MST Section
+
+    stat_data.append([weighted_graph, arbor_adapter, arbor_edges])
+
+  # Calculate statistics
+  r_stats.calcStatFromGraph(stat_data)
+
+  f = open(statFile,"w")
+  pickle.dump(r_stats,f)
+  f.close()
+
+def run():
 
   #files sentence split using stanford sentence splitter - fsm based
   i=0
-  r_stats = RecipeStats2("MacAndCheese")
+  # f = open(statFile)
+  # r_stats = pickle.load(f)
+  # f.close()
+  r_stats = RecipeStats2()
+  r_stats.computeStat("MacAndCheese")
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
     # i+=1
     # if i>20:
@@ -200,8 +250,12 @@ def main():
     rule_engine = RuleEngine()
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph)
 
+    # Generate weighted graph
+    arbor_adapter, weighted_graph = generate_graph(pnodes_resolved, rnodes_resolved, r_stats)
+    dot_graph = arbor_adapter.dot_builder
+
     #apply MST Here
-    pnodes_resolved, rnodes_resolved, dot_graph, arbor_edges = connect_arbor(pnodes_resolved, rnodes_resolved, r_stats)
+    pnodes_resolved, rnodes_resolved, arbor_edges = connect_arbor(weighted_graph, arbor_adapter, r_stats)
     #End of MST Section
 
     gv_file_name = recipe_args_file.replace('MacAndCheeseArgs','MacAndCheese-dot-files')

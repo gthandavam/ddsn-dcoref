@@ -125,22 +125,7 @@ class WeightedGraph:
     pass
 
   def findInputArgument(self, node, reverse_g):
-    if node.id not in reverse_g:
-      return None
-
-    for node_id in reverse_g[node.id]:
-      node2 = self.id_node_map[node_id]
-      if isinstance(node2,RNode) and node2.arg_type=="arg1":
-        return node2
-
-    for node_id in reverse_g[node.id]:
-      node2 = self.id_node_map[node_id]
-      if isinstance(node2,PNode):
-        node3 = self.findInputArgument(node2,reverse_g)
-        if node3!=None:
-          return node3
-
-    return None
+    return self.recipe_stats.findInputArgument(node, reverse_g, self.id_node_map)
 
   # --- get graph plus ghost node with incoming edges from all connected components.
   # graph will serve as an input to "upside-down" arborescence

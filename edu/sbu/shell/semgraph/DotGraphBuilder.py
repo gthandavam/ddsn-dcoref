@@ -26,7 +26,7 @@ class DotGraphBuilder:
     ###MST specific
     self.adj_list = {}
     self.id_node_map = {}
-    self.debug = True
+    self.debug = False
 
 
   def process_pnodes(self, pnodes):
