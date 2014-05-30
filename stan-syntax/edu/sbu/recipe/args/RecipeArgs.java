@@ -78,8 +78,8 @@ public class RecipeArgs {
       
       //TODO: 3. Handle "In a small bowl, VP NP cases"
       TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  !>>PP "
-          + "[<<# /VBP/=verb | <<#VB=verb] [ [ < NP=arg1 < PP=arg2] | "
-          + "[ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <, /VBP/=verb1 ] | [ <, /VB/=verb1 ] ]");
+          + "[<<# /VBP/=verb | <<# VB=verb] [ [ < NP=arg1 < PP=arg2] | "
+          + "[ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <, /VBP/=verb1 ] | [ <, VB=verb1 ] ]");
 
 //      TregexPattern syntFeaturesPattern = TregexPattern.compile(
 //          "NN=head > NP [$-- /NN/=appos | $-- JJ=adj | $-- DT=det]");
