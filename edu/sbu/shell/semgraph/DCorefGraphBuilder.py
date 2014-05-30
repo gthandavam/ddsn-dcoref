@@ -123,7 +123,7 @@ class DCorefGraphBuilder:
     nodes = {'pred' : None, 'arg1' : None, 'arg2' : None}
     if sem_group['pred'] is None:
       return False
-    nodes['pred'] = self.make_pnode('pred', sem_group['pred'], pred_num, sent_num)
+    nodes['pred'] = self.make_pnode('pred', sem_group, pred_num, sent_num)
 
     if nodes['pred'] is None:
       return False
@@ -134,6 +134,7 @@ class DCorefGraphBuilder:
     #Assumption - LVC have pred, arg1, arg2 compulsarily - effectively we are replacing light verb with
     #verb in arg2, if exists; if no meaningful verb in arg2, ignore the semgroup
     if nodes['pred'].light:
+      #always not a light verb in tregex formulation
       if not sem_group['arg2'] is None:
         sem_group['arg2'] = self.get_verbal_form(sem_group['arg2'])
 
@@ -288,8 +289,25 @@ class DCorefGraphBuilder:
 
     return ret
 
-  def make_pnode(self, arg_type, arg, pred_num, sent_num):
-    arg = arg.lower()
+  def make_pnode(self, arg_type, sem_group, pred_num, sent_num):
+    from nltk.stem.wordnet import WordNetLemmatizer
+    lemmatizer = WordNetLemmatizer()
+    arg = sem_group['pred'].lower()
+
+    arg = lemmatizer.lemmatize(arg, 'v')
+
+    if arg in self.light_verbs:
+      return None
+
+    coref_text = ' '
+    coref_text_pos = ' '
+    if(not sem_group['arg1'] is None):
+      coref_text += sem_group['arg1']
+      coref_text_pos += sem_group['arg1POS']
+
+    if(not sem_group['arg2'] is None):
+      coref_text += ' ' + sem_group['arg2']
+      coref_text_pos += ' ' + sem_group['arg2POS']
 
     #not doing morphy for verbal phrases
     # if not wn.morphy(arg, wn.VERB) is None:
@@ -303,7 +321,8 @@ class DCorefGraphBuilder:
     # if not light and arg not in self.cook_verbs and len(arg.split()) == 1:
     #   return None
 
-    return PNode(arg, pred_num, sent_num, light)
+
+    return PNode(arg, pred_num, sent_num, light, coref_text, coref_text_pos)
     # return PNode(pred_num, sent_num, arg)
     pass
 
@@ -316,7 +335,7 @@ class DCorefGraphBuilder:
     # else:
     #   arg = self.cleanse_arg(arg)
     #   return RNode(arg, arg_type, sent_num, pred_num)
-    return RNode(arg, pred_num, sent_num, arg_type,argPOS, is_null)
+    return RNode(arg, pred_num, sent_num, arg_type, argPOS, is_null)
     pass
 
 

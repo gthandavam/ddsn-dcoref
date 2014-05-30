@@ -175,16 +175,16 @@ def connect_arbor(pnodes_resolved, rnodes_resolved, r_stats):
 def main():
 
   #files sentence split using stanford sentence splitter - fsm based
-  i=0
+  # i=0
   r_stats = RecipeStats2("MacAndCheese")
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
-    i+=1
-    if i>20:
-      break
+    # i+=1
+    # if i>20:
+    #   break
     # if i!=4:
     #   continue
 
-    mod_logger.error(recipe_args_file)
+    mod_logger.critical(recipe_args_file)
 
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/mac-and-cheese-bake.txt'
 

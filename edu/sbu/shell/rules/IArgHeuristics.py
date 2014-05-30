@@ -31,13 +31,15 @@ class Previous:
   def run(self, pnodes, rnodes):
     for i in xrange(len(rnodes)):
       for j in xrange(len(rnodes[i])):
+        if i==0 and j==0:
+          continue
         prev_i, prev_j = self.find_previous(pnodes, i, j)
           # i if j!= 0 else i-1
         if prev_i == -1 and prev_j == -1:
           continue
 
-        if not self.allow_Iarg(pnodes, rnodes, i,j, prev_i, prev_j):
-          continue
+        # if not self.allow_Iarg(pnodes, rnodes, i,j, prev_i, prev_j):
+        #   continue
 
         for k in xrange(1,3):
           if rnodes[i][j][k].is_null:
@@ -47,6 +49,10 @@ class Previous:
             pnodes[i][j].pIngs = set.union(pnodes[i][j].pIngs, pnodes[prev_i][prev_j].pIngs)
             #updating rnode argIngs as well, just in case
             rnodes[i][j][k].argIngs = set.union(rnodes[i][j][k].argIngs, pnodes[prev_i][prev_j].pIngs)
+
+            pnodes[i][j].arg_text_for_coref += ' ' + pnodes[prev_i][prev_j].arg_text_for_coref
+            pnodes[i][j].arg_text_POS_for_coref += ' ' + pnodes[prev_i][prev_j].arg_text_POS_for_coref
+
             #to avoid parallel IArg edges between predicates
             #only one of arg1 or arg2 needs to use prev as IArg
             #so when arg1 and arg2 are null, only arg1 has IArg edge
