@@ -26,7 +26,7 @@ class DotGraphBuilder:
     ###MST specific
     self.adj_list = {}
     self.id_node_map = {}
-    self.debug = False
+    self.debug = True
 
 
   def process_pnodes(self, pnodes):
@@ -52,7 +52,7 @@ class DotGraphBuilder:
     for i in xrange(len(pnodes)):
       for j in xrange(len(pnodes[i])):
         if self.debug:
-          line = '{}[label=\"{} ({})\"'.format(self.pred_node_list[(i,j)], pnodes[i][j].predicate, pnodes[i][j].id)
+          line = '{}[label=\"{} ({},sent={})\"'.format(self.pred_node_list[(i,j)], pnodes[i][j].predicate, pnodes[i][j].id, pnodes[i][j].snum)
         else:
           line = '{}[label=\"{}\"'.format(self.pred_node_list[(i,j)], pnodes[i][j].predicate)
         # line = self.pred_node_list[(i,j)] + '[label=\"' + pnodes[i][j].predicate + '\"'
@@ -122,7 +122,7 @@ class DotGraphBuilder:
             line = rnodes[i][j][k].id
             if rnodes[i][j][k].arg_type == 'arg1':
               if self.debug:
-                line += '[label=\"{} ({})\"'.format(rnodes[i][j][k].raw_text, rnodes[i][j][k].id)
+                line += '[label=\"{} ({}, sent={})\"'.format(rnodes[i][j][k].raw_text, rnodes[i][j][k].id, rnodes[i][j][k].sent_num)
               else:
                 line += '[label=\"{}\"'.format(rnodes[i][j][k].raw_text)
               for key in self.arg1_props.keys():
@@ -130,7 +130,7 @@ class DotGraphBuilder:
               line += ']'
             elif rnodes[i][j][k].arg_type == 'arg2':
               if self.debug:
-                line += '[label=\"{} ({})\"'.format(rnodes[i][j][k].raw_text, rnodes[i][j][k].id)
+                line += '[label=\"{} ({},sent={})\"'.format(rnodes[i][j][k].raw_text, rnodes[i][j][k].id, rnodes[i][j][k].sent_num)
               else:
                 line += '[label=\"{}\"'.format(rnodes[i][j][k].raw_text)
               for key in self.arg2_props.keys():

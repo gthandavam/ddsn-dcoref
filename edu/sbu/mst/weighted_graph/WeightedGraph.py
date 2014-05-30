@@ -5,7 +5,7 @@ from edu.sbu.shell.semgraph.RNode import RNode
 from edu.sbu.shell.semgraph.PNode import PNode
 import sys, math
 class WeightedGraph:
-  Wwt = 1
+  Wwt = 0
   Warg = 1
   def __init__(self, pNodes, rNodes, ccs, v_props, adj_list, id_node_map, r_stats):
     self.pNodes = pNodes
@@ -236,24 +236,24 @@ class WeightedGraph:
             arg_probability = self.recipe_stats.getPredPredProb(node1,input_node,node2,input_node2)
             g[node1.id][node2.id] = self.Wwt*wt + self.Warg*arg_probability
         # Predicate-Argument edges
-        for j in range(len(self.ccs_top)):
+        # for j in range(len(self.ccs_top)):
+        for j in range(len(self.rNodes)):
           # skip arguments from the same connected component - temporally off
           # if i==j:
           #   continue
-          for q in range(len(self.ccs_top[j])):
-            # for k in range(2):
-              # node2 = self.ccs_top[j][q][k+1]
-              node2 = self.id_node_map[self.ccs_top[j][q]]
-              if not isinstance(node2,RNode) or len(node2.shell_coref)>0:
+          # for q in range(len(self.ccs_top[j])):
+          for q in range(len(self.rNodes[j])):
+            for k in range(2):
+              node2 = self.rNodes[j][q][k+1]
+              # node2 = self.id_node_map[self.ccs_top[j][q]]
+              if not isinstance(node2,RNode) or len(node2.shell_coref)>0 and node2.shell_coref[0][1]!="ArgString":
                 continue
-              # consider only argument nodes with 0 in degree
-              if node2.id in reverse_g and len(reverse_g[node2.id])>0:
-                continue
+              # # consider only argument nodes with 0 in degree
+              # if node2.id in reverse_g and len(reverse_g[node2.id])>0:
+              #   continue
               if node1.snum>node2.sent_num or node1.snum==node2.sent_num and node1.pnum>=node2.pred_num:
                 continue
               wt = weight_heuristic(node1.id, node2.id, self.id_node_map, self.pNodes, self.rNodes)
-              if node1.id=="T6" and node2.id=="T29":
-                pass
               # probability of argument being the output of the predicate
               arg_probability = self.recipe_stats.getPredOuputArgProb(node1,input_node,node2)
               g[node1.id][node2.id] = self.Wwt*wt + self.Warg*arg_probability
