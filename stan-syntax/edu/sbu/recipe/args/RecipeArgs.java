@@ -49,6 +49,10 @@ public class RecipeArgs {
 //          + "best-mac-n-cheese-ever.txt";
 //      fileName = "/home/gt/Documents/MacAndCheese/MacAndCheese-Isteps/"
 //        + "baked-mac-and-cheese-for-one.txt";
+//      fileName = "/home/gt/Documents/MacAndCheese/MacAndCheese-Isteps/"
+//          + "walters-chicken-and-mac.txt";
+//    fileName = "/home/gt/Documents/MacAndCheese/MacAndCheese-Isteps/"
+//    + "test-chucks-favorite-mac-and-cheese.txt";
       System.out.println("Processing Recipe " + fileName);
       Annotation annotation = new Annotation(IOUtils.slurpFileNoExceptions(fileName));
       
@@ -77,9 +81,15 @@ public class RecipeArgs {
       //process PRN and all
       
       //TODO: 3. Handle "In a small bowl, VP NP cases"
-      TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  !>>PP "
-          + "[<<# /VBP/=verb | <<# VB=verb] [ [ < NP=arg1 < PP=arg2] | "
-          + "[ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <, /VBP/=verb1 ] | [ <, VB=verb1 ] ]");
+      //case 1
+//      TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  !>>PP "
+//          + "[<<# /VBP/=verb | <<# VB=verb] [ [ < NP=arg1 < PP=arg2] | "
+//          + "[ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <, /VBP/=verb1 ] | [ <, VB=verb1 ] ]");
+      
+      TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  "
+          + "[<, /VBP/=verb | <, VB=verb] [ [ < NP=arg1 < PP=arg2] | "
+          + "[ < NP=arg1 ] | [ < PP=arg2  ] | [ <, /VBP/=verb1 ] | [ <, VB=verb1 ] ]");
+      
 
 //      TregexPattern syntFeaturesPattern = TregexPattern.compile(
 //          "NN=head > NP [$-- /NN/=appos | $-- JJ=adj | $-- DT=det]");
@@ -154,6 +164,13 @@ public class RecipeArgs {
             System.out.println("Arg1: "  + Sentence.listToString(arg1.yield()));
             fw.write("Arg1: " + mySeparator + Sentence.listToString(arg1.yield()) + "\n");
             
+            GrammaticalStructure gs = gsf.newGrammaticalStructure(arg1);
+            Collection<TypedDependency> tdl = gs.allTypedDependencies();
+            
+            for (TypedDependency dep: tdl) {
+              System.out.println(dep.reln()+"~~~~~"+dep.gov()+"~~~~~"+dep.dep());
+            }
+            
             ArrayList<TaggedWord> arr = arg1.taggedYield();
             
             fw.write("Arg1POS:" + mySeparator);
@@ -176,9 +193,13 @@ public class RecipeArgs {
           if(arg2 != null) {
             System.out.println("Arg2: "  + Sentence.listToString(arg2.yield()));
             fw.write("Arg2: "  + mySeparator + Sentence.listToString(arg2.yield()) + "\n");
-//            GrammaticalStructure gs = gsf.newGrammaticalStructure(arg2);
-//            Collection<TypedDependency> tdl = gs.allTypedDependencies();
-//          
+            GrammaticalStructure gs = gsf.newGrammaticalStructure(arg2);
+            Collection<TypedDependency> tdl = gs.allTypedDependencies();
+            
+            for (TypedDependency dep: tdl) {
+              System.out.println(dep.reln()+"~~~~~"+dep.gov()+"~~~~~"+dep.dep());
+            }
+          
             fw.write("Arg2POS:" + mySeparator);
             ArrayList<TaggedWord> arr = arg2.taggedYield();
             

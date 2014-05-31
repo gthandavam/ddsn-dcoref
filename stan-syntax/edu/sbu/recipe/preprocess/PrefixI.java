@@ -52,7 +52,12 @@ public class PrefixI {
         }
         
         for(int i=0 ; i < parts.length; i++) {
-          if(i != parts.length - 1)
+          if(parts[i].toLowerCase().startsWith("in ")) {
+            parts[i] = Character.toUpperCase(
+                parts[i].charAt(0)) + (parts[i].length() > 1 ? parts[i].substring(1) : "");
+            processedSent.append(parts[i]);
+          }
+          else if(i != parts.length - 1)
             processedSent.append(" I would " + parts[i] + ";");
           else
             processedSent.append(" I would " + parts[i]);

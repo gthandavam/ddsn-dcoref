@@ -120,6 +120,65 @@ def special_predicate_processing(sem_group):
   return sem_group
   pass
 
+def special_pp_processing(sem_group):
+  '''
+  To handle the case when because of a parse error, NP and PP are getting mentioned as NP
+  eg:
+  '''
+  arg1 = []
+  arg2 = []
+  arg1POS = []
+  arg2POS = []
+
+
+  two = False
+  if(sem_group['arg2'] is None and not sem_group['arg1'] is None):
+    inp_arg1 = sem_group['arg1'].split()
+    inp_arg1POS = sem_group['arg1POS'].split()
+    for i in xrange(len(inp_arg1)):
+      if(two):
+        arg2.append(inp_arg1[i])
+        arg2POS.append(inp_arg1POS[i])
+        pass
+      else:
+        if inp_arg1POS[i].find('/IN') != -1:
+          two = True
+          arg2.append(inp_arg1[i])
+          arg2POS.append(inp_arg1POS[i])
+        else:
+          arg1.append(inp_arg1[i])
+          arg1POS.append(inp_arg1POS[i])
+        pass
+    pass
+
+    if(len(arg1) > 0):
+      arg1 = ' '.join(arg1)
+      arg1POS = ' '.join(arg1POS)
+      sem_group['arg1'] = arg1
+      sem_group['arg1POS'] = arg1POS
+    else:
+      arg1 = 'NULL'
+      arg1POS = 'NULL'
+      sem_group['arg1'] = None
+      sem_group['arg1POS'] = None
+
+    if(len(arg2) > 0):
+      arg2 = ' '.join(arg2)
+      arg2POS = ' '.join(arg2POS)
+      sem_group['arg2'] = arg2
+      sem_group['arg2POS'] = arg2POS
+    else:
+      arg2 = 'NULL'
+      arg2POS = 'NULL'
+      sem_group['arg2'] = None
+      sem_group['arg2POS'] = None
+
+
+    mod_logger.critical(' split up as ' + arg1POS + ' and ' + arg2POS)
+
+  return sem_group
+  pass
+
 def make_nodes(args_file):
   """
   Reads args for th recipe and builds nodes
@@ -156,6 +215,8 @@ def make_nodes(args_file):
         sem_group['arg2POS'] = arg2POS
 
       sem_group = special_predicate_processing(sem_group)
+
+      sem_group = special_pp_processing(sem_group)
 
       dcoref_graph_builder.make_nodes(sem_group, sent_num, pred_num)
   return dcoref_graph_builder
@@ -224,6 +285,8 @@ def learnStat(useArbo):
     #   continue
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/chucks-favorite-mac-and-cheese.txt'
 
+
+
     mod_logger.error(recipe_args_file)
     dcoref_graph = make_nodes(recipe_args_file)
 
@@ -285,7 +348,7 @@ def run(stFile):
     # if i!=3:
     #   continue
 
-    mod_logger.critical(recipe_args_file)
+    # mod_logger.critical(recipe_args_file)
 
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/mac-and-cheese-bake.txt'
 
@@ -295,6 +358,10 @@ def run(stFile):
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/healthy-creamy-mac-and-cheese.txt'
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/baked-mac-and-cheese-for-one.txt'
+    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/bevs-mac-and-cheese.txt'
+    if recipe_args_file == '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/home-baked-macaroni--cheese.txt':
+      continue
+
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/chucks-favorite-mac-and-cheese.txt'
 
     dcoref_graph = make_nodes(recipe_args_file)
