@@ -218,10 +218,11 @@ def learnStat(useArbo):
   stat_data = []
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
     i+=1
-    # if i>20:
+    # if i>1:
     #   break
     # if i!=4:
     #   continue
+    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/chucks-favorite-mac-and-cheese.txt'
 
     mod_logger.error(recipe_args_file)
     dcoref_graph = make_nodes(recipe_args_file)
@@ -236,7 +237,7 @@ def learnStat(useArbo):
     pnodes_resolved, rnodes_resolved, arbor_edges = connect_arbor(weighted_graph, arbor_adapter, r_stats)
     #End of MST Section
 
-    stat_data.append([weighted_graph, arbor_adapter, arbor_edges])
+    stat_data.append([recipe_args_file, weighted_graph, arbor_adapter, arbor_edges])
 
   # Calculate statistics
   r_stats.calcStatFromGraph(stat_data, useArbo)
@@ -279,8 +280,8 @@ def run(stFile):
   print len(r_stats.args1_verb_verb_args1_score)
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
     i+=1
-    if i>30:
-      break
+    # if i>30:
+    #   break
     # if i!=3:
     #   continue
 
@@ -293,7 +294,8 @@ def run(stFile):
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/healthy-creamy-mac-and-cheese.txt'
-    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/bevs-mac-and-cheese.txt'
+    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/baked-mac-and-cheese-for-one.txt'
+    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/chucks-favorite-mac-and-cheese.txt'
 
     dcoref_graph = make_nodes(recipe_args_file)
 
