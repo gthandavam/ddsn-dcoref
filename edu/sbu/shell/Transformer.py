@@ -7,6 +7,7 @@ import commands
 import edu.sbu.shell.logger.log as log
 import sys
 import pickle
+import os
 from edu.sbu.mst.MSTGraphTransformer import MSTGraphTransformer
 from edu.sbu.mst.weighted_graph.solver.edmonds import upside_down_arborescence
 from edu.sbu.stats.RecipeStats2 import RecipeStats2
@@ -233,9 +234,11 @@ def make_svg(gv_file):
 
   return status
 
-def generate_graph(pnodes_resolved, rnodes_resolved, r_stats):
+def generate_graph(pnodes_resolved, rnodes_resolved, r_stats, Wwt):
   arbor_adapter = MSTGraphTransformer(r_stats)
   weighted_graph = arbor_adapter.transform(pnodes_resolved, rnodes_resolved)
+  weighted_graph.Wwt = Wwt
+  weighted_graph.Warg = 1-Wwt
   g = weighted_graph.get_adj_ghost_graph('order_close_together')
   return arbor_adapter, weighted_graph
 
@@ -260,11 +263,13 @@ def main():
   elif mode=="-learn":
     learnStat(True)
   elif mode=="-run_init":
-    run(statFile)
+    run(statFile,0)
   elif mode=="-run_iter":
-    run(statFile2)
+    run(statFile2,0)
+  elif mode=="-run_wt":
+    run("",1)
   else:
-    run("")
+    run("",0)
 
 def learnStat(useArbo):
   #files sentence split using stanford sentence splitter - fsm based
@@ -294,10 +299,12 @@ def learnStat(useArbo):
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph)
 
     # Generate weighted graph
-    arbor_adapter, weighted_graph = generate_graph(pnodes_resolved, rnodes_resolved, r_stats)
+    arbor_adapter, weighted_graph = generate_graph(pnodes_resolved, rnodes_resolved, r_stats, 0)
 
     #apply MST Here
-    pnodes_resolved, rnodes_resolved, arbor_edges = connect_arbor(weighted_graph, arbor_adapter, r_stats)
+    arbor_edges = None
+    if useArbo:
+      pnodes_resolved, rnodes_resolved, arbor_edges = connect_arbor(weighted_graph, arbor_adapter, r_stats)
     #End of MST Section
 
     stat_data.append([recipe_args_file, weighted_graph, arbor_adapter, arbor_edges])
@@ -321,7 +328,7 @@ def learnStat(useArbo):
   pickle.dump(r_stats,f)
   f.close()
 
-def run(stFile):
+def run(stFile, Wwt):
 
   #files sentence split using stanford sentence splitter - fsm based
   i=0
@@ -329,22 +336,34 @@ def run(stFile):
     f = open(stFile)
     r_stats = pickle.load(f)
     f.close()
+    r_stats.args_verb_score = r_stats.test_flag # due to some pickle bug!!!
   else:
     r_stats = RecipeStats2()
     r_stats.computeStat("MacAndCheese")
-  r_stats.args_verb_score = r_stats.test_flag # due to some pickle bug!!!
   print len(r_stats.args1_args2_verb_args_score)
   print len(r_stats.args1_verb_args_score)
-  print len(r_stats.args1_args2_args_score)
-  print len(r_stats.args1_args_score)
+  # print len(r_stats.args1_args2_args_score)
+  # print len(r_stats.args1_args_score)
   print len(r_stats.args1_args2_verb_verb_score)
   print len(r_stats.args1_verb_verb_score)
   print len(r_stats.args1_args2_verb_verb_args1_score)
   print len(r_stats.args1_verb_verb_args1_score)
-  for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
+  dirName = '/home/gt/Documents/MacAndCheese/'
+  option = ""
+  if len(sys.argv)>1:
+    option = sys.argv[1]
+  try:
+    os.makedirs(dirName+'MacAndCheese-dot-files'+option)
+  except OSError:
+    pass
+  try:
+    os.makedirs(dirName+'MacAndCheese-svg-files'+option)
+  except OSError:
+    pass
+  for recipe_args_file in commands.getoutput('ls '+dirName+'MacAndCheeseArgs/*.txt').split('\n'):
     i+=1
-    # if i>30:
-    #   break
+    if i>30:
+      break
     # if i!=3:
     #   continue
 
@@ -370,14 +389,14 @@ def run(stFile):
     pnodes_resolved, rnodes_resolved = rule_engine.apply_rules(dcoref_graph)
 
     # Generate weighted graph
-    arbor_adapter, weighted_graph = generate_graph(pnodes_resolved, rnodes_resolved, r_stats)
+    arbor_adapter, weighted_graph = generate_graph(pnodes_resolved, rnodes_resolved, r_stats, Wwt)
     dot_graph = arbor_adapter.dot_builder
 
     #apply MST Here
     pnodes_resolved, rnodes_resolved, arbor_edges = connect_arbor(weighted_graph, arbor_adapter, r_stats)
     #End of MST Section
 
-    gv_file_name = recipe_args_file.replace('MacAndCheeseArgs','MacAndCheese-dot-files')
+    gv_file_name = recipe_args_file.replace('MacAndCheeseArgs','MacAndCheese-dot-files'+option)
 
     gv_file_name = gv_file_name.replace('.txt', '.gv')
     dot_graph.write_gv(pnodes_resolved, rnodes_resolved, arbor_edges, gv_file_name)
