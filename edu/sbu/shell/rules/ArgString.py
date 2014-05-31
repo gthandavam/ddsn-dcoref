@@ -71,7 +71,7 @@ class ArgString:
         if not pnodes[i][j] is None:
 
           if self.find_overlap(pnodes[i][j].arg_text_for_coref, rnode.text, pnodes[i][j].arg_text_POS_for_coref, rnode.argPOS):
-            self.logger.critical(pnodes[i][j].arg_text_for_coref + ' referring arg:' + rnode.text)
+            self.logger.error(pnodes[i][j].arg_text_for_coref + ' referring arg:' + rnode.text)
             return i,j
 
         else:
