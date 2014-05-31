@@ -245,6 +245,10 @@ def learnStat(useArbo):
   print len(r_stats.args1_verb_args_score)
   print len(r_stats.args1_args2_args_score)
   print len(r_stats.args1_args_score)
+  print len(r_stats.args1_args2_verb_verb_score)
+  print len(r_stats.args1_verb_verb_score)
+  print len(r_stats.args1_args2_verb_verb_args1_score)
+  print len(r_stats.args1_verb_verb_args1_score)
 
   if useArbo:
     f = open(statFile2,"w")
@@ -269,10 +273,14 @@ def run(stFile):
   print len(r_stats.args1_verb_args_score)
   print len(r_stats.args1_args2_args_score)
   print len(r_stats.args1_args_score)
+  print len(r_stats.args1_args2_verb_verb_score)
+  print len(r_stats.args1_verb_verb_score)
+  print len(r_stats.args1_args2_verb_verb_args1_score)
+  print len(r_stats.args1_verb_verb_args1_score)
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
     i+=1
-    # if i>1:
-    #   break
+    if i>30:
+      break
     # if i!=3:
     #   continue
 
