@@ -217,7 +217,7 @@ class WeightedGraph:
               continue
             wt = weight_heuristic(node1.id, node2.id, self.id_node_map, self.pNodes, self.rNodes)
             input2_node = self.recipe_stats.findInputArgument(node2,reverse_g,self.id_node_map)
-            if node1.id=="T0" and node2.id=="T8":
+            if node1.id=="T0" and node2.id=="T4":
               pass
             arg_probability = self.recipe_stats.getPredPredProb(node1,input_node,input_node2,node2,input2_node)
             g[node1.id][node2.id] = self.Wwt*wt + self.Warg*arg_probability
@@ -241,6 +241,8 @@ class WeightedGraph:
                 continue
               wt = weight_heuristic(node1.id, node2.id, self.id_node_map, self.pNodes, self.rNodes)
               # probability of argument being the output of the predicate
+              if node1.id=="T0" and node2.id=="T11":
+                pass
               arg_probability = self.recipe_stats.getPredOuputArgProb(node1,input_node,input_node2,node2)
               g[node1.id][node2.id] = self.Wwt*wt + self.Warg*arg_probability
 
