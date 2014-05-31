@@ -26,6 +26,7 @@ class DotGraphBuilder:
     ###MST specific
     self.adj_list = {}
     self.id_node_map = {}
+    self.Ghost = 'Bon appetit!'
     self.debug = False
 
 
@@ -143,6 +144,7 @@ class DotGraphBuilder:
             self.graph_lines.append(line)
 
           # self.node_num += 1
+    self.graph_lines.append("Ghost[label=\"{}\"]".format(self.Ghost))
     pass
 
   def add_to_adj_list(self, fro, to):

@@ -335,7 +335,7 @@ def upside_down_arborescence(root, g):
   #   return g
   ag = adjust_graph(g)
   rag = _reverse(ag)
-  h = rmst("Ghost", rag, ag)
+  h = rmst(root, rag, ag)
   # h = mst(root, g)
 
   # print "-----Graph-----"

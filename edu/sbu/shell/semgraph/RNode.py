@@ -22,6 +22,7 @@ class RNode:
     self.argPOS = argPOS
     self.logger = logging.getLogger('root')
     self.id = ""
+    self.arg_text_nouns = None
 
     pass
 
@@ -56,3 +57,20 @@ class RNode:
         return True
     else:
         return False
+
+
+  def getNouns(self):
+    if self.arg_text_nouns != None:
+      return self.arg_text_nouns
+    arr = self.argPOS.split()
+    res = []
+    for a in arr:
+      if "minute" in a:
+        continue
+      arr2 = a.split("/")
+      if "NN" in arr2[1]:
+        res.append(arr2[0].lower())
+        if self.arg_type=="arg2":
+          break # take only the first noun
+    self.arg_text_nouns = res
+    return res

@@ -1,1388 +1,1981 @@
+"add","stir","NULL","milk and cook",1.0,0.0
+"stir","bring","to a simmer over medium heat","in garlic powder , cumin , dry mustard , pepper , and contents of cheese mix packets",0.0,1.0
+"chile","stir","NULL","NULL",1.0,0.0
 "boil","stir","in the macaroni","NULL",1.0,0.0
+"preheat","serve","NULL","to 375 degrees f",0.0,1.0
 "place","combine","NULL","NULL",1.0,0.0
 "broil","bake","in the preheated oven","about 3 more minutes",0.0,1.0
 "top","pour","into prepared casserole dish","with panko crumbs and parmesan cheese",0.0,1.0
-"stir","melt","NULL","in the onion , and cook",0.0,1.0
-"whisk","place","NULL","with the paprika , chili powder , black pepper , sugar , and cayenne in a shallow dish",0.0,1.0
+"pour","stir","in cheddar cheese","over macaroni",0.0,1.0
+"top","pour","into prepared dish","with crushed crackers",0.0,1.0
+"whisk","thicken","NULL","into the sauce",0.0,1.0
+"stir","drain","NULL","in the 2 tablespoons butter , the 1/4 cup milk , and the cheese packet",0.0,1.0
+"saute","melt","in a medium saucepan over medium heat","onion",1.0,0.0
 "place","scrape","into a small bowl","into the saucepan",0.0,1.0
+"whisk","remove","from heat","1 minute",1.0,0.0
+"cook","let","NULL","for about 3 minutes , whisking constantly to avoid burning",0.0,1.0
 "stir","stir","into milk mixture","into cheese mixture",0.0,1.0
-"stir","combine","until well mixed","in pasta",0.0,1.0
+"sprinkle","cover","NULL","with a little paprika",0.0,1.0
+"heat","stir","into the macaroni","in a skillet over medium heat",0.0,1.0
+"pour","put","in large casserole dish","over macaroni",0.0,1.0
+"mix","stir","into the sauce","NULL",1.0,0.0
+"stir","add","about half the package of shredded cheddar cheese","NULL",0.5,0.5
+"stir","cook","NULL","about 2 minutes",0.0,1.0
 "whisk","melt","in a large saucepan over medium heat","flour and mustard",1.0,0.0
-"preheat","bake","to 30 minutes or until bubbly and golden brown on top","oven",1.0,0.0
-"pour","stir","in cream , flour , yogurt , bleu cheese and parmesan cheese","NULL",1.0,0.0
+"allow","remove","from heat","NULL",0.5,0.5
+"uncover","bake","NULL","NULL",0.5,0.5
 "whisk","cook","until translucent","the flour",1.0,0.0
-"add","drain","NULL","NULL",0.333333333333,0.666666666667
-"sprinkle","bake","in preheated oven for 35 minutes","NULL",1.0,0.0
+"add","drain","NULL","NULL",0.5,0.5
+"sprinkle","stir","NULL","with salt",0.0,1.0
+"place","preheat","to 400 degrees f","NULL",1.0,0.0
 "bake","pour","NULL","in the preheated oven for 20 minutes",0.0,1.0
+"stir","spoon","into the prepared casserole dish","panko bread crumbs and olive oil",1.0,0.0
 "stir","melt","in a large saucepan over medium low heat","in flour , then tomatoes",0.0,1.0
-"stir","pour","into the prepared dish","cheddar cheese and cheddar-monterey jack cheese",1.0,0.0
+"serve","top","with cheddar cheese and green onions","NULL",0.0,1.0
+"stir","melt","over medium heat in a medium saucepan","in flour , mustard , salt and pepper",0.0,1.0
 "stir","whisk","into milk","into pot",0.0,1.0
-"preheat","drain","on a paper towel-lined plate","oven",1.0,0.0
-"spray","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","a 9x13-inch baking dish",1.0,0.0
-"cool","bake","NULL","before serving",0.0,1.0
-"combine","cover","at 350 degrees f -lrb- 175 degrees c -rrb- for 45 minutes","macaroni , cheese and seasonings",1.0,0.0
-"add","cook","NULL","NULL",0.25,0.75
+"preheat","bake","about 5 minutes","the oven",1.0,0.0
+"add","make","NULL","milk",1.0,0.0
+"stir","serve","in bowls and top each serving with about 2 tablespoons of sour cream","in a slow cooker",0.0,1.0
+"combine","make","into a food processor","with panko crumbs in a bowl",0.0,1.0
+"stir","cook","NULL","NULL",0.75,0.25
+"stir","pour","in the milk","NULL",0.0,1.0
+"add","cook","NULL","NULL",0.0,1.0
+"add","combine","over pasta","chives and remaining",1.0,0.0
 "bake","sprinkle","over the pasta in the baking dish","NULL",1.0,0.0
-"pour","remove","NULL","over cooked macaroni",0.0,1.0
-"cook","melt","NULL","shallot in melted margarine until lightly browned",1.0,0.0
-"whisk","stir","in 2 tablespoons butter","into melted butter",0.0,1.0
-"top","stir","into chili , cover skillet , and simmer until macaroni is heated","NULL",1.0,0.0
-"cook","melt","NULL","about 5 minutes",0.0,1.0
-"remove","whisk","with the paprika , chili powder , black pepper , sugar , and cayenne in a shallow dish","from the freezer , coat in the egg wash ,",0.0,1.0
-"stir","drain","in a colander set in the sink","the softened butter",1.0,0.0
+"cook","melt","in a large saucepan over medium heat","flour",1.0,0.0
+"bake","top","with the potato chip mixture","in preheated oven",0.0,1.0
+"cool","rinse","with cold water","the pasta in a colander set in the sink",1.0,0.0
+"melt","preheat","to 350 degrees f","5 tablespoons of butter",1.0,0.0
+"mix","mix","NULL","NULL",1.0,0.0
+"return","drain","NULL","to the saucepan",0.0,1.0
 "remove","whisk","into flour mixture","from heat",0.0,1.0
-"spray","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","NULL",0.0,1.0
-"pour","stir","into sour cream mixture","NULL",1.0,0.0
+"stir","add","to roux slowly","in cheeses",0.0,1.0
+"remove","bake","in the preheated oven for 20 minutes","casserole",1.0,0.0
+"thicken","whisk","in milk","NULL",0.5,0.5
 "pour","drain","NULL","into the prepared dish",0.0,1.0
-"pour","spread","over bottom of prepared baking dish","macaroni",1.0,0.0
+"allow","cool","for a few minutes","NULL",0.0,1.0
 "saute","add","NULL","until soft and golden brown , 8 to 10 minutes",0.0,1.0
-"fry","remove","from the freezer , coat in the egg wash ,","the mac balls",1.0,0.0
-"combine","cook","about 8 minutes","the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish",1.0,0.0
-"reduce","cook","NULL","to medium-low",0.0,1.0
-"cook","bring","to a boil","elbow macaroni in the boiling water , stirring occasionally , until cooked through but firm to the bite , 6 to 7 minutes",1.0,0.0
+"drain","cook","about 12 minutes","NULL",1.0,0.0
+"bake","sprinkle","with bread crumbs and 1 tablespoon cheddar cheese","NULL",0.5,0.5
+"bring","stir","in paprika , salt , and pepper","the mixture to a simmer -lrb- do not boil -rrb- , whisking constantly until thickened , about 2 minutes",1.0,0.0
+"add","remove","from heat","macaroni",1.0,0.0
+"pour","place","in large baking dish","over macaroni",0.0,1.0
 "bake","sprinkle","with mozzarella cheese","in the preheated oven",0.0,1.0
+"heat","preheat","to 350 degrees f","NULL",0.0,1.0
+"drain","preheat","NULL","NULL",0.5,0.5
 "add","melt","in a large pot over medium-low heat","to butter",0.0,1.0
-"cook","set","to high","2 hours",1.0,0.0
-"preheat","broil","about 3 more minutes","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"whisk","simmer","NULL","NULL",1.0,0.0
+"stir","stir","NULL","NULL",1.0,0.0
+"drizzle","top","with torn pieces of processed cheese","over casserole , especially along the sides",0.0,1.0
+"cook","boil","in a saucepan","at a boil",0.0,1.0
 "melt","remove","from heat","mild cheddar cheese and sharp cheddar cheese",1.0,0.0
-"combine","toast","into small pieces","the toasted bread and parmesan cheese",1.0,0.0
-"melt","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","in a saucepan over medium-low heat",0.0,1.0
-"pour","stir","NULL","into a greased 2-quart baking dish",0.0,1.0
-"strain","whisk","in the flour","the milk",1.0,0.0
-"stir","stir","in milk","in cheese",0.0,1.0
+"bake","remove","NULL","NULL",1.0,0.0
+"add","heat","in a saucepan over medium-low heat","NULL",0.0,1.0
+"make","process","NULL","bread crumbs",1.0,0.0
 "pour","place","on a paper towel-lined plate","the bacon fat",1.0,0.0
-"add","bake","for 45 minutes","pasta",1.0,0.0
-"reduce","pour","in chicken broth","6 to 7 minutes",1.0,0.0
-"stir","cook","NULL","in 2 tablespoons butter",0.0,1.0
+"bring","set","NULL","to a boil",0.0,1.0
 "drain","add","until al dente , 8 to 10 minutes","NULL",0.5,0.5
+"stir","spoon","into the prepared casserole dish","in a small bowl",0.0,1.0
 "whisk","whisk","into flour mixture","into white sauce",0.0,1.0
-"stir","whisk","shredded cheddar cheese and mascarpone cheese into sauce","pumpkin puree , lemon zest , salt , black pepper , garlic powder , paprika , nutmeg , and hot sauce into the sauce",1.0,0.0
-"sprinkle","stir","in macaroni","NULL",1.0,0.0
+"stir","whisk","in the cheeses","NULL",1.0,0.0
+"are","bake","NULL","NULL",0.5,0.5
 "add","melt","in a skillet over medium heat","breadcrumbs and brown",1.0,0.0
+"preheat","bake","NULL","NULL",0.5,0.5
+"follow","bake","in the preheated oven","NULL",0.0,1.0
+"form","stir","about 2 minutes","NULL",0.5,0.5
+"preheat","NULL","NULL","to 350 degrees f",0.0,1.0
+"beat","pour","into the prepared dish","eggs , sour cream , seasoned salt , and black pepper",1.0,0.0
 "stir","stir","in garlic powder , cumin , dry mustard , pepper , and contents of cheese mix packets","in milk",0.0,1.0
-"slice","bake","in the preheated oven","NULL",0.0,1.0
-"cook","drain","NULL","the macaroni and cheese according to package directions",1.0,0.0
-"fill","combine","NULL","a large pot",1.0,0.0
+"incorporate","stir","NULL","ingredients",1.0,0.0
+"bring","preheat","to 375 degrees f","a large pot of lightly salted water",1.0,0.0
+"stir","melt","NULL","in the flour , salt , pepper , onion powder , and milk",0.0,1.0
+"remove","stir","for 1","NULL",1.0,0.0
+"pour","mix","with the pasta","into the prepared casserole dish",0.0,1.0
+"melt","serve","NULL","butter",1.0,0.0
+"pour","mix","NULL","into a lightly greased 9x13 inch baking dish",0.0,1.0
+"fill","cook","NULL","with lightly salted water",0.0,1.0
+"fill","cook","NULL","a pot",1.0,0.0
+"whisk","cook","about 5 minutes","the eggs , the remaining 1 teaspoon of butter , and milk in a large bowl",1.0,0.0
+"bring","combine","with panko crumbs in a bowl","to a boil",0.0,1.0
 "pour","combine","NULL","into 9x13 baking dish",0.0,1.0
 "stir","stir","in the cheddar cheese and black pepper","NULL",1.0,0.0
-"stir","bake","in the preheated oven","in the onion",0.0,1.0
+"cool","let","NULL","for 10 minutes",0.0,1.0
+"sprinkle","drain","to a large bowl","with 1/2 teaspoon salt",0.0,1.0
+"place","cook","NULL","in large baking dish",0.0,1.0
 "bake","cover","with foil","in preheated 375 degrees f oven 30 minutes",0.0,1.0
-"stir","cook","NULL","3 to 5 min",1.0,0.0
-"bring","spray","with cooking spray","a large pot of lightly salted water",1.0,0.0
-"preheat","remove","NULL","to 375 degrees f -lrb- 190 degrees c -rrb-",0.0,1.0
-"preheat","cool","10 minutes before serving","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
+"stir","simmer","NULL","NULL",1.0,0.0
+"preheat","prevent","NULL","an oven",1.0,0.0
+"pour","put","in large casserole dish","sauce",1.0,0.0
+"stir","whisk","in the flour","NULL",0.5,0.5
+"stir","cook","NULL","the gruyere , cheddar , and romano cheeses",1.0,0.0
+"stir","cook","NULL","2 minutes or until well blended",1.0,0.0
+"stir","simmer","NULL","in cream , flour , yogurt , bleu cheese and parmesan cheese",0.0,1.0
+"separate","drain","NULL","butter and cheeses",1.0,0.0
+"drain","cook","about 8 minutes","in a colander set in the sink",0.0,1.0
 "combine","place","in an 8x13-inch baking dish","NULL",0.0,1.0
-"pour","place","NULL","over macaroni",0.0,1.0
-"stir","combine","NULL","in cream , flour , yogurt , bleu cheese and parmesan cheese",0.0,1.0
-"melt","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","butter",1.0,0.0
-"stir","fill","with water","in the macaroni",0.0,1.0
-"add","remove","from heat","chives",1.0,0.0
-"sprinkle","spread","over the macaroni and cheese","NULL",1.0,0.0
-"bake","pour","into the prepared baking dish and cover","NULL",1.0,0.0
-"stir","pour","into shallow 2 quart baking dish","NULL",1.0,0.0
-"bake","pour","NULL","NULL",1.0,0.0
-"preheat","sprinkle","with bread crumbs and 1 tablespoon cheddar cheese","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"whisk","drain","NULL","1 minute",1.0,0.0
+"drizzle","top","with torn pieces of processed cheese","melted butter",1.0,0.0
+"stir","simmer","NULL","into the pasta mixture",0.0,1.0
+"heat","drain","NULL","cheese sauce",1.0,0.0
+"heat","cover","about 10 minutes","1/4 cup butter",1.0,0.0
+"cook","stir","in macaroni","at a rolling boil over medium heat",0.0,1.0
+"cook","stir","in cheddar and parmesan cheeses","low heat",1.0,0.0
+"cut","remove","NULL","NULL",1.0,0.0
+"stir","bring","to a rolling boil over high heat","in the gemelli , and return",0.0,1.0
+"preheat","serve","NULL","to 350 degrees f",0.0,1.0
+"bake","pour","NULL","NULL",0.666666666667,0.333333333333
 "drain","add","for 8 minutes or until al dente","NULL",0.5,0.5
+"heat","set","NULL","in a deep ovenproof skillet or dutch oven",0.0,1.0
+"cook","heat","over medium-high heat","beef and garlic",1.0,0.0
 "pour","stir","NULL","into a small casserole dish",0.0,1.0
 "scrape","stir","in the onion and cook","the onions",1.0,0.0
-"remove","cook","NULL","NULL",0.75,0.25
-"melt","slice","the sausage just until hot , about 30 seconds","in a large skillet over medium heat",0.0,1.0
+"continue","remove","NULL","NULL",0.5,0.5
+"remove","cook","NULL","NULL",1.0,0.0
+"sprinkle","combine","parmesan cheese in a bowl","over the pasta in the baking dish",0.0,1.0
+"stand","allow","NULL","for 10 minutes",0.0,1.0
+"mix","slice","the sausage just until hot","NULL",0.5,0.5
+"preheat","drain","in a colander set in the sink","to 400 degrees f",0.0,1.0
 "stir","cook","NULL","in macaroni",0.0,1.0
-"cook","add","NULL","until the beef is crumbly , evenly browned , and no longer pink , about 10 minutes",0.0,1.0
-"combine","preheat","to 425 degrees f -lrb- 220 degrees c -rrb-","dry pasta , spaghetti sauce , ham , garlic , onion powder and pepper",1.0,0.0
+"fill","reserve","NULL","with lightly salted water",0.0,1.0
+"mix","mix","in flour , mustard , salt , and pepper","the half and half and worcestershire sauce",1.0,0.0
 "remove","simmer","on low heat 5 to 7 min","NULL",1.0,0.0
+"spoon","chile","into the cooked pasta until well combined","mixture",1.0,0.0
 "remove","simmer","NULL","from heat",0.0,1.0
-"pour","stir","in cheddar cheese with wire whisk","NULL",0.0,1.0
+"bake","cover","with aluminum foil","in the preheated oven",0.0,1.0
 "drain","cook","in boiling water","NULL",0.5,0.5
-"stir","pour","into baking dish","in oil",0.0,1.0
+"serve","bake","in a preheated 350 degree f -lrb- 175 degree c -rrb- oven for 45 to 60 minutes , or until crispy on top","NULL",0.5,0.5
+"top","spoon","into greased 1-1/2","with remaining shredded cheese , then combined cracker crumbs and margarine",0.0,1.0
 "whisk","melt","in a large saucepan over medium heat","into melted butter",0.0,1.0
-"cook","bake","NULL","beef and garlic",1.0,0.0
-"boil","stir","in the macaroni","until cooked but still firm to the bite , about 8 minutes",0.0,1.0
+"reduce","stir","in the meat and onion mixture , nacho cheese dip , salsa and green chiles","heat and simmer",1.0,0.0
+"preheat","bake","NULL","to 350 degrees f",0.0,1.0
 "stir","remove","from heat","into milk mixture",0.0,1.0
-"add","add","in small batches","NULL",0.0,1.0
-"combine","drain","NULL","potato chip crumbs , parmigiano-reggiano cheese , bread crumbs , and butter in a skillet over medium heat",1.0,0.0
-"stir","sprinkle","with 1/2 teaspoon salt","flour , 1/2 teaspoon salt , cayenne pepper , and milk",1.0,0.0
-"cook","fill","with lightly salted water","NULL",0.0,1.0
+"stir","heat","to 375 degrees f. prepare dinner","in 1/4 cup",0.0,1.0
+"allow","stir","NULL","NULL",0.5,0.5
+"reserve","cut","into bite sized pieces","the shells",1.0,0.0
+"add","heat","to 350 degrees f. drain macaroni","NULL",1.0,0.0
+"stir","cook","NULL","in the cheese , bacon , red pepper , salt , and pepper",0.0,1.0
+"do","drain","NULL","NULL",0.5,0.5
+"drain","cook","about 10 minutes","NULL",0.0,1.0
+"add","stir","in a slow cooker","the shell pasta and andouille sausage",1.0,0.0
+"cover","spread","over the macaroni and cheese","NULL",0.5,0.5
+"unroll","preheat","to 400 degrees f","pizza crust and place on the prepared baking pan",1.0,0.0
+"reduce","mix","in diced tomatoes , tomato paste , and sloppy joe seasoning","to low , and simmer 10 minutes",0.0,1.0
+"melt","drain","about 8 minutes","in a large saucepan over medium heat",0.0,1.0
+"pour","cook","about 5 minutes","cheese sauce",1.0,0.0
 "preheat","bring","to a gentle simmer over medium heat , and cook for 20 minutes","oven",1.0,0.0
-"stir","fill","with lightly salted water","NULL",1.0,0.0
-"preheat","stir","in the macaroni","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"place","cook","NULL","on top of quinoa",0.0,1.0
-"drain","add","for 8 to 10 minutes or until al dente","and reserve",1.0,0.0
-"place","preheat","to 375 degrees f -lrb- 190 degrees c -rrb-","until evenly brown",0.0,1.0
-"melt","stir","into quinoa mixture in the skillet","1 tablespoon butter",1.0,0.0
-"stir","add","NULL","in cheeses",0.0,1.0
-"fill","drain","NULL","with lightly salted water",0.0,1.0
+"bring","place","in a large pot of lightly-salted water","to a boil",0.0,1.0
+"stir","heat","over medium-high heat","in the ground beef",0.0,1.0
+"heat","cool","before serving","oven",1.0,0.0
+"taste","stir","in the sour cream , cheddar , and mozzarella","with salt and pepper",0.0,1.0
+"sprinkle","spoon","about 1/2 cup beef mixture","NULL",0.0,1.0
+"bring","add","to saucepan","to a boil",0.0,1.0
+"whisk","whisk","into melted butter","into flour mixture",0.0,1.0
+"add","stir","in a slow cooker","NULL",0.0,1.0
+"bake","sprinkle","over the tops","NULL",0.5,0.5
+"whisk","stir","NULL","in flour , 1 tablespoon at a time ,",0.0,1.0
+"bring","whisk","into flour mixture","to a boil and cook , stirring constantly , until smooth and thick ,",0.0,1.0
+"repeat","remove","from heat","this one more time : macaroni , onion , salt and pepper and cheeses",1.0,0.0
+"bring","preheat","to 375 degrees f","to a boil",0.0,1.0
+"bake","top","with crumbled crackers","NULL",0.0,1.0
+"stir","reserve","NULL","the remaining cheddar cheese , milk and mozzarella cheese into the pasta",1.0,0.0
+"remove","stir","to a boil","NULL",1.0,0.0
 "stir","mix","NULL","NULL",1.0,0.0
 "add","bring","to a boil","until al dente , 8 to 10 minutes",0.0,1.0
+"spread","stir","in cooked noodles","NULL",1.0,0.0
+"mix","cool","NULL","NULL",0.0,1.0
+"fill","preheat","to 350 degrees f","a large pot",1.0,0.0
+"put","stir","in cheeses","in large casserole dish",0.0,1.0
+"spoon","toss","to coat","into 2.5-l casserole dish",0.0,1.0
+"cool","bake","in preheated oven","before serving",0.0,1.0
+"stir","return","to pot","tomatoes",1.0,0.0
 "bring","whisk","into flour mixture","NULL",1.0,0.0
 "cook","bake","in the preheated oven","in a large pot of boiling salted water until al dente",0.0,1.0
+"sprinkle","blend","NULL","over top of the dish",0.0,1.0
 "fill","serve","NULL","a pot",1.0,0.0
+"cook","continue","NULL","the mixture",1.0,0.0
 "whisk","cook","NULL","in milk , cooking",0.0,1.0
-"bring","whisk","into flour mixture","to a boil and cook",0.0,1.0
+"macaroni","cook","in a saucepan on the stovetop according to package directions","NULL",0.5,0.5
+"bring","reduce","to 375 degrees f","a large pot of lightly salted water",1.0,0.0
 "bring","stir","into the beef mixture","NULL",1.0,0.0
-"stir","combine","NULL","in canned tuna and green peas",0.0,1.0
+"mix","cook","NULL","tomatoes and their juices , tomato sauce , hot pepper sauce , chili powder , cumin , cayenne pepper , and black pepper",1.0,0.0
+"return","cut-side","NULL","to a boil",0.0,1.0
+"top","pour","into the prepared casserole dish","with crushed crackers",0.0,1.0
 "remove","bake","until bubbling , about 20 minutes","casserole",1.0,0.0
-"sprinkle","stir","in the cheese , bacon , red pepper , salt , and pepper","NULL",1.0,0.0
-"bake","mix","with the macaroni and onions","45 minutes in the preheated oven , until lightly browned",1.0,0.0
+"combine","stir","in the sauce","NULL",0.5,0.5
+"preheat","stand","for 10 minutes","oven",1.0,0.0
+"stir","beat","into a smooth mixture","into mixture",0.0,1.0
+"remove","reduce","to medium-low , cover , and steam","NULL",0.0,1.0
+"reserve","stir","in the butter and egg","1/2 cup of sharp cheddar cheese",1.0,0.0
 "preheat","bake","for 25 to 30 minutes or until browned and bubbly around edges","oven",1.0,0.0
-"cool","bake","NULL","10 to 15 minutes",1.0,0.0
+"mix","pour","over macaroni","NULL",0.5,0.5
+"heat","drain","in a colander set in the sink","over medium-high heat",0.0,1.0
+"continue","blend","NULL","NULL",1.0,0.0
+"melt","reduce","to low , and simmer 10 minutes","the butter",1.0,0.0
+"melt","reserve","NULL","2 tablespoons of butter",1.0,0.0
+"process","preheat","to 375 degrees f","NULL",0.0,1.0
+"taste","smooth","NULL","with salt and pepper",0.0,1.0
+"stir","transfer","to a large bowl","NULL",1.0,0.0
+"whisk","stir","NULL","the mustard , the beer , and finally the milk",1.0,0.0
 "add","stir","in flour , mustard , salt and pepper","milk",1.0,0.0
+"cook","whisk","into the onion mixture","NULL",0.5,0.5
+"reduce","keep","NULL","heat",1.0,0.0
 "pour","stir","in pasta and sausage mixture","mixture into lightly sprayed 139-inch baking dish",1.0,0.0
-"blend","cook","in the boiling water","cauliflower , yogurt , chicken broth , and olive oil in a blender",1.0,0.0
-"drain","remove","NULL","NULL",0.5,0.5
-"add","do","NULL","to pasta",0.0,1.0
-"cook","cook","until golden brown","until cheese melts",0.0,1.0
-"cook","bring","to a boil","NULL",0.333333333333,0.666666666667
-"stir","stir","in milk","NULL",1.0,0.0
+"bring","cook","NULL","a pot of lightly salted water to a boil",1.0,0.0
+"remove","line","with parchment paper","from the refrigerator",0.0,1.0
+"cook","bring","to a boil","NULL",0.2,0.8
+"heat","reduce","to low","NULL",0.0,1.0
+"preheat","cook","NULL","to 400 degrees f",0.0,1.0
+"cook","stir","in cheddar and parmesan cheeses","NULL",0.0,1.0
+"stir","bring","to a rolling boil over high heat","in the fusilli , and return",0.0,1.0
 "stir","add","to roux","NULL",1.0,0.0
 "pour","stir","in pepperoni , tomato sauce , tomato juice , oregano , celery salt , onion powder , garlic salt , basil , red pepper flakes","NULL",1.0,0.0
-"place","fill","with lightly salted water","the bacon in a large , deep pot , and cook over medium-high heat , turning occasionally , until evenly browned , about 10 minutes",1.0,0.0
-"serve","heat","NULL","soup in bowls and top each",1.0,0.0
-"stir","pour","into the flour mixture , whisking continually until fully incorporated , about 45 seconds","into the mixture",0.0,1.0
-"bring","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","NULL",0.0,1.0
+"add","stir","NULL","until thick and bubbly",0.0,1.0
+"bake","top","with remaining shredded cheese , then combined cracker crumbs and margarine","NULL",0.5,0.5
+"combine","remove","from heat","in a large bowl",0.0,1.0
 "sprinkle","uncover","NULL","NULL",1.0,0.0
 "stir","cook","NULL","in flour and mustard",0.0,1.0
 "melt","sprinkle","with cheddar","remaining butter",1.0,0.0
-"preheat","bake","in the oven","oven",1.0,0.0
-"melt","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","5 tablespoons of butter",1.0,0.0
-"reduce","whisk","until smooth","heat",1.0,0.0
-"remove","simmer","on low","saucepan",1.0,0.0
+"add","add","about 8-10 minutes","pasta",1.0,0.0
+"sprinkle","spoon","into an 11x7-inch baking dish","NULL",1.0,0.0
+"stir","melt","in a skillet over medium heat","NULL",1.0,0.0
+"drizzle","top","with panko crumbs and parmesan cheese","2 tablespoons of melted margarine",1.0,0.0
+"stir","bring","to a simmer over medium heat","NULL",1.0,0.0
 "scoop","remove","from the refrigerator","into balls",0.0,1.0
-"top","toss","to coat","with remaining cheese",0.0,1.0
-"stir","bring","to a boil","into the pasta mixture",0.0,1.0
-"remove","boil","for 1 minute or until very thick","from heat",0.0,1.0
-"place","drain","NULL","followed by an even layer of one-quarter of the cheese slices",0.0,1.0
-"pour","remove","from heat","into the skillet",0.0,1.0
-"spread","stir","in processed cheese cubes","NULL",1.0,0.0
+"whisk","mix","NULL","into the pot",0.0,1.0
+"line","preheat","to 375 degrees f","a 9x13-inch baking dish",1.0,0.0
+"sprinkle","spoon","onto the crust in an even layer","top of pizza",1.0,0.0
 "scrape","stir","in the onion and cook","into a small bowl",0.0,1.0
-"preheat","sprinkle","over top of casserole","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"pour","fry","until crisp","NULL",0.0,1.0
+"stir","drain","NULL","in pepperoni , tomato sauce , tomato juice , oregano , celery salt , onion powder , garlic salt , basil , red pepper flakes",0.0,1.0
+"fill","reserve","NULL","a pot",1.0,0.0
+"stir","return","to the saucepan","cheese sauce mixture",1.0,0.0
+"stir","bring","to a boil and cook , stirring constantly , until smooth and thick ,","into milk mixture",0.0,1.0
+"stir","whisk","into sauce","pumpkin puree , lemon zest , salt , black pepper , garlic powder , paprika , nutmeg , and hot sauce",1.0,0.0
+"stir","saute","for 2 minutes","in flour and cook",0.0,1.0
 "add","melt","in a large pot over medium-low heat","flour",1.0,0.0
-"cook","drain","in a colander set in the sink","until browned",0.0,1.0
-"bring","whisk","NULL","to a simmer over medium heat",0.0,1.0
+"pour","stir","into pasta","pasta mixture",1.0,0.0
+"stir","add","NULL","to coat",0.0,1.0
 "drain","simmer","for 5 minutes","pasta and return",1.0,0.0
+"return","sprinkle","with mozzarella cheese","NULL",1.0,0.0
 "preheat","stir","NULL","oven",1.0,0.0
+"stir","do","NULL","NULL",1.0,0.0
 "stir","cook","NULL","in the meat and onion mixture , nacho cheese dip , salsa and green chiles",0.0,1.0
+"add","stir","in cheeses","NULL",0.5,0.5
 "melt","drain","NULL","2 tablespoons butter in a saucepan over medium heat",1.0,0.0
 "cook","combine","NULL","on high",0.0,1.0
-"place","spray","NULL","the macaroni",1.0,0.0
 "stir","saute","until soft and golden brown , 8 to 10 minutes","into macaroni",0.0,1.0
-"fill","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","a large pot",1.0,0.0
+"stir","remove","from heat","until combined",0.0,1.0
 "add","stir","in flour and salt and cook","to saucepan",0.0,1.0
-"bake","cover","with foil","NULL",1.0,0.0
-"spray","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","a 9x13 inch",1.0,0.0
+"bake","cover","with foil","NULL",0.666666666667,0.333333333333
+"rinse","drain","NULL","NULL",1.0,0.0
+"reduce","remove","from skin","to 375 degrees f",0.0,1.0
+"melt","cut","into bite size pieces","margarine",1.0,0.0
 "reduce","stir","in macaroni","heat and cover skillet",1.0,0.0
-"drain","fry","in small batches until golden brown , 3 to 5 minutes","NULL",1.0,0.0
-"cook","bring","NULL","macaroni",1.0,0.0
-"stir","fill","with lightly salted water","in the macaroni , and return",0.0,1.0
-"bake","spray","with cooking spray","in preheated oven",0.0,1.0
-"stir","cook","until the mixture is thick and smooth , 10 to 15 minutes","the gruyere , cheddar , and romano cheeses",1.0,0.0
+"preheat","are","about 30 minutes","to 375 degrees f",0.0,1.0
+"reserve","stir","in cheese","1 tablespoon of the bacon",1.0,0.0
+"preheat","rest","for 5 minutes","to 350 degrees f",0.0,1.0
+"preheat","bake","until golden brown","oven to 350 degrees f. blend 2 cups half and half , chipotle pepper -lrb- s -rrb- , bouillon cubes and garlic in a blender or food processor",1.0,0.0
+"transfer","pour","over macaroni","NULL",1.0,0.0
 "spread","stir","in cooked noodles","into a 9 inch square baking dish",0.0,1.0
-"add","cook","NULL","the flour",1.0,0.0
-"are","cook","NULL","until onions",0.0,1.0
-"bring","whisk","in flour and cook , stirring","to a gentle boil",0.0,1.0
-"add","cover","NULL","NULL",0.0,1.0
-"cook","bring","to a boil","at a rolling boil over medium heat",0.0,1.0
-"preheat","stir","in the soup , salsa , corn , macaroni and 3/4 cup cheese","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"toast","spread","into the bottom of the prepared baking dish","the bread and break",1.0,0.0
-"fill","bake","in preheated oven about 45 minutes","a pot",1.0,0.0
-"pour","stir","in cheddar cheese with wire whisk","sauce over macaroni",1.0,0.0
-"cook","fill","with lightly salted water","uncovered , stirring occasionally , until the pasta has cooked through , but is still firm to the bite ,",1.0,0.0
-"remove","cover","NULL","cover",1.0,0.0
+"toss","pour","over macaroni","to coat",0.0,1.0
+"cook","heat","over medium-high heat","beef",1.0,0.0
+"melt","preheat","to 350 degrees f","butter",1.0,0.0
+"bring","bring","about 10 minutes","to a boil",0.0,1.0
+"add","whisk","until smooth","butter and cheese",1.0,0.0
+"mix","drain","NULL","top with remaining cheese",1.0,0.0
+"sprinkle","drain","to a large bowl","macaroni",1.0,0.0
+"whisk","heat","in a deep fryer or large saucepan","with the paprika , chili powder , black pepper , sugar , and cayenne in a shallow dish",0.0,1.0
+"uncover","bake","for 30 minutes","uncovered for 30 more minutes",1.0,0.0
+"cook","stir","in the macaroni , and return","the pasta uncovered , stirring occasionally , until the pasta has cooked through , but is still firm to the bite ,",1.0,0.0
+"add","cook","about 10 minutes","NULL",1.0,0.0
+"melt","stir","NULL","butter or margarine",1.0,0.0
+"place","stand","before serving","the chopped bacon in a large , deep skillet",1.0,0.0
+"stir","return","to heat","into the beef",0.0,1.0
+"mix","pour","into the prepared baking dish","the cracker crumbs",1.0,0.0
+"mix","bake","in the preheated oven for 15 minutes","in a bowl",0.0,1.0
+"pour","place","on a paper towel-lined plate","NULL",0.0,1.0
 "stir","boil","NULL","NULL",1.0,0.0
-"spread","stir","into the sour cream mixture","over bottom of prepared baking dish",0.0,1.0
-"add","whisk","NULL","milk and cook",1.0,0.0
+"stir","remove","from oven","3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined",1.0,0.0
 "bake","dump","into a greased casserole dish , and cover","for 45 minutes",0.0,1.0
-"remove","pour","in the milk","from heat",0.0,1.0
 "spread","drain","NULL","half the macaroni",1.0,0.0
-"cool","bake","in preheated oven","NULL",1.0,0.0
+"place","bring","to a boil","macaroni",1.0,0.0
 "bake","sprinkle","with desired topping","for 25 to 30 minutes or until browned and bubbly around edges",0.0,1.0
-"sprinkle","stir","in pasta and remaining bacon","over pasta",0.0,1.0
+"stir","reduce","to low , cover skillet , and simmer chili for 30 minutes","into chili , cover skillet , and simmer until macaroni is heated , 5 minutes",0.0,1.0
+"stir","continue","in the cheddar cheese , pimento cheese spread , and italian cheese","NULL",0.5,0.5
+"drain","cook","about 13 minutes","in a colander set in the sink",0.0,1.0
+"stir","transfer","to a casserole dish","the butter and brown sugar",1.0,0.0
+"reduce","cook","about 5 minutes","to low",0.0,1.0
 "crumble","drain","on a paper towel-lined plate","NULL",0.0,1.0
-"bring","sprinkle","with cheddar and parmesan and place","to a boil",0.0,1.0
+"drain","rinse","under cold water","NULL",0.5,0.5
 "pour","stir","in tomatoes and onions","NULL",1.0,0.0
+"preheat","serve","NULL","an oven",1.0,0.0
 "bring","unroll","NULL","to a boil",0.0,1.0
-"bring","stir","in cheese","to a boil",0.0,1.0
-"bring","drain","in a colander set in the sink","to a boil",0.0,1.0
+"remove","line","with parchment paper","the macaroni mixture",1.0,0.0
+"serve","drain","on a paper towel-lined plate","NULL",0.5,0.5
+"bake","transfer","to prepared dish","NULL",0.5,0.5
 "add","cook","NULL","onions and garlic",1.0,0.0
-"stir","cook","NULL","NULL",0.9,0.1
-"sprinkle","cook","in a saucepan on the stovetop according to package directions","NULL",1.0,0.0
-"pour","cook","NULL","in chicken broth",0.0,1.0
-"simmer","add","NULL","NULL",0.0,1.0
-"drain","cook","about 8 minutes","in a colander set in the sink",0.0,1.0
-"pour","whisk","in the cheeses , about 1/2 cup at a time ,","over the macaroni in the baking dish",0.0,1.0
+"stir","pour","NULL","until well mixed",0.0,1.0
+"combine","stir","NULL","in the sauce",0.0,1.0
+"bake","remove","NULL","for another 10 to 15 minutes , until top is lightly browned",0.0,1.0
+"make","stir","in flour","a roux",1.0,0.0
+"add","mix","NULL","NULL",0.0,1.0
+"place","stir","NULL","the macaroni and cheese mixture in a container",1.0,0.0
+"simmer","add","NULL","NULL",0.5,0.5
+"serve","stir","into macaroni","NULL",0.5,0.5
+"pour","stir","to coat","into prepared baking dish",0.0,1.0
+"cook","add","NULL","5 min",1.0,0.0
+"sprinkle","cover","NULL","NULL",1.0,0.0
+"mix","stir","into the pasta","1/4 cup butter , sour cream , cream cheese , sharp cheddar cheese , and egg yolk",1.0,0.0
 "stir","add","NULL","cheese sauce",1.0,0.0
-"preheat","sprinkle","with salt","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
+"sprinkle","mix","with bread crumbs","over pasta",0.0,1.0
+"combine","stir","in cheddar cheese","NULL",0.0,1.0
+"stir","bring","to a rolling boil over high heat","in the macaroni , and return",0.0,1.0
+"add","melt","NULL","2 to 3 minutes",1.0,0.0
+"mix","stir","into the pasta","together in a bowl",0.0,1.0
 "spread","add","NULL","NULL",1.0,0.0
+"melt","pour","NULL","with the reserved bacon fat over medium heat",0.0,1.0
 "bake","sprinkle","with the reserved 1/2 cup cheddar cheese","in the preheated oven",0.0,1.0
-"preheat","bake","in the preheated oven","oven broiler",1.0,0.0
-"melt","pour","over macaroni","2 tablespoons butter in a skillet over medium heat",1.0,0.0
-"preheat","add","NULL","oven",1.0,0.0
-"remove","bake","in the preheated oven for 20 minutes","casserole",1.0,0.0
-"add","add","NULL","to cheese sauce",0.0,1.0
+"heat","place","on the prepared baking sheet and freeze for at least 2 hours","oil",1.0,0.0
+"remove","bring","to a boil , and cook 1 minute ,","from heat",0.0,1.0
+"bring","stir","NULL","a large pot of lightly salted water",1.0,0.0
+"pour","stir","into sour cream mixture","NULL",1.0,0.0
+"stir","set","NULL","in pasta and remaining bacon",0.0,1.0
 "bake","sprinkle","with desired topping","NULL",1.0,0.0
 "remove","add","NULL","from heat",0.0,1.0
-"spread","stir","in cooked noodles","NULL",1.0,0.0
-"preheat","bake","in preheated oven","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"whisk","drain","NULL","flour",1.0,0.0
-"cover","pour","into the prepared baking dish","the casserole with aluminum foil",1.0,0.0
-"roast","place","NULL","in the preheated oven until soft , 40 to 50 minutes",0.0,1.0
-"pour","stir","in cheeses","sauce",1.0,0.0
-"pour","stir","until combined","into prepared casserole dish",0.0,1.0
+"remove","cool","for a few minutes","the meat",1.0,0.0
+"remove","beat","with the 3 tablespoons milk in a small bowl","from the freezer , coat in the egg wash",0.0,1.0
+"cook","boil","NULL","3 to 5 min",1.0,0.0
+"stir","cook","NULL","the cheese food , blue cheese , cheddar cheese , salt , pepper , and mustard",1.0,0.0
+"bake","drizzle","over the casserole","in the preheated oven",0.0,1.0
+"return","drain","NULL","macaroni",1.0,0.0
+"add","combine","over pasta","NULL",0.0,1.0
+"pour","stir","into mixture","NULL",1.0,0.0
+"bring","preheat","to 350 degrees f","a large pot of lightly salted water",1.0,0.0
+"stir","mix","in a bowl until well combined","matzo farfel",1.0,0.0
+"rest","allow","NULL","15 minutes",1.0,0.0
 "dump","stir","in cooked pasta","into a greased casserole dish , and cover",0.0,1.0
-"pour","whisk","in the cheeses , about 1/2 cup at a time ,","the sauce",1.0,0.0
-"cook","fill","with lightly salted water","the pasta uncovered",1.0,0.0
-"cook","add","NULL","5 min",1.0,0.0
-"drain","place","until evenly brown","grease",1.0,0.0
-"fry","remove","from the freezer , coat in the egg wash ,","in small batches until golden brown , 3 to 5 minutes",0.0,1.0
-"remove","increase","to medium","NULL",1.0,0.0
+"sprinkle","mix","with bread crumbs","NULL",1.0,0.0
+"repeat","stir","NULL","NULL",1.0,0.0
+"smooth","stir","in cheese","NULL",0.5,0.5
+"spoon","transfer","to a 9x13-inch glass baking dish","salsa",1.0,0.0
+"sprinkle","casserole","NULL","NULL",1.0,0.0
+"prepare","preheat","to 350 degrees f","the elbow macaroni according to package directions",1.0,0.0
+"mix","divide","NULL","NULL",0.0,1.0
+"stir","whisk","into sauce","into the sauce",0.0,1.0
+"preheat","cool","for 10 minutes","oven",1.0,0.0
+"preheat","bake","NULL","to 375 degrees f",0.0,1.0
 "combine","drain","NULL","NULL",0.0,1.0
-"preheat","NULL","NULL","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"bake","sprinkle","with panko bread crumbs","NULL",0.0,1.0
+"stir","mix","in a bowl until well combined","into sour cream mixture",0.0,1.0
+"stand","let","NULL","5 minutes",1.0,0.0
+"remove","cook","about 2 minutes","NULL",1.0,0.0
+"bake","sprinkle","with panko bread crumbs","NULL",0.5,0.5
 "pour","stir","in pepperoni , tomato sauce , tomato juice , oregano , celery salt , onion powder , garlic salt , basil , red pepper flakes","into the prepared baking dish and cover",0.0,1.0
-"top","stir","in 1/4 cup","with remaining shredded cheese , then combined cracker crumbs and margarine",0.0,1.0
+"sprinkle","spoon","into an 11x7-inch baking dish","with 1 cup cheese",0.0,1.0
 "rinse","preheat","to 400 degrees f. cook macaroni in large saucepan as directed on package for al dente pasta","under cold water",0.0,1.0
-"top","add","to sauce","with remaining cheese",0.0,1.0
+"rest","allow","NULL","NULL",1.0,0.0
 "sprinkle","pour","into baking dish atop sauce layer","over the casserole",0.0,1.0
-"top","place","on top of quinoa","with bread crumbs",0.0,1.0
-"bake","pour","in the sauce","casserole in the preheated oven",1.0,0.0
+"let","bake","in the preheated oven","NULL",0.5,0.5
+"do","bring","NULL","NULL",0.5,0.5
 "add","stir","into the pasta mixture","the cheddar cheese soup , havarti cheese , parmesan cheese and 1/3 cup of cheddar cheese",1.0,0.0
+"cover","top","with crushed crackers","NULL",0.0,1.0
+"stir","whisk","in 1/3 cup cheese , mustard , worcestershire sauce , and hot sauce","in the cooked macaroni",0.0,1.0
+"pour","stir","to coat","macaroni",1.0,0.0
+"combine","add","for 8 to 10 minutes or until al dente ; i would drain and reserve","milk , flour and salt and pepper to taste",1.0,0.0
+"cook","cook","NULL","NULL",0.0,1.0
 "drain","cook","according to the package directions","NULL",0.5,0.5
-"stir","sprinkle","over macaroni","NULL",1.0,0.0
+"whisk","boil","NULL","in the cheeses",0.0,1.0
+"stand","let","NULL","for 10 minutes",0.0,1.0
+"stir","drain","to pot","into pasta",0.0,1.0
 "sprinkle","remove","from oven","NULL",1.0,0.0
 "crumble","drain","on a paper towel-lined plate","the bacon",1.0,0.0
-"add","remove","from heat","macaroni",1.0,0.0
-"remove","stir","in cheese","NULL",1.0,0.0
+"cook","melt","in a large skillet over medium heat","in the melted butter until slightly toasted , 2 to 3 minutes",0.0,1.0
 "stir","drain","NULL","in prepared dish",0.0,1.0
-"whisk","stir","in macaroni and 1/4 tsp -lrb- 1 ml -rrb- salt","flour , mustard and pepper",1.0,0.0
-"bake","top","with bread crumbs and 2 tablespoons cheddar cheese","NULL",1.0,0.0
-"cook","reduce","NULL","until well browned",0.0,1.0
+"stir","stir","until combined","saucepan",1.0,0.0
+"pour","remove","NULL","NULL",0.0,1.0
+"bring","stir","into melted butter and cook","2 to 3 minutes",1.0,0.0
 "bring","serve","NULL","to a boil",0.0,1.0
+"reduce","return","to a boil","heat",1.0,0.0
+"stir","melt","in a skillet over medium heat","in the onion",0.0,1.0
 "stir","bring","to a boil and cook","NULL",1.0,0.0
-"are","bake","in the preheated oven","NULL",1.0,0.0
-"stir","cook","about 15 minutes","NULL",1.0,0.0
+"bake","sprinkle","over casserole","20 min",1.0,0.0
 "stir","stir","in cheddar and mozzarella cheeses","into quinoa mixture in the skillet",0.0,1.0
 "cook","bring","to a boil","the pasta",1.0,0.0
-"cook","bake","in the preheated oven","macaroni as directed on box",1.0,0.0
-"cook","reduce","to low","NULL",0.0,1.0
+"repeat","stir","NULL","with remaining half package of cheddar cheese and the american cheese , about 4 ounces at a time",0.0,1.0
+"bake","cover","NULL","for 30 minutes",0.0,1.0
 "cook","add","NULL","until fragrant",0.0,1.0
-"preheat","bake","in the preheated oven for 20 minutes","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
+"set","whisk","with the paprika , chili powder , black pepper , sugar , and cayenne in a shallow dish","NULL",0.5,0.5
+"combine","drain","NULL","the cottage cheese , sour cream , butter , and cooked macaroni in a large baking dish",1.0,0.0
+"bake","combine","over elbow macaroni","in the preheated oven",0.0,1.0
+"sprinkle","mix","NULL","over top",0.0,1.0
 "remove","cook","NULL","from heat",0.0,1.0
-"pour","stir","with about 1 tablespoon of reserved juice","in the sauce",0.0,1.0
+"top","place","on top of quinoa","with bread crumbs",0.0,1.0
+"strain","stir","NULL","through a mesh sieve",0.0,1.0
 "stir","add","to roux","in cheddar and parmesan cheeses",0.0,1.0
-"cook","stir","in the onion , celery , carrots , and garlic","NULL",0.5,0.5
-"fry","bake","in the preheated oven","until crisp",0.0,1.0
+"make","pulse","NULL","crumbs",1.0,0.0
+"cook","stir","in the onion , celery , carrots , and garlic","NULL",1.0,0.0
+"stir","heat","in a skillet over medium heat","NULL",1.0,0.0
+"sprinkle","smooth","NULL","NULL",1.0,0.0
 "bring","combine","NULL","to a boil",0.0,1.0
-"whisk","cook","NULL","NULL",0.666666666667,0.333333333333
-"reduce","whisk","until smooth","to low",0.0,1.0
-"stir","drain","NULL","salsa , taco seasoning mix , and black pepper",1.0,0.0
-"stir","reduce","to low , cover skillet , and simmer chili for 30 minutes","NULL",0.0,1.0
+"sprinkle","mix","in a bowl","over macaroni",0.0,1.0
+"whisk","cook","NULL","NULL",1.0,0.0
+"combine","preheat","to 425 degrees f","NULL",0.5,0.5
+"cook","hold","NULL","NULL",0.0,1.0
+"stir","bring","to a rolling boil over high heat","NULL",1.0,0.0
+"bring","stir","NULL","to a boil",0.0,1.0
 "stir","simmer","until hot","into the beef mixture",0.0,1.0
 "stir","mix","into the soup mixture","NULL",1.0,0.0
-"cook","bring","to a boil","in boiling water",0.0,1.0
+"transfer","transfer","NULL","to a large bowl",0.0,1.0
 "sprinkle","stir","in bread crumbs and chili powder","over macaroni mixture",0.0,1.0
-"add","stir","NULL","velveeta",1.0,0.0
+"melt","preheat","to 350 degrees f","in a medium saucepan over medium heat",0.0,1.0
 "cook","serve","with peas","macaroni",1.0,0.0
-"remove","cover","45 minutes in the preheated oven","cover",1.0,0.0
+"mix","bake","in the preheated oven for 20 minutes","NULL",0.0,1.0
+"melt","prepare","NULL","NULL",0.0,1.0
 "melt","drain","NULL","in a large saucepan over medium heat",0.0,1.0
-"bake","pour","over mixture","in preheated oven for 35 minutes",0.0,1.0
+"stir","melt","NULL","in bread crumbs and chili powder",0.0,1.0
 "drain","cook","in a large pot of boiling salted water until al dente","NULL",0.5,0.5
 "bake","dump","into a greased casserole dish , and cover","at 325 degrees f -lrb- 165 degrees c -rrb-",1.0,0.0
+"combine","preheat","to 350 degrees f","elbow macaroni and water in the bottom of a 9x11-inch baking dish",1.0,0.0
 "cook","bake","in the preheated oven","pasta",1.0,0.0
-"bake","pour","into 9x13 baking dish","for 45 minutes or until golden brown and bubbly",0.0,1.0
-"reduce","pour","in chicken broth","NULL",0.0,1.0
-"bring","sprinkle","with cheddar and parmesan and place","a large pot of lightly salted water",1.0,0.0
-"cook","bring","to a simmer over medium heat","until the mixture is thick and smooth , 5 to 10 minutes",0.0,1.0
-"whisk","whisk","into melted butter","into flour mixture",0.0,1.0
+"prepare","preheat","to 350 degrees f","NULL",0.0,1.0
+"bring","mix","into onion mixture","to a boil",0.0,1.0
+"top","mix","NULL","casserole",1.0,0.0
+"pour","stir","until blended","into a greased 3-quart casserole dish -lrb- or 13 x 9-inch pan -rrb-",0.0,1.0
+"remove","cook","to a boil","from heat",0.0,1.0
+"whisk","strain","through a mesh sieve","the milk",1.0,0.0
+"let","bake","to 30 minutes or until bubbly and golden brown on top","NULL",0.5,0.5
 "bring","combine","NULL","NULL",1.0,0.0
-"cook","bake","NULL","beef",1.0,0.0
+"cook","stir","into cauliflower mixture","about 5 minutes",0.0,1.0
+"cook","are","NULL","NULL",0.0,1.0
 "melt","drain","NULL","in a large pot over medium-low heat",0.0,1.0
-"stir","drain","in a colander set in the sink","into the macaroni",0.0,1.0
-"cook","drain","NULL","over medium heat",0.0,1.0
-"cook","stir","into the pasta mixture","NULL",0.0,1.0
+"place","preheat","to 350 degrees f","NULL",0.0,1.0
+"mix","mix","NULL","into the soup mixture",0.0,1.0
+"drain","cook","in the boiling water","to a 9x13-inch casserole dish",0.0,1.0
+"place","preheat","to 375 degrees f","a steamer insert",1.0,0.0
+"cook","stir","into the pasta mixture","NULL",0.5,0.5
+"place","return","to the large pot","in the pot",0.0,1.0
+"mix","cook","NULL","into onion mixture",0.0,1.0
+"stir","reduce","to low","in the flour , mustard , and salt until thoroughly combined",0.0,1.0
 "spread","stir","in the macaroni","into the bottom of the prepared baking dish",0.0,1.0
-"sprinkle","toss","with meat mixture","with 1 cup cheese",0.0,1.0
-"blend","cook","in the boiling water","until smooth",0.0,1.0
-"add","pour","into the skillet","NULL",0.0,1.0
-"unroll","spray","with cooking spray","NULL",0.0,1.0
-"bring","reduce","to 375 degrees f -lrb- 190 degrees c -rrb-","a large pot of lightly salted water",1.0,0.0
+"remove","whisk","until smooth and thickened","from heat",0.0,1.0
+"bring","fill","with water","NULL",1.0,0.0
+"cook","bake","to 35 minutes , or until top is golden","macaroni",1.0,0.0
+"add","heat","in a saucepan over medium-low heat","flour",1.0,0.0
+"fill","stand","before serving","with lightly salted water",0.0,1.0
+"stir","stir","in the 2 tablespoons butter , the 1/4 cup milk , and the cheese packet","NULL",1.0,0.0
+"heat","set","NULL","olive oil",1.0,0.0
+"drain","cook","until browned","excess grease",1.0,0.0
+"heat","preheat","to 350 degrees f","3 tablespoons butter and the flour in a large skillet over low heat",1.0,0.0
+"blend","cook","in a large pot of boiling salted water until al dente","cottage cheese",1.0,0.0
 "stir","combine","NULL","in the cheddar cheese",0.0,1.0
 "sprinkle","combine","NULL","over macaroni",0.0,1.0
 "cook","bring","to a rolling boil","pasta shells",1.0,0.0
-"add","stir","until smooth","NULL",0.0,1.0
-"sprinkle","stir","NULL","over the macaroni",0.0,1.0
+"stir","heat","over medium-high heat","NULL",1.0,0.0
+"remove","taste","with salt and pepper","from heat",0.0,1.0
+"place","scoop","into balls","on the prepared baking sheet and freeze for at least 2 hours",0.0,1.0
 "bring","add","until tender","to a boil",0.0,1.0
-"top","stir","in 1/4 cup","NULL",1.0,0.0
+"stir","whisk","in the hot milk , 1/2 cup at a time ,","in paprika , salt , and pepper",0.0,1.0
+"top","pour","into a 9x13-inch baking dish","with bread crumbs",0.0,1.0
+"add","repeat","NULL","NULL",0.5,0.5
 "fill","serve","NULL","with lightly salted water",0.0,1.0
-"begin","drain","NULL","NULL",1.0,0.0
+"bake","remove","until bubbling , about 30 minutes","until crumbs",0.0,1.0
+"stir","pour","in the sauce","NULL",0.5,0.5
 "arrange","stir","in the cheddar cheese","the tomatoes",1.0,0.0
-"stir","serve","NULL","the condensed soup and water together in a slow cooker",1.0,0.0
+"combine","heat","to 350 degrees","macaroni , cheese and seasonings",1.0,0.0
+"bring","pour","in chicken broth","to a boil",0.0,1.0
+"cool","allow","NULL","NULL",1.0,0.0
+"sprinkle","spoon","into the prepared muffin tin","over the tops",0.0,1.0
 "remove","stir","in the salmon and seafood seasoning and cook","NULL",1.0,0.0
-"cook","melt","NULL","until translucent",0.0,1.0
-"combine","drain","for 8 to 10 minutes or until al dente","NULL",0.0,1.0
-"preheat","drain","in a colander set in the sink","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"whisk","stir","in the onion , and cook","into the pot",0.0,1.0
+"combine","drain","for 8 to 10 minutes or until al dente","NULL",0.5,0.5
+"pour","repeat","NULL","over entire casserole",0.0,1.0
+"preheat","sprinkle","over pasta","to 350 degrees f",0.0,1.0
+"let","bake","in the preheated oven","the casserole rest about 10 minutes",1.0,0.0
+"stir","remove","from heat","into sauce",0.0,1.0
+"pour","stir","in the processed cheese cubes","NULL",1.0,0.0
+"combine","remove","from heat","cooked macaroni and cheese",1.0,0.0
 "combine","are","about 30 minutes","NULL",0.0,1.0
-"roast","place","NULL","squash",1.0,0.0
-"bring","sprinkle","with shredded cheese","a large pot of lightly salted water",1.0,0.0
-"sprinkle","spread","about 3/4 cup of cheese sauce","with mozzarella cheese",0.0,1.0
+"drain","cook","until tender yet firm","to pot",0.0,1.0
+"are","bake","until crumbs","NULL",0.0,1.0
 "combine","place","NULL","the cheese food , milk , and pepper in the saucepan",1.0,0.0
 "stir","pour","into prepared baking dish","NULL",0.0,1.0
 "pour","melt","into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next","NULL",1.0,0.0
-"melt","rinse","under cold water","butter",1.0,0.0
-"whisk","add","NULL","NULL",0.0,1.0
-"cover","pour","into the prepared casserole dish","dish",1.0,0.0
+"place","cook","about 2 minutes","on top of quinoa",0.0,1.0
+"whisk","add","NULL","NULL",1.0,0.0
+"whisk","melt","in a saucepan over medium-low heat","NULL",1.0,0.0
+"bake","top","with bread crumbs and 2 tablespoons cheddar cheese","NULL",1.0,0.0
+"whisk","simmer","NULL","shredded cheddar cheese and mascarpone cheese",1.0,0.0
+"mix","mix","in flour , mustard , salt , and pepper","NULL",0.0,1.0
+"stir","pour","over the macaroni in the baking dish","NULL",0.5,0.5
 "bring","sprinkle","over top of macaroni mixture","to a boil",0.0,1.0
+"bring","broil","NULL","a large pot of lightly salted water",1.0,0.0
+"sprinkle","combine","NULL","over top of casserole",0.0,1.0
 "bring","add","NULL","NULL",1.0,0.0
-"add","bring","to a boil","cauliflower , cover , and steam",1.0,0.0
+"blend","combine","in a food processor","NULL",0.5,0.5
+"stir","stir","NULL","for 1",0.0,1.0
+"make","stir","in enough flour","a roux",1.0,0.0
+"cook","stir","in the milk , salt and pepper","NULL",0.5,0.5
+"bake","transfer","to the prepared baking dish and top","NULL",1.0,0.0
 "add","stir","in flour and salt and cook","milk and macaroni",1.0,0.0
-"stir","stir","in the milk","in the cheddar cheese and black pepper",0.0,1.0
+"fill","preheat","to 400 degrees f","with water",0.0,1.0
+"be","add","for about 8 minutes","NULL",0.0,1.0
 "add","reduce","to medium-low","in small batches",0.0,1.0
-"stir","pour","NULL","in tomatoes and onions",0.0,1.0
-"whisk","whisk","in the hot milk , 1/2 cup at a time ,","in the cheeses , about 1/2 cup at a time ,",0.0,1.0
+"heat","cover","NULL","oven",1.0,0.0
+"spoon","stir","in 1/4 cup","into greased 1-1/2",0.0,1.0
+"preheat","serve","NULL","to 400 degrees f",0.0,1.0
+"top","heat","in microwave , 1 minute","NULL",1.0,0.0
+"melt","heat","to 350 degrees f. cook macaroni","butter in large saucepan on low heat",1.0,0.0
+"bake","uncover","NULL","NULL",1.0,0.0
+"let","bake","in a preheated 350 degree f -lrb- 175 degrees c -rrb- oven for 30 minutes","NULL",0.5,0.5
 "melt","drain","NULL","NULL",0.0,1.0
-"add","whisk","until smooth","butter and cheese ; i microwave on high for 5 minutes",1.0,0.0
+"taste","stir","in cheese","NULL",1.0,0.0
+"stir","mix","in cheese","NULL",0.5,0.5
+"are","bake","in the preheated oven","NULL",0.666666666667,0.333333333333
 "add","whisk","until smooth","NULL",0.0,1.0
+"melt","prepare","NULL","the butter in a small saucepan over medium high heat",1.0,0.0
 "rinse","preheat","to 400 degrees f. cook macaroni in large saucepan as directed on package for al dente pasta","NULL",1.0,0.0
-"stir","stir","in the milk","NULL",1.0,0.0
-"sprinkle","stir","in the pasta and beef , and transfer mixture","mixture",1.0,0.0
+"melt","preheat","to 350 degrees f","in a saucepan over medium-low heat",0.0,1.0
+"line","refrigerate","until firm","a baking sheet",1.0,0.0
+"bring","add","to saucepan","NULL",1.0,0.0
+"combine","uncover","NULL","the crushed pretzels and parmesan cheese in a small bowl",1.0,0.0
+"melt","preheat","to 375 degrees f","2 tablespoons margarine in a skillet over medium heat",1.0,0.0
 "preheat","drain","NULL","oven",1.0,0.0
-"bring","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","a large pot of lightly salted water to a boil , add pasta , and cook until done",1.0,0.0
-"cook","bake","for 30 minutes","macaroni according to package directions",1.0,0.0
+"stir","let","10 minutes before serving","NULL",1.0,0.0
+"pour","pour","to a hard boil","in the milk",0.0,1.0
+"bake","sprinkle","NULL","30 minutes in the preheated oven",1.0,0.0
+"place","drain","NULL","in the bottom , followed by an even layer of one-quarter of the cheese slices",0.0,1.0
+"top","spoon","into 2.5-l casserole dish","NULL",1.0,0.0
 "stir","stir","in cheese and black pepper","in pasta and sausage mixture",0.0,1.0
-"place","preheat","to 400 degrees f -lrb- 200 degrees c -rrb-","NULL",0.0,1.0
+"stir","stir","in cheese","in cooked macaroni and bacon and heat",0.0,1.0
 "bake","sprinkle","with the panko crumbs","in the preheated oven",0.0,1.0
-"drain","cook","NULL","in a colander set in the sink",0.0,1.0
 "sprinkle","pour","over macaroni","NULL",1.0,0.0
-"cover","pour","NULL","at 350 degrees f -lrb- 175 degrees c -rrb- for 45 minutes",0.0,1.0
+"stir","drain","to pot","alfredo sauce and 3/4 pound cheddar cheese",1.0,0.0
+"spoon","transfer","to a 9x13-inch glass baking dish","over the casserole in decorative swirls or lines",0.0,1.0
 "pour","fill","with water","over mixture",0.0,1.0
-"bring","whisk","in flour and cook , stirring","NULL",1.0,0.0
+"add","make","NULL","to roux slowly",0.0,1.0
+"stir","drain","to a large","in 2 tablespoons butter",0.0,1.0
+"place","mix","into the corn mixture along with the cheese","NULL",1.0,0.0
 "bring","unroll","NULL","a large pot of lightly salted water",1.0,0.0
-"cook","bake","for 30 minutes","NULL",0.0,1.0
-"combine","add","for 8 to 10 minutes or until al dente ; i drain and reserve","milk , flour and salt and pepper to taste",1.0,0.0
-"bring","reduce","to 375 degrees f -lrb- 190 degrees c -rrb-","to a boil",0.0,1.0
-"preheat","stir","NULL","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"pour","stir","in cream , flour , yogurt , bleu cheese and parmesan cheese","into a 9x13 inch baking dish",0.0,1.0
-"drizzle","pour","over macaroni","melted butter",1.0,0.0
-"remove","bring","to a boil","from heat",0.0,1.0
-"preheat","sprinkle","over top of casserole","oven",1.0,0.0
+"heat","place","into the bottom of the dish","milk in a saucepan",1.0,0.0
+"remove","cut-side","on a baking sheet","from skin",0.0,1.0
+"cook","bake","in a preheated oven for 30 minutes","macaroni and cheese",1.0,0.0
+"stir","whisk","into the sauce","with about 1 tablespoon of reserved juice",0.0,1.0
+"return","drain","NULL","NULL",0.5,0.5
+"return","cut-side","NULL","the water",1.0,0.0
+"bake","top","with bread crumbs","NULL",1.0,0.0
+"cook","stir","in the fusilli , and return","the pasta uncovered , stirring occasionally , until the pasta has cooked through , but is still firm to the bite ,",1.0,0.0
+"mix","slice","NULL","NULL",1.0,0.0
+"transfer","combine","NULL","to prepared dish",0.0,1.0
+"stir","set","NULL","in cooked noodles",0.0,1.0
+"top","mix","NULL","with the potato chip mixture",0.0,1.0
+"melt","stir","NULL","NULL",0.0,1.0
+"place","preheat","to 350 degrees f","into a food processor",0.0,1.0
 "remove","stir","in brown mustard","NULL",1.0,0.0
-"pour","uncover","NULL","NULL",1.0,0.0
-"pour","drain","NULL","macaroni mixture",1.0,0.0
-"sprinkle","stir","in the cheese , bacon , red pepper , salt , and pepper","with the pretzel and cheese mixture",0.0,1.0
 "melt","drain","NULL","in a large pot over medium heat",0.0,1.0
-"top","toss","to coat","NULL",1.0,0.0
-"simmer","whisk","into margarine and shallots","NULL",0.0,1.0
-"stir","reduce","to low","in the cooked macaroni",0.0,1.0
+"heat","reduce","to low","soup",1.0,0.0
+"bring","cool","for 10 minutes","a large pot of lightly salted water",1.0,0.0
 "stir","melt","in a large saucepan over medium low heat","NULL",1.0,0.0
-"cook","stir","into the macaroni","the onion in the oil",1.0,0.0
-"bring","preheat","to 375 degrees f -lrb- 190 degrees c -rrb-","to a boil",0.0,1.0
+"are","bake","in the preheated oven","about 30 minutes",0.0,1.0
+"set","toss","until coated","NULL",0.5,0.5
 "reduce","bring","to a boil","heat",1.0,0.0
 "add","drain","in a colander set in the sink","olive oil",1.0,0.0
-"cool","bake","in preheated oven","10 minutes before serving",0.0,1.0
+"prevent","cook","NULL","to high",0.0,1.0
 "reduce","cook","NULL","to low",0.0,1.0
 "drain","add","for 8 to 10 minutes or until al dente","NULL",0.478260869565,0.521739130435
-"stir","add","NULL","NULL",0.5,0.5
-"cook","melt","in a large skillet over medium heat","NULL",0.0,1.0
-"cook","melt","in a large skillet over medium heat","couscous in the melted butter until slightly toasted , 2 to 3 minutes",1.0,0.0
+"stir","add","NULL","NULL",0.55,0.45
+"stir","combine","NULL","in pasta",0.0,1.0
+"simmer","cook","on medium heat","NULL",1.0,0.0
+"cook","whisk","into melted butter","NULL",0.5,0.5
+"bake","cover","NULL","30 minutes in the preheated oven",1.0,0.0
 "top","pour","into a small casserole dish","with bread crumbs",0.0,1.0
-"spray","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","with cooking spray",0.0,1.0
-"preheat","remove","from heat","oven",1.0,0.0
+"spoon","stir","NULL","onto the crust in an even layer",0.0,1.0
 "bake","spread","into a 9 inch square baking dish","for one hour , or until set",0.0,1.0
+"whisk","stir","NULL","NULL",1.0,0.0
 "cook","set","to high","NULL",0.0,1.0
 "bring","sprinkle","over top of macaroni mixture","a large pot of lightly salted water",1.0,0.0
-"stir","cook","until the mixture is thick and smooth , 5 to 10 minutes","NULL",1.0,0.0
-"bake","sprinkle","NULL","until bubbly and lightly brown",0.0,1.0
-"pour","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","NULL",0.0,1.0
+"increase","stir","in the milk","to medium-high and simmer",0.0,1.0
+"preheat","bake","in preheated oven","to 350 degrees f",0.0,1.0
+"sprinkle","spoon","into the prepared muffin tin","the reserved cheese and the bread crumb mixture",1.0,0.0
+"rinse","preheat","NULL","NULL",0.5,0.5
+"heat","place","into the bottom of the dish","until hot",0.0,1.0
+"remove","bake","NULL","NULL",0.0,1.0
+"turn","stir","in the cheese , bacon , red pepper , salt , and pepper","the heat",1.0,0.0
+"add","make","NULL","to roux",0.0,1.0
 "bake","top","with remaining cheese","NULL",0.0,1.0
-"sprinkle","stir","in the cooked macaroni","with bread crumbs and 1 tablespoon cheddar cheese",0.0,1.0
+"spoon","mix","with bacon","into 1 1/2 quart casserole",0.0,1.0
+"stir","set","NULL","NULL",1.0,0.0
+"bring","preheat","to 400 degrees f","a large pot of lightly salted water",1.0,0.0
+"stir","preheat","to 350 degrees f","NULL",0.0,1.0
 "add","simmer","on low heat 3 to 5 min","NULL",0.0,1.0
+"combine","toss","NULL","cheese sauce",1.0,0.0
 "stir","stir","in cheese","NULL",1.0,0.0
+"heat","drain","in a colander set in the sink","reserved bacon drippings",1.0,0.0
+"toss","stir","NULL","to coat",0.0,1.0
 "preheat","are","about 30 minutes","oven",1.0,0.0
 "melt","combine","NULL","butter",1.0,0.0
 "stir","stir","in flour and cook","NULL",1.0,0.0
-"preheat","drain","NULL","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
+"bring","place","in a large pot of lightly-salted water","NULL",1.0,0.0
+"toss","add","NULL","pasta",1.0,0.0
+"boil","bring","to a boil","NULL",0.5,0.5
+"heat","let","before serving","in a skillet over medium heat",0.0,1.0
+"bake","top","with the potato chip mixture","NULL",1.0,0.0
+"cut-side","place","in the pot","NULL",0.5,0.5
+"melt","drain","NULL","2 tablespoons butter",1.0,0.0
 "pour","stir","into cheese mixture","into a 9x13-inch baking dish",0.0,1.0
-"whisk","cook","about 5 minutes","into margarine and shallots",0.0,1.0
-"melt","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","in a medium saucepan over medium heat",0.0,1.0
+"stir","remove","from the heat","in the soup , salsa , corn , macaroni and 3/4 cup cheese",0.0,1.0
+"stir","cook","about 5 minutes","NULL",1.0,0.0
 "pour","stir","into cheese mixture","cheese mixture",1.0,0.0
-"stir","uncover","NULL","NULL",0.5,0.5
+"pour","place","in large baking dish","sauce",1.0,0.0
+"stir","transfer","to a large bowl","into the macaroni",0.0,1.0
+"incorporate","stir","NULL","NULL",0.0,1.0
+"stir","reduce","about 8-10 minutes","NULL",0.5,0.5
+"cover","mix","NULL","NULL",0.333333333333,0.666666666667
 "pour","stir","in cooked pasta","into shallow 2 quart baking dish",0.0,1.0
 "pour","stir","NULL","macaroni mixture",1.0,0.0
-"bake","sprinkle","with a little paprika","for 30 minutes",0.0,1.0
-"add","drain","NULL","flour and some ground black pepper",1.0,0.0
-"preheat","bake","in the preheated oven for 20 minutes","oven",1.0,0.0
-"place","spray","NULL","into the bottom of the dish",0.0,1.0
-"sprinkle","place","until al dente , and drain","NULL",0.0,1.0
+"heat","serve","NULL","to 350 degrees f. cook macaroni",0.0,1.0
+"melt","cut","into bite size pieces","in a large saucepan over medium low heat",0.0,1.0
+"remove","reduce","to medium-low , cover , and steam","the lobster",1.0,0.0
+"cover","top","with the remaining 1 cup of cheddar cheese , 1 cup of mozzarella , bacon , and potato nuggets","with aluminum foil",0.0,1.0
 "stir","melt","in a saucepan over medium heat","NULL",1.0,0.0
-"pour","uncover","NULL","into a large saucepan",0.0,1.0
 "preheat","bake","in the preheated oven until golden brown , 40 to 45 minutes","oven",1.0,0.0
 "stir","pour","into prepared baking dish","bread crumbs",1.0,0.0
-"do","add","NULL","NULL",0.0,1.0
-"bring","combine","with panko crumbs in a bowl","to a boil",0.0,1.0
-"melt","pour","over macaroni","in a skillet over medium heat",0.0,1.0
+"bring","mix","with macaroni","to a simmer over medium heat",0.0,1.0
 "top","sprinkle","with 1 cup cheese","with remaining meat mixture",0.0,1.0
 "remove","cook","over medium heat","from heat",0.0,1.0
 "stir","stir","in flour and cook","in milk , salt , mustard and pepper",0.0,1.0
+"cover","sprinkle","over the casserole","the casserole",1.0,0.0
+"place","preheat","to 375 degrees f","into a saucepan and fill with water to just below the bottom of the steamer",0.0,1.0
+"make","stir","in flour","NULL",0.0,1.0
+"pour","repeat","NULL","the reserved white sauce over all",1.0,0.0
 "simmer","reduce","NULL","for 5 minutes",0.0,1.0
-"spray","preheat","to 400 degrees f -lrb- 200 degrees c -rrb-","with cooking spray",0.0,1.0
+"remove","bake","in the preheated oven","until bubbling , about 30 minutes",0.0,1.0
+"mix","stir","in pasta and remaining bacon","with bread crumbs",0.0,1.0
+"preheat","broil","about 3 more minutes","to 350 degrees f",0.0,1.0
 "serve","bake","in preheated oven for 25 to 30 minutes or until bubbly and golden brown","NULL",0.5,0.5
+"spoon","chile","into the cooked pasta until well combined","into the prepared casserole dish",0.0,1.0
+"whisk","remove","from heat","in pepperjack , cheddar and parmesan",0.0,1.0
 "add","bring","to a boil","about 8 minutes",0.0,1.0
 "pour","stir","in pasta","into prepared dish",0.0,1.0
-"sprinkle","preheat","to 400 degrees f. combine 3 tablespoons country crock ® spread , milk , rotini , chicken , vegetables and cheddar cheese in 8-inch baking dish","over top of casserole",0.0,1.0
-"cook","stir","into the macaroni","until brown",0.0,1.0
+"drain","cook","at a boil until tender but still slightly firm , about 10 minutes","NULL",0.5,0.5
+"pour","cook","in the melted butter until slightly toasted , 2 to 3 minutes","NULL",1.0,0.0
 "stir","melt","in a large pot over medium heat","into butter",0.0,1.0
+"return","drain","with cold water","NULL",0.5,0.5
 "add","pour","NULL","onions and thyme",1.0,0.0
+"top","pour","into prepared dish","NULL",1.0,0.0
+"stir","boil","NULL","to a boil",0.0,1.0
+"blend","drain","to a 9x13-inch casserole dish","cauliflower , yogurt , chicken broth , and olive oil in a blender",1.0,0.0
+"mix","combine","in a 2 quart baking dish","NULL",0.5,0.5
 "uncover","bake","in preheated 375 degrees f oven 30 minutes","NULL",0.5,0.5
 "pour","melt","NULL","NULL",1.0,0.0
+"combine","drain","NULL","potato chip crumbs , parmigiano-reggiano cheese , bread crumbs , and butter",1.0,0.0
 "add","stir","from the packet , margarine , and milk into the macaroni","NULL",0.0,1.0
+"pour","transfer","to a paper towel-lined plate","all but 3 tablespoons of bacon drippings",1.0,0.0
 "stir","mix","into the soup mixture","in cooked pasta",0.0,1.0
-"pour","combine","NULL","over macaroni",0.0,1.0
-"remove","cook","until cheese melts","NULL",1.0,0.0
-"pour","stir","NULL","pasta mixture",1.0,0.0
-"bake","sprinkle","over macaroni mixture","30 minutes",1.0,0.0
-"reduce","remove","from skin","to 375 degrees f -lrb- 190 degrees c -rrb-",0.0,1.0
-"add","add","to taste","milk",1.0,0.0
-"pour","drain","NULL","into a baking dish",0.0,1.0
+"stir","pour","over macaroni","NULL",0.6,0.4
+"set","reserve","NULL","NULL",0.5,0.5
+"add","add","in small batches","NULL",0.0,1.0
+"fold","stir","NULL","the pasta",1.0,0.0
+"hold","set","NULL","their muffin shape",1.0,0.0
 "remove","simmer","on low heat 5 to 7 min","from heat",0.0,1.0
 "combine","pour","into a greased 2-quart baking dish","breadcrumbs , parmesan cheese and the 2 teaspoons melted butter in a small bowl",1.0,0.0
-"cook","cook","about 2 minutes","NULL",0.5,0.5
-"stir","drain","NULL","in enough flour",0.0,1.0
-"pour","cook","NULL","cheese sauce over macaroni",1.0,0.0
-"add","pour","NULL","chives",1.0,0.0
-"pour","whisk","into the onion mixture","into the mixture",0.0,1.0
+"continue","bring","to a boil","NULL",0.5,0.5
+"do","heat","NULL","NULL",0.0,1.0
+"top","pour","NULL","with small pats of butter",0.0,1.0
 "whisk","cook","until translucent","into the onion mixture",0.0,1.0
-"stir","add","to mixture","NULL",1.0,0.0
-"simmer","add","NULL","5 minutes",1.0,0.0
+"stir","add","to mixture","NULL",0.5,0.5
+"cook","cook","NULL","ground beef , onion and green pepper in large skillet over medium heat 5 minutes or until beef is no longer pink ; i would pour off drippings",1.0,0.0
 "scoop","remove","from the refrigerator","NULL",1.0,0.0
-"bake","sprinkle","with panko bread crumbs","40 minutes",1.0,0.0
-"place","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","the diced onion in a large pot of lightly-salted water",1.0,0.0
-"uncover","bake","for 30 minutes","NULL",0.5,0.5
-"combine","toast","into small pieces","in a food processor",0.0,1.0
-"whisk","cook","about 5 minutes","flour",1.0,0.0
+"uncover","bake","for 30 minutes","NULL",0.0,1.0
+"return","drain","NULL","to heat",0.0,1.0
+"preheat","heat","NULL","oven",1.0,0.0
+"form","whisk","into margarine and shallots","NULL",0.5,0.5
 "remove","begin","with one of the butter and cheese portions , microwave on 50 % power for 7 minutes","NULL",1.0,0.0
-"cook","stir","into the pasta mixture","ground beef , onion and green pepper in large skillet over medium heat 5 minutes or until beef is no longer pink ; i pour off drippings",1.0,0.0
-"stir","remove","from heat","sauerkraut",1.0,0.0
-"fold","cook","NULL","the pasta",1.0,0.0
-"whisk","cook","NULL","the eggs , the remaining 1 teaspoon of butter , and milk in a large bowl",1.0,0.0
-"stir","sprinkle","with 1/2 teaspoon salt","into the sour cream mixture",0.0,1.0
-"preheat","bake","in the preheated oven","oven",1.0,0.0
+"cover","spoon","into 4 -lrb- 10-ounce -rrb- ramekins","with toasted potato chip topping",0.0,1.0
+"stir","return","to the saucepan","from the packet , margarine , and milk into the macaroni",0.0,1.0
+"top","spoon","into 1 1/2 quart casserole","with remaining cheese",0.0,1.0
+"bake","pour","into a baking dish","NULL",1.0,0.0
+"place","return","to the large pot","the lobster halves",1.0,0.0
+"heat","stir","NULL","to 350 degrees f. drain macaroni",0.0,1.0
+"stir","whisk","in 1/3 cup cheese , mustard , worcestershire sauce , and hot sauce","NULL",1.0,0.0
+"combine","make","into a food processor","rye crumbs",1.0,0.0
+"spoon","combine","in a large bowl","mixture",1.0,0.0
 "combine","place","NULL","NULL",0.0,1.0
-"melt","drain","in a colander set in the sink","NULL",0.0,1.0
-"preheat","are","about 30 minutes","to 375 degrees f -lrb- 190 degrees c -rrb-",0.0,1.0
-"pour","stir","into mixture until thoroughly combined","over macaroni",0.0,1.0
-"preheat","sprinkle","with mozzarella and parmesan cheese","oven",1.0,0.0
-"cook","sprinkle","with flour and seasonings","NULL",0.0,1.0
-"melt","reduce","to low , and simmer 10 minutes","NULL",0.0,1.0
+"remove","cook","to a boil","saucepan",1.0,0.0
+"cook","stir","in the macaroni , and return","NULL",0.5,0.5
+"cook","sprinkle","with flour and seasonings","NULL",0.5,0.5
 "continue","stir","through the pasta mixture","cooking",1.0,0.0
-"toss","pour","NULL","NULL",1.0,0.0
+"dot","place","in the bottom , followed by an even layer of one-quarter of the cheese slices","NULL",1.0,0.0
+"melt","heat","until hot","in a saucepan , and cook",0.0,1.0
+"heat","drain","NULL","olive oil",1.0,0.0
+"remove","cool","for a few minutes","NULL",0.0,1.0
+"melt","drain","about 8 minutes","butter",1.0,0.0
 "add","stir","from the packet , margarine , and milk into the macaroni","tuna and mushrooms",1.0,0.0
+"preheat","combine","NULL","oven",1.0,0.0
+"heat","stir","in canned tuna and green peas","NULL",0.5,0.5
 "stir","melt","in a small saucepan over medium heat","NULL",1.0,0.0
-"sprinkle","stir","in the pasta and beef , and transfer mixture","over the pasta in the baking dish",0.0,1.0
-"stir","combine","NULL","in the drained macaroni until evenly coated",0.0,1.0
 "stir","remove","from heat","in cheeses",0.0,1.0
+"drain","cook","NULL","to a large",0.0,1.0
 "stir","bring","to a boil","in shell pasta and cook 12 minutes , or until tender",0.0,1.0
-"strain","whisk","in the flour","through a mesh sieve",0.0,1.0
+"preheat","sprinkle","over pasta","oven",1.0,0.0
+"sprinkle","stir","NULL","over the macaroni",0.0,1.0
+"stir","reduce","NULL","in cheddar cheese",0.0,1.0
+"preheat","combine","NULL","to 375 degrees f",0.0,1.0
 "cook","melt","in large saucepan on medium heat","NULL",0.0,1.0
-"cover","pour","into the prepared baking dish","NULL",0.0,1.0
-"whisk","melt","in a saucepan over medium-low heat","NULL",1.0,0.0
-"cook","drain","NULL","onion , green bell peppers , and garlic",1.0,0.0
+"stir","whisk","in the hot milk , 1/2 cup at a time ,","NULL",1.0,0.0
+"fill","cover","with toasted potato chip topping","a large pot",1.0,0.0
+"continue","blend","NULL","in the cheddar cheese , pimento cheese spread , and italian cheese",0.0,1.0
 "place","drain","NULL","a saucepan over medium-low heat",1.0,0.0
-"bake","sprinkle","NULL","30 minutes in the preheated oven",1.0,0.0
-"drain","cook","until tender yet firm to the bite , about 8 minutes","pasta and return",1.0,0.0
-"bake","dot","with butter and season","uncovered , for one hour , or until top is golden brown",1.0,0.0
-"stir","crumble","NULL","NULL",1.0,0.0
-"cook","bake","in the preheated oven","pasta as directed on package",1.0,0.0
-"cover","drain","NULL","45 minutes in the preheated oven",0.0,1.0
-"layer","remove","from heat","with the beef mixture and top with remaining cheese",0.0,1.0
+"drain","place","in a skillet over medium heat , and cook","grease",1.0,0.0
+"drain","cook","until tender yet firm","NULL",1.0,0.0
+"toss","add","NULL","until coated",0.0,1.0
 "drain","cook","in the hot skillet until browned and crumbly , 5 to 7 minutes","grease",1.0,0.0
+"stir","cook","NULL","in the drained macaroni",0.0,1.0
 "pour","blend","until smooth","cauliflower mixture",1.0,0.0
-"drain","cook","until tender yet firm to the bite , about 8 minutes","NULL",0.5,0.5
+"drain","cook","until tender yet firm","pasta and return",1.0,0.0
 "increase","stir","into pot","to medium",0.0,1.0
-"add","stir","in milk , salt , mustard and pepper","for 8 to 10 minutes or until al dente",0.0,1.0
-"melt","place","into the bottom of the dish","butter",1.0,0.0
-"bake","pour","into a 9x13-inch baking dish","NULL",1.0,0.0
-"combine","cover","at 350 degrees f -lrb- 175 degrees c -rrb- for 45 minutes","NULL",0.0,1.0
+"set","stir","NULL","NULL",0.5,0.5
+"pour","stir","in the processed cheese cubes","into the prepared baking dish",0.0,1.0
+"bring","broil","NULL","to a boil",0.0,1.0
+"add","pour","into a large saucepan","NULL",0.5,0.5
+"pour","cook","NULL","1 cup milk",1.0,0.0
+"place","mix","into the corn mixture along with the cheese","in a buttered casserole dish",0.0,1.0
 "add","add","to taste","to mixture",0.0,1.0
-"sprinkle","add","NULL","NULL",0.5,0.5
+"stir","mix","in prepared macaroni and cheese","NULL",0.5,0.5
 "stir","cook","on high","through the pasta mixture",0.0,1.0
-"cook","whisk","into the flour mixture","until the mixture is thick and smooth , 10 to 15 minutes",0.0,1.0
-"stir","top","with cheddar cheese and green onions","in flour",0.0,1.0
+"melt","drain","in a colander set in the sink","the butter",1.0,0.0
+"stir","thicken","NULL","in cheese",0.0,1.0
 "bring","stir","in alfredo sauce , and half and half","NULL",1.0,0.0
 "blend","mix","with the macaroni","NULL",1.0,0.0
+"place","cook","NULL","macaroni",1.0,0.0
+"bring","fill","with water","to a boil",0.0,1.0
 "place","pour","into a lightly greased 9x13 inch baking dish","bread pieces",1.0,0.0
-"melt","bake","NULL","in large saucepan on medium heat",0.0,1.0
+"remove","taste","with salt and pepper","NULL",1.0,0.0
 "drain","cook","NULL","macaroni",1.0,0.0
-"bake","sprinkle","with paprika","in preheated oven",0.0,1.0
-"stir","stir","in the fontina cheese , sharp cheddar cheese , white cheddar cheese , and 1/4 cup parmesan cheese","in the pasta and beef , and transfer mixture",0.0,1.0
-"cook","remove","NULL","elbow macaroni according to package directions",1.0,0.0
-"stir","drain","NULL","in a small bowl",0.0,1.0
-"preheat","serve","NULL","to 400 degrees f -lrb- 200 degrees c -rrb-",0.0,1.0
+"mix","pour","into greased 13x9-inch baking dish","NULL",0.0,1.0
+"pour","incorporate","NULL","into a 9x13 inch baking dish",0.0,1.0
+"mix","simmer","NULL","NULL",1.0,0.0
+"whisk","stir","NULL","into the flour mixture",0.0,1.0
+"reduce","stir","in milk","to low",0.0,1.0
+"allow","remove","NULL","NULL",0.5,0.5
+"reduce","cover","NULL","heat",1.0,0.0
+"mix","place","until al dente , and drain","NULL",0.0,1.0
+"drain","place","in a skillet over medium heat , and cook","NULL",0.0,1.0
 "reduce","stir","into the mixture","to low",0.0,1.0
+"bring","taste","with salt","to a boil",0.0,1.0
 "place","scrape","into a small bowl","the reserved lobster shells , garlic , shallots , peppercorns , and milk",1.0,0.0
-"stir","cook","about 15 minutes","in brown mustard",0.0,1.0
-"remove","add","NULL","from the heat , drain and return to the pan",0.0,1.0
-"pour","drain","in a colander set in the sink","NULL",1.0,0.0
-"stir","reduce","NULL","cheese",1.0,0.0
-"sprinkle","bake","in preheated oven for 35 minutes","with mozzarella and parmesan cheese",0.0,1.0
-"cook","stir","in milk","NULL",0.666666666667,0.333333333333
+"beat","set","NULL","with the 3 tablespoons milk in a small bowl",0.0,1.0
+"pour","mix","in lobster tail meat , green peas ,","pasta mixture",1.0,0.0
+"whisk","reduce","to low","in 1/3 cup cheese , mustard , worcestershire sauce , and hot sauce",0.0,1.0
+"cook","stir","in milk","NULL",1.0,0.0
 "pour","stir","in pasta","NULL",1.0,0.0
-"remove","boil","for 1 minute or until very thick","NULL",1.0,0.0
+"bake","pour","into a baking dish","in a preheated oven for 30 minutes",0.0,1.0
+"cook","boil","in a saucepan","macaroni",1.0,0.0
+"remove","cut-side","on a baking sheet","squash flesh",1.0,0.0
 "add","pour","NULL","NULL",0.0,1.0
 "cover","place","in a buttered casserole dish","NULL",0.5,0.5
-"process","preheat","to 375 degrees f -lrb- 190 degrees c -rrb-","cubed bread",1.0,0.0
+"remove","be","NULL","NULL",1.0,0.0
+"keep","cover","NULL","NULL",0.5,0.5
 "pour","toss","to coat","NULL",1.0,0.0
 "drain","place","NULL","the bacon slices",1.0,0.0
+"mix","drain","NULL","cream of mushroom soup , cheddar cheese , and pimentos",1.0,0.0
 "preheat","NULL","NULL","oven",1.0,0.0
-"stir","bring","to a boil and cook","cheddar cheese , american cheese , and parmesan cheese",1.0,0.0
-"bake","sprinkle","over macaroni","uncovered",1.0,0.0
-"fill","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","with lightly salted water",0.0,1.0
-"stir","melt","NULL","in the onion",0.0,1.0
-"bake","combine","in a 2 quart baking dish","in preheated oven for 30 minutes , or until hot and bubbly",0.0,1.0
-"stir","saute","NULL","in flour and cook",0.0,1.0
-"preheat","bake","for 45 minutes or until golden brown and bubbly","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"stir","cook","NULL","in flour and salt and cook",0.0,1.0
+"repeat","top","with half the tomatoes and half the cheddar cheese","NULL",0.5,0.5
+"combine","add","for 8 to 10 minutes or until al dente ; i would drain and reserve","NULL",0.0,1.0
+"stir","heat","to 375 degrees f. prepare dinner","NULL",1.0,0.0
+"pour","heat","through","NULL",1.0,0.0
+"cook","heat","in a large saucepan over medium heat","until translucent",0.0,1.0
+"reserve","drain","on a paper towel-lined plate","1 teaspoon of the bacon drippings",1.0,0.0
+"melt","drain","NULL","4 tablespoons",1.0,0.0
+"whisk","add","NULL","until smooth",0.0,1.0
+"place","preheat","to 350 degrees f","mixture in a 9x13 inch baking dish",1.0,0.0
+"stir","whisk","in pepperjack , cheddar and parmesan","in cooked pasta",0.0,1.0
+"rest","allow","NULL","before serving",0.0,1.0
+"mix","simmer","NULL","in cheese",0.0,1.0
 "sprinkle","pour","into a greased 3-quart casserole dish -lrb- or 13 x 9-inch pan -rrb-","NULL",1.0,0.0
-"stir","bring","to a boil","cheese food and cheddar cheese",1.0,0.0
-"serve","bake","for 30 minutes","NULL",0.5,0.5
+"add","bring","to a boil","for about 8 minutes",0.0,1.0
+"place","cook","about 2 minutes","tomato slices",1.0,0.0
 "stir","reduce","NULL","NULL",1.0,0.0
-"pour","spread","over bottom of prepared baking dish","into baking dish atop sauce layer",0.0,1.0
+"sprinkle","spoon","into the prepared dish","NULL",1.0,0.0
 "preheat","bake","in preheated oven","oven",1.0,0.0
 "sprinkle","pour","NULL","with combined bread crumbs and 1/4 cup melted butter",0.0,1.0
+"begin","separate","into two equal size portions","NULL",1.0,0.0
 "bake","pour","into the prepared casserole dish","NULL",1.0,0.0
+"continue","mix","NULL","about 15 minutes more",0.0,1.0
 "add","stir","in flour , mustard , salt and pepper","NULL",0.0,1.0
-"bring","preheat","to 400 degrees f -lrb- 200 degrees c -rrb-","to a boil",0.0,1.0
-"add","cover","NULL","flour",1.0,0.0
-"cook","stir","in flour and mustard","NULL",0.0,1.0
-"stir","cover","NULL","in flour , mustard , salt and pepper",0.0,1.0
-"add","stir","until smooth","the shell pasta and andouille sausage",1.0,0.0
+"divide","stir","NULL","macaroni between two 9x13-inch baking dishes",1.0,0.0
+"cook","heat","in a large skillet over medium heat","onion , green bell peppers , and garlic in the hot oil until onion is softened , 5 to 10 minutes",1.0,0.0
+"spoon","toss","with meat mixture","3 cups of mixture",1.0,0.0
+"allow","bake","in the oven","NULL",0.5,0.5
+"cook","stir","into the macaroni","over medium heat",0.0,1.0
 "bake","sprinkle","over top","to 30 minutes or until bubbly and golden brown on top",0.0,1.0
 "place","place","NULL","the bacon slices",1.0,0.0
-"bring","preheat","to 375 degrees f -lrb- 190 degrees c -rrb-","a large pot of lightly salted water",1.0,0.0
-"stir","remove","from heat","in cheddar and mozzarella cheeses",0.0,1.0
+"mix","stir","NULL","NULL",0.0,1.0
+"preheat","bake","in the preheated oven until golden brown , 40 to 45 minutes","to 400 degrees f",0.0,1.0
 "add","bring","to a boil","until tender",0.0,1.0
-"remove","roast","in the preheated oven until soft , 40 to 50 minutes","squash flesh",1.0,0.0
 "simmer","whisk","in milk , cooking","NULL",1.0,0.0
-"mix","add","NULL","NULL",0.5,0.5
+"stir","turn","NULL","in the cooked macaroni",0.0,1.0
 "remove","bake","in the preheated oven for 20 minutes","from oven",0.0,1.0
-"pour","drain","NULL","macaroni",1.0,0.0
+"bring","stir","in paprika , salt , and pepper","NULL",0.0,1.0
 "melt","combine","NULL","in a large saucepan over medium heat",0.0,1.0
 "bring","bake","in the preheated oven until casserole is set and top is lightly browned , 30 to 40 minutes","a large pot of lightly salted water",1.0,0.0
 "drain","place","in the pot , and cook for 8 to 10 minutes or until al dente","NULL",0.5,0.5
-"pour","remove","from heat","over macaroni",0.0,1.0
-"combine","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","rye crumbs",1.0,0.0
-"stir","saute","NULL","NULL",1.0,0.0
+"spread","let","NULL","about 3/4 cup of cheese sauce",1.0,0.0
+"chile","stir","NULL","into the cooked pasta until well combined",0.0,1.0
+"sprinkle","mix","in a bowl","NULL",1.0,0.0
+"spoon","stir","in the cooked macaroni","the macaroni and cheese",1.0,0.0
 "spread","stir","into the sour cream mixture","1/4 cup sour cream sauce",1.0,0.0
-"whisk","stir","in macaroni and 1/4 tsp -lrb- 1 ml -rrb- salt","into milk",0.0,1.0
-"paste","drain","NULL","NULL",0.5,0.5
-"combine","cook","in a large pot of boiling salted water until al dente","cottage cheese , egg white , sweetener , cheese food , buttermilk and liquid smoke",1.0,0.0
-"add","bring","to a boil","NULL",0.0,1.0
-"stir","melt","in a large pot over medium heat","NULL",1.0,0.0
-"bake","combine","in a 2 quart baking dish","NULL",1.0,0.0
+"add","heat","in a deep ovenproof skillet or dutch oven","NULL",0.0,1.0
+"fold","stir","NULL","into the mixture",0.0,1.0
+"heat","transfer","to a medium baking dish","vegetable oil",1.0,0.0
+"preheat","bake","for 25 to 30 minutes or until browned and bubbly around edges","to 350 degrees f",0.0,1.0
+"stir","transfer","to a large bowl","in the processed cheese cubes",0.0,1.0
+"remove","be","NULL","from the heat , drain and return to the pan",0.0,1.0
+"fill","return","NULL","a large pot",1.0,0.0
+"add","bring","to a boil","NULL",0.333333333333,0.666666666667
+"add","mix","NULL","the salmon mixture , peas and carrots , and corn",1.0,0.0
+"return","drain","NULL","skillet",1.0,0.0
 "add","bring","to a boil","macaroni and cook",1.0,0.0
 "preheat","sprinkle","with combined bread crumbs and 1/4 cup melted butter","oven",1.0,0.0
 "mix","blend","until smooth","with the macaroni and onions",0.0,1.0
-"fold","cook","NULL","into the mixture",0.0,1.0
+"serve","toss","NULL","NULL",0.5,0.5
+"mix","stir","in the onion , and cook","in flour , mustard , salt , and pepper",0.0,1.0
 "reduce","stir","in the meat and onion mixture , nacho cheese dip , salsa and green chiles","NULL",0.0,1.0
-"bring","remain","NULL","a large pot of lightly salted water",1.0,0.0
-"stir","drain","NULL","cheese sauce mixture",1.0,0.0
+"thicken","wait","for sauce","NULL",0.5,0.5
+"heat","set","NULL","over medium-high heat",0.0,1.0
 "preheat","bake","NULL","oven",1.0,0.0
+"fill","cover","with toasted potato chip topping","with lightly salted water",0.0,1.0
 "bake","pour","into a greased 2 quart casserole dish","NULL",1.0,0.0
-"stir","fill","with water","NULL",1.0,0.0
-"stir","melt","in a large saucepan over medium-high heat","into melted butter and cook",0.0,1.0
+"preheat","stir","in the macaroni","to 350 degrees f",0.0,1.0
+"stir","spread","over bottom of prepared baking dish","NULL",0.5,0.5
 "bake","sprinkle","over macaroni","for 20 minutes or until topping is golden brown",0.0,1.0
+"bring","stir","into melted butter and cook","NULL",0.0,1.0
 "whisk","whisk","into flour mixture","salt , white pepper , and nutmeg",1.0,0.0
-"pour","stir","NULL","into a 9x13-inch baking dish",0.0,1.0
-"cook","bring","to a simmer over medium heat","NULL",1.0,0.0
-"stir","remove","from heat","with about 1 tablespoon of reserved juice",0.0,1.0
-"preheat","cook","until the beef is crumbly , evenly browned , and no longer pink , about 10 minutes","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"add","bring","to a boil","for 8 to 10 minutes or until al dente ; i drain and reserve",0.0,1.0
+"combine","stir","NULL","over the macaroni in the baking dish",0.0,1.0
+"heat","bake","NULL","to 375 degrees f. prepare dinner",0.0,1.0
+"bake","bake","for 20 minutes or until topping is golden brown","NULL",0.5,0.5
+"begin","separate","into two equal size portions","with one of the butter and cheese portions , microwave on 50 % power for 7 minutes",0.0,1.0
+"heat","bake","NULL","a large skillet",1.0,0.0
+"transfer","drain","in a colander set in the sink","to a large bowl",0.0,1.0
+"melt","drain","NULL","in same saucepan on medium heat",0.0,1.0
+"add","bring","NULL","macaroni and cook",1.0,0.0
+"combine","stir","in the pasta and beef , and transfer mixture","2 tablespoons butter , bread crumbs , and the remaining 2 tablespoons",1.0,0.0
 "bring","bake","for one hour , or until set","to a boil",0.0,1.0
-"stir","bake","until bubbly and lightly brown","NULL",1.0,0.0
-"sprinkle","pour","into a 4 quart casserole","with the panko crumbs",0.0,1.0
-"dot","place","followed by an even layer of one-quarter of the cheese slices","NULL",1.0,0.0
-"cook","stir","in the broccoli and onion","NULL",0.5,0.5
-"preheat","remove","NULL","oven",1.0,0.0
+"cook","stir","in the broccoli and onion","NULL",1.0,0.0
+"preheat","rest","for 5 minutes","oven",1.0,0.0
+"cook","hold","NULL","macaroni according to package directions",1.0,0.0
+"cook","stir","in the macaroni , and return","about 8 minutes",0.0,1.0
 "toss","melt","NULL","NULL",1.0,0.0
-"reduce","reduce","NULL","to low and simmer",0.0,1.0
-"stir","stir","in flour , then tomatoes","in cooked macaroni and bacon and heat through",0.0,1.0
-"cook","drain","NULL","in the hot oil until onion is softened",0.0,1.0
-"sprinkle","pour","into greased 13x9-inch baking dish","NULL",1.0,0.0
-"whisk","whisk","in flour , 1 tablespoon at a time","in the hot milk , 1/2 cup at a time ,",0.0,1.0
-"remove","cook","NULL","the lobster",1.0,0.0
+"preheat","sprinkle","with the pretzel and cheese mixture","to 350 degrees f",0.0,1.0
+"bring","whisk","into white sauce","to a simmer",0.0,1.0
+"return","stir","in macaroni , cheese mixture","to a boil",0.0,1.0
+"stir","bring","to a boil and cook","in macaroni , cheese mixture",0.0,1.0
 "cover","top","with remaining meat mixture","NULL",1.0,0.0
-"top","pour","into a 9x13-inch baking dish","with bread crumbs and 2 tablespoons cheddar cheese",0.0,1.0
-"reduce","reduce","NULL","heat",1.0,0.0
-"whisk","simmer","NULL","shredded cheddar cheese and mascarpone cheese into sauce",0.0,1.0
-"combine","drain","NULL","broccoli , onion and water",1.0,0.0
+"melt","set","NULL","in large saucepan on medium heat",0.0,1.0
+"cover","stir","in macaroni and 1/4 tsp -lrb- 1 ml -rrb- salt","NULL",0.5,0.5
+"place","drain","NULL","a quarter of the macaroni",1.0,0.0
+"heat","serve","NULL","oven",1.0,0.0
+"set","make","NULL","NULL",0.5,0.5
+"bake","sprinkle","NULL","to 35 minutes , or until top is golden",0.0,1.0
 "bake","sprinkle","NULL","in the preheated oven",0.0,1.0
-"place","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","mixture in a 9x13 inch baking dish",1.0,0.0
-"combine","preheat","to 425 degrees f -lrb- 220 degrees c -rrb-","NULL",0.0,1.0
+"toss","pour","over pasta","NULL",0.5,0.5
 "pour","fold","into the mixture","into the prepared casserole dish",0.0,1.0
-"stir","pour","into the flour mixture , whisking continually until fully incorporated , about 45 seconds","worcestershire sauce , mustard powder , onion powder , and cayenne pepper",1.0,0.0
-"whisk","place","NULL","the bread crumbs",1.0,0.0
-"drain","place","until evenly brown","NULL",0.0,1.0
+"place","stand","before serving","NULL",0.0,1.0
+"repeat","pour","into the flour mixture , whisking continually until fully incorporated , about 45 seconds","NULL",0.5,0.5
+"pour","stir","in cheddar cheese","sauce",1.0,0.0
+"melt","preheat","to 400 degrees f","the margarine",1.0,0.0
+"let","bake","NULL","NULL",0.6,0.4
+"fill","return","NULL","with lightly salted water",0.0,1.0
+"stir","prevent","to high","NULL",1.0,0.0
 "bake","sprinkle","with crushed crackers","NULL",1.0,0.0
-"bake","spray","with cooking spray","NULL",1.0,0.0
 "add","add","until thick and bubbly","NULL",0.0,1.0
 "bake","sprinkle","over the macaroni","in preheated oven",0.0,1.0
+"bring","mix","into onion mixture","NULL",1.0,0.0
+"preheat","are","NULL","to 350 degrees f",0.0,1.0
 "simmer","whisk","in skim milk","on low",0.0,1.0
-"blend","mix","with the macaroni","until smooth",0.0,1.0
+"whisk","reduce","to medium-low and simmer for about 8 min , stirring often , or until macaroni is almost tender","into milk",0.0,1.0
+"stir","stir","NULL","in oil",0.0,1.0
+"stir","pour","in the milk","more minute",1.0,0.0
+"pour","repeat","NULL","milk",1.0,0.0
+"bring","whisk","in milk , mustard , salt , pepper and hot sauce","to a gentle boil",0.0,1.0
+"stir","sprinkle","with 1/2 teaspoon salt","into the pasta",0.0,1.0
+"bake","sprinkle","NULL","30",1.0,0.0
+"melt","heat","until hot","butter",1.0,0.0
 "bake","sprinkle","over macaroni mixture","in preheated oven",0.0,1.0
-"bake","pour","into 9x13 baking dish","NULL",1.0,0.0
+"bake","spoon","over the casserole in decorative swirls or lines","NULL",1.0,0.0
+"combine","preheat","to 400 degrees f. combine 3 tablespoons country crock ® spread , milk , rotini , chicken , vegetables and cheddar cheese in 8-inch baking dish","NULL",0.0,1.0
+"mix","bake","in the preheated oven for 15 minutes","parmesan cheese and panko crumbs",1.0,0.0
+"sprinkle","mix","NULL","with cheddar and parmesan and place",0.0,1.0
+"heat","drain","NULL","in microwave , 1 minute",0.0,1.0
+"combine","stir","in cheese","NULL",0.5,0.5
 "whisk","whisk","into melted butter","milk",1.0,0.0
-"stir","bake","in the preheated oven","NULL",1.0,0.0
-"serve","add","NULL","NULL",0.0,1.0
-"stir","whisk","NULL","NULL",1.0,0.0
-"remove","bake","until bubbling , about 20 minutes","from oven",0.0,1.0
-"preheat","drain","NULL","to 375 degrees f -lrb- 190 degrees c -rrb-",0.0,1.0
-"preheat","stir","in cheese 1 cup at a time","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"pour","cook","NULL","NULL",0.333333333333,0.666666666667
-"cook","combine","NULL","until golden brown",0.0,1.0
+"turn","stir","in the cheese , bacon , red pepper , salt , and pepper","NULL",0.0,1.0
+"stir","do","NULL","in the sauce",0.0,1.0
+"add","stir","in cheddar cheese","chives",1.0,0.0
+"drizzle","top","with panko crumbs and parmesan cheese","over the casserole",0.0,1.0
+"stir","whisk","NULL","NULL",0.666666666667,0.333333333333
+"cook","increase","to medium","NULL",0.5,0.5
+"stir","add","to roux slowly","NULL",1.0,0.0
+"spread","let","NULL","onto the pizza crust",0.0,1.0
+"transfer","stir","NULL","NULL",1.0,0.0
+"pour","cook","NULL","NULL",0.0,1.0
+"whisk","reduce","to medium-low and simmer for about 8 min , stirring often , or until macaroni is almost tender","flour , mustard and pepper",1.0,0.0
+"stir","spread","onto the pizza crust","NULL",0.5,0.5
 "stir","pour","over the macaroni","to coat pasta",0.0,1.0
+"change","bake","in preheated oven about 45 minutes","oven setting to ` broil '",1.0,0.0
+"cook","melt","NULL","shallot",1.0,0.0
 "bake","sprinkle","with the panko crumbs","NULL",1.0,0.0
-"place","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","NULL",0.0,1.0
-"melt","drain","NULL","in a large saucepan over medium low heat",0.0,1.0
-"sprinkle","stir","in the butter and egg","NULL",0.0,1.0
-"fill","remove","from heat","a large pot",1.0,0.0
+"spoon","stir","in macaroni","into 2-qt",0.0,1.0
+"stir","add","NULL","until blended",0.0,1.0
+"mix","pour","into greased 13x9-inch baking dish","panko and paprika",1.0,0.0
+"mix","stir","in pasta and remaining bacon","reserved bacon",1.0,0.0
 "stir","remove","from heat","butternut squash , white cheddar cheese , and cheddar cheese",1.0,0.0
 "bake","sprinkle","over the macaroni","NULL",1.0,0.0
-"preheat","bring","to a boil","to 400 degrees f -lrb- 200 degrees c -rrb-",0.0,1.0
+"smooth","stir","into the thickened milk mixture until melted","NULL",0.5,0.5
+"stir","return","to pot","into the macaroni",0.0,1.0
+"preheat","stir","in the drained macaroni","oven",1.0,0.0
+"line","refrigerate","until firm","with parchment paper",0.0,1.0
 "bake","cover","NULL","at 350 degrees f -lrb- 175 degrees c -rrb-",1.0,0.0
-"fill","drain","NULL","a pot",1.0,0.0
-"remain","add","NULL","NULL",0.5,0.5
-"pour","add","to butter","into the flour mixture , whisking continually until fully incorporated , about 45 seconds",0.0,1.0
-"drain","stir","in the macaroni , and return","NULL",0.5,0.5
+"cut-side","place","NULL","on a baking sheet",0.0,1.0
+"let","bake","in the preheated oven","before serving",0.0,1.0
+"whisk","form","NULL","NULL",0.666666666667,0.333333333333
+"broil","sprinkle","with cheddar and parmesan and place","NULL",0.5,0.5
+"cook","change","NULL","NULL",0.5,0.5
 "pour","combine","NULL","NULL",1.0,0.0
-"combine","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","NULL",0.0,1.0
-"slice","drain","in a colander set in the sink","the sausage just until hot , about 30 seconds",0.0,1.0
-"cook","cook","about 5 minutes","NULL",0.0,1.0
-"cook","stir","in milk","on medium heat",0.0,1.0
-"sprinkle","stir","in bread crumbs and chili powder","NULL",1.0,0.0
+"whisk","cook","for about 3 minutes , whisking constantly to avoid burning","NULL",1.0,0.0
+"blend","blend","in canola oil , roasted red peppers , nutritional yeast , garlic powder , and onion powder","NULL",1.0,0.0
+"whisk","cook","for about 3 minutes , whisking constantly to avoid burning","in the hot milk , 1/2 cup at a time ,",0.0,1.0
+"place","place","on a baking sheet","butternut squash",1.0,0.0
+"drain","cook","about 10 minutes","any excess grease",1.0,0.0
 "toss","add","NULL","to coat",0.0,1.0
-"stir","stir","into milk mixture","butternut squash soup",1.0,0.0
+"heat","reduce","NULL","to 350 degrees f. line 12 -lrb- 2 1/2 - inch -rrb- muffin-pan cups with foil liners",0.0,1.0
+"add","add","in small batches","macaroni",1.0,0.0
+"stir","sprinkle","with 1/2 teaspoon salt","1/2 cup butter",1.0,0.0
 "combine","place","in an 8x13-inch baking dish","eggs and soymilk",1.0,0.0
+"melt","drain","NULL","butter or margarine over medium heat",0.5,0.5
 "preheat","serve","NULL","oven",1.0,0.0
-"preheat","sprinkle","with salt","oven",1.0,0.0
-"bake","pour","into a 9x13 inch baking dish","NULL",1.0,0.0
+"top","pour","into the prepared casserole dish","NULL",1.0,0.0
+"bake","sprinkle","NULL","casserole in the preheated oven",1.0,0.0
 "stir","cook","on high","tomatoes and green onions",1.0,0.0
-"spray","preheat","to 400 degrees f -lrb- 200 degrees c -rrb-","a 10x15-inch baking sheet",1.0,0.0
-"stir","drain","NULL","in the 2 tablespoons butter , the 1/4 cup milk , and the cheese packet",0.0,1.0
-"drain","pour","in pasta and cook","NULL",1.0,0.0
-"stir","top","with cheddar cheese and green onions","NULL",1.0,0.0
+"remove","bake","in preheated oven for 35 minutes","NULL",0.0,1.0
+"fill","set","NULL","with lightly salted water",0.0,1.0
+"stir","mix","in 3 cups of cheese","NULL",0.5,0.5
+"remove","whisk","until smooth and thickened","sauce",1.0,0.0
 "stir","melt","in a small saucepan over medium heat","in the flour and cook",0.0,1.0
-"spread","add","NULL","over macaroni",0.0,1.0
+"blend","stir","in the cheddar cheese , pimento cheese spread , and italian cheese","NULL",0.5,0.5
+"stir","mix","together in a bowl","into the sour cream mixture",0.0,1.0
+"drain","cook","at a rolling boil over medium heat","with cold water",0.0,1.0
+"pour","stir","in the flour","more minute",1.0,0.0
+"combine","stir","in cheddar cheese","chives",1.0,0.0
+"stir","stir","in the flour , mustard , and salt until thoroughly combined","NULL",1.0,0.0
 "bring","serve","NULL","a large pot of lightly salted water",1.0,0.0
-"remove","stir","in the milk , salt and pepper","from heat",0.0,1.0
-"preheat","reduce","NULL","oven",1.0,0.0
-"add","stir","in enough flour","milk to roux",1.0,0.0
-"bake","cover","NULL","for 30 minutes",0.0,1.0
-"pour","stir","into the thickened milk mixture until melted and smooth","the macaroni",1.0,0.0
-"melt","drain","in a colander set in the sink","the butter in a skillet over medium heat",1.0,0.0
-"dot","place","followed by an even layer of one-quarter of the cheese slices","with butter and season",0.0,1.0
-"preheat","cook","until the beef is crumbly , evenly browned , and no longer pink , about 10 minutes","an oven",1.0,0.0
-"bake","pour","into prepared dish","for 30 minutes",0.0,1.0
+"return","stir","in macaroni , cheese mixture","NULL",1.0,0.0
+"cook","cool","before serving","in a large pot of boiling salted water until al dente",0.0,1.0
+"pulse","place","into a food processor","NULL",0.0,1.0
+"preheat","stir","in the drained macaroni","to 350 degrees f",0.0,1.0
+"top","mix","NULL","with torn pieces of processed cheese",0.0,1.0
+"bake","top","with crumbled crackers","10 minutes",1.0,0.0
+"do","heat","NULL","not boil",1.0,0.0
+"whisk","heat","to 350 degrees f. melt 3 tbsp butter","NULL",1.0,0.0
+"transfer","combine","NULL","NULL",1.0,0.0
+"serve","bake","for 30 minutes","NULL",0.5,0.5
+"transfer","drain","NULL","the onion and pasta",1.0,0.0
+"bake","pour","into the prepared baking dish and cover","NULL",1.0,0.0
 "bake","sprinkle","with mozzarella cheese","NULL",1.0,0.0
-"cook","melt","NULL","onion until lightly browned",1.0,0.0
-"bring","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","to a boil",0.0,1.0
-"top","add","to sauce","NULL",1.0,0.0
-"pour","stir","until combined","pasta mixture",1.0,0.0
-"are","bake","in the preheated oven","about 30 minutes",0.0,1.0
-"combine","stir","NULL","the crushed pretzels and parmesan cheese in a small bowl",1.0,0.0
+"bring","cook","NULL","NULL",0.0,1.0
+"mix","slice","NULL","into the corn mixture along with the cheese",0.0,1.0
+"stir","bring","to a boil","in the macaroni",0.0,1.0
+"cook","cool","before serving","pasta",1.0,0.0
+"combine","preheat","to 350 degrees f","NULL",0.0,1.0
+"melt","set","NULL","1 tablespoon butter",1.0,0.0
+"whisk","whisk","in flour and cook","NULL",1.0,0.0
+"stir","melt","in a large pot over medium heat","flour",1.0,0.0
 "bake","sprinkle","with the reserved 1/2 cup cheddar cheese","NULL",1.0,0.0
-"reduce","cook","NULL","NULL",0.0,1.0
-"place","bake","in a preheated 350 degree f -lrb- 175 degrees c -rrb- oven for 30 minutes","NULL",0.0,1.0
+"slice","mix","NULL","the butter or margarine",1.0,0.0
+"bring","bring","NULL","to a boil",0.0,1.0
+"bake","pour","over bread","NULL",1.0,0.0
+"top","pour","into 9x13 baking dish","with bread crumbs and dot",0.0,1.0
+"bring","keep","NULL","to a boil",0.0,1.0
+"wait","stir","in flour , then tomatoes","for sauce",0.0,1.0
 "sprinkle","remove","from oven","with mozzarella cheese",0.0,1.0
-"place","stir","in cheddar and parmesan cheeses","NULL",0.0,1.0
-"pour","fry","until crisp","all but 3 tablespoons of bacon drippings",1.0,0.0
-"cook","stir","into cauliflower mixture","NULL",0.5,0.5
+"remove","smooth","NULL","from heat",0.0,1.0
+"preheat","cool","for 10 minutes","to 350 degrees f",0.0,1.0
+"cook","stir","into cauliflower mixture","NULL",1.0,0.0
+"divide","stir","NULL","NULL",0.0,1.0
 "stir","remove","from the heat","NULL",1.0,0.0
-"remove","place","NULL","the macaroni mixture",1.0,0.0
+"add","cook","NULL","velveeta",1.0,0.0
 "combine","drain","NULL","cheddar cheese , milk , butter , cottage cheese , and sour cream",1.0,0.0
-"spray","divide","NULL","the potato chip mixture",1.0,0.0
-"pour","whisk","into the onion mixture","the milk",1.0,0.0
-"pour","fold","into the mixture","the mixture",1.0,0.0
-"fill","combine","NULL","with lightly salted water",0.0,1.0
+"pulse","place","into a food processor","several times",1.0,0.0
+"heat","cover","about 10 minutes","in a saucepan over medium-low heat",0.0,1.0
+"bring","taste","with salt","a large pot of lightly salted water",1.0,0.0
+"whisk","cook","about 5 minutes","NULL",0.0,1.0
+"stir","taste","with salt and black pepper","NULL",1.0,0.0
+"cook","stir","in macaroni","macaroni",1.0,0.0
 "bake","toss","to coat","in the preheated oven for 15 minutes",0.0,1.0
-"stir","stir","in the fontina cheese , sharp cheddar cheese , white cheddar cheese , and 1/4 cup parmesan cheese","NULL",1.0,0.0
+"heat","crumble","NULL","in a skillet over medium heat",0.0,1.0
+"set","drain","NULL","NULL",0.5,0.5
+"oven","return","NULL","NULL",0.5,0.5
+"incorporate","add","NULL","NULL",0.5,0.5
 "cook","stir","in flour and mustard","1 min",1.0,0.0
-"stir","remove","from oven","3 tablespoons melted butter into the reserved rye and panko crumbs until thoroughly combined",1.0,0.0
-"stir","sprinkle","over macaroni","in 1/4 cup",0.0,1.0
-"place","preheat","to 375 degrees f -lrb- 190 degrees c -rrb-","a steamer insert",1.0,0.0
+"spread","stir","into the sour cream mixture","over bottom of prepared baking dish",0.0,1.0
+"stir","melt","with the reserved bacon fat over medium heat","NULL",1.0,0.0
+"bake","mix","with the macaroni and onions","in the preheated oven , until lightly browned",0.0,1.0
 "drain","place","NULL","on a paper towel-lined plate",0.0,1.0
-"combine","stir","NULL","NULL",0.0,1.0
-"remove","bring","to a boil , and cook 1 minute ,","from heat",0.0,1.0
-"preheat","sprinkle","over pasta","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
+"combine","stir","NULL","NULL",1.0,0.0
+"preheat","bake","in the preheated oven","oven broiler",1.0,0.0
+"bring","mix","in bacon bits , chicken broth , cheese sauce , chicken bouillon granules , ground red chili pepper , black pepper , crushed red pepper flakes , and cooked macaroni","NULL",1.0,0.0
 "top","place","on top of quinoa","NULL",1.0,0.0
-"pour","stir","in cheeses","into a greased 3-quart casserole dish -lrb- or 13 x 9-inch pan -rrb-",0.0,1.0
+"drain","add","for 8 to 10 minutes or until al dente","and reserve",1.0,0.0
+"preheat","drain","in a colander set in the sink","to 350 degrees f",0.0,1.0
+"bake","sprinkle","over macaroni","NULL",0.666666666667,0.333333333333
+"melt","stir","NULL","2 tablespoons butter in a skillet over medium heat",1.0,0.0
+"cook","heat","in a skillet over medium heat","until brown",0.0,1.0
 "bake","top","with remaining cheese","20 min",1.0,0.0
 "stir","whisk","NULL","in 1 cup of cheddar cheese , 1 cup of mozzarella cheese , the broccoli mixture and half of the potato nuggets",0.0,1.0
-"preheat","sprinkle","with bread crumbs and 1 tablespoon cheddar cheese","oven",1.0,0.0
-"sprinkle","stir","in prepared dish","with cheddar and parmesan and place",0.0,1.0
-"sprinkle","stir","in macaroni","with cheddar",0.0,1.0
-"whisk","cook","about 2 minutes","NULL",1.0,0.0
-"bake","pour","into prepared dish","at 400 degrees f -lrb- 205 degrees c -rrb-",1.0,0.0
-"preheat","stir","into macaroni","oven",1.0,0.0
-"toss","pour","NULL","to coat",0.0,1.0
-"cook","melt","in a large saucepan over medium heat","flour with butter until it has a slightly toasted fragrance",1.0,0.0
+"top","spoon","into greased 1-1/2","NULL",1.0,0.0
+"place","stir","NULL","NULL",0.0,1.0
+"whisk","cook","with butter","in milk and simmer until thickened , whisking constantly , 2 more minutes",0.0,1.0
+"reserve","cut","into bite sized pieces","NULL",0.0,1.0
+"cook","bake","until bubbly","NULL",0.5,0.5
+"spoon","stir","in the cooked macaroni","into the prepared dish",0.0,1.0
+"preheat","set","NULL","to 350 degrees f",0.0,1.0
 "simmer","whisk","in milk , cooking","on low heat 5 to 7 min",0.0,1.0
-"pour","pour","NULL","into a lightly greased 9x13 inch baking dish",0.0,1.0
+"whisk","whisk","in flour and cook","in milk , mustard , salt , pepper and hot sauce",0.0,1.0
 "cook","bring","to a rolling boil","at a boil until tender but still slightly firm , about 10 minutes",0.0,1.0
+"wait","stir","in flour , then tomatoes","NULL",1.0,0.0
 "reduce","cook","NULL","heat",1.0,0.0
-"cook","drain","NULL","macaroni",1.0,0.0
+"transfer","drain","in a colander set in the sink","cheddar cheese soup , sour cream , parmesan cheese , milk , salt , and black pepper",1.0,0.0
+"prevent","watch","NULL","NULL",0.0,1.0
 "sprinkle","melt","in same saucepan on medium heat","NULL",1.0,0.0
-"combine","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","elbow macaroni and water in the bottom of a 9x11-inch baking dish",1.0,0.0
+"cool","allow","NULL","before serving",0.0,1.0
 "drain","cook","in the hot skillet until browned and crumbly , 5 to 7 minutes","NULL",0.0,1.0
 "add","stir","NULL","NULL",0.0,1.0
+"mix","remove","from heat","in 3 cups of cheese",0.0,1.0
+"heat","set","NULL","prepared white sauce , cheddar cheese , gruyere cheese , and dry mustard",1.0,0.0
+"preheat","serve","NULL","to 400 degrees f. combine 3 tablespoons country crock ® spread , milk , rotini , chicken , vegetables and cheddar cheese in 8-inch baking dish",0.0,1.0
 "bring","combine","NULL","to a boil and cook",0.0,1.0
 "pour","cook","until well browned","NULL",0.0,1.0
-"stir","pour","into baking dish","NULL",1.0,0.0
-"sprinkle","spread","over macaroni","NULL",1.0,0.0
+"beat","set","NULL","the eggs",1.0,0.0
+"bake","pour","into the prepared casserole dish","in the preheated oven",0.0,1.0
+"mix","prepare","according to package directions","in prepared macaroni and cheese",0.0,1.0
 "toss","add","to cheese sauce","NULL",1.0,0.0
+"reduce","cover","NULL","to medium-low and simmer for about 8 min , stirring often , or until macaroni is almost tender",0.0,1.0
 "add","simmer","on low heat 3 to 5 min","1 1/2 cups cheese",1.0,0.0
 "boil","bring","to a gentle boil","1 minute",1.0,0.0
-"simmer","cook","on medium heat","NULL",1.0,0.0
-"cover","pour","over the pasta","with aluminum foil",0.0,1.0
-"reduce","stir","in the meat and onion mixture , nacho cheese dip , salsa and green chiles","heat and simmer 15 minutes , or until heated through",1.0,0.0
+"add","add","to taste","milk",1.0,0.0
+"melt","drain","NULL","butter or margarine",1.0,0.0
+"cook","stir","in flour and mustard","NULL",0.0,1.0
 "bring","add","to the skillet","NULL",1.0,0.0
 "stir","reduce","to low and simmer","into couscous",0.0,1.0
-"pour","top","with half the tomatoes and half the cheddar cheese","milk over entire casserole",1.0,0.0
-"drizzle","pour","over macaroni","over casserole , especially along the sides",0.0,1.0
-"drain","cook","at a boil until tender but still slightly firm , about 10 minutes","NULL",0.5,0.5
+"mix","stir","NULL","bread crumbs",1.0,0.0
+"reserve","stir","in the butter and egg","NULL",0.0,1.0
+"drain","boil","until cooked but still firm","NULL",0.5,0.5
+"return","cook","NULL","to saucepan",0.0,1.0
+"top","pour","into a 9x13-inch baking dish","NULL",1.0,0.0
+"repeat","remove","from heat","NULL",0.0,1.0
+"bake","drizzle","over the casserole","NULL",1.0,0.0
+"cool","bake","in the preheated oven , until lightly browned","NULL",1.0,0.0
 "cook","whisk","in flour","NULL",0.0,1.0
+"stir","melt","NULL","in the flour",0.0,1.0
 "melt","drain","NULL","butter",1.0,0.0
-"remove","pour","in the milk","NULL",1.0,0.0
 "mix","blend","until smooth","NULL",1.0,0.0
 "add","drain","NULL","salsa and water",1.0,0.0
-"whisk","whisk","NULL","in flour and cook , stirring",0.0,1.0
-"stir","stir","in the flour and cook","in the milk , salt and pepper",0.0,1.0
-"boil","pour","into a large saucepan","NULL",1.0,0.0
-"preheat","cool","10 minutes before serving","an oven",1.0,0.0
+"heat","drain","in a colander set in the sink","in a large saucepan over medium heat",0.0,1.0
+"drain","cook","until tender yet firm","about 8 minutes",0.0,1.0
+"make","stir","in enough flour","NULL",0.0,1.0
+"stir","return","to heat","salsa , taco seasoning mix , and black pepper",1.0,0.0
+"combine","spread","into the bottom of the prepared baking dish","the toasted bread and parmesan cheese",1.0,0.0
+"serve","bake","for 50 to 60 minutes","NULL",0.5,0.5
 "bake","top","with bread crumbs and 2 tablespoons cheddar cheese","in the preheated oven",0.0,1.0
-"preheat","sprinkle","over pasta","oven",1.0,0.0
-"sprinkle","spread","about 3/4 cup of cheese sauce","top of pizza",1.0,0.0
-"cook","whisk","in flour","2 min. , stirring constantly",1.0,0.0
-"melt","preheat","to 400 degrees f -lrb- 200 degrees c -rrb-","the margarine in a large saucepan over medium heat",1.0,0.0
+"stir","pour","over macaroni","in tomatoes and onions",0.0,1.0
+"pour","stir","into sour cream mixture","into prepared casserole dish",0.0,1.0
+"whisk","stir","in flour","in milk",0.0,1.0
+"heat","bake","NULL","over medium-high heat",0.0,1.0
 "reduce","remove","from skin","oven temperature",1.0,0.0
-"preheat","stir","into macaroni","to 400 degrees f -lrb- 200 degrees c -rrb-",0.0,1.0
-"bake","drizzle","NULL","NULL",1.0,0.0
-"cover","layer","with the beef mixture and top with remaining cheese","NULL",0.5,0.5
+"drain","dredge","in breading","NULL",1.0,0.0
+"serve","return","to a boil","NULL",0.5,0.5
+"mix","divide","NULL","crushed potato chips",1.0,0.0
+"stir","cook","about 5 minutes","in flour and salt and cook",0.0,1.0
+"cover","top","with small pats of butter","NULL",0.0,1.0
 "melt","remove","from heat","butter",1.0,0.0
 "stir","pour","into a saucepan over medium heat","cheddar cheese , nutritional yeast , mustard powder , garlic powder , cayenne pepper , and nutmeg",1.0,0.0
 "mix","stir","in onion","NULL",1.0,0.0
-"bake","top","with bread crumbs","in the oven",0.0,1.0
 "stir","are","until onions","in alfredo sauce , and half and half",0.0,1.0
-"cook","reduce","to low","sauce",1.0,0.0
 "remove","pour","NULL","the skillet",1.0,0.0
-"sprinkle","drain","NULL","NULL",1.0,0.0
-"preheat","stir","in macaroni , cheese mixture","oven",1.0,0.0
+"do","stir","NULL","not drain",1.0,0.0
+"stir","taste","with salt and pepper","NULL",1.0,0.0
+"sprinkle","pour","over entire casserole","with crushed crackers",0.0,1.0
+"melt","preheat","to 375 degrees f","NULL",0.0,1.0
+"cook","add","to butter","NULL",0.5,0.5
+"blend","blend","in canola oil , roasted red peppers , nutritional yeast , garlic powder , and onion powder","until smooth",0.0,1.0
+"cook","are","NULL","pasta",1.0,0.0
+"taste","cook","NULL","NULL",1.0,0.0
 "stir","cook","NULL","in milk",0.0,1.0
-"cover","pour","over the pasta","NULL",1.0,0.0
-"sprinkle","add","NULL","remaining cheddar cheese over top of the dish",1.0,0.0
-"pour","stir","into mixture until thoroughly combined","NULL",1.0,0.0
-"bake","pour","over macaroni","NULL",1.0,0.0
+"cook","heat","in a large saucepan over low heat","NULL",0.5,0.5
+"cover","top","with the remaining 1 cup of cheddar cheese , 1 cup of mozzarella , bacon , and potato nuggets","NULL",1.0,0.0
+"cook","bake","in a preheated oven for 30 minutes","in a saucepan on the stovetop according to package directions",0.0,1.0
+"combine","stir","in the pasta and beef , and transfer mixture","parmesan cheese in a bowl",0.0,1.0
+"taste","stir","in cheese","with salt",0.0,1.0
+"cook","combine","in a skillet over medium heat","until golden brown",0.0,1.0
+"stir","melt","in a large saucepan over medium-high heat","into melted butter and cook",0.0,1.0
 "drain","bake","for 30 minutes","NULL",0.5,0.5
-"sprinkle","add","NULL","with crumbs",0.0,1.0
+"mix","stir","in onion","with the macaroni",0.0,1.0
+"cook","bring","to a boil","until tender yet firm",0.0,1.0
+"whisk","thicken","NULL","1 1/2 cup swiss cheese",1.0,0.0
+"cook","melt","in a large saucepan over medium heat","until translucent",0.0,1.0
 "add","melt","in a separate skillet over medium heat","NULL",0.0,1.0
+"refrigerate","place","NULL","until firm",0.0,1.0
+"whisk","whisk","until smooth","NULL",0.5,0.5
+"whisk","bring","to a simmer","until smooth and thickened",0.0,1.0
 "sprinkle","pour","into a greased 3-quart casserole dish -lrb- or 13 x 9-inch pan -rrb-","with desired topping",0.0,1.0
-"layer","remove","from heat","NULL",1.0,0.0
-"preheat","sprinkle","with the pretzel and cheese mixture","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"unroll","spray","with cooking spray","pizza crust and place on the prepared baking pan",1.0,0.0
+"sprinkle","stir","NULL","with crumbs",0.0,1.0
 "bake","cover","with aluminum foil","NULL",1.0,0.0
-"preheat","stir","in the soup , salsa , corn , macaroni and 3/4 cup cheese","oven",1.0,0.0
+"mix","add","NULL","NULL",0.5,0.5
+"remove","stir","to a boil","from heat",0.0,1.0
+"stand","let","NULL","NULL",1.0,0.0
+"bring","cool","for 10 minutes","to a boil",0.0,1.0
 "add","bring","to a boil","macaroni , and cook for 8 to 10 minutes or until al dente",1.0,0.0
-"pour","remove","NULL","cheese mixture",1.0,0.0
-"pour","drain","NULL","NULL",0.666666666667,0.333333333333
-"stir","stir","NULL","into chili , cover skillet , and simmer until macaroni is heated",0.0,1.0
-"fry","bake","in the preheated oven","bacon in a large skillet over medium-high heat",1.0,0.0
-"bake","pour","over bread","NULL",1.0,0.0
+"cook","stir","in the gemelli , and return","about 8 minutes",0.0,1.0
+"spread","stir","NULL","NULL",1.0,0.0
+"pour","drain","NULL","macaroni",1.0,0.0
+"let","whisk","in flour , 1 tablespoon at a time ,","NULL",0.5,0.5
+"heat","bake","NULL","a large , deep skillet",1.0,0.0
+"cook","stir","in the ground beef","about 10 minutes",0.0,1.0
+"reduce","bring","to a boil","heat and cover",1.0,0.0
 "stir","reduce","to low","NULL",1.0,0.0
-"set","add","NULL","to high",0.0,1.0
-"add","process","in a food processor","onion",1.0,0.0
-"preheat","bake","for 20 minutes or until topping is golden brown","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"cook","reduce","NULL","the beef in a 10-inch skillet over medium-high heat",1.0,0.0
-"place","scoop","into balls","NULL",0.0,1.0
-"bring","cook","in the hot oil until onion is softened","NULL",1.0,0.0
-"whisk","stir","in 2 tablespoons butter","flour",1.0,0.0
-"place","drain","NULL","a quarter of the macaroni in the bottom",1.0,0.0
-"add","pour","into the skillet","the salmon mixture , peas and carrots , and corn",1.0,0.0
+"toss","stir","NULL","NULL",1.0,0.0
+"bring","line","with parchment paper","to a boil",0.0,1.0
+"cook","stir","NULL","for 2 more minutes",0.0,1.0
+"cook","heat","over medium-high heat","ground beef , onion , and green pepper",1.0,0.0
+"make","pulse","NULL","into a food processor",0.0,1.0
+"combine","stir","NULL","the sauce",1.0,0.0
 "add","reduce","to medium-low","cheddar cheese",1.0,0.0
 "cook","bring","to a boil","elbow macaroni",1.0,0.0
-"sprinkle","combine","in a food processor","over top of the dish",0.0,1.0
+"bake","return","to the oven","about 5 minutes",0.0,1.0
 "pour","stir","in cooked pasta","NULL",1.0,0.0
+"bring","stir","in milk","NULL",0.5,0.5
 "simmer","reduce","NULL","NULL",0.5,0.5
-"add","stir","in flour","to roux",0.0,1.0
+"melt","preheat","to 400 degrees f","in a large saucepan over medium heat",0.0,1.0
+"stir","remove","from heat","mexican-style cheese",1.0,0.0
+"heat","stir","into the macaroni","the olive oil",1.0,0.0
 "are","bake","in preheated oven","NULL",1.0,0.0
-"preheat","serve","NULL","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
+"cook","stir","in the fusilli , and return","about 12 minutes",0.0,1.0
+"stir","stir","NULL","milk",1.0,0.0
 "pour","fill","with water","NULL",1.0,0.0
-"pour","drain","to sauce pot","cheese sauce over pasta",1.0,0.0
-"mix","stir","in onion","with the macaroni",0.0,1.0
-"place","preheat","to 375 degrees f -lrb- 190 degrees c -rrb-","into a saucepan and fill with water to just below the bottom of the steamer",0.0,1.0
+"whisk","melt","NULL","flour",1.0,0.0
+"cover","bring","to a simmer","about 10 minutes",0.0,1.0
+"place","preheat","to 400 degrees f","on a baking sheet",0.0,1.0
 "set","add","NULL","the slow cooker",1.0,0.0
-"drain","cook","in the boiling water","NULL",0.444444444444,0.555555555556
+"stir","saute","for 2 minutes","NULL",1.0,0.0
+"whisk","cook","in melted margarine until lightly browned","into margarine and shallots",0.0,1.0
+"drain","cook","in the boiling water","NULL",0.5,0.5
 "add","melt","NULL","NULL",0.0,1.0
-"add","drain","NULL","the cheddar and american cheeses",1.0,0.0
+"sprinkle","spoon","onto the crust in an even layer","with mozzarella cheese",0.0,1.0
+"simmer","reduce","to medium-low , place a cover on the skillet ,","the mixture",1.0,0.0
 "add","remove","from heat","cheese and sausage",1.0,0.0
+"are","continue","NULL","cover",1.0,0.0
+"transfer","drain","NULL","to a medium baking dish",0.0,1.0
 "remove","cook","over medium heat","NULL",1.0,0.0
-"cook","melt","NULL","about 15 minutes",0.0,1.0
-"cook","remove","NULL","NULL",0.0,1.0
+"cook","stir","in the shell pasta , and return","the pasta uncovered , stirring occasionally , until the pasta has cooked through , but is still firm to the bite ,",1.0,0.0
 "bring","continue","NULL","to a boil",0.0,1.0
-"place","pour","into a lightly greased 9x13 inch baking dish","on top of macaroni mixture and season with salt and pepper",0.0,1.0
-"place","bring","to a boil","macaroni",1.0,0.0
-"cover","pour","into the prepared casserole dish","NULL",0.0,1.0
-"sprinkle","pour","into a 4 quart casserole","NULL",1.0,0.0
+"pour","combine","NULL","over macaroni",0.0,1.0
+"allow","bake","NULL","NULL",0.5,0.5
+"place","bring","to a boil","until al dente , and drain",0.0,1.0
+"melt","keep","NULL","the 2 tablespoons butter",1.0,0.0
+"cover","mix","NULL","45 minutes in the preheated oven",1.0,0.0
 "bring","add","NULL","to a boil",0.0,1.0
-"place","preheat","to 400 degrees f -lrb- 200 degrees c -rrb-","butternut squash , cut-side down , on a baking sheet",1.0,0.0
+"cut","drain","NULL","NULL",1.0,0.0
+"pour","stir","about 1/2 cup at a time","over the macaroni in the baking dish",0.0,1.0
+"cover","spread","over macaroni","NULL",0.5,0.5
+"top","stir","into chili , cover skillet , and simmer until macaroni is heated , 5 minutes","with cheddar cheese and green onions",0.0,1.0
+"prevent","watch","NULL","burning",1.0,0.0
+"transfer","stir","to coat pasta","to the prepared baking dish and top",0.0,1.0
 "melt","drain","NULL","1/2 cup butter",1.0,0.0
-"bring","cook","in the hot oil until onion is softened","to a boil",0.0,1.0
-"whisk","cool","before serving","in flour",0.0,1.0
+"bring","preheat","to 400 degrees f","to a boil",0.0,1.0
+"bake","sprinkle","over macaroni mixture","NULL",1.0,0.0
+"bake","cover","with aluminum foil","in the preheated oven until golden brown , 40 to 45 minutes",0.0,1.0
+"add","bring","to a boil","for 8 to 10 minutes or until al dente ; i would drain and reserve",0.0,1.0
 "drain","bring","NULL","NULL",0.5,0.5
-"sprinkle","pour","NULL","with crushed crackers",0.0,1.0
 "saute","add","NULL","NULL",1.0,0.0
-"combine","add","NULL","in a 2 quart baking dish",0.0,1.0
-"preheat","add","NULL","to 375 degrees f -lrb- 190 degrees c -rrb-",0.0,1.0
-"add","stir","in flour","milk",1.0,0.0
+"remove","boil","NULL","NULL",1.0,0.0
+"simmer","combine","NULL","NULL",0.5,0.5
+"stir","drain","to a large","NULL",1.0,0.0
+"reduce","bring","to a boil","to low and simmer",0.0,1.0
+"melt","stir","in 2 tablespoons butter","NULL",0.5,0.5
+"refrigerate","place","NULL","NULL",1.0,0.0
 "top","spread","into a 9x13-inch casserole dish","NULL",1.0,0.0
 "toss","melt","NULL","with cracker crumbs",0.0,1.0
 "remove","simmer","NULL","saucepan",1.0,0.0
 "add","remove","from heat","cheddar and mozzarella cheeses",1.0,0.0
 "place","stir","in 1 cup of cheddar cheese , 1 cup of mozzarella cheese , the broccoli mixture and half of the potato nuggets","into the baking dish",0.0,1.0
-"bring","preheat","to 375 degrees f -lrb- 190 degrees c -rrb-","a large pot of water",1.0,0.0
+"pour","pour","to a hard boil","NULL",1.0,0.0
 "whisk","melt","in a saucepan over medium-low heat","in the flour",0.0,1.0
-"serve","place","NULL","NULL",0.5,0.5
-"preheat","stir","in the drained macaroni until evenly coated","oven",1.0,0.0
-"bring","drain","in a colander set in the sink","NULL",1.0,0.0
-"add","add","NULL","NULL",0.5,0.5
-"cook","add","NULL","for 5 minutes or until thick and bubbly",0.0,1.0
+"slice","drain","in a colander set in the sink","the sausage just until hot",0.0,1.0
+"cook","heat","over medium-high heat","in the hot skillet until browned and crumbly , 5 to 7 minutes",0.0,1.0
+"fill","set","NULL","a large pot",1.0,0.0
+"bring","add","until tender","a large pot of lightly salted water",1.0,0.0
+"strain","stir","NULL","the milk",1.0,0.0
+"add","add","NULL","NULL",0.0,1.0
+"bake","sprinkle","with mozzarella and parmesan cheese","NULL",0.5,0.5
+"cook","whisk","until smooth","NULL",0.5,0.5
 "are","cook","NULL","tender",1.0,0.0
-"bring","bake","in the preheated oven","to a boil",0.0,1.0
-"stir","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","in the flour",0.0,1.0
-"cook","cook","about 5 minutes","onion",1.0,0.0
-"sprinkle","spread","over macaroni","with paprika",0.0,1.0
-"place","bring","to a boil","until al dente , and drain",0.0,1.0
-"pour","stir","into the thickened milk mixture until melted and smooth","into a 4 quart casserole",0.0,1.0
-"sprinkle","toss","with cracker crumbs","NULL",1.0,0.0
+"cool","rinse","with cold water","NULL",0.0,1.0
+"place","pour","into a lightly greased 9x13 inch baking dish","on top of macaroni mixture and season with salt and pepper",0.0,1.0
+"stir","stir","in the flour , mustard , and salt until thoroughly combined","in the milk",0.0,1.0
+"mix","pour","over mixture","NULL",0.5,0.5
+"add","bring","to a boil","cauliflower , cover , and steam",1.0,0.0
 "melt","remove","from heat","in a large saucepan over medium-high heat",0.0,1.0
 "stir","are","until onions","NULL",1.0,0.0
-"stir","cook","at a rolling boil over medium heat","in garlic powder , cumin , dry mustard , pepper , and contents of cheese mix packets",0.0,1.0
-"fill","preheat","to 400 degrees f -lrb- 200 degrees c -rrb-","with water",0.0,1.0
+"place","place","on a baking sheet","NULL",0.0,1.0
 "drain","cook","in the boiling water","noodles",1.0,0.0
-"bake","pour","over elbow macaroni","NULL",1.0,0.0
-"place","fill","with lightly salted water","NULL",0.0,1.0
+"heat","set","NULL","in a large saucepan over low heat",0.0,1.0
+"pour","preheat","until well blended","NULL",1.0,0.0
+"boil","do","NULL","the mixture to a simmer -lrb- do not boil -rrb- , whisking constantly until thickened , about 2 minutes",1.0,0.0
 "add","bring","to a boil","pasta and cook",1.0,0.0
-"pour","stir","in the flour","NULL",1.0,0.0
 "sprinkle","stir","in oil","over top of macaroni mixture",0.0,1.0
-"boil","bring","to a gentle boil","NULL",0.0,1.0
-"preheat","bake","NULL","to 375 degrees f -lrb- 190 degrees c -rrb-",0.0,1.0
+"mix","return","NULL","butter , chicken broth , and tomatoes",1.0,0.0
+"whisk","heat","to 350 degrees f. melt 3 tbsp butter","in flour",0.0,1.0
+"stir","simmer","NULL","cheese",1.0,0.0
+"cook","add","to pasta","about 2 minutes",0.0,1.0
 "top","spread","into a 9x13-inch casserole dish","with half the tomatoes and half the cheddar cheese",0.0,1.0
-"cover","bring","to a simmer","NULL",0.5,0.5
+"add","bring","to a boil","about 8-10 minutes",0.0,1.0
+"cover","bring","to a simmer","NULL",1.0,0.0
 "melt","drain","NULL","in a small saucepan over medium heat",0.0,1.0
 "add","cook","until fragrant","to the skillet",0.0,1.0
-"remove","cover","45 minutes in the preheated oven","NULL",0.0,1.0
-"fill","sprinkle","with remaining cheese","with lightly salted water",0.0,1.0
-"cook","drain","NULL","NULL",0.333333333333,0.666666666667
-"transfer","remove","from heat","NULL",1.0,0.0
-"sprinkle","cook","NULL","macaroni",1.0,0.0
-"spray","divide","NULL","with cooking spray",0.0,1.0
-"mix","drain","NULL","into the soup mixture",0.0,1.0
-"sprinkle","drain","NULL","with salt",0.0,1.0
-"heat","stir","in milk","NULL",0.0,1.0
+"pour","stir","into mixture","over macaroni",0.0,1.0
+"add","melt","butter or margarine over medium heat","to taste",0.0,1.0
+"cook","drain","NULL","NULL",0.5,0.5
+"cook","bake","in the preheated oven","macaroni",1.0,0.0
+"combine","toss","NULL","over pasta",0.0,1.0
+"bake","continue","about 15 minutes more","NULL",0.5,0.5
+"pour","transfer","to a paper towel-lined plate","NULL",0.0,1.0
+"return","set","NULL","to the large pot",0.0,1.0
+"cook","heat","in a skillet over medium heat","the onion in the oil",1.0,0.0
+"fill","serve","NULL","a large pot",1.0,0.0
+"bake","place","NULL","for 50 to 60 minutes",0.0,1.0
+"transfer","bake","for 45 minutes","to a plate",0.0,1.0
+"cook","melt","NULL","onion",1.0,0.0
+"mix","stir","in the garlic , and cook","NULL",1.0,0.0
+"whisk","boil","NULL","NULL",1.0,0.0
+"stir","stir","in the 2 tablespoons butter , the 1/4 cup milk , and the cheese packet","in the cheddar cheese , pimento cheese spread , and italian cheese",0.0,1.0
+"sprinkle","spoon","into the prepared dish","with bread crumbs and 1 tablespoon cheddar cheese",0.0,1.0
 "dump","stir","in cooked pasta","NULL",1.0,0.0
-"cook","add","NULL","NULL",0.538461538462,0.461538461538
+"cook","add","NULL","NULL",0.5,0.5
 "stir","stir","in the flour and cook","NULL",1.0,0.0
 "bake","sprinkle","NULL","in preheated oven about 45 minutes",0.0,1.0
-"whisk","whisk","in the hot milk , 1/2 cup at a time ,","NULL",1.0,0.0
+"bring","whisk","in milk , mustard , salt , pepper and hot sauce","NULL",1.0,0.0
+"whisk","strain","through a mesh sieve","into the flour mixture",0.0,1.0
+"stir","taste","with salt and black pepper","in the pasta and beef , and transfer mixture",0.0,1.0
+"bring","preheat","to 350 degrees f","to a boil",0.0,1.0
+"reduce","mix","in diced tomatoes , tomato paste , and sloppy joe seasoning","heat",1.0,0.0
 "remove","stir","in the salmon and seafood seasoning and cook","from heat",0.0,1.0
+"cut","drain","NULL","into bite size pieces",0.0,1.0
 "stir","saute","until soft and golden brown , 8 to 10 minutes","bacon and onions",1.0,0.0
 "bake","sprinkle","over top","25",1.0,0.0
-"add","melt","NULL","breadcrumbs",1.0,0.0
-"melt","preheat","to 400 degrees f -lrb- 200 degrees c -rrb-","NULL",0.0,1.0
-"stir","stir","in cheese","in pasta and remaining bacon",0.0,1.0
+"transfer","pour","over macaroni","to a 9x13-inch glass baking dish",0.0,1.0
+"remove","stir","for 1","from heat",0.0,1.0
+"reduce","add","NULL","about 8-10 minutes",0.0,1.0
+"sprinkle","toss","with cracker crumbs","NULL",1.0,0.0
+"cover","top","with crushed crackers","dish",1.0,0.0
+"sprinkle","combine","in the sauce","NULL",0.5,0.5
 "bake","pour","into the prepared baking dish and cover","in the preheated oven for 20 minutes",0.0,1.0
-"slice","drain","in a colander set in the sink","the sausage , place on a microwave-safe plate , and heat",1.0,0.0
+"transfer","stir","to coat pasta","the mixture",1.0,0.0
+"cook","melt","NULL","in melted margarine until lightly browned",0.0,1.0
+"pour","melt","NULL","over bread",0.0,1.0
+"cook","bring","to a simmer over medium heat","NULL",0.5,0.5
 "cover","top","with remaining meat mixture","with foil",0.0,1.0
-"pour","remove","from heat","the reserved white sauce over all",1.0,0.0
-"bake","sprinkle","over the casserole","NULL",1.0,0.0
-"stir","bring","to a boil and cook","into milk mixture",0.0,1.0
+"stir","mix","in processed cheese , cheddar cheese , and cream","NULL",0.5,0.5
+"bake","top","with crushed crackers","for 30 minutes",0.0,1.0
+"reduce","bring","to boiling , stirring constantly","NULL",0.0,1.0
+"place","preheat","to 350 degrees f","torn rye bread",1.0,0.0
+"pour","stir","in the reserved lobster , onions , and macaroni","the macaroni",1.0,0.0
+"pour","drain","to sauce pot","cheese sauce",1.0,0.0
 "toss","simmer","NULL","with meat mixture",0.0,1.0
-"bring","preheat","NULL","to a boil",0.0,1.0
-"bring","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","water",1.0,0.0
-"stir","combine","until well mixed","NULL",1.0,0.0
-"preheat","bring","to a boil","oven",1.0,0.0
-"cook","bring","NULL","at a boil",0.0,1.0
-"bake","sprinkle","over casserole","20 min",1.0,0.0
+"bring","bring","about 10 minutes","water , macaroni , and milk",1.0,0.0
+"pour","cook","in the melted butter until slightly toasted , 2 to 3 minutes","in chicken broth",0.0,1.0
+"let","bake","NULL","10 minutes before serving",0.0,1.0
+"whisk","heat","in a deep fryer or large saucepan","the bread crumbs",1.0,0.0
+"sprinkle","pour","over entire casserole","NULL",1.0,0.0
+"reduce","add","NULL","heat",1.0,0.0
+"mix","bake","in the preheated oven for 20 minutes","the macaroni and cheese",1.0,0.0
+"line","preheat","to 375 degrees f","with parchment paper",0.0,1.0
+"whisk","bring","to a simmer","salt , white pepper , and nutmeg",1.0,0.0
+"sprinkle","cover","NULL","with paprika",0.0,1.0
+"top","pour","into 9x13 baking dish","NULL",1.0,0.0
+"whisk","do","NULL","cornstarch , milk and hot pepper sauce",1.0,0.0
+"stir","bring","to a rolling boil over high heat","in the shell pasta , and return",0.0,1.0
+"stir","beat","into a smooth mixture","cheddar cheese and cheddar-monterey jack cheese",1.0,0.0
 "sprinkle","stir","in the cooked macaroni","NULL",1.0,0.0
-"stir","cook","until browned","in pepperoni , tomato sauce , tomato juice , oregano , celery salt , onion powder , garlic salt , basil , red pepper flakes",0.0,1.0
 "melt","stir","into quinoa mixture in the skillet","in a separate skillet over medium heat",0.0,1.0
-"preheat","sprinkle","NULL","an oven",1.0,0.0
-"remove","increase","to medium","from heat",0.0,1.0
-"place","stir","in the 2 tablespoons butter , the 1/4 cup milk , and the cheese packet","the macaroni and cheese mixture in a container",1.0,0.0
+"cook","heat","over medium-high heat","until browned",0.0,1.0
+"are","continue","NULL","NULL",0.0,1.0
+"mix","remove","from heat","NULL",1.0,0.0
+"bring","preheat","to 350 degrees f","NULL",0.0,1.0
+"add","bring","to a boil","the macaroni and cook",1.0,0.0
 "sprinkle","pour","into baking dish atop sauce layer","mild cheddar cheese",1.0,0.0
 "add","remove","from heat","3 cups cheese",1.0,0.0
-"bake","cover","with aluminum foil","in the preheated oven until golden brown , 40 to 45 minutes",0.0,1.0
-"stir","stir","NULL","macaroni",1.0,0.0
-"pour","pour","NULL","NULL",1.0,0.0
-"remove","remove","from microwave","NULL",0.5,0.5
-"pour","add","to butter","1 cup milk",1.0,0.0
-"stir","drain","to pot","NULL",0.0,1.0
-"preheat","bring","to a gentle simmer over medium heat , and cook for 20 minutes","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"add","drain","NULL","to taste",0.0,1.0
-"pour","cook","until well browned","any fat",1.0,0.0
-"drain","bake","in the preheated oven","NULL",0.5,0.5
-"stir","pour","into the prepared dish","into mixture until thoroughly combined",0.0,1.0
+"reserve","drain","on a paper towel-lined plate","NULL",0.0,1.0
+"return","drain","NULL","to pot",0.0,1.0
+"cook","combine","in a skillet over medium heat","NULL",1.0,0.0
+"transfer","stir","NULL","to the casserole dish",0.0,1.0
+"stir","stir","in the milk , butter , parmesan cheese , and mozzarella cheese","NULL",0.5,0.5
+"bring","mix","in bacon bits , chicken broth , cheese sauce , chicken bouillon granules , ground red chili pepper , black pepper , crushed red pepper flakes , and cooked macaroni","to a boil",0.0,1.0
+"serve","stand","before serving","with peas",0.0,1.0
+"preheat","drain","NULL","to 375 degrees f",0.0,1.0
+"mix","prepare","according to package directions","NULL",1.0,0.0
+"cook","bring","to a boil","in boiling water",0.0,1.0
+"remove","pour","NULL","from the heat",0.0,1.0
+"cool","let","NULL","NULL",1.0,0.0
+"stir","pour","into baking dish","parmesan cheese and bread crumbs",1.0,0.0
+"melt","keep","NULL","over medium heat in a medium saucepan",0.0,1.0
+"stir","let","10 minutes before serving","in macaroni and 1/4 tsp -lrb- 1 ml -rrb- salt",0.0,1.0
 "stir","cook","until brown","in the salmon and seafood seasoning and cook",0.0,1.0
-"melt","pour","NULL","NULL",0.0,1.0
 "bake","sprinkle","over the pasta in the baking dish","in the preheated oven",0.0,1.0
+"cool","allow","NULL","for a few minutes",0.0,1.0
+"bake","top","with crushed crackers","at 400 degrees f -lrb- 205 degrees c -rrb-",1.0,0.0
+"preheat","drain","NULL","the oven",1.0,0.0
 "toss","simmer","NULL","pasta",1.0,0.0
-"whisk","strain","through a mesh sieve","the milk",1.0,0.0
-"stir","cover","NULL","NULL",1.0,0.0
-"stir","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","NULL",1.0,0.0
+"stand","let","NULL","before serving",0.0,1.0
+"heat","reduce","NULL","the oven",1.0,0.0
+"sprinkle","spoon","about 1/2 cup beef mixture","each with about 1 tablespoon",1.0,0.0
+"bake","quinoa","NULL","NULL",1.0,0.0
+"spoon","toss","with meat mixture","into an 11x7-inch baking dish",0.0,1.0
 "combine","drain","NULL","butter , salt , pepper and bell peppers",1.0,0.0
-"preheat","bake","in the preheated oven","the oven",1.0,0.0
+"bake","quinoa","NULL","in the oven",0.0,1.0
+"whisk","simmer","NULL","into sauce",0.0,1.0
 "reduce","bring","to a boil","NULL",0.0,1.0
 "add","add","until thick and bubbly","cheeses",1.0,0.0
+"place","preheat","to 375 degrees f","the ground beef",1.0,0.0
+"boil","do","NULL","NULL",0.0,1.0
 "pour","stir","in tomatoes and onions","into baking dish",0.0,1.0
 "stir","stir","in garlic powder , cumin , dry mustard , pepper , and contents of cheese mix packets","NULL",1.0,0.0
-"bake","sprinkle","NULL","for 30 minutes",0.0,1.0
+"prepare","serve","NULL","according to package directions",0.0,1.0
+"serve","top","with cheddar cheese and green onions","macaroni",1.0,0.0
 "remove","stir","in brown mustard","from heat",0.0,1.0
-"place","slice","NULL","NULL",1.0,0.0
-"preheat","bake","for 45 minutes or until golden brown and bubbly","oven",1.0,0.0
+"stir","mix","NULL","in the milk , butter , parmesan cheese , and mozzarella cheese",0.0,1.0
+"pour","stir","into sauce","over macaroni",0.0,1.0
+"stir","cook","NULL","flour",1.0,0.0
 "bake","sprinkle","over the casserole","in the preheated oven",0.0,1.0
+"serve","stand","before serving","NULL",1.0,0.0
 "stir","bring","to a boil","in macaroni",0.0,1.0
-"whisk","cool","before serving","NULL",1.0,0.0
-"cook","bring","to a boil","until tender yet firm to the bite , about 8 minutes",0.0,1.0
-"add","process","in a food processor","NULL",0.0,1.0
+"bake","remove","until bubbling , about 30 minutes","NULL",1.0,0.0
+"preheat","are","NULL","oven",1.0,0.0
+"rinse","drain","NULL","with cold water",0.0,1.0
+"sprinkle","remove","NULL","NULL",1.0,0.0
+"combine","blend","until smooth","NULL",0.5,0.5
+"stand","allow","NULL","NULL",1.0,0.0
 "stir","melt","in a saucepan over medium heat","in the onion and cook",0.0,1.0
-"cook","bake","NULL","in the hot skillet until browned and crumbly , 5 to 7 minutes",0.0,1.0
-"saute","melt","in a medium saucepan over medium heat","NULL",0.0,1.0
+"preheat","bake","about 5 minutes","to 350 degrees f",0.0,1.0
 "bring","place","into the saucepan","NULL",1.0,0.0
 "sprinkle","stir","in a small bowl","NULL",0.0,1.0
-"stir","serve","NULL","until smooth",0.0,1.0
+"stir","stir","NULL","in milk",0.0,1.0
 "cook","add","NULL","3 min",1.0,0.0
-"serve","top","with remaining shredded cheese , then combined cracker crumbs and margarine","NULL",1.0,0.0
+"heat","place","on the prepared baking sheet and freeze for at least 2 hours","in a deep fryer or large saucepan",0.0,1.0
+"heat","stir","NULL","through",0.0,1.0
+"blend","cook","in a large pot of boiling salted water until al dente","until smooth",0.0,1.0
 "melt","sprinkle","with cheddar","NULL",0.0,1.0
-"stir","drain","NULL","into the beef",0.0,1.0
-"add","stir","in milk , salt , mustard and pepper","macaroni and cook",1.0,0.0
+"slice","mix","NULL","NULL",0.0,1.0
+"taste","cook","NULL","with salt and black pepper",0.0,1.0
+"preheat","heat","NULL","to 350 degrees f",0.0,1.0
+"bake","top","with bread crumbs","in the preheated oven",0.0,1.0
 "fill","stir","into mixture","with lightly salted water",0.0,1.0
-"combine","cook","about 8 minutes","NULL",0.0,1.0
-"bake","top","with bread crumbs","NULL",1.0,0.0
-"stir","drain","NULL","from the packet , margarine , and milk into the macaroni",0.0,1.0
+"bake","sprinkle","NULL","until bubbling , about 20 minutes",0.0,1.0
+"cook","melt","in a large saucepan over medium heat","with butter",0.0,1.0
+"fill","preheat","to 350 degrees f","with lightly salted water",0.0,1.0
+"top","spoon","into 1 1/2 quart casserole","NULL",1.0,0.0
+"cook","bake","to 35 minutes , or until top is golden","NULL",0.0,1.0
+"smooth","pour","into a 4 quart casserole","NULL",0.0,1.0
 "pour","toss","to coat","into greased 13x9-inch baking dish",0.0,1.0
+"keep","return","to saucepan","NULL",0.5,0.5
 "stir","remove","from the heat , drain and return to the pan","in the butter and egg",0.0,1.0
-"stir","boil","NULL","in cooked pasta",0.0,1.0
-"bring","sprinkle","with shredded cheese","to a boil",0.0,1.0
+"stir","reserve","NULL","NULL",0.333333333333,0.666666666667
+"add","cook","about 5 minutes","NULL",0.0,1.0
 "stir","stir","in cheese and black pepper","NULL",1.0,0.0
-"drain","place","NULL","the bacon on a paper towel-lined plate",1.0,0.0
+"top","stir","into chili , cover skillet , and simmer until macaroni is heated , 5 minutes","NULL",1.0,0.0
 "bring","stir","into butter","NULL",1.0,0.0
-"sprinkle","spread","over the macaroni and cheese","with a little paprika",0.0,1.0
+"cook","heat","to 350 degrees f. line 12 -lrb- 2 1/2 - inch -rrb- muffin-pan cups with foil liners","the beef in a 10-inch skillet over medium-high heat",1.0,0.0
+"stir","transfer","to a casserole dish","into the pasta mixture",0.0,1.0
 "bake","sprinkle","over top of the dish","NULL",1.0,0.0
-"are","bake","in preheated oven","about 30 minutes",0.0,1.0
+"stir","stir","until well mixed","NULL",1.0,0.0
 "spread","stir","in the macaroni","NULL",1.0,0.0
-"remove","add","NULL","NULL",1.0,0.0
-"stir","combine","NULL","NULL",1.0,0.0
+"remove","add","NULL","NULL",0.666666666667,0.333333333333
+"stir","combine","NULL","NULL",0.75,0.25
 "add","remove","from heat","NULL",0.0,1.0
-"sprinkle","cook","in a saucepan on the stovetop according to package directions","with shredded cheese",0.0,1.0
+"cook","heat","in a large skillet over medium heat","NULL",0.0,1.0
+"continue","mix","NULL","NULL",1.0,0.0
 "serve","sprinkle","with crumbs","NULL",0.5,0.5
-"stir","bring","to a boil and cook","in macaroni , cheese mixture",0.0,1.0
+"blend","mix","with the macaroni","in canola oil , roasted red peppers , nutritional yeast , garlic powder , and onion powder",0.0,1.0
 "bring","whisk","into the pot","to a boil , and cook 1 minute ,",0.0,1.0
+"stir","incorporate","NULL","into the mixture",0.0,1.0
+"cook","bring","to a boil","elbow macaroni in the boiling water , stirring occasionally , until cooked through but firm to the bite , 8 minutes",1.0,0.0
 "sprinkle","pour","NULL","NULL",1.0,0.0
-"bake","pour","over mixture","NULL",1.0,0.0
-"whisk","melt","in a saucepan , and cook","NULL",1.0,0.0
-"pour","drain","to sauce pot","NULL",0.0,1.0
+"drain","reserve","about 2 cups of the hot pasta water","NULL",0.0,1.0
+"bake","transfer","to the prepared baking dish and top","in preheated oven",0.0,1.0
+"top","heat","in microwave , 1 minute","with crumbled crackers",0.0,1.0
+"return","sprinkle","with mozzarella cheese","to the oven",0.0,1.0
+"bring","stir","into the beef mixture","about 10 minutes",0.0,1.0
 "remove","cook","for 2 more minutes","saucepan",1.0,0.0
+"cook","boil","NULL","NULL",0.0,1.0
 "bake","drizzle","over casserole , especially along the sides","NULL",1.0,0.0
 "stir","drain","NULL","macaroni",1.0,0.0
 "toss","add","to cheese sauce","to coat",0.0,1.0
-"whisk","drain","NULL","NULL",0.0,1.0
 "bring","stir","into butter","to a boil",0.0,1.0
-"add","stir","in enough flour","NULL",0.0,1.0
+"bring","preheat","to 350 degrees f","water",1.0,0.0
+"stir","reduce","to low , cover skillet , and simmer chili for 30 minutes","macaroni",1.0,0.0
+"pour","mix","in lobster tail meat , green peas ,","into prepared casserole dish",0.0,1.0
+"heat","stir","NULL","NULL",1.0,0.0
 "cook","bring","to a boil","about 2 minutes",0.0,1.0
+"add","bring","NULL","for 8 to 10 minutes or until al dente",0.0,1.0
 "cook","bring","to a boil","the rotini at a boil",1.0,0.0
 "bake","pour","over bread","in preheated oven for 25 to 30 minutes or until bubbly and golden brown",0.0,1.0
-"bring","add","until tender","a large pot of lightly salted water",1.0,0.0
-"add","cook","NULL","garlic",1.0,0.0
+"cool","allow","NULL","the lobster",1.0,0.0
+"cook","stir","in the macaroni , and return","the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm ,",1.0,0.0
+"whisk","melt","NULL","in flour and cook",0.0,1.0
+"stir","cook","until translucent","in the garlic , and cook",0.0,1.0
+"stir","melt","in a saucepan , and cook","NULL",0.0,1.0
 "pour","place","into the baking dish","the cheese mixture",1.0,0.0
-"cook","melt","NULL","the onion in the melted margarine",1.0,0.0
-"cook","whisk","into the flour mixture","NULL",1.0,0.0
-"preheat","stir","in the macaroni","oven",1.0,0.0
+"top","pour","into a 9x13-inch baking dish","with bread crumbs and 2 tablespoons cheddar cheese",0.0,1.0
+"stir","stir","until combined","in cheddar and mozzarella cheeses",0.0,1.0
+"add","whisk","NULL","to pasta",0.0,1.0
+"melt","reserve","NULL","in a saucepan over medium heat",0.0,1.0
+"whisk","reduce","to low","NULL",1.0,0.0
 "fill","stir","into mixture","a large pot",1.0,0.0
-"preheat","pour","over cooked macaroni","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
+"reduce","cook","about 5 minutes","heat",1.0,0.0
+"keep","cook","NULL","NULL",0.5,0.5
 "drain","add","NULL","NULL",0.5,0.5
 "add","stir","into couscous","NULL",0.0,1.0
 "melt","place","on top of macaroni mixture and season with salt and pepper","NULL",0.0,1.0
-"drain","fry","in small batches until golden brown , 3 to 5 minutes","on a paper towel-lined plate",0.0,1.0
+"preheat","are","NULL","the oven",1.0,0.0
+"transfer","drain","in a colander set in the sink","NULL",0.5,0.5
+"stir","simmer","NULL","cheese food and cheddar cheese",1.0,0.0
+"remove","boil","NULL","from heat",0.0,1.0
+"set","cool","NULL","NULL",0.5,0.5
 "add","bring","to a boil","for 8 to 10 minutes or until al dente",0.0,1.0
 "stir","cook","NULL","in the fontina cheese , sharp cheddar cheese , white cheddar cheese , and 1/4 cup parmesan cheese",0.0,1.0
-"serve","top","with remaining shredded cheese , then combined cracker crumbs and margarine","with peas",0.0,1.0
-"cook","pour","into a baking dish","macaroni and cheese",1.0,0.0
-"stir","pour","into shallow 2 quart baking dish","in bread crumbs and chili powder",0.0,1.0
+"cook","heat","to 350 degrees f. line 12 -lrb- 2 1/2 - inch -rrb- muffin-pan cups with foil liners","until well browned",0.0,1.0
 "stir","whisk","into milk","NULL",1.0,0.0
-"melt","remove","NULL","in a saucepan over medium heat",0.0,1.0
-"preheat","bake","in the preheated oven","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
 "cook","melt","in large saucepan on medium heat","sausage and onions 3 to 5 minutes",1.0,0.0
-"whisk","stir","in the onion , and cook","half and half mixture",1.0,0.0
-"combine","add","for 8 to 10 minutes or until al dente ; i drain and reserve","NULL",0.0,1.0
-"cook","bring","to a boil","until al dente , 8 to 10 minutes",0.0,1.0
-"melt","drain","NULL","margarine",1.0,0.0
-"melt","slice","the sausage just until hot , about 30 seconds","butter",1.0,0.0
+"set","allow","NULL","NULL",0.5,0.5
+"melt","pour","NULL","the butter in the saucepan",1.0,0.0
+"stir","melt","with the reserved bacon fat over medium heat","in the onion , celery , carrots , and garlic",0.0,1.0
+"spoon","mix","with bacon","NULL",1.0,0.0
+"set","combine","NULL","NULL",0.5,0.5
+"cover","spoon","into 4 -lrb- 10-ounce -rrb- ramekins","NULL",1.0,0.0
+"pour","fold","into the mixture","the mixture",1.0,0.0
+"bring","set","NULL","a large pot of lightly salted water",1.0,0.0
 "drain","pour","in pasta and cook","for 8 to 10 minutes or until al dente",0.0,1.0
 "melt","place","on top of macaroni mixture and season with salt and pepper","4 tablespoons butter or margarine",1.0,0.0
-"simmer","whisk","into margarine and shallots","2 to 4 minutes",1.0,0.0
-"bring","place","NULL","to a boil",0.0,1.0
-"serve","add","NULL","hot or at room temperature",1.0,0.0
-"place","cook","NULL","tomato slices",1.0,0.0
+"top","pour","NULL","NULL",1.0,0.0
+"transfer","stir","with about 1 tablespoon of reserved juice","NULL",0.5,0.5
+"pour","preheat","to 350 degrees f","over macaroni",0.0,1.0
+"bake","uncover","NULL","until golden brown",0.0,1.0
+"stir","pour","into baking dish","NULL",0.0,1.0
 "cook","bring","to a boil","elbow macaroni in the boiling water , stirring occasionally until almost cooked through and firm to the bite , about 7 minutes",1.0,0.0
 "add","bring","to a boil","for 8 minutes or until al dente",0.0,1.0
 "remove","whisk","into flour mixture","NULL",1.0,0.0
-"place","stir","in cheddar and parmesan cheeses","macaroni in large baking dish",1.0,0.0
-"whisk","cook","about 2 minutes","in milk and simmer until thickened , whisking constantly , 2 more minutes",0.0,1.0
-"top","stir","into chili , cover skillet , and simmer until macaroni is heated","with cheddar cheese and green onions",0.0,1.0
-"bake","drizzle","NULL","in the preheated oven",0.0,1.0
-"cook","fill","with lightly salted water","the pasta uncovered , stirring occasionally , until macaroni is cooked through but still slightly firm ,",1.0,0.0
-"melt","rinse","under cold water","in same saucepan on medium heat",0.0,1.0
+"return","sprinkle","NULL","NULL",0.5,0.5
+"stir","stir","in the flour and cook","in the milk , salt and pepper",0.0,1.0
+"combine","stir","NULL","cheese mixture",1.0,0.0
+"transfer","transfer","NULL","the macaroni",1.0,0.0
+"place","preheat","to 350 degrees f","the bacon in a large , deep skillet , and cook over medium-high heat , turning occasionally , until evenly browned , about 10 minutes",1.0,0.0
+"stir","heat","in a medium saucepan over medium heat","in onion",0.0,1.0
+"bake","mix","NULL","NULL",0.5,0.5
+"bring","bake","in the preheated oven","to a boil",0.0,1.0
+"pour","stir","in the flour","to a hard boil",0.0,1.0
+"stir","turn","NULL","NULL",1.0,0.0
+"bring","keep","NULL","water",1.0,0.0
 "add","drain","in a colander set in the sink","NULL",0.0,1.0
-"whisk","cook","NULL","in skim milk",0.0,1.0
-"cook","fill","with lightly salted water","about 8 minutes",0.0,1.0
-"bake","transfer","to prepared dish","NULL",1.0,0.0
-"remove","place","NULL","from the refrigerator",0.0,1.0
-"sprinkle","cook","NULL","with 1/2 teaspoon salt",0.0,1.0
-"add","melt","in a separate skillet over medium heat","bread crumbs",1.0,0.0
+"melt","pour","into shallow 2 quart baking dish","remaining",1.0,0.0
+"preheat","stir","in cheese 1 cup at a time","to 350 degrees f",0.0,1.0
+"remove","repeat","with remaining half package of cheddar cheese and the american cheese , about 4 ounces at a time","from heat",0.0,1.0
+"pour","drain","to sauce pot","over pasta",0.0,1.0
+"place","drain","NULL","the bacon in a large , deep pot , and cook over medium-high heat , turning occasionally , until evenly browned , about 10 minutes",1.0,0.0
 "bake","pour","into a greased 2 quart casserole dish","in a preheated 350 degree f -lrb- 175 degrees c -rrb- oven for 30 minutes",0.0,1.0
 "add","add","NULL","more broth",1.0,0.0
-"combine","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","with panko crumbs in a bowl",0.0,1.0
-"sprinkle","stir","in prepared dish","NULL",1.0,0.0
-"drain","cook","about 8 minutes","NULL",1.0,0.0
-"bring","spray","with cooking spray","to a boil",0.0,1.0
+"preheat","sprinkle","with combined bread crumbs and 1/4 cup melted butter","to 350 degrees f",0.0,1.0
+"remove","simmer","on low","saucepan",1.0,0.0
+"preheat","prevent","NULL","to 350 degrees f",0.0,1.0
+"cook","stir","in the fontina cheese , sharp cheddar cheese , white cheddar cheese , and 1/4 cup parmesan cheese","NULL",0.5,0.5
+"drain","cook","about 8 minutes","NULL",0.9,0.1
+"remove","bake","in the preheated oven","foil",1.0,0.0
 "bake","top","with bread crumbs","in preheated oven",0.0,1.0
-"bake","stir","to coat pasta","in preheated oven",0.0,1.0
-"whisk","strain","through a mesh sieve","into the flour mixture",0.0,1.0
-"remove","roast","in the preheated oven until soft , 40 to 50 minutes","from skin",0.0,1.0
-"sprinkle","preheat","to 400 degrees f. combine 3 tablespoons country crock ® spread , milk , rotini , chicken , vegetables and cheddar cheese in 8-inch baking dish","NULL",1.0,0.0
-"pour","melt","NULL","over bread",0.0,1.0
+"pour","remove","NULL","cheese mixture over cooked macaroni",1.0,0.0
+"whisk","cook","NULL","warm milk",1.0,0.0
+"sprinkle","blend","NULL","NULL",1.0,0.0
+"whisk","cook","NULL","into flour mixture",0.0,1.0
+"rest","allow","NULL","for 5 minutes",0.0,1.0
+"transfer","drain","NULL","NULL",1.0,0.0
+"keep","transfer","to a plate","NULL",0.5,0.5
+"slice","drain","in a colander set in the sink","the sausage , place on a microwave-safe plate , and heat",1.0,0.0
+"stir","prevent","to high","in the sour cream , cheddar , and mozzarella",0.0,1.0
+"spoon","combine","in a large bowl","into 4 -lrb- 10-ounce -rrb- ramekins",0.0,1.0
+"serve","do","NULL","soup",1.0,0.0
 "pour","place","into the baking dish","over the pasta",0.0,1.0
 "combine","are","about 30 minutes","milk , garlic , nutmeg and chili powder",1.0,0.0
+"stir","whisk","in the cheeses","about 1/2 cup at a time",0.0,1.0
 "bake","pour","into prepared casserole dish","in the preheated oven until casserole is set and top is lightly browned , 30 to 40 minutes",0.0,1.0
-"preheat","drain","NULL","the oven",1.0,0.0
-"sprinkle","stir","NULL","NULL",0.5,0.5
-"reduce","add","to saucepan","NULL",0.0,1.0
+"stir","melt","over medium heat in a medium saucepan","NULL",1.0,0.0
+"top","pour","over the pasta","with the remaining 1 cup of cheddar cheese , 1 cup of mozzarella , bacon , and potato nuggets",0.0,1.0
+"preheat","continue","NULL","to 375 degrees f",0.0,1.0
+"place","preheat","to 350 degrees f","in a large pot of lightly-salted water",0.0,1.0
+"mix","preheat","to 350 degrees f","milk , sour cream , cheddar cheese , eggs , butter , salt , and black pepper",1.0,0.0
+"reduce","return","to a boil","to medium-low , cover , and steam",0.0,1.0
+"sprinkle","stir","NULL","NULL",0.6,0.4
+"bake","cover","NULL","in preheated oven for 35 minutes",0.0,1.0
+"increase","stir","in the milk","heat",1.0,0.0
+"change","bake","in preheated oven about 45 minutes","NULL",0.0,1.0
+"stir","remove","from heat","in cheddar cheese",0.0,1.0
+"stir","remove","from microwave","NULL",0.5,0.5
 "preheat","stir","in cheese 1 cup at a time","oven",1.0,0.0
-"pour","remove","from heat","NULL",0.0,1.0
+"boil","stir","in the macaroni","until cooked but still firm",0.0,1.0
+"add","cook","about 5 minutes","the flour",1.0,0.0
+"preheat","continue","NULL","oven",1.0,0.0
+"cover","top","with small pats of butter","at 350 degrees f -lrb- 175 degrees c -rrb- for 45 minutes",1.0,0.0
 "cook","serve","with peas","according to the package directions",0.0,1.0
+"remove","smooth","NULL","NULL",1.0,0.0
 "pour","bring","to a boil","NULL",1.0,0.0
 "bring","add","to the skillet","to a simmer",0.0,1.0
-"stir","drain","NULL","panko bread crumbs and olive oil",1.0,0.0
+"are","bake","in preheated oven","about 30 minutes",0.0,1.0
 "bring","preheat","NULL","a large pot of lightly salted water",1.0,0.0
-"fill","bake","in a preheated 350 degree f -lrb- 175 degree c -rrb- oven for 45 to 60 minutes , or until crispy on top","a large pot",1.0,0.0
-"bake","transfer","to prepared dish","in preheated oven",0.0,1.0
-"add","bake","for 45 minutes","NULL",0.0,1.0
-"fill","bake","in a preheated 350 degree f -lrb- 175 degree c -rrb- oven for 45 to 60 minutes , or until crispy on top","with lightly salted water",0.0,1.0
-"add","bring","to a boil","the macaroni and cook for about 8 minutes",1.0,0.0
-"stir","boil","until cooked but still firm to the bite , about 8 minutes","in the flour , salt , pepper , onion powder , and milk",0.0,1.0
-"sprinkle","bake","in the preheated oven for 15 minutes","NULL",1.0,0.0
-"bring","place","NULL","NULL",1.0,0.0
-"stir","drain","NULL","in onion",0.0,1.0
-"whisk","add","NULL","the mustard , the beer , and finally the milk into the flour mixture",1.0,0.0
+"add","cook","about 10 minutes","about half the package of shredded cheddar cheese",0.0,1.0
+"cook","are","NULL","elbow macaroni according to package directions",1.0,0.0
+"stir","pour","over elbow macaroni","NULL",0.5,0.5
+"sprinkle","mix","with the butter","NULL",1.0,0.0
+"heat","stir","NULL","oven",1.0,0.0
+"pour","remove","from heat","into the skillet",0.0,1.0
+"quinoa","top","with bread crumbs","NULL",0.5,0.5
 "fill","combine","NULL","sauce jar",1.0,0.0
-"remove","whisk","into white sauce","from heat",0.0,1.0
-"drizzle","top","with panko crumbs and parmesan cheese","NULL",0.0,1.0
-"drain","cook","until tender yet firm to the bite , about 8 minutes","to pot",0.0,1.0
+"add","add","about 8-10 minutes","NULL",0.0,1.0
+"follow","bake","in the preheated oven","the recipe for creamy macaroni and cheese",1.0,0.0
 "sprinkle","melt","in same saucepan on medium heat","with flour and seasonings",0.0,1.0
-"bake","pour","into the prepared casserole dish","in the preheated oven",0.0,1.0
-"cook","bring","to a boil","macaroni",1.0,0.0
+"spoon","stir","in the soup , salsa , corn , macaroni and 3/4 cup cheese","about 1/2 cup beef mixture",0.0,1.0
+"add","add","NULL","breadcrumbs",1.0,0.0
+"return","set","NULL","the pasta water",1.0,0.0
+"pour","heat","through","into a greased 2-quart baking dish",0.0,1.0
 "pour","stir","in pasta and sausage mixture","NULL",0.0,1.0
-"place","preheat","to 375 degrees f -lrb- 190 degrees c -rrb-","the ground beef in a skillet over medium heat , and cook",1.0,0.0
 "combine","pour","into a greased 2-quart baking dish","NULL",0.0,1.0
+"preheat","rest","before serving","oven",1.0,0.0
 "remove","bring","to a boil , and cook 1 minute ,","NULL",1.0,0.0
-"stir","remove","from heat","NULL",1.0,0.0
-"saute","melt","in a medium saucepan over medium heat","onion for 2 minutes",1.0,0.0
+"stir","remove","from heat","NULL",0.9,0.1
+"preheat","stir","in the macaroni","oven",1.0,0.0
+"cover","combine","over the macaroni in the baking dish","the dish",1.0,0.0
+"cook","reduce","to low","sauce , whisking frequently , until it begins to thicken ,",1.0,0.0
+"dredge","remove","from the freezer , coat in the egg wash","NULL",1.0,0.0
 "stir","mix","NULL","in the macaroni",0.0,1.0
+"spoon","stir","in the soup , salsa , corn , macaroni and 3/4 cup cheese","NULL",1.0,0.0
+"cook","melt","in a large skillet over medium heat","couscous",1.0,0.0
+"remove","cook","about 2 minutes","from heat",0.0,1.0
+"simmer","reduce","to medium-low , place a cover on the skillet ,","NULL",0.0,1.0
+"repeat","dot","with butter and season","NULL",0.5,0.5
+"bake","sprinkle","over top of casserole","NULL",0.5,0.5
 "whisk","stir","in the flour , salt , pepper , onion powder , and milk","NULL",1.0,0.0
-"cook","add","to pasta","about 2 minutes",0.0,1.0
+"boil","bring","to a gentle boil","NULL",0.0,1.0
 "pour","arrange","on top","the tomato liquid over the casserole",1.0,0.0
 "stir","simmer","until hot","water , macaroni , and milk",1.0,0.0
-"stir","stir","in the cheddar cheese and black pepper","in the macaroni",0.0,1.0
-"sprinkle","bake","in the preheated oven for 15 minutes","over macaroni",0.0,1.0
-"add","cook","NULL","about half the package of shredded cheddar cheese",0.0,1.0
-"bring","stir","into melted butter and cook","the mixture",1.0,0.0
-"pour","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","cheese mixture over macaroni",1.0,0.0
+"stir","incorporate","NULL","worcestershire sauce , mustard powder , onion powder , and cayenne pepper",1.0,0.0
+"remove","keep","NULL","NULL",1.0,0.0
+"stir","macaroni","NULL","NULL",1.0,0.0
+"preheat","stand","before serving","to 375 degrees f",0.0,1.0
+"top","pour","over the pasta","NULL",1.0,0.0
+"mix","drain","NULL","in diced tomatoes , tomato paste , and sloppy joe seasoning",0.0,1.0
 "simmer","cook","on medium heat","on low heat 3 to 5 min",0.0,1.0
-"bring","stir","into the beef mixture","to a boil",0.0,1.0
-"place","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","the bacon in a large , deep skillet , and cook over medium-high heat , turning occasionally , until evenly browned , about 10 minutes",1.0,0.0
-"stir","bake","in preheated oven for 30 minutes , or until hot and bubbly","in macaroni and 1/4 tsp -lrb- 1 ml -rrb- salt",0.0,1.0
+"stir","simmer","NULL","into mixture",0.0,1.0
+"toss","pour","over macaroni","NULL",1.0,0.0
+"pour","cook","NULL","into the flour mixture , whisking continually until fully incorporated , about 45 seconds",0.0,1.0
+"spoon","stir","NULL","the macaroni and cheese",1.0,0.0
+"stir","stir","in cream , flour , yogurt , bleu cheese and parmesan cheese","NULL",0.5,0.5
+"bring","bring","NULL","the mixture",1.0,0.0
 "sprinkle","stir","in oil","NULL",1.0,0.0
 "add","stir","into the pasta mixture","NULL",0.0,1.0
-"sprinkle","place","until al dente , and drain","bread crumbs",1.0,0.0
-"stir","drain","NULL","the butter and brown sugar",1.0,0.0
-"melt","place","into the bottom of the dish","in a saucepan , and cook",0.0,1.0
+"sprinkle","remove","NULL","with mozzarella and parmesan cheese",0.0,1.0
 "continue","stir","through the pasta mixture","NULL",0.0,1.0
+"simmer","whisk","NULL","NULL",0.5,0.5
 "cook","stir","in flour","2 min",1.0,0.0
+"pour","cook","NULL","the milk",1.0,0.0
 "sprinkle","toss","with cracker crumbs","over casserole",0.0,1.0
 "stir","whisk","in milk and simmer until thickened , whisking constantly , 2 more minutes","in processed cheese cubes",0.0,1.0
-"stir","reduce","to low","in the milk",0.0,1.0
+"stir","thicken","NULL","NULL",1.0,0.0
 "bring","bake","for one hour , or until set","a large pot of lightly salted water",1.0,0.0
-"pour","stir","with about 1 tablespoon of reserved juice","NULL",1.0,0.0
-"cook","stir","in the onion","NULL",0.5,0.5
-"place","bake","in a preheated 350 degree f -lrb- 175 degrees c -rrb- oven for 30 minutes","the chopped bacon in a large , deep skillet",1.0,0.0
-"cover","pour","NULL","NULL",1.0,0.0
+"mix","bake","in the preheated oven","NULL",0.5,0.5
+"pour","transfer","NULL","NULL",1.0,0.0
+"increase","stir","into pot","heat",1.0,0.0
+"bring","line","with parchment paper","a large pot of water",1.0,0.0
+"cook","stir","in the onion","NULL",1.0,0.0
+"pour","repeat","NULL","NULL",0.333333333333,0.666666666667
+"stir","stir","into milk mixture","rotini",1.0,0.0
+"heat","set","NULL","a large skillet",1.0,0.0
+"cut-side","place","NULL","NULL",1.0,0.0
+"sprinkle","mix","NULL","NULL",0.571428571429,0.428571428571
+"let","bake","in preheated oven","NULL",0.5,0.5
+"sprinkle","combine","parmesan cheese in a bowl","mixture",1.0,0.0
+"remove","beat","with the 3 tablespoons milk in a small bowl","the mac balls",1.0,0.0
 "sprinkle","combine","NULL","NULL",1.0,0.0
-"stir","bake","in preheated oven for 30 minutes , or until hot and bubbly","NULL",1.0,0.0
-"remove","cook","until cheese melts","from heat",0.0,1.0
-"reduce","paste","NULL","heat",1.0,0.0
+"whisk","do","NULL","NULL",0.0,1.0
+"place","bring","to a boil","macaroni in the pot , cook for 8 to 10 minutes ,",1.0,0.0
+"cook","heat","NULL","NULL",0.5,0.5
+"cover","sprinkle","over the casserole","with aluminum foil",0.0,1.0
 "sprinkle","pour","NULL","with the reserved 1/2 cup cheddar cheese",0.0,1.0
-"preheat","sprinkle","with combined bread crumbs and 1/4 cup melted butter","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
 "stir","melt","NULL","in flour",0.0,1.0
-"cook","sprinkle","with flour and seasonings","2 minutes",1.0,0.0
 "reduce","bring","to boiling , stirring constantly","heat",1.0,0.0
+"add","stir","NULL","second portion of butter and cheese",1.0,0.0
+"spoon","stir","NULL","NULL",1.0,0.0
 "fill","combine","NULL","with water",0.0,1.0
-"stir","whisk","shredded cheddar cheese and mascarpone cheese into sauce","until combined",0.0,1.0
-"stir","cook","at a rolling boil over medium heat","NULL",1.0,0.0
-"reduce","paste","NULL","to low , and simmer 10 minutes",0.0,1.0
+"preheat","cool","before serving","to 350 degrees f",0.0,1.0
+"reduce","cook","about 2 minutes","heat",1.0,0.0
+"sprinkle","smooth","NULL","with the panko crumbs",0.0,1.0
 "stir","remove","from heat","in cheese",0.0,1.0
-"whisk","whisk","NULL","NULL",1.0,0.0
-"stir","bake","until bubbly and lightly brown","in cooked noodles",0.0,1.0
-"pour","stir","in the flour","in the milk",0.0,1.0
-"sprinkle","pour","into greased 13x9-inch baking dish","over top",0.0,1.0
-"stir","drain","NULL","NULL",0.75,0.25
-"sprinkle","toss","with meat mixture","NULL",1.0,0.0
+"melt","stir","into quinoa mixture in the skillet","1 tablespoon butter",1.0,0.0
+"unroll","preheat","to 400 degrees f","NULL",0.0,1.0
+"stir","melt","in a large pot over medium-high heat","in the onion , and cook",0.0,1.0
+"whisk","cook","with butter","NULL",1.0,0.0
+"stir","drain","NULL","NULL",0.5,0.5
+"place","preheat","to 350 degrees f","into the bottom of the dish",0.0,1.0
 "stir","cook","until brown","NULL",1.0,0.0
-"remove","whisk","into white sauce","sauce",1.0,0.0
+"melt","pour","into shallow 2 quart baking dish","NULL",0.0,1.0
 "add","pour","NULL","tomatoes , water and taco seasoning",1.0,0.0
-"melt","reduce","to low , and simmer 10 minutes","the butter in a large pot over medium-high heat",1.0,0.0
-"preheat","bake","to 30 minutes or until bubbly and golden brown on top","to 375 degrees f -lrb- 190 degrees c -rrb-",0.0,1.0
+"cook","bring","to a boil","elbow macaroni in the boiling water , stirring occasionally , until cooked through but firm to the bite , 6 to 7 minutes",1.0,0.0
+"drain","cook","about 12 minutes","in a colander set in the sink",0.0,1.0
+"drain","cook","until browned","NULL",0.0,1.0
 "add","drain","NULL","to sauce",0.0,1.0
 "bring","bake","in the preheated oven","a large pot of lightly salted water",1.0,0.0
+"mix","pour","into the prepared baking dish","with the butter",0.0,1.0
+"stir","stir","in the cheddar cheese and black pepper","in the macaroni",0.0,1.0
+"spoon","toss","to coat","NULL",1.0,0.0
+"cook","melt","NULL","until lightly browned",0.0,1.0
+"stir","remove","from heat","in flour",0.0,1.0
+"put","stir","in cheeses","macaroni",1.0,0.0
 "stir","drain","NULL","macaroni , mac and cheese , milk and pepper",1.0,0.0
-"cook","pour","into a baking dish","in a saucepan on the stovetop according to package directions",0.0,1.0
-"preheat","bake","for 20 minutes or until topping is golden brown","oven",1.0,0.0
-"stir","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","matzo farfel",1.0,0.0
+"top","spoon","into 2.5-l casserole dish","with remaining cheese",0.0,1.0
+"reserve","cook","about 8 minutes","NULL",1.0,0.0
+"serve","stir","in cooked macaroni and bacon and heat","NULL",0.5,0.5
 "place","drain","NULL","NULL",0.0,1.0
-"remove","bring","to a boil","saucepan",1.0,0.0
+"cook","stir","in the gemelli , and return","uncovered , stirring occasionally , until the pasta has cooked through , but is still firm to the bite ,",1.0,0.0
+"sprinkle","stir","NULL","remaining cheddar cheese over top of the dish",1.0,0.0
 "stir","remove","from heat","in cheese and black pepper",0.0,1.0
-"bake","pour","in the sauce","until bubbling , about 20 minutes",0.0,1.0
-"bake","pour","over elbow macaroni","in the preheated oven",0.0,1.0
-"preheat","sprinkle","with mozzarella cheese","the oven",1.0,0.0
-"divide","add","about half the package of shredded cheddar cheese","macaroni between two 9x13-inch baking dishes",1.0,0.0
-"pour","cook","NULL","drippings",1.0,0.0
-"preheat","reduce","NULL","to 425 degrees f -lrb- 220 degrees c -rrb-",0.0,1.0
+"add","whisk","NULL","NULL",0.666666666667,0.333333333333
+"pour","transfer","NULL","in the sauce",0.0,1.0
+"casserole","spoon","into 2-qt","NULL",0.5,0.5
+"mix","stir","in the onion , and cook","NULL",1.0,0.0
+"stir","preheat","to 350 degrees f","the bread crumbs , olive oil and salt",1.0,0.0
 "add","bring","to a boil","kidney beans , black beans , and corn",1.0,0.0
 "bake","sprinkle","with crushed crackers","in the preheated oven",0.0,1.0
+"whisk","mix","NULL","half and half mixture",1.0,0.0
+"add","cook","about 5 minutes","garlic",1.0,0.0
 "preheat","drain","in a colander set in the sink","oven",1.0,0.0
 "pour","bring","to a boil","in pasta and cook",0.0,1.0
-"cover","pour","over the macaroni in the baking dish","NULL",0.0,1.0
+"melt","reduce","to low , and simmer 10 minutes","in a large pot over medium-high heat",0.0,1.0
+"cook","let","NULL","NULL",1.0,0.0
 "preheat","sprinkle","with the pretzel and cheese mixture","oven",1.0,0.0
+"place","scoop","into balls","mac balls",1.0,0.0
 "whisk","combine","NULL","until smooth",0.0,1.0
-"toast","spread","into the bottom of the prepared baking dish","into small pieces",0.0,1.0
+"drain","cook","at a rolling boil over medium heat","macaroni",1.0,0.0
 "cook","bring","to a boil","in the boiling water",0.0,1.0
-"fill","sprinkle","with remaining cheese","a large pot",1.0,0.0
-"preheat","pour","over cooked macaroni","oven",1.0,0.0
+"combine","stir","NULL","macaroni and cheese sauce",1.0,0.0
+"pour","stir","NULL","into baking dish atop sauce layer",0.0,1.0
 "bake","spread","into a 9 inch square baking dish","at 300 degrees f -lrb- 150 degrees c -rrb-",1.0,0.0
-"pour","stir","in cheeses","over macaroni",0.0,1.0
 "stir","pour","over the macaroni","NULL",1.0,0.0
-"preheat","serve","NULL","an oven",1.0,0.0
-"add","whisk","NULL","until thick and bubbly",0.0,1.0
+"reduce","keep","NULL","NULL",0.0,1.0
+"cook","set","to high","2 hours , stirring frequently to prevent sticking",1.0,0.0
+"cool","bake","in the preheated oven , until lightly browned","before serving",0.0,1.0
+"stir","melt","in a large pot over medium-high heat","NULL",1.0,0.0
+"heat","cool","before serving","to 350 degrees f. melt 3 tbsp butter",0.0,1.0
+"remove","repeat","with remaining half package of cheddar cheese and the american cheese , about 4 ounces at a time","sauce",1.0,0.0
+"cover","transfer","to the casserole dish","NULL",0.5,0.5
 "sprinkle","pour","over macaroni","with panko bread crumbs",0.0,1.0
+"combine","stir","NULL","in a 2 quart baking dish",0.0,1.0
+"mix","drain","NULL","condensed soup and cheese",1.0,0.0
 "whisk","melt","in a large saucepan over medium heat","flour",1.0,0.0
-"drain","place","NULL","NULL",0.0,1.0
+"cook","stir","in the broccoli and onion","about 5 minutes",0.0,1.0
+"whisk","melt","NULL","NULL",0.5,0.5
 "melt","remove","from heat","into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next",0.0,1.0
-"process","preheat","to 375 degrees f -lrb- 190 degrees c -rrb-","in a food processor",0.0,1.0
-"cook","cook","for 5 minutes or until thick and bubbly","for 2 more minutes",0.0,1.0
-"preheat","bake","in the preheated oven","NULL",0.0,1.0
-"melt","pour","over macaroni","NULL",0.0,1.0
-"preheat","drain","in a colander set in the sink","to 400 degrees f -lrb- 200 degrees c -rrb-",0.0,1.0
-"pour","drain","NULL","into the prepared casserole dish",0.0,1.0
+"preheat","bake","in the preheated oven","NULL",0.333333333333,0.666666666667
+"remove","bake","in preheated oven for 35 minutes","foil",1.0,0.0
+"prepare","serve","NULL","both boxes of macaroni and cheese",1.0,0.0
+"transfer","drain","NULL","to a casserole dish",0.0,1.0
 "whisk","combine","NULL","NULL",1.0,0.0
-"bake","mix","with the macaroni and onions","NULL",0.0,1.0
-"stir","crumble","NULL","in the broccoli and onion",0.0,1.0
-"boil","pour","into a large saucepan","for 1 minute or until very thick",0.0,1.0
+"thicken","stir","in milk","NULL",0.5,0.5
+"remove","bake","until bubbling , about 20 minutes","from oven",0.0,1.0
+"cook","add","NULL","about 2 minutes",0.0,1.0
+"place","preheat","to 375 degrees f","in a skillet over medium heat , and cook",0.0,1.0
+"bake","mix","with the macaroni and onions","45 minutes",1.0,0.0
 "whisk","stir","in the flour , salt , pepper , onion powder , and milk","until smooth",0.0,1.0
-"preheat","remove","from heat","to 375 degrees f -lrb- 190 degrees c -rrb-",0.0,1.0
-"bring","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","a large pot of lightly salted water",1.0,0.0
+"mix","return","NULL","in processed cheese , cheddar cheese , and cream",0.0,1.0
+"stir","cook","NULL","into the thickened milk mixture until melted",0.0,1.0
 "bake","pour","into prepared casserole dish","NULL",1.0,0.0
 "preheat","bake","in preheated oven","to 400 degrees f. cook macaroni in large saucepan as directed on package for al dente pasta",0.0,1.0
+"prevent","cook","NULL","sticking",1.0,0.0
 "stir","bring","to a boil","NULL",1.0,0.0
-"drain","cook","NULL","NULL",0.785714285714,0.214285714286
-"stir","cook","until browned","NULL",1.0,0.0
+"drain","cook","NULL","NULL",0.529411764706,0.470588235294
+"process","preheat","to 375 degrees f","cubed bread in a food processor",1.0,0.0
+"drain","dredge","in breading","on a paper towel-lined plate",0.0,1.0
+"set","add","NULL","to high",0.0,1.0
 "sprinkle","uncover","NULL","with remaining cheese",0.0,1.0
-"cook","drain","in a colander set in the sink","ground beef , onion , and green pepper",1.0,0.0
-"cover","pour","over the macaroni in the baking dish","the dish with foil",1.0,0.0
-"do","add","NULL","not drain",1.0,0.0
+"bake","return","to the oven","NULL",1.0,0.0
+"mix","return","NULL","with macaroni",0.0,1.0
+"whisk","form","NULL","in skim milk",0.0,1.0
 "cook","add","to pasta","NULL",1.0,0.0
+"heat","transfer","to a medium baking dish","in a medium saucepan over medium heat",0.0,1.0
 "sprinkle","stir","NULL","top of casserole with rye crumb mixture",1.0,0.0
-"heat","stir","in milk","soup",1.0,0.0
-"cook","cook","for 5 minutes or until thick and bubbly","NULL",1.0,0.0
+"preheat","set","NULL","an oven",1.0,0.0
+"bring","fill","with lightly salted water","NULL",1.0,0.0
+"stir","bring","to a boil and cook , stirring constantly , until smooth and thick ,","cheddar cheese , american cheese , and parmesan cheese",1.0,0.0
+"cook","stir","in the shell pasta , and return","about 13 minutes",0.0,1.0
+"mix","stir","into the sauce","in lobster tail meat , green peas ,",0.0,1.0
+"hold","set","NULL","NULL",0.0,1.0
 "stir","stir","in cheddar and mozzarella cheeses","cheese sauce",1.0,0.0
-"remove","whisk","with the paprika , chili powder , black pepper , sugar , and cayenne in a shallow dish","the mac balls",1.0,0.0
+"mix","stir","in prepared dish","NULL",0.5,0.5
+"beat","pour","into the prepared dish","into a smooth mixture",0.0,1.0
+"mix","add","to sauce","NULL",1.0,0.0
 "reduce","add","NULL","to low , cover skillet , and simmer chili for 30 minutes",0.0,1.0
 "preheat","broil","about 3 more minutes","oven",1.0,0.0
+"heat","cover","NULL","to 350 degrees",0.0,1.0
+"dredge","remove","from the freezer , coat in the egg wash","in breading",0.0,1.0
 "drain","simmer","for 5 minutes","to sauce pot",0.0,1.0
-"stir","reduce","to low , cover skillet , and simmer chili for 30 minutes","5 minutes",1.0,0.0
-"drain","stir","in shell pasta and cook 12 minutes , or until tender","NULL",0.5,0.5
+"melt","serve","NULL","in a large skillet over medium heat",0.0,1.0
+"do","stir","NULL","NULL",0.0,1.0
+"boil","bring","NULL","NULL",0.666666666667,0.333333333333
 "bake","drizzle","over casserole , especially along the sides","in the preheated oven",0.0,1.0
 "pour","arrange","on top","NULL",0.0,1.0
+"pour","stir","NULL","NULL",0.333333333333,0.666666666667
+"pour","stir","into pasta","into a 9x13-inch baking dish",0.0,1.0
+"combine","stir","NULL","over elbow macaroni",0.0,1.0
+"separate","drain","NULL","into two equal size portions",0.0,1.0
 "drain","cook","at a boil","NULL",0.5,0.5
-"bring","stir","into melted butter and cook","to a boil",0.0,1.0
 "place","bring","to a boil","in the pot , and cook for 8 to 10 minutes or until al dente",0.0,1.0
-"fill","preheat","to 400 degrees f -lrb- 200 degrees c -rrb-","a small saucepan",1.0,0.0
+"stir","serve","in bowls and top each serving with about 2 tablespoons of sour cream","the condensed soup and water",1.0,0.0
+"sprinkle","mix","with the butter","over the casserole",0.0,1.0
 "drain","add","about 8 minutes","NULL",0.5,0.5
-"whisk","whisk","into melted butter","warm milk",1.0,0.0
-"drain","cook","in the boiling water","macaroni to pot , and stir tomatoes into the macaroni",1.0,0.0
-"combine","cook","in a large pot of boiling salted water until al dente","until well mixed",0.0,1.0
+"cook","heat","in a large saucepan over medium heat","the onion",1.0,0.0
+"preheat","cook","NULL","oven",1.0,0.0
+"stir","macaroni","NULL","in chili , and cook over medium heat",0.0,1.0
+"preheat","bring","to a gentle simmer over medium heat , and cook for 20 minutes","to 350 degrees f",0.0,1.0
 "add","pour","into the mixture","NULL",0.0,1.0
-"uncover","cover","NULL","NULL",0.5,0.5
+"cook","bring","to a boil","until al dente , 8 to 10 minutes",0.0,1.0
+"cover","combine","over the macaroni in the baking dish","with foil",0.0,1.0
+"bake","sprinkle","NULL","NULL",0.666666666667,0.333333333333
 "bring","bake","in the preheated oven until casserole is set and top is lightly browned , 30 to 40 minutes","to a rolling boil",0.0,1.0
-"remove","stir","in the milk , salt and pepper","NULL",1.0,0.0
+"stir","taste","with salt and pepper","in the reserved lobster , onions , and macaroni",0.0,1.0
 "remove","simmer","on low","from heat",0.0,1.0
+"whisk","stir","in flour","NULL",1.0,0.0
+"taste","smooth","NULL","NULL",1.0,0.0
 "cook","bake","in the preheated oven","NULL",0.0,1.0
 "stir","melt","NULL","NULL",1.0,0.0
-"bring","remain","NULL","to a boil",0.0,1.0
+"stir","cook","until lightly browned","NULL",1.0,0.0
 "bake","sprinkle","over top of the dish","in the preheated oven",0.0,1.0
-"bring","stir","in alfredo sauce , and half and half","to boiling , stirring constantly",0.0,1.0
-"stir","reduce","NULL","in cheddar cheese with wire whisk",0.0,1.0
-"transfer","remove","from heat","to prepared dish",0.0,1.0
+"watch","oven","NULL","NULL",0.5,0.5
+"cook","combine","NULL","NULL",0.666666666667,0.333333333333
+"pour","stir","about 1/2 cup at a time","the sauce",1.0,0.0
+"transfer","follow","NULL","NULL",1.0,0.0
+"are","bake","until crumbs","foil",1.0,0.0
+"drain","place","NULL","the bacon",1.0,0.0
+"stand","let","NULL","10 minutes",1.0,0.0
+"spread","stir","NULL","over macaroni",0.0,1.0
+"combine","heat","to 350 degrees","NULL",0.0,1.0
+"cook","reduce","to low","about 10 minutes",0.0,1.0
 "add","cook","until fragrant","quinoa , chicken stock , and water",1.0,0.0
-"preheat","sprinkle","NULL","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
+"reduce","bring","to a boil","to medium-low , place a cover on the skillet ,",0.0,1.0
 "cover","drain","NULL","NULL",0.5,0.5
-"slice","bake","in the preheated oven","the butter or margarine",1.0,0.0
-"melt","preheat","to 375 degrees f -lrb- 190 degrees c -rrb-","2 tablespoons margarine in a skillet over medium heat",1.0,0.0
-"cook","melt","in a large saucepan over medium heat","about 2 minutes",0.0,1.0
+"bake","combine","over elbow macaroni","NULL",1.0,0.0
+"combine","uncover","NULL","NULL",0.0,1.0
+"bring","whisk","into the flour mixture","NULL",1.0,0.0
+"pour","mix","NULL","into a baking dish",0.0,1.0
 "pour","remove","from heat","the red wine vinegar",1.0,0.0
-"melt","pour","NULL","the butter in the saucepan with the reserved bacon fat over medium heat",1.0,0.0
-"stir","reduce","NULL","into mixture",0.0,1.0
+"spoon","stir","in 1/4 cup","NULL",1.0,0.0
+"melt","heat","to 350 degrees f. cook macaroni","NULL",0.0,1.0
+"spoon","stir","NULL","into the prepared muffin tin",0.0,1.0
 "add","pour","into the mixture","the cheese food , blue cheese , cheddar cheese , salt , pepper , and mustard",1.0,0.0
+"reserve","stir","in cheese","NULL",0.0,1.0
 "place","combine","NULL","in an 8x13-inch baking dish",0.0,1.0
-"stir","pour","NULL","NULL",1.0,0.0
+"stir","pour","NULL","NULL",0.666666666667,0.333333333333
 "stir","melt","in a large saucepan over medium-high heat","flour",1.0,0.0
-"combine","drain","NULL","the rotini pasta , evaporated milk , american cheese , cheddar cheese , canned green chiles , and chili powder in a slow cooker",1.0,0.0
-"pour","stir","NULL","NULL",1.0,0.0
+"pour","incorporate","NULL","NULL",1.0,0.0
+"drain","bake","for another 10 to 15 minutes , until top is lightly browned","NULL",0.5,0.5
+"are","cook","NULL","until onions",0.0,1.0
 "bring","whisk","into the pot","NULL",1.0,0.0
+"allow","bake","in the preheated oven","NULL",0.5,0.5
 "cook","add","NULL","about 5 minutes",0.0,1.0
 "simmer","stir","into the beef","until hot",0.0,1.0
-"mix","drain","NULL","NULL",1.0,0.0
-"place","stir","in the 2 tablespoons butter , the 1/4 cup milk , and the cheese packet","NULL",0.0,1.0
-"add","add","in small batches","macaroni",1.0,0.0
-"add","do","NULL","NULL",1.0,0.0
+"mix","drain","NULL","NULL",0.4,0.6
+"pour","mix","NULL","NULL",1.0,0.0
+"stir","mix","together in a bowl","flour , 1/2 teaspoon salt , cayenne pepper , and milk",1.0,0.0
+"cook","stir","in the ground beef","NULL",1.0,0.0
+"preheat","sprinkle","with salt","oven",1.0,0.0
+"reserve","cook","about 8 minutes","about 2 cups of the hot pasta water",0.0,1.0
 "bring","place","into a saucepan and fill with water to just below the bottom of the steamer","to a boil",0.0,1.0
-"whisk","melt","in a saucepan , and cook","in flour , 1 tablespoon at a time",0.0,1.0
-"begin","drain","NULL","with one of the butter and cheese portions , microwave on 50 % power for 7 minutes",0.0,1.0
-"serve","heat","NULL","NULL",0.0,1.0
-"pour","add","NULL","into prepared baking dish",0.0,1.0
+"cook","continue","NULL","to a boil",0.0,1.0
+"pour","stir","in the reserved lobster , onions , and macaroni","into a 4 quart casserole",0.0,1.0
+"fill","stand","before serving","a large pot",1.0,0.0
+"heat","drain","NULL","in a large skillet over medium heat",0.0,1.0
+"bake","place","NULL","uncovered in preheated oven",1.0,0.0
 "bake","sprinkle","with paprika","NULL",1.0,0.0
-"cook","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","NULL",0.5,0.5
-"sprinkle","combine","in a food processor","NULL",1.0,0.0
+"add","melt","butter or margarine over medium heat","flour and some ground black pepper",1.0,0.0
+"combine","preheat","to 400 degrees f. combine 3 tablespoons country crock ® spread , milk , rotini , chicken , vegetables and cheddar cheese in 8-inch baking dish","bread crumbs , parmesan cheese and remaining spread in small bowl",1.0,0.0
+"cook","melt","in a large saucepan over medium heat","the onion in the melted margarine",1.0,0.0
+"stir","increase","to medium-high and simmer","in the cheddar cheese and black pepper",0.0,1.0
+"bake","top","with bread crumbs and dot","NULL",0.5,0.5
+"cut","remove","NULL","into bite sized pieces",0.0,1.0
 "stir","remove","from oven","NULL",0.0,1.0
 "place","stir","in 1 cup of cheddar cheese , 1 cup of mozzarella cheese , the broccoli mixture and half of the potato nuggets","macaroni",1.0,0.0
+"melt","stir","NULL","in a skillet over medium heat",0.0,1.0
 "bake","pour","into a 9x13 inch baking dish","in a preheated 350 degree f -lrb- 175 degree c -rrb- oven for 45 to 60 minutes , or until crispy on top",0.0,1.0
-"spread","stir","in processed cheese cubes","about 3/4 cup of cheese sauce",0.0,1.0
-"melt","preheat","to 375 degrees f -lrb- 190 degrees c -rrb-","NULL",0.0,1.0
+"mix","place","until al dente , and drain","the cooked macaroni , colby-jack cheese , cheddar cheese , white cheddar cheese , and tomatoes with juice",1.0,0.0
 "stir","reduce","to low and simmer","heavy cream and pimientos",1.0,0.0
-"cover","drain","NULL","warm",1.0,0.0
-"drizzle","top","with panko crumbs and parmesan cheese","2 tablespoons of melted margarine over the casserole",1.0,0.0
-"top","pour","into a 9x13-inch baking dish","NULL",1.0,0.0
+"heat","crumble","NULL","1 teaspoon of butter",1.0,0.0
+"set","cook","until golden brown","NULL",0.5,0.5
+"stir","stir","NULL","in cheese 1 cup at a time",0.0,1.0
+"bring","place","into a saucepan and fill with water to just below the bottom of the steamer","water",1.0,0.0
+"cook","stir","in the onion , celery , carrots , and garlic","about 5 minutes",0.0,1.0
 "bring","place","into the saucepan","to a gentle simmer over medium heat , and cook for 20 minutes",0.0,1.0
-"divide","add","about half the package of shredded cheddar cheese","NULL",0.0,1.0
-"place","scoop","into balls","mac balls on the prepared baking sheet and freeze for at least 2 hours",1.0,0.0
+"preheat","drain","NULL","to 350 degrees f",0.0,1.0
+"cool","pour","into the skillet","NULL",0.5,0.5
 "bring","combine","with panko crumbs in a bowl","a large pot of lightly salted water",1.0,0.0
-"bring","whisk","NULL","NULL",1.0,0.0
-"bake","pour","into a 9x13-inch baking dish","in the preheated oven",0.0,1.0
-"melt","pour","over macaroni","butter or margarine",1.0,0.0
-"stir","stir","into milk mixture","rotini",1.0,0.0
+"taste","stir","in the sour cream , cheddar , and mozzarella","NULL",1.0,0.0
+"stir","increase","to medium-high and simmer","NULL",1.0,0.0
+"reduce","cook","about 2 minutes","to medium-low",0.0,1.0
+"preheat","rest","before serving","to 375 degrees f",0.0,1.0
+"top","mix","NULL","the macaroni",1.0,0.0
+"stir","stir","until well mixed","in canned tuna and green peas",0.0,1.0
 "add","stir","into couscous","cayenne pepper and cook",1.0,0.0
-"bake","dot","with butter and season","NULL",0.0,1.0
-"whisk","whisk","in flour , 1 tablespoon at a time","NULL",1.0,0.0
-"stir","boil","until cooked but still firm to the bite , about 8 minutes","NULL",1.0,0.0
+"bake","sprinkle","with paprika","in preheated oven",0.0,1.0
+"mix","drain","NULL","with the pasta",0.0,1.0
+"preheat","cool","before serving","an oven",1.0,0.0
+"cook","stir","in milk , salt , mustard and pepper","NULL",0.5,0.5
+"preheat","sprinkle","with salt","to 350 degrees f",0.0,1.0
+"sprinkle","casserole","NULL","with cheddar",0.0,1.0
+"make","process","NULL","NULL",0.0,1.0
+"combine","drain","about 8 minutes","the rotini pasta , evaporated milk , american cheese , cheddar cheese , canned green chiles , and chili powder in a slow cooker",1.0,0.0
 "melt","drain","NULL","3 tablespoons butter in a large saucepan over medium heat",1.0,0.0
-"sprinkle","stir","in the butter and egg","the reserved cheese and the bread crumb mixture over the tops",1.0,0.0
-"melt","bake","NULL","1 tablespoon butter",1.0,0.0
-"preheat","sprinkle","with mozzarella and parmesan cheese","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"preheat","stir","in macaroni , cheese mixture","to 400 degrees f. combine 3 tablespoons country crock ® spread , milk , rotini , chicken , vegetables and cheddar cheese in 8-inch baking dish",0.0,1.0
-"bring","stir","in cooked macaroni and bacon and heat through","a large pot of lightly salted water",1.0,0.0
-"remove","stir","in cheese","from heat",0.0,1.0
-"pour","remove","from heat","cheese sauce",1.0,0.0
-"bake","cover","NULL","in the preheated oven",0.0,1.0
+"stir","add","NULL","in cheddar cheese",0.0,1.0
+"mix","preheat","to 350 degrees f","in a bowl until well combined",0.0,1.0
+"combine","drain","about 8 minutes","NULL",0.0,1.0
+"preheat","bake","until golden brown","until well blended",0.0,1.0
+"bring","whisk","into the flour mixture","to a simmer over medium heat",0.0,1.0
+"stir","whisk","into the sauce","sauerkraut",1.0,0.0
+"transfer","follow","NULL","to a paper towel-lined plate",0.0,1.0
+"mix","stir","in the garlic , and cook","in bacon bits , chicken broth , cheese sauce , chicken bouillon granules , ground red chili pepper , black pepper , crushed red pepper flakes , and cooked macaroni",0.0,1.0
+"add","heat","in a deep ovenproof skillet or dutch oven","onion",1.0,0.0
+"sprinkle","stir","in chili , and cook over medium heat","NULL",1.0,0.0
+"drain","reserve","about 2 cups of the hot pasta water","the pasta in a colander set in the sink",1.0,0.0
 "fill","bake","in preheated oven","a large pot",1.0,0.0
-"pour","stir","in cheeses","mixture",1.0,0.0
-"stir","remove","from the heat","in the soup , salsa , corn , macaroni and 3/4 cup cheese",0.0,1.0
-"stir","melt","NULL","in the onion , celery , carrots , and garlic",0.0,1.0
+"drain","pour","in pasta and cook","NULL",1.0,0.0
+"cook","whisk","in flour","2 min.",1.0,0.0
 "pour","blend","until smooth","into a saucepan over medium heat",0.0,1.0
-"pour","place","NULL","sauce",1.0,0.0
+"be","add","for about 8 minutes","a little bit firm",1.0,0.0
+"stir","transfer","to a large bowl","the softened butter",1.0,0.0
+"bake","sprinkle","NULL","until bubbly",0.0,1.0
+"drain","cook","about 13 minutes","NULL",1.0,0.0
+"cook","reduce","to a simmer","NULL",0.5,0.5
+"smooth","pour","into a 4 quart casserole","the top",1.0,0.0
+"boil","bring","NULL","in a saucepan",0.0,1.0
 "stir","whisk","in milk and simmer until thickened , whisking constantly , 2 more minutes","NULL",1.0,0.0
-"fill","remove","from heat","with lightly salted water",0.0,1.0
+"cook","stir","NULL","NULL",1.0,0.0
 "spread","add","NULL","over the macaroni and cheese",0.0,1.0
-"remove","pour","NULL","from the heat",0.0,1.0
+"pour","cook","until well browned","any fat",1.0,0.0
 "broil","bake","in the preheated oven","NULL",1.0,0.0
-"bake","pour","over macaroni","in the preheated oven",0.0,1.0
-"cook","cook","until golden brown","NULL",1.0,0.0
-"stir","add","to mixture","in cheese 1 cup at a time",0.0,1.0
-"fill","bake","in preheated oven about 45 minutes","with lightly salted water",0.0,1.0
+"pour","preheat","to 350 degrees f","cheese mixture",1.0,0.0
+"heat","let","before serving","the butter",1.0,0.0
+"whisk","melt","NULL","into melted butter",0.0,1.0
 "bake","toss","to coat","NULL",1.0,0.0
 "top","sprinkle","with 1 cup cheese","NULL",1.0,0.0
-"place","bring","to a boil","macaroni in the pot , cook for 8 to 10 minutes ,",1.0,0.0
-"preheat","stir","in canned tuna and green peas","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
+"serve","stir","NULL","NULL",0.5,0.5
+"melt","drain","in a colander set in the sink","in a skillet over medium heat",0.0,1.0
+"pour","stir","into sauce","cheese sauce",1.0,0.0
+"bring","preheat","to 350 degrees f","a large pot of lightly salted water to a boil , add pasta , and cook until done",1.0,0.0
+"combine","drain","NULL","in a skillet over medium heat",0.0,1.0
 "remove","begin","with one of the butter and cheese portions , microwave on 50 % power for 7 minutes","from microwave",0.0,1.0
+"transfer","bake","for 45 minutes","NULL",1.0,0.0
 "cook","stir","in flour","NULL",0.0,1.0
-"bring","stir","in cheese","a large pot of lightly salted water",1.0,0.0
+"bring","fill","with lightly salted water","to a rolling boil over high heat",0.0,1.0
+"bring","stir","in alfredo sauce , and half and half","to boiling , stirring constantly",0.0,1.0
+"set","rinse","NULL","NULL",0.5,0.5
 "pour","melt","into the butter mixture one handful at a time , stirring to incorporate each addition before adding the next","over the macaroni",0.0,1.0
-"bake","stir","to coat pasta","NULL",1.0,0.0
-"stir","preheat","to 350 degrees f -lrb- 175 degrees c -rrb-","into sour cream mixture",0.0,1.0
+"fill","preheat","to 400 degrees f","a small saucepan",1.0,0.0
 "fill","bake","in preheated oven","with lightly salted water",0.0,1.0
 "reduce","stir","in macaroni","NULL",0.0,1.0
+"remove","keep","NULL","from heat",0.0,1.0
 "spread","drain","NULL","into a 9x13-inch casserole dish",0.0,1.0
-"pour","add","NULL","macaroni",1.0,0.0
-"bring","preheat","to 400 degrees f -lrb- 200 degrees c -rrb-","a large pot of lightly salted water",1.0,0.0
+"sprinkle","stir","in chili , and cook over medium heat","with shredded cheese",0.0,1.0
+"bake","sprinkle","with a little paprika","for 30 minutes",0.0,1.0
 "remove","cook","for 2 more minutes","from heat",0.0,1.0
 "stir","pour","into a saucepan over medium heat","into cauliflower mixture",0.0,1.0
 "bake","sprinkle","with a little paprika","at 350 degrees f -lrb- 175 degrees c -rrb-",1.0,0.0
-"stir","stir","in flour , then tomatoes","NULL",1.0,0.0
-"sprinkle","stir","in pasta and remaining bacon","NULL",1.0,0.0
-"stir","cook","until the mixture is thick and smooth , 10 to 15 minutes","into the thickened milk mixture until melted and smooth",0.0,1.0
-"pour","place","on a paper towel-lined plate","NULL",0.0,1.0
-"preheat","bake","in the preheated oven until golden brown , 40 to 45 minutes","to 400 degrees f -lrb- 200 degrees c -rrb-",0.0,1.0
-"pour","stir","into sour cream mixture","into prepared casserole dish",0.0,1.0
+"heat","bake","NULL","oven",1.0,0.0
+"bring","whisk","into white sauce","NULL",1.0,0.0
+"allow","cool","for a few minutes","the cheese to set",1.0,0.0
+"stir","whisk","in pepperjack , cheddar and parmesan","NULL",1.0,0.0
+"pour","cook","NULL","into the mixture",0.0,1.0
+"remove","cover","NULL","cover",1.0,0.0
+"preheat","stand","for 10 minutes","to 350 degrees f",0.0,1.0
+"mix","add","to sauce","with bacon",0.0,1.0
 "simmer","reduce","NULL","1 minute",1.0,0.0
-"preheat","bake","in the oven","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
+"reduce","stir","in milk","heat",1.0,0.0
+"stir","cook","until translucent","NULL",1.0,0.0
 "cook","bring","to a boil","egg noodles",1.0,0.0
-"increase","stir","into pot","heat",1.0,0.0
-"bring","place","into a saucepan and fill with water to just below the bottom of the steamer","water",1.0,0.0
+"reserve","drain","NULL","NULL",0.5,0.5
+"dot","place","in the bottom , followed by an even layer of one-quarter of the cheese slices","with butter and season",0.0,1.0
+"pour","stir","NULL","macaroni",1.0,0.0
+"bake","sprinkle","over the casserole","NULL",1.0,0.0
 "arrange","stir","in the cheddar cheese","on top",0.0,1.0
-"bake","cover","NULL","NULL",1.0,0.0
-"preheat","stir","in canned tuna and green peas","oven",1.0,0.0
-"reduce","bring","to boiling , stirring constantly","NULL",0.0,1.0
-"cook","bring","to a boil","in the boiling water , stirring occasionally , until cooked through but firm to the bite ,",0.0,1.0
-"drain","cook","in the boiling water , stirring occasionally , until cooked through but firm to the bite ,","NULL",0.5,0.5
-"preheat","drain","on a paper towel-lined plate","to 375 degrees f -lrb- 190 degrees c -rrb-",0.0,1.0
+"bake","cover","NULL","NULL",0.333333333333,0.666666666667
+"bake","spoon","over the casserole in decorative swirls or lines","in the preheated oven",0.0,1.0
+"serve","do","NULL","in bowls and top each serving with about 2 tablespoons of sour cream",0.0,1.0
+"serve","sprinkle","with shredded cheese","NULL",0.5,0.5
+"drain","cook","NULL","to a large bowl",0.0,1.0
+"remove","bake","NULL","cover",1.0,0.0
+"add","stir","in cheddar cheese","NULL",0.0,1.0
 "bring","continue","NULL","a large pot of lightly salted water",1.0,0.0
-"cook","combine","NULL","NULL",1.0,0.0
+"pour","cook","NULL","drippings",1.0,0.0
+"cook","stir","in milk","on medium heat",0.0,1.0
 "stir","remove","from the heat , drain and return to the pan","NULL",1.0,0.0
 "pour","toss","to coat","into a greased 2 quart casserole dish",0.0,1.0
+"stir","heat","in a skillet over medium heat","in the onion",0.0,1.0
+"reduce","bring","to a boil","to a simmer",0.0,1.0
+"saute","melt","in a medium saucepan over medium heat","for 2 minutes",0.0,1.0
+"sprinkle","stir","in bread crumbs and chili powder","NULL",1.0,0.0
 "add","melt","in a skillet over medium heat","NULL",0.0,1.0
+"spoon","stir","in macaroni","NULL",1.0,0.0
+"preheat","stand","before serving","oven",1.0,0.0
 "bake","sprinkle","over casserole","NULL",0.0,1.0
+"stir","heat","in a medium saucepan over medium heat","NULL",1.0,0.0
+"pour","cook","about 5 minutes","over macaroni",0.0,1.0
 "simmer","whisk","in skim milk","NULL",1.0,0.0
-"melt","remove","NULL","2 tablespoons of butter",1.0,0.0
-"preheat","bake","for 25 to 30 minutes or until browned and bubbly around edges","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"combine","add","NULL","macaroni and cheese sauce",1.0,0.0
-"preheat","stir","in the drained macaroni until evenly coated","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
+"drain","stir","in shell pasta and cook 12 minutes , or until tender","NULL",0.5,0.5
+"cook","stir","into the macaroni","NULL",1.0,0.0
 "pour","stir","into cheese mixture","over elbow macaroni",0.0,1.0
-"bring","stir","in cooked macaroni and bacon and heat through","to a boil",0.0,1.0
-"bake","sprinkle","NULL","NULL",1.0,0.0
-"stir","cook","until the mixture is thick and smooth , 5 to 10 minutes","in the cheese , bacon , red pepper , salt , and pepper",0.0,1.0
+"stir","melt","NULL","in enough flour",0.0,1.0
+"whisk","cook","in melted margarine until lightly browned","flour",1.0,0.0
+"sprinkle","stir","in the cooked macaroni","with the pretzel and cheese mixture",0.0,1.0
+"return","cook","NULL","NULL",1.0,0.0
+"add","melt","in a separate skillet over medium heat","bread crumbs",1.0,0.0
 "top","pour","into prepared casserole dish","NULL",1.0,0.0
-"pour","top","with half the tomatoes and half the cheddar cheese","NULL",0.0,1.0
+"pour","mix","with the pasta","NULL",1.0,0.0
+"bring","mix","with macaroni","mixture",1.0,0.0
+"bring","reduce","to 375 degrees f","to a boil",0.0,1.0
 "sprinkle","stir","in a small bowl","bread crumb mixture over the top of casserole",1.0,0.0
-"pour","drain","in a colander set in the sink","into the prepared baking dish",0.0,1.0
-"reduce","add","to saucepan","heat and cover",1.0,0.0
-"preheat","sprinkle","with mozzarella cheese","to 350 degrees f -lrb- 175 degrees c -rrb-",0.0,1.0
-"toss","add","NULL","NULL",1.0,0.0
+"add","heat","to 350 degrees f. drain macaroni","to cheese sauce",0.0,1.0
+"mix","return","NULL","NULL",1.0,0.0
+"return","sprinkle","with remaining cheese","NULL",0.5,0.5
+"combine","spread","into the bottom of the prepared baking dish","in a food processor",0.0,1.0
+"sprinkle","mix","NULL","bread crumbs",1.0,0.0
+"melt","drain","NULL","the butter over medium-high heat",1.0,0.0
+"place","preheat","to 350 degrees f","the macaroni",1.0,0.0
+"bring","pour","in chicken broth","NULL",1.0,0.0
+"toss","add","NULL","NULL",0.666666666667,0.333333333333
+"place","preheat","to 350 degrees f","the diced onion",1.0,0.0
+"let","stir","in processed cheese cubes","NULL",0.5,0.5
 "remove","cover","NULL","NULL",0.0,1.0
-"combine","drain","for 8 to 10 minutes or until al dente","macaroni , soup , milk , cheese and 6 tablespoons butter",1.0,0.0
+"stir","stir","into milk mixture","butternut squash soup",1.0,0.0
+"mix","cool","NULL","the cheddar cheese , eggs , milk , and vegetable stock in a large",1.0,0.0
 "preheat","drain","in a colander set in the sink","an oven",1.0,0.0
+"stir","heat","in a skillet over medium heat","in the broccoli and onion",0.0,1.0
 "simmer","stir","into the beef","the mixture",1.0,0.0
-"stir","drain","to pot","alfredo sauce and 3/4 pound cheddar cheese into pasta until cheese begins to melt",1.0,0.0
+"cool","bake","in preheated oven","10 minutes",1.0,0.0
+"cook","stir","in the onion","about 5 minutes",0.0,1.0
+"pour","stir","until blended","mixture",1.0,0.0
 "reduce","stir","into the mixture","heat",1.0,0.0
-"place","slice","NULL","in a buttered casserole dish",0.0,1.0
-"reduce","add","NULL","heat",1.0,0.0
+"heat","drain","in a colander set in the sink","a large skillet",1.0,0.0
+"stir","cook","until lightly browned","in brown mustard",0.0,1.0
+"bring","preheat","NULL","to a boil",0.0,1.0
+"preheat","stir","NULL","to 425 degrees f",0.0,1.0
+"stir","melt","in a saucepan , and cook","the onion , garlic , and chipotle chiles",1.0,0.0
 "top","pour","into a small casserole dish","NULL",1.0,0.0
-"stir","drain","NULL","into the pasta mixture",0.0,1.0
+"blend","drain","to a 9x13-inch casserole dish","until smooth",0.0,1.0
+"pour","preheat","until well blended","into a large saucepan",0.0,1.0
+"bake","pour","into a 9x13 inch baking dish","NULL",1.0,0.0
 "place","place","NULL","on a paper towel-lined plate",0.0,1.0
 "drain","cook","until al dente , 8 to 10 minutes","NULL",0.5,0.5

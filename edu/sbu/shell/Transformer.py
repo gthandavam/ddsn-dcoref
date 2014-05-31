@@ -22,7 +22,8 @@ dannys-macaroni-and-cheese
 reuben-mac-and-cheese
 """
 
-statFile = "/home/gt/Documents/RecipeStats2.pickle"
+statFile = "/home/gt/Documents/RecipeStats2_init.pickle"
+statFile2 = "/home/gt/Documents/RecipeStats2.pickle"
 
 def get_text(swirl_output):
   """
@@ -170,8 +171,9 @@ def generate_graph(pnodes_resolved, rnodes_resolved, r_stats):
 
 def connect_arbor(weighted_graph, arbor_adapter, r_stats):
   g = weighted_graph.get_adj_ghost_graph('order_close_together')
-  root = weighted_graph.get_simple_components_root()
+  # root = weighted_graph.get_simple_components_root()
   # print 'root' + root
+  root = "Ghost"
   arbor_edges = upside_down_arborescence(root, g)
 
   pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, arbor_edges, weighted_graph.adj_list)
@@ -180,14 +182,30 @@ def connect_arbor(weighted_graph, arbor_adapter, r_stats):
   pass
 
 def main():
-  # learnInitStat()
-  run()
+  mode = ""
+  if len(sys.argv)>1:
+    mode = sys.argv[1]
+  if mode=="-learn_init":
+    learnStat(False)
+  elif mode=="-learn":
+    learnStat(True)
+  elif mode=="-run_init":
+    run(statFile)
+  elif mode=="-run_iter":
+    run(statFile2)
+  else:
+    run("")
 
-def learnInitStat():
+def learnStat(useArbo):
   #files sentence split using stanford sentence splitter - fsm based
   i=0
-  r_stats = RecipeStats2()
-  r_stats.computeStat("MacAndCheese")
+  if useArbo:
+    f = open(statFile)
+    r_stats = pickle.load(f)
+    f.close()
+  else:
+    r_stats = RecipeStats2()
+    r_stats.computeStat("MacAndCheese")
   stat_data = []
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
     i+=1
@@ -212,26 +230,41 @@ def learnInitStat():
     stat_data.append([weighted_graph, arbor_adapter, arbor_edges])
 
   # Calculate statistics
-  r_stats.calcStatFromGraph(stat_data)
+  r_stats.calcStatFromGraph(stat_data, useArbo)
+  r_stats.test_flag = r_stats.args_verb_score
+  print len(r_stats.args1_args2_verb_args_score)
+  print len(r_stats.args1_verb_args_score)
+  print len(r_stats.args1_args2_args_score)
+  print len(r_stats.args1_args_score)
 
-  f = open(statFile,"w")
+  if useArbo:
+    f = open(statFile2,"w")
+  else:
+    f = open(statFile,"w")
   pickle.dump(r_stats,f)
   f.close()
 
-def run():
+def run(stFile):
 
   #files sentence split using stanford sentence splitter - fsm based
   i=0
-  # f = open(statFile)
-  # r_stats = pickle.load(f)
-  # f.close()
-  r_stats = RecipeStats2()
-  r_stats.computeStat("MacAndCheese")
+  if stFile!="":
+    f = open(stFile)
+    r_stats = pickle.load(f)
+    f.close()
+  else:
+    r_stats = RecipeStats2()
+    r_stats.computeStat("MacAndCheese")
+  r_stats.args_verb_score = r_stats.test_flag # due to some pickle bug!!!
+  print len(r_stats.args1_args2_verb_args_score)
+  print len(r_stats.args1_verb_args_score)
+  print len(r_stats.args1_args2_args_score)
+  print len(r_stats.args1_args_score)
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
-    # i+=1
-    # if i>20:
+    i+=1
+    # if i>1:
     #   break
-    # if i!=4:
+    # if i!=3:
     #   continue
 
     mod_logger.critical(recipe_args_file)
@@ -243,7 +276,7 @@ def run():
     # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/healthy-creamy-mac-and-cheese.txt'
-    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/butternut-squash-mac-and-cheese.txt'
+    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/bevs-mac-and-cheese.txt'
 
     dcoref_graph = make_nodes(recipe_args_file)
 
