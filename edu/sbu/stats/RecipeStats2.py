@@ -52,6 +52,8 @@ class RecipeStats2:
     cnt = {}
     cnt_arg1 = {}
     cnt_arg2 = {}
+    cnt_arg1_arg2_verb = {}
+    cnt_arg1_verb = {}
     for r in range(len(self.reader.recipe_verbs)):
       recipe = self.reader.recipe_verbs[r]
       arg1_recipe = self.reader.recipe_args1[r]
@@ -60,14 +62,56 @@ class RecipeStats2:
       verb_args1 = {}
       verb_args2 = {}
       args1_args1 = {}
+      args1_args2_verb_verb_score = {}
+      args1_verb_verb_score = {}
+      args1_args2_verb_args_score = {}
+      args1_verb_args_score = {}
+      args1_args2_verb_verb_args1_score = {}
+      args1_verb_verb_args1_score = {}
       sent_num = 0
       for sent in range(len(recipe)):
         for i in range(len(recipe[sent])):
           verb = self.stemmer.stem(recipe[sent][i])
+          args1 = arg1_recipe[sent][i]
+          args2 = arg2_recipe[sent][i]
           if verb not in verbs:
             verbs[verb] = {}
             verb_args1[verb] = {}
             verb_args2[verb] = {}
+          for a1 in args1:
+            arg1 = self.stemmer.stem(a1)
+            if arg1 not in args1_args2_verb_verb_score:
+              args1_args2_verb_verb_score[arg1] = {}
+            if arg1 not in args1_args2_verb_args_score:
+              args1_args2_verb_args_score[arg1] = {}
+            if arg1 not in args1_args2_verb_verb_args1_score:
+              args1_args2_verb_verb_args1_score[arg1] = {}
+            if arg1 not in args1_verb_verb_score:
+              args1_verb_verb_score[arg1] = {}
+            if arg1 not in args1_verb_args_score:
+              args1_verb_args_score[arg1] = {}
+            if arg1 not in args1_verb_verb_args1_score:
+              args1_verb_verb_args1_score[arg1] = {}
+            if verb not in args1_verb_verb_score[arg1]:
+              args1_verb_verb_score[arg1][verb] = {}
+            if verb not in args1_verb_args_score[arg1]:
+              args1_verb_args_score[arg1][verb] = {}
+            if verb not in args1_verb_verb_args1_score[arg1]:
+              args1_verb_verb_args1_score[arg1][verb] = {}
+            for a2 in args2:
+              arg2 = self.stemmer.stem(a2)
+              if arg2 not in args1_args2_verb_verb_score[arg1]:
+                args1_args2_verb_verb_score[arg1][arg2] = {}
+              if arg2 not in args1_args2_verb_args_score[arg1]:
+                args1_args2_verb_args_score[arg1][arg2] = {}
+              if arg2 not in args1_args2_verb_verb_args1_score[arg1]:
+                args1_args2_verb_verb_args1_score[arg1][arg2] = {}
+              if verb not in args1_args2_verb_verb_score[arg1][arg2]:
+                args1_args2_verb_verb_score[arg1][arg2][verb] = {}
+              if verb not in args1_args2_verb_args_score[arg1][arg2]:
+                args1_args2_verb_args_score[arg1][arg2][verb] = {}
+              if verb not in args1_args2_verb_verb_args1_score[arg1][arg2]:
+                args1_args2_verb_verb_args1_score[arg1][arg2][verb] = {}
           for k in range(self.sent_window):
             if sent+k>=len(recipe):
               break
@@ -77,6 +121,39 @@ class RecipeStats2:
               #### Consider other verbs
               verb2 = self.stemmer.stem(recipe[sent+k][j])
               verbs[verb][verb2] = 1
+              verb2_args1 = arg1_recipe[sent+k][j]
+              verb2_args2 = arg2_recipe[sent+k][j]
+              ####
+              #### args1_args2_verb_verb_score and args1_verb_verb_score ####
+              for a1 in args1:
+                arg1 = self.stemmer.stem(a1)
+                args1_verb_verb_score[arg1][verb][verb2] = 1
+                if verb2 not in args1_verb_verb_args1_score[arg1][verb]:
+                  args1_verb_verb_args1_score[arg1][verb][verb2] = {}
+                for a in verb2_args1:
+                  arg = self.stemmer.stem(a)
+                  args1_verb_verb_args1_score[arg1][verb][verb2][arg] = 1
+                  #### args1_verb_args_score ####
+                  args1_verb_args_score[arg1][verb][arg] = 1
+                #### args1_verb_args_score ####
+                for a in verb2_args2:
+                  arg = self.stemmer.stem(a)
+                  args1_verb_args_score[arg1][verb][arg] = 1
+                for a2 in args2:
+                  arg2 = self.stemmer.stem(a2)
+                  if verb2 not in args1_args2_verb_verb_args1_score[arg1][arg2][verb]:
+                    args1_args2_verb_verb_args1_score[arg1][arg2][verb][verb2] = {}
+                  args1_args2_verb_verb_score[arg1][arg2][verb][verb2] = 1
+                  for a in verb2_args1:
+                    arg = self.stemmer.stem(a)
+                    args1_args2_verb_verb_args1_score[arg1][arg2][verb][verb2][arg] = 1
+                    #### args1_args2_verb_args_score ####
+                    args1_args2_verb_args_score[arg1][arg2][verb][arg] = 1
+                  #### args1_args2_verb_args_score ####
+                  for a in verb2_args2:
+                    arg = self.stemmer.stem(a)
+                    args1_args2_verb_args_score[arg1][arg2][verb][arg] = 1
+              ####
               # score = None
               # if k==0:
               #   score = float(j-i)/len(recipe[sent])
@@ -87,14 +164,16 @@ class RecipeStats2:
             #### Consider arguments
             if k==0:
               continue
-            args1 = arg1_recipe[sent+k]
-            for a1 in args1:
+            k_args1 = arg1_recipe[sent+k]
+            for as1 in k_args1:
+              for a1 in as1:
                 arg1 = self.stemmer.stem(a1)
                 verb_args1[verb][arg1] = 1
                 # if arg1 not in verb_args1[verb] or verb_args1[verb][arg1]<score:
                 #   verb_args1[verb][arg1] = score
-            args2 = arg1_recipe[sent+k]
-            for a2 in args2:
+            k_args2 = arg1_recipe[sent+k]
+            for as2 in k_args2:
+              for a2 in as2:
                 arg2 = self.stemmer.stem(a2)
                 verb_args2[verb][arg2] = 1
                 # if arg2 not in verb_args2[verb] or verb_args2[verb][arg2]<score:
@@ -105,13 +184,15 @@ class RecipeStats2:
             if sent+k+1>=len(recipe):
               break
             args1 = arg1_recipe[sent+k+1]
-            for a1_0 in args1_0:
-              arg1_0 = self.stemmer.stem(a1_0)
-              if arg1_0 not in args1_args1:
-                args1_args1[arg1_0] = {}
-              for a1 in args1:
-                arg1 = self.stemmer.stem(a1)
-                args1_args1[arg1_0][arg1] = 1
+            for as1_0 in args1_0:
+              for a1_0 in as1_0:
+                arg1_0 = self.stemmer.stem(a1_0)
+                if arg1_0 not in args1_args1:
+                  args1_args1[arg1_0] = {}
+                for as1 in args1:
+                  for a1 in as1:
+                    arg1 = self.stemmer.stem(a1)
+                    args1_args1[arg1_0][arg1] = 1
       for verb in verbs:
         if verb not in self.verbs_score:
           self.verbs_score[verb] = {}
@@ -150,6 +231,107 @@ class RecipeStats2:
           else:
             self.args1_args_score[arg][arg1] += args1_args1[arg][arg1]
 
+      for arg1 in args1_args2_verb_verb_score:
+        if arg1 not in cnt_arg1_arg2_verb:
+          cnt_arg1_arg2_verb[arg1] = {}
+        if arg1 not in self.args1_args2_verb_verb_score:
+          self.args1_args2_verb_verb_score[arg1] = {}
+        for arg2 in args1_args2_verb_verb_score[arg1]:
+          if arg2 not in cnt_arg1_arg2_verb[arg1]:
+            cnt_arg1_arg2_verb[arg1][arg2] = {}
+          if arg2 not in self.args1_args2_verb_verb_score[arg1]:
+            self.args1_args2_verb_verb_score[arg1][arg2] = {}
+          for verb in args1_args2_verb_verb_score[arg1][arg2]:
+            if verb not in cnt_arg1_arg2_verb[arg1][arg2]:
+              cnt_arg1_arg2_verb[arg1][arg2][verb] = 1
+            else:
+              cnt_arg1_arg2_verb[arg1][arg2][verb] += 1
+            if verb not in self.args1_args2_verb_verb_score[arg1][arg2]:
+              self.args1_args2_verb_verb_score[arg1][arg2][verb] = {}
+            for verb2 in args1_args2_verb_verb_score[arg1][arg2][verb]:
+              if verb2 not in self.args1_args2_verb_verb_score[arg1][arg2][verb]:
+                self.args1_args2_verb_verb_score[arg1][arg2][verb][verb2] = args1_args2_verb_verb_score[arg1][arg2][verb][verb2]
+              else:
+                self.args1_args2_verb_verb_score[arg1][arg2][verb][verb2] += args1_args2_verb_verb_score[arg1][arg2][verb][verb2]
+
+      for arg1 in args1_args2_verb_args_score:
+        if arg1 not in self.args1_args2_verb_args_score:
+          self.args1_args2_verb_args_score[arg1] = {}
+        for arg2 in args1_args2_verb_args_score[arg1]:
+          if arg2 not in self.args1_args2_verb_args_score[arg1]:
+            self.args1_args2_verb_args_score[arg1][arg2] = {}
+          for verb in args1_args2_verb_args_score[arg1][arg2]:
+            if verb not in self.args1_args2_verb_args_score[arg1][arg2]:
+              self.args1_args2_verb_args_score[arg1][arg2][verb] = {}
+            for arg in args1_args2_verb_args_score[arg1][arg2][verb]:
+              if arg not in self.args1_args2_verb_args_score[arg1][arg2][verb]:
+                self.args1_args2_verb_args_score[arg1][arg2][verb][arg] = args1_args2_verb_args_score[arg1][arg2][verb][arg]
+              else:
+                self.args1_args2_verb_args_score[arg1][arg2][verb][arg] += args1_args2_verb_args_score[arg1][arg2][verb][arg]
+
+      for arg1 in args1_args2_verb_verb_args1_score:
+        if arg1 not in self.args1_args2_verb_verb_args1_score:
+          self.args1_args2_verb_verb_args1_score[arg1] = {}
+        for arg2 in args1_args2_verb_verb_args1_score[arg1]:
+          if arg2 not in self.args1_args2_verb_verb_args1_score[arg1]:
+            self.args1_args2_verb_verb_args1_score[arg1][arg2] = {}
+          for verb in args1_args2_verb_verb_args1_score[arg1][arg2]:
+            if verb not in self.args1_args2_verb_verb_args1_score[arg1][arg2]:
+              self.args1_args2_verb_verb_args1_score[arg1][arg2][verb] = {}
+            for verb2 in args1_args2_verb_verb_args1_score[arg1][arg2][verb]:
+              if verb2 not in self.args1_args2_verb_verb_args1_score[arg1][arg2][verb]:
+                self.args1_args2_verb_verb_args1_score[arg1][arg2][verb][verb2] = {}
+              for arg in args1_args2_verb_verb_args1_score[arg1][arg2][verb][verb2]:
+                if arg not in self.args1_args2_verb_verb_args1_score[arg1][arg2][verb][verb2]:
+                  self.args1_args2_verb_verb_args1_score[arg1][arg2][verb][verb2][arg] = args1_args2_verb_verb_args1_score[arg1][arg2][verb][verb2][arg]
+                else:
+                  self.args1_args2_verb_verb_args1_score[arg1][arg2][verb][verb2][arg] += args1_args2_verb_verb_args1_score[arg1][arg2][verb][verb2][arg]
+
+      for arg1 in args1_verb_verb_score:
+        if arg1 not in cnt_arg1_verb:
+          cnt_arg1_verb[arg1] = {}
+        if arg1 not in self.args1_verb_verb_score:
+          self.args1_verb_verb_score[arg1] = {}
+        for verb in args1_verb_verb_score[arg1]:
+            if verb not in cnt_arg1_verb[arg1]:
+              cnt_arg1_verb[arg1][verb] = 1
+            else:
+              cnt_arg1_verb[arg1][verb] += 1
+            if verb not in self.args1_verb_verb_score[arg1]:
+              self.args1_verb_verb_score[arg1][verb] = {}
+            for verb2 in args1_verb_verb_score[arg1][verb]:
+              if verb2 not in self.args1_verb_verb_score[arg1][verb]:
+                self.args1_verb_verb_score[arg1][verb][verb2] = args1_verb_verb_score[arg1][verb][verb2]
+              else:
+                self.args1_verb_verb_score[arg1][verb][verb2] += args1_verb_verb_score[arg1][verb][verb2]
+
+      for arg1 in args1_verb_args_score:
+        if arg1 not in self.args1_verb_args_score:
+          self.args1_verb_args_score[arg1] = {}
+        for verb in args1_verb_args_score[arg1]:
+            if verb not in self.args1_verb_args_score[arg1]:
+              self.args1_verb_args_score[arg1][verb] = {}
+            for arg in args1_verb_args_score[arg1][verb]:
+              if arg not in self.args1_verb_args_score[arg1][verb]:
+                self.args1_verb_args_score[arg1][verb][arg] = args1_verb_args_score[arg1][verb][arg]
+              else:
+                self.args1_verb_args_score[arg1][verb][arg] += args1_verb_args_score[arg1][verb][arg]
+
+      for arg1 in args1_verb_verb_args1_score:
+        if arg1 not in self.args1_verb_verb_args1_score:
+          self.args1_verb_verb_args1_score[arg1] = {}
+        for verb in args1_verb_verb_args1_score[arg1]:
+            if verb not in self.args1_verb_verb_args1_score[arg1]:
+              self.args1_verb_verb_args1_score[arg1][verb] = {}
+            for verb2 in args1_verb_verb_args1_score[arg1][verb]:
+              if verb2 not in self.args1_verb_verb_args1_score[arg1][verb]:
+                self.args1_verb_verb_args1_score[arg1][verb][verb2] = {}
+              for arg in args1_verb_verb_args1_score[arg1][verb][verb2]:
+                if arg not in self.args1_verb_verb_args1_score[arg1][verb][verb2]:
+                  self.args1_verb_verb_args1_score[arg1][verb][verb2][arg] = args1_verb_verb_args1_score[arg1][verb][verb2][arg]
+                else:
+                  self.args1_verb_verb_args1_score[arg1][verb][verb2][arg] += args1_verb_verb_args1_score[arg1][verb][verb2][arg]
+
     for verb in self.verbs_score:
       for verb2 in self.verbs_score[verb]:
         self.verbs_score[verb][verb2] = float(self.verbs_score[verb][verb2])/cnt[verb]
@@ -165,6 +347,41 @@ class RecipeStats2:
     for arg in self.args_verb_score:
       for verb in self.args_verb_score[arg]:
         self.args_verb_score[arg][verb] = float(self.args_verb_score[arg][verb])/cnt_arg2[arg]
+
+    for arg1 in self.args1_args2_verb_verb_score:
+      for arg2 in self.args1_args2_verb_verb_score[arg1]:
+        for verb in self.args1_args2_verb_verb_score[arg1][arg2]:
+          for verb2 in self.args1_args2_verb_verb_score[arg1][arg2][verb]:
+            self.args1_args2_verb_verb_score[arg1][arg2][verb][verb2] = float(self.args1_args2_verb_verb_score[arg1][arg2][verb][verb2])/cnt_arg1_arg2_verb[arg1][arg2][verb]
+
+    for arg1 in self.args1_args2_verb_args_score:
+      for arg2 in self.args1_args2_verb_args_score[arg1]:
+        for verb in self.args1_args2_verb_args_score[arg1][arg2]:
+          for verb2 in self.args1_args2_verb_args_score[arg1][arg2][verb]:
+            self.args1_args2_verb_args_score[arg1][arg2][verb][verb2] = float(self.args1_args2_verb_args_score[arg1][arg2][verb][verb2])/cnt_arg1_arg2_verb[arg1][arg2][verb]
+
+    for arg1 in self.args1_verb_verb_score:
+        for verb in self.args1_verb_verb_score[arg1]:
+          for verb2 in self.args1_verb_verb_score[arg1][verb]:
+            self.args1_verb_verb_score[arg1][verb][verb2] = float(self.args1_verb_verb_score[arg1][verb][verb2])/cnt_arg1_verb[arg1][verb]
+
+    for arg1 in self.args1_verb_args_score:
+        for verb in self.args1_verb_args_score[arg1]:
+          for verb2 in self.args1_verb_args_score[arg1][verb]:
+            self.args1_verb_args_score[arg1][verb][verb2] = float(self.args1_verb_args_score[arg1][verb][verb2])/cnt_arg1_verb[arg1][verb]
+
+    for arg1 in self.args1_args2_verb_verb_args1_score:
+      for arg2 in self.args1_args2_verb_verb_args1_score[arg1]:
+        for verb in self.args1_args2_verb_verb_args1_score[arg1][arg2]:
+          for verb2 in self.args1_args2_verb_verb_args1_score[arg1][arg2][verb]:
+            for arg in self.args1_args2_verb_verb_args1_score[arg1][arg2][verb][verb2]:
+              self.args1_args2_verb_verb_args1_score[arg1][arg2][verb][verb2][arg] = float(self.args1_args2_verb_verb_args1_score[arg1][arg2][verb][verb2][arg])/cnt_arg1_arg2_verb[arg1][arg2][verb]
+
+    for arg1 in self.args1_verb_verb_args1_score:
+        for verb in self.args1_verb_verb_args1_score[arg1]:
+          for verb2 in self.args1_verb_verb_args1_score[arg1][verb]:
+            for arg in self.args1_verb_verb_args1_score[arg1][verb][verb2]:
+              self.args1_verb_verb_args1_score[arg1][verb][verb2][arg] = float(self.args1_verb_verb_args1_score[arg1][verb][verb2][arg])/cnt_arg1_verb[arg1][verb]
 
 
   def calcStatFromGraph(self, stat_data, useArbo):
@@ -294,22 +511,26 @@ class RecipeStats2:
     args1_verb_verb_args1_score = {}
     g = {}
     # Artificially connect verb to verb 2 if there is a path verb->arg2->verb2
-    for s in arbor_edges:
+    g_copy = weighted_graph.adj_list
+    if useArbo:
+      g_copy = arbor_edges
+    for s in g_copy:
       g[s] = {}
-      for d in arbor_edges[s]:
-        g[s][d] = arbor_edges[s][d]
-    for s in arbor_edges:
+      for d in g_copy[s]:
+        # g[s][d] = arbor_edges[s][d]
+        g[s][d] = 1
+    for s in g_copy:
       s_node = arbor_adapter.id_node_map[s]
       if not isinstance(s_node,PNode):
         continue
-      for d in arbor_edges[s]:
-        if d not in arbor_edges:
+      for d in g_copy[s]:
+        if d not in g_copy:
           continue
         d_node = arbor_adapter.id_node_map[d]
         # if not isinstance(d_node,RNode) or d_node.arg_type!="arg2":
         if not isinstance(d_node,RNode):
           continue
-        for v in arbor_edges[d]:
+        for v in g_copy[d]:
           v_node = arbor_adapter.id_node_map[v]
           if not isinstance(v_node,PNode):
             continue
@@ -323,8 +544,8 @@ class RecipeStats2:
         reverse_g[d][s] = g[s][d]
 
     for s in g:
-      if not useArbo and s not in weighted_graph.adj_list:
-        continue
+      # if not useArbo and s not in weighted_graph.adj_list:
+      #   continue
       node1 = arbor_adapter.id_node_map[s]
       verb1 = None
       verb1_arg = None
@@ -340,8 +561,8 @@ class RecipeStats2:
       elif isinstance(node1,RNode):
         pass
       for d in g[s]:
-        if not useArbo and d not in weighted_graph.adj_list[s] and g[s][d]!="use":
-          continue
+        # if not useArbo and d not in weighted_graph.adj_list[s] and g[s][d]!="use":
+        #   continue
         node2 = arbor_adapter.id_node_map[d]
         if isinstance(node1,PNode) and isinstance(node2,PNode):
           verb2 = self.stemmer.stem(node2.predicate)
@@ -806,17 +1027,18 @@ class RecipeStats2:
       score = self.getArg1PredArg(input_argument1,predicate,output_argument)
     else:
       score = self.getArg1Arg2PredArg(input_argument1,input_argument2,predicate,output_argument)
-    # Test
-    if True:
-      return score
-    ###
-    if score!=0:
-      return score
-    # Arg1 to Arg1 score
-    if input_argument2==None:
-      return self.getArg1ArgProb(input_argument1,output_argument)
-    else:
-      return self.getArg1Arg2ArgProb(input_argument1,input_argument2,output_argument)
+    return score
+    # # Test
+    # if True:
+    #   return score
+    # ###
+    # if score!=0:
+    #   return score
+    # # Arg1 to Arg1 score
+    # if input_argument2==None:
+    #   return self.getArg1ArgProb(input_argument1,output_argument)
+    # else:
+    #   return self.getArg1Arg2ArgProb(input_argument1,input_argument2,output_argument)
 
   def getPredOuputArg1Prob(self, predicate, input_argument, output_argument):
     ### Compute probability of edge predicate->arg1

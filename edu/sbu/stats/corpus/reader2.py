@@ -74,15 +74,19 @@ class RecipeReader2:
             args2 = []
           verbs.append(pred.lower())
           arrPOS = arg1POS.split()
+          verb_args1 = []
           for e in arrPOS:
             arr = e.split("/")
             if len(arr)==2 and "NN" in arr[1]:
-              args1.append(arr[0].lower())
-          arrPOS = arg1POS.split()
+              verb_args1.append(arr[0].lower())
+          args1.append(verb_args1)
+          verb_args2 = []
+          arrPOS = arg2POS.split()
           for e in arrPOS:
             arr = e.split("/")
             if len(arr)==2 and "NN" in arr[1]:
-              args2.append(arr[0].lower())
+              verb_args2.append(arr[0].lower())
+          args2.append(verb_args2)
           prev_sent_num = sent_num
           self.sem_groups.append(sem_group)
         if verbs!=None and len(verbs)!=0:
