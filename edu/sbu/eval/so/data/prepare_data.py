@@ -6,6 +6,8 @@ import numpy as np
 from scipy.stats import kendalltau as ktau
 from edu.sbu.shell.Transformer import special_predicate_processing, special_pp_processing
 
+from edu.sbu.eval.so.features.statistical_features import *
+
 ###Parameters
 testFileList    = 'testFilesList'
 trainFileList   = 'trainFilesList'
@@ -67,7 +69,7 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
 
     my_separator = 'TheGT'
     sentences = []
-    sent_num = -1
+
     with open(arg_file) as f:
       lines = f.readlines()
       for i in xrange(0, len(lines), 7):
@@ -106,6 +108,12 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
 
         exp_line = pred + ' ' + arg1 + ' ' + arg2
         sentences.append(exp_line)
+
+
+        if i != 0:
+          print_probability(prev_sem_group, sem_group)
+
+        prev_sem_group = sem_group
 
     # for line in f.readlines():
     #   line = line.replace('\n', ' ')
