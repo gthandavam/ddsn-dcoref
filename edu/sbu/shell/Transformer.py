@@ -25,6 +25,7 @@ reuben-mac-and-cheese
 
 statFile = "/home/gt/Documents/RecipeStats2_init.pickle"
 statFile2 = "/home/gt/Documents/RecipeStats2.pickle"
+statFileForEval = "/home/gt/Documents/RecipeStats2_forEval.pickle"
 
 def get_text(swirl_output):
   """
@@ -266,8 +267,11 @@ def main():
     run(statFile,0)
   elif mode=="-run_iter":
     run(statFile2,0)
+    # run(statFileForEval,0)
   elif mode=="-run_wt":
     run("",1)
+  elif mode=="-stat_for_eval": # will also save dot and svg files
+    run(statFile,0,True)
   else:
     run("",0)
 
@@ -328,7 +332,7 @@ def learnStat(useArbo):
   pickle.dump(r_stats,f)
   f.close()
 
-def run(stFile, Wwt):
+def run(stFile, Wwt, stat_for_eval=False):
 
   #files sentence split using stanford sentence splitter - fsm based
   i=0
@@ -360,6 +364,7 @@ def run(stFile, Wwt):
     os.makedirs(dirName+'MacAndCheese-svg-files'+option)
   except OSError:
     pass
+  stat_data = []
   for recipe_args_file in commands.getoutput('ls '+dirName+'MacAndCheeseArgs/*.txt').split('\n'):
     i+=1
     # if i>30:
@@ -402,7 +407,23 @@ def run(stFile, Wwt):
     dot_graph.write_gv(pnodes_resolved, rnodes_resolved, arbor_edges, gv_file_name)
 
     make_svg(gv_file_name)
+
+    stat_data.append([recipe_args_file, weighted_graph, arbor_adapter, arbor_edges])
     # break
+  if stat_for_eval:
+    # Calculate statistics
+    r_stats.calcStatFromGraph(stat_data, True, True)
+    print len(r_stats.args1_args2_verb_args_score)
+    print len(r_stats.args1_verb_args_score)
+    print len(r_stats.args1_args2_args_score)
+    print len(r_stats.args1_args_score)
+    print len(r_stats.args1_args2_verb_verb_score)
+    print len(r_stats.args1_verb_verb_score)
+    print len(r_stats.args1_args2_verb_verb_args1_score)
+    print len(r_stats.args1_verb_verb_args1_score)
+    f = open(statFileForEval,"w")
+    pickle.dump(r_stats,f)
+    f.close()
   pass
 
 

@@ -384,8 +384,9 @@ class RecipeStats2:
               self.args1_verb_verb_args1_score[arg1][verb][verb2][arg] = float(self.args1_verb_verb_args1_score[arg1][verb][verb2][arg])/cnt_arg1_verb[arg1][verb]
 
 
-  def calcStatFromGraph(self, stat_data, useArbo):
+  def calcStatFromGraph(self, stat_data, useArbo, transitive=False):
     self.verbs_score = {}
+    self.args_verb_score = {}
     self.verb_args1_score = {}
     self.verb_args2_score = {}
     self.args1_args_score = {}
@@ -397,6 +398,7 @@ class RecipeStats2:
     self.args1_args2_verb_verb_args1_score = {}
     self.args1_verb_verb_args1_score = {}
     self.cnt = {}
+    self.cnt_arg = {}
     self.cnt_arg1 = {}
     self.cnt_arg2 = {}
     self.cnt_arg1_verb = {}
@@ -404,7 +406,7 @@ class RecipeStats2:
     self.cnt_arg1_arg2 = {}
     for [file_name,weighted_graph, arbor_adapter, arbor_edges] in stat_data:
       # print file_name
-      self.updateStatFromGraph(weighted_graph, arbor_adapter, arbor_edges, useArbo)
+      self.updateStatFromGraph(weighted_graph, arbor_adapter, arbor_edges, useArbo, transitive)
       pass
     for verb in self.verbs_score:
       for verb2 in self.verbs_score[verb]:
@@ -425,7 +427,8 @@ class RecipeStats2:
 
     for arg in self.args_verb_score:
       for verb in self.args_verb_score[arg]:
-        self.args_verb_score[arg][verb] = self.calcFreq(self.args_verb_score[arg][verb],self.cnt_arg2[arg])
+        # self.args_verb_score[arg][verb] = self.calcFreq(self.args_verb_score[arg][verb],self.cnt_arg2[arg])
+        self.args_verb_score[arg][verb] = self.calcFreq(self.args_verb_score[arg][verb],self.cnt_arg[arg])
 
     for arg1 in self.args1_args2_verb_args_score:
       for arg2 in self.args1_args2_verb_args_score[arg1]:
@@ -496,7 +499,30 @@ class RecipeStats2:
 
     return None
 
-  def updateStatFromGraph(self, weighted_graph, arbor_adapter, arbor_edges, useArbo):
+  def getTransClosure(self,g,id_node_map):
+    res = {}
+    for s in g:
+      s_node = id_node_map[s]
+      res[s] = {}
+      for d in g[s]:
+        res[s][d] = 1
+      if not isinstance(s_node,PNode):
+        continue
+      self.getTransClosureBranch(s,s,res,g,id_node_map)
+    return res
+
+  def getTransClosureBranch(self,s,c,res,g,id_node_map,visited={}):
+    for d in g[c]:
+      if d in visited:
+        continue
+      d_node = id_node_map[d]
+      if not isinstance(d_node,PNode):
+        continue
+      visited[d] = 1
+      res[s][d] = 1
+      self.getTransClosureBranch(s,d,res,g,id_node_map,visited)
+
+  def updateStatFromGraph(self, weighted_graph, arbor_adapter, arbor_edges, useArbo, transitive):
     verbs_score = {}
     verb_args1_score = {}
     verb_args2_score = {}
@@ -519,22 +545,25 @@ class RecipeStats2:
       for d in g_copy[s]:
         # g[s][d] = arbor_edges[s][d]
         g[s][d] = 1
-    for s in g_copy:
-      s_node = arbor_adapter.id_node_map[s]
-      if not isinstance(s_node,PNode):
-        continue
-      for d in g_copy[s]:
-        if d not in g_copy:
+    if transitive:
+      g = self.getTransClosure(g, arbor_adapter.id_node_map)
+    else:
+      for s in g_copy:
+        s_node = arbor_adapter.id_node_map[s]
+        if not isinstance(s_node,PNode):
           continue
-        d_node = arbor_adapter.id_node_map[d]
-        # if not isinstance(d_node,RNode) or d_node.arg_type!="arg2":
-        if not isinstance(d_node,RNode):
-          continue
-        for v in g_copy[d]:
-          v_node = arbor_adapter.id_node_map[v]
-          if not isinstance(v_node,PNode):
+        for d in g_copy[s]:
+          if d not in g_copy:
             continue
-          g[s][v] = "use"
+          d_node = arbor_adapter.id_node_map[d]
+          # if not isinstance(d_node,RNode) or d_node.arg_type!="arg2":
+          if not isinstance(d_node,RNode):
+            continue
+          for v in g_copy[d]:
+            v_node = arbor_adapter.id_node_map[v]
+            if not isinstance(v_node,PNode):
+              continue
+            g[s][v] = "use"
 
     reverse_g = {}
     for s in g:
@@ -748,11 +777,19 @@ class RecipeStats2:
               self.args1_args2_args_score[arg1][arg2][arg] += args1_args2_args_score[arg1][arg2][arg]
 
     for arg in args_verb_score:
-        if arg not in self.cnt_arg2:
-          self.cnt_arg2[arg] = 1
-          self.args_verb_score[arg] = {}
+        if arg=="salt":
+          pass
+        # if arg not in self.cnt_arg2:
+        #   self.cnt_arg2[arg] = 1
+        #   self.args_verb_score[arg] = {}
+        # else:
+        #   self.cnt_arg2[arg] += 1
+        if arg not in self.cnt_arg:
+          self.cnt_arg[arg] = 1
         else:
-          self.cnt_arg2[arg] += 1
+          self.cnt_arg[arg] += 1
+        if arg not in self.args_verb_score:
+          self.args_verb_score[arg] = {}
         for verb in args_verb_score[arg]:
           if verb not in self.args_verb_score[arg]:
             self.args_verb_score[arg][verb] = args_verb_score[arg][verb]
@@ -892,6 +929,9 @@ class RecipeStats2:
     a1s = input_a1.getNouns()
     overb = self.stemmer.stem(output_predicate.predicate)
     verb = self.stemmer.stem(predicate.predicate)
+    return self.getArg1PredPredProb(a1s,verb,overb)
+
+  def getArg1PredPredProb(self, a1s, verb, overb):
     s=0
     cnt=0
     for a1 in a1s:
@@ -913,6 +953,9 @@ class RecipeStats2:
     verb = self.stemmer.stem(predicate.predicate)
     # oas = output_arg.getNouns()
     oas = output_predicate.getNouns()
+    return self.getArg1PredPredArg1Prob(a1s, verb, overb, oas)
+
+  def getArg1PredPredArg1Prob(self, a1s, verb, overb, oas):
     s=0
     cnt=0
     for a1 in a1s:
@@ -963,6 +1006,9 @@ class RecipeStats2:
     a2s = input_a2.getNouns()
     overb = self.stemmer.stem(output_predicate.predicate)
     verb = self.stemmer.stem(predicate.predicate)
+    return self.getArg1Arg2PredPredProb(a1s, a2s, verb, overb)
+
+  def getArg1Arg2PredPredProb(self, a1s, a2s, verb, overb):
     s=0
     cnt=0
     for a1 in a1s:
@@ -989,6 +1035,9 @@ class RecipeStats2:
     oas = output_predicate.getNouns()
     overb = self.stemmer.stem(output_predicate.predicate)
     verb = self.stemmer.stem(predicate.predicate)
+    return self.getArg1Arg2PredPredArg1Prob(a1s, a2s, verb, overb, oas)
+
+  def getArg1Arg2PredPredArg1Prob(self, a1s, a2s, verb, overb, oas):
     s=0
     cnt=0
     for a1 in a1s:
