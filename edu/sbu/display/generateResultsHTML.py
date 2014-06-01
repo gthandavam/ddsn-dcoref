@@ -30,7 +30,7 @@ def generateEvalFile():
   img_height = 800
   dirName1 = "/home/gt/Documents/"
   f = open(dirName1+"user_eval.html","w")
-  dirName = dirName1+"UserEvaluation-files/"
+  dirName = dirName1+"UserEvaluation/"
   f.write("<html><head><script src=\"./eval.js\"></script></head>\n")
   f.write("<body><table border=1 cellspacing=5>\n")
   f.write("<tr><td>#</td><td></td><td></td></tr>\n")
@@ -55,11 +55,11 @@ def generateEvalFile():
     m1 = 0
     if r>0.5:
       m1 = 1
-    f.write(("<tr><td>{}</td><td><img height={} src=\"./UserEvaluation-files/{}/{}\"></td><td><img height={} src=\"./UserEvaluation-files/{}/{}\"></td></tr>\n").format(txt,img_height,methods[m1],fl,img_height,methods[1-m1],fl))
+    f.write(("<tr><td>{}</td><td><img height={} src=\"UserEvaluation/{}/{}\"></td><td><img height={} src=\"UserEvaluation/{}/{}\"></td></tr>\n").format(txt,img_height,methods[m1],fl,img_height,methods[1-m1],fl))
     f.write(("<tr><td><input type=radio id=graph{} name=graph{} value=2>None</td><td><input type=radio name=graph{} id=graph{} value={}>Graph1</td><td><input type=radio id=graph{} name=graph{} value={}>Graph2</td></tr>\n").format(i,i,i,i,m1,i,i,1-m1))
     f.write("<tr><td colspan=4><hr></td></tr>\n")
     pass
-  f.write("<tr><td colspan=4><button onClick=\"calc({});\">Submit</button></td></tr>\n".format(i))
+  f.write("<tr><td colspan=4><button onClick=\"calc({});\">Submit</button></td></tr>\n".format(i-1))
   f.write("</table></body></html>")
   f.close()
 
