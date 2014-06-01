@@ -242,7 +242,7 @@ class DotGraphBuilder:
             if self.debug:
               line =  '{} -> {}[label=\"{}({})\"]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL',arbo_edges[arg_node][self.pred_node_list[(i,j)]])
             else:
-              line =  '{} -> {}[label={}]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL')
+              line =  '{} -> {}'.format(arg_node, self.pred_node_list[(i,j)])
             self.graph_lines.append(line)
 
             if len(rnodes[i][j][k].shell_coref) > 0:
@@ -323,14 +323,8 @@ class DotGraphBuilder:
           if self.debug:
             line = '{} -> {} [label=\"{}({})\"'.format(start_node, target_node, 'CC', arbo_edges[start_node][target_node])
           else:
-            line = '{} -> {} [label=\"{}\"'.format(start_node, target_node, 'CC')
+            line = '{} -> {}'.format(start_node, target_node)
 
-          for prop in self.edge_props['CC'].keys():
-            if prop=="label":
-              continue
-            line += ',{}={}'.format(prop, self.edge_props['CC'][prop])
-
-          line += ']'
 
           self.graph_lines.append(line)
 
