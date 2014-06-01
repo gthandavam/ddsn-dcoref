@@ -50,7 +50,7 @@ def generateEvalFile():
     if txt==None:
       continue
     i+=1
-    if i>20:
+    if i>30:
       break
     r = random.random()
     m1 = 0
