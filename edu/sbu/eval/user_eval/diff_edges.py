@@ -13,7 +13,7 @@ def diff_edges(graph1, graph2):
   return list(a_diff_b), list(b_diff_a)
   pass
 
-def intersect_edges(graph1, graph2):
+def common_graph_lines(graph1, graph2):
   set_a = set(graph1)
   set_b = set(graph2)
 
