@@ -1,9 +1,22 @@
 __author__ = 'gt'
 
 from edu.sbu.eval.user_eval.diff_edges import  common_graph_lines, diff_edges
-
+import commands
 import os
+
 testArchive = '/home/gt/Documents/UserEvaluation/'
+
+
+def make_svg(gv_file, svg_file):
+  #dot is in path
+  status, output = commands.getstatusoutput('dot -Tsvg \"' + gv_file + '\" -o\"' + svg_file + '\"')
+
+  #print output in case of any error
+  if(status != 0):
+    print output
+
+  return status
+
 
 if __name__ == '__main__':
   algoA = os.listdir(testArchive+'AlgoA')
@@ -37,6 +50,10 @@ if __name__ == '__main__':
 
       f.write('};')
 
+    a_svg = a_out.replace('AlgoA_diff', 'AlgoA_svg')
+    a_svg = a_svg.replace('.gv', '.svg')
+    make_svg(a_out, a_svg)
+
     with open(b_out, 'w') as f:
       f.write('Digraph G {\n')
       for line in common:
@@ -49,4 +66,7 @@ if __name__ == '__main__':
 
       f.write('};')
 
+    b_svg = b_out.replace('AlgoB_diff', 'AlgoB_svg')
+    b_svg = b_svg.replace('.gv', '.svg')
+    make_svg(b_out, b_svg)
   pass
