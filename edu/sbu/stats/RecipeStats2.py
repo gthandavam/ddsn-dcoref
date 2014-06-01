@@ -1067,7 +1067,8 @@ class RecipeStats2:
     nouns = output_argument.getNouns()
     # if "minutes" in nouns:
     #   return 0
-    score = self.log(1-self.getTextSimArr(predicate.getNouns(), nouns))
+    # score = self.log(1-self.getTextSimArr(predicate.getNouns(), nouns))
+    score = self.log(1-self.getTextSimArr(input_argument1.getNouns(), nouns))
     if score!=0:
       return score
     # if output_argument.arg_type=="arg1":
