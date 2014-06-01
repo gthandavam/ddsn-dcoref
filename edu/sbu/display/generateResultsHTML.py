@@ -60,7 +60,7 @@ def generateEvalFile():
     f.write(("<tr><td><input type=radio id=graph{} name=graph{} value=2>None</td><td><input type=radio name=graph{} id=graph{} value={}>Graph1</td><td><input type=radio id=graph{} name=graph{} value={}>Graph2</td></tr>\n").format(i,i,i,i,m1,i,i,1-m1))
     f.write("<tr><td colspan=4><hr></td></tr>\n")
     pass
-  f.write("<tr><td colspan=4><button onClick=\"calc({});\">Submit</button></td></tr>\n".format(i))
+  f.write("<tr><td colspan=4><button onClick=\"calc({});\">Submit</button></td></tr>\n".format(i-1))
   f.write("</table></body></html>")
   f.close()
 
