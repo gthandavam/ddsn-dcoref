@@ -31,7 +31,7 @@ def generateEvalFile():
   dirName1 = "/home/gt/Documents/"
   f = open(dirName1+"user_eval.html","w")
   dirName = dirName1+"UserEvaluation/"
-  f.write("<html><head><script src=\"./eval.js\"></script></head>\n")
+  f.write("<!DOCType HTML><html><head><script src=\"eval.js\"></script></head>\n")
   f.write("<body><table border=1 cellspacing=5>\n")
   f.write("<tr><td>#</td><td></td><td></td></tr>\n")
   files = os.listdir(dirName+"AlgoA_svg")
