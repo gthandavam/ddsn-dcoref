@@ -18,7 +18,7 @@ if __name__ == '__main__':
       b_lines = f.readlines()
 
     a_diff_b, b_diff_a = diff_edges(a_lines, b_lines)
-
+    
 
     pass
 

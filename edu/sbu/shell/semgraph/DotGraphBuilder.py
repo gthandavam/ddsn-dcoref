@@ -8,14 +8,14 @@ class DotGraphBuilder:
 
   def __init__(self):
     #TODO: refactor the class based on extensible number and type of arguments per predicate
-    self.pred_props = {'style':'filled','fillcolor':'gray'}
-    self.arg1_props = {'color':'white'}
-    self.arg2_props = {'color' : 'white'}
+    self.pred_props = {'shape':'diamond','style':'filled','fillcolor':'gray'}
+    self.arg1_props = {}
+    self.arg2_props = {'shape':'rectangle','style':'filled','fillcolor':'goldenrod'}
     self.edge_props = {
-      'DerivationallyRelated' : {},
-      'ArgString' : {},
-      'IArgHeuristics' : {},
-      'CC' : {}
+      'DerivationallyRelated' : {'label':'DerivationallyRelated', 'color': 'blue', 'style' : 'dotted'},
+      'ArgString' : {'label':'ArgString', 'color' : 'gray'},
+      'IArgHeuristics' : {'label' : 'IArg','color':'red', 'style':'dashed'},
+      'CC' : {'label' : 'CC', 'color' : 'green', 'style':'bold'}
     }
     self.graph_lines = []
     self.pred_node_list = {}
@@ -215,8 +215,12 @@ class DotGraphBuilder:
               if self.debug:
                 line = '{} -> {}[label=\"{}({})\"'.format(shell_node, pred_node, edge_type,arbo_edges[shell_node][pred_node])
               else:
-                line = '{} -> {}'.format(shell_node, pred_node)
-
+                line = '{} -> {}[label=\"{}\"'.format(shell_node, pred_node, edge_type)
+              for prop in self.edge_props[edge_type]:
+                if prop=="label":
+                  continue
+                line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
+              line += ']'
               self.graph_lines.append(line)
             # else:
             #   #null instant edge
@@ -242,7 +246,7 @@ class DotGraphBuilder:
             if self.debug:
               line =  '{} -> {}[label=\"{}({})\"]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL',arbo_edges[arg_node][self.pred_node_list[(i,j)]])
             else:
-              line =  '{} -> {}'.format(arg_node, self.pred_node_list[(i,j)])
+              line =  '{} -> {}[label={}]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL')
             self.graph_lines.append(line)
 
             if len(rnodes[i][j][k].shell_coref) > 0:
@@ -251,11 +255,16 @@ class DotGraphBuilder:
                 continue
               edge_type = rnodes[i][j][k].shell_coref[0][1]
 
-
               if self.debug:
                 line = '{} -> {}[label=\"{}({})\"'.format(shell_node, arg_node, edge_type,arbo_edges[shell_node][arg_node])
               else:
-                line = '{} -> {}'.format(shell_node, arg_node)
+                line = '{} -> {}[label=\"{}\"'.format(shell_node, arg_node, edge_type)
+
+              for prop in self.edge_props[edge_type]:
+                if prop=="label":
+                  continue
+                line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
+              line += ']'
 
               self.graph_lines.append(line)
     pass
