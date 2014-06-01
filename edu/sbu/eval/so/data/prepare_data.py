@@ -4,7 +4,7 @@ import random
 import codecs
 import numpy as np
 from scipy.stats import kendalltau as ktau
-from edu.sbu.shell.Transformer import special_predicate_processing
+from edu.sbu.shell.Transformer import special_predicate_processing, special_pp_processing
 
 ###Parameters
 testFileList    = 'testFilesList'
@@ -88,6 +88,7 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
           sem_group['arg2POS'] = arg2POS
 
         sem_group = special_predicate_processing(sem_group)
+        sem_group = special_pp_processing(sem_group)
 
         if(sem_group['pred'] is None):
           continue
@@ -100,7 +101,7 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
         if(sem_group['arg2'] is None):
           arg2 = 'NULL'
         else:
-          arg2 = sem_group['arg2'] = arg2
+          arg2 = sem_group['arg2']
 
 
         exp_line = pred + ' ' + arg1 + ' ' + arg2
