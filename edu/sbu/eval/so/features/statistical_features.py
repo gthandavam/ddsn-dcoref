@@ -11,7 +11,7 @@ stemmer = PorterStemmer()
 def getNouns(txt, txtPOS):
   ret = []
 
-  if txt is None:
+  if txt is None or txt == 'NULL':
     return ret
 
   txt = txt.split()
@@ -47,7 +47,9 @@ def getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2):
   prob = recipe_stat.getArg1Arg2PredPredArg1Prob(sem_group1['arg1'], sem_group1['arg2'], sem_group1['pred'], sem_group2['pred'], sem_group2['arg1'])
   print 'P(pred2, pred2.arg1 | pred1.arg1, pred1.arg2, pred1)'
   if not prob is None:
-    print prob
+    print 1000.0 * prob
+
+  return -1000.0 * prob
   pass
 
 def getArg1Arg2PredPredProb(sem_group1, sem_group2):
@@ -60,8 +62,9 @@ def getArg1Arg2PredPredProb(sem_group1, sem_group2):
   print 'P(pred2 | pred1.arg1, pred1.arg2, pred1)'
 
   if not prob is None:
-    print prob
+    print 1000.0 * prob
   pass
+  return -1000.0 * prob
 
 def getArg1PredPredArg1Prob(sem_group1, sem_group2):
   '''returns P(pred2, pred2.arg1 | pred1.arg1, pred1)
@@ -73,8 +76,10 @@ def getArg1PredPredArg1Prob(sem_group1, sem_group2):
   print 'P(pred2, pred2.arg1 | pred1.arg1, pred1)'
 
   if not prob is None:
-    print prob
+    print 1000.0 * prob
   pass
+
+  return -1000.0 * prob
 
 def getArg1PredPredProb(sem_group1, sem_group2):
   '''returns P(pred2 | pred1.arg1, pred1)
@@ -86,8 +91,10 @@ def getArg1PredPredProb(sem_group1, sem_group2):
   print 'P(pred2 | pred1.arg1, pred1)'
 
   if not prob is None:
-    print prob
+    print 1000.0 * prob
   pass
+
+  return -1000.0 * prob
 
 def get_statistics():
   with open(stat_file) as f:
