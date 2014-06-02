@@ -271,7 +271,11 @@ def main():
   elif mode=="-run_wt":
     run("",1)
   elif mode=="-stat_for_eval": # will also save dot and svg files
-    run(statFile,0,True)
+    run(statFile,0,True,True)
+  elif mode=="-stat_for_eval_wt": # will also save dot and svg files
+    run("",1,True, True)
+  elif mode=="-stat_for_eval_cc": # will also save dot and svg files
+    run("",1,True, False)
   else:
     run("",0)
 
@@ -332,7 +336,7 @@ def learnStat(useArbo):
   pickle.dump(r_stats,f)
   f.close()
 
-def run(stFile, Wwt, stat_for_eval=False):
+def run(stFile, Wwt, stat_for_eval=False, useArbo=False):
 
   #files sentence split using stanford sentence splitter - fsm based
   i=0
@@ -404,7 +408,11 @@ def run(stFile, Wwt, stat_for_eval=False):
     gv_file_name = recipe_args_file.replace('MacAndCheeseArgs','MacAndCheese-dot-files'+option)
 
     gv_file_name = gv_file_name.replace('.txt', '.gv')
-    dot_graph.write_gv(pnodes_resolved, rnodes_resolved, arbor_edges, gv_file_name)
+    try:
+      dot_graph.write_gv(pnodes_resolved, rnodes_resolved, arbor_edges, gv_file_name)
+    except:
+      print "Error!!!" # temporal!!!
+      pass
 
     make_svg(gv_file_name)
 
@@ -412,7 +420,7 @@ def run(stFile, Wwt, stat_for_eval=False):
     # break
   if stat_for_eval:
     # Calculate statistics
-    r_stats.calcStatFromGraph(stat_data, True, True)
+    r_stats.calcStatFromGraph(stat_data, useArbo, True)
     print len(r_stats.args1_args2_verb_args_score)
     print len(r_stats.args1_verb_args_score)
     print len(r_stats.args1_args2_args_score)
