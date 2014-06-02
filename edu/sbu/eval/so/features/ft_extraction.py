@@ -79,7 +79,7 @@ def filter_text(sent):
 
 
 def get_probability_features(sample):
-  from edu.sbu.eval.so.features.statistical_features import getArg1PredPredProb,getArg1PredPredArg1Prob
+  from edu.sbu.eval.so.features.statistical_features import getArg1PredPredProb,getArg1PredPredArg1Prob, getArg1Arg2PredPredArg1Prob, getArg1Arg2PredPredProb
   ret = []
 
   sent1, sent2 = sample.split(sentSeparator)
@@ -87,8 +87,33 @@ def get_probability_features(sample):
   sem_group1 = get_sem_grouping(sent1)
   sem_group2 = get_sem_grouping(sent2)
 
-  ret.append(getArg1PredPredProb(sem_group1, sem_group2))
-  ret.append(getArg1PredPredArg1Prob(sem_group1, sem_group2))
+
+
+
+
+  if( getArg1PredPredProb(sem_group1, sem_group2) > getArg1PredPredProb(sem_group2,
+sem_group1)):
+    ret.append(1)
+  else:
+    ret.append(0)
+
+  if(getArg1PredPredArg1Prob(sem_group1, sem_group2) > getArg1PredPredArg1Prob(sem_group2, sem_group1)):
+    ret.append(1)
+  else:
+    ret.append(0)
+
+  # if(getArg1Arg2PredPredProb(sem_group1, sem_group2) > getArg1Arg2PredPredProb(sem_group2, sem_group1)):
+  #   ret.append(1)
+  # else:
+  #   ret.append(0)
+
+  # if(getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2) > getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)):
+  #   ret.append(1)
+  # else:
+  #   ret.append(0)
+
+
+
 
   return ret
 

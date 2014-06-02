@@ -180,8 +180,8 @@ def train_and_save():
   # joblib.dump(ft_xtractor, 'models/fx_UB_TrainD_notag.pkl')
   # joblib.dump(clf, 'models/clf_UB_TrainD_notag.pkl')
   #
-  joblib.dump(ft_xtractor, 'models/fx_UB_TrainD.pkl')
-  joblib.dump(clf, 'models/clf_UB_TrainD.pkl')
+  joblib.dump(ft_xtractor, 'models/fx_UB_TrainD_P2.pkl')
+  joblib.dump(clf, 'models/clf_UB_TrainD_P2.pkl')
 
 def load_and_validate(ft_ext_file, clf_file):
 
@@ -235,7 +235,7 @@ def load_and_validate(ft_ext_file, clf_file):
 
   import pickle
 
-  with open('results/Test_UB.pkl', 'w') as f:
+  with open('results/Test_UB_P2.pkl', 'w') as f:
     pickle.dump(tspResultSet, f)
 
   print 'Average KTau: ' + str(ktauSum/len(recipeLength))
@@ -256,7 +256,7 @@ def test_tsp_solver(distances):
 def main():
   #run_classifier()
   train_and_save()
-  # load_and_validate('models/fx_UB_TrainD.pkl', 'models/clf_UB_TrainD.pkl')
+  load_and_validate('models/fx_UB_TrainD_P2.pkl', 'models/clf_UB_TrainD_P2.pkl')
   # load_and_validate('models/fx_UB_TrainD_notag.pkl', 'models/clf_UB_TrainD_notag.pkl')
   # findEstimator('ft_xtractor_stemmed_words_moretrainSamples_tsp_EG.pkl')
   # test_tsp_solver([[0, 1, 100, 200], [100, 0, 1000, 1], [100, 1000, 0, 200], [100, 100, 2, 0]])
