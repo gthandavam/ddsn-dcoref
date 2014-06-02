@@ -4,7 +4,6 @@ import os
 import random, math
 import shutil
 
-
 def generateDisplayFile():
   img_height = 200
   dirName = "/home/gt/Documents/"

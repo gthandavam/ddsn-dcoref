@@ -8,9 +8,9 @@ class DotGraphBuilder:
 
   def __init__(self):
     #TODO: refactor the class based on extensible number and type of arguments per predicate
-    self.pred_props = {'shape':'diamond','style':'filled','fillcolor':'gray'}
+    self.pred_props = {'shape':'oval','style':'filled','fillcolor':'gray'}
     self.arg1_props = {}
-    self.arg2_props = {'shape':'rectangle','style':'filled','fillcolor':'goldenrod'}
+    self.arg2_props = {}
     self.edge_props = {
       'DerivationallyRelated' : {'label':'DerivationallyRelated', 'color': 'blue', 'style' : 'dotted'},
       'ArgString' : {'label':'ArgString', 'color' : 'gray'},
@@ -215,12 +215,13 @@ class DotGraphBuilder:
               if self.debug:
                 line = '{} -> {}[label=\"{}({})\"'.format(shell_node, pred_node, edge_type,arbo_edges[shell_node][pred_node])
               else:
-                line = '{} -> {}[label=\"{}\"'.format(shell_node, pred_node, edge_type)
-              for prop in self.edge_props[edge_type]:
-                if prop=="label":
-                  continue
-                line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
-              line += ']'
+                # line = '{} -> {}[label=\"{}\"'.format(shell_node, pred_node, edge_type)
+                line = '{} -> {}'.format(shell_node, pred_node)
+              # for prop in self.edge_props[edge_type]:
+              #   if prop=="label":
+              #     continue
+              #   line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
+              # line += ']'
               self.graph_lines.append(line)
             # else:
             #   #null instant edge
@@ -246,7 +247,8 @@ class DotGraphBuilder:
             if self.debug:
               line =  '{} -> {}[label=\"{}({})\"]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL',arbo_edges[arg_node][self.pred_node_list[(i,j)]])
             else:
-              line =  '{} -> {}[label={}]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL')
+              # line =  '{} -> {}[label={}]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL')
+               line =  '{} -> {}'.format(arg_node, self.pred_node_list[(i,j)])
             self.graph_lines.append(line)
 
             if len(rnodes[i][j][k].shell_coref) > 0:
@@ -258,13 +260,14 @@ class DotGraphBuilder:
               if self.debug:
                 line = '{} -> {}[label=\"{}({})\"'.format(shell_node, arg_node, edge_type,arbo_edges[shell_node][arg_node])
               else:
-                line = '{} -> {}[label=\"{}\"'.format(shell_node, arg_node, edge_type)
+                # line = '{} -> {}[label=\"{}\"'.format(shell_node, arg_node, edge_type)
+                line = '{} -> {}'.format(shell_node, arg_node)
 
-              for prop in self.edge_props[edge_type]:
-                if prop=="label":
-                  continue
-                line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
-              line += ']'
+              # for prop in self.edge_props[edge_type]:
+              #   if prop=="label":
+              #     continue
+              #   line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
+              # line += ']'
 
               self.graph_lines.append(line)
     pass
@@ -333,14 +336,15 @@ class DotGraphBuilder:
           if self.debug:
             line = '{} -> {} [label=\"{}({})\"'.format(start_node, target_node, 'CC', arbo_edges[start_node][target_node])
           else:
-            line = '{} -> {} [label=\"{}\"'.format(start_node, target_node, 'CC')
+            # line = '{} -> {} [label=\"{}\"'.format(start_node, target_node, 'CC')
+            line = '{} -> {}'.format(start_node, target_node)
 
-          for prop in self.edge_props['CC'].keys():
-            if prop=="label":
-              continue
-            line += ',{}={}'.format(prop, self.edge_props['CC'][prop])
+          # for prop in self.edge_props['CC'].keys():
+          #   if prop=="label":
+          #     continue
+          #   line += ',{}={}'.format(prop, self.edge_props['CC'][prop])
 
-          line += ']'
+          # line += ']'
 
           self.graph_lines.append(line)
 

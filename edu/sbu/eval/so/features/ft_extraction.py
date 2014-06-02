@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import  CountVectorizer
 from nltk import word_tokenize
 from nltk import PorterStemmer
 import re
-from edu.sbu.eval.so.data.prepare_data import sentSeparator, labelSeparator
+from edu.sbu.eval.so.data.prepare_data import sentSeparator, labelSeparator, predSeparator, arg1POSSeparator, arg1Separator, arg2Separator
 
 from pprint import pprint
 
@@ -13,13 +13,32 @@ stemmer = PorterStemmer()
 punc_rx = re.compile(r'[^#A-Za-z0-9]+', re.DOTALL)
 ############globals###################
 
+def get_sem_grouping(sentence):
+  ret = {}
+  pred, sentence = sentence.split(predSeparator)
+  arg1, sentence = sentence.split(arg1Separator)
+  arg1POS, sentence = sentence.split(arg1POSSeparator)
+  arg2, arg2POS = sentence.split(arg2Separator)
+
+  ret['pred'] = pred
+  ret['arg1'] = arg1
+  ret['arg1POS'] = arg1POS
+  ret['arg2'] = arg2
+  ret['arg2POS'] = arg2POS
+
+  return ret
+
 def nltk_filter(sent):
   b1, b2 = sent.split(sentSeparator)
 
   b1 = b1.rstrip()
+  b1 = get_sem_grouping(b1)
+
+  b1 = b1['pred'] + ' ' + b1['arg1'] + ' ' + b1['arg2']
 
   b2 = b2.rstrip()
-
+  b2 = get_sem_grouping(b2)
+  b2 = b2['pred'] + ' ' + b2['arg1'] + ' ' + b2['arg2']
 
   b1            = b1.lower()
   tokens        = word_tokenize(b1)
@@ -58,7 +77,26 @@ def filter_text(sent):
   # sent = sents[0] + ' ' + sents[1]
   # return sent
 
+
+def get_probability_features(sample):
+  from edu.sbu.eval.so.features.statistical_features import getArg1PredPredProb,getArg1PredPredArg1Prob
+  ret = []
+
+  sent1, sent2 = sample.split(sentSeparator)
+
+  sem_group1 = get_sem_grouping(sent1)
+  sem_group2 = get_sem_grouping(sent2)
+
+  ret.append(getArg1PredPredProb(sem_group1, sem_group2))
+  ret.append(getArg1PredPredArg1Prob(sem_group1, sem_group2))
+
+  return ret
+
+  pass
+
 def get_features(sents, vec=1):
+  from scipy.sparse import csc_matrix, hstack
+
   if vec == 1:
     vec = CountVectorizer(min_df=1, binary=True, tokenizer=word_tokenize,
                         preprocessor=filter_text, ngram_range=(1,2) )
@@ -67,6 +105,13 @@ def get_features(sents, vec=1):
     X   = vec.fit_transform(sents)
   else:
     X   = vec.transform(sents)
+
+  p_features = []
+  for sample in sents:
+    p_features.append(get_probability_features(sample))
+
+  X = hstack([X, csc_matrix(p_features)])
+
 
   #pprint(str(X))
   return vec, X

@@ -4,20 +4,27 @@ import random
 import codecs
 import numpy as np
 from scipy.stats import kendalltau as ktau
-from edu.sbu.shell.Transformer import special_predicate_processing
+from edu.sbu.shell.Transformer import special_predicate_processing, special_pp_processing
+
+from edu.sbu.eval.so.features.statistical_features import *
 
 ###Parameters
 testFileList    = 'testFilesList'
 trainFileList   = 'trainFilesList'
 devFileList     = 'devFilesList'
 negP            = 0.51 # rand >= negativeP for negative sample
-trainTSPFile    = 'TSPtrainSamples.txt'
-testTSPFile     = 'TSPtestSamples.txt'
-devTSPFile      = 'TSPdevSamples.txt'
+trainTSPFile    = '/home/gt/Documents/MacAndCheese/TSPtrainSamples.txt'
+testTSPFile     = '/home/gt/Documents/MacAndCheese/TSPtestSamples.txt'
+devTSPFile      = '/home/gt/Documents/MacAndCheese/TSPdevSamples.txt'
 
 sentSeparator   = '#SENTENCE#'
 recipeSeparator = '#RECIPE#'
 pairSeparator   = '#PAIR#'
+predSeparator   = '#PRED#'
+arg1Separator   = '#ARG1#'
+arg2Separator   = '#ARG2#'
+arg1POSSeparator= '#ARG1POS#'
+arg2POSSeparator= '#ARG2POS#'
 encoding        = 'utf-8' #encoding per website
 stopLimit       = 612 #dev parameter - to control the generation process
 labelSeparator  = '#LABEL#' # separates the block and the label
@@ -54,8 +61,8 @@ def get_tsp_experiment_data(expFile):
 
 def prepare_tsp_experiment_data(inpFileList, outFile):
 
-  # print 'data already prepared'
-  # return
+  print 'data already prepared'
+  return
 
   samples      = open(outFile, 'w')
   files        = open(inpFileList)
@@ -67,7 +74,7 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
 
     my_separator = 'TheGT'
     sentences = []
-    sent_num = -1
+
     with open(arg_file) as f:
       lines = f.readlines()
       for i in xrange(0, len(lines), 7):
@@ -88,6 +95,7 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
           sem_group['arg2POS'] = arg2POS
 
         sem_group = special_predicate_processing(sem_group)
+        sem_group = special_pp_processing(sem_group)
 
         if(sem_group['pred'] is None):
           continue
@@ -95,16 +103,26 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
           pred = sem_group['pred']
         if(sem_group['arg1'] is None):
           arg1 = 'NULL'
+          arg1POS = 'NULL'
         else:
           arg1 = sem_group['arg1']
+          arg1POS = sem_group['arg1POS']
         if(sem_group['arg2'] is None):
           arg2 = 'NULL'
+          arg2POS = 'NULL'
         else:
-          arg2 = sem_group['arg2'] = arg2
+          arg2 = sem_group['arg2']
+          arg2POS = sem_group['arg2POS']
 
 
-        exp_line = pred + ' ' + arg1 + ' ' + arg2
+        exp_line = pred + predSeparator + arg1 + arg1Separator + arg1POS + arg1POSSeparator + arg2 + arg2Separator + arg2POS
         sentences.append(exp_line)
+
+
+        if i != 0:
+          print_probability(sem_group, prev_sem_group)
+
+        prev_sem_group = sem_group
 
     # for line in f.readlines():
     #   line = line.replace('\n', ' ')
