@@ -156,6 +156,9 @@ class WeightedGraph:
           g[node][ch] = score
           reverse_g[ch][node] = score
 
+    # if True:
+    #   return g
+
     # #len of ccs_top == len of ccs_bottom == no of ccs
     # for i in xrange(len(self.ccs_bottom)):
     #   for b in xrange(len(self.ccs_bottom[i])):
