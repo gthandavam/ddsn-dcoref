@@ -87,40 +87,37 @@ def get_probability_features(sample):
   sem_group1 = get_sem_grouping(sent1)
   sem_group2 = get_sem_grouping(sent2)
 
-
-
-
-
+#CP4
   if( getArg1PredPredProb(sem_group1, sem_group2) > getArg1PredPredProb(sem_group2,
 sem_group1)):
     ret.append(1)
   else:
     ret.append(0)
 
-  if(getArg1PredPredArg1Prob(sem_group1, sem_group2) > getArg1PredPredArg1Prob(sem_group2, sem_group1)):
-    ret.append(1)
-  else:
-    ret.append(0)
+  #CP3
+  # if(getArg1PredPredArg1Prob(sem_group1, sem_group2) > getArg1PredPredArg1Prob(sem_group2, sem_group1)):
+  #   ret.append(1)
+  # else:
+  #   ret.append(0)
 
+  #CP2
   # if(getArg1Arg2PredPredProb(sem_group1, sem_group2) > getArg1Arg2PredPredProb(sem_group2, sem_group1)):
   #   ret.append(1)
   # else:
   #   ret.append(0)
 
+  #CP1
   # if(getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2) > getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)):
   #   ret.append(1)
   # else:
   #   ret.append(0)
-
-
-
 
   return ret
 
   pass
 
 def get_features(sents, vec=1):
-  from scipy.sparse import csc_matrix, hstack
+  from scipy.sparse import csr_matrix,csc_matrix, hstack
 
   if vec == 1:
     vec = CountVectorizer(min_df=1, binary=True, tokenizer=word_tokenize,
@@ -135,11 +132,12 @@ def get_features(sents, vec=1):
   for sample in sents:
     p_features.append(get_probability_features(sample))
 
+  #To get combination of unigram, bigram and probability features
   X = hstack([X, csc_matrix(p_features)])
-
 
   #pprint(str(X))
   return vec, X
+  # return vec, csc_matrix(p_features)
 
 def test_features():
   sents = [
