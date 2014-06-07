@@ -45,9 +45,9 @@ def getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2):
   sem_group1 = process_sem_group(sem_group1)
   sem_group2 = process_sem_group(sem_group2)
   prob = recipe_stat.getArg1Arg2PredPredArg1Prob(sem_group1['arg1'], sem_group1['arg2'], sem_group1['pred'], sem_group2['pred'], sem_group2['arg1'])
-  print 'P(pred2, pred2.arg1 | pred1.arg1, pred1.arg2, pred1)'
-  if not prob is None:
-    print 1000.0 * prob
+  # print 'P(pred2, pred2.arg1 | pred1.arg1, pred1.arg2, pred1)'
+  # if not prob is None:
+  #   print 1000.0 * prob
 
   return -1000.0 * prob
   pass
@@ -59,11 +59,11 @@ def getArg1Arg2PredPredProb(sem_group1, sem_group2):
   sem_group2 = process_sem_group(sem_group2)
   prob = recipe_stat.getArg1Arg2PredPredProb(sem_group1['arg1'], sem_group1['arg2'], sem_group1['pred'], sem_group2['pred'])
 
-  print 'P(pred2 | pred1.arg1, pred1.arg2, pred1)'
+  # print 'P(pred2 | pred1.arg1, pred1.arg2, pred1)'
 
-  if not prob is None:
-    print 1000.0 * prob
-  pass
+  # if not prob is None:
+  #   print 1000.0 * prob
+  # pass
   return -1000.0 * prob
 
 def getArg1PredPredArg1Prob(sem_group1, sem_group2):
@@ -73,11 +73,11 @@ def getArg1PredPredArg1Prob(sem_group1, sem_group2):
   sem_group2 = process_sem_group(sem_group2)
   prob = recipe_stat.getArg1PredPredArg1Prob(sem_group1['arg1'], sem_group1['pred'], sem_group2['pred'], sem_group2['arg1'])
 
-  print 'P(pred2, pred2.arg1 | pred1.arg1, pred1)'
+  # print 'P(pred2, pred2.arg1 | pred1.arg1, pred1)'
 
-  if not prob is None:
-    print 1000.0 * prob
-  pass
+  # if not prob is None:
+  #   print 1000.0 * prob
+  # pass
 
   return -1000.0 * prob
 
@@ -88,10 +88,10 @@ def getArg1PredPredProb(sem_group1, sem_group2):
   sem_group2 = process_sem_group(sem_group2)
   prob = recipe_stat.getArg1PredPredProb(sem_group1['arg1'], sem_group1['pred'], sem_group2['pred'])
 
-  print 'P(pred2 | pred1.arg1, pred1)'
+  # print 'P(pred2 | pred1.arg1, pred1)'
 
-  if not prob is None:
-    print 1000.0 * prob
+  # if not prob is None:
+  #   print 1000.0 * prob
   pass
 
   return -1000.0 * prob
