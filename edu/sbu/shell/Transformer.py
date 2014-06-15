@@ -23,6 +23,7 @@ dannys-macaroni-and-cheese
 reuben-mac-and-cheese
 """
 
+recipeName = 'ChickenSalad'
 statFile = "/home/gt/Documents/RecipeStats2_init.pickle"
 statFile2 = "/home/gt/Documents/RecipeStats2.pickle"
 statFileForEval = "/home/gt/Documents/RecipeStats2_forEval.pickle"
@@ -68,7 +69,7 @@ def get_semantic_roles(recipe_file):
   #     f.write('3 ' + line)
 
 
-  swirl_file = recipe_file.replace('MacAndCheese-3-steps', 'MacAndCheese-swirl-files')
+  swirl_file = recipe_file.replace(recipeName + '-3-steps', recipeName + '-swirl-files')
   #Polina - I need to setup swirl on your mac for you to be able to run this directly
   #I had to make changes to Swirl to get it running; on top of it I have made changes to
   #get output in the required format as well; so for now we could exchange swirl output files
@@ -225,7 +226,7 @@ def make_nodes(args_file):
 
 def make_svg(gv_file):
   of_name = gv_file.replace('.gv', '.svg')
-  of_name = of_name.replace('MacAndCheese-dot-files', 'MacAndCheese-svg-files')
+  of_name = of_name.replace(recipeName + '-dot-files', recipeName + '-svg-files')
   #dot is in path
   status, output = commands.getstatusoutput('dot -Tsvg \"' + gv_file + '\" -o\"' + of_name + '\"')
 
@@ -288,9 +289,9 @@ def learnStat(useArbo):
     f.close()
   else:
     r_stats = RecipeStats2()
-    r_stats.computeStat("MacAndCheese")
+    r_stats.computeStat(recipeName)
   stat_data = []
-  for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
+  for recipe_args_file in commands.getoutput('ls /home/gt/Documents/' + recipeName + '/' + recipeName + 'Args/*.txt').split('\n'):
     i+=1
     # if i>1:
     #   break
@@ -347,7 +348,7 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False):
     r_stats.args_verb_score = r_stats.test_flag # due to some pickle bug!!!
   else:
     r_stats = RecipeStats2()
-    r_stats.computeStat("MacAndCheese")
+    r_stats.computeStat(recipeName)
   print len(r_stats.args1_args2_verb_args_score)
   print len(r_stats.args1_verb_args_score)
   # print len(r_stats.args1_args2_args_score)
@@ -356,20 +357,20 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False):
   print len(r_stats.args1_verb_verb_score)
   print len(r_stats.args1_args2_verb_verb_args1_score)
   print len(r_stats.args1_verb_verb_args1_score)
-  dirName = '/home/gt/Documents/MacAndCheese/'
+  dirName = '/home/gt/Documents/' + recipeName + '/'
   option = ""
   if len(sys.argv)>1:
     option = sys.argv[1]
   try:
-    os.makedirs(dirName+'MacAndCheese-dot-files'+option)
+    os.makedirs(dirName+recipeName + '-dot-files'+option)
   except OSError:
     pass
   try:
-    os.makedirs(dirName+'MacAndCheese-svg-files'+option)
+    os.makedirs(dirName+recipeName + '-svg-files'+option)
   except OSError:
     pass
   stat_data = []
-  for recipe_args_file in commands.getoutput('ls '+dirName+'MacAndCheeseArgs/*.txt').split('\n'):
+  for recipe_args_file in commands.getoutput('ls '+dirName + recipeName +'Args/*.txt').split('\n'):
     i+=1
     # if i>30:
     #   break
@@ -405,7 +406,7 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False):
     pnodes_resolved, rnodes_resolved, arbor_edges = connect_arbor(weighted_graph, arbor_adapter, r_stats)
     #End of MST Section
 
-    gv_file_name = recipe_args_file.replace('MacAndCheeseArgs','MacAndCheese-dot-files'+option)
+    gv_file_name = recipe_args_file.replace(recipeName +'Args',recipeName + '-dot-files'+option)
 
     gv_file_name = gv_file_name.replace('.txt', '.gv')
     try:

@@ -1,0 +1,76 @@
+Training set size 6842
+training on the data...
+Features extracted
+number of features: 5693
+TPR 0.837670384139
+FPR 0.127810650888
+Observed + 784
+Observed - 868
+prediction accuracy...
+85.5326876513
+Average KTau: 0.665298767853
+TPR 0.837670384139
+FPR 0.127810650888
+Observed + 784
+Observed - 868
+prediction accuracy...
+85.5326876513
+Average KTau: 0.665298767853
+TPR 0.837670384139
+FPR 0.127810650888
+Observed + 784
+Observed - 868
+prediction accuracy...
+85.5326876513
+Average KTau: 0.665298767853
+TPR 0.837670384139
+FPR 0.127810650888
+Observed + 784
+Observed - 868
+prediction accuracy...
+85.5326876513
+Average KTau: 0.665298767853
+TPR 0.837670384139
+FPR 0.127810650888
+Observed + 784
+Observed - 868
+prediction accuracy...
+85.5326876513
+Average KTau: 0.665298767853
+TPR 0.837670384139
+FPR 0.127810650888
+Observed + 784
+Observed - 868
+prediction accuracy...
+85.5326876513
+Average KTau: 0.665298767853
+TPR 0.837670384139
+FPR 0.127810650888
+Observed + 784
+Observed - 868
+prediction accuracy...
+85.5326876513
+Average KTau: 0.665298767853
+TPR 0.837670384139
+FPR 0.127810650888
+Observed + 784
+Observed - 868
+prediction accuracy...
+85.5326876513
+Average KTau: 0.665298767853
+TPR 0.837670384139
+FPR 0.127810650888
+Observed + 784
+Observed - 868
+prediction accuracy...
+85.5326876513
+Average KTau: 0.665298767853
+TPR 0.837670384139
+FPR 0.127810650888
+Observed + 784
+Observed - 868
+prediction accuracy...
+85.5326876513
+Average KTau: 0.665298767853
+1473.43217087 seconds
+

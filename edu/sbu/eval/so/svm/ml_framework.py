@@ -12,6 +12,7 @@ from edu.sbu.eval.so.data.prepare_data import *
 
 from edu.sbu.eval.so.features.ft_extraction import get_features
 from scipy.stats import kendalltau as ktau
+from scipy.stats.mstats import kendalltau as ktau_m
 from sklearn import svm
 from sklearn.externals import joblib
 from pprint import pprint
@@ -207,29 +208,32 @@ def load_and_validate(ft_ext_file, clf_file):
   for i in xrange(len(recipeLength)):
     itr = recipeLength[i][1]
     test_sents = sents[prevItr: prevItr + itr-1]
-    print 'Recipe No ' + str(i+1)
-    print 'Testing set size ' + str(itr)
-    print 'Number of nodes ' + str(recipeLength[i][0])
+    # print 'Recipe No ' + str(i+1)
+    # print 'Testing set size ' + str(itr)
+    # print 'Number of nodes ' + str(recipeLength[i][0])
 
     if recipeLength[i][0] > 20:
-      print 'Skipping >20 Recipe No ' + str(i + 1)
+      # print 'Skipping >20 Recipe No ' + str(i + 1)
       tspResultSet.append([])
       prevItr += itr
       continue
 
     if len(test_sents) <= 1:
-      print 'Skipping Recipe No ' + str(i + 1)
+      # print 'Skipping Recipe No ' + str(i + 1)
       tspResultSet.append([])
       prevItr += itr
       continue
     weights, pred_labels = test(test_sents, ft_xtractor, clf, labels[prevItr: prevItr + itr-1])
 
     edge_weights = tsp.pick_edge_weights(weights, pred_labels, pairs[prevItr: prevItr + itr-1], recipeLength[i][0])
-    print 'Ordering for Recipe No ' + str(i+1) + ' is '
+    # print 'Ordering for Recipe No ' + str(i+1) + ' is '
     order = test_tsp_solver(edge_weights)
-    ktau_calc = ktau(range(recipeLength[i][0]), order, False)
+    # print order
+
+    #ktau_calc = ktau(range(recipeLength[i][0]), order, True)
+    ktau_calc = ktau_m(range(recipeLength[i][0]), order, True, False)
     ktauSum += ktau_calc[0]
-    print ' tau is ' + str(ktau_calc)
+    # print ' tau is ' + str(ktau_calc)
     tspResultSet.append(order)
     prevItr += itr
 
@@ -249,13 +253,14 @@ def test_tsp_solver(distances):
   # input = tsp.prepare_tsp_solver_input(distances)
   output = tsp.tsp_dyn_solver(distances)
 
-  print 'solution'
-  pprint(output)
+  # print 'solution'
+  # pprint(output)
   return output
 
-def main():
+def main(i):
   #run_classifier()
-  train_and_save()
+  if i == 0:
+    train_and_save()
   load_and_validate('models/fx_UB_TrainD_P2.pkl', 'models/clf_UB_TrainD_P2.pkl')
   # load_and_validate('models/fx_UB_TrainD_notag.pkl', 'models/clf_UB_TrainD_notag.pkl')
   # findEstimator('ft_xtractor_stemmed_words_moretrainSamples_tsp_EG.pkl')
@@ -266,6 +271,7 @@ def main():
 if __name__ == '__main__':
   import time
   start_time = time.time()
-  main()
+  for i in range(10):
+    main(i)
   print time.time() - start_time, "seconds"
   print '#############'
