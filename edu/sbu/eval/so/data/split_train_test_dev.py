@@ -2,17 +2,18 @@ __author__ = 'gt'
 
 import commands
 from random import randint
+from edu.sbu.shell.Transformer import recipeName
 
-trainFile = 'trainFilesList'
-testFile  = 'testFilesList'
-devFile   = 'devFilesList'
+trainFile = '/home/gt/Documents/' + recipeName + '/trainFilesList'
+testFile  = '/home/gt/Documents/' + recipeName + '/testFilesList'
+devFile   = '/home/gt/Documents/' + recipeName + '/devFilesList'
 
 def split_recipes():
-  print 'files already split'
-  return
+  # print 'files already split'
+  # return
   recipes = []
   with open(trainFile, 'w') as train, open(testFile, 'w') as test, open(devFile, 'w') as dev:
-    for recipe_args_file in commands.getoutput('ls /home/gt/Documents/MacAndCheese/MacAndCheeseArgs/*.txt').split('\n'):
+    for recipe_args_file in commands.getoutput('ls /home/gt/Documents/' + recipeName + '/' + recipeName + 'Args/*.txt').split('\n'):
       recipes.append(recipe_args_file)
 
       ri = randint(1,100)

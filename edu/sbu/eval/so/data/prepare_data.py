@@ -9,13 +9,14 @@ from edu.sbu.shell.Transformer import special_predicate_processing, special_pp_p
 from edu.sbu.eval.so.features.statistical_features import *
 
 ###Parameters
-testFileList    = 'testFilesList'
-trainFileList   = 'trainFilesList'
-devFileList     = 'devFilesList'
+from edu.sbu.shell.Transformer import recipeName
+testFileList    = '/home/gt/Documents/' + recipeName + '/testFilesList'
+trainFileList   = '/home/gt/Documents/' + recipeName + '/trainFilesList'
+devFileList     = '/home/gt/Documents/' + recipeName + '/devFilesList'
 negP            = 0.51 # rand >= negativeP for negative sample
-trainTSPFile    = '/home/gt/Documents/MacAndCheese/TSPtrainSamples.txt'
-testTSPFile     = '/home/gt/Documents/MacAndCheese/TSPtestSamples.txt'
-devTSPFile      = '/home/gt/Documents/MacAndCheese/TSPdevSamples.txt'
+trainTSPFile    = '/home/gt/Documents/' + recipeName + '/TSPtrainSamples.txt'
+testTSPFile     = '/home/gt/Documents/' + recipeName + '/TSPtestSamples.txt'
+devTSPFile      = '/home/gt/Documents/' + recipeName + '/TSPdevSamples.txt'
 
 sentSeparator   = '#SENTENCE#'
 recipeSeparator = '#RECIPE#'
@@ -61,8 +62,8 @@ def get_tsp_experiment_data(expFile):
 
 def prepare_tsp_experiment_data(inpFileList, outFile):
 
-  print 'data already prepared'
-  return
+  # print 'data already prepared'
+  # return
 
   samples      = open(outFile, 'w')
   files        = open(inpFileList)

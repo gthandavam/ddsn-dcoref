@@ -24,9 +24,9 @@ reuben-mac-and-cheese
 """
 
 recipeName = 'ChickenSalad'
-statFile = "/home/gt/Documents/RecipeStats2_init.pickle"
-statFile2 = "/home/gt/Documents/RecipeStats2.pickle"
-statFileForEval = "/home/gt/Documents/RecipeStats2_forEval.pickle"
+statFile = "/home/gt/Documents/"+ recipeName + "/RecipeStats2_init.pickle"
+statFile2 = "/home/gt/Documents/" + recipeName + "/RecipeStats2.pickle"
+statFileForEval = "/home/gt/Documents/" + recipeName + "/RecipeStats2_forEval.pickle"
 
 def get_text(swirl_output):
   """

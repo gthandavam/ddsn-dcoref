@@ -1,7 +1,12 @@
 __author__ = 'gt'
 import pickle
 from nltk.stem.porter import PorterStemmer
-stat_file = '/home/gt/Documents/RecipeStats2_forEval.pickle'
+
+from edu.sbu.shell.Transformer import recipeName
+
+
+
+stat_file = '/home/gt/Documents/' + recipeName + '/RecipeStats2_forEval.pickle'
 
 with open(stat_file) as f:
   recipe_stat = pickle.load(f)
