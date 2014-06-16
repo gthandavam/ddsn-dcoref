@@ -1,0 +1,11 @@
+Training set size 9282
+training on the data...
+Features extracted
+number of features: 10356
+TPR 0.746031746032
+FPR 0.248148148148
+Observed + 1671
+Observed - 1650
+prediction accuracy...
+74.8870822042
+Average KTau: 0.565902187906

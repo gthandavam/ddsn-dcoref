@@ -271,7 +271,7 @@ def main(i):
 if __name__ == '__main__':
   import time
   start_time = time.time()
-  for i in range(10):
+  for i in range(1):
     main(i)
   print time.time() - start_time, "seconds"
   print '#############'

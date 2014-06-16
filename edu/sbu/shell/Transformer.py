@@ -23,7 +23,7 @@ dannys-macaroni-and-cheese
 reuben-mac-and-cheese
 """
 
-recipeName = 'ChickenSalad'
+recipeName = 'EggNoodles'
 statFile = "/home/gt/Documents/"+ recipeName + "/RecipeStats2_init.pickle"
 statFile2 = "/home/gt/Documents/" + recipeName + "/RecipeStats2.pickle"
 statFileForEval = "/home/gt/Documents/" + recipeName + "/RecipeStats2_forEval.pickle"
@@ -257,6 +257,7 @@ def connect_arbor(weighted_graph, arbor_adapter, r_stats):
   pass
 
 def main():
+  global recipeName
   mode = ""
   if len(sys.argv)>1:
     mode = sys.argv[1]
