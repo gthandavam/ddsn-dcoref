@@ -25,7 +25,7 @@ reuben-mac-and-cheese
 
 recipeName = 'EggNoodles'
 statFile = "/home/gt/Documents/"+ recipeName + "/RecipeStats2_init.pickle"
-statFile2 = "/home/gt/Documents/" + recipeName + "/RecipeStats2.pickle"
+statFile2 = "/home/gt/Documents/" + recipeName + "/RecipeStats2_iter.pickle"
 statFileForEval = "/home/gt/Documents/" + recipeName + "/RecipeStats2_forEval.pickle"
 
 def get_text(swirl_output):
@@ -267,7 +267,7 @@ def main():
     trans = True
   if mode=="-learn_init":
     learnStat(False)
-  elif mode=="-learn":
+  elif mode=="-learn_iter":
     learnStat(True)
   elif mode=="-run_init":
     run(statFile,0)
@@ -276,12 +276,18 @@ def main():
     # run(statFileForEval,0)
   elif mode=="-run_wt":
     run("",1)
+  # Save stat from arborescence
   elif mode=="-stat_for_eval": # will also save dot and svg files
     run(statFile,0,True,True,trans)
+  # Save stat from arborescence (sentence index based weights)
   elif mode=="-stat_for_eval_wt": # will also save dot and svg files
     run("",1,True, True,trans)
+  # Save stat from connected components
   elif mode=="-stat_for_eval_cc": # will also save dot and svg files
     run("",1,True, False,trans)
+  # Save stat from 2nd iteration of arborescence
+  elif mode=="-stat_for_eval_iter": # will also save dot and svg files
+    run(statFile2,0,True,True,trans)
   else:
     run("",0)
 
