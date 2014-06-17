@@ -261,6 +261,10 @@ def main():
   mode = ""
   if len(sys.argv)>1:
     mode = sys.argv[1]
+  # trans flag works only for -stat_for_eval*
+  trans = False
+  if len(sys.argv)>2 and sys.argv[2]=="-trans":
+    trans = True
   if mode=="-learn_init":
     learnStat(False)
   elif mode=="-learn":
@@ -273,11 +277,11 @@ def main():
   elif mode=="-run_wt":
     run("",1)
   elif mode=="-stat_for_eval": # will also save dot and svg files
-    run(statFile,0,True,True)
+    run(statFile,0,True,True,trans)
   elif mode=="-stat_for_eval_wt": # will also save dot and svg files
-    run("",1,True, True)
+    run("",1,True, True,trans)
   elif mode=="-stat_for_eval_cc": # will also save dot and svg files
-    run("",1,True, False)
+    run("",1,True, False,trans)
   else:
     run("",0)
 
@@ -338,7 +342,7 @@ def learnStat(useArbo):
   pickle.dump(r_stats,f)
   f.close()
 
-def run(stFile, Wwt, stat_for_eval=False, useArbo=False):
+def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False):
 
   #files sentence split using stanford sentence splitter - fsm based
   i=0
@@ -422,7 +426,7 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False):
     # break
   if stat_for_eval:
     # Calculate statistics
-    r_stats.calcStatFromGraph(stat_data, useArbo, True)
+    r_stats.calcStatFromGraph(stat_data, useArbo, transitive)
     print len(r_stats.args1_args2_verb_args_score)
     print len(r_stats.args1_verb_args_score)
     print len(r_stats.args1_args2_args_score)
