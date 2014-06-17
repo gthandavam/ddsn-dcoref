@@ -94,23 +94,23 @@ sem_group1)):
   else:
     ret.append(0)
 
-#CP3
-  if(getArg1PredPredArg1Prob(sem_group1, sem_group2) > getArg1PredPredArg1Prob(sem_group2, sem_group1)):
-    ret.append(1)
-  else:
-    ret.append(0)
-
-  #CP2
-  if(getArg1Arg2PredPredProb(sem_group1, sem_group2) > getArg1Arg2PredPredProb(sem_group2, sem_group1)):
-    ret.append(1)
-  else:
-    ret.append(0)
-
-  #CP1
-  if(getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2) > getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)):
-    ret.append(1)
-  else:
-    ret.append(0)
+# #CP3
+#   if(getArg1PredPredArg1Prob(sem_group1, sem_group2) > getArg1PredPredArg1Prob(sem_group2, sem_group1)):
+#     ret.append(1)
+#   else:
+#     ret.append(0)
+#
+#   #CP2
+#   if(getArg1Arg2PredPredProb(sem_group1, sem_group2) > getArg1Arg2PredPredProb(sem_group2, sem_group1)):
+#     ret.append(1)
+#   else:
+#     ret.append(0)
+#
+#   #CP1
+#   if(getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2) > getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)):
+#     ret.append(1)
+#   else:
+#     ret.append(0)
 
   return ret
 
@@ -128,12 +128,12 @@ def get_features(sents, vec=1):
   else:
     X   = vec.transform(sents)
 
-  # p_features = []
-  # for sample in sents:
-  #   p_features.append(get_probability_features(sample))
-  #
-  # #To get combination of unigram, bigram and probability features
-  # X = hstack([X, csc_matrix(p_features)])
+  p_features = []
+  for sample in sents:
+    p_features.append(get_probability_features(sample))
+
+  #To get combination of unigram, bigram and probability features
+  X = hstack([X, csc_matrix(p_features)])
 
   #pprint(str(X))
   return vec, X

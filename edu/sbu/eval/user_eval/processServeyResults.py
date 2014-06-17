@@ -2,6 +2,8 @@ __author__ = 'polina'
 
 import csv,math
 
+recipeName = 'MacAndCheese'
+
 class Eval:
 
   trust_users = {}
@@ -11,7 +13,7 @@ class Eval:
 
   def readData(self):
     self.answers = {}
-    file_name = "/home/gt/Documents/UserEvaluation-files/download_data.csv"
+    file_name = "/home/gt/Documents/UserEvaluation-files/" + recipeName + "/download_data.csv"
     f = open(file_name)
     f_csv = csv.reader(f)
     cnt=0

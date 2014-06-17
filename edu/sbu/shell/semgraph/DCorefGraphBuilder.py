@@ -166,7 +166,7 @@ class DCorefGraphBuilder:
     self.PNodes[sent_num].append(nodes['pred'])
     self.RNodes[sent_num].append([None, nodes['arg1'], nodes['arg2']])
 
-    self.capture_ingredients(nodes['pred'], nodes['arg1'], nodes['arg2'])
+    # self.capture_ingredients(nodes['pred'], nodes['arg1'], nodes['arg2'])
     # print 'Yes'
     return True
 

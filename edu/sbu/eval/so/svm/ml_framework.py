@@ -205,6 +205,8 @@ def load_and_validate(ft_ext_file, clf_file):
   prevItr = 0
   tspResultSet = []
   ktauSum = 0.0
+  global_inf_correct = 0
+  global_inf_labels = 0
   for i in xrange(len(recipeLength)):
     itr = recipeLength[i][1]
     test_sents = sents[prevItr: prevItr + itr-1]
@@ -212,14 +214,14 @@ def load_and_validate(ft_ext_file, clf_file):
     # print 'Testing set size ' + str(itr)
     # print 'Number of nodes ' + str(recipeLength[i][0])
 
-    if recipeLength[i][0] > 20:
-      # print 'Skipping >20 Recipe No ' + str(i + 1)
-      tspResultSet.append([])
-      prevItr += itr
-      continue
+    # if recipeLength[i][0] > 20:
+    #   print 'Skipping >20 Recipe No ' + str(i + 1)
+    #   tspResultSet.append([])
+    #   prevItr += itr
+    #   continue
 
     if len(test_sents) <= 1:
-      # print 'Skipping Recipe No ' + str(i + 1)
+      print 'Skipping Recipe No ' + str(i + 1)
       tspResultSet.append([])
       prevItr += itr
       continue
@@ -228,6 +230,8 @@ def load_and_validate(ft_ext_file, clf_file):
     edge_weights = tsp.pick_edge_weights(weights, pred_labels, pairs[prevItr: prevItr + itr-1], recipeLength[i][0])
     # print 'Ordering for Recipe No ' + str(i+1) + ' is '
     order = test_tsp_solver(edge_weights)
+
+    global_inf_correct, global_inf_labels = update_global_accuracy(order, global_inf_correct, global_inf_labels)
     # print order
 
     #ktau_calc = ktau(range(recipeLength[i][0]), order, True)
@@ -244,9 +248,27 @@ def load_and_validate(ft_ext_file, clf_file):
 
   print 'Average KTau: ' + str(ktauSum/len(recipeLength))
 
+  print 'global inference prediction accuracy...'
+  print str((global_inf_correct * 100.0) / global_inf_labels)
+
+  if(len(labels) != global_inf_labels):
+    print 'global_inf_labels suspicious'
+
   f.close()
 
 
+def update_global_accuracy(order, correct, total):
+  for i in xrange(len(order)):
+    for j in xrange(i+1, len(order)):
+      total += 1
+      if order[i] < order[j]:
+        correct += 1
+      if order[i] == order[j]:
+        print 'Order_i cannot be equal to Order_j'
+      pass
+
+  return correct, total
+  pass
 
 def test_tsp_solver(distances):
 

@@ -3,7 +3,8 @@ __author__ = 'gt'
 from edu.sbu.eval.user_eval.diff_edges import  common_graph_lines, diff_edges
 
 import os
-testArchive = '/home/gt/Documents/UserEvaluation/'
+recipeName = 'MacAndCheese'
+testArchive = '/home/gt/Documents/UserEvaluation/'+ recipeName + '/'
 
 if __name__ == '__main__':
   algoA = os.listdir(testArchive+'AlgoA')
