@@ -12,7 +12,7 @@ class PNode:
     self.snum = snum
     self.predicate = self.cleanse_arg(predicate)
     self.light = light
-    self.pIngs = []
+    self.pIngs = set()
     self.cc_edge = []
     self.logger = logging.getLogger('root')
     self.arg_text_for_coref = coref_text

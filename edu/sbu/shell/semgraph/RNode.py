@@ -17,7 +17,7 @@ class RNode:
     self.shell_coref = []
     self.to_delete = False
     self.is_null = is_null
-    self.argIngs = []
+    self.argIngs = set()
     self.arg_prob = arg_prob
     self.argPOS = argPOS
     self.logger = logging.getLogger('root')
