@@ -33,24 +33,38 @@ def same_list(a_list, b_list):
   pass
 
 if __name__ == '__main__':
-  a_output = '/home/gt/Documents/UserEvaluation/AlgoA/avocado-mac-and-cheese.gv'
-  b_output = '/home/gt/Documents/UserEvaluation/AlgoB/avocado-mac-and-cheese.gv'
+  import os
+  files = os.listdir('/home/gt/Documents/UserEvaluation/AlgoA/')
 
-  a_edges = []
-  b_edges = []
+  for file in files:
+    print 'processing ' + file
+    a_output = '/home/gt/Documents/UserEvaluation/AlgoA/' + file
+    b_output = '/home/gt/Documents/UserEvaluation/AlgoB/' + file
 
-  with open(a_output) as f_a:
-    a_lines =  set(f_a.readlines())
+    a_edges = []
+    b_edges = []
 
-  with open(b_output) as f_b:
-    b_lines = set(f_b.readlines())
+    with open(a_output) as f_a:
+      a_lines =  set(f_a.readlines())
 
-  a_out, b_out = diff_edges(a_lines, b_lines)
+    with open(b_output) as f_b:
+      b_lines = set(f_b.readlines())
 
-  if same_list(a_out, a_lines):
-    print 'a reconstructed'
+    a_out, b_out = diff_edges(a_lines, b_lines)
 
-  if same_list(b_out, b_lines):
-    print 'b reconstructed'
+    if(len(a_out) != len(b_out)):
+      print 'differing in length'
 
-  pass
+    a_out.sort()
+    b_out.sort()
+    for i in xrange(len(a_out)):
+      start_a = a_out[i].split('->')[0].strip()
+      start_b = b_out[i].split('->')[0].strip()
+
+      print a_out[i]
+      print b_out[i]
+      if start_a != start_b:
+        print 'different starting point for edges'
+
+
+    pass
