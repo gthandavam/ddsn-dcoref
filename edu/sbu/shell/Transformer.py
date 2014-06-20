@@ -265,6 +265,12 @@ def main():
   trans = False
   if len(sys.argv)>2 and sys.argv[2]=="-trans":
     trans = True
+
+  if len(sys.argv)>2 and sys.argv[2]!="-trans":
+    recipeName = sys.argv[2]
+
+  print 'Processing ' + recipeName
+
   if mode=="-learn_init":
     learnStat(False)
   elif mode=="-learn_iter":

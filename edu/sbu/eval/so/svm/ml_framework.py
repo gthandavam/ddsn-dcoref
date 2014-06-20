@@ -214,11 +214,11 @@ def load_and_validate(ft_ext_file, clf_file):
     # print 'Testing set size ' + str(itr)
     # print 'Number of nodes ' + str(recipeLength[i][0])
 
-    # if recipeLength[i][0] > 20:
-    #   print 'Skipping >20 Recipe No ' + str(i + 1)
-    #   tspResultSet.append([])
-    #   prevItr += itr
-    #   continue
+    if recipeLength[i][0] > 20:
+      print 'Skipping >20 Recipe No ' + str(i + 1)
+      tspResultSet.append([])
+      prevItr += itr
+      continue
 
     if len(test_sents) <= 1:
       print 'Skipping Recipe No ' + str(i + 1)
