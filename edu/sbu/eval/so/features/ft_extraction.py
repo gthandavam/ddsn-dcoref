@@ -145,10 +145,9 @@ def get_features(sents, vec=1):
   if vec == 1:
     # vec = CountVectorizer(min_df=1, binary=True, tokenizer=word_tokenize,
     #                     preprocessor=filter_text, ngram_range=(1,2) )
-    # vec = TfidfVectorizer(min_df=1, tokenizer=word_tokenize,
-    #                       preprocessor=filter_text, ngram_range=(1,2) )
-    vec = TfidfTransformer(min_df=1, tokenizer=word_tokenize,
+    vec = TfidfVectorizer(min_df=1, tokenizer=word_tokenize,
                           preprocessor=filter_text, ngram_range=(1,2) )
+
     X   = vec.fit_transform(sents)
   else:
     X   = vec.transform(sents)
