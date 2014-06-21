@@ -23,7 +23,7 @@ dannys-macaroni-and-cheese
 reuben-mac-and-cheese
 """
 
-recipeName = 'EggNoodles'
+recipeName = 'ChickenSalad'
 statFile = "/home/gt/Documents/"+ recipeName + "/RecipeStats2_init.pickle"
 statFile2 = "/home/gt/Documents/" + recipeName + "/RecipeStats2_iter.pickle"
 statFileForEval = "/home/gt/Documents/" + recipeName + "/RecipeStats2_forEval.pickle"
