@@ -23,7 +23,7 @@ dannys-macaroni-and-cheese
 reuben-mac-and-cheese
 """
 
-recipeName = 'MacAndCheese'
+recipeName = 'EggNoodles'
 statFile = "/home/gt/Documents/"+ recipeName + "/RecipeStats2_init.pickle"
 statFile2 = "/home/gt/Documents/" + recipeName + "/RecipeStats2_iter.pickle"
 statFileForEval = "/home/gt/Documents/" + recipeName + "/RecipeStats2_forEval.pickle"
@@ -264,14 +264,15 @@ def main():
   mode = ""
   if len(sys.argv)>1:
     mode = sys.argv[1]
-  # trans flag works only for -stat_for_eval*
-  trans = False
-  if len(sys.argv)>2 and sys.argv[2]=="-trans":
-    trans = True
 
-  if len(sys.argv)>2 and sys.argv[2]!="-trans":
+  if len(sys.argv)>2:
     recipeName = sys.argv[2]
 
+  # trans flag works only for -stat_for_eval*
+  trans = False
+
+  if len(sys.argv)>3 and sys.argv[3]=="-trans":
+    trans = True
 
   statFile = "/home/gt/Documents/"+ recipeName + "/RecipeStats2_init.pickle"
   statFile2 = "/home/gt/Documents/" + recipeName + "/RecipeStats2_iter.pickle"

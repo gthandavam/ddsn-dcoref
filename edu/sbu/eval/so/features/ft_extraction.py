@@ -141,6 +141,7 @@ def get_probability_features(sample):
 
 def get_features(sents, vec=1):
   from scipy.sparse import csr_matrix,csc_matrix, hstack
+  from sklearn import preprocessing
 
   if vec == 1:
     # vec = CountVectorizer(min_df=1, binary=True, tokenizer=word_tokenize,
@@ -152,6 +153,7 @@ def get_features(sents, vec=1):
   else:
     X   = vec.transform(sents)
 
+  # X = preprocessing.scale(X, with_mean=False)
   p_features = []
   for sample in sents:
     # print sample
@@ -160,7 +162,7 @@ def get_features(sents, vec=1):
   # To get combination of unigram, bigram and probability features
   X = hstack([X, csc_matrix(p_features)])
 
-  #pprint(str(X))
+  # #pprint(str(X))
   return vec, X
   # return vec, csc_matrix(p_features)
 

@@ -1,9 +1,10 @@
 __author__ = 'gt'
 
+
 import commands
 import sys
 from shutil import copyfile
-from edu.sbu.shell.Transformer import statFile, statFile2
+
 def main(num_iter, recipe):
   cmd = 'python Transformer.py -learn_init ' + recipe
   out = commands.getoutput(cmd)
@@ -14,8 +15,11 @@ def main(num_iter, recipe):
     out = commands.getoutput(cmd)
     print out
     #copying output of this iteration to be input for next iteration
+    statFile = "/home/gt/Documents/"+ recipe + "/RecipeStats2_init.pickle"
+    statFile2 = "/home/gt/Documents/" + recipe + "/RecipeStats2_iter.pickle"
     copyfile(statFile2, statFile)
 
+  # cmd = 'python Transformer.py -stat_for_eval_iter ' + recipe + '  -trans'
   cmd = 'python Transformer.py -stat_for_eval_iter ' + recipe
   out = commands.getoutput(cmd)
   print out
