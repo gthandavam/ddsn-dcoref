@@ -177,7 +177,7 @@ def special_pp_processing(sem_group):
       sem_group['arg2POS'] = None
 
 
-    mod_logger.critical(' split up as ' + arg1POS + ' and ' + arg2POS)
+    # mod_logger.critical(' split up as ' + arg1POS + ' and ' + arg2POS)
 
   return sem_group
   pass
