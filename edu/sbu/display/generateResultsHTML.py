@@ -14,6 +14,8 @@ def generateDisplayFile():
   files = os.listdir(dirName+"MacAndCheese-svg-files")
   i=0
   for fl in files:
+    if ".DS_Store" in fl:
+      continue
     i+=1
     f_txt = open(dirName+"MacAndCheese-steps/"+fl.replace(".svg",".txt"))
     txt = f_txt.read()
@@ -27,13 +29,13 @@ def generateDisplayFile():
   f.close()
 
 
-def generateEvalFile():
+def generateEvalFile(recipeName):
   img_height = 800
   recipes_per_page = 10
   pages_per_task = 1
   task_num=1
   dirName1 = "/home/gt/Documents/"
-  dirName = "/home/localdirs/NLPLab/Tools/google_appengine/projects/recipe-graphs/UserEvaluation-files/"
+  dirName = "/home/localdirs/NLPLab/Tools/google_appengine/projects/recipe-graphs/UserEvaluation-files/"+recipeName+"/"
   try:
     os.makedirs(dirName+str(task_num))
     os.makedirs(dirName+str(task_num)+"/AlgoA_svg")
@@ -73,7 +75,7 @@ def generateEvalFile():
   for fl in files:
     txt = None
     try:
-      f_txt = open(dirName1+"MacAndCheese/MacAndCheese-steps/"+fl.replace(".svg",".txt"))
+      f_txt = open(dirName1+recipeName+"/"+recipeName+"-steps/"+fl.replace(".svg",".txt"))
       txt = f_txt.read()
       f_txt.close()
     except:
@@ -85,6 +87,7 @@ def generateEvalFile():
     if k>recipes_per_page:
       # f.write(footer.replace("---page_num---",page))
       f.write("<div><input type=\"hidden\" name=\"task_num\" value=\"{}\"></div>\n".format(task_num))
+      f.write("<div><input type=\"hidden\" name=\"recipe_type\" value=\"{}\"></div>\n".format(recipeName))
       f.write(html_footer.format(page))
       page+=1
       k=1
@@ -112,15 +115,18 @@ def generateEvalFile():
       shutil.copy(dirName+"AlgoB_svg/"+fl, dirName+str(task_num)+"/AlgoB_svg")
     except:
       pass
-    f.write(("<tr><td style=\"border-left:thin solid; border-right:thin solid;\">{}</td><td style=\"border-left:thin solid; border-right:thin solid;\"><div id='group-1'><div class=\"floating-menu\">{}</div></td><td style=\"border-left:thin solid; border-right:thin solid;\"><img height={} src=\"http://recipe-graphs.appspot.com/graph?folder={}&task_num={}&file_name={}\"></td><td><img height={} src=\"http://recipe-graphs.appspot.com/graph?folder={}&task_num={}&file_name={}\"></td></tr>\n").format(k,txt,img_height,methods[m1],task_num,fl,img_height,methods[1-m1],task_num,fl))
+    f.write(("<tr><td style=\"border-left:thin solid; border-right:thin solid;\">{}</td><td style=\"border-left:thin solid; border-right:thin solid;\"><div id='group-1'><div class=\"floating-menu\">{}</div></td><td style=\"border-left:thin solid; border-right:thin solid;\"><img height={} src=\"http://recipe-graphs.appspot.com/graph?folder={}&task_num={}&recipe_type={}&file_name={}\"></td><td><img height={} src=\"http://recipe-graphs.appspot.com/graph?folder={}&task_num={}&recipe_type={}&file_name={}\"></td></tr>\n").format(k,txt,img_height,methods[m1],task_num,recipeName,fl,img_height,methods[1-m1],task_num,recipeName,fl))
     f.write(("<tr><td colspan=2 style=\"border-left:thin solid; border-right:thin solid;\"><input type=radio id=\"graph{}\" name=\"graph{}\" value=2 checked=true>None&nbsp;&nbsp;&nbsp;&nbsp;<input type=radio id=\"graph{}\" name=\"graph{}\" value=3>Both</td><td style=\"border-left:thin solid; border-right:thin solid;\"><input type=radio name=\"graph{}\" id=\"graph{}\" value={}>Graph1</td><td style=\"border-left:thin solid; border-right:thin solid;\"><input type=radio id=\"graph{}\" name=\"graph{}\" value={}>Graph2</td></tr>\n").format(i,i,i,i,i,i,m1,i,i,1-m1))
     f.write("<tr height=10><td style=\"border-bottom:thin solid;\" colspan=10><hr><input type='hidden' name='recipe_name{}' value='{}'></td></tr>\n".format(i,r_name))
     pass
   # f.write("<tr><td colspan=4><button onClick=\"calc({});\">Submit</button></td></tr>\n".format(i-1))
   # f.write(html_footer.replace("---page_num---",page))
   f.write("<div><input type=\"hidden\" name=\"task_num\" value=\"{}\"></div>\n".format(task_num))
+  f.write("<div><input type=\"hidden\" name=\"recipe_type\" value=\"{}\"></div>\n".format(recipeName))
   f.write(html_footer.format(page))
   f.close()
 
 
-generateEvalFile()
+generateEvalFile("ChickenSalad")
+generateEvalFile("MacAndCheese")
+generateEvalFile("EggNoodles")

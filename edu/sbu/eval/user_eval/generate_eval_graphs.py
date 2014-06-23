@@ -6,8 +6,12 @@ import os
 from random import randint
 
 
-recipeName = 'MacAndCheese'
-testArchive = '/home/gt/Documents/UserEvaluation/'+ recipeName + '/'
+# recipeName = 'ChickenSalad'
+# recipeName = 'MacAndCheese'
+recipeName = 'EggNoodles'
+testArchiveOut = '/home/localdirs/NLPLab/Tools/google_appengine/projects/recipe-graphs/UserEvaluation-files/'+ recipeName + '/'
+testArchive = '/home/gt/Documents/'+recipeName+'/'+recipeName+"-dot-files"
+# testArchiveSVG = '/home/gt/Documents/'+recipeName+'/'+recipeName+"-svg-files"
 
 def make_svg(gv_file, svg_file):
   #dot is in path
@@ -21,13 +25,18 @@ def make_svg(gv_file, svg_file):
 
 
 if __name__ == '__main__':
-  algoA = os.listdir(testArchive+'AlgoA')
-  algoB = os.listdir(testArchive+'AlgoB')
+  algoA = os.listdir(testArchive+'-run_init')
+  # algoB = os.listdir(testArchive+'-run_wt')
 
   #algoA and algoB should have same length!!!
   for i in xrange(len(algoA)):
-    A_file = testArchive + '/AlgoA/' + algoA[i]
-    B_file = testArchive + '/AlgoB/' + algoB[i]
+    A_file = testArchive+'-run_init/' + algoA[i]
+    B_file = testArchive+'-run_wt/' + algoA[i]
+    try:
+      f = open(B_file)
+      f.close()
+    except:
+      continue
     with open(A_file) as f:
       a_lines = f.readlines()
 
@@ -37,14 +46,16 @@ if __name__ == '__main__':
     a_diff_b, b_diff_a = diff_edges(a_lines, b_lines)
     a_diff_b.sort()
     b_diff_a.sort()
+    if "butternut-squash-mac-and-cheese" in algoA[i]:
+      pass
 
     chosen_edge = 0
     if len(a_diff_b) > 0:
       chosen_edge = randint(0, len(a_diff_b) - 1)
 
     common = common_graph_lines(a_lines, b_lines)
-    a_out = A_file.replace('AlgoA', 'AlgoA_diff')
-    b_out = B_file.replace('AlgoB', 'AlgoB_diff')
+    a_out = testArchiveOut+'AlgoA_diff/' + algoA[i]
+    b_out = testArchiveOut+'AlgoB_diff/' + algoA[i]
     pass
 
 
@@ -52,21 +63,23 @@ if __name__ == '__main__':
     with open(a_out, 'w') as f:
       f.write('Digraph G {\n')
       for line in common:
-        if line.find('};') != -1 or line.find('Digraph') != -1:
+        if line.find('}') != -1 or line.find('Digraph') != -1:
           continue
         f.write(line)
 
-      for i in xrange(len(a_diff_b)):
-        if( i == chosen_edge):
+      for j in xrange(len(a_diff_b)):
+        if( j == chosen_edge):
           save_as_svg = True
-          f.write(a_diff_b[i].rstrip() + '[color=red]\n')
+          f.write(a_diff_b[j].rstrip() + '[color=red]\n')
         else:
-          f.write(a_diff_b[i])
+          f.write(a_diff_b[j])
 
-      f.write('};')
+      f.write('}')
 
-    a_svg = a_out.replace('AlgoA_diff', 'AlgoA_svg')
-    a_svg = a_svg.replace('.gv', '.svg')
+    # a_svg = testArchiveSVG+'-run_init/' + algoA[i]
+    # b_svg = testArchiveSVG+'-run_wt/' + algoA[i]
+    a_svg = testArchiveOut+'AlgoA_svg/' + algoA[i].replace(".gv",".svg")
+    b_svg = testArchiveOut+'AlgoB_svg/' + algoA[i].replace(".gv",".svg")
     if(save_as_svg):
       make_svg(a_out, a_svg)
 
@@ -75,21 +88,19 @@ if __name__ == '__main__':
     with open(b_out, 'w') as f:
       f.write('Digraph G {\n')
       for line in common:
-        if line.find('};') != -1 or line.find('Digraph') != -1:
+        if line.find('}') != -1 or line.find('Digraph') != -1:
           continue
         f.write(line)
 
-      for i in xrange(len(b_diff_a)):
-        if( i == chosen_edge):
+      for j in xrange(len(b_diff_a)):
+        if( j == chosen_edge):
           save_as_svg = True
-          f.write(b_diff_a[i].rstrip() + '[color=red]\n')
+          f.write(b_diff_a[j].rstrip() + '[color=red]\n')
         else:
-          f.write(b_diff_a[i])
+          f.write(b_diff_a[j])
 
-      f.write('};')
+      f.write('}')
 
-    b_svg = b_out.replace('AlgoB_diff', 'AlgoB_svg')
-    b_svg = b_svg.replace('.gv', '.svg')
     if(save_as_svg):
       make_svg(b_out, b_svg)
   pass
