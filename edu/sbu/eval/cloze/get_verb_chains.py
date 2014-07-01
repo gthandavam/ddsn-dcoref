@@ -2,24 +2,26 @@ __author__ = 'gt'
 
 from edu.sbu.shell.Transformer import special_pp_processing, special_predicate_processing
 
-'''
-task 1: Get all the verbs in a chain in the final recipe graph.
-Read .gv file and get the verbs from there
-
-1. Test set is contained in <recipe>/testFiles.txt
-2. For these recipes, identify chains having a length of at least 5 and perform
-cloze evaluation
-3. Identify all the verbs in the recipe;
-4. Try to fill in probability values for all the verbs
-5. Obtain a rank
-6. Get Recall @ N score like Jans et al 2012..,
-'''
 
 
+#params
+#########################################################################
 #Only now I realize the need to distinguish dish and recipe :)
 dishName = 'MacAndCheese'
 argsArchive = '/home/gt/Documents/' + dishName + '/' + dishName + 'Args/'
 testFileList = '/home/gt/Documents/' + dishName + '/testFilesList'
+chainLength = 5
+expName = 'stat_for_eval_iter/'
+gv_dir = '/home/gt/Documents/' + dishName + '/' + dishName + '-dot-files-' + expName
+#########################################################################
+
+def get_event_chains():
+  with open(testFileList) as f:
+    for recipe in f.readlines():
+      recipe = recipe.split('/')[-1]
+      recipe = recipe.replace('.txt', '.gv')
+
+      pass
 
 
 def get_sem_groups(args_file):
@@ -83,6 +85,7 @@ def get_verbs(dish):
 
 
 if __name__ == '__main__':
+  from EventChains import EventChains
   mc_verbs =  set(get_verbs('MacAndCheese'))
   # print len(mc_verbs)
   # print mc_verbs
@@ -96,4 +99,7 @@ if __name__ == '__main__':
   print len(set.intersection(mc_verbs, cs_verbs))
   print len(set.intersection(mc_verbs, eg_verbs))
   print len(set.intersection(eg_verbs, cs_verbs))
+
+  ec = EventChains('MacAndCheese', 'stat_for_eval_iter')
+  ec.get_verb_chains()
 

@@ -9,8 +9,8 @@ class DotGraphBuilder:
   def __init__(self):
     #TODO: refactor the class based on extensible number and type of arguments per predicate
     self.pred_props = {'shape':'oval','style':'filled','fillcolor':'gray'}
-    self.arg1_props = {}
-    self.arg2_props = {}
+    self.arg1_props = {'shape' : 'rectangle'}
+    self.arg2_props = {'shape' : 'square'}
     self.edge_props = {
       'DerivationallyRelated' : {'label':'DerivationallyRelated', 'color': 'blue', 'style' : 'dotted'},
       'ArgString' : {'label':'ArgString', 'color' : 'gray'},
