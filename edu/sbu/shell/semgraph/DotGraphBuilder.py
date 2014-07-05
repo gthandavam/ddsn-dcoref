@@ -273,6 +273,7 @@ class DotGraphBuilder:
     pass
 
   def get_header(self):
+    self.graph_lines.insert(0, 'rankdir=LR;')
     self.graph_lines.insert(0, 'Digraph G {')
 
   def get_footer(self):
