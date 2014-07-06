@@ -9,14 +9,9 @@ from edu.sbu.shell.Transformer import special_predicate_processing, special_pp_p
 from edu.sbu.eval.so.features.statistical_features import *
 
 ###Parameters
-from edu.sbu.shell.Transformer import recipeName
-testFileList    = '/home/gt/Documents/' + recipeName + '/testFilesList'
-trainFileList   = '/home/gt/Documents/' + recipeName + '/trainFilesList'
-devFileList     = '/home/gt/Documents/' + recipeName + '/devFilesList'
+
+
 negP            = 0.51 # rand >= negativeP for negative sample
-trainTSPFile    = '/home/gt/Documents/' + recipeName + '/TSPtrainSamples.txt'
-testTSPFile     = '/home/gt/Documents/' + recipeName + '/TSPtestSamples.txt'
-devTSPFile      = '/home/gt/Documents/' + recipeName + '/TSPdevSamples.txt'
 
 sentSeparator   = '#SENTENCE#'
 recipeSeparator = '#RECIPE#'
@@ -154,15 +149,17 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
   samples.close()
 
 
-def get_tsp_test_data():
+def get_tsp_test_data(recipeName):
+  testTSPFile     = '/home/gt/Documents/' + recipeName + '/TSPtestSamples.txt'
   return get_tsp_experiment_data(testTSPFile)
 
-def get_tsp_train_data():
+def get_tsp_train_data(recipeName):
+  trainTSPFile      = '/home/gt/Documents/' + recipeName + '/TSPtrainSamples.txt'
   return get_tsp_experiment_data(trainTSPFile)
 
-def get_tsp_validation_data():
+def get_tsp_validation_data(recipeName):
+  devTSPFile      = '/home/gt/Documents/' + recipeName + '/TSPdevSamples.txt'
   return get_tsp_experiment_data(devTSPFile)
-
 
 def get_stat(expFile):
   f = codecs.open(expFile, 'r')
@@ -189,6 +186,13 @@ def get_stat(expFile):
 
 
 def main():
+  recipeName = 'MacAndCheese'
+  testFileList    = '/home/gt/Documents/' + recipeName + '/testFilesList'
+  trainFileList   = '/home/gt/Documents/' + recipeName + '/trainFilesList'
+  devFileList     = '/home/gt/Documents/' + recipeName + '/devFilesList'
+  trainTSPFile      = '/home/gt/Documents/' + recipeName + '/TSPtrainSamples.txt'
+  testTSPFile     = '/home/gt/Documents/' + recipeName + '/TSPtestSamples.txt'
+  devTSPFile      = '/home/gt/Documents/' + recipeName + '/TSPdevSamples.txt'
   prepare_tsp_experiment_data(trainFileList, trainTSPFile)
   prepare_tsp_experiment_data(devFileList, devTSPFile)
   prepare_tsp_experiment_data(testFileList, testTSPFile)

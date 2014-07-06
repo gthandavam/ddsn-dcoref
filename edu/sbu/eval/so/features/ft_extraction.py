@@ -160,7 +160,9 @@ def get_features(sents, vec=1):
     p_features.append(get_probability_features(sample))
 
   # To get combination of unigram, bigram and probability features
-  X = hstack([X, csc_matrix(p_features)])
+  # X = hstack([X, csc_matrix(p_features)])
+
+  X = preprocessing.scale(X, 0, False, True, False)
 
   # #pprint(str(X))
   return vec, X

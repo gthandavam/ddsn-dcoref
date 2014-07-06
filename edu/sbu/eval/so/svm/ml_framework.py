@@ -21,25 +21,7 @@ import edu.sbu.eval.so.tsp.tsp_adapter.tsp_instance as tsp
 
 def train(sents, labels):
   ft_extractor,X = get_features(sents)
-  #cache for the kernel in MB
-  # clf            = svm.SVC(kernel='rbf', cache_size=1024, C=1000.0)
-  # clf = svm.SVC(C=0.10000000000000001, cache_size=200, class_weight=None, coef0=0.0,
-  #               degree=3, gamma=0.01, kernel='rbf', max_iter=-1, probability=False,
-  #               random_state=None, shrinking=True, tol=0.001, verbose=False
-  # )
 
-  #Tuned kernel for all words unigram, bigram
-  # clf = svm.SVC(C=1.0, cache_size=200, class_weight=None, coef0=0.0, degree=3,
-  #               gamma=0.001, kernel='rbf', max_iter=-1, probability=False,
-  #               random_state=None, shrinking=True, tol=0.001, verbose=False)
-
-  #Dummy kernel
-  # clf = svm.SVC(C=0.01, cache_size=200, class_weight=None, coef0=0.0, degree=3,
-  # gamma=1.0000000000000001e-05, kernel='linear', max_iter=-1,
-  # probability=True, random_state=None, shrinking=True, tol=0.001,
-  # verbose=False)
-
-  #Tuned Linear Kernel - Cleanse1 Exp1
   print 'Features extracted'
   clf = svm.SVC(C=1.0, cache_size=2000, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
       kernel='linear', max_iter=-1, probability=True, random_state=None,
@@ -167,9 +149,9 @@ def evaluate(observed, expected, test_sents):
 #
 #   getBestEstimator(X,labels)
 
-def train_and_save():
+def train_and_save(recipeName, expName):
   # print 'getting training data...'
-  sents, labels, pairs, recipeLength = get_tsp_train_data()
+  sents, labels, pairs, recipeLength = get_tsp_train_data(recipeName)
   # pprint(sents)
   # pprint(labels)
   print 'Training set size ' + str(len(labels))
@@ -181,10 +163,10 @@ def train_and_save():
   # joblib.dump(ft_xtractor, 'models/fx_UB_TrainD_notag.pkl')
   # joblib.dump(clf, 'models/clf_UB_TrainD_notag.pkl')
   #
-  joblib.dump(ft_xtractor, 'models/fx_UB_TrainD_P2.pkl')
-  joblib.dump(clf, 'models/clf_UB_TrainD_P2.pkl')
+  joblib.dump(ft_xtractor, 'models/ft_' + expName + '.pkl')
+  joblib.dump(clf, 'models/clf_' + expName + '.pkl')
 
-def load_and_validate(ft_ext_file, clf_file):
+def load_and_validate(ft_ext_file, clf_file, recipeName, expName):
 
   ft_xtractor = joblib.load(ft_ext_file)
   clf = joblib.load(clf_file)
@@ -193,7 +175,7 @@ def load_and_validate(ft_ext_file, clf_file):
   #valid_sents, expected_labels = get_test_data()
 
   # sents, labels, pairs, recipeLength = get_tsp_validation_data()
-  sents, labels, pairs, recipeLength = get_tsp_test_data()
+  sents, labels, pairs, recipeLength = get_tsp_test_data(recipeName)
 
   weights, pred_labels = test(sents, ft_xtractor, clf, labels)
 
@@ -243,7 +225,7 @@ def load_and_validate(ft_ext_file, clf_file):
 
   import pickle
 
-  with open('results/Test_UB_P2.pkl', 'w') as f:
+  with open('results/' + expName + '.pkl', 'w') as f:
     pickle.dump(tspResultSet, f)
 
   print 'Average KTau: ' + str(ktauSum/len(recipeLength))
@@ -279,11 +261,11 @@ def test_tsp_solver(distances):
   # pprint(output)
   return output
 
-def main(i):
+def main(i, recipeName, expName):
   #run_classifier()
   if i == 0:
-    train_and_save()
-  load_and_validate('models/fx_UB_TrainD_P2.pkl', 'models/clf_UB_TrainD_P2.pkl')
+    train_and_save(recipeName, expName)
+  load_and_validate('models/ft_' + expName + '.pkl', 'models/clf_' + expName + '.pkl', recipeName, expName)
   # load_and_validate('models/fx_UB_TrainD_notag.pkl', 'models/clf_UB_TrainD_notag.pkl')
   # findEstimator('ft_xtractor_stemmed_words_moretrainSamples_tsp_EG.pkl')
   # test_tsp_solver([[0, 1, 100, 200], [100, 0, 1000, 1], [100, 1000, 0, 200], [100, 100, 2, 0]])
@@ -292,8 +274,9 @@ def main(i):
 
 if __name__ == '__main__':
   import time
+  recipeName = 'MacAndCheese'
   start_time = time.time()
   for i in range(1):
-    main(i)
+    main(i, recipeName)
   print time.time() - start_time, "seconds"
   print '#############'

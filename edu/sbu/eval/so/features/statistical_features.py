@@ -6,6 +6,8 @@ from edu.sbu.shell.Transformer import recipeName
 
 
 
+
+
 stat_file = '/home/gt/Documents/' + recipeName + '/RecipeStats2_forEval.pickle'
 
 with open(stat_file) as f:
@@ -13,6 +15,7 @@ with open(stat_file) as f:
 
 nounPOS = ['NN', 'NNS', 'NNPS', 'NNP']
 stemmer = PorterStemmer()
+
 def getNouns(txt, txtPOS):
   ret = []
 
@@ -56,7 +59,7 @@ def getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2):
   # else:
   #   print 'None'
 
-  return -1000.0 * prob
+  return prob
   pass
 
 def getArg1Arg2PredPredProb(sem_group1, sem_group2):
@@ -73,7 +76,7 @@ def getArg1Arg2PredPredProb(sem_group1, sem_group2):
   # else:
   #   print 'None'
   # pass
-  return -1000.0 * prob
+  return prob
 
 def getArg1PredPredArg1Prob(sem_group1, sem_group2):
   '''returns P(pred2, pred2.arg1 | pred1.arg1, pred1)
@@ -90,7 +93,7 @@ def getArg1PredPredArg1Prob(sem_group1, sem_group2):
   #   print 'None'
   pass
 
-  return -1000.0 * prob
+  return prob
 
 def getArg1PredPredProb(sem_group1, sem_group2):
   '''returns P(pred2 | pred1.arg1, pred1)
@@ -107,7 +110,7 @@ def getArg1PredPredProb(sem_group1, sem_group2):
   #   print 'None'
   # pass
 
-  return -1000.0 * prob
+  return prob
 
 def get_statistics():
   with open(stat_file) as f:
