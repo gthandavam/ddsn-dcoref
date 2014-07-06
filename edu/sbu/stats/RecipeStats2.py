@@ -1189,6 +1189,15 @@ class RecipeStats2:
       return 0
     return self.log(1-float(s)/cnt)
 
+  def getVerbVerbProb(self, predicate, predicate2):
+    verb = self.stemmer.stem(predicate.predicate)
+    verb2 = self.stemmer.stem(predicate2.predicate)
+    if verb not in self.verbs_score:
+      return 0
+    if verb2 not in self.verbs_score[verb]:
+      return 0
+    return self.verbs_score[verb][verb2]
+
   def getPredPredProb(self, predicate, input_argument1, input_argument2, predicate2, input2_argument):
     if input_argument1==None:
       return 0
