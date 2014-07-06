@@ -9,8 +9,6 @@ from edu.sbu.shell.Transformer import special_predicate_processing, special_pp_p
 from edu.sbu.eval.so.features.statistical_features import *
 
 ###Parameters
-
-
 negP            = 0.51 # rand >= negativeP for negative sample
 
 sentSeparator   = '#SENTENCE#'

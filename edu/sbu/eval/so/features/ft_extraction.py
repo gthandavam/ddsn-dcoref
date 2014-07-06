@@ -77,76 +77,26 @@ def filter_text(sent):
   # sent = sents[0] + ' ' + sents[1]
   # return sent
 
-def boolean_feature_encoding(s1p, s2p):
-  ret = []
-  if( s1p == 0 ):
-    if( s2p == 0 ):
-      ret.append(0) #decision
-      ret.append(0) #decided vs undecided
-    else:
-      ret.append(0) #decision
-      ret.append(1) #decided vs undecided
-  else:
-    if( s2p == 0):
-      ret.append(1)
-      ret.append(1)
-    else:
-      if( s1p > s2p ):
-        ret.append(1)
-        ret.append(1)
-      else:
-        ret.append(0)
-        ret.append(1)
 
-    pass
-  return ret
-
-def get_probability_features(sample):
-  from edu.sbu.eval.so.features.statistical_features import getArg1PredPredProb,getArg1PredPredArg1Prob, getArg1Arg2PredPredArg1Prob, getArg1Arg2PredPredProb
-  ret = []
+def get_probability_features(sample, stats_obj):
 
   sent1, sent2 = sample.split(sentSeparator)
 
   sem_group1 = get_sem_grouping(sent1)
   sem_group2 = get_sem_grouping(sent2)
 
-  #CP4
-  s1p = getArg1PredPredProb(sem_group1, sem_group2)
-  s2p = getArg1PredPredProb(sem_group2, sem_group1)
-
-  ret.extend(boolean_feature_encoding(s1p, s2p))
+  return stats_obj.get_prob_features(sem_group1, sem_group2)
 
 
-  #CP3
-  s1p = getArg1PredPredArg1Prob(sem_group1, sem_group2)
-  s2p = getArg1PredPredArg1Prob(sem_group2, sem_group1)
-
-  ret.extend(boolean_feature_encoding(s1p, s2p))
-
-  #CP2
-  s1p = getArg1Arg2PredPredProb(sem_group1, sem_group2)
-  s2p = getArg1Arg2PredPredProb(sem_group2, sem_group1)
-
-  ret.extend(boolean_feature_encoding(s1p, s2p))
-
-  #CP1
-  s1p = getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)
-  s2p = getArg1Arg2PredPredArg1Prob(sem_group2, sem_group1)
-
-  ret.extend(boolean_feature_encoding(s1p, s2p))
-
-  return ret
-
-  pass
-
-def get_features(sents, vec=1):
+def get_features(sents, vec=1, recipeName='MacAndCheese', cp0=True, cp1=True, cp2=True, cp3=True, cp4=True):
   from scipy.sparse import csr_matrix,csc_matrix, hstack
   from sklearn import preprocessing
+  from edu.sbu.eval.so.features.statistical_features import StatFeatures
 
   if vec == 1:
     # vec = CountVectorizer(min_df=1, binary=True, tokenizer=word_tokenize,
     #                     preprocessor=filter_text, ngram_range=(1,2) )
-    vec = TfidfVectorizer(min_df=1, tokenizer=word_tokenize,
+    vec = TfidfTransformer( min_df=1, tokenizer=word_tokenize,
                           preprocessor=filter_text, ngram_range=(1,2) )
 
     X   = vec.fit_transform(sents)
@@ -154,14 +104,24 @@ def get_features(sents, vec=1):
     X   = vec.transform(sents)
 
   # X = preprocessing.scale(X, with_mean=False)
-  p_features = []
-  for sample in sents:
-    # print sample
-    p_features.append(get_probability_features(sample))
 
-  # To get combination of unigram, bigram and probability features
-  # X = hstack([X, csc_matrix(p_features)])
+  skip_stats = False
+  if(not cp0 and  not cp1 and not cp2 and not cp3 and not cp4):
+    skip_stats = True
 
+  if not skip_stats:
+    stats_obj = StatFeatures(recipeName, cp0, cp1, cp2, cp3, cp4)
+    p_features = []
+    for sample in sents:
+      # print sample
+      p_features.append(get_probability_features(sample, stats_obj))
+
+    # To get combination of unigram, bigram and probability features
+    X = hstack([X, csc_matrix(p_features)])
+
+  #   False -> not centering on mean; only option for sparse matrices
+  #   True -> center on variance
+  #   False -> no copy of data
   X = preprocessing.scale(X, 0, False, True, False)
 
   # #pprint(str(X))
