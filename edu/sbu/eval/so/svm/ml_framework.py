@@ -19,8 +19,8 @@ from pprint import pprint
 import math
 import edu.sbu.eval.so.tsp.tsp_adapter.tsp_instance as tsp
 
-def train(sents, labels):
-  ft_extractor,X = get_features(sents)
+def train(sents, labels, recipeName, cp0, cp1, cp2, cp3, cp4):
+  ft_extractor,X = get_features(sents, 1, recipeName, cp0, cp1, cp2, cp3, cp4)
 
   print 'Features extracted'
   clf = svm.SVC(C=1.0, cache_size=2000, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
@@ -52,11 +52,11 @@ def getBestEstimator(X, labels):
   print("The best classifier is: ", grid.best_estimator_)
 
 
-def test(sents, ft_extractor, clf, labels):
+def test(sents, ft_extractor, clf, labels, recipeName, cp0, cp1, cp2, cp3, cp4):
   if len(sents) <= 1:
     print 'here'
 
-  vec, X = get_features(sents, ft_extractor)
+  vec, X = get_features(sents, ft_extractor, recipeName, cp0, cp1, cp2, cp3, cp4)
 
   y = clf.predict(X)
   prob = clf.predict_proba(X)
@@ -64,7 +64,7 @@ def test(sents, ft_extractor, clf, labels):
   # return y
   return prob,y
 
-def evaluate(observed, expected, test_sents):
+def evaluate(observed, expected, test_sents, logF):
 
   if len(observed) != len(expected):
     raise 'Number of observations != Number of experiments'
@@ -91,10 +91,14 @@ def evaluate(observed, expected, test_sents):
   fpr = fpr * 1.0
   tpr = tpr / (len([x for x in expected if x == '+']))
   fpr = fpr / (len([x for x in expected if x == '-']))
-  print "TPR " + str(tpr)
-  print "FPR " + str(fpr)
-  print "Observed + " + str(len([x for x in observed if x == '+']))
-  print "Observed - " + str(len([x for x in observed if x == '-']))
+  # print "TPR " + str(tpr)
+  logF.write("TPR " + str(tpr) + "\n")
+  # print "FPR " + str(fpr)
+  logF.write("FPR " + str(fpr) + "\n")
+  # print "Observed + " + str(len([x for x in observed if x == '+']))
+  logF.write("Observed + " + str(len([x for x in observed if x == '+'])) + "\n")
+  # print "Observed - " + str(len([x for x in observed if x == '-']))
+  logF.write("Observed - " + str(len([x for x in observed if x == '-'])) + "\n")
   return ctr
 
 
@@ -149,7 +153,7 @@ def evaluate(observed, expected, test_sents):
 #
 #   getBestEstimator(X,labels)
 
-def train_and_save(recipeName, expName):
+def train_and_save(recipeName, expName, cp0, cp1, cp2, cp3, cp4, logF):
   # print 'getting training data...'
   sents, labels, pairs, recipeLength = get_tsp_train_data(recipeName)
   # pprint(sents)
@@ -157,7 +161,7 @@ def train_and_save(recipeName, expName):
   print 'Training set size ' + str(len(labels))
 
   print 'training on the data...'
-  ft_xtractor, clf = train(sents, labels)
+  ft_xtractor, clf = train(sents, labels, recipeName, cp0, cp1, cp2, cp3, cp4)
 
   print 'number of features: ' + str(len(ft_xtractor.get_feature_names()))
   # joblib.dump(ft_xtractor, 'models/fx_UB_TrainD_notag.pkl')
@@ -166,7 +170,7 @@ def train_and_save(recipeName, expName):
   joblib.dump(ft_xtractor, 'models/ft_' + expName + '.pkl')
   joblib.dump(clf, 'models/clf_' + expName + '.pkl')
 
-def load_and_validate(ft_ext_file, clf_file, recipeName, expName):
+def load_and_validate(ft_ext_file, clf_file, recipeName, expName, cp0, cp1, cp2, cp3, cp4, logF):
 
   ft_xtractor = joblib.load(ft_ext_file)
   clf = joblib.load(clf_file)
@@ -177,12 +181,14 @@ def load_and_validate(ft_ext_file, clf_file, recipeName, expName):
   # sents, labels, pairs, recipeLength = get_tsp_validation_data()
   sents, labels, pairs, recipeLength = get_tsp_test_data(recipeName)
 
-  weights, pred_labels = test(sents, ft_xtractor, clf, labels)
+  weights, pred_labels = test(sents, ft_xtractor, clf, labels, recipeName, cp0, cp1, cp2, cp3, cp4)
 
-  correct = evaluate(pred_labels, labels, sents)
+  correct = evaluate(pred_labels, labels, sents, logF)
 
-  print 'prediction accuracy...'
-  print str((correct * 100.0) / len(labels))
+  # print 'prediction accuracy...'
+  logF.write('prediction accuracy...' + '\n')
+  # print str((correct * 100.0) / len(labels))
+  logF.write(str((correct * 100.0) / len(labels)) + '\n')
 
   prevItr = 0
   tspResultSet = []
@@ -197,19 +203,21 @@ def load_and_validate(ft_ext_file, clf_file, recipeName, expName):
     # print 'Number of nodes ' + str(recipeLength[i][0])
 
     if recipeLength[i][0] > 20:
-      print 'Skipping >20 Recipe No ' + str(i + 1)
+      # print 'Skipping >20 Recipe No ' + str(i + 1)
+      logF.write('Skipping >20 Recipe No ' + str(i + 1) + '\n')
       tspResultSet.append([])
       prevItr += itr
       continue
 
     if len(test_sents) <= 1:
-      print 'Skipping Recipe No ' + str(i + 1)
+      # print 'Skipping Recipe No ' + str(i + 1)
+      logF.write('Skipping Recipe No ' + str(i + 1) + '\n')
       tspResultSet.append([])
       prevItr += itr
       continue
-    weights, pred_labels = test(test_sents, ft_xtractor, clf, labels[prevItr: prevItr + itr-1])
+    # weights, pred_labels = test(test_sents, ft_xtractor, clf, labels[prevItr: prevItr + itr-1])
 
-    edge_weights = tsp.pick_edge_weights(weights, pred_labels, pairs[prevItr: prevItr + itr-1], recipeLength[i][0])
+    edge_weights = tsp.pick_edge_weights(weights[prevItr : prevItr + itr -1], pred_labels[prevItr : prevItr + itr -1], pairs[prevItr: prevItr + itr-1], recipeLength[i][0])
     # print 'Ordering for Recipe No ' + str(i+1) + ' is '
     order = test_tsp_solver(edge_weights)
 
@@ -228,13 +236,17 @@ def load_and_validate(ft_ext_file, clf_file, recipeName, expName):
   with open('results/' + expName + '.pkl', 'w') as f:
     pickle.dump(tspResultSet, f)
 
-  print 'Average KTau: ' + str(ktauSum/len(recipeLength))
+  # print 'Average KTau: ' + str(ktauSum/len(recipeLength))
+  logF.write('Average KTau: ' + str(ktauSum/len(recipeLength)) + '\n')
 
-  print 'global inference prediction accuracy...'
-  print str((global_inf_correct * 100.0) / global_inf_labels)
+  # print 'global inference prediction accuracy...'
+  logF.write('global inference prediction accuracy...')
+  # print str((global_inf_correct * 100.0) / global_inf_labels)
+  logF.write(str((global_inf_correct * 100.0) / global_inf_labels) + '\n')
 
   if(len(labels) != global_inf_labels):
-    print 'global_inf_labels suspicious'
+    # print 'global_inf_labels suspicious'
+    logF.write('len of global_inf_labels != len of labels')
 
   f.close()
 
@@ -261,11 +273,13 @@ def test_tsp_solver(distances):
   # pprint(output)
   return output
 
-def main(i, recipeName, expName):
+def main(i, recipeName, expName, cp0, cp1, cp2, cp3, cp4, logFile):
   #run_classifier()
-  if i == 0:
-    train_and_save(recipeName, expName)
-  load_and_validate('models/ft_' + expName + '.pkl', 'models/clf_' + expName + '.pkl', recipeName, expName)
+  with open(logFile, 'w') as logF:
+    if i == 0:
+      train_and_save(recipeName, expName, cp0, cp1, cp2, cp3, cp4, logF)
+    load_and_validate('models/ft_' + expName + '.pkl', 'models/clf_' + expName + '.pkl', recipeName, expName, cp0, cp1, cp2, cp3, cp4, logF)
+
   # load_and_validate('models/fx_UB_TrainD_notag.pkl', 'models/clf_UB_TrainD_notag.pkl')
   # findEstimator('ft_xtractor_stemmed_words_moretrainSamples_tsp_EG.pkl')
   # test_tsp_solver([[0, 1, 100, 200], [100, 0, 1000, 1], [100, 1000, 0, 200], [100, 100, 2, 0]])
@@ -274,9 +288,30 @@ def main(i, recipeName, expName):
 
 if __name__ == '__main__':
   import time
-  recipeName = 'MacAndCheese'
+  import sys
+
+  if(len(sys.argv) != 7):
+    print 'ml_framework.py <recipe_name> <cp0 - 0/1> <cp1 - 0/1> <cp2 - 0/1> <cp3 - 0/1> <cp4 - 0/1>'
+    exit(1)
+
+  recipeName = sys.argv[1]
+
+  cp0 = False if sys.argv[2] == '0' else True
+  cp1 = False if sys.argv[3] == '0' else True
+  cp2 = False if sys.argv[4] == '0' else True
+  cp3 = False if sys.argv[5] == '0' else True
+  cp4 = False if sys.argv[6] == '0' else True
+
+  expName = recipeName + '_UGBG_CP_'
+  expName = expName + '0' if cp0 else expName
+  expName = expName + '1' if cp1 else expName
+  expName = expName + '2' if cp2 else expName
+  expName = expName + '3' if cp3 else expName
+  expName = expName + '4' if cp4 else expName
+
+  logFile = '/home/gt/Documents/' + recipeName + '/' + expName + '.out'
   start_time = time.time()
   for i in range(1):
-    main(i, recipeName)
+    main(i, recipeName, expName, cp0, cp1, cp2, cp3, cp4, logFile)
   print time.time() - start_time, "seconds"
   print '#############'
