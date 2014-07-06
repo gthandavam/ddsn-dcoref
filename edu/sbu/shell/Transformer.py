@@ -270,15 +270,24 @@ def main():
   if len(sys.argv)>2:
     recipeName = sys.argv[2]
 
+  if len(sys.argv) > 3:
+    expName = sys.argv[3]
+
+
+  try:
+    os.makedirs('/home/gt/Documents/' + recipeName + '/' + expName)
+  except:
+    pass
+
   # trans flag works only for -stat_for_eval*
   trans = False
 
-  if len(sys.argv)>3 and sys.argv[3]=="-trans":
+  if len(sys.argv)>4 and sys.argv[4]=="-trans":
     trans = True
 
-  statFile = "/home/gt/Documents/"+ recipeName + "/RecipeStats2_init.pickle"
-  statFile2 = "/home/gt/Documents/" + recipeName + "/RecipeStats2_iter.pickle"
-  statFileForEval = "/home/gt/Documents/" + recipeName + "/RecipeStats2_forEval.pickle"
+  statFile = "/home/gt/Documents/"+ recipeName + "/"  + expName + "/RecipeStats2_init.pickle"
+  statFile2 = "/home/gt/Documents/" + recipeName + "/" + expName + "/RecipeStats2_iter.pickle"
+  statFileForEval = "/home/gt/Documents/" + recipeName + "/" + expName + "/RecipeStats2_forEval.pickle"
 
   print 'Processing ' + recipeName
 

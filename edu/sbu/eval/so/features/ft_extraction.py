@@ -119,6 +119,7 @@ def get_features(sents, vec=1, recipeName='MacAndCheese', cp0=True, cp1=True, cp
     # To get combination of unigram, bigram and probability features
     X = hstack([X, csc_matrix(p_features)])
 
+  #   for sparse matrices can only scale with axis = 0
   #   False -> not centering on mean; only option for sparse matrices
   #   True -> center on variance
   #   False -> no copy of data
