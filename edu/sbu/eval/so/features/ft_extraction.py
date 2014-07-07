@@ -88,7 +88,7 @@ def get_probability_features(sample, stats_obj):
   return stats_obj.get_prob_features(sem_group1, sem_group2)
 
 
-def get_features(sents, vec=1, recipeName='MacAndCheese', cp0=True, cp1=True, cp2=True, cp3=True, cp4=True):
+def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0=True, cp1=True, cp2=True, cp3=True, cp4=True):
   from scipy.sparse import csr_matrix,csc_matrix, hstack
   from sklearn import preprocessing
   from edu.sbu.eval.so.features.statistical_features import StatFeatures
@@ -110,7 +110,7 @@ def get_features(sents, vec=1, recipeName='MacAndCheese', cp0=True, cp1=True, cp
     skip_stats = True
 
   if not skip_stats:
-    stats_obj = StatFeatures(recipeName, cp0, cp1, cp2, cp3, cp4)
+    stats_obj = StatFeatures(recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
     p_features = []
     for sample in sents:
       # print sample

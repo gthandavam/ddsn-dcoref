@@ -25,10 +25,18 @@ reuben-mac-and-cheese
 
 # recipeName = 'ChickenSalad'
 # recipeName = 'MacAndCheese'
+
+#global variables that are over-written based on command line args passed by
+#iterative_learning script
 recipeName = 'EggNoodles'
 statFile = "/home/gt/Documents/"+ recipeName + "/RecipeStats2_init.pickle"
 statFile2 = "/home/gt/Documents/" + recipeName + "/RecipeStats2_iter.pickle"
 statFileForEval = "/home/gt/Documents/" + recipeName + "/RecipeStats2_forEval.pickle"
+
+
+########################
+test_files_hash = {}
+########################
 
 def get_text(swirl_output):
   """
@@ -258,6 +266,27 @@ def connect_arbor(weighted_graph, arbor_adapter, r_stats):
   return pnodes_resolved, rnodes_resolved, arbor_edges
   pass
 
+
+
+
+def is_in_test_file_list(args_file_name):
+  recipe_name = args_file_name.split('/')[-1]
+  return recipe_name in test_files_hash.keys()
+  pass
+
+
+def load_test_files_hash(recipeName):
+  global test_files_hash
+  with open('/home/gt/Documents/' + recipeName + '/trainFilesList') as f:
+    for line in f.readlines():
+      line = line.rstrip()
+      print line.split('/')[-1]
+      test_files_hash[line.split('/')[-1]] = 1
+
+    pass
+  pass
+
+
 def main():
   global recipeName
   global statFile
@@ -269,6 +298,7 @@ def main():
 
   if len(sys.argv)>2:
     recipeName = sys.argv[2]
+    load_test_files_hash(recipeName)
 
   if len(sys.argv) > 3:
     expName = sys.argv[3]
@@ -290,6 +320,7 @@ def main():
   statFileForEval = "/home/gt/Documents/" + recipeName + "/" + expName + "/RecipeStats2_forEval.pickle"
 
   print 'Processing ' + recipeName
+  print 'Exp: ' + expName
 
   if mode=="-learn_init":
     learnStat(False)
@@ -329,14 +360,16 @@ def learnStat(useArbo):
     r_stats.computeStat(recipeName)
   stat_data = []
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/' + recipeName + '/' + recipeName + 'Args/*.txt').split('\n'):
+
+    if(not is_in_test_file_list(recipe_args_file)):
+      continue
     i+=1
+
     # if i>1:
     #   break
     # if i!=4:
     #   continue
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/chucks-favorite-mac-and-cheese.txt'
-
-
 
     mod_logger.error(recipe_args_file)
     dcoref_graph = make_nodes(recipe_args_file)
@@ -372,6 +405,7 @@ def learnStat(useArbo):
   else:
     f = open(statFile,"w")
   pickle.dump(r_stats,f)
+  print 'Recipes Processed: ' + str(i)
   f.close()
 
 def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False):
@@ -408,7 +442,14 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False):
     pass
   stat_data = []
   for recipe_args_file in commands.getoutput('ls '+dirName + recipeName +'Args/*.txt').split('\n'):
+
+
+    #we are using recipeName to mean dishName here - let's accept it for now
+    if(not is_in_test_file_list(recipe_args_file)):
+      continue
+
     i+=1
+
     # if i>30:
     #   break
     # if i!=3:
@@ -425,8 +466,8 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False):
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/healthy-creamy-mac-and-cheese.txt'
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/baked-mac-and-cheese-for-one.txt'
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/bevs-mac-and-cheese.txt'
-    if recipe_args_file == '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/home-baked-macaroni--cheese.txt':
-      continue
+    # if recipe_args_file == '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/home-baked-macaroni--cheese.txt':
+    #   continue
 
     # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/chucks-favorite-mac-and-cheese.txt'
 
@@ -470,8 +511,12 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False):
     f = open(statFileForEval,"w")
     pickle.dump(r_stats,f)
     f.close()
+
+  print 'Recipes Processed: ' + str(i)
   pass
 
 
 if __name__ == '__main__':
+
   main()
+

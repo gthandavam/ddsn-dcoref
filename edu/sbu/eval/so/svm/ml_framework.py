@@ -19,8 +19,8 @@ from pprint import pprint
 import math
 import edu.sbu.eval.so.tsp.tsp_adapter.tsp_instance as tsp
 
-def train(sents, labels, recipeName, cp0, cp1, cp2, cp3, cp4):
-  ft_extractor,X = get_features(sents, 1, recipeName, cp0, cp1, cp2, cp3, cp4)
+def train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
+  ft_extractor,X = get_features(sents, 1, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
 
   print 'Features extracted'
   clf = svm.SVC(C=1.0, cache_size=2000, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
@@ -52,11 +52,11 @@ def getBestEstimator(X, labels):
   print("The best classifier is: ", grid.best_estimator_)
 
 
-def test(sents, ft_extractor, clf, labels, recipeName, cp0, cp1, cp2, cp3, cp4):
+def test(sents, ft_extractor, clf, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
   if len(sents) <= 1:
     print 'here'
 
-  vec, X = get_features(sents, ft_extractor, recipeName, cp0, cp1, cp2, cp3, cp4)
+  vec, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
 
   y = clf.predict(X)
   prob = clf.predict_proba(X)
@@ -153,7 +153,7 @@ def evaluate(observed, expected, test_sents, logF):
 #
 #   getBestEstimator(X,labels)
 
-def train_and_save(recipeName, expName, cp0, cp1, cp2, cp3, cp4, logF):
+def train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF):
   # print 'getting training data...'
   sents, labels, pairs, recipeLength = get_tsp_train_data(recipeName)
   # pprint(sents)
@@ -161,7 +161,7 @@ def train_and_save(recipeName, expName, cp0, cp1, cp2, cp3, cp4, logF):
   print 'Training set size ' + str(len(labels))
 
   print 'training on the data...'
-  ft_xtractor, clf = train(sents, labels, recipeName, cp0, cp1, cp2, cp3, cp4)
+  ft_xtractor, clf = train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
 
   print 'number of features: ' + str(len(ft_xtractor.get_feature_names()))
   # joblib.dump(ft_xtractor, 'models/fx_UB_TrainD_notag.pkl')
@@ -170,7 +170,7 @@ def train_and_save(recipeName, expName, cp0, cp1, cp2, cp3, cp4, logF):
   joblib.dump(ft_xtractor, 'models/ft_' + expName + '.pkl')
   joblib.dump(clf, 'models/clf_' + expName + '.pkl')
 
-def load_and_validate(ft_ext_file, clf_file, recipeName, expName, cp0, cp1, cp2, cp3, cp4, logF):
+def load_and_validate(ft_ext_file, clf_file, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF):
 
   ft_xtractor = joblib.load(ft_ext_file)
   clf = joblib.load(clf_file)
@@ -181,7 +181,7 @@ def load_and_validate(ft_ext_file, clf_file, recipeName, expName, cp0, cp1, cp2,
   # sents, labels, pairs, recipeLength = get_tsp_validation_data()
   sents, labels, pairs, recipeLength = get_tsp_test_data(recipeName)
 
-  weights, pred_labels = test(sents, ft_xtractor, clf, labels, recipeName, cp0, cp1, cp2, cp3, cp4)
+  weights, pred_labels = test(sents, ft_xtractor, clf, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
 
   correct = evaluate(pred_labels, labels, sents, logF)
 
@@ -273,12 +273,12 @@ def test_tsp_solver(distances):
   # pprint(output)
   return output
 
-def main(i, recipeName, expName, cp0, cp1, cp2, cp3, cp4, logFile):
+def main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile):
   #run_classifier()
   with open(logFile, 'w') as logF:
     if i == 0:
-      train_and_save(recipeName, expName, cp0, cp1, cp2, cp3, cp4, logF)
-    load_and_validate('models/ft_' + expName + '.pkl', 'models/clf_' + expName + '.pkl', recipeName, expName, cp0, cp1, cp2, cp3, cp4, logF)
+      train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
+    load_and_validate('models/ft_' + expName + '.pkl', 'models/clf_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
 
   # load_and_validate('models/fx_UB_TrainD_notag.pkl', 'models/clf_UB_TrainD_notag.pkl')
   # findEstimator('ft_xtractor_stemmed_words_moretrainSamples_tsp_EG.pkl')
@@ -290,17 +290,18 @@ if __name__ == '__main__':
   import time
   import sys
 
-  if(len(sys.argv) != 7):
-    print 'ml_framework.py <recipe_name> <cp0 - 0/1> <cp1 - 0/1> <cp2 - 0/1> <cp3 - 0/1> <cp4 - 0/1>'
+  if(len(sys.argv) != 8):
+    print 'ml_framework.py <recipe_name> <stat_type> <cp0 - 0/1> <cp1 - 0/1> <cp2 - 0/1> <cp3 - 0/1> <cp4 - 0/1>\n stat_type is one of arbor, arbor_trans, cc, text_order'
     exit(1)
 
   recipeName = sys.argv[1]
+  stat_type = sys.argv[2]
 
-  cp0 = False if sys.argv[2] == '0' else True
-  cp1 = False if sys.argv[3] == '0' else True
-  cp2 = False if sys.argv[4] == '0' else True
-  cp3 = False if sys.argv[5] == '0' else True
-  cp4 = False if sys.argv[6] == '0' else True
+  cp0 = False if sys.argv[3] == '0' else True
+  cp1 = False if sys.argv[4] == '0' else True
+  cp2 = False if sys.argv[5] == '0' else True
+  cp3 = False if sys.argv[6] == '0' else True
+  cp4 = False if sys.argv[7] == '0' else True
 
   expName = recipeName + '_UGBG_CP_'
   expName = expName + '0' if cp0 else expName
@@ -312,6 +313,6 @@ if __name__ == '__main__':
   logFile = '/home/gt/Documents/' + recipeName + '/' + expName + '.out'
   start_time = time.time()
   for i in range(1):
-    main(i, recipeName, expName, cp0, cp1, cp2, cp3, cp4, logFile)
+    main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile)
   print time.time() - start_time, "seconds"
   print '#############'

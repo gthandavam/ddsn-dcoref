@@ -3,8 +3,8 @@ import pickle
 from nltk.stem.porter import PorterStemmer
 
 class StatFeatures:
-  def __init__(self, recipeName, cp0, cp1, cp2, cp3, cp4):
-    self.stat_file = '/home/gt/Documents/' + recipeName + '/RecipeStats2_forEval.pickle'
+  def __init__(self, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
+    self.stat_file = '/home/gt/Documents/' + recipeName + '/' + stat_type + '/RecipeStats2_forEval.pickle'
     self.cp0 = cp0
     self.cp1 = cp1
     self.cp2 = cp2
