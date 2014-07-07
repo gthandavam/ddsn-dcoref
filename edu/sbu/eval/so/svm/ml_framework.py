@@ -310,6 +310,8 @@ if __name__ == '__main__':
   expName = expName + '3' if cp3 else expName
   expName = expName + '4' if cp4 else expName
 
+  expName += stat_type
+
   logFile = '/home/gt/Documents/' + recipeName + '/' + expName + '.out'
   start_time = time.time()
   for i in range(1):
