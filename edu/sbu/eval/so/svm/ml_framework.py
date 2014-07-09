@@ -167,8 +167,8 @@ def train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF
   # joblib.dump(ft_xtractor, 'models/fx_UB_TrainD_notag.pkl')
   # joblib.dump(clf, 'models/clf_UB_TrainD_notag.pkl')
   #
-  joblib.dump(ft_xtractor, 'models/ft_' + expName + '.pkl')
-  joblib.dump(clf, 'models/clf_' + expName + '.pkl')
+  joblib.dump(ft_xtractor, 'models/ft_noscale_' + expName + '.pkl')
+  joblib.dump(clf, 'models/clf_noscale_' + expName + '.pkl')
 
 def load_and_validate(ft_ext_file, clf_file, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF):
 
@@ -278,7 +278,7 @@ def main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile):
   with open(logFile, 'w') as logF:
     if i == 0:
       train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
-    load_and_validate('models/ft_' + expName + '.pkl', 'models/clf_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
+    load_and_validate('models/ft_noscale_' + expName + '.pkl', 'models/clf_noscale_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
 
   # load_and_validate('models/fx_UB_TrainD_notag.pkl', 'models/clf_UB_TrainD_notag.pkl')
   # findEstimator('ft_xtractor_stemmed_words_moretrainSamples_tsp_EG.pkl')

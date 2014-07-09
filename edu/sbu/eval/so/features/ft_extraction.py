@@ -96,7 +96,7 @@ def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0
   if vec == 1:
     # vec = CountVectorizer(min_df=1, binary=True, tokenizer=word_tokenize,
     #                     preprocessor=filter_text, ngram_range=(1,2) )
-    vec = TfidfVectorizer( min_df=1, tokenizer=word_tokenize,
+    vec = TfidfVectorizer( tokenizer=word_tokenize,
                           preprocessor=filter_text, ngram_range=(1,2) )
 
     X   = vec.fit_transform(sents)
@@ -123,7 +123,7 @@ def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0
   #   False -> not centering on mean; only option for sparse matrices
   #   True -> center on variance
   #   False -> no copy of data
-  X = preprocessing.scale(X, 0, False, True, False)
+  # X = preprocessing.scale(X, 0, False, True, False)
 
   # #pprint(str(X))
   return vec, X
