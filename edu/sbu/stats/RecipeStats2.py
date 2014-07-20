@@ -923,7 +923,7 @@ class RecipeStats2:
         cnt+=1
     if s==0:
       return 0
-    return self.log(1-float(s)/cnt)
+    return self.log(float(s)/cnt)
 
   def getArg1PredPred(self, input_a1, predicate, output_predicate):
     a1s = input_a1.getNouns()
@@ -943,9 +943,9 @@ class RecipeStats2:
       if overb in self.args1_verb_verb_score[arg1][verb]:
         s+= self.args1_verb_verb_score[arg1][verb][overb]
       cnt+=1
-    if s==0:
-      return 0
-    return self.log(1-float(s)/cnt)
+    if cnt==0:
+      return -100
+    return self.log(float(s)/cnt)
 
   def getArg1PredPredArg1(self, input_a1, predicate, output_predicate, output_arg):
     a1s = input_a1.getNouns()
@@ -971,9 +971,9 @@ class RecipeStats2:
         if overb in self.args1_verb_verb_args1_score[arg1][verb] and arg in self.args1_verb_verb_args1_score[arg1][verb][overb]:
           s+= self.args1_verb_verb_args1_score[arg1][verb][overb][arg]
         cnt+=1
-    if s==0:
-      return 0
-    return self.log(1-float(s)/cnt)
+    if cnt==0:
+      return -100
+    return self.log(float(s)/cnt)
 
   def getArg1Arg2PredArg(self, input_a1, input_a2, predicate, output_a):
     a1s = input_a1.getNouns()
@@ -999,7 +999,7 @@ class RecipeStats2:
           cnt+=1
     if s==0:
       return 0
-    return self.log(1-float(s)/cnt)
+    return self.log(float(s)/cnt)
 
   def getArg1Arg2PredPred(self, input_a1, input_a2, predicate, output_predicate):
     a1s = input_a1.getNouns()
@@ -1024,9 +1024,9 @@ class RecipeStats2:
         if overb in self.args1_args2_verb_verb_score[arg1][arg2][verb]:
           s+= self.args1_args2_verb_verb_score[arg1][arg2][verb][overb]
         cnt+=1
-    if s==0:
-      return 0
-    return self.log(1-float(s)/cnt)
+    if cnt==0:
+      return -100
+    return self.log(float(s)/cnt)
 
   def getArg1Arg2PredPredArg1(self, input_a1, input_a2, predicate, output_predicate, output_argument):
     a1s = input_a1.getNouns()
@@ -1057,9 +1057,9 @@ class RecipeStats2:
           if overb in self.args1_args2_verb_verb_args1_score[arg1][arg2][verb] and arg in self.args1_args2_verb_verb_args1_score[arg1][arg2][verb][overb]:
             s+= self.args1_args2_verb_verb_args1_score[arg1][arg2][verb][overb][arg]
           cnt+=1
-    if s==0:
-      return 0
-    return self.log(1-float(s)/cnt)
+    if cnt==0:
+      return -100
+    return self.log(float(s)/cnt)
 
   def getPredOuputArgProb(self, predicate, input_argument1, input_argument2, output_argument):
     if input_argument1==None:
@@ -1068,7 +1068,7 @@ class RecipeStats2:
     # if "minutes" in nouns:
     #   return 0
     # score = self.log(1-self.getTextSimArr(predicate.getNouns(), nouns))
-    score = self.log(1-self.getTextSimArr(input_argument1.getNouns(), nouns))
+    score = self.log(self.getTextSimArr(input_argument1.getNouns(), nouns))
     if score!=0:
       return score
     # if output_argument.arg_type=="arg1":
@@ -1107,7 +1107,7 @@ class RecipeStats2:
         for arg1 in self.verb_args1_score[verb]:
           if arg1 in d:
             s +=  self.verb_args1_score[verb][arg1]
-        return self.log(1-float(s)/len(d))
+        return self.log(float(s)/len(d))
         # return math.log(1-s+0.00000001)
     return 0
 
@@ -1128,7 +1128,7 @@ class RecipeStats2:
         for arg1 in self.verb_args2_score[verb]:
           if arg1 in d:
             s +=  self.verb_args2_score[verb][arg1]
-        return self.log(1-float(s)/len(d))
+        return self.log(float(s)/len(d))
         # return math.log(1-s+0.00000001)
     return 0
 
@@ -1148,7 +1148,7 @@ class RecipeStats2:
           cnt += 1
     if s==0:
       return 0
-    return self.log(1-float(s)/cnt)
+    return self.log(float(s)/cnt)
 
   def getArg1Arg2ArgProb(self, input_argument1,input_argument2, output_argument):
     ### Compute probability of edge predicate->arg2
@@ -1172,7 +1172,7 @@ class RecipeStats2:
               cnt += 1
     if s==0:
       return 0
-    return self.log(1-float(s)/cnt)
+    return self.log(float(s)/cnt)
 
   def getArgPredProb(self, arg, pred):
     ### Compute probability of edge predicate->arg2
@@ -1187,16 +1187,16 @@ class RecipeStats2:
       cnt += 1
     if s==0:
       return 0
-    return self.log(1-float(s)/cnt)
+    return self.log(float(s)/cnt)
 
   def getVerbVerbProb(self, predicate, predicate2):
-    verb = self.stemmer.stem(predicate.predicate)
-    verb2 = self.stemmer.stem(predicate2.predicate)
+    verb = self.stemmer.stem(predicate)
+    verb2 = self.stemmer.stem(predicate2)
     if verb not in self.verbs_score:
-      return 0
+      return -100
     if verb2 not in self.verbs_score[verb]:
-      return 0
-    return self.verbs_score[verb][verb2]
+      return -100
+    return self.log(self.verbs_score[verb][verb2])
 
   def getPredPredProb(self, predicate, input_argument1, input_argument2, predicate2, input2_argument):
     if input_argument1==None:
