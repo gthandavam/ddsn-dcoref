@@ -1,6 +1,7 @@
 package edu.sbu.recipe.preprocess;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,12 +15,24 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
 
 public class PrefixI {
+  
 
   public static void main(String[] args) throws IOException {
     // TODO Auto-generated method stub
-    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/MacAndCheese/MacAndCheese-steps/ -type f");
-//    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/Coleslaw/Coleslaw-steps/ -type f");
-//    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/CheeseBurger/CheeseBurger-steps/ -type f");
+    
+
+    final String recipeName = args[0];
+    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/" + recipeName + "/" + recipeName + "-steps/ -type f");
+    
+    String outDirName = "/home/gt/Documents/" + recipeName + "/" + recipeName + "-Isteps/";
+    
+    try {
+      File outDir = new File(outDirName);
+      outDir.mkdirs();
+    } catch (Exception e) {
+      System.out.println("Exception while creating output Directory " + e.fillInStackTrace());
+    }
+    
     BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
     
     Properties props = new Properties();
@@ -36,7 +49,7 @@ public class PrefixI {
       
       List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
       
-      String treeFileName = fileName.replace("MacAndCheese-steps", "MacAndCheese-Isteps");
+      String treeFileName = fileName.replace(recipeName + "-steps", recipeName + "-Isteps");
       
       FileWriter outF = new FileWriter(treeFileName);
       
@@ -69,8 +82,6 @@ public class PrefixI {
       }
       outF.close();
     }
-
-
 
   }
 

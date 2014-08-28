@@ -4,6 +4,7 @@
 package edu.sbu.recipe.trees;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,15 +23,29 @@ import edu.stanford.nlp.trees.TreeCoreAnnotations;
 import edu.stanford.nlp.util.CoreMap;
 
 public class PrintParseTrees {
+  
+    
 
   public static void main(String[] args) throws IOException {
     // TODO Auto-generated method stub
-    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/MacAndCheese/MacAndCheese-Isteps/ -type f");
+    
+    final String recipeName = args[0];
+    
+    Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/" + recipeName + "/" + recipeName + "-Isteps/ -type f");
     BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
     
     Properties props = new Properties();
     props.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse");
     StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
+    
+    String outDirName = "/home/gt/Documents/" + recipeName + "/" + recipeName + "-Itrees/";
+    
+    try {
+      File outDir = new File(outDirName);
+      outDir.mkdirs();
+    } catch (Exception e) {
+      System.out.println("Exception while creating output Directory " + e.fillInStackTrace());
+    }
     
 //    Pattern pattern = Pattern.compile("\\[\\d*\\.\\d*\\]");
     
@@ -41,7 +56,7 @@ public class PrintParseTrees {
       pipeline.annotate(annotation);
       List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
       
-      String treeFileName = fileName.replace("MacAndCheese-Isteps", "MacAndCheese-Itrees");
+      String treeFileName = fileName.replace(recipeName + "-Isteps", recipeName + "-Itrees");
       
       FileWriter outF = new FileWriter(treeFileName);
       PrintWriter pw = new PrintWriter(outF);
