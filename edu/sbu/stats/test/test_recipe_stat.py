@@ -1,11 +1,11 @@
 __author__ = 'gt'
 
-from edu.sbu.stats.RecipeStats import RecipeStats
+from edu.sbu.stats.RecipeStats2 import RecipeStats2
 
 if __name__ == '__main__':
-  stats = RecipeStats('MacAndCheese')
-  stats.build_prob_dist()
-  stats.save_all()
+  stats = RecipeStats2()
+  stats.computeStat('ChickenSalad')
+  print stats
 
   print 'here'
   # print stats.v_prev_v_arg2_p_arg[()]

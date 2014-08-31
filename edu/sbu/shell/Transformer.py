@@ -35,7 +35,7 @@ statFileForEval = "/home/gt/Documents/" + recipeName + "/RecipeStats2_forEval.pi
 
 
 ########################
-test_files_hash = {}
+train_files_hash = {}
 ########################
 
 def get_text(swirl_output):
@@ -194,7 +194,7 @@ def special_pp_processing(sem_group):
 
 def make_nodes(args_file):
   """
-  Reads args for th recipe and builds nodes
+  Reads args for the recipe and builds nodes
   """
   dcoref_graph_builder = DCorefGraphBuilder()
   dcoref_graph_builder.PNodes.append([])
@@ -252,6 +252,7 @@ def generate_graph(pnodes_resolved, rnodes_resolved, r_stats, Wwt):
   weighted_graph.Wwt = Wwt
   weighted_graph.Warg = 1-Wwt
   g = weighted_graph.get_adj_ghost_graph('order_close_together')
+  #bug fix here - for returning the correct graph ?
   return arbor_adapter, weighted_graph
 
 def connect_arbor(weighted_graph, arbor_adapter, r_stats):
@@ -266,26 +267,22 @@ def connect_arbor(weighted_graph, arbor_adapter, r_stats):
   return pnodes_resolved, rnodes_resolved, arbor_edges
   pass
 
+def is_training_file(args_file_name):
 
-
-
-def is_in_test_file_list(args_file_name):
   recipe_name = args_file_name.split('/')[-1]
-  return recipe_name in test_files_hash.keys()
+  return recipe_name in train_files_hash.keys()
   pass
 
-
-def load_test_files_hash(recipeName):
-  global test_files_hash
+def load_train_files_hash(recipeName):
+  global train_files_hash
   with open('/home/gt/Documents/' + recipeName + '/trainFilesList') as f:
     for line in f.readlines():
       line = line.rstrip()
-      print line.split('/')[-1]
-      test_files_hash[line.split('/')[-1]] = 1
+      # print line.split('/')[-1]
+      train_files_hash[line.split('/')[-1]] = 1
 
     pass
   pass
-
 
 def main():
   global recipeName
@@ -298,7 +295,7 @@ def main():
 
   if len(sys.argv)>2:
     recipeName = sys.argv[2]
-    load_test_files_hash(recipeName)
+    load_train_files_hash(recipeName)
 
   if len(sys.argv) > 3:
     expName = sys.argv[3]
@@ -315,6 +312,13 @@ def main():
   if len(sys.argv)>4 and sys.argv[4]=="-trans":
     trans = True
 
+  iter_num = -1
+  if len(sys.argv) > 5:
+    iter_num = int(sys.argv[5])
+
+
+  print sys.argv[1] + '  ' + str(iter_num)
+
   statFile = "/home/gt/Documents/"+ recipeName + "/"  + expName + "/RecipeStats2_init.pickle"
   statFile2 = "/home/gt/Documents/" + recipeName + "/" + expName + "/RecipeStats2_iter.pickle"
   statFileForEval = "/home/gt/Documents/" + recipeName + "/" + expName + "/RecipeStats2_forEval.pickle"
@@ -323,9 +327,9 @@ def main():
   print 'Exp: ' + expName
 
   if mode=="-learn_init":
-    learnStat(False)
+    learnStat(False, iter_num)
   elif mode=="-learn_iter":
-    learnStat(True)
+    learnStat(True, iter_num)
   elif mode=="-run_init":
     run(statFile,0)
   elif mode=="-run_iter":
@@ -335,21 +339,37 @@ def main():
     run("",1)
   # Save stat from arborescence
   elif mode=="-stat_for_eval": # will also save dot and svg files
-    run(statFile,0,True,True,trans)
+    run(statFile,0,True,True,trans, iter_num)
   # Save stat from arborescence (sentence index based weights)
   elif mode=="-stat_for_eval_wt": # will also save dot and svg files
-    run("",1,True, True,trans)
+    run("",1,True, True,trans, iter_num)
   # Save stat from connected components
   elif mode=="-stat_for_eval_cc": # will also save dot and svg files
-    run("",1,True, False,trans)
+    run("",1,True, False,trans, iter_num)
   # Save stat from 2nd iteration of arborescence
   elif mode=="-stat_for_eval_iter": # will also save dot and svg files
-    run(statFile2,0,True,True,trans)
+    run(statFile2,0,True,True,trans, iter_num)
   else:
     run("",0)
 
-def learnStat(useArbo):
+def learnStat(useArbo, iter_num=-1):
   #files sentence split using stanford sentence splitter - fsm based
+
+  option = ""
+  dirName = '/home/gt/Documents/' + recipeName + '/'
+  if len(sys.argv) > 1:
+    option = sys.argv[1]
+
+  try:
+    os.makedirs(dirName+recipeName + '-dot-files'+option + 'iter' + str(iter_num))
+  except OSError:
+    pass
+
+  try:
+    os.makedirs(dirName+recipeName + '-svg-files'+option + 'iter' + str(iter_num))
+  except OSError:
+    pass
+
   i=0
   if useArbo:
     f = open(statFile)
@@ -361,7 +381,7 @@ def learnStat(useArbo):
   stat_data = []
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/' + recipeName + '/' + recipeName + 'Args/*.txt').split('\n'):
 
-    if(not is_in_test_file_list(recipe_args_file)):
+    if(not is_training_file(recipe_args_file)):
       continue
     i+=1
 
@@ -386,6 +406,21 @@ def learnStat(useArbo):
       pnodes_resolved, rnodes_resolved, arbor_edges = connect_arbor(weighted_graph, arbor_adapter, r_stats)
     #End of MST Section
 
+      dot_graph = arbor_adapter.dot_builder
+      gv_file_name = recipe_args_file.replace(recipeName +'Args',recipeName + '-dot-files'+option + 'iter' + str(iter_num))
+
+      gv_file_name = gv_file_name.replace('.txt', '.gv')
+      try:
+        dot_graph.write_gv(pnodes_resolved, rnodes_resolved, arbor_edges, gv_file_name)
+      except Exception as inst:
+        print inst.args
+        print inst.message
+        print "Error!!! 416" # temporal!!!
+        pass
+
+      make_svg(gv_file_name)
+
+
     stat_data.append([recipe_args_file, weighted_graph, arbor_adapter, arbor_edges])
 
   # Calculate statistics
@@ -408,7 +443,8 @@ def learnStat(useArbo):
   print 'Recipes Processed: ' + str(i)
   f.close()
 
-def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False):
+def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_num=-1):
+
 
   #files sentence split using stanford sentence splitter - fsm based
   i=0
@@ -433,11 +469,11 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False):
   if len(sys.argv)>1:
     option = sys.argv[1]
   try:
-    os.makedirs(dirName+recipeName + '-dot-files'+option)
+    os.makedirs(dirName+recipeName + '-dot-files'+option + 'iter' + str(iter_num))
   except OSError:
     pass
   try:
-    os.makedirs(dirName+recipeName + '-svg-files'+option)
+    os.makedirs(dirName+recipeName + '-svg-files'+option + 'iter' + str(iter_num))
   except OSError:
     pass
   stat_data = []
@@ -445,7 +481,7 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False):
 
 
     #we are using recipeName to mean dishName here - let's accept it for now
-    if(not is_in_test_file_list(recipe_args_file)):
+    if(not is_training_file(recipe_args_file)):
       continue
 
     i+=1
@@ -484,12 +520,14 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False):
     pnodes_resolved, rnodes_resolved, arbor_edges = connect_arbor(weighted_graph, arbor_adapter, r_stats)
     #End of MST Section
 
-    gv_file_name = recipe_args_file.replace(recipeName +'Args',recipeName + '-dot-files'+option)
+    gv_file_name = recipe_args_file.replace(recipeName +'Args',recipeName + '-dot-files'+ option + 'iter' +str(iter_num))
 
     gv_file_name = gv_file_name.replace('.txt', '.gv')
     try:
       dot_graph.write_gv(pnodes_resolved, rnodes_resolved, arbor_edges, gv_file_name)
-    except:
+    except Exception as inst:
+      print inst.args
+      print inst.message
       print "Error!!!" # temporal!!!
       pass
 

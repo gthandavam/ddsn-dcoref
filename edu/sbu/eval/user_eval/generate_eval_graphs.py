@@ -7,9 +7,10 @@ from random import randint
 
 
 # recipeName = 'ChickenSalad'
-# recipeName = 'MacAndCheese'
-recipeName = 'EggNoodles'
-testArchiveOut = '/home/localdirs/NLPLab/Tools/google_appengine/projects/recipe-graphs/UserEvaluation-files/'+ recipeName + '/'
+recipeName = 'MacAndCheese'
+# recipeName = 'EggNoodles'
+# testArchiveOut = '/home/localdirs/NLPLab/Tools/google_appengine/projects/recipe-graphs/UserEvaluation-files/'+ recipeName + '/'
+testArchiveOut = '/home/gt/Documents/IterGraphs/'+ recipeName + '/'
 testArchive = '/home/gt/Documents/'+recipeName+'/'+recipeName+"-dot-files"
 # testArchiveSVG = '/home/gt/Documents/'+recipeName+'/'+recipeName+"-svg-files"
 
@@ -25,18 +26,21 @@ def make_svg(gv_file, svg_file):
 
 
 if __name__ == '__main__':
-  algoA = os.listdir(testArchive+'-run_init')
+  exp1 = '-learn_iteriter1'
+  exp2 = '-learn_iteriter2'
+  algoA = os.listdir(testArchive+exp1)
   # algoB = os.listdir(testArchive+'-run_wt')
 
   #algoA and algoB should have same length!!!
   for i in xrange(len(algoA)):
-    A_file = testArchive+'-run_init/' + algoA[i]
-    B_file = testArchive+'-run_wt/' + algoA[i]
+    A_file = testArchive+exp1 + '/' + algoA[i]
+    B_file = testArchive+exp2 + '/' + algoA[i]
     try:
       f = open(B_file)
       f.close()
     except:
       continue
+
     with open(A_file) as f:
       a_lines = f.readlines()
 
@@ -46,16 +50,16 @@ if __name__ == '__main__':
     a_diff_b, b_diff_a = diff_edges(a_lines, b_lines)
     a_diff_b.sort()
     b_diff_a.sort()
-    if "butternut-squash-mac-and-cheese" in algoA[i]:
-      pass
+    # if "butternut-squash-mac-and-cheese" in algoA[i]:
+    #   pass
 
-    chosen_edge = 0
+    chosen_edge = -1
     if len(a_diff_b) > 0:
       chosen_edge = randint(0, len(a_diff_b) - 1)
 
     common = common_graph_lines(a_lines, b_lines)
-    a_out = testArchiveOut+'AlgoA_diff/' + algoA[i]
-    b_out = testArchiveOut+'AlgoB_diff/' + algoA[i]
+    a_out = testArchiveOut+'MC_1_2_diff/' + algoA[i]
+    b_out = testArchiveOut+'MC_2_1_diff/' + algoA[i]
     pass
 
 
@@ -70,6 +74,7 @@ if __name__ == '__main__':
       for j in xrange(len(a_diff_b)):
         if( j == chosen_edge):
           save_as_svg = True
+          print algoA[i] + ' difference '
           f.write(a_diff_b[j].rstrip() + '[color=red]\n')
         else:
           f.write(a_diff_b[j])
@@ -78,8 +83,8 @@ if __name__ == '__main__':
 
     # a_svg = testArchiveSVG+'-run_init/' + algoA[i]
     # b_svg = testArchiveSVG+'-run_wt/' + algoA[i]
-    a_svg = testArchiveOut+'AlgoA_svg/' + algoA[i].replace(".gv",".svg")
-    b_svg = testArchiveOut+'AlgoB_svg/' + algoA[i].replace(".gv",".svg")
+    a_svg = testArchiveOut+'MC_1_2_svg/' + algoA[i].replace(".gv",".svg")
+    b_svg = testArchiveOut+'MC_2_1_svg/' + algoA[i].replace(".gv",".svg")
     if(save_as_svg):
       make_svg(a_out, a_svg)
 
@@ -96,6 +101,7 @@ if __name__ == '__main__':
         if( j == chosen_edge):
           save_as_svg = True
           f.write(b_diff_a[j].rstrip() + '[color=red]\n')
+          print algoA[i] + ' difference '
         else:
           f.write(b_diff_a[j])
 

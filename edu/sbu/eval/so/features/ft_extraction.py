@@ -89,6 +89,7 @@ def get_probability_features(sample, stats_obj):
 
 
 def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0=True, cp1=True, cp2=True, cp3=True, cp4=True):
+  import pprint
   from scipy.sparse import csr_matrix,csc_matrix, hstack
   from sklearn import preprocessing
   from edu.sbu.eval.so.features.statistical_features import StatFeatures
@@ -124,9 +125,13 @@ def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0
   #   True -> center on variance
   #   False -> no copy of data
   # X = preprocessing.scale(X, 0, False, True, False)
+  # scaler = preprocessing.MinMaxScaler()
+  # XCopy = X.toarray()
+  # X1 = scaler.fit_transform(XCopy,y=None)
 
+  # pprint.pprint(X1)
   # #pprint(str(X))
-  return vec, X
+  return vec, csc_matrix(X)
   # return vec, csc_matrix(p_features)
 
 def test_features():

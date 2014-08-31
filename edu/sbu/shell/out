@@ -1,0 +1,2679 @@
+-learn_init  -1
+Processing BananaMuffins
+Exp: arbor
+76
+51
+51
+51
+76
+76
+76
+76
+Recipes Processed: 40
+-learn_iter  0
+Processing BananaMuffins
+Exp: arbor
+85
+49
+49
+49
+85
+85
+85
+85
+Recipes Processed: 40
+-learn_iter  1
+Processing BananaMuffins
+Exp: arbor
+85
+50
+50
+50
+85
+85
+85
+85
+Recipes Processed: 40
+-learn_iter  2
+Processing BananaMuffins
+Exp: arbor
+85
+49
+49
+49
+85
+85
+85
+85
+Recipes Processed: 40
+-stat_for_eval_iter  100
+Processing BananaMuffins
+Exp: arbor
+85
+49
+85
+85
+85
+85
+85
+50
+50
+50
+85
+85
+85
+85
+Recipes Processed: 40
+-learn_init  -1
+Processing BeefChilli
+Exp: arbor
+190
+139
+139
+139
+190
+190
+190
+190
+Recipes Processed: 131
+-learn_iter  0
+Processing BeefChilli
+Exp: arbor
+198
+136
+136
+136
+198
+198
+198
+198
+Recipes Processed: 131
+-learn_iter  1
+Processing BeefChilli
+Exp: arbor
+('T11',)
+T11
+Error!!! 416
+198
+138
+138
+138
+198
+198
+198
+198
+Recipes Processed: 131
+-learn_iter  2
+Processing BeefChilli
+Exp: arbor
+('T11',)
+T11
+Error!!! 416
+198
+136
+136
+136
+198
+198
+198
+198
+Recipes Processed: 131
+-stat_for_eval_iter  100
+Processing BeefChilli
+Exp: arbor
+198
+136
+198
+198
+198
+198
+('T11',)
+T11
+Error!!!
+198
+138
+138
+138
+198
+198
+198
+198
+Recipes Processed: 131
+-learn_init  -1
+Processing BeefMeatLoaf
+Exp: arbor
+199
+160
+160
+160
+199
+199
+199
+199
+Recipes Processed: 104
+-learn_iter  0
+Processing BeefMeatLoaf
+Exp: arbor
+214
+157
+157
+157
+214
+214
+214
+214
+Recipes Processed: 104
+-learn_iter  1
+Processing BeefMeatLoaf
+Exp: arbor
+214
+155
+155
+155
+214
+214
+214
+214
+Recipes Processed: 104
+-learn_iter  2
+Processing BeefMeatLoaf
+Exp: arbor
+214
+154
+154
+154
+214
+214
+214
+214
+Recipes Processed: 104
+-stat_for_eval_iter  100
+Processing BeefMeatLoaf
+Exp: arbor
+214
+154
+214
+214
+214
+214
+214
+155
+155
+155
+214
+214
+214
+214
+Recipes Processed: 104
+-learn_init  -1
+Processing BeefStroganoff
+Exp: arbor
+93
+78
+78
+78
+93
+93
+93
+93
+Recipes Processed: 31
+-learn_iter  0
+Processing BeefStroganoff
+Exp: arbor
+99
+73
+73
+73
+99
+99
+99
+99
+Recipes Processed: 31
+-learn_iter  1
+Processing BeefStroganoff
+Exp: arbor
+99
+74
+74
+74
+99
+99
+99
+99
+Recipes Processed: 31
+-learn_iter  2
+Processing BeefStroganoff
+Exp: arbor
+99
+74
+74
+74
+99
+99
+99
+99
+Recipes Processed: 31
+-stat_for_eval_iter  100
+Processing BeefStroganoff
+Exp: arbor
+99
+74
+99
+99
+99
+99
+99
+74
+74
+74
+99
+99
+99
+99
+Recipes Processed: 31
+-learn_init  -1
+Processing CarrotCake
+Exp: arbor
+71
+48
+48
+48
+71
+71
+71
+71
+Recipes Processed: 31
+-learn_iter  0
+Processing CarrotCake
+Exp: arbor
+80
+45
+45
+45
+80
+80
+80
+80
+Recipes Processed: 31
+-learn_iter  1
+Processing CarrotCake
+Exp: arbor
+('T12',)
+T12
+Error!!! 416
+80
+45
+45
+45
+80
+80
+80
+80
+Recipes Processed: 31
+-learn_iter  2
+Processing CarrotCake
+Exp: arbor
+80
+45
+45
+45
+80
+80
+80
+80
+Recipes Processed: 31
+-stat_for_eval_iter  100
+Processing CarrotCake
+Exp: arbor
+80
+45
+80
+80
+80
+80
+('T12',)
+T12
+Error!!!
+80
+45
+45
+45
+80
+80
+80
+80
+Recipes Processed: 31
+-learn_init  -1
+Processing CheeseBurger
+Exp: arbor
+164
+134
+134
+134
+164
+164
+164
+164
+Recipes Processed: 47
+-learn_iter  0
+Processing CheeseBurger
+Exp: arbor
+179
+131
+131
+131
+179
+179
+179
+179
+Recipes Processed: 47
+-learn_iter  1
+Processing CheeseBurger
+Exp: arbor
+179
+132
+132
+132
+179
+179
+179
+179
+Recipes Processed: 47
+-learn_iter  2
+Processing CheeseBurger
+Exp: arbor
+179
+131
+131
+131
+179
+179
+179
+179
+Recipes Processed: 47
+-stat_for_eval_iter  100
+Processing CheeseBurger
+Exp: arbor
+179
+131
+179
+179
+179
+179
+179
+132
+132
+132
+179
+179
+179
+179
+Recipes Processed: 47
+-learn_init  -1
+Processing ChickenSalad
+Exp: arbor
+287
+215
+215
+215
+287
+287
+287
+287
+Recipes Processed: 197
+-learn_iter  0
+Processing ChickenSalad
+Exp: arbor
+307
+210
+210
+210
+307
+307
+307
+307
+Recipes Processed: 197
+-learn_iter  1
+Processing ChickenSalad
+Exp: arbor
+('T11',)
+T11
+Error!!! 416
+307
+212
+212
+212
+307
+307
+307
+307
+Recipes Processed: 197
+-learn_iter  2
+Processing ChickenSalad
+Exp: arbor
+('T11',)
+T11
+Error!!! 416
+307
+215
+215
+215
+307
+307
+307
+307
+Recipes Processed: 197
+-stat_for_eval_iter  100
+Processing ChickenSalad
+Exp: arbor
+307
+215
+307
+307
+307
+307
+('T11',)
+T11
+Error!!!
+307
+213
+213
+213
+307
+307
+307
+307
+Recipes Processed: 197
+-learn_init  -1
+Processing ChickenStirFry
+Exp: arbor
+140
+92
+92
+92
+140
+140
+140
+140
+Recipes Processed: 44
+-learn_iter  0
+Processing ChickenStirFry
+Exp: arbor
+145
+91
+91
+91
+145
+145
+145
+145
+Recipes Processed: 44
+-learn_iter  1
+Processing ChickenStirFry
+Exp: arbor
+145
+92
+92
+92
+145
+145
+145
+145
+Recipes Processed: 44
+-learn_iter  2
+Processing ChickenStirFry
+Exp: arbor
+145
+92
+92
+92
+145
+145
+145
+145
+Recipes Processed: 44
+-stat_for_eval_iter  100
+Processing ChickenStirFry
+Exp: arbor
+145
+92
+145
+145
+145
+145
+145
+92
+92
+92
+145
+145
+145
+145
+Recipes Processed: 44
+-learn_init  -1
+Processing Coleslaw
+Exp: arbor
+150
+118
+118
+118
+150
+150
+150
+150
+Recipes Processed: 95
+-learn_iter  0
+Processing Coleslaw
+Exp: arbor
+157
+116
+116
+116
+157
+157
+157
+157
+Recipes Processed: 95
+-learn_iter  1
+Processing Coleslaw
+Exp: arbor
+157
+116
+116
+116
+157
+157
+157
+157
+Recipes Processed: 95
+-learn_iter  2
+Processing Coleslaw
+Exp: arbor
+157
+116
+116
+116
+157
+157
+157
+157
+Recipes Processed: 95
+-stat_for_eval_iter  100
+Processing Coleslaw
+Exp: arbor
+157
+116
+157
+157
+157
+157
+157
+116
+116
+116
+157
+157
+157
+157
+Recipes Processed: 95
+-learn_init  -1
+Processing CornChowder
+Exp: arbor
+106
+68
+68
+68
+106
+106
+106
+106
+Recipes Processed: 44
+-learn_iter  0
+Processing CornChowder
+Exp: arbor
+112
+65
+65
+65
+112
+112
+112
+112
+Recipes Processed: 44
+-learn_iter  1
+Processing CornChowder
+Exp: arbor
+112
+64
+64
+64
+112
+112
+112
+112
+Recipes Processed: 44
+-learn_iter  2
+Processing CornChowder
+Exp: arbor
+112
+64
+64
+64
+112
+112
+112
+112
+Recipes Processed: 44
+-stat_for_eval_iter  100
+Processing CornChowder
+Exp: arbor
+112
+64
+112
+112
+112
+112
+112
+64
+64
+64
+112
+112
+112
+112
+Recipes Processed: 44
+-learn_init  -1
+Processing DeviledEggs
+Exp: arbor
+102
+82
+82
+82
+102
+102
+102
+102
+Recipes Processed: 49
+-learn_iter  0
+Processing DeviledEggs
+Exp: arbor
+109
+79
+79
+79
+109
+109
+109
+109
+Recipes Processed: 49
+-learn_iter  1
+Processing DeviledEggs
+Exp: arbor
+109
+79
+79
+79
+109
+109
+109
+109
+Recipes Processed: 49
+-learn_iter  2
+Processing DeviledEggs
+Exp: arbor
+109
+79
+79
+79
+109
+109
+109
+109
+Recipes Processed: 49
+-stat_for_eval_iter  100
+Processing DeviledEggs
+Exp: arbor
+109
+79
+109
+109
+109
+109
+109
+79
+79
+79
+109
+109
+109
+109
+Recipes Processed: 49
+-learn_init  -1
+Processing EggNoodles
+Exp: arbor
+209
+189
+189
+189
+209
+209
+209
+209
+Recipes Processed: 157
+-learn_iter  0
+Processing EggNoodles
+Exp: arbor
+219
+188
+188
+188
+219
+219
+219
+219
+Recipes Processed: 157
+-learn_iter  1
+Processing EggNoodles
+Exp: arbor
+('T27',)
+T27
+Error!!! 416
+219
+188
+188
+188
+219
+219
+219
+219
+Recipes Processed: 157
+-learn_iter  2
+Processing EggNoodles
+Exp: arbor
+219
+188
+188
+188
+219
+219
+219
+219
+Recipes Processed: 157
+-stat_for_eval_iter  100
+Processing EggNoodles
+Exp: arbor
+219
+188
+219
+219
+219
+219
+('T27',)
+T27
+Error!!!
+219
+188
+188
+188
+219
+219
+219
+219
+Recipes Processed: 157
+-learn_init  -1
+Processing FrenchToast
+Exp: arbor
+96
+76
+76
+76
+96
+96
+96
+96
+Recipes Processed: 52
+-learn_iter  0
+Processing FrenchToast
+Exp: arbor
+110
+75
+75
+75
+110
+110
+110
+110
+Recipes Processed: 52
+-learn_iter  1
+Processing FrenchToast
+Exp: arbor
+110
+76
+76
+76
+110
+110
+110
+110
+Recipes Processed: 52
+-learn_iter  2
+Processing FrenchToast
+Exp: arbor
+110
+75
+75
+75
+110
+110
+110
+110
+Recipes Processed: 52
+-stat_for_eval_iter  100
+Processing FrenchToast
+Exp: arbor
+110
+75
+110
+110
+110
+110
+110
+76
+76
+76
+110
+110
+110
+110
+Recipes Processed: 52
+-learn_init  -1
+Processing MacAndCheese
+Exp: arbor
+126
+92
+92
+92
+126
+126
+126
+126
+Recipes Processed: 55
+-learn_iter  0
+Processing MacAndCheese
+Exp: arbor
+135
+89
+89
+89
+135
+135
+135
+135
+Recipes Processed: 55
+-learn_iter  1
+Processing MacAndCheese
+Exp: arbor
+135
+89
+89
+89
+135
+135
+135
+135
+Recipes Processed: 55
+-learn_iter  2
+Processing MacAndCheese
+Exp: arbor
+135
+89
+89
+89
+135
+135
+135
+135
+Recipes Processed: 55
+-stat_for_eval_iter  100
+Processing MacAndCheese
+Exp: arbor
+135
+89
+135
+135
+135
+135
+135
+89
+89
+89
+135
+135
+135
+135
+Recipes Processed: 55
+-learn_init  -1
+Processing MeatLasagna
+Exp: arbor
+158
+131
+131
+131
+158
+158
+158
+158
+Recipes Processed: 70
+-learn_iter  0
+Processing MeatLasagna
+Exp: arbor
+167
+127
+127
+127
+167
+167
+167
+167
+Recipes Processed: 70
+-learn_iter  1
+Processing MeatLasagna
+Exp: arbor
+167
+124
+124
+124
+167
+167
+167
+167
+Recipes Processed: 70
+-learn_iter  2
+Processing MeatLasagna
+Exp: arbor
+167
+124
+124
+124
+167
+167
+167
+167
+Recipes Processed: 70
+-stat_for_eval_iter  100
+Processing MeatLasagna
+Exp: arbor
+167
+124
+167
+167
+167
+167
+167
+124
+124
+124
+167
+167
+167
+167
+Recipes Processed: 70
+-learn_init  -1
+Processing PecanPie
+Exp: arbor
+101
+74
+74
+74
+101
+101
+101
+101
+Recipes Processed: 54
+-learn_iter  0
+Processing PecanPie
+Exp: arbor
+101
+65
+65
+65
+101
+101
+101
+101
+Recipes Processed: 54
+-learn_iter  1
+Processing PecanPie
+Exp: arbor
+101
+65
+65
+65
+101
+101
+101
+101
+Recipes Processed: 54
+-learn_iter  2
+Processing PecanPie
+Exp: arbor
+101
+65
+65
+65
+101
+101
+101
+101
+Recipes Processed: 54
+-stat_for_eval_iter  100
+Processing PecanPie
+Exp: arbor
+101
+65
+101
+101
+101
+101
+101
+65
+65
+65
+101
+101
+101
+101
+Recipes Processed: 54
+-learn_init  -1
+Processing PotatoSalad
+Exp: arbor
+185
+119
+119
+119
+185
+185
+185
+185
+Recipes Processed: 121
+-learn_iter  0
+Processing PotatoSalad
+Exp: arbor
+195
+113
+113
+113
+195
+195
+195
+195
+Recipes Processed: 121
+-learn_iter  1
+Processing PotatoSalad
+Exp: arbor
+('T16',)
+T16
+Error!!! 416
+195
+115
+115
+115
+195
+195
+195
+195
+Recipes Processed: 121
+-learn_iter  2
+Processing PotatoSalad
+Exp: arbor
+('T16',)
+T16
+Error!!! 416
+195
+116
+116
+116
+195
+195
+195
+195
+Recipes Processed: 121
+-stat_for_eval_iter  100
+Processing PotatoSalad
+Exp: arbor
+195
+116
+195
+195
+195
+195
+('T16',)
+T16
+Error!!!
+195
+115
+115
+115
+195
+195
+195
+195
+Recipes Processed: 121
+-learn_init  -1
+Processing PulledPork
+Exp: arbor
+147
+124
+124
+124
+147
+147
+147
+147
+Recipes Processed: 40
+-learn_iter  0
+Processing PulledPork
+Exp: arbor
+153
+123
+123
+123
+153
+153
+153
+153
+Recipes Processed: 40
+-learn_iter  1
+Processing PulledPork
+Exp: arbor
+153
+122
+122
+122
+153
+153
+153
+153
+Recipes Processed: 40
+-learn_iter  2
+Processing PulledPork
+Exp: arbor
+153
+122
+122
+122
+153
+153
+153
+153
+Recipes Processed: 40
+-stat_for_eval_iter  100
+Processing PulledPork
+Exp: arbor
+153
+122
+153
+153
+153
+153
+153
+122
+122
+122
+153
+153
+153
+153
+Recipes Processed: 40
+-learn_init  -1
+Processing PumpkinPie
+Exp: arbor
+124
+100
+100
+100
+124
+124
+124
+124
+Recipes Processed: 64
+-learn_iter  0
+Processing PumpkinPie
+Exp: arbor
+130
+94
+94
+94
+130
+130
+130
+130
+Recipes Processed: 64
+-learn_iter  1
+Processing PumpkinPie
+Exp: arbor
+130
+95
+95
+95
+130
+130
+130
+130
+Recipes Processed: 64
+-learn_iter  2
+Processing PumpkinPie
+Exp: arbor
+130
+94
+94
+94
+130
+130
+130
+130
+Recipes Processed: 64
+-stat_for_eval_iter  100
+Processing PumpkinPie
+Exp: arbor
+130
+94
+130
+130
+130
+130
+130
+95
+95
+95
+130
+130
+130
+130
+Recipes Processed: 64
+-learn_init  -1
+Processing VeggiePizza
+Exp: arbor
+182
+129
+129
+129
+182
+182
+182
+182
+Recipes Processed: 59
+-learn_iter  0
+Processing VeggiePizza
+Exp: arbor
+201
+125
+125
+125
+201
+201
+201
+201
+Recipes Processed: 59
+-learn_iter  1
+Processing VeggiePizza
+Exp: arbor
+201
+125
+125
+125
+201
+201
+201
+201
+Recipes Processed: 59
+-learn_iter  2
+Processing VeggiePizza
+Exp: arbor
+201
+125
+125
+125
+201
+201
+201
+201
+Recipes Processed: 59
+-stat_for_eval_iter  100
+Processing VeggiePizza
+Exp: arbor
+201
+125
+201
+201
+201
+201
+201
+125
+125
+125
+201
+201
+201
+201
+Recipes Processed: 59
+-learn_init  -1
+Processing BananaMuffins
+Exp: arbor
+76
+51
+51
+51
+76
+76
+76
+76
+Recipes Processed: 40
+-learn_iter  0
+Processing BananaMuffins
+Exp: arbor
+85
+49
+49
+49
+85
+85
+85
+85
+Recipes Processed: 40
+-learn_iter  1
+Processing BananaMuffins
+Exp: arbor
+85
+50
+50
+50
+85
+85
+85
+85
+Recipes Processed: 40
+-learn_iter  2
+Processing BananaMuffins
+Exp: arbor
+85
+49
+49
+49
+85
+85
+85
+85
+Recipes Processed: 40
+-stat_for_eval_iter  100
+Processing BananaMuffins
+Exp: arbor
+85
+49
+85
+85
+85
+85
+85
+50
+50
+50
+85
+85
+85
+85
+Recipes Processed: 40
+-learn_init  -1
+Processing BeefChilli
+Exp: arbor
+190
+139
+139
+139
+190
+190
+190
+190
+Recipes Processed: 131
+-learn_iter  0
+Processing BeefChilli
+Exp: arbor
+198
+136
+136
+136
+198
+198
+198
+198
+Recipes Processed: 131
+-learn_iter  1
+Processing BeefChilli
+Exp: arbor
+198
+138
+138
+138
+198
+198
+198
+198
+Recipes Processed: 131
+-learn_iter  2
+Processing BeefChilli
+Exp: arbor
+198
+136
+136
+136
+198
+198
+198
+198
+Recipes Processed: 131
+-stat_for_eval_iter  100
+Processing BeefChilli
+Exp: arbor
+198
+136
+198
+198
+198
+198
+198
+138
+138
+138
+198
+198
+198
+198
+Recipes Processed: 131
+-learn_init  -1
+Processing BeefMeatLoaf
+Exp: arbor
+199
+160
+160
+160
+199
+199
+199
+199
+Recipes Processed: 104
+-learn_iter  0
+Processing BeefMeatLoaf
+Exp: arbor
+214
+157
+157
+157
+214
+214
+214
+214
+Recipes Processed: 104
+-learn_iter  1
+Processing BeefMeatLoaf
+Exp: arbor
+214
+155
+155
+155
+214
+214
+214
+214
+Recipes Processed: 104
+-learn_iter  2
+Processing BeefMeatLoaf
+Exp: arbor
+214
+154
+154
+154
+214
+214
+214
+214
+Recipes Processed: 104
+-stat_for_eval_iter  100
+Processing BeefMeatLoaf
+Exp: arbor
+214
+154
+214
+214
+214
+214
+214
+155
+155
+155
+214
+214
+214
+214
+Recipes Processed: 104
+-learn_init  -1
+Processing BeefStroganoff
+Exp: arbor
+93
+78
+78
+78
+93
+93
+93
+93
+Recipes Processed: 31
+-learn_iter  0
+Processing BeefStroganoff
+Exp: arbor
+99
+73
+73
+73
+99
+99
+99
+99
+Recipes Processed: 31
+-learn_iter  1
+Processing BeefStroganoff
+Exp: arbor
+99
+74
+74
+74
+99
+99
+99
+99
+Recipes Processed: 31
+-learn_iter  2
+Processing BeefStroganoff
+Exp: arbor
+99
+74
+74
+74
+99
+99
+99
+99
+Recipes Processed: 31
+-stat_for_eval_iter  100
+Processing BeefStroganoff
+Exp: arbor
+99
+74
+99
+99
+99
+99
+99
+74
+74
+74
+99
+99
+99
+99
+Recipes Processed: 31
+-learn_init  -1
+Processing CarrotCake
+Exp: arbor
+71
+48
+48
+48
+71
+71
+71
+71
+Recipes Processed: 31
+-learn_iter  0
+Processing CarrotCake
+Exp: arbor
+80
+45
+45
+45
+80
+80
+80
+80
+Recipes Processed: 31
+-learn_iter  1
+Processing CarrotCake
+Exp: arbor
+80
+45
+45
+45
+80
+80
+80
+80
+Recipes Processed: 31
+-learn_iter  2
+Processing CarrotCake
+Exp: arbor
+80
+45
+45
+45
+80
+80
+80
+80
+Recipes Processed: 31
+-stat_for_eval_iter  100
+Processing CarrotCake
+Exp: arbor
+80
+45
+80
+80
+80
+80
+80
+45
+45
+45
+80
+80
+80
+80
+Recipes Processed: 31
+-learn_init  -1
+Processing CheeseBurger
+Exp: arbor
+164
+134
+134
+134
+164
+164
+164
+164
+Recipes Processed: 47
+-learn_iter  0
+Processing CheeseBurger
+Exp: arbor
+179
+131
+131
+131
+179
+179
+179
+179
+Recipes Processed: 47
+-learn_iter  1
+Processing CheeseBurger
+Exp: arbor
+179
+132
+132
+132
+179
+179
+179
+179
+Recipes Processed: 47
+-learn_iter  2
+Processing CheeseBurger
+Exp: arbor
+179
+131
+131
+131
+179
+179
+179
+179
+Recipes Processed: 47
+-stat_for_eval_iter  100
+Processing CheeseBurger
+Exp: arbor
+179
+131
+179
+179
+179
+179
+179
+132
+132
+132
+179
+179
+179
+179
+Recipes Processed: 47
+-learn_init  -1
+Processing ChickenSalad
+Exp: arbor
+287
+215
+215
+215
+287
+287
+287
+287
+Recipes Processed: 197
+-learn_iter  0
+Processing ChickenSalad
+Exp: arbor
+307
+210
+210
+210
+307
+307
+307
+307
+Recipes Processed: 197
+-learn_iter  1
+Processing ChickenSalad
+Exp: arbor
+307
+212
+212
+212
+307
+307
+307
+307
+Recipes Processed: 197
+-learn_iter  2
+Processing ChickenSalad
+Exp: arbor
+307
+215
+215
+215
+307
+307
+307
+307
+Recipes Processed: 197
+-stat_for_eval_iter  100
+Processing ChickenSalad
+Exp: arbor
+307
+215
+307
+307
+307
+307
+307
+213
+213
+213
+307
+307
+307
+307
+Recipes Processed: 197
+-learn_init  -1
+Processing ChickenStirFry
+Exp: arbor
+140
+92
+92
+92
+140
+140
+140
+140
+Recipes Processed: 44
+-learn_iter  0
+Processing ChickenStirFry
+Exp: arbor
+145
+91
+91
+91
+145
+145
+145
+145
+Recipes Processed: 44
+-learn_iter  1
+Processing ChickenStirFry
+Exp: arbor
+145
+92
+92
+92
+145
+145
+145
+145
+Recipes Processed: 44
+-learn_iter  2
+Processing ChickenStirFry
+Exp: arbor
+145
+92
+92
+92
+145
+145
+145
+145
+Recipes Processed: 44
+-stat_for_eval_iter  100
+Processing ChickenStirFry
+Exp: arbor
+145
+92
+145
+145
+145
+145
+145
+92
+92
+92
+145
+145
+145
+145
+Recipes Processed: 44
+-learn_init  -1
+Processing Coleslaw
+Exp: arbor
+150
+118
+118
+118
+150
+150
+150
+150
+Recipes Processed: 95
+-learn_iter  0
+Processing Coleslaw
+Exp: arbor
+157
+116
+116
+116
+157
+157
+157
+157
+Recipes Processed: 95
+-learn_iter  1
+Processing Coleslaw
+Exp: arbor
+157
+116
+116
+116
+157
+157
+157
+157
+Recipes Processed: 95
+-learn_iter  2
+Processing Coleslaw
+Exp: arbor
+157
+116
+116
+116
+157
+157
+157
+157
+Recipes Processed: 95
+-stat_for_eval_iter  100
+Processing Coleslaw
+Exp: arbor
+157
+116
+157
+157
+157
+157
+157
+116
+116
+116
+157
+157
+157
+157
+Recipes Processed: 95
+-learn_init  -1
+Processing CornChowder
+Exp: arbor
+106
+68
+68
+68
+106
+106
+106
+106
+Recipes Processed: 44
+-learn_iter  0
+Processing CornChowder
+Exp: arbor
+112
+65
+65
+65
+112
+112
+112
+112
+Recipes Processed: 44
+-learn_iter  1
+Processing CornChowder
+Exp: arbor
+112
+64
+64
+64
+112
+112
+112
+112
+Recipes Processed: 44
+-learn_iter  2
+Processing CornChowder
+Exp: arbor
+112
+64
+64
+64
+112
+112
+112
+112
+Recipes Processed: 44
+-stat_for_eval_iter  100
+Processing CornChowder
+Exp: arbor
+112
+64
+112
+112
+112
+112
+112
+64
+64
+64
+112
+112
+112
+112
+Recipes Processed: 44
+-learn_init  -1
+Processing DeviledEggs
+Exp: arbor
+102
+82
+82
+82
+102
+102
+102
+102
+Recipes Processed: 49
+-learn_iter  0
+Processing DeviledEggs
+Exp: arbor
+109
+79
+79
+79
+109
+109
+109
+109
+Recipes Processed: 49
+-learn_iter  1
+Processing DeviledEggs
+Exp: arbor
+109
+79
+79
+79
+109
+109
+109
+109
+Recipes Processed: 49
+-learn_iter  2
+Processing DeviledEggs
+Exp: arbor
+109
+79
+79
+79
+109
+109
+109
+109
+Recipes Processed: 49
+-stat_for_eval_iter  100
+Processing DeviledEggs
+Exp: arbor
+109
+79
+109
+109
+109
+109
+109
+79
+79
+79
+109
+109
+109
+109
+Recipes Processed: 49
+-learn_init  -1
+Processing EggNoodles
+Exp: arbor
+209
+189
+189
+189
+209
+209
+209
+209
+Recipes Processed: 157
+-learn_iter  0
+Processing EggNoodles
+Exp: arbor
+219
+188
+188
+188
+219
+219
+219
+219
+Recipes Processed: 157
+-learn_iter  1
+Processing EggNoodles
+Exp: arbor
+219
+188
+188
+188
+219
+219
+219
+219
+Recipes Processed: 157
+-learn_iter  2
+Processing EggNoodles
+Exp: arbor
+219
+188
+188
+188
+219
+219
+219
+219
+Recipes Processed: 157
+-stat_for_eval_iter  100
+Processing EggNoodles
+Exp: arbor
+219
+188
+219
+219
+219
+219
+219
+188
+188
+188
+219
+219
+219
+219
+Recipes Processed: 157
+-learn_init  -1
+Processing FrenchToast
+Exp: arbor
+96
+76
+76
+76
+96
+96
+96
+96
+Recipes Processed: 52
+-learn_iter  0
+Processing FrenchToast
+Exp: arbor
+110
+75
+75
+75
+110
+110
+110
+110
+Recipes Processed: 52
+-learn_iter  1
+Processing FrenchToast
+Exp: arbor
+110
+76
+76
+76
+110
+110
+110
+110
+Recipes Processed: 52
+-learn_iter  2
+Processing FrenchToast
+Exp: arbor
+110
+75
+75
+75
+110
+110
+110
+110
+Recipes Processed: 52
+-stat_for_eval_iter  100
+Processing FrenchToast
+Exp: arbor
+110
+75
+110
+110
+110
+110
+110
+76
+76
+76
+110
+110
+110
+110
+Recipes Processed: 52
+-learn_init  -1
+Processing MacAndCheese
+Exp: arbor
+126
+92
+92
+92
+126
+126
+126
+126
+Recipes Processed: 55
+-learn_iter  0
+Processing MacAndCheese
+Exp: arbor
+135
+89
+89
+89
+135
+135
+135
+135
+Recipes Processed: 55
+-learn_iter  1
+Processing MacAndCheese
+Exp: arbor
+135
+89
+89
+89
+135
+135
+135
+135
+Recipes Processed: 55
+-learn_iter  2
+Processing MacAndCheese
+Exp: arbor
+135
+89
+89
+89
+135
+135
+135
+135
+Recipes Processed: 55
+-stat_for_eval_iter  100
+Processing MacAndCheese
+Exp: arbor
+135
+89
+135
+135
+135
+135
+135
+89
+89
+89
+135
+135
+135
+135
+Recipes Processed: 55
+-learn_init  -1
+Processing MeatLasagna
+Exp: arbor
+158
+131
+131
+131
+158
+158
+158
+158
+Recipes Processed: 70
+-learn_iter  0
+Processing MeatLasagna
+Exp: arbor
+167
+127
+127
+127
+167
+167
+167
+167
+Recipes Processed: 70
+-learn_iter  1
+Processing MeatLasagna
+Exp: arbor
+167
+124
+124
+124
+167
+167
+167
+167
+Recipes Processed: 70
+-learn_iter  2
+Processing MeatLasagna
+Exp: arbor
+167
+124
+124
+124
+167
+167
+167
+167
+Recipes Processed: 70
+-stat_for_eval_iter  100
+Processing MeatLasagna
+Exp: arbor
+167
+124
+167
+167
+167
+167
+167
+124
+124
+124
+167
+167
+167
+167
+Recipes Processed: 70
+-learn_init  -1
+Processing PecanPie
+Exp: arbor
+101
+74
+74
+74
+101
+101
+101
+101
+Recipes Processed: 54
+-learn_iter  0
+Processing PecanPie
+Exp: arbor
+101
+65
+65
+65
+101
+101
+101
+101
+Recipes Processed: 54
+-learn_iter  1
+Processing PecanPie
+Exp: arbor
+101
+65
+65
+65
+101
+101
+101
+101
+Recipes Processed: 54
+-learn_iter  2
+Processing PecanPie
+Exp: arbor
+101
+65
+65
+65
+101
+101
+101
+101
+Recipes Processed: 54
+-stat_for_eval_iter  100
+Processing PecanPie
+Exp: arbor
+101
+65
+101
+101
+101
+101
+101
+65
+65
+65
+101
+101
+101
+101
+Recipes Processed: 54
+-learn_init  -1
+Processing PotatoSalad
+Exp: arbor
+185
+119
+119
+119
+185
+185
+185
+185
+Recipes Processed: 121
+-learn_iter  0
+Processing PotatoSalad
+Exp: arbor
+195
+113
+113
+113
+195
+195
+195
+195
+Recipes Processed: 121
+-learn_iter  1
+Processing PotatoSalad
+Exp: arbor
+195
+115
+115
+115
+195
+195
+195
+195
+Recipes Processed: 121
+-learn_iter  2
+Processing PotatoSalad
+Exp: arbor
+195
+116
+116
+116
+195
+195
+195
+195
+Recipes Processed: 121
+-stat_for_eval_iter  100
+Processing PotatoSalad
+Exp: arbor
+195
+116
+195
+195
+195
+195
+195
+115
+115
+115
+195
+195
+195
+195
+Recipes Processed: 121
+-learn_init  -1
+Processing PulledPork
+Exp: arbor
+147
+124
+124
+124
+147
+147
+147
+147
+Recipes Processed: 40
+-learn_iter  0
+Processing PulledPork
+Exp: arbor
+153
+123
+123
+123
+153
+153
+153
+153
+Recipes Processed: 40
+-learn_iter  1
+Processing PulledPork
+Exp: arbor
+153
+122
+122
+122
+153
+153
+153
+153
+Recipes Processed: 40
+-learn_iter  2
+Processing PulledPork
+Exp: arbor
+153
+122
+122
+122
+153
+153
+153
+153
+Recipes Processed: 40
+-stat_for_eval_iter  100
+Processing PulledPork
+Exp: arbor
+153
+122
+153
+153
+153
+153
+153
+122
+122
+122
+153
+153
+153
+153
+Recipes Processed: 40
+-learn_init  -1
+Processing PumpkinPie
+Exp: arbor
+124
+100
+100
+100
+124
+124
+124
+124
+Recipes Processed: 64
+-learn_iter  0
+Processing PumpkinPie
+Exp: arbor
+130
+94
+94
+94
+130
+130
+130
+130
+Recipes Processed: 64
+-learn_iter  1
+Processing PumpkinPie
+Exp: arbor
+130
+95
+95
+95
+130
+130
+130
+130
+Recipes Processed: 64
+-learn_iter  2
+Processing PumpkinPie
+Exp: arbor
+130
+94
+94
+94
+130
+130
+130
+130
+Recipes Processed: 64
+-stat_for_eval_iter  100
+Processing PumpkinPie
+Exp: arbor
+130
+94
+130
+130
+130
+130
+130
+95
+95
+95
+130
+130
+130
+130
+Recipes Processed: 64
+-learn_init  -1
+Processing VeggiePizza
+Exp: arbor
+182
+129
+129
+129
+182
+182
+182
+182
+Recipes Processed: 59
+-learn_iter  0
+Processing VeggiePizza
+Exp: arbor
+201
+125
+125
+125
+201
+201
+201
+201
+Recipes Processed: 59
+-learn_iter  1
+Processing VeggiePizza
+Exp: arbor
+201
+125
+125
+125
+201
+201
+201
+201
+Recipes Processed: 59
+-learn_iter  2
+Processing VeggiePizza
+Exp: arbor
+201
+125
+125
+125
+201
+201
+201
+201
+Recipes Processed: 59
+-stat_for_eval_iter  100
+Processing VeggiePizza
+Exp: arbor
+201
+125
+201
+201
+201
+201
+201
+125
+125
+125
+201
+201
+201
+201
+Recipes Processed: 59

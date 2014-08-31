@@ -22,6 +22,8 @@ import edu.sbu.eval.so.tsp.tsp_adapter.tsp_instance as tsp
 def train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
   ft_extractor,X = get_features(sents, 1, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
 
+
+
   print 'Features extracted'
   clf = svm.SVC(C=1.0, cache_size=2000, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
       kernel='linear', max_iter=-1, probability=True, random_state=None,
@@ -130,28 +132,16 @@ def evaluate(observed, expected, test_sents, logF):
 #
 
 
-#
-# def findEstimator(ft_extractor_file):
-#
-#   ft_extractor = joblib.load(ft_extractor_file)
-#
-#   sents, labels, pairs, recipeLength = get_tsp_validation_data()
-#
-#   X = ft_extractor.transform(sents)
-#
-#   Xentity = []
-#   for sent in sents:
-#     b1, b2 = sent.split(sentSeparator)
-#     b1 = b1.rstrip()
-#     b1, t1 = b1.split(transitionSeparator)
-#     b2 = b2.rstrip()
-#     b2, t2 = b2.split(transitionSeparator)
-#
-#     Xentity.append(get_entity_features(t1.split(','), t2.split(',')))
-#
-#   X = hstack([X, csc_matrix(Xentity)])
-#
-#   getBestEstimator(X,labels)
+
+def findEstimator(ft_extractor_file, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
+
+  ft_extractor = joblib.load(ft_extractor_file)
+
+  sents, labels, pairs, recipeLength = get_tsp_validation_data(recipeName)
+
+  ft_extractor, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
+
+  getBestEstimator(X,labels)
 
 def train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF):
   # print 'getting training data...'
@@ -167,8 +157,8 @@ def train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF
   # joblib.dump(ft_xtractor, 'models/fx_UB_TrainD_notag.pkl')
   # joblib.dump(clf, 'models/clf_UB_TrainD_notag.pkl')
   #
-  joblib.dump(ft_xtractor, 'models/ft_noscale_' + expName + '.pkl')
-  joblib.dump(clf, 'models/clf_noscale_' + expName + '.pkl')
+  joblib.dump(ft_xtractor, 'models/ft_scale_' + recipeName + '_' + expName + '.pkl')
+  joblib.dump(clf, 'models/clf_scale_' + recipeName + '_' + expName + '.pkl')
 
 def load_and_validate(ft_ext_file, clf_file, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF):
 
@@ -233,7 +223,7 @@ def load_and_validate(ft_ext_file, clf_file, recipeName, expName, stat_type, cp0
 
   import pickle
 
-  with open('results/' + expName + '.pkl', 'w') as f:
+  with open('results/' + recipeName + '_' + expName + '.pkl', 'w') as f:
     pickle.dump(tspResultSet, f)
 
   # print 'Average KTau: ' + str(ktauSum/len(recipeLength))
@@ -247,8 +237,6 @@ def load_and_validate(ft_ext_file, clf_file, recipeName, expName, stat_type, cp0
   if(len(labels) != global_inf_labels):
     # print 'global_inf_labels suspicious'
     logF.write('len of global_inf_labels != len of labels')
-
-  f.close()
 
 
 def update_global_accuracy(order, correct, total):
@@ -269,19 +257,19 @@ def test_tsp_solver(distances):
   # input = tsp.prepare_tsp_solver_input(distances)
   output = tsp.tsp_dyn_solver(distances)
 
-  # print 'solution'
-  # pprint(output)
+  print 'solution'
+  pprint(output)
   return output
 
 def main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile):
-  #run_classifier()
+  # run_classifier()
   with open(logFile, 'w') as logF:
     if i == 0:
-      train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
-    load_and_validate('models/ft_noscale_' + expName + '.pkl', 'models/clf_noscale_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
+       train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
+    load_and_validate('models/ft_scale_' + recipeName + '_' + expName + '.pkl', 'models/clf_scale_' + recipeName + '_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
 
-  # load_and_validate('models/fx_UB_TrainD_notag.pkl', 'models/clf_UB_TrainD_notag.pkl')
-  # findEstimator('ft_xtractor_stemmed_words_moretrainSamples_tsp_EG.pkl')
+
+  # findEstimator('models/ft_noscale_' + recipeName + '_' + expName + '.pkl', recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
   # test_tsp_solver([[0, 1, 100, 200], [100, 0, 1000, 1], [100, 1000, 0, 200], [100, 100, 2, 0]])
   pass
 

@@ -138,15 +138,15 @@ class StatFeatures:
 
   def boolean_feature_encoding(self, s1p, s2p):
     ret = []
-    if( s1p == 0 ):
-      if( s2p == 0 ):
+    if( s1p == -100 ):
+      if( s2p == -100 ):
         ret.append(0) #decision
         ret.append(0) #decided vs undecided
       else:
         ret.append(0) #decision
         ret.append(1) #decided vs undecided
     else:
-      if( s2p == 0):
+      if( s2p == -100):
         ret.append(1)
         ret.append(1)
       else:

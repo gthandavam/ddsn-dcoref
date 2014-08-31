@@ -7,12 +7,12 @@ from shutil import copyfile
 
 def learn_arbor(num_iter, recipe):
   expName = 'arbor'
-  cmd = 'python Transformer.py -learn_init ' + recipe + ' ' + expName
+  cmd = 'python Transformer.py -learn_init ' + recipe + ' ' + expName + ' -no_trans '
   out = commands.getoutput(cmd)
   print out
 
   for i in xrange(num_iter):
-    cmd = 'python Transformer.py -learn_iter ' + recipe + ' ' + expName
+    cmd = 'python Transformer.py -learn_iter ' + recipe + ' ' + expName + ' -no_trans ' + str(i)
     out = commands.getoutput(cmd)
     print out
     #copying output of this iteration to be input for next iteration
@@ -21,18 +21,18 @@ def learn_arbor(num_iter, recipe):
     copyfile(statFile2, statFile)
 
 
-  cmd = 'python Transformer.py -stat_for_eval_iter ' + recipe + ' ' + expName
+  cmd = 'python Transformer.py -stat_for_eval_iter ' + recipe + ' ' + expName + ' -no_trans ' + str(100)
   out = commands.getoutput(cmd)
   print out
 
 def learn_arbor_trans(num_iter, recipe):
   expName = 'arbor_trans'
-  cmd = 'python Transformer.py -learn_init ' + recipe + ' ' + expName
+  cmd = 'python Transformer.py -learn_init ' + recipe + ' ' + expName + ' -trans '
   out = commands.getoutput(cmd)
   print out
 
   for i in xrange(num_iter):
-    cmd = 'python Transformer.py -learn_iter ' + recipe + ' ' + expName
+    cmd = 'python Transformer.py -learn_iter ' + recipe + ' ' + expName + ' -trans ' + str(i)
     out = commands.getoutput(cmd)
     print out
     #copying output of this iteration to be input for next iteration
@@ -78,9 +78,9 @@ def learn_text_order(num_iter, recipe):
 if __name__ == '__main__':
   try:
     learn_arbor(int(sys.argv[1]), sys.argv[2])
-    learn_arbor_trans(int(sys.argv[1]), sys.argv[2])
-    learn_cc(int(sys.argv[1]), sys.argv[2])
-    learn_text_order(int(sys.argv[1]), sys.argv[2])
+    # learn_arbor_trans(int(sys.argv[1]), sys.argv[2])
+    # learn_cc(int(sys.argv[1]), sys.argv[2])
+    # learn_text_order(int(sys.argv[1]), sys.argv[2])
   except Exception as inst:
     print inst.args
     print inst.message
