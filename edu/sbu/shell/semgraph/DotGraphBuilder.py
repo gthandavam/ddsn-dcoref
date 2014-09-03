@@ -214,7 +214,7 @@ class DotGraphBuilder:
               if shell_node not in arbo_edges or pred_node not in arbo_edges[shell_node]:
                 continue
               if self.debug:
-                line = '{} -> {}[label=\"{}({})\"'.format(shell_node, pred_node, edge_type,arbo_edges[shell_node][pred_node])
+                line = '{} -> {}[label=\"{}({})\"]'.format(shell_node, pred_node, edge_type,arbo_edges[shell_node][pred_node])
               else:
                 # line = '{} -> {}[label=\"{}\"'.format(shell_node, pred_node, edge_type)
                 line = '{} -> {}'.format(shell_node, pred_node)
@@ -223,6 +223,7 @@ class DotGraphBuilder:
               #     continue
               #   line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
               # line += ']'
+
               self.graph_lines.append(line)
             # else:
             #   #null instant edge
@@ -259,7 +260,7 @@ class DotGraphBuilder:
               edge_type = rnodes[i][j][k].shell_coref[0][1]
 
               if self.debug:
-                line = '{} -> {}[label=\"{}({})\"'.format(shell_node, arg_node, edge_type,arbo_edges[shell_node][arg_node])
+                line = '{} -> {}[label=\"{}({})\"]'.format(shell_node, arg_node, edge_type,arbo_edges[shell_node][arg_node])
               else:
                 # line = '{} -> {}[label=\"{}\"'.format(shell_node, arg_node, edge_type)
                 line = '{} -> {}'.format(shell_node, arg_node)
@@ -330,7 +331,7 @@ class DotGraphBuilder:
             target_node = target_node.id
 
           if self.debug:
-            line = '{} -> {} [label=\"{}({})\"'.format(start_node, target_node, 'CC', arbo_edges[start_node][target_node])
+            line = '{} -> {} [label=\"{}({})\"]'.format(start_node, target_node, 'CC', arbo_edges[start_node][target_node])
           else:
             # line = '{} -> {} [label=\"{}\"'.format(start_node, target_node, 'CC')
             line = '{} -> {}'.format(start_node, target_node)
