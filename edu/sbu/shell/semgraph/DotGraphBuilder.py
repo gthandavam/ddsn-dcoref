@@ -28,7 +28,6 @@ class DotGraphBuilder:
     self.id_node_map = {}
     self.Ghost = 'Bon appetit!'
     self.debug = True
-    self.final = False
 
 
   def process_pnodes(self, pnodes):
@@ -214,29 +213,19 @@ class DotGraphBuilder:
               if shell_node not in arbo_edges or pred_node not in arbo_edges[shell_node]:
                 continue
               if self.debug:
-                line = '{} -> {}[label=\"{}({})\"]'.format(shell_node, pred_node, edge_type,arbo_edges[shell_node][pred_node])
+                line = '{} -> {}[label=\"{}({})\"'.format(shell_node, pred_node, edge_type,arbo_edges[shell_node][pred_node])
+
+                for prop in self.edge_props[edge_type]:
+                  if prop=="label":
+                    continue
+                  line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
+                line += ']'
+
               else:
-                # line = '{} -> {}[label=\"{}\"'.format(shell_node, pred_node, edge_type)
                 line = '{} -> {}'.format(shell_node, pred_node)
-              # for prop in self.edge_props[edge_type]:
-              #   if prop=="label":
-              #     continue
-              #   line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
-              # line += ']'
 
               self.graph_lines.append(line)
-            # else:
-            #   #null instant edge
-            #   if rnodes[i][j][k].arg_type == 'arg1':
-            #     null_node = self.arg1_node_list[(i,j,k)]
-            #   elif rnodes[i][j][k].arg_type == 'arg2':
-            #     null_node = self.arg2_node_list[(i,j,k)]
-            #   else:
-            #     self.logger.error('unknown arg type')
-            #
-            #   # line = '{} -> {}'.format(null_node, self.pred_node_list[(i,j)])
-            #   # self.graph_lines.append(line)
-            #   pass
+
           else:
             if rnodes[i][j][k].arg_type == 'arg1':
               arg_node = self.arg1_node_list[(i,j,k)]
@@ -260,16 +249,14 @@ class DotGraphBuilder:
               edge_type = rnodes[i][j][k].shell_coref[0][1]
 
               if self.debug:
-                line = '{} -> {}[label=\"{}({})\"]'.format(shell_node, arg_node, edge_type,arbo_edges[shell_node][arg_node])
+                line = '{} -> {}[label=\"{}({})\"'.format(shell_node, arg_node, edge_type,arbo_edges[shell_node][arg_node])
+                for prop in self.edge_props[edge_type]:
+                  if prop=="label":
+                    continue
+                  line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
+                line += ']'
               else:
-                # line = '{} -> {}[label=\"{}\"'.format(shell_node, arg_node, edge_type)
                 line = '{} -> {}'.format(shell_node, arg_node)
-
-              # for prop in self.edge_props[edge_type]:
-              #   if prop=="label":
-              #     continue
-              #   line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
-              # line += ']'
 
               self.graph_lines.append(line)
     pass
@@ -331,17 +318,17 @@ class DotGraphBuilder:
             target_node = target_node.id
 
           if self.debug:
-            line = '{} -> {} [label=\"{}({})\"]'.format(start_node, target_node, 'CC', arbo_edges[start_node][target_node])
+            line = '{} -> {} [label=\"{}({})\"'.format(start_node, target_node, 'CC', arbo_edges[start_node][target_node])
+            for prop in self.edge_props['CC'].keys():
+              if prop=="label":
+                continue
+              line += ',{}={}'.format(prop, self.edge_props['CC'][prop])
+
+            line += ']'
+
           else:
-            # line = '{} -> {} [label=\"{}\"'.format(start_node, target_node, 'CC')
             line = '{} -> {}'.format(start_node, target_node)
 
-          # for prop in self.edge_props['CC'].keys():
-          #   if prop=="label":
-          #     continue
-          #   line += ',{}={}'.format(prop, self.edge_props['CC'][prop])
-
-          # line += ']'
 
           self.graph_lines.append(line)
 
