@@ -112,7 +112,7 @@ def special_predicate_processing(sem_group):
   if(sem_group['pred'] is None):
     return sem_group
 
-  if(sem_group['pred'].lower() in ('pour', 'whisk', 'stir')):
+  if(sem_group['pred'].lower() in ('pour', 'whisk', 'stir', 'fold', 'mix', 'cut', 'beat')):
     if(sem_group['arg1'] is None):
       if(not sem_group['arg2'] is None and sem_group['arg2'].lower().startswith('in')):
         arg2 = sem_group['arg2'].split()
