@@ -174,6 +174,8 @@ def special_pp_processing(sem_group):
       sem_group['arg1POS'] = None
 
     if(len(arg2) > 0):
+      arg2 = ' '.join(arg2)
+      arg2POS = ' '.join(arg2POS)
       sem_group['arg2'] = arg2
       sem_group['arg2POS'] = arg2POS
     else:
