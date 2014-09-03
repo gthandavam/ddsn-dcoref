@@ -170,19 +170,13 @@ def special_pp_processing(sem_group):
       sem_group['arg1'] = arg1
       sem_group['arg1POS'] = arg1POS
     else:
-      arg1 = 'NULL'
-      arg1POS = 'NULL'
       sem_group['arg1'] = None
       sem_group['arg1POS'] = None
 
     if(len(arg2) > 0):
-      arg2 = ' '.join(arg2)
-      arg2POS = ' '.join(arg2POS)
       sem_group['arg2'] = arg2
       sem_group['arg2POS'] = arg2POS
     else:
-      arg2 = 'NULL'
-      arg2POS = 'NULL'
       sem_group['arg2'] = None
       sem_group['arg2POS'] = None
 
@@ -251,14 +245,16 @@ def generate_graph(pnodes_resolved, rnodes_resolved, r_stats, Wwt):
   weighted_graph = arbor_adapter.transform(pnodes_resolved, rnodes_resolved)
   weighted_graph.Wwt = Wwt
   weighted_graph.Warg = 1-Wwt
+
+  #seems like this call is redundant - remove it later!!!
   g = weighted_graph.get_adj_ghost_graph('order_close_together')
-  #bug fix here - for returning the correct graph ?
+
   return arbor_adapter, weighted_graph
 
 def connect_arbor(weighted_graph, arbor_adapter, r_stats):
+  #getting the required data structure from the weighted_graph for upside_down_arborescence
   g = weighted_graph.get_adj_ghost_graph('order_close_together')
-  # root = weighted_graph.get_simple_components_root()
-  # print 'root' + root
+
   root = "Ghost"
   arbor_edges = upside_down_arborescence(root, g)
 
@@ -267,12 +263,18 @@ def connect_arbor(weighted_graph, arbor_adapter, r_stats):
   return pnodes_resolved, rnodes_resolved, arbor_edges
   pass
 
+'''
+API to find if a file is part of training data-set
+'''
 def is_training_file(args_file_name):
 
   recipe_name = args_file_name.split('/')[-1]
   return recipe_name in train_files_hash.keys()
   pass
 
+'''
+helper method to load the list of recipes in training data, in memory
+'''
 def load_train_files_hash(recipeName):
   global train_files_hash
   with open('/home/gt/Documents/' + recipeName + '/trainFilesList') as f:
@@ -382,14 +384,11 @@ def learnStat(useArbo, iter_num=-1):
   for recipe_args_file in commands.getoutput('ls /home/gt/Documents/' + recipeName + '/' + recipeName + 'Args/*.txt').split('\n'):
 
     if(not is_training_file(recipe_args_file)):
+      #skipping if not training data
       continue
+
     i+=1
 
-    # if i>1:
-    #   break
-    # if i!=4:
-    #   continue
-    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/chucks-favorite-mac-and-cheese.txt'
 
     mod_logger.error(recipe_args_file)
     dcoref_graph = make_nodes(recipe_args_file)
@@ -485,27 +484,6 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_
       continue
 
     i+=1
-
-    # if i>30:
-    #   break
-    # if i!=3:
-    #   continue
-
-    # mod_logger.critical(recipe_args_file)
-
-    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/mac-and-cheese-bake.txt'
-
-    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/pumpkin-lobster-mac-and-cheese.txt'
-
-    # recipe_file = '/home/gt/PycharmProjects/AllRecipes/gt/crawl/edu/sbu/html2text/MacAndCheese-steps/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
-    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/baked-mac-and-cheese-with-sour-cream-and-cottage-cheese.txt'
-    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/healthy-creamy-mac-and-cheese.txt'
-    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/baked-mac-and-cheese-for-one.txt'
-    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/bevs-mac-and-cheese.txt'
-    # if recipe_args_file == '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/home-baked-macaroni--cheese.txt':
-    #   continue
-
-    # recipe_args_file = '/home/gt/Documents/MacAndCheese/MacAndCheeseArgs/chucks-favorite-mac-and-cheese.txt'
 
     dcoref_graph = make_nodes(recipe_args_file)
 

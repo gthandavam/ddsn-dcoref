@@ -27,7 +27,8 @@ class DotGraphBuilder:
     self.adj_list = {}
     self.id_node_map = {}
     self.Ghost = 'Bon appetit!'
-    self.debug = False
+    self.debug = True
+    self.final = False
 
 
   def process_pnodes(self, pnodes):
@@ -304,11 +305,6 @@ class DotGraphBuilder:
       for line in self.graph_lines:
         f.write(line+'\n')
 
-    # #to prepare dish network
-    # ing_flow_file = file_name.replace('-dot-files', '-ing-flow')
-    # ing_flow_file = ing_flow_file.replace('.gv','.txt')
-    # self.write_ingredient_flow(pnodes, rnodes, ing_flow_file)
-
   def get_cc_edges(self, pnodes, arbo_edges):
     for i in xrange(len(pnodes)):
       for j in xrange(len(pnodes[i])):
@@ -350,39 +346,3 @@ class DotGraphBuilder:
 
           pass
         pass
-
-  def write_ingredient_flow(self, pnodes, rnodes, file_name):
-    with open(file_name, 'w') as f:
-      for i in xrange(len(pnodes)):
-        for j in xrange(len(pnodes[i])):
-
-          line = '{}[label=\"{}\"'.format(self.pred_node_list[(i,j)], pnodes[i][j].predicate)
-          # line = self.pred_node_list[(i,j)] + '[label=\"' + pnodes[i][j].predicate + '\"'
-          for ing in pnodes[i][j].pIngs:
-            line += ', {}'.format(ing)
-
-          line += ']'
-
-          line += '\n'
-
-          self.logger.warn(pnodes[i][j].predicate)
-          # self.logger.error(len(pnodes[i][j].pIngs))
-          f.write(line)
-
-      for i in xrange(len(rnodes)):
-        for j in xrange(len(rnodes[i])):
-          for k in xrange(1,3):
-            # if not rnodes[i][j][k].is_null:
-            #   rnode_label = self.arg1_node_list[(i,j, k)] if k == 1 else self.arg2_node_list[(i,j,k)]
-            # else:
-            #   rnode_label = 'NULL_INST'
-
-            #commented the above lines since even null nodes have IDs
-            rnode_label = self.arg1_node_list[(i,j, k)] if k == 1 else self.arg2_node_list[(i,j,k)]
-            line = '{}[label=\"{}\"'.format(rnode_label, rnodes[i][j][k].text)
-            for ing in rnodes[i][j][k].argIngs:
-              line += ', {}'.format(ing)
-
-            line += ']'
-            line += '\n'
-            f.write(line)
