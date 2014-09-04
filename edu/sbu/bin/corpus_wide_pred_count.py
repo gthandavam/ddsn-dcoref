@@ -25,7 +25,12 @@ dishes = (
 'VeggiePizza'
 )
 
+#counting predicate distribution for the entire corpus
 pred_count = {}
+
+
+#counting recipes having N predicates
+recipes_with_N_predicates = {}
 
 def update_count(dish):
   global pred_count
@@ -41,15 +46,33 @@ def update_count(dish):
 
   pass
 
+def update_recipes_with_N_predicates(dish):
+  global recipes_with_N_predicates
+
+  reader = RecipeReader2(dish)
+
+  for recipe_index in xrange(len(reader.recipe_verbs)):
+    cnt = 0
+    for sent_index in xrange(len(reader.recipe_verbs[recipe_index])):
+      for verb_index in xrange(len(reader.recipe_verbs[recipe_index][sent_index])):
+        cnt += 1
+
+    if cnt in recipes_with_N_predicates:
+      recipes_with_N_predicates[cnt] += 1
+    else:
+      recipes_with_N_predicates[cnt] = 1
+
+  pass
+
 def write_csv():
-  with open('pred_dist.csv', 'w') as f:
-    f.write('predicate,count\n')
-    for key in pred_count.keys():
-      f.write(key +',' + str(pred_count[key]) + '\n')
+  with open('number_of_predicates_dist.csv', 'w') as f:
+    f.write('No of Predicates, No of Recipes\n')
+    for key in recipes_with_N_predicates:
+      f.write(str(key) +',' + str(recipes_with_N_predicates[key]) + '\n')
 
 def main():
   for dish in dishes:
-    update_count(dish)
+    update_recipes_with_N_predicates(dish)
 
   write_csv()
   pass
