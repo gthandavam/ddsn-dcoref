@@ -212,6 +212,7 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
 
     edge_weights = tsp.pick_edge_weights(weights[prevItr : prevItr + itr -1], pred_labels[prevItr : prevItr + itr -1], pairs[prevItr: prevItr + itr-1], recipeLength[i][0])
     # print 'Ordering for Recipe No ' + str(i+1) + ' is '
+    pprint(edge_weights)
     order = test_tsp_solver(edge_weights)
 
     global_inf_correct, global_inf_labels = update_global_accuracy(order, global_inf_correct, global_inf_labels)

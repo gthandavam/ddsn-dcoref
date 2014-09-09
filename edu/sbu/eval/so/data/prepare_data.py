@@ -5,6 +5,7 @@ import codecs
 import numpy as np
 from scipy.stats import kendalltau as ktau
 from edu.sbu.shell.Transformer import special_predicate_processing, special_pp_processing
+import sys
 
 from edu.sbu.eval.so.features.statistical_features import *
 
@@ -113,8 +114,8 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
         sentences.append(exp_line)
 
 
-        if i != 0:
-          print_probability(sem_group, prev_sem_group)
+        # if i != 0:
+        #   print_probability(sem_group, prev_sem_group)
 
         prev_sem_group = sem_group
 
@@ -184,7 +185,7 @@ def get_stat(expFile):
 
 
 def main():
-  recipeName = 'MacAndCheese'
+  recipeName = sys.argv[1]
   testFileList    = '/home/gt/Documents/' + recipeName + '/testFilesList'
   trainFileList   = '/home/gt/Documents/' + recipeName + '/trainFilesList'
   devFileList     = '/home/gt/Documents/' + recipeName + '/devFilesList'

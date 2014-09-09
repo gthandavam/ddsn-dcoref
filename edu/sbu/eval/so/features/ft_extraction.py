@@ -95,10 +95,10 @@ def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0
   from edu.sbu.eval.so.features.statistical_features import StatFeatures
 
   if vec == 1:
-    vec = CountVectorizer(min_df=1, binary=True, tokenizer=word_tokenize,
-                        preprocessor=filter_text, ngram_range=(1,2) )
-    # vec = TfidfVectorizer( tokenizer=word_tokenize,
-    #                       preprocessor=filter_text, ngram_range=(1,2) )
+    # vec = CountVectorizer(min_df=1, binary=True, tokenizer=word_tokenize,
+    #                     preprocessor=filter_text, ngram_range=(1,2) )
+    vec = TfidfVectorizer( tokenizer=word_tokenize,
+                          preprocessor=filter_text, ngram_range=(1,2) )
 
     X   = vec.fit_transform(sents)
 
@@ -144,8 +144,8 @@ def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0
 
   # pprint.pprint(X1)
   # #pprint(str(X))
-  return vec, scaler, X
-  # return vec, csc_matrix(p_features)
+  # return vec, scaler, X
+  return vec, scaler, csc_matrix(p_features)
 
 def test_features():
   sents = [

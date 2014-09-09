@@ -137,7 +137,18 @@ class StatFeatures:
     pass
 
   def boolean_feature_encoding(self, s1p, s2p):
+    '''
+    feature encoding for precedence relation
+      one feature to reflect the decision taken,
+      one feature to indicate the confidence of the decision
+
+      0 0 precedence false, confidence false
+      0 1 precedence false, confidence true
+      1 0 NOT POSSIBLE
+      1 1 precedence true, confidence true
+    '''
     ret = []
+    print s1p, s2p
     if( s1p == -100 ):
       if( s2p == -100 ):
         ret.append(0) #decision

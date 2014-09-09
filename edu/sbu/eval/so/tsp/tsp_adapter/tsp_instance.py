@@ -8,12 +8,16 @@ def pick_edge_weights(weights, predicted_labels, pairs, nodes):
   ret = np.zeros((nodes, nodes))
   for i in xrange(len(pairs)):
     x,y = pairs[i].rstrip().split(',')
-    x = int(x) #1-based index converting to zero based
+    x = int(x)
     y = int(y)
-    ret[x][y] = -1000 * math.log(weights[i][0], 2)
-    ret[y][x] = -1000 * math.log(weights[i][1], 2)
-    # ret[x][y] = weights[i][1]
-    # ret[y][x] = weights[i][0]
+    #It is important to swap the precedence probabilities for 
+    #the edges involved. prob(a precedes b) should be assigned to 
+    #edge from b to a and vice versa
+
+    # ret[x][y] = -1000 * math.log(weights[i][1], 2)
+    # ret[y][x] = -1000 * math.log(weights[i][0], 2)
+    ret[x][y] = weights[i][1]
+    ret[y][x] = weights[i][0]
 
   return ret
 
