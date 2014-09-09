@@ -20,7 +20,7 @@ import math
 import edu.sbu.eval.so.tsp.tsp_adapter.tsp_instance as tsp
 
 def train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
-  ft_extractor,X = get_features(sents, 1, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
+  ft_extractor,scaler, X = get_features(sents, 1, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
 
 
 
@@ -31,7 +31,7 @@ def train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
 
   clf.fit(X,labels)
   # print ft_extractor.get_feature_names()
-  return ft_extractor,clf
+  return ft_extractor,scaler,clf
 
 def getBestEstimator(X, labels):
   # from sklearn.preprocessing import Scaler
@@ -54,11 +54,11 @@ def getBestEstimator(X, labels):
   print("The best classifier is: ", grid.best_estimator_)
 
 
-def test(sents, ft_extractor, clf, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
+def test(sents, ft_extractor, scaler, clf, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
   if len(sents) <= 1:
     print 'here'
 
-  vec, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
+  vec,scaler, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, scaler)
 
   y = clf.predict(X)
   prob = clf.predict_proba(X)
@@ -133,13 +133,14 @@ def evaluate(observed, expected, test_sents, logF):
 
 
 
-def findEstimator(ft_extractor_file, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
+def findEstimator(ft_extractor_file, scaler_file, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
 
   ft_extractor = joblib.load(ft_extractor_file)
+  scaler = joblib.load(scaler_file)
 
   sents, labels, pairs, recipeLength = get_tsp_validation_data(recipeName)
 
-  ft_extractor, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
+  ft_extractor, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, scaler)
 
   getBestEstimator(X,labels)
 
@@ -151,7 +152,7 @@ def train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF
   print 'Training set size ' + str(len(labels))
 
   print 'training on the data...'
-  ft_xtractor, clf = train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
+  ft_xtractor, scaler, clf = train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
 
   print 'number of features: ' + str(len(ft_xtractor.get_feature_names()))
   # joblib.dump(ft_xtractor, 'models/fx_UB_TrainD_notag.pkl')
@@ -159,11 +160,13 @@ def train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF
   #
   joblib.dump(ft_xtractor, 'models/ft_scale_' + recipeName + '_' + expName + '.pkl')
   joblib.dump(clf, 'models/clf_scale_' + recipeName + '_' + expName + '.pkl')
+  joblib.dump(scaler, 'models/scaler_' + recipeName + '_' + expName + '.pkl')
 
-def load_and_validate(ft_ext_file, clf_file, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF):
+def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF):
 
   ft_xtractor = joblib.load(ft_ext_file)
   clf = joblib.load(clf_file)
+  scaler = joblib.load(scaler_file)
 
   # print 'getting test data...'
   #valid_sents, expected_labels = get_test_data()
@@ -171,7 +174,7 @@ def load_and_validate(ft_ext_file, clf_file, recipeName, expName, stat_type, cp0
   # sents, labels, pairs, recipeLength = get_tsp_validation_data()
   sents, labels, pairs, recipeLength = get_tsp_test_data(recipeName)
 
-  weights, pred_labels = test(sents, ft_xtractor, clf, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
+  weights, pred_labels = test(sents, ft_xtractor, scaler, clf, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
 
   correct = evaluate(pred_labels, labels, sents, logF)
 
@@ -266,7 +269,7 @@ def main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile):
   with open(logFile, 'w') as logF:
     if i == 0:
        train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
-    load_and_validate('models/ft_scale_' + recipeName + '_' + expName + '.pkl', 'models/clf_scale_' + recipeName + '_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
+    load_and_validate('models/ft_scale_' + recipeName + '_' + expName + '.pkl', 'models/scaler_' + recipeName + '_' + expName + '.pkl', 'models/clf_scale_' + recipeName + '_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
 
 
   # findEstimator('models/ft_noscale_' + recipeName + '_' + expName + '.pkl', recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)

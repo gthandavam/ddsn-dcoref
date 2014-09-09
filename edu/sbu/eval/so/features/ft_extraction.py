@@ -88,21 +88,36 @@ def get_probability_features(sample, stats_obj):
   return stats_obj.get_prob_features(sem_group1, sem_group2)
 
 
-def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0=True, cp1=True, cp2=True, cp3=True, cp4=True):
+def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0=True, cp1=True, cp2=True, cp3=True, cp4=True, scaler=1):
   import pprint
   from scipy.sparse import csr_matrix,csc_matrix, hstack
   from sklearn import preprocessing
   from edu.sbu.eval.so.features.statistical_features import StatFeatures
 
   if vec == 1:
-    # vec = CountVectorizer(min_df=1, binary=True, tokenizer=word_tokenize,
-    #                     preprocessor=filter_text, ngram_range=(1,2) )
-    vec = TfidfVectorizer( tokenizer=word_tokenize,
-                          preprocessor=filter_text, ngram_range=(1,2) )
+    vec = CountVectorizer(min_df=1, binary=True, tokenizer=word_tokenize,
+                        preprocessor=filter_text, ngram_range=(1,2) )
+    # vec = TfidfVectorizer( tokenizer=word_tokenize,
+    #                       preprocessor=filter_text, ngram_range=(1,2) )
 
     X   = vec.fit_transform(sents)
+
+    #convert sparse to dense
+    X = X.todense()
+    scaler = preprocessing.MinMaxScaler()
+
+    #scale to (0,1)
+    X = scaler.fit_transform(X)
+
+    #convert back to sparse matrix
+    X = csc_matrix(X)
+
   else:
-    X   = vec.transform(sents)
+    X = vec.transform(sents)
+    #scaling the features to (0,1) range
+    X = X.todense()
+    X = scaler.transform(X)
+    X = csc_matrix(X)
 
   # X = preprocessing.scale(X, with_mean=False)
 
@@ -125,13 +140,11 @@ def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0
   #   True -> center on variance
   #   False -> no copy of data
   # X = preprocessing.scale(X, 0, False, True, False)
-  # scaler = preprocessing.MinMaxScaler()
-  # XCopy = X.toarray()
-  # X1 = scaler.fit_transform(XCopy,y=None)
+
 
   # pprint.pprint(X1)
   # #pprint(str(X))
-  return vec, csc_matrix(X)
+  return vec, scaler, X
   # return vec, csc_matrix(p_features)
 
 def test_features():
@@ -149,7 +162,7 @@ def test_features():
 'top NULL with half the tomatoes and half the Cheddar cheese#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-',
 'pour milk over entire casserole#SENTENCE#bring a large pot of lightly salted water to a boil#LABEL#-,',
   ]
-  vec, X = get_features(sents)
+  vec,scaler, X = get_features(sents)
 
   print vec.get_params()
   print vec.get_feature_names()
