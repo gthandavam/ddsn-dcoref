@@ -997,8 +997,8 @@ class RecipeStats2:
           if o_arg in self.args1_args2_verb_args_score[arg1][arg2][verb]:
             s+= self.args1_args2_verb_args_score[arg1][arg2][verb][o_arg]
           cnt+=1
-    if s==0:
-      return 0
+    if cnt==0:
+      return -100
     return self.log(float(s)/cnt)
 
   def getArg1Arg2PredPred(self, input_a1, input_a2, predicate, output_predicate):
@@ -1130,7 +1130,7 @@ class RecipeStats2:
             s +=  self.verb_args2_score[verb][arg1]
         return self.log(float(s)/len(d))
         # return math.log(1-s+0.00000001)
-    return 0
+    return -100
 
   def getArg1ArgProb(self, input_argument0, input_argument1):
     ### Compute probability of edge predicate->arg2
@@ -1146,8 +1146,8 @@ class RecipeStats2:
           if arg1 in self.args1_args_score[arg0]:
             s +=  self.args1_args_score[arg0][arg1]
           cnt += 1
-    if s==0:
-      return 0
+    if cnt==0:
+      return -100
     return self.log(float(s)/cnt)
 
   def getArg1Arg2ArgProb(self, input_argument1,input_argument2, output_argument):
@@ -1170,8 +1170,8 @@ class RecipeStats2:
               if oarg in self.args1_args2_args_score[arg1][arg2]:
                 s +=  self.args1_args2_args_score[arg1][arg2][oarg]
               cnt += 1
-    if s==0:
-      return 0
+    if cnt==0:
+      return -100
     return self.log(float(s)/cnt)
 
   def getArgPredProb(self, arg, pred):
@@ -1185,8 +1185,8 @@ class RecipeStats2:
       if arg in self.args_verb_score and verb in self.args_verb_score[arg]:
         s +=  self.args_verb_score[arg][verb]
       cnt += 1
-    if s==0:
-      return 0
+    if cnt==0:
+      return -100
     return self.log(float(s)/cnt)
 
   def getVerbVerbProb(self, predicate, predicate2):
