@@ -416,7 +416,9 @@ def learnStat(useArbo, iter_num=-1):
       except Exception as inst:
         print inst.args
         print inst.message
-        print "Error!!! 416" # temporal!!!
+        print inst
+        print recipe_args_file
+        print "Error!!! 421" # temporal!!!
         pass
 
       make_svg(gv_file_name)
@@ -508,7 +510,8 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_
     except Exception as inst:
       print inst.args
       print inst.message
-      print "Error!!!" # temporal!!!
+      print recipe_args_file
+      print "Error!!! 514" # temporal!!!
       pass
 
     make_svg(gv_file_name)

@@ -318,7 +318,13 @@ class DotGraphBuilder:
             target_node = target_node.id
 
           if self.debug:
-            line = '{} -> {} [label=\"{}({})\"'.format(start_node, target_node, 'CC', arbo_edges[start_node][target_node])
+            #temporary bug fix - TODO: Is it good to assume that start and target node will always be in arbor_edges ?
+            if start_node in arbo_edges and target_node in arbo_edges[start_node]:
+              temp_wt = arbo_edges[start_node][target_node]
+            else:
+              temp_wt = 'CC No wt'
+
+            line = '{} -> {} [label=\"{}({})\"'.format(start_node, target_node, 'CC', temp_wt)
             for prop in self.edge_props['CC'].keys():
               if prop=="label":
                 continue
