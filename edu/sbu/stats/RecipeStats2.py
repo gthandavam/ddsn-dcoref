@@ -929,9 +929,9 @@ class RecipeStats2:
     a1s = input_a1.getNouns()
     overb = self.stemmer.stem(output_predicate.predicate)
     verb = self.stemmer.stem(predicate.predicate)
-    return self.getArg1PredPredProb(a1s,verb,overb)
+    return self.getArg1PredPredLogProb(a1s,verb,overb)
 
-  def getArg1PredPredProb(self, a1s, verb, overb):
+  def getArg1PredPredLogProb(self, a1s, verb, overb):
     s=0
     cnt=0
     for a1 in a1s:
@@ -953,9 +953,9 @@ class RecipeStats2:
     verb = self.stemmer.stem(predicate.predicate)
     # oas = output_arg.getNouns()
     oas = output_predicate.getNouns()
-    return self.getArg1PredPredArg1Prob(a1s, verb, overb, oas)
+    return self.getArg1PredPredArg1LogProb(a1s, verb, overb, oas)
 
-  def getArg1PredPredArg1Prob(self, a1s, verb, overb, oas):
+  def getArg1PredPredArg1LogProb(self, a1s, verb, overb, oas):
     s=0
     cnt=0
     for a1 in a1s:
@@ -1006,9 +1006,9 @@ class RecipeStats2:
     a2s = input_a2.getNouns()
     overb = self.stemmer.stem(output_predicate.predicate)
     verb = self.stemmer.stem(predicate.predicate)
-    return self.getArg1Arg2PredPredProb(a1s, a2s, verb, overb)
+    return self.getArg1Arg2PredPredLogProb(a1s, a2s, verb, overb)
 
-  def getArg1Arg2PredPredProb(self, a1s, a2s, verb, overb):
+  def getArg1Arg2PredPredLogProb(self, a1s, a2s, verb, overb):
     s=0
     cnt=0
     for a1 in a1s:
@@ -1035,9 +1035,9 @@ class RecipeStats2:
     oas = output_predicate.getNouns()
     overb = self.stemmer.stem(output_predicate.predicate)
     verb = self.stemmer.stem(predicate.predicate)
-    return self.getArg1Arg2PredPredArg1Prob(a1s, a2s, verb, overb, oas)
+    return self.getArg1Arg2PredPredArg1LogProb(a1s, a2s, verb, overb, oas)
 
-  def getArg1Arg2PredPredArg1Prob(self, a1s, a2s, verb, overb, oas):
+  def getArg1Arg2PredPredArg1LogProb(self, a1s, a2s, verb, overb, oas):
     s=0
     cnt=0
     for a1 in a1s:

@@ -47,42 +47,42 @@ class StatFeatures:
   getArg1PredPredProb(a1s, verb, overb) returns P(pred2 | pred1.arg1, pred1)
   '''
 
-  def getArg1Arg2PredPredArg1Prob(self, sem_group1, sem_group2):
+  def getArg1Arg2PredPredArg1LogProb(self, sem_group1, sem_group2):
     '''returns P(pred2, pred2.arg1 | pred1.arg1, pred1.arg2, pred1)
     '''
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
-    prob = self.recipe_stat.getArg1Arg2PredPredArg1Prob(sem_group1['arg1'], sem_group1['arg2'], sem_group1['pred'], sem_group2['pred'], sem_group2['arg1'])
+    prob = self.recipe_stat.getArg1Arg2PredPredArg1LogProb(sem_group1['arg1'], sem_group1['arg2'], sem_group1['pred'], sem_group2['pred'], sem_group2['arg1'])
 
     return prob
     pass
 
-  def getArg1Arg2PredPredProb(self, sem_group1, sem_group2):
+  def getArg1Arg2PredPredLogProb(self, sem_group1, sem_group2):
     '''returns P(pred2 | pred1.arg1, pred1.arg2, pred1)
     '''
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
-    prob = self.recipe_stat.getArg1Arg2PredPredProb(sem_group1['arg1'], sem_group1['arg2'], sem_group1['pred'], sem_group2['pred'])
+    prob = self.recipe_stat.getArg1Arg2PredPredLogProb(sem_group1['arg1'], sem_group1['arg2'], sem_group1['pred'], sem_group2['pred'])
 
     return prob
 
-  def getArg1PredPredArg1Prob(self, sem_group1, sem_group2):
+  def getArg1PredPredArg1LogProb(self, sem_group1, sem_group2):
     '''returns P(pred2, pred2.arg1 | pred1.arg1, pred1)
     '''
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
-    prob = self.recipe_stat.getArg1PredPredArg1Prob(sem_group1['arg1'], sem_group1['pred'], sem_group2['pred'], sem_group2['arg1'])
+    prob = self.recipe_stat.getArg1PredPredArg1LogProb(sem_group1['arg1'], sem_group1['pred'], sem_group2['pred'], sem_group2['arg1'])
 
     pass
 
     return prob
 
-  def getArg1PredPredProb(self, sem_group1, sem_group2):
+  def getArg1PredPredLogProb(self, sem_group1, sem_group2):
     '''returns P(pred2 | pred1.arg1, pred1)
     '''
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
-    prob = self.recipe_stat.getArg1PredPredProb(sem_group1['arg1'], sem_group1['pred'], sem_group2['pred'])
+    prob = self.recipe_stat.getArg1PredPredLogProb(sem_group1['arg1'], sem_group1['pred'], sem_group2['pred'])
 
 
     return prob
@@ -95,38 +95,38 @@ class StatFeatures:
     pass
 
   def print_probability(self, sem_group1, sem_group2):
-    self.getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)
-    self.getArg1Arg2PredPredProb(sem_group1, sem_group2)
-    self.getArg1PredPredArg1Prob(sem_group1, sem_group2)
-    self.getArg1PredPredProb(sem_group1, sem_group2)
+    self.getArg1Arg2PredPredArg1LogProb(sem_group1, sem_group2)
+    self.getArg1Arg2PredPredLogProb(sem_group1, sem_group2)
+    self.getArg1PredPredArg1LogProb(sem_group1, sem_group2)
+    self.getArg1PredPredLogProb(sem_group1, sem_group2)
 
   def get_prob_features(self, sem_group1, sem_group2):
     ret = []
     #CP4
     if self.cp4:
-      s1p = self.getArg1PredPredProb(sem_group1, sem_group2)
-      s2p = self.getArg1PredPredProb(sem_group2, sem_group1)
+      s1p = self.getArg1PredPredLogProb(sem_group1, sem_group2)
+      s2p = self.getArg1PredPredLogProb(sem_group2, sem_group1)
 
       ret.extend(self.boolean_feature_encoding(s1p, s2p))
 
     #CP3
     if self.cp3:
-      s1p = self.getArg1PredPredArg1Prob(sem_group1, sem_group2)
-      s2p = self.getArg1PredPredArg1Prob(sem_group2, sem_group1)
+      s1p = self.getArg1PredPredArg1LogProb(sem_group1, sem_group2)
+      s2p = self.getArg1PredPredArg1LogProb(sem_group2, sem_group1)
 
       ret.extend(self.boolean_feature_encoding(s1p, s2p))
 
     #CP2
     if self.cp2:
-      s1p = self.getArg1Arg2PredPredProb(sem_group1, sem_group2)
-      s2p = self.getArg1Arg2PredPredProb(sem_group2, sem_group1)
+      s1p = self.getArg1Arg2PredPredLogProb(sem_group1, sem_group2)
+      s2p = self.getArg1Arg2PredPredLogProb(sem_group2, sem_group1)
 
       ret.extend(self.boolean_feature_encoding(s1p, s2p))
 
     #CP1
     if self.cp1:
-      s1p = self.getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)
-      s2p = self.getArg1Arg2PredPredArg1Prob(sem_group2, sem_group1)
+      s1p = self.getArg1Arg2PredPredArg1LogProb(sem_group1, sem_group2)
+      s2p = self.getArg1Arg2PredPredArg1LogProb(sem_group2, sem_group1)
 
       ret.extend(self.boolean_feature_encoding(s1p, s2p))
 
