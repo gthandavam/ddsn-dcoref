@@ -931,7 +931,20 @@ class RecipeStats2:
     verb = self.stemmer.stem(predicate.predicate)
     return self.getArg1PredPredLogProb(a1s,verb,overb)
 
+
   def getArg1PredPredLogProb(self, a1s, verb, overb):
+    '''
+    Wrapper to return Log probability
+    '''
+    s, cnt = self.getArg1PredPredProb(a1s, verb, overb)
+
+    if cnt == 0:
+      return -100
+
+    return self.log(float(s)/cnt)
+    pass
+
+  def getArg1PredPredProb(self, a1s, verb, overb):
     s=0
     cnt=0
     for a1 in a1s:
@@ -943,9 +956,8 @@ class RecipeStats2:
       if overb in self.args1_verb_verb_score[arg1][verb]:
         s+= self.args1_verb_verb_score[arg1][verb][overb]
       cnt+=1
-    if cnt==0:
-      return -100
-    return self.log(float(s)/cnt)
+
+    return (s, cnt)
 
   def getArg1PredPredArg1(self, input_a1, predicate, output_predicate, output_arg):
     a1s = input_a1.getNouns()
@@ -955,7 +967,19 @@ class RecipeStats2:
     oas = output_predicate.getNouns()
     return self.getArg1PredPredArg1LogProb(a1s, verb, overb, oas)
 
+
   def getArg1PredPredArg1LogProb(self, a1s, verb, overb, oas):
+    '''
+    Wrapper to return Log probability
+    '''
+    s, cnt = self.getArg1PredPredArg1Prob(a1s, verb, overb, oas)
+    if cnt == 0:
+      return -100
+
+    return self.log(float(s)/cnt)
+    pass
+
+  def getArg1PredPredArg1Prob(self, a1s, verb, overb, oas):
     s=0
     cnt=0
     for a1 in a1s:
@@ -971,9 +995,8 @@ class RecipeStats2:
         if overb in self.args1_verb_verb_args1_score[arg1][verb] and arg in self.args1_verb_verb_args1_score[arg1][verb][overb]:
           s+= self.args1_verb_verb_args1_score[arg1][verb][overb][arg]
         cnt+=1
-    if cnt==0:
-      return -100
-    return self.log(float(s)/cnt)
+
+    return (s, cnt)
 
   def getArg1Arg2PredArg(self, input_a1, input_a2, predicate, output_a):
     a1s = input_a1.getNouns()
@@ -1009,6 +1032,18 @@ class RecipeStats2:
     return self.getArg1Arg2PredPredLogProb(a1s, a2s, verb, overb)
 
   def getArg1Arg2PredPredLogProb(self, a1s, a2s, verb, overb):
+    '''
+    Wrapper to return Log probability
+    '''
+    s, cnt = self.getArg1Arg2PredPredProb(a1s, a2s, verb, overb)
+
+    if cnt == 0:
+      return -100
+
+    return self.log(float(s)/cnt)
+    pass
+
+  def getArg1Arg2PredPredProb(self, a1s, a2s, verb, overb):
     s=0
     cnt=0
     for a1 in a1s:
@@ -1024,9 +1059,8 @@ class RecipeStats2:
         if overb in self.args1_args2_verb_verb_score[arg1][arg2][verb]:
           s+= self.args1_args2_verb_verb_score[arg1][arg2][verb][overb]
         cnt+=1
-    if cnt==0:
-      return -100
-    return self.log(float(s)/cnt)
+
+    return (s, cnt)
 
   def getArg1Arg2PredPredArg1(self, input_a1, input_a2, predicate, output_predicate, output_argument):
     a1s = input_a1.getNouns()
@@ -1037,7 +1071,20 @@ class RecipeStats2:
     verb = self.stemmer.stem(predicate.predicate)
     return self.getArg1Arg2PredPredArg1LogProb(a1s, a2s, verb, overb, oas)
 
+
   def getArg1Arg2PredPredArg1LogProb(self, a1s, a2s, verb, overb, oas):
+    '''
+    Wrapper to return Log probability
+    '''
+    s, cnt = self.getArg1Arg2PredPredArg1Prob(a1s, a2s, verb, overb, oas)
+
+    if cnt == 0:
+      return -100
+
+    return self.log(float(s)/cnt)
+    pass
+
+  def getArg1Arg2PredPredArg1Prob(self, a1s, a2s, verb, overb, oas):
     s=0
     cnt=0
     for a1 in a1s:
@@ -1057,9 +1104,8 @@ class RecipeStats2:
           if overb in self.args1_args2_verb_verb_args1_score[arg1][arg2][verb] and arg in self.args1_args2_verb_verb_args1_score[arg1][arg2][verb][overb]:
             s+= self.args1_args2_verb_verb_args1_score[arg1][arg2][verb][overb][arg]
           cnt+=1
-    if cnt==0:
-      return -100
-    return self.log(float(s)/cnt)
+
+    return (s, cnt)
 
   def getPredOuputArgProb(self, predicate, input_argument1, input_argument2, output_argument):
     if input_argument1==None:
