@@ -257,6 +257,9 @@ def update_global_accuracy(order, correct, total):
   pass
 
 def test_tsp_solver(distances):
+  '''
+  distances -> adjacency matrix
+  '''
 
   # input = tsp.prepare_tsp_solver_input(distances)
   output = tsp.tsp_dyn_solver(distances)

@@ -47,8 +47,11 @@ class StatFeatures:
   getArg1PredPredProb(a1s, verb, overb) returns P(pred2 | pred1.arg1, pred1)
   '''
 
+
+  #log probabilities are lower bounded by -100 to mean -infinity
+
   def getArg1Arg2PredPredArg1LogProb(self, sem_group1, sem_group2):
-    '''returns P(pred2, pred2.arg1 | pred1.arg1, pred1.arg2, pred1)
+    '''returns log(P(pred2, pred2.arg1 | pred1.arg1, pred1.arg2, pred1))
     '''
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
@@ -58,7 +61,7 @@ class StatFeatures:
     pass
 
   def getArg1Arg2PredPredLogProb(self, sem_group1, sem_group2):
-    '''returns P(pred2 | pred1.arg1, pred1.arg2, pred1)
+    '''returns log(P(pred2 | pred1.arg1, pred1.arg2, pred1))
     '''
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
@@ -67,7 +70,7 @@ class StatFeatures:
     return prob
 
   def getArg1PredPredArg1LogProb(self, sem_group1, sem_group2):
-    '''returns P(pred2, pred2.arg1 | pred1.arg1, pred1)
+    '''returns log(P(pred2, pred2.arg1 | pred1.arg1, pred1))
     '''
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
@@ -78,7 +81,7 @@ class StatFeatures:
     return prob
 
   def getArg1PredPredLogProb(self, sem_group1, sem_group2):
-    '''returns P(pred2 | pred1.arg1, pred1)
+    '''returns log(P(pred2 | pred1.arg1, pred1))
     '''
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
@@ -86,6 +89,48 @@ class StatFeatures:
 
 
     return prob
+
+  #probability variant APIs for CP{1,2,3,4}
+  def getArg1Arg2PredPredArg1Prob(self, sem_group1, sem_group2):
+    '''returns P(pred2, pred2.arg1 | pred1.arg1, pred1.arg2, pred1)
+    '''
+    sem_group1 = self.process_sem_group(sem_group1)
+    sem_group2 = self.process_sem_group(sem_group2)
+    prob = self.recipe_stat.getArg1Arg2PredPredArg1Prob(sem_group1['arg1'], sem_group1['arg2'], sem_group1['pred'], sem_group2['pred'], sem_group2['arg1'])
+
+    return prob
+    pass
+
+  def getArg1Arg2PredPredProb(self, sem_group1, sem_group2):
+    '''returns P(pred2 | pred1.arg1, pred1.arg2, pred1)
+    '''
+    sem_group1 = self.process_sem_group(sem_group1)
+    sem_group2 = self.process_sem_group(sem_group2)
+    prob = self.recipe_stat.getArg1Arg2PredPredProb(sem_group1['arg1'], sem_group1['arg2'], sem_group1['pred'], sem_group2['pred'])
+
+    return prob
+
+  def getArg1PredPredArg1Prob(self, sem_group1, sem_group2):
+    '''returns P(pred2, pred2.arg1 | pred1.arg1, pred1)
+    '''
+    sem_group1 = self.process_sem_group(sem_group1)
+    sem_group2 = self.process_sem_group(sem_group2)
+    prob = self.recipe_stat.getArg1PredPredArg1Prob(sem_group1['arg1'], sem_group1['pred'], sem_group2['pred'], sem_group2['arg1'])
+
+    pass
+
+    return prob
+
+  def getArg1PredPredProb(self, sem_group1, sem_group2):
+    '''returns P(pred2 | pred1.arg1, pred1)
+    '''
+    sem_group1 = self.process_sem_group(sem_group1)
+    sem_group2 = self.process_sem_group(sem_group2)
+    prob = self.recipe_stat.getArg1PredPredProb(sem_group1['arg1'], sem_group1['pred'], sem_group2['pred'])
+
+
+    return prob
+
 
   def get_statistics(self):
     with open(self.stat_file) as f:
@@ -101,6 +146,11 @@ class StatFeatures:
     self.getArg1PredPredLogProb(sem_group1, sem_group2)
 
   def get_prob_features(self, sem_group1, sem_group2):
+    '''
+    API to return boolean features using CP{1,2,3,4} as determined by the run-time flags
+
+    refer boolean_feature_encoding() method for more details
+    '''
     ret = []
     #CP4
     if self.cp4:
@@ -170,6 +220,44 @@ class StatFeatures:
 
       pass
     return ret
+
+  def get_stat_based_edge_weight(self, sem_group1, sem_group2):
+    '''
+    CP1 Most specific
+    CP4 Most general
+
+    return a weight if available moving from CP1 to CP4. If not return +infinity
+    :rtype : float
+    '''
+
+    #CP1
+    nr, dr = self.getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)
+
+    if( not (nr == 0 or dr == 0) ):
+      return float(nr)/dr
+
+    #CP2
+    nr, dr = self.getArg1Arg2PredPredProb(sem_group1, sem_group2)
+
+    if( not (nr == 0 or dr == 0) ):
+      return float(nr)/dr
+
+    #CP3
+    nr, dr = self.getArg1PredPredArg1Prob(sem_group1, sem_group2)
+
+    if( not (nr == 0 or dr == 0) ):
+      return float(nr)/dr
+
+    #CP4
+    nr, dr = self.getArg1PredPredProb(sem_group1, sem_group2)
+    if( not (nr == 0 or dr == 0) ):
+      return float(nr)/dr
+
+    #when all fails return 3000 treated as +infinity
+    #value for infinity is controlled by path length * max edge weight in a tsp problem!!!
+    return float(3000)
+
+    pass
 
 
 if __name__ == '__main__':

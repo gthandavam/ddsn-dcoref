@@ -10,7 +10,7 @@ from pprint import pprint
 
 ############globals###################
 stemmer = PorterStemmer()
-punc_rx = re.compile(r'[^#A-Za-z0-9]+', re.DOTALL)
+punc_rx = re.compile(r'[^#/A-Za-z0-9]+', re.DOTALL)
 ############globals###################
 
 def get_sem_grouping(sentence):
@@ -72,6 +72,7 @@ def nltk_filter(sent):
 def filter_text(sent):
   # return stanford_corenlp_filter(sent)
   sent = re.sub(punc_rx, ' ', sent)
+
   return nltk_filter(sent)
   # sents = sent.split(blockSeparator)
   # sent = sents[0] + ' ' + sents[1]
@@ -95,10 +96,10 @@ def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0
   from edu.sbu.eval.so.features.statistical_features import StatFeatures
 
   if vec == 1:
-    # vec = CountVectorizer(min_df=1, binary=True, tokenizer=word_tokenize,
-    #                     preprocessor=filter_text, ngram_range=(1,2) )
-    vec = TfidfVectorizer( tokenizer=word_tokenize,
-                          preprocessor=filter_text, ngram_range=(1,2) )
+    vec = CountVectorizer(min_df=1, tokenizer=word_tokenize,
+                        preprocessor=filter_text, ngram_range=(1,1) )
+    # vec = TfidfVectorizer( tokenizer=word_tokenize,
+    #                       preprocessor=filter_text, ngram_range=(1,1) )
 
     X   = vec.fit_transform(sents)
 
@@ -135,17 +136,10 @@ def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0
     # To get combination of unigram, bigram and probability features
     X = hstack([X, csc_matrix(p_features)])
 
-  #   for sparse matrices can only scale with axis = 0
-  #   False -> not centering on mean; only option for sparse matrices
-  #   True -> center on variance
-  #   False -> no copy of data
-  # X = preprocessing.scale(X, 0, False, True, False)
-
-
   # pprint.pprint(X1)
   # #pprint(str(X))
-  # return vec, scaler, X
-  return vec, scaler, csc_matrix(p_features)
+  return vec, scaler, X
+  # return vec, scaler, csc_matrix(p_features)
 
 def test_features():
   sents = [

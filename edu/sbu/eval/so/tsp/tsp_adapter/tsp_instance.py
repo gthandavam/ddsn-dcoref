@@ -1,11 +1,15 @@
 __author__ = 'gt'
 
 import numpy as np
-import math
 import itertools
+from edu.sbu.eval.so.features.ft_extraction import get_sem_grouping
+from edu.sbu.eval.so.data.prepare_data import sentSeparator
 
-def pick_edge_weights(weights, predicted_labels, pairs, nodes):
-  ret = np.zeros((nodes, nodes))
+def pick_edge_weights(weights, predicted_labels, pairs, number_of_nodes):
+  '''
+  constructing adjacency matrix based on prediction probabilities
+  '''
+  ret = np.zeros((number_of_nodes, number_of_nodes))
   for i in xrange(len(pairs)):
     x,y = pairs[i].rstrip().split(',')
     x = int(x)
@@ -22,11 +26,37 @@ def pick_edge_weights(weights, predicted_labels, pairs, nodes):
   return ret
 
 
+def pick_stat_edge_weights(samples, pairs, number_of_nodes, stats_obj):
+  '''
+  constructing adjacency matrix based on CP1, CP2, CP3 and CP4
+  '''
+  ret = np.zeros((number_of_nodes, number_of_nodes))
+
+  for i in xrange(len(pairs)):
+    x,y = pairs[i].rstrip().split(',')
+    x = int(x)
+    y = int(y)
+
+    sent1, sent2 = samples[i].split(sentSeparator)
+
+    sem_group1 = get_sem_grouping(sent1)
+    sem_group2 = get_sem_grouping(sent2)
+
+    #probability of precedence should be flipped for TSP formulation
+    #refer pick_edge_weights method for more details
+    ret[x][y] = stats_obj.get_stat_based_edge_weight(sem_group2, sem_group1)
+    ret[y][x] = stats_obj.get_stat_based_edge_weight(sem_group1, sem_group2)
+
+    pass
+
+  return ret
+  pass
+
+
 def prepare_tsp_solver_input(distances):
   '''
     Prepares adjacency matrix for the tsp instance
   '''
-
   return np.array(distances)
 
 
