@@ -19,8 +19,8 @@ from pprint import pprint
 import math
 import edu.sbu.eval.so.tsp.tsp_adapter.tsp_instance as tsp
 
-def train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
-  ft_extractor,scaler, X = get_features(sents, 1, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
+def train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicator):
+  ft_extractor,scaler, X = get_features(sents, 1, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, 1, indicator)
 
   print 'Features extracted'
   clf = svm.SVC(C=1.0, cache_size=2000, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
@@ -52,11 +52,11 @@ def getBestEstimator(X, labels):
   print("The best classifier is: ", grid.best_estimator_)
 
 
-def test(sents, ft_extractor, scaler, clf, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
+def test(sents, ft_extractor, scaler, clf, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicator):
   if len(sents) <= 1:
     print 'here'
 
-  vec,scaler, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, scaler)
+  vec,scaler, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, scaler, indicator)
 
   y = clf.predict(X)
   prob = clf.predict_proba(X)
@@ -129,20 +129,18 @@ def evaluate(observed, expected, test_sents, logF):
 #   print str( (correct * 100.0) / len(expected_labels))
 #
 
-
-
-def findEstimator(ft_extractor_file, scaler_file, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
+def findEstimator(ft_extractor_file, scaler_file, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicator):
 
   ft_extractor = joblib.load(ft_extractor_file)
   scaler = joblib.load(scaler_file)
 
   sents, labels, pairs, recipeLength = get_tsp_validation_data(recipeName)
 
-  ft_extractor, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, scaler)
+  ft_extractor, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, scaler, indicator)
 
   getBestEstimator(X,labels)
 
-def train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF):
+def train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator):
   # print 'getting training data...'
   sents, labels, pairs, recipeLength = get_tsp_train_data(recipeName)
   # pprint(sents)
@@ -150,7 +148,7 @@ def train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF
   print 'Training set size ' + str(len(labels))
 
   print 'training on the data...'
-  ft_xtractor, scaler, clf = train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
+  ft_xtractor, scaler, clf = train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicator)
 
   print 'number of features: ' + str(len(ft_xtractor.get_feature_names()))
   # joblib.dump(ft_xtractor, 'models/fx_UB_TrainD_notag.pkl')
@@ -160,7 +158,7 @@ def train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF
   joblib.dump(clf, 'models/clf_scale_' + recipeName + '_' + expName + '.pkl')
   joblib.dump(scaler, 'models/scaler_' + recipeName + '_' + expName + '.pkl')
 
-def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF):
+def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator):
 
   ft_xtractor = joblib.load(ft_ext_file)
   clf = joblib.load(clf_file)
@@ -173,7 +171,7 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
   sents, labels, pairs, recipeLength = get_tsp_test_data(recipeName)
 
   #Experiment 1 : SVM prediction using different features
-  weights, pred_labels = test(sents, ft_xtractor, scaler, clf, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
+  weights, pred_labels = test(sents, ft_xtractor, scaler, clf, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicator)
 
   correct = evaluate(pred_labels, labels, sents, logF)
 
@@ -293,12 +291,12 @@ def test_tsp_solver(distances):
   pprint(output)
   return output
 
-def main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile):
+def main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile, indicator):
   # run_classifier()
   with open(logFile, 'w') as logF:
     if i == 0:
-       train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
-    load_and_validate('models/ft_scale_' + recipeName + '_' + expName + '.pkl', 'models/scaler_' + recipeName + '_' + expName + '.pkl', 'models/clf_scale_' + recipeName + '_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF)
+       train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator)
+    load_and_validate('models/ft_scale_' + recipeName + '_' + expName + '.pkl', 'models/scaler_' + recipeName + '_' + expName + '.pkl', 'models/clf_scale_' + recipeName + '_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator)
 
 
   # findEstimator('models/ft_noscale_' + recipeName + '_' + expName + '.pkl', recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
@@ -310,7 +308,7 @@ if __name__ == '__main__':
   import time
   import sys
 
-  if(len(sys.argv) != 8):
+  if(len(sys.argv) != 9):
     print 'ml_framework.py <recipe_name> <stat_type> <cp0 - 0/1> <cp1 - 0/1> <cp2 - 0/1> <cp3 - 0/1> <cp4 - 0/1>\n stat_type is one of arbor, arbor_trans, cc, text_order'
     exit(1)
 
@@ -322,19 +320,21 @@ if __name__ == '__main__':
   cp2 = False if sys.argv[5] == '0' else True
   cp3 = False if sys.argv[6] == '0' else True
   cp4 = False if sys.argv[7] == '0' else True
+  indicator = False if sys.argv[8] == '0' else True
 
-  expName = recipeName + '_UGBG_CP_'
+  expName = recipeName + '_UG_CP_'
   expName = expName + '0' if cp0 else expName
   expName = expName + '1' if cp1 else expName
   expName = expName + '2' if cp2 else expName
   expName = expName + '3' if cp3 else expName
   expName = expName + '4' if cp4 else expName
+  expName = expName + '_indicator_' if indicator else expName + '_prob_wt_'
 
   expName += stat_type
 
   logFile = '/home/gt/Documents/' + recipeName + '/' + expName + '.out'
   start_time = time.time()
   for i in range(1):
-    main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile)
+    main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile, indicator)
   print time.time() - start_time, "seconds"
   print '#############'

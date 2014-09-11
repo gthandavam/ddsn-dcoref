@@ -79,17 +79,24 @@ def filter_text(sent):
   # return sent
 
 
-def get_probability_features(sample, stats_obj):
-
+def get_probability_features(sample, stats_obj, indicator):
+  '''
+  indicator: flag to indicate selection of indicator features or probabilty wt features
+  '''
   sent1, sent2 = sample.split(sentSeparator)
 
   sem_group1 = get_sem_grouping(sent1)
   sem_group2 = get_sem_grouping(sent2)
 
-  return stats_obj.get_prob_features(sem_group1, sem_group2)
+  if indicator:
+    return stats_obj.get_stat_indicator_features(sem_group1, sem_group2)
+  else:
+    return stats_obj.get_stat_prob_features(sem_group1, sem_group2)
 
 
-def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0=True, cp1=True, cp2=True, cp3=True, cp4=True, scaler=1):
+
+
+def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0=True, cp1=True, cp2=True, cp3=True, cp4=True, scaler=1, indicator=True):
   import pprint
   from scipy.sparse import csr_matrix,csc_matrix, hstack
   from sklearn import preprocessing
@@ -131,7 +138,7 @@ def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0
     p_features = []
     for sample in sents:
       # print sample
-      p_features.append(get_probability_features(sample, stats_obj))
+      p_features.append(get_probability_features(sample, stats_obj, indicator))
 
     # To get combination of unigram, bigram and probability features
     X = hstack([X, csc_matrix(p_features)])

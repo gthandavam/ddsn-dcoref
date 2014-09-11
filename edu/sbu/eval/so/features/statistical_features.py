@@ -92,7 +92,7 @@ class StatFeatures:
 
   #probability variant APIs for CP{1,2,3,4}
   def getArg1Arg2PredPredArg1Prob(self, sem_group1, sem_group2):
-    '''returns P(pred2, pred2.arg1 | pred1.arg1, pred1.arg2, pred1)
+    '''returns a tuple nr, dr : P(pred2, pred2.arg1 | pred1.arg1, pred1.arg2, pred1)
     '''
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
@@ -102,7 +102,8 @@ class StatFeatures:
     pass
 
   def getArg1Arg2PredPredProb(self, sem_group1, sem_group2):
-    '''returns P(pred2 | pred1.arg1, pred1.arg2, pred1)
+    '''returns a tuple nr, dr : P(pred2 | pred1.arg1, pred1.arg2, pred1)
+
     '''
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
@@ -111,7 +112,7 @@ class StatFeatures:
     return prob
 
   def getArg1PredPredArg1Prob(self, sem_group1, sem_group2):
-    '''returns P(pred2, pred2.arg1 | pred1.arg1, pred1)
+    '''returns a tuple nr, dr : P(pred2, pred2.arg1 | pred1.arg1, pred1)
     '''
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
@@ -122,7 +123,7 @@ class StatFeatures:
     return prob
 
   def getArg1PredPredProb(self, sem_group1, sem_group2):
-    '''returns P(pred2 | pred1.arg1, pred1)
+    '''returns a tuple nr, dr : P(pred2 | pred1.arg1, pred1)
     '''
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
@@ -145,7 +146,45 @@ class StatFeatures:
     self.getArg1PredPredArg1LogProb(sem_group1, sem_group2)
     self.getArg1PredPredLogProb(sem_group1, sem_group2)
 
-  def get_prob_features(self, sem_group1, sem_group2):
+
+  def get_stat_prob_features(self, sem_group1, sem_group2):
+    '''
+    API for returning probability feature vector for 2 samples
+    Chose not to control this with CP{0-4} flags
+    '''
+    ret = []
+    #CP1
+    nr, dr = self.getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)
+    if( not (nr == 0 or dr == 0) ):
+      ret.append( float(nr)/dr )
+    else :
+      ret.append(0)
+
+    #CP2
+    nr, dr = self.getArg1Arg2PredPredProb(sem_group1, sem_group2)
+    if( not (nr == 0 or dr == 0) ):
+      ret.append(float(nr)/dr)
+    else:
+      ret.append(0)
+
+    #CP3
+    nr, dr = self.getArg1PredPredArg1Prob(sem_group1, sem_group2)
+    if( not (nr == 0 or dr == 0) ):
+      ret.append(float(nr)/dr)
+    else:
+      ret.append(0)
+
+    #CP4
+    nr, dr = self.getArg1PredPredProb(sem_group1, sem_group2)
+    if( not (nr == 0 or dr == 0) ):
+      ret.append(float(nr)/dr)
+    else:
+      ret.append(0)
+
+    return ret
+    pass
+
+  def get_stat_indicator_features(self, sem_group1, sem_group2):
     '''
     API to return boolean features using CP{1,2,3,4} as determined by the run-time flags
 
@@ -225,6 +264,7 @@ class StatFeatures:
     '''
     CP1 Most specific
     CP4 Most general
+    Chose not to control this with CP{0-4} flags, as it doesnt seem to make sense here
 
     return a weight if available moving from CP1 to CP4. If not return +infinity
     :rtype : float
@@ -253,9 +293,9 @@ class StatFeatures:
     if( not (nr == 0 or dr == 0) ):
       return float(nr)/dr
 
-    #when all fails return 3000 treated as +infinity
+    #when all fails return 100000 treated as +infinity
     #value for infinity is controlled by path length * max edge weight in a tsp problem!!!
-    return float(3000)
+    return float(100000)
 
     pass
 
