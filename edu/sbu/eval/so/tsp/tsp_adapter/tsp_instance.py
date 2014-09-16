@@ -22,6 +22,15 @@ def pick_edge_weights(weights, predicted_labels, pairs, number_of_nodes):
     # ret[y][x] = -1000 * math.log(weights[i][0], 2)
     ret[x][y] = weights[i][1]
     ret[y][x] = weights[i][0]
+    #no need to assign weights based on pred labels, since we flip the indices (pairs) while preparing data
+    # if(predicted_labels[i] == '+'):
+    #   ret[x][y] = weights[i][1]
+    #   ret[y][x] = weights[i][0]
+    # elif predicted_labels[i] == '-':
+    #   ret[x][y] = weights[i][0]
+    #   ret[y][x] = weights[i][1]
+    # else:
+    #   print 'NOT POSSIBLE'
 
   return ret
 

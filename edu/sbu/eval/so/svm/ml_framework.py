@@ -309,7 +309,7 @@ if __name__ == '__main__':
   import sys
 
   if(len(sys.argv) != 9):
-    print 'ml_framework.py <recipe_name> <stat_type> <cp0 - 0/1> <cp1 - 0/1> <cp2 - 0/1> <cp3 - 0/1> <cp4 - 0/1>\n stat_type is one of arbor, arbor_trans, cc, text_order'
+    print 'ml_framework.py <recipe_name> <stat_type> <cp0 - 0/1> <cp1 - 0/1> <cp2 - 0/1> <cp3 - 0/1> <cp4 - 0/1> <indicator - 0/1> \n stat_type is one of arbor, arbor_trans, cc, text_order'
     exit(1)
 
   recipeName = sys.argv[1]
@@ -322,7 +322,7 @@ if __name__ == '__main__':
   cp4 = False if sys.argv[7] == '0' else True
   indicator = False if sys.argv[8] == '0' else True
 
-  expName = recipeName + '_UG_CP_'
+  expName = recipeName + '_UGBG_CP_'
   expName = expName + '0' if cp0 else expName
   expName = expName + '1' if cp1 else expName
   expName = expName + '2' if cp2 else expName
