@@ -5,6 +5,51 @@ import itertools
 from edu.sbu.eval.so.features.ft_extraction import get_sem_grouping
 from edu.sbu.eval.so.data.prepare_data import sentSeparator
 
+
+def get_score(weights, pairs, perm):
+  '''
+    score(x) = sum( i 1 to n, j i+1 to n   P(i,j))
+  '''
+  score = 0.0
+  for i in xrange(len(perm)):
+    for j in xrange(i+1, len(perm)):
+      pair = str(i) + ',' + str(j)
+      r_pair = str(j) + ',' + str(i)
+      if pair in pairs:
+        k = pairs.index(pair)
+        score += weights[k][0]
+      elif r_pair in pairs:
+        k = pairs.index(r_pair)
+        score += weights[k][1]
+
+  return score
+  pass
+
+def get_best_order(weights, predicted_labels, pairs, number_of_nodes):
+  '''
+  API to get best order based on
+
+  order = argmax( score(x) ) for all x belongs to permutations of no of nodes
+
+  '''
+
+  max_score = -1
+  max_order = []
+
+  for perm in itertools.permutations(xrange(number_of_nodes)):
+    score = get_score(weights, pairs, perm)
+    '''
+    In case of a tie in max_score, picking the one lowest in lexicographical order
+    '''
+    if score > max_score:
+      max_score = score
+      max_order = perm
+    pass
+
+  print max_order
+  return max_order
+  pass
+
 def pick_edge_weights(weights, predicted_labels, pairs, number_of_nodes):
   '''
   constructing adjacency matrix based on prediction probabilities

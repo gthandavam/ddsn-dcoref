@@ -31,26 +31,6 @@ def train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicat
   # print ft_extractor.get_feature_names()
   return ft_extractor,scaler,clf
 
-def getBestEstimator(X, labels):
-  # from sklearn.preprocessing import Scaler
-  import numpy as np
-  from sklearn.grid_search import GridSearchCV
-  from sklearn.cross_validation import StratifiedKFold
-
-  # scaler = Scaler()
-  # X = scaler.fit_transform(X)
-
-  C_range = 10. ** np.arange(-4, 6)
-  # gamma_range = 10. ** np.arange(-5, 4)
-
-  # param_grid = dict(gamma=gamma_range, C=C_range)
-  param_grid = dict(C=C_range)
-  grid = GridSearchCV(svm.SVC(kernel='linear'), param_grid=param_grid, cv=StratifiedKFold(y=labels, k=5))
-
-  grid.fit(X, labels)
-
-  print("The best classifier is: ", grid.best_estimator_)
-
 
 def test(sents, ft_extractor, scaler, clf, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicator):
   if len(sents) <= 1:
@@ -101,44 +81,6 @@ def evaluate(observed, expected, test_sents, logF):
   logF.write("Observed - " + str(len([x for x in observed if x == '-'])) + "\n")
   return ctr
 
-
-#
-# def run_classifier():
-#   # print 'getting training data...'
-#   sents, labels = get_training_data()
-#   # pprint(sents)
-#   # pprint(labels)
-#   print 'Training set size ' + str(len(labels))
-#
-#   # print 'training on the data...'
-#   ft_xtractor, clf = train(sents, labels)
-#
-#   print 'number of features: ' + str(len(ft_xtractor.get_feature_names()))
-#
-#   # print 'getting test data...'
-#   valid_sents, expected_labels = get_validation_data()
-#   # pprint(test_sents)
-#   # pprint(expected_labels)
-#   print 'Testing set size ' + str(len(expected_labels))
-#
-#   # print 'using the model to predict...'
-#   pred_labels = test(valid_sents, ft_xtractor, clf)
-#   correct = evaluate(pred_labels, expected_labels)
-#
-#   print 'prediction accuracy...'
-#   print str( (correct * 100.0) / len(expected_labels))
-#
-
-def findEstimator(ft_extractor_file, scaler_file, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicator):
-
-  ft_extractor = joblib.load(ft_extractor_file)
-  scaler = joblib.load(scaler_file)
-
-  sents, labels, pairs, recipeLength = get_tsp_validation_data(recipeName)
-
-  ft_extractor, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, scaler, indicator)
-
-  getBestEstimator(X,labels)
 
 def train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator):
   # print 'getting training data...'
@@ -203,9 +145,9 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
     # print 'Testing set size ' + str(itr)
     # print 'Number of nodes ' + str(recipeLength[i][0])
 
-    if recipeLength[i][0] > 20:
+    if recipeLength[i][0] > 22:
       # print 'Skipping >20 Recipe No ' + str(i + 1)
-      logF.write('Skipping >20 Recipe No ' + str(i + 1) + '\n')
+      logF.write('Skipping >22 Recipe No ' + str(i + 1) + '\n')
       tspResultSet.append([])
       prevItr += itr
       continue
@@ -217,11 +159,9 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
       prevItr += itr
       continue
 
-    #Experiment 2 : TSP formulation with SVM probability weights
-    edge_weights = tsp.pick_edge_weights(weights[prevItr : prevItr + itr -1], pred_labels[prevItr : prevItr + itr -1], pairs[prevItr: prevItr + itr-1], recipeLength[i][0])
-    # # print 'Ordering for Recipe No ' + str(i+1) + ' is '
-    # pprint(edge_weights)
-    order = test_tsp_solver(edge_weights)
+    #Experiment 2 : Global inference formulation with SVM probability weights
+    order = tsp.get_best_order(weights[prevItr : prevItr + itr -1], pred_labels[prevItr : prevItr + itr -1], pairs[prevItr: prevItr + itr-1], recipeLength[i][0])
+
 
     #Experiment 3 : TSP formulation with stat weights
     edge_weights_cp = tsp.pick_stat_edge_weights(test_sents, pairs[prevItr : prevItr + itr -1], recipeLength[i][0], stats_obj)
@@ -299,7 +239,6 @@ def main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile, in
     load_and_validate('models/ft_scale_' + recipeName + '_' + expName + '.pkl', 'models/scaler_' + recipeName + '_' + expName + '.pkl', 'models/clf_scale_' + recipeName + '_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator)
 
 
-  # findEstimator('models/ft_noscale_' + recipeName + '_' + expName + '.pkl', recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
   # test_tsp_solver([[0, 1, 100, 200], [100, 0, 1000, 1], [100, 1000, 0, 200], [100, 100, 2, 0]])
   pass
 

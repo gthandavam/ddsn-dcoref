@@ -132,6 +132,7 @@ def get_features(sents, vec=1, recipeName='MacAndCheese', stat_type='arbor', cp0
   skip_stats = False
   if(not cp0 and  not cp1 and not cp2 and not cp3 and not cp4):
     skip_stats = True
+    print 'not adding CP values as svm features'
 
   if not skip_stats:
     stats_obj = StatFeatures(recipeName, stat_type, cp0, cp1, cp2, cp3, cp4)
