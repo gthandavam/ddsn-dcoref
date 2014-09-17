@@ -140,7 +140,7 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
 
   for i in xrange(len(recipeLength)):
     itr = recipeLength[i][1]
-    test_sents = sents[prevItr: prevItr + itr-1]
+    test_sents = sents[prevItr: prevItr + itr]
     # print 'Recipe No ' + str(i+1)
     # print 'Testing set size ' + str(itr)
     # print 'Number of nodes ' + str(recipeLength[i][0])
@@ -160,11 +160,11 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
       continue
 
     #Experiment 2 : Global inference formulation with SVM probability weights
-    order = tsp.get_best_order(weights[prevItr : prevItr + itr -1], pred_labels[prevItr : prevItr + itr -1], pairs[prevItr: prevItr + itr-1], recipeLength[i][0])
+    order = tsp.get_best_order(weights[prevItr : prevItr + itr ], pred_labels[prevItr : prevItr + itr ], pairs[prevItr: prevItr + itr], recipeLength[i][0])
 
 
     #Experiment 3 : TSP formulation with stat weights
-    edge_weights_cp = tsp.pick_stat_edge_weights(test_sents, pairs[prevItr : prevItr + itr -1], recipeLength[i][0], stats_obj)
+    edge_weights_cp = tsp.pick_stat_edge_weights(test_sents, pairs[prevItr : prevItr + itr], recipeLength[i][0], stats_obj)
 
     order_cp = test_tsp_solver(edge_weights_cp)
 
@@ -227,8 +227,8 @@ def test_tsp_solver(distances):
   # input = tsp.prepare_tsp_solver_input(distances)
   output = tsp.tsp_dyn_solver(distances)
 
-  print 'solution'
-  pprint(output)
+  print 'tsp solution: ' + str(output)
+
   return output
 
 def main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile, indicator):

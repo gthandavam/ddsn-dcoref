@@ -13,14 +13,16 @@ def get_score(weights, pairs, perm):
   score = 0.0
   for i in xrange(len(perm)):
     for j in xrange(i+1, len(perm)):
-      pair = str(i) + ',' + str(j)
-      r_pair = str(j) + ',' + str(i)
+      pair = str(perm[i]) + ',' + str(perm[j])
+      r_pair = str(perm[j]) + ',' + str(perm[i])
       if pair in pairs:
         k = pairs.index(pair)
         score += weights[k][0]
       elif r_pair in pairs:
         k = pairs.index(r_pair)
         score += weights[k][1]
+      else:
+        print 'not possible ' + pair
 
   return score
   pass
@@ -46,7 +48,7 @@ def get_best_order(weights, predicted_labels, pairs, number_of_nodes):
       max_order = perm
     pass
 
-  print max_order
+  print 'obj order:' + str(max_order)
   return max_order
   pass
 
