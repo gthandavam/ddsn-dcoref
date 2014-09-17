@@ -271,7 +271,15 @@ if __name__ == '__main__':
 
   expName += stat_type
 
-  logFile = '/home/gt/Documents/' + recipeName + '/' + expName + '.out'
+  outDir = '/home/gt/Documents/' + recipeName + '/log/'
+  import os
+  try:
+    os.makedirs(outDir)
+  except OSError:
+    pass
+
+
+  logFile = outDir + expName + '.out'
   start_time = time.time()
   for i in range(1):
     main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile, indicator)
