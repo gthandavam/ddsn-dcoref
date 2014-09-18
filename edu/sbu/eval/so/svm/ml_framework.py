@@ -115,6 +115,8 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
   #Experiment 1 : SVM prediction using different features
   weights, pred_labels = test(sents, ft_xtractor, scaler, clf, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicator)
 
+  print 'Exp 1 done'
+
   correct = evaluate(pred_labels, labels, sents, logF)
 
   # print 'prediction accuracy...'
@@ -138,6 +140,21 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
   global_inf_correct_cp = 0
   global_inf_labels_cp = 0
 
+
+
+  ##########################
+  joblib.dump(weights, recipeName + '_weights.pkl')
+
+
+  joblib.dump(pred_labels, recipeName + '_pred_labels.pkl')
+
+
+  joblib.dump(pairs, recipeName + '_pairs.pkl')
+
+
+  joblib.dump(recipeLength, recipeName + '_recipeLength.pkl')
+  ##########################
+
   for i in xrange(len(recipeLength)):
     itr = recipeLength[i][1]
     test_sents = sents[prevItr: prevItr + itr]
@@ -145,9 +162,9 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
     # print 'Testing set size ' + str(itr)
     # print 'Number of nodes ' + str(recipeLength[i][0])
 
-    if recipeLength[i][0] > 22:
+    if recipeLength[i][0] > 20:
       # print 'Skipping >20 Recipe No ' + str(i + 1)
-      logF.write('Skipping >22 Recipe No ' + str(i + 1) + '\n')
+      logF.write('Skipping >20 Recipe No ' + str(i + 1) + '\n')
       tspResultSet.append([])
       prevItr += itr
       continue
@@ -159,8 +176,8 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
       prevItr += itr
       continue
 
-    #Experiment 2 : Global inference formulation with SVM probability weights
-    order = tsp.get_best_order(weights[prevItr : prevItr + itr ], pred_labels[prevItr : prevItr + itr ], pairs[prevItr: prevItr + itr], recipeLength[i][0])
+    #HERE: Experiment 2 : Global inference formulation with SVM probability weights
+    # order = tsp.get_best_order(weights[prevItr : prevItr + itr ], pred_labels[prevItr : prevItr + itr ], pairs[prevItr: prevItr + itr], recipeLength[i][0])
 
 
     #Experiment 3 : TSP formulation with stat weights
@@ -169,11 +186,11 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
     order_cp = test_tsp_solver(edge_weights_cp)
 
 
-    #Updating for Experiment 2
-    global_inf_correct, global_inf_labels = update_global_accuracy(order, global_inf_correct, global_inf_labels)
-    ktau_calc = ktau_m(range(recipeLength[i][0]), order, True, False)
-    ktauSum += ktau_calc[0]
-    tspResultSet.append(order)
+    #HERE: Updating for Experiment 2
+    # global_inf_correct, global_inf_labels = update_global_accuracy(order, global_inf_correct, global_inf_labels)
+    # ktau_calc = ktau_m(range(recipeLength[i][0]), order, True, False)
+    # ktauSum += ktau_calc[0]
+    # tspResultSet.append(order)
 
     #Updating for Experiment 3
     global_inf_correct_cp, global_inf_labels_cp = update_global_accuracy(order_cp, global_inf_correct_cp, global_inf_labels_cp)
@@ -185,23 +202,23 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
 
   import pickle
 
-  with open('results/' + recipeName + '_' + expName + '.pkl', 'w') as f:
-    pickle.dump(tspResultSet, f)
+  # HERE: with open('results/' + recipeName + '_' + expName + '.pkl', 'w') as f:
+  #   pickle.dump(tspResultSet, f)
 
   with open('results/cp_' + recipeName + '_' + expName + '.pkl', 'w') as f:
     pickle.dump(tspResultSet_cp, f)
 
-  #log results for Exp 2
-  logF.write('Average KTau: ' + str(ktauSum/len(recipeLength)) + '\n')
-  logF.write('global inference prediction accuracy...')
-  logF.write(str((global_inf_correct * 100.0) / global_inf_labels) + '\n')
+  # HERE: log results for Exp 2
+  # logF.write('Average KTau: ' + str(ktauSum/len(recipeLength)) + '\n')
+  # logF.write('global inference prediction accuracy...')
+  # logF.write(str((global_inf_correct * 100.0) / global_inf_labels) + '\n')
 
   #log results for Exp 3
   logF.write('Average KTau_cp: ' + str(ktauSum_cp/len(recipeLength)) + '\n')
   logF.write('global inference prediction accuracy...')
   logF.write(str((global_inf_correct_cp * 100.0) / global_inf_labels_cp) + '\n')
 
-  if(len(labels) != global_inf_labels):
+  if(len(labels) != global_inf_labels_cp):
     # print 'global_inf_labels suspicious'
     logF.write('len of global_inf_labels != len of labels')
 
