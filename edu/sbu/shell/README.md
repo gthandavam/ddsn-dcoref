@@ -5,9 +5,7 @@
   
 ######How iterative learning is implemented now ?
 
-  * For arbor and arbor_trans, first iteration is based on cc weights. In the following iterations, nodes connected by arborescence algorithm become adjacent and/or part of the transitive closure.
-  
-  * We collect these statistics iteratively
+  * For arbor and arbor_trans, first iteration is based on cc weights. In the following iterations, nodes connected by arborescence algorithm become adjacent and/or part of the transitive closure; We collect these statistics iteratively
   
   * For CC and text_order there is no iterative learning, we compute weights and save them. 
 
