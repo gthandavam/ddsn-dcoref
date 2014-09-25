@@ -6,6 +6,9 @@ Discourse deictic shell noun resolution that helps in summarisation
 Repo name is a misnomer - the name for the project evolved over time; so please dont read too much into the repo name.
 
 ####Package Structure
+0. edu.sbu.stan-syntax
+
+  Package for Tregex based semantic parsing. Uses Stanford CoreNLP and Stanford Tregex packages.
 
 1. edu.sbu.bin -> Meant to keep the utility scripts for the project.
 
