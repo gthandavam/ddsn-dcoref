@@ -5,6 +5,19 @@ Discourse deictic shell noun resolution that helps in summarisation
 
 Repo name is a misnomer - the name for the project evolved over time; so please dont read too much into the repo name.
 
+####Platform
+  * Development was done on Mac(Mountain Lion ?) and Ubuntu (12.04/14.04)
+
+####Runtime
+  * python 2.7
+
+####Dependencies
+
+  * GraphViz - graphviz version 2.36.0 (20140111.2315)
+  * Stanford CoreNLP (v 3.3.1) (Tregex, Constituency Parser are used)
+  * Concorde TSP Solver ( for extrinsic evaluation ) 
+  * Scikit python library for SVM
+
 ####Package Structure
 0. edu.sbu.stan-syntax
 
@@ -42,10 +55,11 @@ Repo name is a misnomer - the name for the project evolved over time; so please 
 5. edu.sbu.stats -> Our content models
 
   This is what the package is believed to give us 
-  
+```python
   '''
   getArg1Arg2PredPredArg1Prob(a1s, a2s, verb, overb, oas) returns P(pred2, pred2.arg1 | pred1.arg1, pred1.arg2, pred1)
   getArg1Arg2PredPredProb(a1s, a2s, verb, overb) returns P(pred2 | pred1.arg1, pred1.arg2, pred1)
   getArg1PredPredArg1Prob(a1s, verb, overb, oas) returns P(pred2, pred2.arg1 | pred1.arg1, pred1)
   getArg1PredPredProb(a1s, verb, overb) returns P(pred2 | pred1.arg1, pred1)
   '''
+  ```
