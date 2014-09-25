@@ -65,19 +65,12 @@ def pick_edge_weights(weights, predicted_labels, pairs, number_of_nodes):
     #the edges involved. prob(a precedes b) should be assigned to 
     #edge from b to a and vice versa
 
-    # ret[x][y] = -1000 * math.log(weights[i][1], 2)
-    # ret[y][x] = -1000 * math.log(weights[i][0], 2)
-    ret[x][y] = weights[i][1]
-    ret[y][x] = weights[i][0]
-    #no need to assign weights based on pred labels, since we flip the indices (pairs) while preparing data
-    # if(predicted_labels[i] == '+'):
-    #   ret[x][y] = weights[i][1]
-    #   ret[y][x] = weights[i][0]
-    # elif predicted_labels[i] == '-':
-    #   ret[x][y] = weights[i][0]
-    #   ret[y][x] = weights[i][1]
-    # else:
-    #   print 'NOT POSSIBLE'
+    # #assigning probability values as edge weights
+    # ret[x][y] = weights[i][1]
+    # ret[y][x] = weights[i][0]
+
+    #assigning decision scores as edge weights
+    ret[y][x] = weights[i]
 
   return ret
 
@@ -99,7 +92,9 @@ def pick_stat_edge_weights(samples, pairs, number_of_nodes, stats_obj):
     sem_group2 = get_sem_grouping(sent2)
 
     #probability of precedence should be flipped for TSP formulation
-    #refer pick_edge_weights method for more details
+    #It is important to swap the precedence probabilities for
+    #the edges involved. prob(a precedes b) should be assigned to
+    #edge from b to a and vice versa
     ret[x][y] = stats_obj.get_stat_based_edge_weight(sem_group2, sem_group1)
     ret[y][x] = stats_obj.get_stat_based_edge_weight(sem_group1, sem_group2)
 
@@ -116,6 +111,60 @@ def prepare_tsp_solver_input(distances):
   return np.array(distances)
 
 
+def linKernSolver(distances, dishName, index, tsp_exp):
+  '''
+  Uses Concorde's Lin-Kernighan solver to find an approximate solution
+  '''
+  import os
+  TSP_WORK_DIR = '/home/gt/Documents/TSP/' + dishName + '/'
+  OUT_FILE = TSP_WORK_DIR + str(index) + '_' + tsp_exp +  '.out'
+  IN_FILE = TSP_WORK_DIR + str(index) + '_' + tsp_exp +'.in'
+
+  try:
+    os.makedirs(TSP_WORK_DIR)
+  except Exception as e:
+    pass
+
+  #CCutil_readint method picks the first integer that appears in the input file to get the number of nodes - so it is important the first number appears only in DIMENSION line
+  with open(IN_FILE, 'w') as INP_F:
+    INP_F.write('NAME: DUMMY_NAME\n')
+    INP_F.write('TYPE: ATSP' + '\n')
+    INP_F.write('COMMENT: Asymmetric TSP recipe instance' + '\n')
+    INP_F.write('DIMENSION: ' + str(len(distances[0])) + '\n')
+    INP_F.write('EDGE_WEIGHT_TYPE: EXPLICIT\n')
+    INP_F.write('EDGE_WEIGHT_FORMAT: FULL_MATRIX\n')
+    INP_F.write('EDGE_WEIGHT_SECTION\n')
+
+    for i in xrange(len(distances[0])):
+      for j in xrange(len(distances[0])):
+        INP_F.write('    ' + str(distances[i][j]))
+
+      INP_F.write('\n') #end of row
+
+    INP_F.write('EOF')
+    pass
+
+
+  import commands
+  stat, out = commands.getstatusoutput('/home/gt/LinKern-Concorde/src/concorde/LINKERN/linkern  -N 7 -o ' + OUT_FILE + ' ' + IN_FILE)
+
+  if stat != 0:
+    print dishName + ' ' + str(index) + ' LinKern error'
+    print out
+    # return []
+
+  ret = []
+  with open(OUT_FILE) as OUT_F:
+    lines = OUT_F.readlines()
+    #skipping first line of the output file
+    for i in xrange(1, len(lines)):
+      ret.append(int(lines[i].split(' ')[0]))
+
+
+  return ret
+  pass
+
+
 def tsp_solver(input):
   '''
     Solves the problem and returns the tsp solution
@@ -129,7 +178,8 @@ def tsp_dyn_solver(input):
   all_distances = input
   #initial value - just distance from 0 to every other point + keep the track of edges
   A = {(frozenset([0, idx + 1]), idx + 1): (dist, [0, idx + 1]) for idx, dist in enumerate(all_distances[0][1:])}
-  cnt = len(input[0])
+  cnt = len(all_distances[0])
+  # print A
   for m in range(2, cnt):
     B = {}
     for S in [frozenset(C) | {0} for C in itertools.combinations(range(1, cnt), m)]:
@@ -138,4 +188,6 @@ def tsp_dyn_solver(input):
                          k != 0 and k != j])  #this will use 0th index of tuple for ordering, the same as if key=itemgetter(0) used
     A = B
   res = min([(A[d][0] + all_distances[0][d[1]], A[d][1]) for d in iter(A)])
+
+  # print res[0]
   return res[1]

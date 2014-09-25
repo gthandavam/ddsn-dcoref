@@ -13,7 +13,7 @@ from edu.sbu.eval.so.data.prepare_data import *
 from edu.sbu.eval.so.features.ft_extraction import get_features
 from scipy.stats import kendalltau as ktau
 from scipy.stats.mstats import kendalltau as ktau_m
-from sklearn import svm
+from sklearn import svm, linear_model
 from sklearn.externals import joblib
 from pprint import pprint
 import math
@@ -23,9 +23,14 @@ def train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicat
   ft_extractor,scaler, X = get_features(sents, 1, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, 1, indicator)
 
   print 'Features extracted'
-  clf = svm.SVC(C=1.0, cache_size=2000, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
-      kernel='linear', max_iter=-1, probability=True, random_state=None,
-      shrinking=True, tol=0.001, verbose=False)
+  # clf = svm.SVC(C=1.0, cache_size=2000, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
+  #     kernel='linear', max_iter=-1, probability=False, random_state=None,
+  #     shrinking=True, tol=0.001, verbose=False)
+
+  if recipeName in ('MeatLasagna', 'PecanPie'):
+    clf = linear_model.LogisticRegression(penalty='l1', dual=False, tol=0.0001, C=1.0, fit_intercept=True, intercept_scaling=1, class_weight=None, random_state=None)
+  else:
+    clf = linear_model.LogisticRegression(penalty='l1', dual=False, tol=0.0001, C=10.0, fit_intercept=True, intercept_scaling=1, class_weight=None, random_state=None)
 
   clf.fit(X,labels)
   # print ft_extractor.get_feature_names()
@@ -39,7 +44,7 @@ def test(sents, ft_extractor, scaler, clf, labels, recipeName, stat_type, cp0, c
   vec,scaler, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, scaler, indicator)
 
   y = clf.predict(X)
-  prob = clf.predict_proba(X)
+  prob = clf.decision_function(X)
 
   # return y
   return prob,y
@@ -100,7 +105,7 @@ def train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF
   joblib.dump(clf, 'models/clf_scale_' + recipeName + '_' + expName + '.pkl')
   joblib.dump(scaler, 'models/scaler_' + recipeName + '_' + expName + '.pkl')
 
-def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator):
+def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator, exp1, exp2, exp3, useLinKern):
 
   ft_xtractor = joblib.load(ft_ext_file)
   clf = joblib.load(clf_file)
@@ -140,19 +145,17 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
   global_inf_correct_cp = 0
   global_inf_labels_cp = 0
 
-
-
   ##########################
-  joblib.dump(weights, recipeName + '_weights.pkl')
-
-
-  joblib.dump(pred_labels, recipeName + '_pred_labels.pkl')
-
-
-  joblib.dump(pairs, recipeName + '_pairs.pkl')
-
-
-  joblib.dump(recipeLength, recipeName + '_recipeLength.pkl')
+  # joblib.dump(weights, recipeName + '_weights.pkl')
+  #
+  #
+  # joblib.dump(pred_labels, recipeName + '_pred_labels.pkl')
+  #
+  #
+  # joblib.dump(pairs, recipeName + '_pairs.pkl')
+  #
+  #
+  # joblib.dump(recipeLength, recipeName + '_recipeLength.pkl')
   ##########################
 
   for i in xrange(len(recipeLength)):
@@ -164,10 +167,15 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
 
     if recipeLength[i][0] > 20:
       # print 'Skipping >20 Recipe No ' + str(i + 1)
-      logF.write('Skipping >20 Recipe No ' + str(i + 1) + '\n')
-      tspResultSet.append([])
-      prevItr += itr
-      continue
+      if(useLinKern):
+
+        logF.write('LinKern solver for Recipe No: ' + str(i + 1) + '\n')
+      else:
+        logF.write('Skipping >20 Recipe No ' + str(i + 1) + '\n')
+        tspResultSet.append([])
+        prevItr += itr
+        continue
+
 
     if len(test_sents) <= 1:
       # print 'Skipping Recipe No ' + str(i + 1)
@@ -177,46 +185,55 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
       continue
 
     #HERE: Experiment 2 : Global inference formulation with SVM probability weights
-    # order = tsp.get_best_order(weights[prevItr : prevItr + itr ], pred_labels[prevItr : prevItr + itr ], pairs[prevItr: prevItr + itr], recipeLength[i][0])
+    if exp2:
+      edge_weights = tsp.pick_edge_weights(weights[prevItr : prevItr + itr ], pred_labels[prevItr : prevItr + itr ], pairs[prevItr: prevItr + itr], recipeLength[i][0])
+      # print edge_weights
+      order = test_tsp_solver(edge_weights, recipeName, i, 'tsp_exp_2')
 
 
     #Experiment 3 : TSP formulation with stat weights
-    edge_weights_cp = tsp.pick_stat_edge_weights(test_sents, pairs[prevItr : prevItr + itr], recipeLength[i][0], stats_obj)
+    if exp3:
+      edge_weights_cp = tsp.pick_stat_edge_weights(test_sents, pairs[prevItr : prevItr + itr], recipeLength[i][0], stats_obj)
 
-    order_cp = test_tsp_solver(edge_weights_cp)
+      order_cp = test_tsp_solver(edge_weights_cp, recipeName, i, 'tsp_exp_3')
 
 
     #HERE: Updating for Experiment 2
-    # global_inf_correct, global_inf_labels = update_global_accuracy(order, global_inf_correct, global_inf_labels)
-    # ktau_calc = ktau_m(range(recipeLength[i][0]), order, True, False)
-    # ktauSum += ktau_calc[0]
-    # tspResultSet.append(order)
+    if exp2:
+      global_inf_correct, global_inf_labels = update_global_accuracy(order, global_inf_correct, global_inf_labels)
+      ktau_calc = ktau_m(range(recipeLength[i][0]), order, True, False)
+      ktauSum += ktau_calc[0]
+      tspResultSet.append(order)
 
     #Updating for Experiment 3
-    global_inf_correct_cp, global_inf_labels_cp = update_global_accuracy(order_cp, global_inf_correct_cp, global_inf_labels_cp)
-    ktau_calc_cp = ktau_m(range(recipeLength[i][0]), order_cp, True, False)
-    ktauSum_cp += ktau_calc_cp[0]
-    tspResultSet_cp.append(order_cp)
+    if exp3:
+      global_inf_correct_cp, global_inf_labels_cp = update_global_accuracy(order_cp, global_inf_correct_cp, global_inf_labels_cp)
+      ktau_calc_cp = ktau_m(range(recipeLength[i][0]), order_cp, True, False)
+      ktauSum_cp += ktau_calc_cp[0]
+      tspResultSet_cp.append(order_cp)
 
     prevItr += itr
 
   import pickle
 
-  # HERE: with open('results/' + recipeName + '_' + expName + '.pkl', 'w') as f:
-  #   pickle.dump(tspResultSet, f)
+  #HERE:
+  with open('results/' + recipeName + '_' + expName + '.pkl', 'w') as f:
+    pickle.dump(tspResultSet, f)
 
   with open('results/cp_' + recipeName + '_' + expName + '.pkl', 'w') as f:
     pickle.dump(tspResultSet_cp, f)
 
   # HERE: log results for Exp 2
-  # logF.write('Average KTau: ' + str(ktauSum/len(recipeLength)) + '\n')
-  # logF.write('global inference prediction accuracy...')
-  # logF.write(str((global_inf_correct * 100.0) / global_inf_labels) + '\n')
+  if exp2:
+    logF.write('Average KTau: ' + str(ktauSum/len(recipeLength)) + '\n')
+    logF.write('global inference prediction accuracy...')
+    logF.write(str((global_inf_correct * 100.0) / global_inf_labels) + '\n')
 
   #log results for Exp 3
-  logF.write('Average KTau_cp: ' + str(ktauSum_cp/len(recipeLength)) + '\n')
-  logF.write('global inference prediction accuracy...')
-  logF.write(str((global_inf_correct_cp * 100.0) / global_inf_labels_cp) + '\n')
+  if exp3:
+    logF.write('Average KTau_cp: ' + str(ktauSum_cp/len(recipeLength)) + '\n')
+    logF.write('global inference prediction accuracy...')
+    logF.write(str((global_inf_correct_cp * 100.0) / global_inf_labels_cp) + '\n')
 
   if(len(labels) != global_inf_labels_cp):
     # print 'global_inf_labels suspicious'
@@ -236,24 +253,27 @@ def update_global_accuracy(order, correct, total):
   return correct, total
   pass
 
-def test_tsp_solver(distances):
+def test_tsp_solver(distances, dishName, index, tsp_exp):
   '''
   distances -> adjacency matrix
   '''
 
   # input = tsp.prepare_tsp_solver_input(distances)
-  output = tsp.tsp_dyn_solver(distances)
+  if(len(distances[0]) > 20):
+    output = tsp.linKernSolver(distances, dishName, index, tsp_exp)
+  else:
+    output = tsp.tsp_dyn_solver(distances)
 
   print 'tsp solution: ' + str(output)
 
   return output
 
-def main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile, indicator):
+def main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile, indicator, useLinKern):
   # run_classifier()
   with open(logFile, 'w') as logF:
     if i == 0:
        train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator)
-    load_and_validate('models/ft_scale_' + recipeName + '_' + expName + '.pkl', 'models/scaler_' + recipeName + '_' + expName + '.pkl', 'models/clf_scale_' + recipeName + '_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator)
+    load_and_validate('models/ft_scale_' + recipeName + '_' + expName + '.pkl', 'models/scaler_' + recipeName + '_' + expName + '.pkl', 'models/clf_scale_' + recipeName + '_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator, exp1=True, exp2=True, exp3=True, useLinKern=useLinKern)
 
 
   # test_tsp_solver([[0, 1, 100, 200], [100, 0, 1000, 1], [100, 1000, 0, 200], [100, 100, 2, 0]])
@@ -296,9 +316,9 @@ if __name__ == '__main__':
     pass
 
 
-  logFile = outDir + expName + '.out'
+  logFile = outDir + expName + '_no_lin_kern_log_reg_dec_func.out'
   start_time = time.time()
   for i in range(1):
-    main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile, indicator)
+    main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile, indicator, useLinKern=False)
   print time.time() - start_time, "seconds"
   print '#############'

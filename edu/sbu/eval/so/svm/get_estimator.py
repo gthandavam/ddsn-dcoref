@@ -4,7 +4,7 @@ __author__ = 'gt'
 from edu.sbu.eval.so.data.prepare_data import *
 
 from edu.sbu.eval.so.features.ft_extraction import get_features
-from sklearn import svm
+from sklearn import svm, linear_model
 
 def getBestEstimator(X, labels, recipeName):
   # from sklearn.preprocessing import Scaler
@@ -20,7 +20,10 @@ def getBestEstimator(X, labels, recipeName):
 
   # param_grid = dict(gamma=gamma_range, C=C_range)
   param_grid = dict(C=C_range)
-  grid = GridSearchCV(svm.SVC(kernel='linear', cache_size=2000), param_grid=param_grid, cv=StratifiedKFold(y=labels, n_folds=5))
+  # grid = GridSearchCV(svm.SVC(kernel='linear', cache_size=2000), param_grid=param_grid, cv=StratifiedKFold(y=labels, n_folds=5))
+
+  grid = GridSearchCV(linear_model.LogisticRegression(penalty='l1', dual=False, fit_intercept=True, intercept_scaling=1, class_weight=None, random_state=None), param_grid=param_grid, cv=StratifiedKFold(y=labels,n_folds=5))
+
 
   grid.fit(X, labels)
 

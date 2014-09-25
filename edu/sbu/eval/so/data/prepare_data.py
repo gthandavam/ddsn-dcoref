@@ -133,14 +133,23 @@ def prepare_tsp_experiment_data(inpFileList, outFile):
       for j in range(i+1, len(lines)):
         successor = lines[j]
 
-        tP = round(random.random(),2)
-        if tP >= negP:
-          sample = successor + sentSeparator + predecessor + labelSeparator + '-' + pairSeparator + str(j) + ',' + str(i)
-        else:
-          sample = predecessor + sentSeparator + successor + labelSeparator + '+' + pairSeparator + str(i) + ',' + str(j)
-        sampleCtr += 1
-        samples.write(sample + '\n')
-    #dont know why this is needed
+        # tP = round(random.random(),2)
+        # if tP >= negP:
+        #   sample = successor + sentSeparator + predecessor + labelSeparator + '-' + pairSeparator + str(j) + ',' + str(i)
+        # else:
+        #   sample = predecessor + sentSeparator + successor + labelSeparator + '+' + pairSeparator + str(i) + ',' + str(j)
+        # sampleCtr += 1
+        # samples.write(sample + '\n')
+
+        #preparing i,j and j,i as samples per pair i and j
+        sample1 = successor + sentSeparator + predecessor + labelSeparator + '-' + pairSeparator + str(j) + ',' + str(i)
+
+        sample2 = predecessor + sentSeparator + successor + labelSeparator + '+' + pairSeparator + str(i) + ',' + str(j)
+        sampleCtr += 2
+        samples.write(sample1 + '\n')
+        samples.write(sample2 + '\n')
+
+    #writing number of nodes, number of samples in the recipe
     samples.write( str(len(lines)) + ',' + str(sampleCtr) + recipeSeparator + '\n' )
     # break #for debugging
 

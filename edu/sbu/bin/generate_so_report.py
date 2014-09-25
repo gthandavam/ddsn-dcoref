@@ -26,7 +26,9 @@ dishes = (
 
 
 experiments = (
-  'UGBG_CP__prob_wt_arbor_trans',
+
+'UGBG_CP__prob_wt_arbor_trans_no_lin_kern',
+# 'UGBG_CP__prob_wt_arbor_trans',
 # 'UGBG_CP_01234_indicator_arbor',
 # 'UGBG_CP_01234_indicator_arbor_trans',
 # 'UGBG_CP_01234_indicator_cc',
@@ -43,23 +45,22 @@ experiments = (
 # 'UG_CP_01234_prob_wt_arbor_trans',
 # 'UG_CP_01234_prob_wt_cc',
 # 'UG_CP_01234_prob_wt_text_order'
-
 )
 
 
 
 def main():
   docRoot = '/home/gt/Documents/'
-  with open('/home/gt/Documents/so_report_with_obj_func.csv', 'w') as report:
+  with open('/home/gt/Documents/so_report_no_lin_kern_prob_log_reg.csv', 'w') as report:
     writer = csv.writer(report)
 
     for dish in dishes:
       writer.writerow([dish])
-      writer.writerow(['Features', 'TPR', 'FPR', 'Observed +', 'Observed -', 'SVM Classification Acc.', 'kTau average (TSP with SVM Prob)', 'global inference - Class. Acc. (TSP with SVM Prob)', 'kTau average (TSP with CP{1,2,3,4})', 'global inference - Class. Acc. (TSP with CP{1,2,3,4})'])
+      writer.writerow(['Features', 'TPR', 'FPR', 'Observed +', 'Observed -', 'SVM Classification Acc.', 'kTau average (TSP with SVM Prob)', 'global inference - Class. Acc. (TSP with Log Reg Dec Sco)', 'kTau average (TSP with CP{1,2,3,4})', 'global inference - Class. Acc. (TSP with CP{1,2,3,4})'])
       for experiment in experiments:
         fileName = docRoot + dish + '/log/' + dish + '_' + experiment + '.out'
         # row = [experiment]
-        row = ['UG BG C Tuned with 5 fold Cross Validation']
+        row = ['UG BG']
         with open(fileName) as logF:
           #special flag since pred_accuracy is in a separate line in logFile
           pred_accuracy_line = False
