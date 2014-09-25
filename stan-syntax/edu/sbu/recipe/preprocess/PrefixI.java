@@ -36,7 +36,7 @@ public class PrefixI {
     BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
     
     Properties props = new Properties();
-    props.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse");
+    props.put("annotators", "tokenize, ssplit");
     StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
     
     
@@ -64,6 +64,7 @@ public class PrefixI {
           
         }
         
+        //not attaching I would to sentences that begin with "In a ****," 
         for(int i=0 ; i < parts.length; i++) {
           if(parts[i].toLowerCase().startsWith("in ")) {
             parts[i] = Character.toUpperCase(

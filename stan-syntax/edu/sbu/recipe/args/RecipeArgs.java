@@ -38,7 +38,7 @@ public class RecipeArgs {
     
     Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/" + recipeName + "/" + recipeName + "-Isteps/ -type f");
     
-    String outDirName = "/home/gt/Documents/" + recipeName + "/" + recipeName + "Args/";
+    String outDirName = "/home/gt/Documents/" + recipeName + "/" + recipeName + "NArgs/";
     
     try {
       File outDir = new File(outDirName);
@@ -54,44 +54,15 @@ public class RecipeArgs {
     StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
     
     while( (fileName = reader.readLine()) != null) {
-//      fileName = "/home/gt/Documents/MacAndCheese-Isteps/"
-//          + "baked-macaroni-and-cheese-with-tomato.txt";
-//      fileName = "/home/gt/Documents/MacAndCheese-Isteps/"
-//          + "canadian-bacon-macaroni-and-cheese.txt";
-//      fileName = "/home/gt/Documents/MacAndCheese-Isteps/"
-//          + "best-mac-n-cheese-ever.txt";
-//      fileName = "/home/gt/Documents/MacAndCheese/MacAndCheese-Isteps/"
-//        + "baked-mac-and-cheese-for-one.txt";
-//      fileName = "/home/gt/Documents/MacAndCheese/MacAndCheese-Isteps/"
-//          + "walters-chicken-and-mac.txt";
-//    fileName = "/home/gt/Documents/MacAndCheese/MacAndCheese-Isteps/"
-//    + "test-chucks-favorite-mac-and-cheese.txt";
       System.out.println("Processing Recipe " + fileName);
       Annotation annotation = new Annotation(IOUtils.slurpFileNoExceptions(fileName));
       
-      String argsFile = fileName.replace(recipeName + "-Isteps", recipeName + "Args");
+      String argsFile = fileName.replace(recipeName + "-Isteps", recipeName + "NArgs");
       
       FileWriter fw = new FileWriter(argsFile);
       
       pipeline.annotate(annotation);
       List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
-      
-      
-      //separating individual VPs
-      //TODO: 1. Check "Stir in pasta" - cases
-      //Stir in pasta should be classified as stir->verb, pasta as arg1
-      //but with the current scheme "in pasta" is identified as PP -> arg2
-      //This corpus has this usage of in to talk about arg1
-      //Ref: http://www.macmillandictionary.com/us/dictionary/american/stir-in
-      // Looks like an american usage! snap!
-      /*handle the following
-       * whisk in
-       * stir in
-       * pour in
-      */
-      
-      //TODO: 2. Modify NP ! << PRN -> use tregex to filter and later on post 
-      //process PRN and all
       
       //TODO: 3. Handle "In a small bowl, VP NP cases"
       //case 1
@@ -99,25 +70,17 @@ public class RecipeArgs {
 //          + "[<<# /VBP/=verb | <<# VB=verb] [ [ < NP=arg1 < PP=arg2] | "
 //          + "[ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <, /VBP/=verb1 ] | [ <, VB=verb1 ] ]");
       
-      TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  "
-          + "[<, /VBP/=verb | <, VB=verb] [ [ < NP=arg1 < PP=arg2] | "
-          + "[ < NP=arg1 ] | [ < PP=arg2  ] | [ <, /VBP/=verb1 ] | [ <, VB=verb1 ] ]");
       
-
-//      TregexPattern syntFeaturesPattern = TregexPattern.compile(
-//          "NN=head > NP [$-- /NN/=appos | $-- JJ=adj | $-- DT=det]");
-      
+      TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR [<, VBP=verb | <, VB=verb] " +
+      " [ [< NP=arg1 $-- PP=argSpecial2] | [ < NP=arg1 < PP=arg2] | " +
+      " [ < NP=arg1 ] | [ < PP=arg2  ] | [<, VBP=verb1 ] | [ <, VB=verb1] ]");
+//      
+//      TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  "
+//          + "[<, /VBP/=verb | <, VB=verb] [ [ < NP=arg1 < PP=arg2] | "
+//          + "[ < NP=arg1 ] | [ < PP=arg2  ] | [ <, /VBP/=verb1 ] | [ <, VB=verb1 ] ]");
+//            
       TreebankLanguagePack tlp = new PennTreebankLanguagePack();
       GrammaticalStructureFactory gsf = tlp.grammaticalStructureFactory();
-      
-      /*
-       * Test cases for getting modifiers and headNouns of a NP:
-          8 inch baking dish
-          large casserole dish
-          9X11 inch baking dish
-          greased 2-quart baking dish
-          large pot of lightly salted water
-       */
       
       String mySeparator = "TheGT";
       int sentNum = -1;
@@ -141,25 +104,32 @@ public class RecipeArgs {
           verb = matcher.getNode("verb");
           
           if( arg1 != null && arg1 == matcher.getNode("arg1")){
+          //checking not equality but if arg1 and matcher.getNode(arg1) are pointing to the same reference hence using '=='
             arg1 = null;
 //            System.out.println("clearing previous arg1");
           }
           else 
             arg1 = matcher.getNode("arg1");
           
-          if( arg2 != null && arg2 == matcher.getNode("arg2")) {
+          if(matcher.getNode("argSpecial2") != null && arg2 != matcher.getNode("argSpecial2")) {
+            System.out.println("argspecial " + matcher.getNode("argSpecial2"));
+            arg2 = matcher.getNode("argSpecial2");
+          } else if( arg2 != null && arg2 == matcher.getNode("arg2")) {
+            //checking not equality but if arg2 and matcher.getNode(arg2) are pointing to the same reference hence using '==' 
             arg2 = null;
 //            System.out.println("clearing previous arg2");
           } 
           else
             arg2 = matcher.getNode("arg2");
           
-          if(matcher.getNode("verb1") != null)
+          if(matcher.getNode("verb1") != null) {
             System.out.println("VERB1");
+            System.out.println(matcher.getNode("verb1"));
+          }
           
           if(matcher.getNode("verb1") != null && 
               !matcher.getNode("verb1").equals(matcher.getNode("verb")))
-            System.out.println("GGGG verb1 != verb");
+            System.out.println("verb1 != verb " + matcher.getNode("verb1") +  " != " + matcher.getNode("verb"));
           
           System.out.println("sentNum: " + sentNum);
           System.out.println("predNum: " + predNum);
@@ -171,6 +141,11 @@ public class RecipeArgs {
           if(verb != null) {
             System.out.println("verb: "  + Sentence.listToString(verb.yield()));
             fw.write("verb: " + mySeparator + Sentence.listToString(verb.yield()) + "\n");
+          } else {
+            System.out.println("VERB NULL");
+            System.out.println(matcher.getNode("verb1"));
+            System.out.println(matcher.getNode("arg1"));
+            System.out.println(matcher.getNode("arg2"));
           }
           
           if(arg1 != null) {
@@ -180,9 +155,9 @@ public class RecipeArgs {
             GrammaticalStructure gs = gsf.newGrammaticalStructure(arg1);
             Collection<TypedDependency> tdl = gs.allTypedDependencies();
             
-            for (TypedDependency dep: tdl) {
-              System.out.println(dep.reln()+"~~~~~"+dep.gov()+"~~~~~"+dep.dep());
-            }
+//            for (TypedDependency dep: tdl) {
+//              System.out.println(dep.reln()+"~~~~~"+dep.gov()+"~~~~~"+dep.dep());
+//            }
             
             ArrayList<TaggedWord> arr = arg1.taggedYield();
             
@@ -200,7 +175,6 @@ public class RecipeArgs {
 //            System.out.println("Arg1: NULL");
             fw.write("Arg1:"  + mySeparator + "NULL" + "\n");
             fw.write("Arg1POS:"  + mySeparator +"NULL" + "\n");
-            
           }
           
           if(arg2 != null) {
@@ -209,9 +183,9 @@ public class RecipeArgs {
             GrammaticalStructure gs = gsf.newGrammaticalStructure(arg2);
             Collection<TypedDependency> tdl = gs.allTypedDependencies();
             
-            for (TypedDependency dep: tdl) {
-              System.out.println(dep.reln()+"~~~~~"+dep.gov()+"~~~~~"+dep.dep());
-            }
+//            for (TypedDependency dep: tdl) {
+//              System.out.println(dep.reln()+"~~~~~"+dep.gov()+"~~~~~"+dep.dep());
+//            }
           
             fw.write("Arg2POS:" + mySeparator);
             ArrayList<TaggedWord> arr = arg2.taggedYield();
@@ -226,8 +200,8 @@ public class RecipeArgs {
             fw.write("\n");
           } else {
 //            System.out.println("Arg2: NULL");
-            fw.write("Arg2: "  + mySeparator + "NULL" + "\n");
-            fw.write("Arg2POS:"  + mySeparator +" NULL" + "\n");
+            fw.write("Arg2:"  + mySeparator + "NULL" + "\n");
+            fw.write("Arg2POS:"  + mySeparator +"NULL" + "\n");
           }
           
         }
