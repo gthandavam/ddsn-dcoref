@@ -15,11 +15,32 @@ BRAT_DATA = '/home/gt/Downloads/brat-v1.3_Crunchy_Frog/data/ActivityDiagramming/
 RECIPE_TEXT_LOCATION = '/home/gt/Documents/'
 ##################
 
+dishes = (
+#'BananaMuffins',
+'BeefChilli',
+'BeefMeatLoaf',
+'BeefStroganoff',
+'CarrotCake',
+'CheeseBurger',
+'ChickenSalad',
+'ChickenStirFry',
+'Coleslaw',
+'CornChowder',
+'DeviledEggs',
+'EggNoodles',
+'FrenchToast',
+'MacAndCheese',
+'MeatLasagna',
+'PecanPie',
+'PotatoSalad',
+'PulledPork',
+'PumpkinPie',
+'VeggiePizza'
+)
+def main(recipeName):
 
-def main(args):
-  recipeName = args[1]
-  inputDir = RECIPE_TEXT_LOCATION + recipeName + '/' + recipeName + '-steps/'
-  outputDir = BRAT_DATA + args[1] + '/'
+  inputDir = RECIPE_TEXT_LOCATION + recipeName + '/' + recipeName + '-ss-steps/'
+  outputDir = BRAT_DATA + recipeName + '/'
   print 'INPUT DIR : ' + inputDir
   print 'OUTPUT DIR : ' + outputDir
   try:
@@ -40,5 +61,6 @@ def main(args):
 
 
 if __name__ == '__main__':
-  main(sys.argv)
+  for dish in dishes:
+    main(dish)
   pass

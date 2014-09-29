@@ -270,8 +270,10 @@ API to find if a file is part of training data-set
 '''
 def is_training_file(args_file_name):
 
-  recipe_name = args_file_name.split('/')[-1]
-  return recipe_name in train_files_hash.keys()
+  #returning True always, as we needed this only for Sentence Re-ordering experiment
+  return True
+  # recipe_name = args_file_name.split('/')[-1]
+  # return recipe_name in train_files_hash.keys()
   pass
 
 '''

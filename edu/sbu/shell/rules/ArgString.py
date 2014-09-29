@@ -91,6 +91,8 @@ class ArgString:
             ret_i, ret_j = self.find_arg_string_match(pnodes, rnodes, rnodes[i][j][k], i, j, k)
             if ret_i != -1 and ret_j != -1:
               rnodes[i][j][k].shell_coref.append(((ret_i, ret_j), 'ArgString'))
+              pnodes[i][j].arg_text_for_coref += ' ' + pnodes[ret_i][ret_j].arg_text_for_coref
+              pnodes[i][j].arg_text_POS_for_coref += ' ' + pnodes[ret_i][ret_j].arg_text_POS_for_coref
 
               # print 'ArgString applied'
               # print rnodes[i][j][k].text + ' pred:' + pnodes[ret_i][ret_j].predicate
