@@ -56,8 +56,6 @@ def learn_cc(num_iter, recipe):
   cmd = 'python Transformer.py -stat_for_eval_cc ' + recipe + ' ' + expName
   out = commands.getoutput(cmd)
   print out
-
-
   pass
 
 
@@ -71,8 +69,6 @@ def learn_text_order(num_iter, recipe):
   cmd = 'python Transformer.py -stat_for_eval_wt ' + recipe + ' ' + expName
   out = commands.getoutput(cmd)
   print out
-
-
   pass
 
 if __name__ == '__main__':

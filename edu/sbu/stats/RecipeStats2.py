@@ -1109,13 +1109,13 @@ class RecipeStats2:
 
   def getPredOuputArgProb(self, predicate, input_argument1, input_argument2, output_argument):
     if input_argument1==None:
-      return 0
+      return -100
     nouns = output_argument.getNouns()
     # if "minutes" in nouns:
     #   return 0
     # score = self.log(1-self.getTextSimArr(predicate.getNouns(), nouns))
     score = self.log(self.getTextSimArr(input_argument1.getNouns(), nouns))
-    if score!=0:
+    if score!= -100:
       return score
     # if output_argument.arg_type=="arg1":
     #   score2 = self.getArg1Arg1Prob(input_argument1,output_argument)
@@ -1155,7 +1155,7 @@ class RecipeStats2:
             s +=  self.verb_args1_score[verb][arg1]
         return self.log(float(s)/len(d))
         # return math.log(1-s+0.00000001)
-    return 0
+    return -100
 
   def getPredOuputArg2Prob(self, predicate, input_argument, output_argument):
     ### Compute probability of edge predicate->arg2
@@ -1246,8 +1246,8 @@ class RecipeStats2:
 
   def getPredPredProb(self, predicate, input_argument1, input_argument2, predicate2, input2_argument):
     if input_argument1==None:
-      return 0
-    score = 0
+      return -100
+    score = -100
     if input2_argument!=None:
       if input_argument2==None:
         score = self.getArg1PredPredArg1(input_argument1,predicate,predicate2,input2_argument)
@@ -1257,7 +1257,7 @@ class RecipeStats2:
       # if True:
       #   return score
       # ####
-      if score!=0:
+      if score != -100.0:
         # return score
         return score-0.0001 # for "bring" -> "add" <- "pasta" example, when "bring" -> "pasta" has the same weight as "bring" -> "add" <- "pasta"
     if input_argument2==None:
@@ -1265,10 +1265,10 @@ class RecipeStats2:
     else:
       score = self.getArg1Arg2PredPred(input_argument1,input_argument2,predicate,predicate2)
     # Test
-    if True:
-      return score
+    # if True:
+    #   return score
     ####
-    if score!=0:
+    if score!=-100.0:
       return score
     # verb = self.stemmer.stem(predicate.predicate)
     # verb2 = self.stemmer.stem(predicate2.predicate)

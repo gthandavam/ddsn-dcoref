@@ -280,6 +280,8 @@ def is_training_file(args_file_name):
 helper method to load the list of recipes in training data, in memory
 '''
 def load_train_files_hash(recipeName):
+  #DO Nothing for now, as this was used for train/dev/test split for a supervised extrinsic evaluation - this may no longer be needed
+  return
   global train_files_hash
   with open('/home/gt/Documents/' + recipeName + '/trainFilesList') as f:
     for line in f.readlines():
