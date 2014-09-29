@@ -40,7 +40,7 @@ def learn_arbor_trans(num_iter, recipe):
     statFile2 = "/home/gt/Documents/" + recipe +  "/" + expName + "/RecipeStats2_iter.pickle"
     copyfile(statFile2, statFile)
 
-  cmd = 'python Transformer.py -stat_for_eval_iter ' + recipe + ' ' + expName +  ' -trans'
+  cmd = 'python Transformer.py -stat_for_eval_iter ' + recipe + ' ' + expName +  ' -trans ' + str(1000)
   # cmd = 'python Transformer.py -stat_for_eval_iter ' + recipe
   out = commands.getoutput(cmd)
   print out
