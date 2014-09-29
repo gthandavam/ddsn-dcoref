@@ -11,6 +11,9 @@ Repo name is a misnomer - the name for the project evolved over time; so please 
 ####Runtime
   * python 2.7
 
+####Limitation
+  * Reliance on /home/gt/Documents folder structure throughout the code. New members could create the folder structure in their machines or we could refactor the code thoroughly to stop relying on it. Sorry about this limiation for now. 
+
 ####Dependencies
 
   * GraphViz - graphviz version 2.36.0 (20140111.2315)
