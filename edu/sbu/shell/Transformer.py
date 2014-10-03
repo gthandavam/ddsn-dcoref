@@ -261,6 +261,8 @@ def connect_arbor(weighted_graph, arbor_adapter, r_stats):
   arbor_edges = upside_down_arborescence(root, g)
 
   pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, arbor_edges, weighted_graph.adj_list)
+  #for seeing coref-output comment the above line, uncomment the below line
+  #pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, {}, weighted_graph.adj_list)
 
   return pnodes_resolved, rnodes_resolved, arbor_edges
   pass
@@ -368,15 +370,15 @@ def learnStat(useArbo, iter_num=-1):
   if len(sys.argv) > 1:
     option = sys.argv[1]
 
-  try:
-    os.makedirs(dirName+recipeName + '-dot-files'+option + 'iter' + str(iter_num))
-  except OSError:
-    pass
-
-  try:
-    os.makedirs(dirName+recipeName + '-svg-files'+option + 'iter' + str(iter_num))
-  except OSError:
-    pass
+  # try:
+  #   os.makedirs(dirName+recipeName + '-dot-files'+option + 'iter' + str(iter_num))
+  # except OSError:
+  #   pass
+  #
+  # try:
+  #   os.makedirs(dirName+recipeName + '-svg-files'+option + 'iter' + str(iter_num))
+  # except OSError:
+  #   pass
 
   i=0
   if useArbo:
@@ -411,21 +413,22 @@ def learnStat(useArbo, iter_num=-1):
       pnodes_resolved, rnodes_resolved, arbor_edges = connect_arbor(weighted_graph, arbor_adapter, r_stats)
     #End of MST Section
 
-      dot_graph = arbor_adapter.dot_builder
-      gv_file_name = recipe_args_file.replace(recipeName +'Args',recipeName + '-dot-files'+option + 'iter' + str(iter_num))
-
-      gv_file_name = gv_file_name.replace('.txt', '.gv')
-      try:
-        dot_graph.write_gv(pnodes_resolved, rnodes_resolved, arbor_edges, gv_file_name)
-      except Exception as inst:
-        print inst.args
-        print inst.message
-        print inst
-        print recipe_args_file
-        print "Error!!! 421" # temporal!!!
-        pass
-
-      make_svg(gv_file_name)
+      #no need to create diagrams here
+      # dot_graph = arbor_adapter.dot_builder
+      # gv_file_name = recipe_args_file.replace(recipeName +'Args',recipeName + '-dot-files'+option + 'iter' + str(iter_num))
+      #
+      # gv_file_name = gv_file_name.replace('.txt', '.gv')
+      # try:
+      #   dot_graph.write_gv(pnodes_resolved, rnodes_resolved, arbor_edges, gv_file_name)
+      # except Exception as inst:
+      #   print inst.args
+      #   print inst.message
+      #   print inst
+      #   print recipe_args_file
+      #   print "Error!!! 421" # temporal!!!
+      #   pass
+      #
+      # make_svg(gv_file_name)
 
 
     stat_data.append([recipe_args_file, weighted_graph, arbor_adapter, arbor_edges])
