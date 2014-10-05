@@ -28,15 +28,107 @@ GV_DIR = 'dot_files'
 SVG_DIR = 'svg_files'
 
 
-edge_list = [] #list of hashes : ( {}, {}, {})
-node_list = [] #list of hashes : ( {}, {}, {})
-event_node_map = {} #for handling EVOLUTION edges
+#assume a predicate will have at least one arg annotated
 
-def print_nodes(f):
+# edge_list = [] #list of hashes : ({}, {}, {})
+# node_list = [] #list of hashes : ({}, {}, {})
+# event_node_map = {} #for handling EVOLUTION edges
+
+def merge_nodes(incidence_list, node_map):
+  '''
+  merge arg1 arg2 nodes
+  '''
+  new_node_map = {}
+  merged_node_map = {} # old Id to new Id
+  node_num = 1
+
+  #todo - sort predicate node number assignment based on text order
+  for node in incidence_list.keys():
+    if not node in merged_node_map.keys() and node_map[node]['type'] == 'predicate':
+      merged_node_map[node] = 'T' + str(node_num)
+      new_node_map['T' + str(node_num)] = {'name' : 'T' + str(node_num), 'type' : node_map[node]['type'],
+                                           'value' : node_map[node]['value'], 'span_start' : node_map[node]['span_start'], 'span_end' : node_map[node]['span_end'] }
+      node_num += 1
+
+    #all the args are assigned IDs only here, also args are assumed not to be shared between predicates
+    if(len(incidence_list[node]['arg1']) != 0):
+      start = -1
+      end   = -1
+      value = ''
+      for other_node in incidence_list[node]['arg1']:
+        merged_node_map[other_node] = 'T' + str(node_num)
+        value += ' ' + node_map[other_node]['value']
+
+      new_node_map['T' + str(node_num)] = {'name' : 'T' + str(node_num), 'type' : 'arg1',
+                                           'value' : value, 'span_start' : start, 'span_end' : end }
+
+      node_num += 1
+
+    if(len(incidence_list[node]['arg2']) != 0):
+      start = -1
+      end = -1
+      value = ''
+      for other_node in incidence_list[node]['arg2']:
+        merged_node_map[other_node] = 'T' + str(node_num)
+        value += ' ' + node_map[other_node]['value']
+
+      new_node_map['T' + str(node_num)] = {'name' : 'T' + str(node_num), 'type' : 'arg2',
+                                           'value' : value, 'span_start' : start, 'span_end' : end }
+      node_num += 1
+
+  return merged_node_map, new_node_map
+  pass
+
+def get_incidence_list(edge_list, node_map):
+  incidence_list = {}
+
+  for edge in edge_list:
+    #edges are drawn as node2->node1, so getting node1 to build incidence list
+
+    #initialize incidence list for a new predicate
+    if not edge['node1'] in incidence_list.keys():
+      incidence_list[edge['node1']] = {'arg1' : [], 'arg2' : [], 'predicate' : []}
+
+
+    #when node type is predicate it is either implicit arg edge or evolution edge, marking it as arg1 for now
+    if(node_map[edge['node2']]['type'] == 'arg_object'):
+      incidence_list[edge['node1']]['arg1'].append(edge['node2'])
+    elif node_map[edge['node2']]['type'] == 'predicate':
+      incidence_list[edge['node1']]['predicate'].append(edge['node2'])
+    else:
+      incidence_list[edge['node1']]['arg2'].append(edge['node2'])
+
+  return incidence_list
+  pass
+
+def convert_args(edge_list, node_map):
+  '''
+  convert the digraph to a new digraph with merged args
+  '''
+  new_edge_list = []
+  new_node_list = []
+
+  #key is the node on which the values are incident on
+  incidence_list = get_incidence_list(edge_list, node_map)
+
+  merged_node_map, new_node_map = merge_nodes(incidence_list, node_map)
+
+  combined_edge_map = {}
+
+  for edge in edge_list:
+    if not (merged_node_map[edge['node2']], merged_node_map[edge['node1']]) in combined_edge_map.keys():
+      new_edge = {'node2' : merged_node_map[edge['node2']], 'node1': merged_node_map[edge['node1']]}
+      combined_edge_map[(merged_node_map[edge['node2']], merged_node_map[edge['node1']])]  = 1
+      new_edge_list.append(new_edge)
+
+  return new_edge_list, new_node_map
+  pass
+
+def print_nodes(node_map, f):
   #add image logic later on
-  for node in node_list:
-    line = node['name'] + '[label=\"' + node['value'] + '\"'
-    if node['type'] == 'predicate':
+  for node in node_map.keys():
+    line = node_map[node]['name'] + '[label=\"' + node_map[node]['value'] + '\"'
+    if node_map[node]['type'] == 'predicate':
       line += ', shape=oval, style=filled, fillcolor=gray'
     else:
       line += ', shape=oval'
@@ -45,7 +137,7 @@ def print_nodes(f):
     f.write(line+'\n')
   pass
 
-def print_edges(f):
+def print_edges(edge_list, f):
   for edge in edge_list:
     f.write(edge['node2'] + ' -> ' + edge['node1'] + ';\n')
 
@@ -71,29 +163,29 @@ def make_svg(OUTPUT_DIR, f_name):
     print output
   return status
 
-def get_link(node_list, span_start, span_end):
+def get_link(node_map, span_start, span_end):
   '''
   search through the node_list and identify the node that contains the span_start, span_end
   '''
 
-  for node in node_list:
-    if node['span_start'] <= span_start and node['span_end'] >= span_end:
-      return node['name']
+  for node in node_map.keys():
+    if node_map[node]['span_start'] <= span_start and node_map[node]['span_end'] >= span_end:
+      return node
     pass
+
+  print span_start, span_end
 
   print 'this should never happen'
   return 'BLAH'
   pass
 
 if __name__ == '__main__':
-  global edge_list
-  global node_list
 
   if len(sys.argv) != 3:
-
     print 'USAGE: python StandOff2GraphViz.py <INPUT_DIR> <OUTPUT_DIR>'
     print '<OUTPUT_DIR> will be created, if not already available'
     exit(1)
+
   INPUT_DIR = sys.argv[1]
   OUTPUT_DIR = sys.argv[2]
 
@@ -115,8 +207,10 @@ if __name__ == '__main__':
 
   #read all .ann files
   for file_name in commands.getoutput('ls ' + os.path.join(INPUT_DIR, '*.ann')).split('\n'):
-    node_list = []
-    edge_list = [] #re-initializing per file
+
+    node_map =  {}
+    edge_list = []  #re-initializing per file
+    event_node_map = {} # for handling evolution
 
     #filename is the last component in the path
     file_name = file_name.split(os.sep)[-1]
@@ -126,6 +220,11 @@ if __name__ == '__main__':
     f = open(os.path.join(INPUT_DIR, file_name))
 
     print 'pass 1: ' + file_name
+    if file_name in ('best-beef-stroganoff.ann', 'beths-meat-loaf.ann', 'pecan-butterscotch-pie.ann'):
+      #cases of split predicate or split arg spans, handle it later
+      continue
+
+
     for line in f.readlines():
       if(line.startswith(NODE_LABEL)):
         cols = line.split('\t')
@@ -138,9 +237,9 @@ if __name__ == '__main__':
           continue
           pass
 
-        new_node = {'name': cols[0], 'type': cols[1].split()[0], 'span_start': int(cols[1].split()[1]), 'span_end':int(cols[1].split()[2]) ,'value' : cols[2].rstrip('\n')}
+        new_node = {'name': cols[0], 'type': cols[1].split()[0], 'span_start': int(cols[1].split()[1]), 'span_end':int(cols[1].split()[2]) ,'value' : cols[2].rstrip('\n').lower()}
 
-        node_list.append(new_node)
+        node_map[cols[0]] = new_node
 
       elif(line.startswith(EDGE_LABEL)):
         name = line.split('\t')[0]
@@ -179,7 +278,7 @@ if __name__ == '__main__':
           #update event_node_map
           span_start = int(cols[1].split()[1])
           span_end = int(cols[1].split()[2])
-          link_node = get_link(node_list, span_start, span_end)
+          link_node = get_link(node_map, span_start, span_end)
           event_node_map[cols[0]] = link_node
           continue
           pass
@@ -202,11 +301,13 @@ if __name__ == '__main__':
 
     f.close()
 
+    edge_list, node_map = convert_args(edge_list, node_map)
+
     recipe_name = of_name.split('.gv')[0]
     print_header(out_f, recipe_name)
-    print_nodes(out_f)
+    print_nodes(node_map, out_f)
     out_f.flush()
-    print_edges(out_f)
+    print_edges(edge_list, out_f)
     out_f.flush()
     print_footer(out_f)
     out_f.close()
