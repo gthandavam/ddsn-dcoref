@@ -106,9 +106,10 @@ def convert_args(edge_list, node_map):
   convert the digraph to a new digraph with merged args
   '''
   new_edge_list = []
-  new_node_list = []
 
   #key is the node on which the values are incident on
+  #this gives us the pred, arg1, arg2 structure
+  # we will also be having incidence list for arg1/2 - this can be ignored, as these will be handled in corresponding predicate incidence list (recall evolution relates an argument to a previous predicate)
   incidence_list = get_incidence_list(edge_list, node_map)
 
   merged_node_map, new_node_map = merge_nodes(incidence_list, node_map)
@@ -117,7 +118,16 @@ def convert_args(edge_list, node_map):
 
   for edge in edge_list:
     if not (merged_node_map[edge['node2']], merged_node_map[edge['node1']]) in combined_edge_map.keys():
-      new_edge = {'node2' : merged_node_map[edge['node2']], 'node1': merged_node_map[edge['node1']]}
+      if node_map[edge['node2']]['type'] == 'predicate' and node_map[edge['node1']]['type'] == 'predicate':
+        #pred -> pred edge
+        type = 'implicit'
+      elif node_map[edge['node2']]['type'] == 'predicate' and node_map[edge['node1']]['type'] != 'predicate':
+        #pred -> arg edge
+        type = 'evolution'
+      else:
+        #arg -> pred edge
+        type = 'arg_edge'
+      new_edge = {'node2' : merged_node_map[edge['node2']], 'node1': merged_node_map[edge['node1']], 'type' : type}
       combined_edge_map[(merged_node_map[edge['node2']], merged_node_map[edge['node1']])]  = 1
       new_edge_list.append(new_edge)
 
@@ -139,7 +149,7 @@ def print_nodes(node_map, f):
 
 def print_edges(edge_list, f):
   for edge in edge_list:
-    f.write(edge['node2'] + ' -> ' + edge['node1'] + ';\n')
+    f.write(edge['node2'] + ' -> ' + edge['node1'] + ';# ' + edge['type'] + '\n')
 
 def print_header(f, recipe_name):
   f.write('digraph \"'+ recipe_name + '\" { \n')
