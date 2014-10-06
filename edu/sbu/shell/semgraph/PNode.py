@@ -7,7 +7,7 @@ import logging
 class PNode:
 
 
-  def __init__(self,  predicate='', pnum=-1, snum=-1, light=False, coref_text='', coref_text_pos=''):
+  def __init__(self,  predicate='', pnum=-1, snum=-1, light=False, coref_text='', coref_text_pos='', span_start=-1, span_end = -1):
     self.pnum = pnum
     self.snum = snum
     self.predicate = self.cleanse_arg(predicate)
@@ -19,6 +19,8 @@ class PNode:
     self.arg_text_POS_for_coref = coref_text_pos
     self.id = ""
     self.arg_text_coref_nouns = None
+    self.span_start = span_start
+    self.span_end = span_end
 
   def add_arg(self, argType, rnode):
     pass

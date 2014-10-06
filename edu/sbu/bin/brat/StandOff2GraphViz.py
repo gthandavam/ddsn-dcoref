@@ -42,7 +42,7 @@ def merge_nodes(incidence_list, node_map):
   merged_node_map = {} # old Id to new Id
   node_num = 1
 
-  #todo - sort predicate node number assignment based on text order
+  #todo - sort predicate node number assignment based on text order #not required!!!
   for node in incidence_list.keys():
     if not node in merged_node_map.keys() and node_map[node]['type'] == 'predicate':
       merged_node_map[node] = 'T' + str(node_num)
@@ -52,12 +52,14 @@ def merge_nodes(incidence_list, node_map):
 
     #all the args are assigned IDs only here, also args are assumed not to be shared between predicates
     if(len(incidence_list[node]['arg1']) != 0):
-      start = -1
+      start = 1000000
       end   = -1
       value = ''
       for other_node in incidence_list[node]['arg1']:
         merged_node_map[other_node] = 'T' + str(node_num)
         value += ' ' + node_map[other_node]['value']
+        start = node_map[other_node]['span_start'] if node_map[other_node]['span_start'] < start else start
+        end = node_map[other_node]['span_end'] if node_map[other_node]['span_end'] > end else end
 
       new_node_map['T' + str(node_num)] = {'name' : 'T' + str(node_num), 'type' : 'arg1',
                                            'value' : value, 'span_start' : start, 'span_end' : end }
@@ -65,12 +67,14 @@ def merge_nodes(incidence_list, node_map):
       node_num += 1
 
     if(len(incidence_list[node]['arg2']) != 0):
-      start = -1
+      start = 1000000
       end = -1
       value = ''
       for other_node in incidence_list[node]['arg2']:
         merged_node_map[other_node] = 'T' + str(node_num)
         value += ' ' + node_map[other_node]['value']
+        start = node_map[other_node]['span_start'] if node_map[other_node]['span_start'] < start else start
+        end = node_map[other_node]['span_end'] if node_map[other_node]['span_end'] > end else end
 
       new_node_map['T' + str(node_num)] = {'name' : 'T' + str(node_num), 'type' : 'arg2',
                                            'value' : value, 'span_start' : start, 'span_end' : end }
@@ -90,7 +94,7 @@ def get_incidence_list(edge_list, node_map):
       incidence_list[edge['node1']] = {'arg1' : [], 'arg2' : [], 'predicate' : []}
 
 
-    #when node type is predicate it is either implicit arg edge or evolution edge, marking it as arg1 for now
+    #when node type is predicate it is either implicit arg edge or evolution edge, marking it under predicate for now
     if(node_map[edge['node2']]['type'] == 'arg_object'):
       incidence_list[edge['node1']]['arg1'].append(edge['node2'])
     elif node_map[edge['node2']]['type'] == 'predicate':
@@ -144,6 +148,7 @@ def print_nodes(node_map, f):
       line += ', shape=oval'
 
     line += '];'
+    line += '#{},{}'.format(node_map[node]['span_start'], node_map[node]['span_end'])
     f.write(line+'\n')
   pass
 

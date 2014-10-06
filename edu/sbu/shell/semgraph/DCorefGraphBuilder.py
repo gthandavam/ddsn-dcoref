@@ -129,12 +129,13 @@ class DCorefGraphBuilder:
       return False
 
     if not sem_group['arg1'] is None:
-      nodes['arg1'] = self.make_rnode('arg1', sem_group['arg1'], pred_num, sent_num, sem_group['arg1POS'])
+      nodes['arg1'] = self.make_rnode('arg1', sem_group['arg1'], pred_num, sent_num, sem_group['arg1POS'], False, sem_group['arg1_start'], sem_group['arg1_end'])
 
     #Assumption - LVC have pred, arg1, arg2 compulsarily - effectively we are replacing light verb with
     #verb in arg2, if exists; if no meaningful verb in arg2, ignore the semgroup
     if nodes['pred'].light:
       #always not a light verb in tregex formulation
+      #Unused code for now
       if not sem_group['arg2'] is None:
         sem_group['arg2'] = self.get_verbal_form(sem_group['arg2'])
 
@@ -146,7 +147,7 @@ class DCorefGraphBuilder:
 
     else:
       if not sem_group['arg2'] is None:
-        nodes['arg2'] = self.make_rnode('arg2', sem_group['arg2'], pred_num, sent_num, sem_group['arg2POS'])
+        nodes['arg2'] = self.make_rnode('arg2', sem_group['arg2'], pred_num, sent_num, sem_group['arg2POS'], False, sem_group['arg2_start'], sem_group['arg2_end'])
 
     #TODO: Not handling light verbs for now in this syntactic feature formulation
 
@@ -326,11 +327,11 @@ class DCorefGraphBuilder:
     #   return None
 
 
-    return PNode(arg, pred_num, sent_num, light, coref_text, coref_text_pos)
+    return PNode(arg, pred_num, sent_num, light, coref_text, coref_text_pos, sem_group['pred_start'], sem_group['pred_end'])
     # return PNode(pred_num, sent_num, arg)
     pass
 
-  def make_rnode(self, arg_type, arg, pred_num, sent_num,argPOS, is_null = False):
+  def make_rnode(self, arg_type, arg, pred_num, sent_num,argPOS, is_null = False,arg_start=-1, arg_end =-1):
     # if arg_type == 'arg2' and self.PNodes[sent_num][pred_num].predicate in  self.light_verbs:
     #   #light verbs
     #   arg = self.cleanse_arg(arg)
@@ -339,7 +340,7 @@ class DCorefGraphBuilder:
     # else:
     #   arg = self.cleanse_arg(arg)
     #   return RNode(arg, arg_type, sent_num, pred_num)
-    return RNode(arg, pred_num, sent_num, arg_type, argPOS, is_null)
+    return RNode(arg, pred_num, sent_num, arg_type, argPOS, is_null,arg_start, arg_end)
     pass
 
 

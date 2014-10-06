@@ -200,7 +200,7 @@ def make_nodes(args_file):
   my_separator = 'TheGT'
   with open(args_file) as f:
     lines = f.readlines()
-    for i in xrange(0, len(lines), 7):
+    for i in xrange(0, len(lines), 13):
       for j in xrange(abs(sent_num  - int(lines[i].split(my_separator)[-1].strip()))):
         dcoref_graph_builder.PNodes.append([])
         dcoref_graph_builder.RNodes.append([])
@@ -208,20 +208,32 @@ def make_nodes(args_file):
       #Note: Splitting based on a custom separator TheGT
       sent_num = int(lines[i].split(my_separator)[-1].strip())
       pred_num = int(lines[i+1].split(my_separator)[-1].strip())
-      sem_group = {'pred':None, 'arg1':None, 'arg2':None, 'arg1POS': None, 'arg2POS' : None}
+      sem_group = {'pred':None, 'pred_start' : -1, 'pred_end' :-1, 'arg1':None, 'arg2':None, 'arg1POS': None, 'arg2POS' : None, 'arg1_start' : -1, 'arg1_end' : -1, 'arg2_start' : -1, 'arg2_end' : -1}
       pred = lines[i+2].split(my_separator)[-1].strip()
-      arg1 = lines[i+3].split(my_separator)[-1].strip()
-      arg1POS = lines[i+4].split(my_separator)[-1].strip()
-      arg2 = lines[i+5].split(my_separator)[-1].strip()
-      arg2POS = lines[i+6].split(my_separator)[-1].strip()
+      pred_start = int(lines[i+3].split(my_separator)[-1].strip())
+      pred_end = int(lines[i+4].split(my_separator)[-1].strip())
+      arg1 = lines[i+5].split(my_separator)[-1].strip()
+      arg1POS = lines[i+6].split(my_separator)[-1].strip()
+      arg1_start = int(lines[i+7].split(my_separator)[-1].strip())
+      arg1_end = int(lines[i+8].split(my_separator)[-1].strip())
+      arg2 = lines[i+9].split(my_separator)[-1].strip()
+      arg2POS = lines[i+10].split(my_separator)[-1].strip()
+      arg2_start = int(lines[i+11].split(my_separator)[-1].strip())
+      arg2_end = int(lines[i+12].split(my_separator)[-1].strip())
       if(pred != 'NULL'):
         sem_group['pred'] = pred
+        sem_group['pred_start'] = pred_start
+        sem_group['pred_end'] = pred_end
       if(arg1 != 'NULL'):
         sem_group['arg1'] = arg1
         sem_group['arg1POS'] = arg1POS
+        sem_group['arg1_start'] = arg1_start
+        sem_group['arg1_end'] = arg1_end
       if(arg2 != 'NULL'):
         sem_group['arg2'] = arg2
         sem_group['arg2POS'] = arg2POS
+        sem_group['arg2_start'] = arg2_start
+        sem_group['arg2_end'] = arg2_end
 
       sem_group = special_predicate_processing(sem_group)
 
@@ -389,8 +401,10 @@ def learnStat(useArbo, iter_num=-1):
     r_stats = RecipeStats2()
     r_stats.computeStat(recipeName)
   stat_data = []
-  for recipe_args_file in commands.getoutput('ls /home/gt/Documents/' + recipeName + '/' + recipeName + 'Args/*.txt').split('\n'):
 
+
+  for recipe_args_file in commands.getoutput('ls /home/gt/Documents/' + recipeName + '/' + recipeName + 'Args/*.txt').split('\n'):
+    # print recipe_args_file
     if(not is_training_file(recipe_args_file)):
       #skipping if not training data
       continue
@@ -475,6 +489,7 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_
   print len(r_stats.args1_args2_verb_verb_args1_score)
   print len(r_stats.args1_verb_verb_args1_score)
   dirName = '/home/gt/Documents/' + recipeName + '/'
+
   option = ""
   if len(sys.argv)>1:
     option = sys.argv[1]

@@ -5,7 +5,7 @@ import logging
 
 class RNode:
 
-  def __init__(self, text='', pnum=-1, snum=-1, arg_type='' ,argPOS='', is_null=False, arg_prob = -1.0):
+  def __init__(self, text='', pnum=-1, snum=-1, arg_type='' ,argPOS='', is_null=False, span_start = -1, span_end=-1):
     #This line was added for swirl formulation
     if not text is None:
       text = text.replace('V#', '')
@@ -18,11 +18,12 @@ class RNode:
     self.to_delete = False
     self.is_null = is_null
     self.argIngs = set()
-    self.arg_prob = arg_prob
     self.argPOS = argPOS
     self.logger = logging.getLogger('root')
     self.id = ""
     self.arg_text_nouns = None
+    self.span_start = span_start
+    self.span_end = span_end
 
     pass
 

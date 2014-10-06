@@ -60,7 +60,7 @@ class DotGraphBuilder:
         for key in self.pred_props.keys():
           line += ', {}={}'.format(key,self.pred_props[key])
 
-        line += ']'
+        line += '];#{},{}'.format(pnodes[i][j].span_start, pnodes[i][j].span_end)
         self.graph_lines.append(line)
         # self.node_num += 1
     pass
@@ -141,10 +141,11 @@ class DotGraphBuilder:
               self.logger.error('unknown arg type')
               continue
 
+            line += ';#{},{}'.format(rnodes[i][j][k].span_start, rnodes[i][j][k].span_end)
             self.graph_lines.append(line)
 
           # self.node_num += 1
-    self.graph_lines.append("Ghost[label=\"{}\"]".format(self.Ghost))
+    self.graph_lines.append("Ghost[label=\"{}\"];#{},{}".format(self.Ghost, -1, -1))
     pass
 
   def add_to_adj_list(self, fro, to):
@@ -219,10 +220,10 @@ class DotGraphBuilder:
                   if prop=="label":
                     continue
                   line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
-                line += ']'
+                line += '];'
 
               else:
-                line = '{} -> {}'.format(shell_node, pred_node)
+                line = '{} -> {};'.format(shell_node, pred_node)
 
               self.graph_lines.append(line)
 
@@ -236,10 +237,10 @@ class DotGraphBuilder:
             if arg_node not in arbo_edges or self.pred_node_list[(i,j)] not in arbo_edges[arg_node]:
               continue
             if self.debug:
-              line =  '{} -> {}[label=\"{}({})\"]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL',arbo_edges[arg_node][self.pred_node_list[(i,j)]])
+              line =  '{} -> {}[label=\"{}({})\"];'.format(arg_node, self.pred_node_list[(i,j)], 'SRL',arbo_edges[arg_node][self.pred_node_list[(i,j)]])
             else:
               # line =  '{} -> {}[label={}]'.format(arg_node, self.pred_node_list[(i,j)], 'SRL')
-               line =  '{} -> {}'.format(arg_node, self.pred_node_list[(i,j)])
+               line =  '{} -> {};'.format(arg_node, self.pred_node_list[(i,j)])
             self.graph_lines.append(line)
 
             if len(rnodes[i][j][k].shell_coref) > 0:
@@ -254,9 +255,9 @@ class DotGraphBuilder:
                   if prop=="label":
                     continue
                   line += ', {}={}'.format(prop, self.edge_props[edge_type][prop])
-                line += ']'
+                line += '];'
               else:
-                line = '{} -> {}'.format(shell_node, arg_node)
+                line = '{} -> {};'.format(shell_node, arg_node)
 
               self.graph_lines.append(line)
     pass
@@ -330,10 +331,10 @@ class DotGraphBuilder:
                 continue
               line += ',{}={}'.format(prop, self.edge_props['CC'][prop])
 
-            line += ']'
+            line += '];'
 
           else:
-            line = '{} -> {}'.format(start_node, target_node)
+            line = '{} -> {};'.format(start_node, target_node)
 
 
           self.graph_lines.append(line)
