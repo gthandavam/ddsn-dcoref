@@ -46,22 +46,34 @@ class RecipeReader2:
         args1 = None
         args2 = None
         prev_sent_num = -1
-        for i in xrange(0, len(lines), 7):
+        for i in xrange(0, len(lines), 13):
           sent_num = int(lines[i].replace("sentNum: TheGT",""))
-          sem_group = {'pred':None, 'arg1':None, 'arg2':None, 'arg1POS': None, 'arg2POS' : None}
+          sem_group = {'pred':None, 'arg1':None, 'arg2':None, 'arg1POS': None, 'arg2POS' : None, 'pred_start' : -1, 'pred_end' : -1, 'arg1_start' : -1, 'arg1_end' : -1, 'arg2_start' : -1, 'arg2_end' : -1}
           pred = lines[i+2].split(my_separator)[-1].strip()
-          arg1 = lines[i+3].split(my_separator)[-1].strip()
-          arg1POS = lines[i+4].split(my_separator)[-1].strip()
-          arg2 = lines[i+5].split(my_separator)[-1].strip()
-          arg2POS = lines[i+6].split(my_separator)[-1].strip()
+          pred_start = int(lines[i+3].split(my_separator)[-1].strip())
+          pred_end = int(lines[i+4].split(my_separator)[-1].strip())
+          arg1 = lines[i+5].split(my_separator)[-1].strip()
+          arg1POS = lines[i+6].split(my_separator)[-1].strip()
+          arg1_start = int(lines[i+7].split(my_separator)[-1].strip())
+          arg1_end = int(lines[i+8].split(my_separator)[-1].strip())
+          arg2 = lines[i+9].split(my_separator)[-1].strip()
+          arg2POS = lines[i+10].split(my_separator)[-1].strip()
+          arg2_start = int(lines[i+11].split(my_separator)[-1].strip())
+          arg2_end = int(lines[i+12].split(my_separator)[-1].strip())
           if(pred != 'NULL'):
             sem_group['pred'] = pred.lower()
+            sem_group['pred_start'] = pred_start
+            sem_group['pred_end'] = pred_end
           if(arg1 != 'NULL'):
             sem_group['arg1'] = arg1.lower()
             sem_group['arg1POS'] = arg1POS
+            sem_group['arg1_start'] = arg1_start
+            sem_group['arg1_end'] = arg1_end
           if(arg2 != 'NULL'):
             sem_group['arg2'] = arg2.lower()
             sem_group['arg2POS'] = arg2POS
+            sem_group['arg2_start'] = arg2_start
+            sem_group['arg2_end'] = arg2_end
 
           self.verbs.append(pred.lower())
           if sent_num!=prev_sent_num:
