@@ -9,11 +9,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
+import java.util.regex.Pattern;
 
 import edu.stanford.nlp.io.IOUtils;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.Sentence;
 import edu.stanford.nlp.ling.TaggedWord;
+import edu.stanford.nlp.ling.tokensregex.MultiWordStringMatcher;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.trees.GrammaticalStructure;
@@ -26,6 +28,7 @@ import edu.stanford.nlp.trees.TypedDependency;
 import edu.stanford.nlp.trees.tregex.TregexMatcher;
 import edu.stanford.nlp.trees.tregex.TregexPattern;
 import edu.stanford.nlp.util.CoreMap;
+import edu.stanford.nlp.util.IntPair;
 
 
 public class RecipeArgs {
@@ -55,9 +58,18 @@ public class RecipeArgs {
     
     while( (fileName = reader.readLine()) != null) {
       System.out.println("Processing Recipe " + fileName);
-      Annotation annotation = new Annotation(IOUtils.slurpFileNoExceptions(fileName));
       
-      String argsFile = fileName.replace(recipeName + "-Isteps", recipeName + "NArgs");
+      String recipe = IOUtils.slurpFileNoExceptions(fileName);
+      Annotation annotation = new Annotation(recipe);
+      
+      Pattern pattern = Pattern.compile("I would");
+      
+      List<IntPair> offsets = MultiWordStringMatcher.findOffsets(pattern, recipe);
+      
+      int offSetIdx = 0;
+      
+      
+      String argsFile = fileName.replace(recipeName + "-Isteps", recipeName + "Args");
       
       FileWriter fw = new FileWriter(argsFile);
       
@@ -74,6 +86,8 @@ public class RecipeArgs {
       TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR [<, VBP=verb | <, VB=verb] " +
       " [ [< NP=arg1 $-- PP=argSpecial2] | [ < NP=arg1 < PP=arg2] | " +
       " [ < NP=arg1 ] | [ < PP=arg2  ] | [<, VBP=verb1 ] | [ <, VB=verb1] ]");
+      
+      
 //      
 //      TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR  "
 //          + "[<, /VBP/=verb | <, VB=verb] [ [ < NP=arg1 < PP=arg2] | "
@@ -84,8 +98,10 @@ public class RecipeArgs {
       
       String mySeparator = "TheGT";
       int sentNum = -1;
+      
       for (CoreMap sentence : sentences) {
         System.out.println("sentence" + mySeparator + sentence);
+        
         Tree tree = sentence.get(TreeCoreAnnotations.TreeAnnotation.class);
         sentNum++;
         
@@ -135,13 +151,28 @@ public class RecipeArgs {
           System.out.println("predNum: " + predNum);
           fw.write("sentNum: " + mySeparator + sentNum + "\n");
           fw.write("predNum: " + mySeparator + predNum + "\n");
-          if(match!=null)
+          if(match!=null) {
             System.out.println("match: " + Sentence.listToString(match.yield()));
+          }
           
+                    
           if(verb != null) {
             System.out.println("verb: "  + Sentence.listToString(verb.yield()));
+            
+            while(offSetIdx < offsets.size()) {
+              if(verb.taggedYield().get(0).beginPosition() > offsets.get(offSetIdx).getSource())
+                offSetIdx++;
+              else
+                break;
+            }
+            
             fw.write("verb: " + mySeparator + Sentence.listToString(verb.yield()) + "\n");
+            fw.write("Begin:" + mySeparator + (verb.taggedYield().get(0).beginPosition() - (offSetIdx * 9)) + "\n");
+            fw.write("End:" + mySeparator + (verb.taggedYield().get(0).endPosition() - (offSetIdx * 9)) + "\n" );
+            System.out.println("Verb Begin :" + (verb.taggedYield().get(0).beginPosition() - (offSetIdx * 9)));
+            System.out.println("Verb End :" + (verb.taggedYield().get(0).endPosition() - (offSetIdx * 9)));
           } else {
+            
             System.out.println("VERB NULL");
             System.out.println(matcher.getNode("verb1"));
             System.out.println(matcher.getNode("arg1"));
@@ -149,6 +180,7 @@ public class RecipeArgs {
           }
           
           if(arg1 != null) {
+            
             System.out.println("Arg1: "  + Sentence.listToString(arg1.yield()));
             fw.write("Arg1: " + mySeparator + Sentence.listToString(arg1.yield()) + "\n");
             
@@ -162,19 +194,33 @@ public class RecipeArgs {
             ArrayList<TaggedWord> arr = arg1.taggedYield();
             
             fw.write("Arg1POS:" + mySeparator);
+            int begin = -1;
+            int end = -1;
             for(TaggedWord w: arr)
             {
+              if(begin == -1)
+                begin = w.beginPosition();
+              
+              end = w.endPosition();
+              
               System.out.print(" "+w);
               fw.write(" " + w);
             }
-            
-            System.out.println();
-            
+
             fw.write("\n");
+            
+            fw.write("Begin:" + mySeparator + (begin - (offSetIdx * 9)) + "\n");
+            fw.write("End:" + mySeparator + (end - (offSetIdx * 9)) + "\n" );
+           
+            System.out.println("Arg1Begin:" + (begin - (offSetIdx * 9)) );
+            System.out.println("Arg1End:" + (end - (offSetIdx * 9)));
+            
           } else {
 //            System.out.println("Arg1: NULL");
             fw.write("Arg1:"  + mySeparator + "NULL" + "\n");
             fw.write("Arg1POS:"  + mySeparator +"NULL" + "\n");
+            fw.write("Begin:" + mySeparator + -1 + "\n");
+            fw.write("End:" + mySeparator + -1 + "\n" );
           }
           
           if(arg2 != null) {
@@ -189,25 +235,39 @@ public class RecipeArgs {
           
             fw.write("Arg2POS:" + mySeparator);
             ArrayList<TaggedWord> arr = arg2.taggedYield();
-            
+            int begin = -1;
+            int end = -1;
             for(TaggedWord w: arr)
             {
+              if(begin == -1)
+                begin = w.beginPosition();
+              
+              end = w.endPosition();
+              
               fw.write(" " + w);
               System.out.print(" "+w);
             }
             System.out.println();
             
+            System.out.println("Arg2Begin:" + (begin - (offSetIdx * 9) ));
+            System.out.println("Arg2End:" + (end - (offSetIdx * 9)));
+            
+            
             fw.write("\n");
+            
+            fw.write("Begin:" + mySeparator + (begin - (offSetIdx * 9)) + "\n");
+            fw.write("End:" + mySeparator + (end - (offSetIdx * 9)) + "\n" );
           } else {
 //            System.out.println("Arg2: NULL");
             fw.write("Arg2:"  + mySeparator + "NULL" + "\n");
             fw.write("Arg2POS:"  + mySeparator +"NULL" + "\n");
+            fw.write("Begin:" + mySeparator + -1 + "\n");
+            fw.write("End:" + mySeparator + -1 + "\n" );
           }
           
         }
       
       }
-      
       fw.close();
 //      break; //for debugging
     }
