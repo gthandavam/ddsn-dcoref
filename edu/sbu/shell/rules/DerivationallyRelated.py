@@ -60,6 +60,16 @@ class DerivationallyRelated:
             # print 'Nominalize: ' + self.nounify(pnodes[i][j].predicate)
             # print rnode.text
             return i,j
+          from edu.sbu.shell.semgraph.DCorefGraphBuilder import DCorefGraphBuilder
+          tmp = DCorefGraphBuilder()
+          for word in rnode.text.split():
+            verb, verbified = tmp.verbify(word)
+            if verbified and (verb == pnodes[i][j].predicate):
+              # print 'here'
+              # print rnode.text
+              # print pnodes[i][j].predicate
+              return i,j
+
           pass
         else:
           self.logger.warn('None predicate found!!!')

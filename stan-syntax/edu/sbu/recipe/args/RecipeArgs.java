@@ -41,7 +41,7 @@ public class RecipeArgs {
     
     Process p = Runtime.getRuntime().exec(" find /home/gt/Documents/" + recipeName + "/" + recipeName + "-Isteps/ -type f");
     
-    String outDirName = "/home/gt/Documents/" + recipeName + "/" + recipeName + "NArgs/";
+    String outDirName = "/home/gt/Documents/" + recipeName + "/" + recipeName + "Args/";
     
     try {
       File outDir = new File(outDirName);
@@ -57,6 +57,7 @@ public class RecipeArgs {
     StanfordCoreNLP pipeline = new StanfordCoreNLP(props);
     
     while( (fileName = reader.readLine()) != null) {
+//      fileName = "/home/gt/Documents/BananaMuffins/BananaMuffins-Isteps/banana-oat-muffins.txt";
       System.out.println("Processing Recipe " + fileName);
       
       String recipe = IOUtils.slurpFileNoExceptions(fileName);
@@ -82,7 +83,9 @@ public class RecipeArgs {
 //          + "[<<# /VBP/=verb | <<# VB=verb] [ [ < NP=arg1 < PP=arg2] | "
 //          + "[ < NP=arg1 !<<PRN ] | [ < (PP=arg2  !<: IN) ] | [ <, /VBP/=verb1 ] | [ <, VB=verb1 ] ]");
       
-      
+      // A <, B  - B is the first child of A
+      // A <  B  - A immediately dominates B
+      // A $-- B - A is a right sister of B
       TregexPattern VPpattern = TregexPattern.compile("VP !>>SBAR [<, VBP=verb | <, VB=verb] " +
       " [ [< NP=arg1 $-- PP=argSpecial2] | [ < NP=arg1 < PP=arg2] | " +
       " [ < NP=arg1 ] | [ < PP=arg2  ] | [<, VBP=verb1 ] | [ <, VB=verb1] ]");

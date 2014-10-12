@@ -72,6 +72,6 @@ class RNode:
       if "NN" in arr2[1]:
         res.append(arr2[0].lower())
         if self.arg_type=="arg2":
-          break # take only the first noun
+          break # take only the first noun -- why ?
     self.arg_text_nouns = res
     return res

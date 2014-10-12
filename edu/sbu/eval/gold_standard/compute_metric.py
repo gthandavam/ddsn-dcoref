@@ -50,6 +50,7 @@ def edge_found(edge, node_map, node_map_other, edge_list_other):
       pass
     pass
 
+  print edge['type']
   return False
   pass
 
@@ -116,11 +117,14 @@ def main():
     recipe_name = brat_file.split(os.sep)[-1].strip()
 
     auto_file = get_auto_file(recipe_name, EXP)
+    # print auto_file
     # auto_file = '/home/gt/svg-dir/auto_dir/FrenchToast/FrenchToast-dot-files-stat_for_eval_iteriter1000/chocolate-french-toast-2.gv'
 
     # print '##############' + recipe_name
 
     recipe_name = auto_file.split(os.sep)[-1]
+
+    print recipe_name, auto_file
 
     try:
       # print 'brat_file'
@@ -145,12 +149,16 @@ def main():
         if( edge['type'] == IMPLICIT_EDGE_LABEL ):
           implicit_ground_truth += 1
           if(edge_result):
+            # print '{} IMPLICIT {}'.format(node_map[edge['node2']], node_map[edge['node1']])
             implicit_recall += 1
           pass
 
         if( edge['type'] == EVOLUTION_EDGE_LABEL ):
           evolution_ground_truth += 1
           if(edge_result):
+            print '{} EVOLUTION {}'.format(node_map[edge['node2']], node_map[edge['node1']])
+
+
             evolution_recall += 1
           pass
 

@@ -10,11 +10,14 @@ class RuleEngine:
   def __init__(self):
     #tuple of rules - Immutable
     self.rules = (
-      'GlossBased', #not implemented
+
+    'GlossBased', #not implemented
       'DerivationallyRelated',
       'HeadWordArgString',#not implemented
       'ArgString',
-      'Previous', #-> IArgHeuristics here
+    'Previous', #-> IArgHeuristics here
+
+
     )
     self.logger = logging.getLogger('root')
 
