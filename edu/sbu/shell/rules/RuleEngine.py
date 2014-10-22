@@ -11,11 +11,12 @@ class RuleEngine:
     #tuple of rules - Immutable
     self.rules = (
 
+    'Previous', #-> IArgHeuristics here
     'GlossBased', #not implemented
       'DerivationallyRelated',
       'HeadWordArgString',#not implemented
       'ArgString',
-    'Previous', #-> IArgHeuristics here
+
 
 
     )

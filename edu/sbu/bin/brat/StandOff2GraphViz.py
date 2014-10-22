@@ -42,7 +42,7 @@ def merge_nodes(incidence_list, node_map):
   merged_node_map = {} # old Id to new Id
   node_num = 1
 
-  #todo - sort predicate node number assignment based on text order #not required!!!
+
   for node in incidence_list.keys():
     if not node in merged_node_map.keys() and node_map[node]['type'] == 'predicate':
       merged_node_map[node] = 'T' + str(node_num)
