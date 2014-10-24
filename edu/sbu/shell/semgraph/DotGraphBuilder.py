@@ -27,7 +27,7 @@ class DotGraphBuilder:
     self.adj_list = {}
     self.id_node_map = {}
     self.Ghost = 'Bon appetit!'
-    self.debug = True
+    self.debug = False
 
 
   def process_pnodes(self, pnodes):
@@ -301,17 +301,24 @@ class DotGraphBuilder:
         for k in xrange(len(pnodes[i][j].cc_edge)):
           start_node = self.pred_node_list[(i,j)]
           target_node = self.id_node_map[pnodes[i][j].cc_edge[k]]
-          line = target_node.id
+          # line = target_node.id
 
           if isinstance(target_node, RNode):
 
             if target_node.is_null:
               target_node = self.pred_node_list[(target_node.sent_num,target_node.pred_num)]
             else:
-              if target_node.arg_type == 'arg1':
-                target_node = self.arg1_node_list[(target_node.sent_num,target_node.pred_num, 1)]
-              elif target_node.arg_type == 'arg2':
-                target_node = self.arg2_node_list[(target_node.sent_num,target_node.pred_num, 2)]
+
+              # if target_node.arg_type == 'arg1':
+              #   target_node = self.arg1_node_list[(target_node.sent_num,target_node.pred_num, 1)]
+              # elif target_node.arg_type == 'arg2':
+              #   target_node = self.arg2_node_list[(target_node.sent_num,target_node.pred_num, 2)]
+              # else:
+              #   target_node = target_node.text
+              #   self.logger.error('Unknown arg type')
+              #
+              if target_node.arg_type == 'arg1' or target_node.arg_type == 'arg2':
+                target_node = target_node.id
               else:
                 target_node = target_node.text
                 self.logger.error('Unknown arg type')
