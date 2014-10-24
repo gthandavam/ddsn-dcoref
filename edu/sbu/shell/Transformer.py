@@ -6,7 +6,7 @@ from edu.sbu.shell.semgraph.DCorefGraphBuilder import DCorefGraphBuilder
 import commands
 import edu.sbu.shell.logger.log as log
 import sys
-import pickle
+from sklearn.externals import joblib
 import os
 from edu.sbu.mst.MSTGraphTransformer import MSTGraphTransformer
 from edu.sbu.mst.weighted_graph.solver.edmonds import upside_down_arborescence
@@ -28,10 +28,10 @@ reuben-mac-and-cheese
 
 #global variables that are over-written based on command line args passed by
 #iterative_learning script
-recipeName = 'EggNoodles'
-statFile = "/home/gt/Documents/"+ recipeName + "/RecipeStats2_init.pickle"
-statFile2 = "/home/gt/Documents/" + recipeName + "/RecipeStats2_iter.pickle"
-statFileForEval = "/home/gt/Documents/" + recipeName + "/RecipeStats2_forEval.pickle"
+recipeName = ''
+statFile = ""
+statFile2 = ""
+statFileForEval = ""
 
 
 ########################
@@ -394,9 +394,10 @@ def learnStat(useArbo, iter_num=-1):
 
   i=0
   if useArbo:
-    f = open(statFile)
-    r_stats = pickle.load(f)
-    f.close()
+    r_stats = joblib.load(statFile)
+    # f = open(statFile)
+    # r_stats = pickle.load(f)
+    # f.close()
   else:
     r_stats = RecipeStats2()
     r_stats.computeStat(recipeName)
@@ -460,12 +461,14 @@ def learnStat(useArbo, iter_num=-1):
   print len(r_stats.args1_verb_verb_args1_score)
 
   if useArbo:
-    f = open(statFile2,"w")
+    joblib.dump(r_stats, statFile2)
+    # f = open(statFile2,"w")
   else:
-    f = open(statFile,"w")
-  pickle.dump(r_stats,f)
+    joblib.dump(r_stats, statFile)
+    # f = open(statFile,"w")
+  # pickle.dump(r_stats,f, pickle.HIGHEST_PROTOCOL)
   print 'Recipes Processed: ' + str(i)
-  f.close()
+  # f.close()
 
 def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_num=-1):
 
@@ -473,10 +476,11 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_
   #files sentence split using stanford sentence splitter - fsm based
   i=0
   if stFile!="":
-    f = open(stFile)
-    r_stats = pickle.load(f)
-    f.close()
-    r_stats.args_verb_score = r_stats.test_flag # due to some pickle bug!!!
+    # f = open(stFile)
+    # r_stats = pickle.load(f)
+    # f.close()
+    r_stats = joblib.load(stFile)
+    # r_stats.args_verb_score = r_stats.test_flag # due to some pickle bug!!!
   else:
     r_stats = RecipeStats2()
     r_stats.computeStat(recipeName)
@@ -551,9 +555,10 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_
     print len(r_stats.args1_verb_verb_score)
     print len(r_stats.args1_args2_verb_verb_args1_score)
     print len(r_stats.args1_verb_verb_args1_score)
-    f = open(statFileForEval,"w")
-    pickle.dump(r_stats,f)
-    f.close()
+    # f = open(statFileForEval,"w")
+    # pickle.dump(r_stats,f, pickle.HIGHEST_PROTOCOL)
+    # f.close()
+    joblib.dump(r_stats, statFileForEval)
 
   print 'Recipes Processed: ' + str(i)
   pass

@@ -4,33 +4,30 @@ from edu.sbu.stats.corpus.reader2 import RecipeReader2
 from collections import Counter
 import math
 from nltk.stem.porter import *
-from edu.sbu.shell.rules.ArgString import ArgString
 from edu.sbu.shell.semgraph.RNode import RNode
 from edu.sbu.shell.semgraph.PNode import PNode
 
 class RecipeStats2:
 
-  # function_words = ["a","of","in","for","the","this","that","these","those","on"]
-  arg = ArgString()
-  ignorePOS = arg.ignorePOS
-  stemmer = PorterStemmer()
-  verbs_score = {}
-  verb_args1_score = {}
-  verb_args2_score = {}
-  args1_args_score = {}
-  args1_args2_args_score = {}
-  # args1_verb_score = {}
-  args_verb_score = {}
-  args1_args2_verb_args_score = {}
-  args1_verb_args_score = {}
-  args1_args2_verb_verb_score = {}
-  args1_args2_verb_verb_args1_score = {}
-  args1_verb_verb_score = {}
-  args1_verb_verb_args1_score = {}
-  sent_window = 3
-
-
   def __init__(self):
+    # function_words = ["a","of","in","for","the","this","that","these","those","on"]
+
+    self.ignorePOS = ['DT', 'JJ', 'RB', 'CC', 'TO', 'IN', 'CD', 'PDT']
+    self.stemmer = PorterStemmer()
+    self.verbs_score = {}
+    self.verb_args1_score = {}
+    self.verb_args2_score = {}
+    self.args1_args_score = {}
+    self.args1_args2_args_score = {}
+    self.args_verb_score = {}
+    self.args1_args2_verb_args_score = {}
+    self.args1_verb_args_score = {}
+    self.args1_args2_verb_verb_score = {}
+    self.args1_args2_verb_verb_args1_score = {}
+    self.args1_verb_verb_score = {}
+    self.args1_verb_verb_args1_score = {}
+    self.sent_window = 3
+
     pass
 
   def log(self, val):
@@ -43,6 +40,7 @@ class RecipeStats2:
     self.reader = RecipeReader2(recipe_name)
     self.reader.read()
     self.computeVerbArgSentStat()
+    print 'here'
 
   # 1. Compute average relative distance for 2 verbs in sentence numbers
   # Average over all recipes
@@ -332,6 +330,8 @@ class RecipeStats2:
                 else:
                   self.args1_verb_verb_args1_score[arg1][verb][verb2][arg] += args1_verb_verb_args1_score[arg1][verb][verb2][arg]
 
+
+    #normalization of all counts here
     for verb in self.verbs_score:
       for verb2 in self.verbs_score[verb]:
         self.verbs_score[verb][verb2] = float(self.verbs_score[verb][verb2])/cnt[verb]
@@ -1109,33 +1109,30 @@ class RecipeStats2:
 
   def getPredOuputArgProb(self, predicate, input_argument1, input_argument2, output_argument):
     #Used for Evolution edge weight assignment
-    if input_argument1==None:
-      return 0
-    nouns = output_argument.getNouns()
-    # if "minutes" in nouns:
-    #   return 0
-    # score = self.log(1-self.getTextSimArr(predicate.getNouns(), nouns))
-    score = self.log(self.getTextSimArr(input_argument1.getNouns(), nouns))
-    if score!= 0:
-      return score
-    # if output_argument.arg_type=="arg1":
-    #   score2 = self.getArg1Arg1Prob(input_argument1,output_argument)
-    if input_argument2==None:
-      score = self.getArg1PredArg(input_argument1,predicate,output_argument)
-    else:
-      score = self.getArg1Arg2PredArg(input_argument1,input_argument2,predicate,output_argument)
-    return score
-    # # Test
-    # if True:
-    #   return score
-    # ###
-    # if score!=0:
-    #   return score
-    # # Arg1 to Arg1 score
-    # if input_argument2==None:
-    #   return self.getArg1ArgProb(input_argument1,output_argument)
-    # else:
-    #   return self.getArg1Arg2ArgProb(input_argument1,input_argument2,output_argument)
+    if input_argument1!=None:
+
+      nouns = output_argument.getNouns()
+      # if "minutes" in nouns:
+      #   return 0
+      # score = self.log(1-self.getTextSimArr(predicate.getNouns(), nouns))
+      score = self.log(1 - self.getTextSimArr(input_argument1.getNouns(), nouns))
+      if score!= 0:
+        return score
+      # if output_argument.arg_type=="arg1":
+      #   score2 = self.getArg1Arg1Prob(input_argument1,output_argument)
+      if input_argument2==None:
+        score = self.getArg1PredArg(input_argument1,predicate,output_argument)
+      else:
+        score = self.getArg1Arg2PredArg(input_argument1,input_argument2,predicate,output_argument)
+
+      if score != 0:
+        return score
+
+    # Arg1 to Arg1 score
+      if input_argument2==None:
+        return self.getArg1ArgProb(input_argument1,output_argument)
+      else:
+        return self.getArg1Arg2ArgProb(input_argument1,input_argument2,output_argument)
 
   def getPredOuputArg1Prob(self, predicate, input_argument, output_argument):
     ### Compute probability of edge predicate->arg1
@@ -1237,50 +1234,56 @@ class RecipeStats2:
     return self.log(1 - (float(s)/cnt))
 
   def getVerbVerbProb(self, predicate, predicate2):
-    verb = self.stemmer.stem(predicate)
-    verb2 = self.stemmer.stem(predicate2)
+    verb = self.stemmer.stem(predicate.predicate)
+    verb2 = self.stemmer.stem(predicate2.predicate)
     if verb not in self.verbs_score:
       return 0
     if verb2 not in self.verbs_score[verb]:
       return 0
 
-    print '##### ' + self.verbs_score[verb][verb2]
+    #print '##### ' + self.verbs_score[verb][verb2]
     return self.log(1 - self.verbs_score[verb][verb2])
 
   def getPredPredProb(self, predicate, input_argument1, input_argument2, predicate2, input2_argument):
     #Implicit arg edge - edge between connected components
-    if input_argument1==None:
-      return 0
-    score = 0
-    if input2_argument!=None:
+    if input_argument1!=None:#all possible assignments if arg1 of verb 1 is present
+      score = 0
+      if input2_argument!=None:
+        if input_argument2==None:
+          score = self.getArg1PredPredArg1(input_argument1,predicate,predicate2,input2_argument)
+        else:
+          score = self.getArg1Arg2PredPredArg1(input_argument1,input_argument2,predicate,predicate2,input2_argument)
+        # # Test
+        # if True:
+        #   return score
+        # ####
+        if score != 0:
+          # return score
+          return score-0.0001 # for "bring" -> "add" <- "pasta" example, when "bring" -> "pasta" has the same weight as "bring" -> "add" <- "pasta"
       if input_argument2==None:
-        score = self.getArg1PredPredArg1(input_argument1,predicate,predicate2,input2_argument)
+        score = self.getArg1PredPred(input_argument1,predicate,predicate2)
       else:
-        score = self.getArg1Arg2PredPredArg1(input_argument1,input_argument2,predicate,predicate2,input2_argument)
-      # # Test
+        score = self.getArg1Arg2PredPred(input_argument1,input_argument2,predicate,predicate2)
+      # Test
       # if True:
       #   return score
-      # ####
-      if score != 0:
-        # return score
-        return score-0.0001 # for "bring" -> "add" <- "pasta" example, when "bring" -> "pasta" has the same weight as "bring" -> "add" <- "pasta"
-    if input_argument2==None:
-      score = self.getArg1PredPred(input_argument1,predicate,predicate2)
-    else:
-      score = self.getArg1Arg2PredPred(input_argument1,input_argument2,predicate,predicate2)
-    # Test
-    # if True:
-    #   return score
-    ####
-    if score!=0:
-      return score
-    # verb = self.stemmer.stem(predicate.predicate)
-    # verb2 = self.stemmer.stem(predicate2.predicate)
-    # if verb in self.verbs_score and verb2 in self.verbs_score[verb]:
-    #   return self.log(1-self.verbs_score[verb][verb2])
-    # score += self.getArg2PredProb(input_argument, predicate2)
-    # score += self.getArg1Arg1Prob(input_argument,input_argument2)
-    return self.getArgPredProb(input_argument1, predicate2)
+      ####
+      if score!=0:
+        return score
+      # verb = self.stemmer.stem(predicate.predicate)
+      # verb2 = self.stemmer.stem(predicate2.predicate)
+      # if verb in self.verbs_score and verb2 in self.verbs_score[verb]:
+      #   return self.log(1-self.verbs_score[verb][verb2])
+      # score += self.getArg2PredProb(input_argument, predicate2)
+      # score += self.getArg1Arg1Prob(input_argument,input_argument2)
+      score = self.getArgPredProb(input_argument1, predicate2)
+
+      if score!=0:
+        return score
+
+    return self.getVerbVerbProb(predicate, predicate2)
+
+
     # score2 = self.getArgPredProb(input_argument1, predicate2)
     # return float(score+score2)/2
 
@@ -1300,8 +1303,8 @@ class RecipeStats2:
     return self.getTextSimArr(text1.lower().split(" "),text2.lower().split(" "))
 
   def getTextSimArr(self, text1, text2):
-    d1 = Counter(map(lambda k: self.stem(k), text1))
-    d2 = Counter(map(lambda k: self.stem(k), text2))
+    d1 = Counter(map(lambda k: self.stemmer.stem(k), text1))
+    d2 = Counter(map(lambda k: self.stemmer.stem(k), text2))
     sum1 = 0
     sum2 = 0
     sum12 = 0
