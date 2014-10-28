@@ -26,7 +26,7 @@ class RecipeStats2:
     self.args1_args2_verb_verb_args1_score = {}
     self.args1_verb_verb_score = {}
     self.args1_verb_verb_args1_score = {}
-    self.sent_window = 3
+    self.sent_window = 1 #incorrectly being used - so for now setting it to 1
 
     pass
 
@@ -1118,30 +1118,70 @@ class RecipeStats2:
 
   def getPredOuputArgProb(self, predicate, input_argument1, input_argument2, output_argument):
     #Used for Evolution edge weight assignment
+    # if input_argument1!=None:
+    #
+    #   nouns = output_argument.getNouns()
+    #   # if "minutes" in nouns:
+    #   #   return 0
+    #   # score = self.log(1-self.getTextSimArr(predicate.getNouns(), nouns))
+    #   score = self.log(1 - self.getTextSimArr(input_argument1.getNouns(), nouns))
+    #   if score!= 0:
+    #     return score
+    #   # if output_argument.arg_type=="arg1":
+    #   #   score2 = self.getArg1Arg1Prob(input_argument1,output_argument)
+    #   if input_argument2==None:
+    #     score = self.getArg1PredArg(input_argument1,predicate,output_argument)
+    #   else:
+    #     score = self.getArg1Arg2PredArg(input_argument1,input_argument2,predicate,output_argument)
+    #
+    #   if score != 0:
+    #     return score
+    #
+    # # Arg1 to Arg1 score
+    #   if input_argument2==None:
+    #     return self.getArg1ArgProb(input_argument1,output_argument)
+    #   else:
+    #     return self.getArg1Arg2ArgProb(input_argument1,input_argument2,output_argument)
+    cnt = 0
     if input_argument1!=None:
 
       nouns = output_argument.getNouns()
-      # if "minutes" in nouns:
-      #   return 0
-      # score = self.log(1-self.getTextSimArr(predicate.getNouns(), nouns))
-      score = self.log(1 - self.getTextSimArr(input_argument1.getNouns(), nouns))
-      if score!= 0:
-        return score
-      # if output_argument.arg_type=="arg1":
-      #   score2 = self.getArg1Arg1Prob(input_argument1,output_argument)
-      if input_argument2==None:
-        score = self.getArg1PredArg(input_argument1,predicate,output_argument)
-      else:
-        score = self.getArg1Arg2PredArg(input_argument1,input_argument2,predicate,output_argument)
 
-      if score != 0:
-        return score
+      score1 = self.log(1 - self.getTextSimArr(input_argument1.getNouns(), nouns))
+
+      if score1 != 0:
+        cnt +=1
+
+      score2 = self.getArg1PredArg(input_argument1,predicate,output_argument)
+
+      if score2 != 0:
+        cnt += 1
+
+      if input_argument2 != None:
+        score3 = self.getArg1Arg2PredArg(input_argument1,input_argument2,predicate,output_argument)
+
+        if score3 != 0:
+          cnt += 1
 
     # Arg1 to Arg1 score
-      if input_argument2==None:
-        return self.getArg1ArgProb(input_argument1,output_argument)
-      else:
-        return self.getArg1Arg2ArgProb(input_argument1,input_argument2,output_argument)
+
+      score4 = self.getArg1ArgProb(input_argument1,output_argument)
+
+      if score4 != 0:
+        cnt += 1
+
+
+      if input_argument2 != None:
+
+        score5 = self.getArg1Arg2ArgProb(input_argument1,input_argument2,output_argument)
+
+        if score5 != 0:
+          cnt += 1
+
+    #zero is the maximum in log space; for min arbor formulation returning max value when there is no evidence
+    ret = 0 if cnt == 0 else (float)(score1 + score2 + score3 + score4 + score5)/cnt
+
+    return ret
 
   def getPredOuputArg1Prob(self, predicate, input_argument, output_argument):
     ### Compute probability of edge predicate->arg1
@@ -1255,46 +1295,86 @@ class RecipeStats2:
 
   def getPredPredProb(self, predicate, input_argument1, input_argument2, predicate2, input2_argument):
     #Implicit arg edge - edge between connected components
+    # if input_argument1!=None:#all possible assignments if arg1 of verb 1 is present
+    #   score = 0
+    #   if input2_argument!=None:
+    #     if input_argument2==None:
+    #       score = self.getArg1PredPredArg1(input_argument1,predicate,predicate2,input2_argument)
+    #     else:
+    #       score = self.getArg1Arg2PredPredArg1(input_argument1,input_argument2,predicate,predicate2,input2_argument)
+    #     # # Test
+    #     # if True:
+    #     #   return score
+    #     # ####
+    #     if score != 0:
+    #       # return score
+    #       return score-0.0001 # for "bring" -> "add" <- "pasta" example, when "bring" -> "pasta" has the same weight as "bring" -> "add" <- "pasta"
+    #   if input_argument2==None:
+    #     score = self.getArg1PredPred(input_argument1,predicate,predicate2)
+    #   else:
+    #     score = self.getArg1Arg2PredPred(input_argument1,input_argument2,predicate,predicate2)
+    #   # Test
+    #   # if True:
+    #   #   return score
+    #   ####
+    #   if score!=0:
+    #     return score
+    #   # verb = self.stemmer.stem(predicate.predicate)
+    #   # verb2 = self.stemmer.stem(predicate2.predicate)
+    #   # if verb in self.verbs_score and verb2 in self.verbs_score[verb]:
+    #   #   return self.log(1-self.verbs_score[verb][verb2])
+    #   # score += self.getArg2PredProb(input_argument, predicate2)
+    #   # score += self.getArg1Arg1Prob(input_argument,input_argument2)
+    #   score = self.getArgPredProb(input_argument1, predicate2)
+    #
+    #   if score!=0:
+    #     return score
+    #
+    # return self.getVerbVerbProb(predicate, predicate2)
+    #
+    #
+    # # score2 = self.getArgPredProb(input_argument1, predicate2)
+    # # return float(score+score2)/2
+
+    cnt = 0
     if input_argument1!=None:#all possible assignments if arg1 of verb 1 is present
-      score = 0
+
       if input2_argument!=None:
         if input_argument2==None:
-          score = self.getArg1PredPredArg1(input_argument1,predicate,predicate2,input2_argument)
-        else:
-          score = self.getArg1Arg2PredPredArg1(input_argument1,input_argument2,predicate,predicate2,input2_argument)
-        # # Test
-        # if True:
-        #   return score
-        # ####
-        if score != 0:
-          # return score
-          return score-0.0001 # for "bring" -> "add" <- "pasta" example, when "bring" -> "pasta" has the same weight as "bring" -> "add" <- "pasta"
+          score1 = self.getArg1PredPredArg1(input_argument1,predicate,predicate2,input2_argument)
+          if score1 != 0:
+            cnt +=1
+
+        if input_argument2 != None:
+          score2 = self.getArg1Arg2PredPredArg1(input_argument1,input_argument2,predicate,predicate2,input2_argument)
+          if score2 != 0:
+            cnt += 1
+
       if input_argument2==None:
-        score = self.getArg1PredPred(input_argument1,predicate,predicate2)
-      else:
-        score = self.getArg1Arg2PredPred(input_argument1,input_argument2,predicate,predicate2)
-      # Test
-      # if True:
-      #   return score
-      ####
-      if score!=0:
-        return score
-      # verb = self.stemmer.stem(predicate.predicate)
-      # verb2 = self.stemmer.stem(predicate2.predicate)
-      # if verb in self.verbs_score and verb2 in self.verbs_score[verb]:
-      #   return self.log(1-self.verbs_score[verb][verb2])
-      # score += self.getArg2PredProb(input_argument, predicate2)
-      # score += self.getArg1Arg1Prob(input_argument,input_argument2)
-      score = self.getArgPredProb(input_argument1, predicate2)
+        score3 = self.getArg1PredPred(input_argument1,predicate,predicate2)
+        if score3 != 0:
+          cnt += 1
 
-      if score!=0:
-        return score
+      if input_argument2 != None:
+        score4 = self.getArg1Arg2PredPred(input_argument1,input_argument2,predicate,predicate2)
+        if score4 != 0:
+          cnt += 1
 
-    return self.getVerbVerbProb(predicate, predicate2)
+      score5 = self.getArgPredProb(input_argument1, predicate2)
+      if score5 != 0:
+        cnt += 1
 
 
-    # score2 = self.getArgPredProb(input_argument1, predicate2)
-    # return float(score+score2)/2
+      score6 = self.getVerbVerbProb(predicate, predicate2)
+      if score6 != 0:
+        cnt += 1
+
+    #zero is the maximum in log space; for min arbor formulation returning max value when there is no evidence
+    ret = 0 if cnt == 0 else (float)(score1 + score2 + score3 + score4 + score5 + score6)/cnt
+
+    return ret
+
+
 
   def stem(self, word):
     if word=="":

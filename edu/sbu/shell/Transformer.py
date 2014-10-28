@@ -260,9 +260,6 @@ def generate_graph(pnodes_resolved, rnodes_resolved, r_stats, Wwt):
   weighted_graph.Wwt = Wwt
   weighted_graph.Warg = 1-Wwt
 
-  #seems like this call is redundant - remove it later!!!
-  g = weighted_graph.get_adj_ghost_graph('order_close_together')
-
   return arbor_adapter, weighted_graph
 
 def connect_arbor(weighted_graph, arbor_adapter, r_stats):
