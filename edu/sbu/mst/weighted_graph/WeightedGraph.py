@@ -5,8 +5,7 @@ from edu.sbu.shell.semgraph.RNode import RNode
 from edu.sbu.shell.semgraph.PNode import PNode
 import sys, math
 class WeightedGraph:
-  Wwt = 0
-  Warg = 1
+
   def __init__(self, pNodes, rNodes, ccs, v_props, adj_list, id_node_map, r_stats):
     self.pNodes = pNodes
     self.rNodes = rNodes
@@ -27,6 +26,9 @@ class WeightedGraph:
     self.ccs_rep_bottom = []
 
     self.logger = logging.getLogger('root')
+
+    self.Wwt = 0
+    self.Warg = 1
     pass
 
   def get_simple_components_root(self):
@@ -91,6 +93,7 @@ class WeightedGraph:
     return self.root
 
   def get_adj_dict(self, heuristic):
+    #Not USED NOW - Oct 26/2014
     """
     Process the representatives per component and generate the adj dictionary.
     Add ghost node at the end to facilitate edmonds.py #not sure why this is needed
@@ -226,8 +229,8 @@ class WeightedGraph:
               continue
             wt = weight_heuristic(node1.id, node2.id, self.id_node_map, self.pNodes, self.rNodes)
             input2_node = self.recipe_stats.findInputArgument(node2,reverse_g,self.id_node_map)
-            if node1.id=="T0" and node2.id=="T2":
-                pass
+            # if node1.id=="T0" and node2.id=="T2": - why was this added ?
+            #     pass
             arg_probability = self.recipe_stats.getPredPredProb(node1,input_node,input_node2,node2,input2_node)
             g[node1.id][node2.id] = self.Wwt*wt + self.Warg*arg_probability
         # Predicate-Argument edges
@@ -241,7 +244,7 @@ class WeightedGraph:
             for k in range(2):
               node2 = self.rNodes[j][q][k+1]
               # node2 = self.id_node_map[self.ccs_top[j][q]]
-              if not isinstance(node2,RNode) or len(node2.shell_coref)>0 and node2.shell_coref[0][1]!="ArgString":
+              if not isinstance(node2,RNode) or (isinstance(node2, RNode) and node2.is_null):
                 continue
               # # consider only argument nodes with 0 in degree
               # if node2.id in reverse_g and len(reverse_g[node2.id])>0:

@@ -330,6 +330,7 @@ class DotGraphBuilder:
             if start_node in arbo_edges and target_node in arbo_edges[start_node]:
               temp_wt = arbo_edges[start_node][target_node]
             else:
+	      print 'CC No wt'
               temp_wt = 'CC No wt'
 
             line = '{} -> {} [label=\"{}({})\"'.format(start_node, target_node, 'CC', temp_wt)

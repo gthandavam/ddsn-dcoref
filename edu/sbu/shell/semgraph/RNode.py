@@ -64,14 +64,14 @@ class RNode:
     if self.arg_text_nouns != None:
       return self.arg_text_nouns
     arr = self.argPOS.split()
-    res = []
+    res = set()
     for a in arr:
       if "minute" in a:
         continue
       arr2 = a.split("/")
       if "NN" in arr2[1]:
-        res.append(arr2[0].lower())
+        res.add(arr2[0].lower())
         if self.arg_type=="arg2":
           break # take only the first noun -- why ?
-    self.arg_text_nouns = res
-    return res
+    self.arg_text_nouns = list(res)
+    return list(res)

@@ -45,13 +45,13 @@ class PNode:
     if self.arg_text_coref_nouns != None:
       return self.arg_text_coref_nouns
     arr = self.arg_text_POS_for_coref.split()
-    res = []
+    res = set()
     for a in arr:
       if "minute" in a:
         continue
       arr2 = a.split("/")
       if "NN" in arr2[1]:
-        res.append(arr2[0].lower())
-    self.arg_text_coref_nouns = res
-    return res
+        res.add(arr2[0].lower())
+    self.arg_text_coref_nouns = list(res)
+    return list(res)
 

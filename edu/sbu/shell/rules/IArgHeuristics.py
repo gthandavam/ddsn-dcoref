@@ -53,6 +53,11 @@ class Previous:
             pnodes[i][j].arg_text_for_coref += ' ' + pnodes[prev_i][prev_j].arg_text_for_coref
             pnodes[i][j].arg_text_POS_for_coref += ' ' + pnodes[prev_i][prev_j].arg_text_POS_for_coref
 
+            #No need to update argPOS of rnodes[i][j][k], since it is null node
+            #but updating here, to help the current arborescence formulation
+            rnodes[i][j][k].argPOS += ' ' + pnodes[prev_i][prev_j].arg_text_POS_for_coref
+
+
             #to avoid parallel IArg edges between predicates
             #only one of arg1 or arg2 needs to use prev as IArg
             #so when arg1 and arg2 are null, only arg1 has IArg edge

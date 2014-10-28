@@ -477,6 +477,7 @@ class RecipeStats2:
     for node_id in reverse_g[node.id]:
       node2 = id_node_map[node_id]
       if isinstance(node2,RNode) and node2.arg_type=="arg1":
+
         return node2
 
     for node_id in reverse_g[node.id]:
@@ -505,7 +506,7 @@ class RecipeStats2:
       s_node = id_node_map[s]
       res[s] = {}
       for d in g[s]:
-        res[s][d] = 1
+        res[s][d] = res[s][d] + 1 if d in res[s] else 1
       if not isinstance(s_node,PNode):
         continue
       self.getTransClosureBranch(s,s,res,g,id_node_map)
@@ -519,7 +520,9 @@ class RecipeStats2:
       if not isinstance(d_node,PNode):
         continue
       visited[d] = 1
-      res[s][d] = 1
+
+      res[s][d] = res[s][d] + 1 if d in res[s] else 1
+
       self.getTransClosureBranch(s,d,res,g,id_node_map,visited)
 
   def updateStatFromGraph(self, weighted_graph, arbor_adapter, arbor_edges, useArbo, transitive):
@@ -670,6 +673,9 @@ class RecipeStats2:
                   args1_args2_verb_verb_args1_score[arg1][arg2][verb1][verb2][arg]=1
 
         elif isinstance(node1,PNode) and isinstance(node2,RNode):
+          if node2.is_null == True:
+            print 'NULL NODE!!! 675' + str(node2.getNouns())
+
           args = node2.getNouns()
           verb1_args = []
           if verb1_arg!=None:
@@ -712,6 +718,9 @@ class RecipeStats2:
                 args1_args2_verb_args_score[arg1][arg2][verb1][arg] = 1
                 args1_args2_args_score[arg1][arg2][arg] = 1
         elif isinstance(node1,RNode) and isinstance(node2,PNode):
+            # if node1.is_null == True:
+            #   print 'NULL NODE!!! 719' + str(node1.getNouns())
+
           # if node1.arg_type=="arg2":
             verb2 = self.stemmer.stem(node2.predicate)
             nouns = node1.getNouns()
@@ -1321,5 +1330,82 @@ class RecipeStats2:
     if sum12==0:
       return 0
     return sum12/math.sqrt(sum1*sum2)
+
+
+  def printEvolutionProb(self, fileName):
+    with open(fileName + '_args1_args2_verb_args_score.csv', 'w') as f:
+      for arg1 in self.args1_args2_verb_args_score.keys():
+        for arg2 in self.args1_args2_verb_args_score[arg1].keys():
+          for verb in self.args1_args2_verb_args_score[arg1][arg2].keys():
+            for arg in self.args1_args2_verb_args_score[arg1][arg2][verb].keys():
+              f.write(','.join([arg1,arg2,verb ,arg ,str(self.args1_args2_verb_args_score[arg1][arg2][verb][arg])]) + '\n')
+      pass
+
+    with open(fileName + '_args1_verb_args_score.csv', 'w') as f:
+      for arg1 in self.args1_verb_args_score.keys():
+        for verb in self.args1_verb_args_score[arg1].keys():
+          for arg in self.args1_verb_args_score[arg1][verb].keys():
+            f.write(','.join([arg1, verb, arg, str(self.args1_verb_args_score[arg1][verb][arg])]) + '\n')
+      pass
+
+    with open(fileName + '_args1_args2_args_score.csv', 'w') as f:
+      for arg1 in self.args1_args2_args_score.keys():
+        for arg2 in self.args1_args2_args_score[arg1].keys():
+          for arg in self.args1_args2_args_score[arg1][arg2].keys():
+            f.write(','.join([arg1, arg2, arg, str(self.args1_args2_args_score[arg1][arg2][arg])]) + '\n')
+      pass
+
+    with open(fileName + '_args1_args_score.csv', 'w') as f:
+      for arg1 in self.args1_args_score.keys():
+        for arg in self.args1_args_score[arg1].keys():
+          f.write(','.join([arg1, arg, str(self.args1_args_score[arg1][arg])]) + '\n')
+      pass
+    pass
+
+  def printImplicitProb(self, fileName):
+    with open(fileName + '_args1_verb_verb_args1_score.csv', 'w') as f:
+      for arg1 in self.args1_verb_verb_args1_score.keys():
+        for verb1 in self.args1_verb_verb_args1_score[arg1].keys():
+          for verb2 in self.args1_verb_verb_args1_score[arg1][verb1].keys():
+            for oarg1 in self.args1_verb_verb_args1_score[arg1][verb1][verb2].keys():
+              f.write( ','.join([arg1, verb1, verb2, oarg1, str(self.args1_verb_verb_args1_score[arg1][verb1][verb2][oarg1])]) + '\n')
+      pass
+
+    with open(fileName + '_args1_args2_verb_verb_args1_score.csv', 'w') as f:
+      for arg1 in self.args1_args2_verb_verb_args1_score.keys():
+        for arg2 in self.args1_args2_verb_verb_args1_score[arg1].keys():
+          for verb1 in self.args1_args2_verb_verb_args1_score[arg1][arg2].keys():
+            for verb2 in self.args1_args2_verb_verb_args1_score[arg1][arg2][verb1].keys():
+              for oarg1 in self.args1_args2_verb_verb_args1_score[arg1][arg2][verb1][verb2].keys():
+                f.write( ','.join([arg1, arg2, verb1, verb2, oarg1, str(self.args1_args2_verb_verb_args1_score[arg1][arg2][verb1][verb2][oarg1])]) +'\n')
+      pass
+
+    with open(fileName + '_args1_verb_verb_score.csv', 'w') as f:
+      for arg1 in self.args1_verb_verb_score.keys():
+        for verb1 in self.args1_verb_verb_score[arg1].keys():
+          for verb2 in self.args1_verb_verb_score[arg1][verb1].keys():
+            f.write(','.join([arg1, verb1, verb2, str(self.args1_verb_verb_score[arg1][verb1][verb2])]) + '\n')
+      pass
+
+    with open(fileName + '_args1_args2_verb_verb_score.csv', 'w') as f:
+      for arg1 in self.args1_args2_verb_verb_score.keys():
+        for arg2 in self.args1_args2_verb_verb_score[arg1].keys():
+          for verb1 in self.args1_args2_verb_verb_score[arg1][arg2].keys():
+            for verb2 in self.args1_args2_verb_verb_score[arg1][arg2][verb1].keys():
+              f.write( ','.join([arg1, arg2, verb1, verb2, str(self.args1_args2_verb_verb_score[arg1][arg2][verb1][verb2])]) +'\n')
+      pass
+
+    with open(fileName + '_args_verb_score.csv', 'w') as f:
+      for arg1 in self.args_verb_score.keys():
+        for verb in self.args_verb_score[arg1].keys():
+          f.write(','.join([arg1, verb, str(self.args_verb_score[arg1][verb])]) + '\n')
+      pass
+
+    with open(fileName + '_verb_verb_score.csv', 'w') as f:
+      for verb in self.verbs_score.keys():
+        for verb2 in self.verbs_score[verb].keys():
+          f.write(','.join([verb, verb2, str(self.verbs_score[verb][verb2])]) + '\n')
+      pass
+    pass
 
 

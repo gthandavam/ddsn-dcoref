@@ -1,6 +1,6 @@
 #! /bin/bash
 
-modelDir=/home/gt/Downloads/stanford-corenlp-full-2014-01-04/
+modelDir=/home/gt/Downloads/stanford-corenlp-full-2014-08-27/
 classpath=/home/gt/eclipse_workspace/dcoref-Jan4-14/bin/
 recipeName=$1
 

@@ -92,6 +92,9 @@ class DerivationallyRelated:
 
               pnodes[i][j].arg_text_for_coref += ' ' + pnodes[ret_i][ret_j].arg_text_for_coref
               pnodes[i][j].arg_text_POS_for_coref += ' ' + pnodes[ret_i][ret_j].arg_text_POS_for_coref
+
+              ##Updating the lexical chain in RNode as well, so that it will be helpful in stat collection
+              rnodes[i][j][k].argPOS += ' ' + pnodes[ret_i][ret_j].arg_text_POS_for_coref
               # print 'Derivationally Related applied'
               # print rnodes[i][j][k].raw_text + ' pred: ' + pnodes[i][j].predicate
 

@@ -2,6 +2,7 @@ __author__ = 'gt'
 import sys
 import os
 import re
+import traceback
 ######################
 # Script to compute recall on the evolving entities/implicit arguments
 #
@@ -42,6 +43,7 @@ def edge_found(edge, node_map, node_map_other, edge_list_other):
   for other_edge in edge_list_other:
     a1 = node_map_other[other_edge['node2']]['span_start']
     b1 = node_map_other[other_edge['node2']]['span_end']
+    # print other_edge['node1']
     c1 = node_map_other[other_edge['node1']]['span_start']
     d1 = node_map_other[other_edge['node1']]['span_end']
 
@@ -50,7 +52,7 @@ def edge_found(edge, node_map, node_map_other, edge_list_other):
       pass
     pass
 
-  print edge['type']
+  # print edge['type']
   return False
   pass
 
@@ -124,7 +126,7 @@ def main():
 
     recipe_name = auto_file.split(os.sep)[-1]
 
-    print recipe_name, auto_file
+    # print recipe_name, auto_file
 
     try:
       # print 'brat_file'
@@ -156,7 +158,7 @@ def main():
         if( edge['type'] == EVOLUTION_EDGE_LABEL ):
           evolution_ground_truth += 1
           if(edge_result):
-            print '{} EVOLUTION {}'.format(node_map[edge['node2']], node_map[edge['node1']])
+            # print '{} EVOLUTION {}'.format(node_map[edge['node2']], node_map[edge['node1']])
 
 
             evolution_recall += 1
@@ -174,10 +176,15 @@ def main():
       #subtracting one from ground truth for ignoring edge on Ghost node (number subtracted should be in fact in-degree of Ghost node, for now keeping it as 1)
 
       #TODO: check whether edges on Ghost are getting counted correctly
-      print recipe_name + ',' + str(implicit_ground_truth-1) + ',' + str(implicit_recall) + ',' + str(evolution_ground_truth) + ',' + str(evolution_recall) + ',' + str(ground_truth-1) + ',' + str(pairwise_recall) + ',' + str(edges_extracted) + ',' + str(pairwise_precision)
+      print recipe_name + ',' + str(implicit_ground_truth) + ',' + str(implicit_recall) + ',' + str(evolution_ground_truth) + ',' + str(evolution_recall) + ',' + str(ground_truth) + ',' + str(pairwise_recall) + ',' + str(edges_extracted) + ',' + str(pairwise_precision)
     except Exception as e:
       print 'exception while processing ' + recipe_name
-      print e
+      exc_type, exc_value, exc_traceback = sys.exc_info()
+      traceback.print_exception(exc_type, exc_value, exc_traceback,
+                              limit=2, file=sys.stdout)
+      print e.message
+      print traceback.format_exception_only(type(e), e)
+
       pass
 
 

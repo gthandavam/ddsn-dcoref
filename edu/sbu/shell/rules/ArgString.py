@@ -94,6 +94,8 @@ class ArgString:
               pnodes[i][j].arg_text_for_coref += ' ' + pnodes[ret_i][ret_j].arg_text_for_coref
               pnodes[i][j].arg_text_POS_for_coref += ' ' + pnodes[ret_i][ret_j].arg_text_POS_for_coref
 
+              ##Updating the lexical chain in RNode as well, so that it will be helpful in stat collection
+              rnodes[i][j][k].argPOS += ' ' + pnodes[ret_i][ret_j].arg_text_POS_for_coref
               # print 'ArgString applied'
               # print rnodes[i][j][k].text + ' pred:' + pnodes[ret_i][ret_j].predicate
 
