@@ -271,31 +271,53 @@ class StatFeatures:
     '''
 
     #CP1
-    nr, dr = self.getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)
+    cp1 = self.getArg1Arg2PredPredArg1LogProb(sem_group1, sem_group2)
 
-    if( not (nr == 0 or dr == 0) ):
-      return float(nr)/dr
+    if( cp1 != 0 ): #if cp1 is zero, indicates no evidence, we get log(1-P) from the API
+      return cp1
 
     #CP2
-    nr, dr = self.getArg1Arg2PredPredProb(sem_group1, sem_group2)
+    cp2 = self.getArg1Arg2PredPredLogProb(sem_group1, sem_group2)
 
-    if( not (nr == 0 or dr == 0) ):
-      return float(nr)/dr
+    if( cp2 != 0 ):
+      return cp2
 
     #CP3
-    nr, dr = self.getArg1PredPredArg1Prob(sem_group1, sem_group2)
+    cp3 = self.getArg1PredPredArg1LogProb(sem_group1, sem_group2)
 
-    if( not (nr == 0 or dr == 0) ):
-      return float(nr)/dr
+    if( cp3 != 0 ):
+      return cp3
 
     #CP4
-    nr, dr = self.getArg1PredPredProb(sem_group1, sem_group2)
-    if( not (nr == 0 or dr == 0) ):
-      return float(nr)/dr
+    cp4 = self.getArg1PredPredLogProb(sem_group1, sem_group2)
+    if( cp4 != 0 ):
+      return cp4
 
     #when all fails return 100000 treated as +infinity
     #value for infinity is controlled by path length * max edge weight in a tsp problem!!!
     return float(100000)
+
+    pass
+
+  def linear_combination_stat_weight(self, sem_group1, sem_group2):
+    '''
+    return (cp1 + cp2 + cp3 + cp4)/4.0
+    :rtype : float
+    '''
+
+    #CP1
+    cp1 = self.getArg1Arg2PredPredArg1LogProb(sem_group1, sem_group2)
+
+    #CP2
+    cp2 = self.getArg1Arg2PredPredLogProb(sem_group1, sem_group2)
+
+    #CP3
+    cp3 = self.getArg1PredPredArg1LogProb(sem_group1, sem_group2)
+
+    #CP4
+    cp4 = self.getArg1PredPredLogProb(sem_group1, sem_group2)
+
+    return float(cp1 + cp2 + cp3 + cp4)/4.0
 
     pass
 

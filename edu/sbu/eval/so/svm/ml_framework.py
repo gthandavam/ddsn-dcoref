@@ -18,6 +18,7 @@ from sklearn.externals import joblib
 from pprint import pprint
 import math
 import edu.sbu.eval.so.tsp.tsp_adapter.tsp_instance as tsp
+from edu.sbu.eval.so.viterbi.viterbi_path import get_viterbi_path
 
 def train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicator):
   ft_extractor,scaler, X = get_features(sents, 1, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, 1, indicator)
@@ -188,14 +189,14 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
     if exp2:
       edge_weights = tsp.pick_edge_weights(weights[prevItr : prevItr + itr ], pred_labels[prevItr : prevItr + itr ], pairs[prevItr: prevItr + itr], recipeLength[i][0])
       # print edge_weights
-      order = test_tsp_solver(edge_weights, recipeName, i, 'tsp_exp_2')
+      order = get_viterbi_path(edge_weights)
 
 
     #Experiment 3 : TSP formulation with stat weights
     if exp3:
       edge_weights_cp = tsp.pick_stat_edge_weights(test_sents, pairs[prevItr : prevItr + itr], recipeLength[i][0], stats_obj)
 
-      order_cp = test_tsp_solver(edge_weights_cp, recipeName, i, 'tsp_exp_3')
+      order_cp = get_viterbi_path(edge_weights_cp)
 
 
     #HERE: Updating for Experiment 2
