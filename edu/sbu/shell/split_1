@@ -1,0 +1,3 @@
+python iterative_learning.py 4 BananaMuffins  >> iterative_learning_out 
+python iterative_learning.py 4 BeefChilli  >> iterative_learning_out
+python iterative_learning.py 4 BeefMeatLoaf  >> iterative_learning_out

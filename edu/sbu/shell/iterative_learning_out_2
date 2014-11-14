@@ -1,0 +1,990 @@
+-learn_init  -1
+Processing BeefStroganoff
+Exp: arbor
+here
+118
+103
+103
+103
+118
+118
+118
+118
+Recipes Processed: 47
+-learn_iter  0
+Processing BeefStroganoff
+Exp: arbor
+128
+112
+112
+112
+128
+128
+128
+128
+Recipes Processed: 47
+-learn_iter  1
+Processing BeefStroganoff
+Exp: arbor
+128
+108
+108
+108
+128
+128
+128
+128
+Recipes Processed: 47
+-learn_iter  2
+Processing BeefStroganoff
+Exp: arbor
+128
+112
+112
+112
+128
+128
+128
+128
+Recipes Processed: 47
+-learn_iter  3
+Processing BeefStroganoff
+Exp: arbor
+128
+108
+108
+108
+128
+128
+128
+128
+Recipes Processed: 47
+-stat_for_eval_iter  100
+Processing BeefStroganoff
+Exp: arbor
+128
+112
+112
+112
+128
+128
+128
+128
+Recipes Processed: 47
+-learn_init  -1
+Processing BeefStroganoff
+Exp: arbor_trans
+here
+118
+103
+103
+103
+118
+118
+118
+118
+Recipes Processed: 47
+-learn_iter  0
+Processing BeefStroganoff
+Exp: arbor_trans
+128
+113
+113
+113
+104
+104
+104
+104
+Recipes Processed: 47
+-learn_iter  1
+Processing BeefStroganoff
+Exp: arbor_trans
+128
+111
+111
+111
+107
+107
+107
+107
+Recipes Processed: 47
+-learn_iter  2
+Processing BeefStroganoff
+Exp: arbor_trans
+128
+112
+112
+112
+105
+105
+105
+105
+Recipes Processed: 47
+-learn_iter  3
+Processing BeefStroganoff
+Exp: arbor_trans
+128
+111
+111
+111
+107
+107
+107
+107
+Recipes Processed: 47
+-stat_for_eval_iter  1000
+Processing BeefStroganoff
+Exp: arbor_trans
+128
+112
+112
+112
+105
+105
+105
+105
+Recipes Processed: 47
+-learn_init  -1
+Processing BeefStroganoff
+Exp: cc
+here
+118
+103
+103
+103
+118
+118
+118
+118
+Recipes Processed: 47
+-stat_for_eval_cc  -1
+Processing BeefStroganoff
+Exp: cc
+here
+118
+103
+103
+103
+118
+118
+118
+118
+Recipes Processed: 47
+-learn_init  -1
+Processing BeefStroganoff
+Exp: text_order
+here
+118
+103
+103
+103
+118
+118
+118
+118
+Recipes Processed: 47
+-stat_for_eval_wt  -1
+Processing BeefStroganoff
+Exp: text_order
+here
+129
+111
+111
+111
+129
+129
+129
+129
+Recipes Processed: 47
+-learn_init  -1
+Processing CarrotCake
+Exp: arbor
+here
+119
+99
+99
+99
+119
+119
+119
+119
+Recipes Processed: 52
+-learn_iter  0
+Processing CarrotCake
+Exp: arbor
+129
+107
+107
+107
+129
+129
+129
+129
+Recipes Processed: 52
+-learn_iter  1
+Processing CarrotCake
+Exp: arbor
+129
+109
+109
+109
+129
+129
+129
+129
+Recipes Processed: 52
+-learn_iter  2
+Processing CarrotCake
+Exp: arbor
+129
+108
+108
+108
+129
+129
+129
+129
+Recipes Processed: 52
+-learn_iter  3
+Processing CarrotCake
+Exp: arbor
+129
+108
+108
+108
+129
+129
+129
+129
+Recipes Processed: 52
+-stat_for_eval_iter  100
+Processing CarrotCake
+Exp: arbor
+129
+108
+108
+108
+129
+129
+129
+129
+Recipes Processed: 52
+-learn_init  -1
+Processing CarrotCake
+Exp: arbor_trans
+here
+119
+99
+99
+99
+119
+119
+119
+119
+Recipes Processed: 52
+-learn_iter  0
+Processing CarrotCake
+Exp: arbor_trans
+129
+107
+107
+107
+99
+99
+99
+99
+Recipes Processed: 52
+-learn_iter  1
+Processing CarrotCake
+Exp: arbor_trans
+129
+110
+110
+110
+95
+95
+95
+95
+Recipes Processed: 52
+-learn_iter  2
+Processing CarrotCake
+Exp: arbor_trans
+129
+110
+110
+110
+95
+95
+95
+95
+Recipes Processed: 52
+-learn_iter  3
+Processing CarrotCake
+Exp: arbor_trans
+129
+110
+110
+110
+95
+95
+95
+95
+Recipes Processed: 52
+-stat_for_eval_iter  1000
+Processing CarrotCake
+Exp: arbor_trans
+129
+110
+110
+110
+95
+95
+95
+95
+Recipes Processed: 52
+-learn_init  -1
+Processing CarrotCake
+Exp: cc
+here
+119
+99
+99
+99
+119
+119
+119
+119
+Recipes Processed: 52
+-stat_for_eval_cc  -1
+Processing CarrotCake
+Exp: cc
+here
+119
+99
+99
+99
+119
+119
+119
+119
+Recipes Processed: 52
+-learn_init  -1
+Processing CarrotCake
+Exp: text_order
+here
+119
+99
+99
+99
+119
+119
+119
+119
+Recipes Processed: 52
+-stat_for_eval_wt  -1
+Processing CarrotCake
+Exp: text_order
+here
+130
+106
+106
+106
+130
+130
+130
+130
+Recipes Processed: 52
+-learn_init  -1
+Processing CheeseBurger
+Exp: arbor
+here
+232
+196
+196
+196
+232
+232
+232
+232
+Recipes Processed: 63
+-learn_iter  0
+Processing CheeseBurger
+Exp: arbor
+247
+212
+212
+212
+247
+247
+247
+247
+Recipes Processed: 63
+-learn_iter  1
+Processing CheeseBurger
+Exp: arbor
+248
+211
+211
+211
+248
+248
+248
+248
+Recipes Processed: 63
+-learn_iter  2
+Processing CheeseBurger
+Exp: arbor
+248
+209
+209
+209
+248
+248
+248
+248
+Recipes Processed: 63
+-learn_iter  3
+Processing CheeseBurger
+Exp: arbor
+248
+211
+211
+211
+248
+248
+248
+248
+Recipes Processed: 63
+-stat_for_eval_iter  100
+Processing CheeseBurger
+Exp: arbor
+248
+209
+209
+209
+248
+248
+248
+248
+Recipes Processed: 63
+-learn_init  -1
+Processing CheeseBurger
+Exp: arbor_trans
+here
+232
+196
+196
+196
+232
+232
+232
+232
+Recipes Processed: 63
+-learn_iter  0
+Processing CheeseBurger
+Exp: arbor_trans
+247
+214
+214
+214
+204
+204
+204
+204
+Recipes Processed: 63
+-learn_iter  1
+Processing CheeseBurger
+Exp: arbor_trans
+248
+216
+216
+216
+214
+214
+214
+214
+Recipes Processed: 63
+-learn_iter  2
+Processing CheeseBurger
+Exp: arbor_trans
+248
+216
+216
+216
+214
+214
+214
+214
+Recipes Processed: 63
+-learn_iter  3
+Processing CheeseBurger
+Exp: arbor_trans
+248
+216
+216
+216
+214
+214
+214
+214
+Recipes Processed: 63
+-stat_for_eval_iter  1000
+Processing CheeseBurger
+Exp: arbor_trans
+248
+216
+216
+216
+214
+214
+214
+214
+Recipes Processed: 63
+-learn_init  -1
+Processing CheeseBurger
+Exp: cc
+here
+232
+196
+196
+196
+232
+232
+232
+232
+Recipes Processed: 63
+-stat_for_eval_cc  -1
+Processing CheeseBurger
+Exp: cc
+here
+232
+196
+196
+196
+232
+232
+232
+232
+Recipes Processed: 63
+-learn_init  -1
+Processing CheeseBurger
+Exp: text_order
+here
+232
+196
+196
+196
+232
+232
+232
+232
+Recipes Processed: 63
+-stat_for_eval_wt  -1
+Processing CheeseBurger
+Exp: text_order
+here
+246
+211
+211
+211
+246
+246
+246
+246
+Recipes Processed: 63
+-learn_init  -1
+Processing ChickenSalad
+Exp: arbor
+here
+389
+322
+322
+322
+389
+389
+389
+389
+Recipes Processed: 302
+-learn_iter  0
+Processing ChickenSalad
+Exp: arbor
+408
+345
+345
+345
+408
+408
+408
+408
+Recipes Processed: 302
+-learn_iter  1
+Processing ChickenSalad
+Exp: arbor
+408
+344
+344
+344
+408
+408
+408
+408
+Recipes Processed: 302
+-learn_iter  2
+Processing ChickenSalad
+Exp: arbor
+408
+346
+346
+346
+408
+408
+408
+408
+Recipes Processed: 302
+-learn_iter  3
+Processing ChickenSalad
+Exp: arbor
+408
+344
+344
+344
+408
+408
+408
+408
+Recipes Processed: 302
+-stat_for_eval_iter  100
+Processing ChickenSalad
+Exp: arbor
+408
+346
+346
+346
+408
+408
+408
+408
+Recipes Processed: 302
+-learn_init  -1
+Processing ChickenSalad
+Exp: arbor_trans
+here
+389
+322
+322
+322
+389
+389
+389
+389
+Recipes Processed: 302
+-learn_iter  0
+Processing ChickenSalad
+Exp: arbor_trans
+408
+346
+346
+346
+364
+364
+364
+364
+Recipes Processed: 302
+-learn_iter  1
+Processing ChickenSalad
+Exp: arbor_trans
+408
+346
+346
+346
+365
+365
+365
+365
+Recipes Processed: 302
+-learn_iter  2
+Processing ChickenSalad
+Exp: arbor_trans
+408
+345
+345
+345
+366
+366
+366
+366
+Recipes Processed: 302
+-learn_iter  3
+Processing ChickenSalad
+Exp: arbor_trans
+408
+346
+346
+346
+365
+365
+365
+365
+Recipes Processed: 302
+-stat_for_eval_iter  1000
+Processing ChickenSalad
+Exp: arbor_trans
+408
+345
+345
+345
+366
+366
+366
+366
+Recipes Processed: 302
+-learn_init  -1
+Processing ChickenSalad
+Exp: cc
+here
+389
+322
+322
+322
+389
+389
+389
+389
+Recipes Processed: 302
+-stat_for_eval_cc  -1
+Processing ChickenSalad
+Exp: cc
+here
+389
+322
+322
+322
+389
+389
+389
+389
+Recipes Processed: 302
+-learn_init  -1
+Processing ChickenSalad
+Exp: text_order
+here
+389
+322
+322
+322
+389
+389
+389
+389
+Recipes Processed: 302
+-stat_for_eval_wt  -1
+Processing ChickenSalad
+Exp: text_order
+here
+407
+323
+323
+323
+407
+407
+407
+407
+Recipes Processed: 302
+-learn_init  -1
+Processing ChickenStirFry
+Exp: arbor
+here
+227
+189
+189
+189
+227
+227
+227
+227
+Recipes Processed: 92
+-learn_iter  0
+Processing ChickenStirFry
+Exp: arbor
+234
+201
+201
+201
+234
+234
+234
+234
+Recipes Processed: 92
+-learn_iter  1
+Processing ChickenStirFry
+Exp: arbor
+234
+202
+202
+202
+234
+234
+234
+234
+Recipes Processed: 92
+-learn_iter  2
+Processing ChickenStirFry
+Exp: arbor
+234
+201
+201
+201
+234
+234
+234
+234
+Recipes Processed: 92
+-learn_iter  3
+Processing ChickenStirFry
+Exp: arbor
+234
+202
+202
+202
+234
+234
+234
+234
+Recipes Processed: 92
+-stat_for_eval_iter  100
+Processing ChickenStirFry
+Exp: arbor
+234
+201
+201
+201
+234
+234
+234
+234
+Recipes Processed: 92
+-learn_init  -1
+Processing ChickenStirFry
+Exp: arbor_trans
+here
+227
+189
+189
+189
+227
+227
+227
+227
+Recipes Processed: 92
+-learn_iter  0
+Processing ChickenStirFry
+Exp: arbor_trans
+234
+201
+201
+201
+221
+221
+221
+221
+Recipes Processed: 92
+-learn_iter  1
+Processing ChickenStirFry
+Exp: arbor_trans
+234
+201
+201
+201
+218
+218
+218
+218
+Recipes Processed: 92
+-learn_iter  2
+Processing ChickenStirFry
+Exp: arbor_trans
+234
+201
+201
+201
+218
+218
+218
+218
+Recipes Processed: 92
+-learn_iter  3
+Processing ChickenStirFry
+Exp: arbor_trans
+234
+201
+201
+201
+218
+218
+218
+218
+Recipes Processed: 92
+-stat_for_eval_iter  1000
+Processing ChickenStirFry
+Exp: arbor_trans
+234
+201
+201
+201
+218
+218
+218
+218
+Recipes Processed: 92
+-learn_init  -1
+Processing ChickenStirFry
+Exp: cc
+here
+227
+189
+189
+189
+227
+227
+227
+227
+Recipes Processed: 92
+-stat_for_eval_cc  -1
+Processing ChickenStirFry
+Exp: cc
+here
+227
+189
+189
+189
+227
+227
+227
+227
+Recipes Processed: 92
+-learn_init  -1
+Processing ChickenStirFry
+Exp: text_order
+here
+227
+189
+189
+189
+227
+227
+227
+227
+Recipes Processed: 92
+-stat_for_eval_wt  -1
+Processing ChickenStirFry
+Exp: text_order
+here
+233
+184
+184
+184
+233
+233
+233
+233
+Recipes Processed: 92

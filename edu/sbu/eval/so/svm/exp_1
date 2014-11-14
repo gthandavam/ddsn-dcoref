@@ -1,0 +1,5 @@
+python ml_framework.py BananaMuffins arbor_trans 0 0 0 0 0 0  >> exp1_out 
+python ml_framework.py BeefChilli arbor_trans 0 0 0 0 0 0  >> exp1_out
+python ml_framework.py BeefMeatLoaf arbor_trans 0 0 0 0 0 0  >> exp1_out
+python ml_framework.py BeefStroganoff arbor_trans 0 0 0 0 0 0  >> exp1_out
+

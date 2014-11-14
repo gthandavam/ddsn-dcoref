@@ -1,0 +1,5 @@
+python get_estimator.py DeviledEggs arbor 0 0 0 0 0 0  >> estimator_out_3
+python get_estimator.py EggNoodles arbor 0 0 0 0 0 0  >> estimator_out_3
+python get_estimator.py FrenchToast arbor 0 0 0 0 0 0  >> estimator_out_3
+python get_estimator.py MacAndCheese arbor 0 0 0 0 0 0  >> estimator_out_3
+python get_estimator.py MeatLasagna arbor 0 0 0 0 0 0  >> estimator_out_3

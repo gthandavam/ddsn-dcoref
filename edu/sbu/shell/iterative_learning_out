@@ -1,0 +1,594 @@
+-learn_init  -1
+Processing BananaMuffins
+Exp: arbor
+here
+120
+92
+92
+92
+120
+120
+120
+120
+Recipes Processed: 66
+-learn_iter  0
+Processing BananaMuffins
+Exp: arbor
+128
+102
+102
+102
+128
+128
+128
+128
+Recipes Processed: 66
+-learn_iter  1
+Processing BananaMuffins
+Exp: arbor
+128
+104
+104
+104
+128
+128
+128
+128
+Recipes Processed: 66
+-learn_iter  2
+Processing BananaMuffins
+Exp: arbor
+128
+102
+102
+102
+128
+128
+128
+128
+Recipes Processed: 66
+-learn_iter  3
+Processing BananaMuffins
+Exp: arbor
+128
+104
+104
+104
+128
+128
+128
+128
+Recipes Processed: 66
+-stat_for_eval_iter  100
+Processing BananaMuffins
+Exp: arbor
+128
+102
+102
+102
+128
+128
+128
+128
+Recipes Processed: 66
+-learn_init  -1
+Processing BananaMuffins
+Exp: arbor_trans
+here
+120
+92
+92
+92
+120
+120
+120
+120
+Recipes Processed: 66
+-learn_iter  0
+Processing BananaMuffins
+Exp: arbor_trans
+128
+102
+102
+102
+108
+108
+108
+108
+Recipes Processed: 66
+-learn_iter  1
+Processing BananaMuffins
+Exp: arbor_trans
+128
+103
+103
+103
+106
+106
+106
+106
+Recipes Processed: 66
+-learn_iter  2
+Processing BananaMuffins
+Exp: arbor_trans
+128
+104
+104
+104
+105
+105
+105
+105
+Recipes Processed: 66
+-learn_iter  3
+Processing BananaMuffins
+Exp: arbor_trans
+128
+103
+103
+103
+106
+106
+106
+106
+Recipes Processed: 66
+-stat_for_eval_iter  1000
+Processing BananaMuffins
+Exp: arbor_trans
+128
+104
+104
+104
+105
+105
+105
+105
+Recipes Processed: 66
+-learn_init  -1
+Processing BananaMuffins
+Exp: cc
+here
+120
+92
+92
+92
+120
+120
+120
+120
+Recipes Processed: 66
+-stat_for_eval_cc  -1
+Processing BananaMuffins
+Exp: cc
+here
+120
+92
+92
+92
+120
+120
+120
+120
+Recipes Processed: 66
+-learn_init  -1
+Processing BananaMuffins
+Exp: text_order
+here
+120
+92
+92
+92
+120
+120
+120
+120
+Recipes Processed: 66
+-stat_for_eval_wt  -1
+Processing BananaMuffins
+Exp: text_order
+here
+129
+99
+99
+99
+129
+129
+129
+129
+Recipes Processed: 66
+-learn_init  -1
+Processing BeefChilli
+Exp: arbor
+here
+292
+227
+227
+227
+292
+292
+292
+292
+Recipes Processed: 212
+-learn_iter  0
+Processing BeefChilli
+Exp: arbor
+300
+247
+247
+247
+300
+300
+300
+300
+Recipes Processed: 212
+-learn_iter  1
+Processing BeefChilli
+Exp: arbor
+300
+245
+245
+245
+300
+300
+300
+300
+Recipes Processed: 212
+-learn_iter  2
+Processing BeefChilli
+Exp: arbor
+300
+245
+245
+245
+300
+300
+300
+300
+Recipes Processed: 212
+-learn_iter  3
+Processing BeefChilli
+Exp: arbor
+300
+245
+245
+245
+300
+300
+300
+300
+Recipes Processed: 212
+-stat_for_eval_iter  100
+Processing BeefChilli
+Exp: arbor
+300
+245
+245
+245
+300
+300
+300
+300
+Recipes Processed: 212
+-learn_init  -1
+Processing BeefChilli
+Exp: arbor_trans
+here
+292
+227
+227
+227
+292
+292
+292
+292
+Recipes Processed: 212
+-learn_iter  0
+Processing BeefChilli
+Exp: arbor_trans
+300
+247
+247
+247
+267
+267
+267
+267
+Recipes Processed: 212
+-learn_iter  1
+Processing BeefChilli
+Exp: arbor_trans
+300
+247
+247
+247
+265
+265
+265
+265
+Recipes Processed: 212
+-learn_iter  2
+Processing BeefChilli
+Exp: arbor_trans
+300
+246
+246
+246
+266
+266
+266
+266
+Recipes Processed: 212
+-learn_iter  3
+Processing BeefChilli
+Exp: arbor_trans
+300
+246
+246
+246
+266
+266
+266
+266
+Recipes Processed: 212
+-stat_for_eval_iter  1000
+Processing BeefChilli
+Exp: arbor_trans
+300
+246
+246
+246
+266
+266
+266
+266
+Recipes Processed: 212
+-learn_init  -1
+Processing BeefChilli
+Exp: cc
+here
+292
+227
+227
+227
+292
+292
+292
+292
+Recipes Processed: 212
+-stat_for_eval_cc  -1
+Processing BeefChilli
+Exp: cc
+here
+292
+227
+227
+227
+292
+292
+292
+292
+Recipes Processed: 212
+-learn_init  -1
+Processing BeefChilli
+Exp: text_order
+here
+292
+227
+227
+227
+292
+292
+292
+292
+Recipes Processed: 212
+-stat_for_eval_wt  -1
+Processing BeefChilli
+Exp: text_order
+here
+302
+227
+227
+227
+302
+302
+302
+302
+Recipes Processed: 212
+-learn_init  -1
+Processing BeefMeatLoaf
+Exp: arbor
+here
+334
+302
+302
+302
+334
+334
+334
+334
+Recipes Processed: 186
+-learn_iter  0
+Processing BeefMeatLoaf
+Exp: arbor
+345
+308
+308
+308
+345
+345
+345
+345
+Recipes Processed: 186
+-learn_iter  1
+Processing BeefMeatLoaf
+Exp: arbor
+345
+316
+316
+316
+345
+345
+345
+345
+Recipes Processed: 186
+-learn_iter  2
+Processing BeefMeatLoaf
+Exp: arbor
+345
+312
+312
+312
+345
+345
+345
+345
+Recipes Processed: 186
+-learn_iter  3
+Processing BeefMeatLoaf
+Exp: arbor
+345
+316
+316
+316
+345
+345
+345
+345
+Recipes Processed: 186
+-stat_for_eval_iter  100
+Processing BeefMeatLoaf
+Exp: arbor
+345
+312
+312
+312
+345
+345
+345
+345
+Recipes Processed: 186
+-learn_init  -1
+Processing BeefMeatLoaf
+Exp: arbor_trans
+here
+334
+302
+302
+302
+334
+334
+334
+334
+Recipes Processed: 186
+-learn_iter  0
+Processing BeefMeatLoaf
+Exp: arbor_trans
+345
+313
+313
+313
+303
+303
+303
+303
+Recipes Processed: 186
+-learn_iter  1
+Processing BeefMeatLoaf
+Exp: arbor_trans
+345
+321
+321
+321
+290
+290
+290
+290
+Recipes Processed: 186
+-learn_iter  2
+Processing BeefMeatLoaf
+Exp: arbor_trans
+345
+319
+319
+319
+291
+291
+291
+291
+Recipes Processed: 186
+-learn_iter  3
+Processing BeefMeatLoaf
+Exp: arbor_trans
+345
+321
+321
+321
+290
+290
+290
+290
+Recipes Processed: 186
+-stat_for_eval_iter  1000
+Processing BeefMeatLoaf
+Exp: arbor_trans
+345
+319
+319
+319
+291
+291
+291
+291
+Recipes Processed: 186
+-learn_init  -1
+Processing BeefMeatLoaf
+Exp: cc
+here
+334
+302
+302
+302
+334
+334
+334
+334
+Recipes Processed: 186
+-stat_for_eval_cc  -1
+Processing BeefMeatLoaf
+Exp: cc
+here
+334
+302
+302
+302
+334
+334
+334
+334
+Recipes Processed: 186
+-learn_init  -1
+Processing BeefMeatLoaf
+Exp: text_order
+here
+334
+302
+302
+302
+334
+334
+334
+334
+Recipes Processed: 186
+-stat_for_eval_wt  -1
+Processing BeefMeatLoaf
+Exp: text_order
+here
+346
+298
+298
+298
+346
+346
+346
+346
+Recipes Processed: 186

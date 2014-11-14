@@ -1,0 +1,4 @@
+python ml_framework.py PulledPork arbor_trans 0 0 0 0 0 0  >> exp6_out
+python ml_framework.py PumpkinPie arbor_trans 0 0 0 0 0 0 >> exp6_out
+python ml_framework.py VeggiePizza arbor_trans 0 0 0 0 0 0 >> exp6_out
+

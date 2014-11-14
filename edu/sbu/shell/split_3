@@ -1,0 +1,6 @@
+python iterative_learning.py 4 Coleslaw  >> iterative_learning_out_3
+python iterative_learning.py 4 CornChowder  >> iterative_learning_out_3
+python iterative_learning.py 4 DeviledEggs  >> iterative_learning_out_3
+python iterative_learning.py 4 EggNoodles  >> iterative_learning_out_3
+python iterative_learning.py 4 FrenchToast  >> iterative_learning_out_3
+python iterative_learning.py 4 MacAndCheese  >> iterative_learning_out_3

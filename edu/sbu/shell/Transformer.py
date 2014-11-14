@@ -282,17 +282,15 @@ API to find if a file is part of training data-set
 def is_training_file(args_file_name):
 
   #returning True always, as we needed this only for Sentence Re-ordering experiment
-  return True
-  # recipe_name = args_file_name.split('/')[-1]
-  # return recipe_name in train_files_hash.keys()
+  # return True
+  recipe_name = args_file_name.split('/')[-1]
+  return recipe_name in train_files_hash.keys()
   pass
 
 '''
 helper method to load the list of recipes in training data, in memory
 '''
 def load_train_files_hash(recipeName):
-  #DO Nothing for now, as this was used for train/dev/test split for a supervised extrinsic evaluation - this may no longer be needed
-  return
   global train_files_hash
   with open('/home/gt/Documents/' + recipeName + '/trainFilesList') as f:
     for line in f.readlines():

@@ -1,0 +1,1188 @@
+-learn_init  -1
+Processing Coleslaw
+Exp: arbor
+here
+204
+164
+164
+164
+204
+204
+204
+204
+Recipes Processed: 145
+-learn_iter  0
+Processing Coleslaw
+Exp: arbor
+210
+164
+164
+164
+210
+210
+210
+210
+Recipes Processed: 145
+-learn_iter  1
+Processing Coleslaw
+Exp: arbor
+210
+165
+165
+165
+210
+210
+210
+210
+Recipes Processed: 145
+-learn_iter  2
+Processing Coleslaw
+Exp: arbor
+210
+165
+165
+165
+210
+210
+210
+210
+Recipes Processed: 145
+-learn_iter  3
+Processing Coleslaw
+Exp: arbor
+210
+165
+165
+165
+210
+210
+210
+210
+Recipes Processed: 145
+-stat_for_eval_iter  100
+Processing Coleslaw
+Exp: arbor
+210
+165
+165
+165
+210
+210
+210
+210
+Recipes Processed: 145
+-learn_init  -1
+Processing Coleslaw
+Exp: arbor_trans
+here
+204
+164
+164
+164
+204
+204
+204
+204
+Recipes Processed: 145
+-learn_iter  0
+Processing Coleslaw
+Exp: arbor_trans
+210
+164
+164
+164
+188
+188
+188
+188
+Recipes Processed: 145
+-learn_iter  1
+Processing Coleslaw
+Exp: arbor_trans
+210
+163
+163
+163
+188
+188
+188
+188
+Recipes Processed: 145
+-learn_iter  2
+Processing Coleslaw
+Exp: arbor_trans
+210
+163
+163
+163
+188
+188
+188
+188
+Recipes Processed: 145
+-learn_iter  3
+Processing Coleslaw
+Exp: arbor_trans
+210
+163
+163
+163
+188
+188
+188
+188
+Recipes Processed: 145
+-stat_for_eval_iter  1000
+Processing Coleslaw
+Exp: arbor_trans
+210
+163
+163
+163
+188
+188
+188
+188
+Recipes Processed: 145
+-learn_init  -1
+Processing Coleslaw
+Exp: cc
+here
+204
+164
+164
+164
+204
+204
+204
+204
+Recipes Processed: 145
+-stat_for_eval_cc  -1
+Processing Coleslaw
+Exp: cc
+here
+204
+164
+164
+164
+204
+204
+204
+204
+Recipes Processed: 145
+-learn_init  -1
+Processing Coleslaw
+Exp: text_order
+here
+204
+164
+164
+164
+204
+204
+204
+204
+Recipes Processed: 145
+-stat_for_eval_wt  -1
+Processing Coleslaw
+Exp: text_order
+here
+209
+158
+158
+158
+209
+209
+209
+209
+Recipes Processed: 145
+-learn_init  -1
+Processing CornChowder
+Exp: arbor
+here
+168
+116
+116
+116
+168
+168
+168
+168
+Recipes Processed: 70
+-learn_iter  0
+Processing CornChowder
+Exp: arbor
+178
+132
+132
+132
+178
+178
+178
+178
+Recipes Processed: 70
+-learn_iter  1
+Processing CornChowder
+Exp: arbor
+178
+129
+129
+129
+178
+178
+178
+178
+Recipes Processed: 70
+-learn_iter  2
+Processing CornChowder
+Exp: arbor
+178
+130
+130
+130
+178
+178
+178
+178
+Recipes Processed: 70
+-learn_iter  3
+Processing CornChowder
+Exp: arbor
+178
+132
+132
+132
+178
+178
+178
+178
+Recipes Processed: 70
+-stat_for_eval_iter  100
+Processing CornChowder
+Exp: arbor
+178
+129
+129
+129
+178
+178
+178
+178
+Recipes Processed: 70
+-learn_init  -1
+Processing CornChowder
+Exp: arbor_trans
+here
+168
+116
+116
+116
+168
+168
+168
+168
+Recipes Processed: 70
+-learn_iter  0
+Processing CornChowder
+Exp: arbor_trans
+178
+132
+132
+132
+155
+155
+155
+155
+Recipes Processed: 70
+-learn_iter  1
+Processing CornChowder
+Exp: arbor_trans
+178
+132
+132
+132
+154
+154
+154
+154
+Recipes Processed: 70
+-learn_iter  2
+Processing CornChowder
+Exp: arbor_trans
+178
+132
+132
+132
+155
+155
+155
+155
+Recipes Processed: 70
+-learn_iter  3
+Processing CornChowder
+Exp: arbor_trans
+178
+132
+132
+132
+154
+154
+154
+154
+Recipes Processed: 70
+-stat_for_eval_iter  1000
+Processing CornChowder
+Exp: arbor_trans
+178
+132
+132
+132
+155
+155
+155
+155
+Recipes Processed: 70
+-learn_init  -1
+Processing CornChowder
+Exp: cc
+here
+168
+116
+116
+116
+168
+168
+168
+168
+Recipes Processed: 70
+-stat_for_eval_cc  -1
+Processing CornChowder
+Exp: cc
+here
+168
+116
+116
+116
+168
+168
+168
+168
+Recipes Processed: 70
+-learn_init  -1
+Processing CornChowder
+Exp: text_order
+here
+168
+116
+116
+116
+168
+168
+168
+168
+Recipes Processed: 70
+-stat_for_eval_wt  -1
+Processing CornChowder
+Exp: text_order
+here
+179
+120
+120
+120
+179
+179
+179
+179
+Recipes Processed: 70
+-learn_init  -1
+Processing DeviledEggs
+Exp: arbor
+here
+180
+166
+166
+166
+180
+180
+180
+180
+Recipes Processed: 91
+-learn_iter  0
+Processing DeviledEggs
+Exp: arbor
+195
+180
+180
+180
+195
+195
+195
+195
+Recipes Processed: 91
+-learn_iter  1
+Processing DeviledEggs
+Exp: arbor
+195
+180
+180
+180
+195
+195
+195
+195
+Recipes Processed: 91
+-learn_iter  2
+Processing DeviledEggs
+Exp: arbor
+195
+179
+179
+179
+195
+195
+195
+195
+Recipes Processed: 91
+-learn_iter  3
+Processing DeviledEggs
+Exp: arbor
+195
+180
+180
+180
+195
+195
+195
+195
+Recipes Processed: 91
+-stat_for_eval_iter  100
+Processing DeviledEggs
+Exp: arbor
+195
+179
+179
+179
+195
+195
+195
+195
+Recipes Processed: 91
+-learn_init  -1
+Processing DeviledEggs
+Exp: arbor_trans
+here
+180
+166
+166
+166
+180
+180
+180
+180
+Recipes Processed: 91
+-learn_iter  0
+Processing DeviledEggs
+Exp: arbor_trans
+195
+180
+180
+180
+156
+156
+156
+156
+Recipes Processed: 91
+-learn_iter  1
+Processing DeviledEggs
+Exp: arbor_trans
+195
+183
+183
+183
+155
+155
+155
+155
+Recipes Processed: 91
+-learn_iter  2
+Processing DeviledEggs
+Exp: arbor_trans
+195
+182
+182
+182
+156
+156
+156
+156
+Recipes Processed: 91
+-learn_iter  3
+Processing DeviledEggs
+Exp: arbor_trans
+195
+183
+183
+183
+154
+154
+154
+154
+Recipes Processed: 91
+-stat_for_eval_iter  1000
+Processing DeviledEggs
+Exp: arbor_trans
+195
+182
+182
+182
+156
+156
+156
+156
+Recipes Processed: 91
+-learn_init  -1
+Processing DeviledEggs
+Exp: cc
+here
+180
+166
+166
+166
+180
+180
+180
+180
+Recipes Processed: 91
+-stat_for_eval_cc  -1
+Processing DeviledEggs
+Exp: cc
+here
+180
+166
+166
+166
+180
+180
+180
+180
+Recipes Processed: 91
+-learn_init  -1
+Processing DeviledEggs
+Exp: text_order
+here
+180
+166
+166
+166
+180
+180
+180
+180
+Recipes Processed: 91
+-stat_for_eval_wt  -1
+Processing DeviledEggs
+Exp: text_order
+here
+195
+170
+170
+170
+195
+195
+195
+195
+Recipes Processed: 91
+-learn_init  -1
+Processing EggNoodles
+Exp: arbor
+here
+305
+273
+273
+273
+305
+305
+305
+305
+Recipes Processed: 278
+-learn_iter  0
+Processing EggNoodles
+Exp: arbor
+316
+284
+284
+284
+316
+316
+316
+316
+Recipes Processed: 278
+-learn_iter  1
+Processing EggNoodles
+Exp: arbor
+316
+282
+282
+282
+316
+316
+316
+316
+Recipes Processed: 278
+-learn_iter  2
+Processing EggNoodles
+Exp: arbor
+316
+283
+283
+283
+316
+316
+316
+316
+Recipes Processed: 278
+-learn_iter  3
+Processing EggNoodles
+Exp: arbor
+316
+281
+281
+281
+316
+316
+316
+316
+Recipes Processed: 278
+-stat_for_eval_iter  100
+Processing EggNoodles
+Exp: arbor
+316
+283
+283
+283
+316
+316
+316
+316
+Recipes Processed: 278
+-learn_init  -1
+Processing EggNoodles
+Exp: arbor_trans
+here
+305
+273
+273
+273
+305
+305
+305
+305
+Recipes Processed: 278
+-learn_iter  0
+Processing EggNoodles
+Exp: arbor_trans
+316
+284
+284
+284
+294
+294
+294
+294
+Recipes Processed: 278
+-learn_iter  1
+Processing EggNoodles
+Exp: arbor_trans
+316
+279
+279
+279
+295
+295
+295
+295
+Recipes Processed: 278
+-learn_iter  2
+Processing EggNoodles
+Exp: arbor_trans
+316
+281
+281
+281
+294
+294
+294
+294
+Recipes Processed: 278
+-learn_iter  3
+Processing EggNoodles
+Exp: arbor_trans
+316
+280
+280
+280
+295
+295
+295
+295
+Recipes Processed: 278
+-stat_for_eval_iter  1000
+Processing EggNoodles
+Exp: arbor_trans
+316
+281
+281
+281
+294
+294
+294
+294
+Recipes Processed: 278
+-learn_init  -1
+Processing EggNoodles
+Exp: cc
+here
+305
+273
+273
+273
+305
+305
+305
+305
+Recipes Processed: 278
+-stat_for_eval_cc  -1
+Processing EggNoodles
+Exp: cc
+here
+305
+273
+273
+273
+305
+305
+305
+305
+Recipes Processed: 278
+-learn_init  -1
+Processing EggNoodles
+Exp: text_order
+here
+305
+273
+273
+273
+305
+305
+305
+305
+Recipes Processed: 278
+-stat_for_eval_wt  -1
+Processing EggNoodles
+Exp: text_order
+here
+315
+275
+275
+275
+315
+315
+315
+315
+Recipes Processed: 278
+-learn_init  -1
+Processing FrenchToast
+Exp: arbor
+here
+170
+149
+149
+149
+170
+170
+170
+170
+Recipes Processed: 86
+-learn_iter  0
+Processing FrenchToast
+Exp: arbor
+185
+164
+164
+164
+185
+185
+185
+185
+Recipes Processed: 86
+-learn_iter  1
+Processing FrenchToast
+Exp: arbor
+185
+164
+164
+164
+185
+185
+185
+185
+Recipes Processed: 86
+-learn_iter  2
+Processing FrenchToast
+Exp: arbor
+185
+164
+164
+164
+185
+185
+185
+185
+Recipes Processed: 86
+-learn_iter  3
+Processing FrenchToast
+Exp: arbor
+185
+164
+164
+164
+185
+185
+185
+185
+Recipes Processed: 86
+-stat_for_eval_iter  100
+Processing FrenchToast
+Exp: arbor
+185
+164
+164
+164
+185
+185
+185
+185
+Recipes Processed: 86
+-learn_init  -1
+Processing FrenchToast
+Exp: arbor_trans
+here
+170
+149
+149
+149
+170
+170
+170
+170
+Recipes Processed: 86
+-learn_iter  0
+Processing FrenchToast
+Exp: arbor_trans
+185
+165
+165
+165
+139
+139
+139
+139
+Recipes Processed: 86
+-learn_iter  1
+Processing FrenchToast
+Exp: arbor_trans
+185
+163
+163
+163
+139
+139
+139
+139
+Recipes Processed: 86
+-learn_iter  2
+Processing FrenchToast
+Exp: arbor_trans
+185
+164
+164
+164
+138
+138
+138
+138
+Recipes Processed: 86
+-learn_iter  3
+Processing FrenchToast
+Exp: arbor_trans
+185
+164
+164
+164
+138
+138
+138
+138
+Recipes Processed: 86
+-stat_for_eval_iter  1000
+Processing FrenchToast
+Exp: arbor_trans
+185
+163
+163
+163
+139
+139
+139
+139
+Recipes Processed: 86
+-learn_init  -1
+Processing FrenchToast
+Exp: cc
+here
+170
+149
+149
+149
+170
+170
+170
+170
+Recipes Processed: 86
+-stat_for_eval_cc  -1
+Processing FrenchToast
+Exp: cc
+here
+170
+149
+149
+149
+170
+170
+170
+170
+Recipes Processed: 86
+-learn_init  -1
+Processing FrenchToast
+Exp: text_order
+here
+170
+149
+149
+149
+170
+170
+170
+170
+Recipes Processed: 86
+-stat_for_eval_wt  -1
+Processing FrenchToast
+Exp: text_order
+here
+179
+157
+157
+157
+179
+179
+179
+179
+Recipes Processed: 86
+-learn_init  -1
+Processing MacAndCheese
+Exp: arbor
+here
+238
+183
+183
+183
+238
+238
+238
+238
+Recipes Processed: 100
+-learn_iter  0
+Processing MacAndCheese
+Exp: arbor
+246
+192
+192
+192
+246
+246
+246
+246
+Recipes Processed: 100
+-learn_iter  1
+Processing MacAndCheese
+Exp: arbor
+246
+196
+196
+196
+246
+246
+246
+246
+Recipes Processed: 100
+-learn_iter  2
+Processing MacAndCheese
+Exp: arbor
+246
+192
+192
+192
+246
+246
+246
+246
+Recipes Processed: 100
+-learn_iter  3
+Processing MacAndCheese
+Exp: arbor
+246
+196
+196
+196
+246
+246
+246
+246
+Recipes Processed: 100
+-stat_for_eval_iter  100
+Processing MacAndCheese
+Exp: arbor
+246
+192
+192
+192
+246
+246
+246
+246
+Recipes Processed: 100
+-learn_init  -1
+Processing MacAndCheese
+Exp: arbor_trans
+here
+238
+183
+183
+183
+238
+238
+238
+238
+Recipes Processed: 100
+-learn_iter  0
+Processing MacAndCheese
+Exp: arbor_trans
+246
+196
+196
+196
+220
+220
+220
+220
+Recipes Processed: 100
+-learn_iter  1
+Processing MacAndCheese
+Exp: arbor_trans
+246
+198
+198
+198
+217
+217
+217
+217
+Recipes Processed: 100
+-learn_iter  2
+Processing MacAndCheese
+Exp: arbor_trans
+246
+201
+201
+201
+215
+215
+215
+215
+Recipes Processed: 100
+-learn_iter  3
+Processing MacAndCheese
+Exp: arbor_trans
+246
+199
+199
+199
+217
+217
+217
+217
+Recipes Processed: 100
+-stat_for_eval_iter  1000
+Processing MacAndCheese
+Exp: arbor_trans
+246
+200
+200
+200
+216
+216
+216
+216
+Recipes Processed: 100
+-learn_init  -1
+Processing MacAndCheese
+Exp: cc
+here
+238
+183
+183
+183
+238
+238
+238
+238
+Recipes Processed: 100
+-stat_for_eval_cc  -1
+Processing MacAndCheese
+Exp: cc
+here
+238
+183
+183
+183
+238
+238
+238
+238
+Recipes Processed: 100
+-learn_init  -1
+Processing MacAndCheese
+Exp: text_order
+here
+238
+183
+183
+183
+238
+238
+238
+238
+Recipes Processed: 100
+-stat_for_eval_wt  -1
+Processing MacAndCheese
+Exp: text_order
+here
+244
+179
+179
+179
+244
+244
+244
+244
+Recipes Processed: 100

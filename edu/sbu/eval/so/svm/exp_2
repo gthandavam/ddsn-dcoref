@@ -1,0 +1,5 @@
+python ml_framework.py CarrotCake arbor_trans 0 0 0 0 0 0  >> exp2_out
+python ml_framework.py CheeseBurger arbor_trans 0 0 0 0 0 0  >> exp2_out
+python ml_framework.py ChickenSalad arbor_trans 0 0 0 0 0 0  >> exp2_out
+python ml_framework.py ChickenStirFry arbor_trans 0 0 0 0 0 0  >> exp2_out
+

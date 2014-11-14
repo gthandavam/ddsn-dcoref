@@ -1,0 +1,3 @@
+python iterative_learning.py 4 PulledPork  >> iterative_learning_out_5
+python iterative_learning.py 4 PumpkinPie  >> iterative_learning_out_5
+python iterative_learning.py 4 VeggiePizza  >> iterative_learning_out_5

@@ -1,0 +1,5 @@
+python iterative_learning.py 4 BeefStroganoff  >> iterative_learning_out_2
+python iterative_learning.py 4 CarrotCake  >> iterative_learning_out_2
+python iterative_learning.py 4 CheeseBurger  >> iterative_learning_out_2
+python iterative_learning.py 4 ChickenSalad  >> iterative_learning_out_2
+python iterative_learning.py 4 ChickenStirFry  >> iterative_learning_out_2

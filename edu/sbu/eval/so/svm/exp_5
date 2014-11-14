@@ -1,0 +1,4 @@
+python ml_framework.py MeatLasagna arbor_trans 0 0 0 0 0 0  >> exp5_out
+python ml_framework.py PecanPie arbor_trans 0 0 0 0 0 0  >> exp5_out
+python ml_framework.py PotatoSalad arbor_trans 0 0 0 0 0 0  >> exp5_out
+

@@ -1,0 +1,594 @@
+-learn_init  -1
+Processing PulledPork
+Exp: arbor
+here
+260
+231
+231
+231
+260
+260
+260
+260
+Recipes Processed: 70
+-learn_iter  0
+Processing PulledPork
+Exp: arbor
+269
+236
+236
+236
+269
+269
+269
+269
+Recipes Processed: 70
+-learn_iter  1
+Processing PulledPork
+Exp: arbor
+269
+234
+234
+234
+269
+269
+269
+269
+Recipes Processed: 70
+-learn_iter  2
+Processing PulledPork
+Exp: arbor
+269
+236
+236
+236
+269
+269
+269
+269
+Recipes Processed: 70
+-learn_iter  3
+Processing PulledPork
+Exp: arbor
+269
+234
+234
+234
+269
+269
+269
+269
+Recipes Processed: 70
+-stat_for_eval_iter  100
+Processing PulledPork
+Exp: arbor
+269
+236
+236
+236
+269
+269
+269
+269
+Recipes Processed: 70
+-learn_init  -1
+Processing PulledPork
+Exp: arbor_trans
+here
+260
+231
+231
+231
+260
+260
+260
+260
+Recipes Processed: 70
+-learn_iter  0
+Processing PulledPork
+Exp: arbor_trans
+269
+236
+236
+236
+248
+248
+248
+248
+Recipes Processed: 70
+-learn_iter  1
+Processing PulledPork
+Exp: arbor_trans
+269
+229
+229
+229
+244
+244
+244
+244
+Recipes Processed: 70
+-learn_iter  2
+Processing PulledPork
+Exp: arbor_trans
+269
+231
+231
+231
+244
+244
+244
+244
+Recipes Processed: 70
+-learn_iter  3
+Processing PulledPork
+Exp: arbor_trans
+269
+229
+229
+229
+244
+244
+244
+244
+Recipes Processed: 70
+-stat_for_eval_iter  1000
+Processing PulledPork
+Exp: arbor_trans
+269
+231
+231
+231
+244
+244
+244
+244
+Recipes Processed: 70
+-learn_init  -1
+Processing PulledPork
+Exp: cc
+here
+260
+231
+231
+231
+260
+260
+260
+260
+Recipes Processed: 70
+-stat_for_eval_cc  -1
+Processing PulledPork
+Exp: cc
+here
+260
+231
+231
+231
+260
+260
+260
+260
+Recipes Processed: 70
+-learn_init  -1
+Processing PulledPork
+Exp: text_order
+here
+260
+231
+231
+231
+260
+260
+260
+260
+Recipes Processed: 70
+-stat_for_eval_wt  -1
+Processing PulledPork
+Exp: text_order
+here
+268
+230
+230
+230
+268
+268
+268
+268
+Recipes Processed: 70
+-learn_init  -1
+Processing PumpkinPie
+Exp: arbor
+here
+228
+205
+205
+205
+228
+228
+228
+228
+Recipes Processed: 121
+-learn_iter  0
+Processing PumpkinPie
+Exp: arbor
+236
+206
+206
+206
+236
+236
+236
+236
+Recipes Processed: 121
+-learn_iter  1
+Processing PumpkinPie
+Exp: arbor
+236
+207
+207
+207
+236
+236
+236
+236
+Recipes Processed: 121
+-learn_iter  2
+Processing PumpkinPie
+Exp: arbor
+236
+206
+206
+206
+236
+236
+236
+236
+Recipes Processed: 121
+-learn_iter  3
+Processing PumpkinPie
+Exp: arbor
+236
+207
+207
+207
+236
+236
+236
+236
+Recipes Processed: 121
+-stat_for_eval_iter  100
+Processing PumpkinPie
+Exp: arbor
+236
+206
+206
+206
+236
+236
+236
+236
+Recipes Processed: 121
+-learn_init  -1
+Processing PumpkinPie
+Exp: arbor_trans
+here
+228
+205
+205
+205
+228
+228
+228
+228
+Recipes Processed: 121
+-learn_iter  0
+Processing PumpkinPie
+Exp: arbor_trans
+236
+208
+208
+208
+197
+197
+197
+197
+Recipes Processed: 121
+-learn_iter  1
+Processing PumpkinPie
+Exp: arbor_trans
+236
+207
+207
+207
+197
+197
+197
+197
+Recipes Processed: 121
+-learn_iter  2
+Processing PumpkinPie
+Exp: arbor_trans
+236
+207
+207
+207
+197
+197
+197
+197
+Recipes Processed: 121
+-learn_iter  3
+Processing PumpkinPie
+Exp: arbor_trans
+236
+207
+207
+207
+197
+197
+197
+197
+Recipes Processed: 121
+-stat_for_eval_iter  1000
+Processing PumpkinPie
+Exp: arbor_trans
+236
+207
+207
+207
+197
+197
+197
+197
+Recipes Processed: 121
+-learn_init  -1
+Processing PumpkinPie
+Exp: cc
+here
+228
+205
+205
+205
+228
+228
+228
+228
+Recipes Processed: 121
+-stat_for_eval_cc  -1
+Processing PumpkinPie
+Exp: cc
+here
+228
+205
+205
+205
+228
+228
+228
+228
+Recipes Processed: 121
+-learn_init  -1
+Processing PumpkinPie
+Exp: text_order
+here
+228
+205
+205
+205
+228
+228
+228
+228
+Recipes Processed: 121
+-stat_for_eval_wt  -1
+Processing PumpkinPie
+Exp: text_order
+here
+233
+206
+206
+206
+233
+233
+233
+233
+Recipes Processed: 121
+-learn_init  -1
+Processing VeggiePizza
+Exp: arbor
+here
+277
+229
+229
+229
+277
+277
+277
+277
+Recipes Processed: 100
+-learn_iter  0
+Processing VeggiePizza
+Exp: arbor
+297
+246
+246
+246
+297
+297
+297
+297
+Recipes Processed: 100
+-learn_iter  1
+Processing VeggiePizza
+Exp: arbor
+297
+243
+243
+243
+297
+297
+297
+297
+Recipes Processed: 100
+-learn_iter  2
+Processing VeggiePizza
+Exp: arbor
+297
+246
+246
+246
+297
+297
+297
+297
+Recipes Processed: 100
+-learn_iter  3
+Processing VeggiePizza
+Exp: arbor
+297
+243
+243
+243
+297
+297
+297
+297
+Recipes Processed: 100
+-stat_for_eval_iter  100
+Processing VeggiePizza
+Exp: arbor
+297
+246
+246
+246
+297
+297
+297
+297
+Recipes Processed: 100
+-learn_init  -1
+Processing VeggiePizza
+Exp: arbor_trans
+here
+277
+229
+229
+229
+277
+277
+277
+277
+Recipes Processed: 100
+-learn_iter  0
+Processing VeggiePizza
+Exp: arbor_trans
+297
+248
+248
+248
+262
+262
+262
+262
+Recipes Processed: 100
+-learn_iter  1
+Processing VeggiePizza
+Exp: arbor_trans
+297
+248
+248
+248
+262
+262
+262
+262
+Recipes Processed: 100
+-learn_iter  2
+Processing VeggiePizza
+Exp: arbor_trans
+297
+249
+249
+249
+261
+261
+261
+261
+Recipes Processed: 100
+-learn_iter  3
+Processing VeggiePizza
+Exp: arbor_trans
+297
+248
+248
+248
+262
+262
+262
+262
+Recipes Processed: 100
+-stat_for_eval_iter  1000
+Processing VeggiePizza
+Exp: arbor_trans
+297
+249
+249
+249
+261
+261
+261
+261
+Recipes Processed: 100
+-learn_init  -1
+Processing VeggiePizza
+Exp: cc
+here
+277
+229
+229
+229
+277
+277
+277
+277
+Recipes Processed: 100
+-stat_for_eval_cc  -1
+Processing VeggiePizza
+Exp: cc
+here
+277
+229
+229
+229
+277
+277
+277
+277
+Recipes Processed: 100
+-learn_init  -1
+Processing VeggiePizza
+Exp: text_order
+here
+277
+229
+229
+229
+277
+277
+277
+277
+Recipes Processed: 100
+-stat_for_eval_wt  -1
+Processing VeggiePizza
+Exp: text_order
+here
+294
+239
+239
+239
+294
+294
+294
+294
+Recipes Processed: 100

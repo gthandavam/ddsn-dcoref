@@ -1,0 +1,5 @@
+python get_estimator.py PecanPie arbor 0 0 0 0 0 0  >> estimator_out_4
+python get_estimator.py PotatoSalad arbor 0 0 0 0 0 0  >> estimator_out_4
+python get_estimator.py PulledPork arbor 0 0 0 0 0 0  >> estimator_out_4
+python get_estimator.py PumpkinPie arbor 0 0 0 0 0 0 >> estimator_out_4
+python get_estimator.py VeggiePizza arbor 0 0 0 0 0 0 >> estimator_out_4

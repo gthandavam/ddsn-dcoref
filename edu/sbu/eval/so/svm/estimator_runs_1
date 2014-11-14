@@ -1,0 +1,5 @@
+python get_estimator.py BananaMuffins arbor 0 0 0 0 0 0  >> estimator_out 
+python get_estimator.py BeefChilli arbor 0 0 0 0 0 0  >> estimator_out
+python get_estimator.py BeefMeatLoaf arbor 0 0 0 0 0 0  >> estimator_out
+python get_estimator.py BeefStroganoff arbor 0 0 0 0 0 0  >> estimator_out
+python get_estimator.py CarrotCake arbor 0 0 0 0 0 0  >> estimator_out

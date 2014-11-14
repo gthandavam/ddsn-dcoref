@@ -1,0 +1,3 @@
+python iterative_learning.py 4 MeatLasagna  >> iterative_learning_out_4
+python iterative_learning.py 4 PecanPie  >> iterative_learning_out_4
+python iterative_learning.py 4 PotatoSalad  >> iterative_learning_out_4

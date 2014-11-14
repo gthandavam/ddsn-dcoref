@@ -1,0 +1,594 @@
+-learn_init  -1
+Processing MeatLasagna
+Exp: arbor
+here
+245
+223
+223
+223
+245
+245
+245
+245
+Recipes Processed: 101
+-learn_iter  0
+Processing MeatLasagna
+Exp: arbor
+256
+224
+224
+224
+256
+256
+256
+256
+Recipes Processed: 101
+-learn_iter  1
+Processing MeatLasagna
+Exp: arbor
+256
+228
+228
+228
+256
+256
+256
+256
+Recipes Processed: 101
+-learn_iter  2
+Processing MeatLasagna
+Exp: arbor
+256
+227
+227
+227
+256
+256
+256
+256
+Recipes Processed: 101
+-learn_iter  3
+Processing MeatLasagna
+Exp: arbor
+256
+228
+228
+228
+256
+256
+256
+256
+Recipes Processed: 101
+-stat_for_eval_iter  100
+Processing MeatLasagna
+Exp: arbor
+256
+227
+227
+227
+256
+256
+256
+256
+Recipes Processed: 101
+-learn_init  -1
+Processing MeatLasagna
+Exp: arbor_trans
+here
+245
+223
+223
+223
+245
+245
+245
+245
+Recipes Processed: 101
+-learn_iter  0
+Processing MeatLasagna
+Exp: arbor_trans
+256
+226
+226
+226
+225
+225
+225
+225
+Recipes Processed: 101
+-learn_iter  1
+Processing MeatLasagna
+Exp: arbor_trans
+256
+229
+229
+229
+225
+225
+225
+225
+Recipes Processed: 101
+-learn_iter  2
+Processing MeatLasagna
+Exp: arbor_trans
+256
+227
+227
+227
+227
+227
+227
+227
+Recipes Processed: 101
+-learn_iter  3
+Processing MeatLasagna
+Exp: arbor_trans
+256
+228
+228
+228
+226
+226
+226
+226
+Recipes Processed: 101
+-stat_for_eval_iter  1000
+Processing MeatLasagna
+Exp: arbor_trans
+256
+229
+229
+229
+225
+225
+225
+225
+Recipes Processed: 101
+-learn_init  -1
+Processing MeatLasagna
+Exp: cc
+here
+245
+223
+223
+223
+245
+245
+245
+245
+Recipes Processed: 101
+-stat_for_eval_cc  -1
+Processing MeatLasagna
+Exp: cc
+here
+245
+223
+223
+223
+245
+245
+245
+245
+Recipes Processed: 101
+-learn_init  -1
+Processing MeatLasagna
+Exp: text_order
+here
+245
+223
+223
+223
+245
+245
+245
+245
+Recipes Processed: 101
+-stat_for_eval_wt  -1
+Processing MeatLasagna
+Exp: text_order
+here
+256
+226
+226
+226
+256
+256
+256
+256
+Recipes Processed: 101
+-learn_init  -1
+Processing PecanPie
+Exp: arbor
+here
+159
+123
+123
+123
+159
+159
+159
+159
+Recipes Processed: 80
+-learn_iter  0
+Processing PecanPie
+Exp: arbor
+164
+126
+126
+126
+164
+164
+164
+164
+Recipes Processed: 80
+-learn_iter  1
+Processing PecanPie
+Exp: arbor
+164
+127
+127
+127
+164
+164
+164
+164
+Recipes Processed: 80
+-learn_iter  2
+Processing PecanPie
+Exp: arbor
+164
+127
+127
+127
+164
+164
+164
+164
+Recipes Processed: 80
+-learn_iter  3
+Processing PecanPie
+Exp: arbor
+164
+127
+127
+127
+164
+164
+164
+164
+Recipes Processed: 80
+-stat_for_eval_iter  100
+Processing PecanPie
+Exp: arbor
+164
+127
+127
+127
+164
+164
+164
+164
+Recipes Processed: 80
+-learn_init  -1
+Processing PecanPie
+Exp: arbor_trans
+here
+159
+123
+123
+123
+159
+159
+159
+159
+Recipes Processed: 80
+-learn_iter  0
+Processing PecanPie
+Exp: arbor_trans
+164
+126
+126
+126
+153
+153
+153
+153
+Recipes Processed: 80
+-learn_iter  1
+Processing PecanPie
+Exp: arbor_trans
+164
+127
+127
+127
+146
+146
+146
+146
+Recipes Processed: 80
+-learn_iter  2
+Processing PecanPie
+Exp: arbor_trans
+164
+129
+129
+129
+147
+147
+147
+147
+Recipes Processed: 80
+-learn_iter  3
+Processing PecanPie
+Exp: arbor_trans
+164
+127
+127
+127
+146
+146
+146
+146
+Recipes Processed: 80
+-stat_for_eval_iter  1000
+Processing PecanPie
+Exp: arbor_trans
+164
+127
+127
+127
+147
+147
+147
+147
+Recipes Processed: 80
+-learn_init  -1
+Processing PecanPie
+Exp: cc
+here
+159
+123
+123
+123
+159
+159
+159
+159
+Recipes Processed: 80
+-stat_for_eval_cc  -1
+Processing PecanPie
+Exp: cc
+here
+159
+123
+123
+123
+159
+159
+159
+159
+Recipes Processed: 80
+-learn_init  -1
+Processing PecanPie
+Exp: text_order
+here
+159
+123
+123
+123
+159
+159
+159
+159
+Recipes Processed: 80
+-stat_for_eval_wt  -1
+Processing PecanPie
+Exp: text_order
+here
+164
+125
+125
+125
+164
+164
+164
+164
+Recipes Processed: 80
+-learn_init  -1
+Processing PotatoSalad
+Exp: arbor
+here
+268
+219
+219
+219
+268
+268
+268
+268
+Recipes Processed: 196
+-learn_iter  0
+Processing PotatoSalad
+Exp: arbor
+273
+223
+223
+223
+273
+273
+273
+273
+Recipes Processed: 196
+-learn_iter  1
+Processing PotatoSalad
+Exp: arbor
+273
+222
+222
+222
+273
+273
+273
+273
+Recipes Processed: 196
+-learn_iter  2
+Processing PotatoSalad
+Exp: arbor
+273
+223
+223
+223
+273
+273
+273
+273
+Recipes Processed: 196
+-learn_iter  3
+Processing PotatoSalad
+Exp: arbor
+273
+222
+222
+222
+273
+273
+273
+273
+Recipes Processed: 196
+-stat_for_eval_iter  100
+Processing PotatoSalad
+Exp: arbor
+273
+222
+222
+222
+273
+273
+273
+273
+Recipes Processed: 196
+-learn_init  -1
+Processing PotatoSalad
+Exp: arbor_trans
+here
+268
+219
+219
+219
+268
+268
+268
+268
+Recipes Processed: 196
+-learn_iter  0
+Processing PotatoSalad
+Exp: arbor_trans
+273
+226
+226
+226
+234
+234
+234
+234
+Recipes Processed: 196
+-learn_iter  1
+Processing PotatoSalad
+Exp: arbor_trans
+273
+226
+226
+226
+233
+233
+233
+233
+Recipes Processed: 196
+-learn_iter  2
+Processing PotatoSalad
+Exp: arbor_trans
+273
+226
+226
+226
+233
+233
+233
+233
+Recipes Processed: 196
+-learn_iter  3
+Processing PotatoSalad
+Exp: arbor_trans
+273
+226
+226
+226
+233
+233
+233
+233
+Recipes Processed: 196
+-stat_for_eval_iter  1000
+Processing PotatoSalad
+Exp: arbor_trans
+273
+226
+226
+226
+233
+233
+233
+233
+Recipes Processed: 196
+-learn_init  -1
+Processing PotatoSalad
+Exp: cc
+here
+268
+219
+219
+219
+268
+268
+268
+268
+Recipes Processed: 196
+-stat_for_eval_cc  -1
+Processing PotatoSalad
+Exp: cc
+here
+268
+219
+219
+219
+268
+268
+268
+268
+Recipes Processed: 196
+-learn_init  -1
+Processing PotatoSalad
+Exp: text_order
+here
+268
+219
+219
+219
+268
+268
+268
+268
+Recipes Processed: 196
+-stat_for_eval_wt  -1
+Processing PotatoSalad
+Exp: text_order
+here
+273
+221
+221
+221
+273
+273
+273
+273
+Recipes Processed: 196

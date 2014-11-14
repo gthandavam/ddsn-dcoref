@@ -1,0 +1,4 @@
+python ml_framework.py Coleslaw arbor_trans 0 0 0 0 0 0  >> exp3_out
+python ml_framework.py CornChowder arbor_trans 0 0 0 0 0 0  >> exp3_out
+python ml_framework.py DeviledEggs arbor_trans 0 0 0 0 0 0  >> exp3_out
+
