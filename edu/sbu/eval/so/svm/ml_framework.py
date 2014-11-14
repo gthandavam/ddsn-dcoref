@@ -24,14 +24,14 @@ def train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicat
   ft_extractor,scaler, X = get_features(sents, 1, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, 1, indicator)
 
   print 'Features extracted'
-  # clf = svm.SVC(C=1.0, cache_size=2000, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
-  #     kernel='linear', max_iter=-1, probability=False, random_state=None,
-  #     shrinking=True, tol=0.001, verbose=False)
+  clf = svm.SVC(C=1.0, cache_size=2000, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
+      kernel='linear', max_iter=-1, probability=False, random_state=None,
+      shrinking=True, tol=0.001, verbose=False)
 
-  if recipeName in ('MeatLasagna', 'PecanPie'):
-    clf = linear_model.LogisticRegression(penalty='l1', dual=False, tol=0.0001, C=1.0, fit_intercept=True, intercept_scaling=1, class_weight=None, random_state=None)
-  else:
-    clf = linear_model.LogisticRegression(penalty='l1', dual=False, tol=0.0001, C=10.0, fit_intercept=True, intercept_scaling=1, class_weight=None, random_state=None)
+  # if recipeName in ('MeatLasagna', 'PecanPie'):
+  #   clf = linear_model.LogisticRegression(penalty='l1', dual=False, tol=0.0001, C=1.0, fit_intercept=True, intercept_scaling=1, class_weight=None, random_state=None)
+  # else:
+  #   clf = linear_model.LogisticRegression(penalty='l1', dual=False, tol=0.0001, C=10.0, fit_intercept=True, intercept_scaling=1, class_weight=None, random_state=None)
 
   clf.fit(X,labels)
   # print ft_extractor.get_feature_names()
@@ -45,7 +45,7 @@ def test(sents, ft_extractor, scaler, clf, labels, recipeName, stat_type, cp0, c
   vec,scaler, X = get_features(sents, ft_extractor, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, scaler, indicator)
 
   y = clf.predict(X)
-  prob = clf.decision_function(X)
+  prob = clf.predict_proba(X)
 
   # return y
   return prob,y
@@ -166,16 +166,17 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
     # print 'Testing set size ' + str(itr)
     # print 'Number of nodes ' + str(recipeLength[i][0])
 
-    if recipeLength[i][0] > 20:
-      # print 'Skipping >20 Recipe No ' + str(i + 1)
-      if(useLinKern):
-
-        logF.write('LinKern solver for Recipe No: ' + str(i + 1) + '\n')
-      else:
-        logF.write('Skipping >20 Recipe No ' + str(i + 1) + '\n')
-        tspResultSet.append([])
-        prevItr += itr
-        continue
+    #following not needed for viterbi formulation
+    # if recipeLength[i][0] > 20:
+    #   # print 'Skipping >20 Recipe No ' + str(i + 1)
+    #   if(useLinKern):
+    #
+    #     logF.write('LinKern solver for Recipe No: ' + str(i + 1) + '\n')
+    #   else:
+    #     logF.write('Skipping >20 Recipe No ' + str(i + 1) + '\n')
+    #     tspResultSet.append([])
+    #     prevItr += itr
+    #     continue
 
 
     if len(test_sents) <= 1:
