@@ -128,8 +128,6 @@ class StatFeatures:
     sem_group1 = self.process_sem_group(sem_group1)
     sem_group2 = self.process_sem_group(sem_group2)
     prob = self.recipe_stat.getArg1PredPredProb(sem_group1['arg1'], sem_group1['pred'], sem_group2['pred'])
-
-
     return prob
 
 
@@ -271,31 +269,30 @@ class StatFeatures:
     '''
 
     #CP1
-    cp1 = self.getArg1Arg2PredPredArg1LogProb(sem_group1, sem_group2)
+    s, cnt = self.getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)
 
-    if( cp1 != 0 ): #if cp1 is zero, indicates no evidence, we get log(1-P) from the API
-      return cp1
+    if( s != 0 and cnt != 0 ): #if cp1 is zero, indicates no evidence
+      return float(s)/cnt
 
     #CP2
-    cp2 = self.getArg1Arg2PredPredLogProb(sem_group1, sem_group2)
+    s, cnt = self.getArg1Arg2PredPredProb(sem_group1, sem_group2)
 
-    if( cp2 != 0 ):
-      return cp2
+    if( s != 0 and cnt != 0 ): #if cp2 is zero, indicates no evidence
+      return float(s)/cnt
 
     #CP3
-    cp3 = self.getArg1PredPredArg1LogProb(sem_group1, sem_group2)
+    s, cnt = self.getArg1PredPredArg1Prob(sem_group1, sem_group2)
 
-    if( cp3 != 0 ):
-      return cp3
+    if( s != 0 and cnt != 0 ): #if cp3 is zero, indicates no evidence
+      return float(s)/cnt
 
     #CP4
-    cp4 = self.getArg1PredPredLogProb(sem_group1, sem_group2)
-    if( cp4 != 0 ):
-      return cp4
+    s, cnt = self.getArg1PredPredProb(sem_group1, sem_group2)
+    if( s != 0 and cnt != 0 ): #if cp4 is zero, indicates no evidence
+      return float(s)/cnt
 
-    #when all fails return 100000 treated as +infinity
-    #value for infinity is controlled by path length * max edge weight in a tsp problem!!!
-    return float(100000)
+    #return no evidence
+    return 0
 
     pass
 
@@ -306,16 +303,37 @@ class StatFeatures:
     '''
 
     #CP1
-    cp1 = self.getArg1Arg2PredPredArg1LogProb(sem_group1, sem_group2)
+    s, cnt = self.getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)
+    if( s != 0 and cnt != 0 ): #if cp1 is zero, indicates no evidence
+      cp1 = float(s)/cnt
+    else:
+      cp1 = 0
+
 
     #CP2
-    cp2 = self.getArg1Arg2PredPredLogProb(sem_group1, sem_group2)
+    s, cnt = self.getArg1Arg2PredPredLogProb(sem_group1, sem_group2)
+    if( s != 0 and cnt != 0 ): #if cp2 is zero, indicates no evidence
+      cp2 = float(s)/cnt
+    else:
+      cp2 = 0
+
 
     #CP3
-    cp3 = self.getArg1PredPredArg1LogProb(sem_group1, sem_group2)
+    s, cnt = self.getArg1PredPredArg1LogProb(sem_group1, sem_group2)
+    if( s != 0 and cnt != 0 ): #if cp3 is zero, indicates no evidence
+      cp3 = float(s)/cnt
+    else:
+      cp3 = 0
+
 
     #CP4
-    cp4 = self.getArg1PredPredLogProb(sem_group1, sem_group2)
+    s, cnt = self.getArg1PredPredLogProb(sem_group1, sem_group2)
+
+    if( s != 0 and cnt != 0 ): #if cp4 is zero, indicates no evidence
+      cp4 = float(s)/cnt
+    else:
+      cp4 = 0
+
 
     return float(cp1 + cp2 + cp3 + cp4)/4.0
 

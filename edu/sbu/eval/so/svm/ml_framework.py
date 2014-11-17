@@ -25,7 +25,7 @@ def train(sents, labels, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4, indicat
 
   print 'Features extracted'
   clf = svm.SVC(C=1.0, cache_size=2000, class_weight=None, coef0=0.0, degree=3, gamma=0.0,
-      kernel='linear', max_iter=-1, probability=False, random_state=None,
+      kernel='linear', max_iter=-1, probability=True, random_state=None,
       shrinking=True, tol=0.001, verbose=False)
 
   # if recipeName in ('MeatLasagna', 'PecanPie'):
@@ -246,7 +246,7 @@ def update_global_accuracy(order, correct, total):
   for i in xrange(len(order)):
     for j in xrange(i+1, len(order)):
       total += 1
-      if order[i] < order[j]:
+      if order[i] <= order[j]:
         correct += 1
       if order[i] == order[j]:
         print 'Order_i cannot be equal to Order_j'

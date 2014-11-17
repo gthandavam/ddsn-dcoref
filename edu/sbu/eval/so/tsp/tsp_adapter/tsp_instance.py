@@ -7,8 +7,8 @@ from edu.sbu.eval.so.data.prepare_data import sentSeparator
 import math
 
 def log(n):
-  ret = -100 if n == 0 else ret = math.log(n)
-  return ret
+  return -100 if n == 0 else math.log(n)
+
 
 def get_score(weights, pairs, perm):
   '''
@@ -66,7 +66,11 @@ def pick_edge_weights(weights, predicted_labels, pairs, number_of_nodes):
     x = int(x)
     y = int(y)
 
-    ret[x][y] = log(1 - weights[i])
+    ret[x][y] = log(weights[i][0])
+    ret[y][x] = log(weights[i][1])
+
+  for i in range(number_of_nodes):
+    ret[i][i] = -100.0
 
   return ret
 
@@ -87,11 +91,26 @@ def pick_stat_edge_weights(samples, pairs, number_of_nodes, stats_obj):
     sem_group1 = get_sem_grouping(sent1)
     sem_group2 = get_sem_grouping(sent2)
 
-    #making use of log(1-P) values for min formulation
-    ret[x][y] = stats_obj.get_stat_based_edge_weight(sem_group1, sem_group2)
-    ret[y][x] = stats_obj.get_stat_based_edge_weight(sem_group2, sem_group1)
+    #making use of log( values for min formulation
+    s,cnt = stats_obj.get_stat_based_edge_weight(sem_group1, sem_group2)
+
+    if cnt == 0 or s == 0:
+      ret[x][y] =  -100
+    else:
+      ret[x][y] = math.log((float(s)/cnt))
+
+
+    s,cnt = stats_obj.get_stat_based_edge_weight(sem_group2, sem_group1)
+    if cnt == 0 or s == 0:
+      ret[y][x] =  -100
+    else:
+      ret[y][x] = math.log((float(s)/cnt))
+
 
     pass
+
+  for i in range(number_of_nodes):
+    ret[i][i] = -100.0
 
   return ret
   pass
