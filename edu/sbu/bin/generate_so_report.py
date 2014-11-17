@@ -27,8 +27,8 @@ dishes = (
 
 experiments = (
 
-'UGBG_CP__prob_wt_arbor_trans_no_lin_kern',
-# 'UGBG_CP__prob_wt_arbor_trans',
+# 'UGBG_CP__prob_wt_arbor_trans_no_lin_kern',
+'UGBG_CP__prob_wt_arbor_trans',
 # 'UGBG_CP_01234_indicator_arbor',
 # 'UGBG_CP_01234_indicator_arbor_trans',
 # 'UGBG_CP_01234_indicator_cc',
@@ -51,7 +51,7 @@ experiments = (
 
 def main():
   docRoot = '/home/gt/Documents/'
-  with open('/home/gt/Documents/so_report_no_lin_kern_prob_log_reg.csv', 'w') as report:
+  with open('/home/gt/Documents/so_report_viterbi.csv', 'w') as report:
     writer = csv.writer(report)
 
     for dish in dishes:

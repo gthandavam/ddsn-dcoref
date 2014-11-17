@@ -258,7 +258,7 @@ class StatFeatures:
       pass
     return ret
 
-  def get_stat_based_edge_weight(self, sem_group1, sem_group2):
+  def get_stat_based_edge_prob(self, sem_group1, sem_group2):
     '''
     CP1 Most specific
     CP4 Most general

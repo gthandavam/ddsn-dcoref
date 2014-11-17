@@ -248,7 +248,7 @@ def update_global_accuracy(order, correct, total):
       total += 1
       if order[i] <= order[j]:
         correct += 1
-      if order[i] == order[j]:
+      if order[i] == order[j]:#with viterbi formulation, this is possible - as we dont enforce sequence with no repetition
         print 'Order_i cannot be equal to Order_j'
       pass
 
@@ -318,7 +318,7 @@ if __name__ == '__main__':
     pass
 
 
-  logFile = outDir + expName + '_no_lin_kern_log_reg_dec_func.out'
+  logFile = outDir + expName + '.out'
   start_time = time.time()
   for i in range(1):
     main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile, indicator, useLinKern=False)

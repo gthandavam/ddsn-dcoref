@@ -92,19 +92,19 @@ def pick_stat_edge_weights(samples, pairs, number_of_nodes, stats_obj):
     sem_group2 = get_sem_grouping(sent2)
 
     #making use of log( values for min formulation
-    s,cnt = stats_obj.get_stat_based_edge_weight(sem_group1, sem_group2)
+    p = stats_obj.get_stat_based_edge_prob(sem_group1, sem_group2)
 
-    if cnt == 0 or s == 0:
+    if p == 0 :
       ret[x][y] =  -100
     else:
-      ret[x][y] = math.log((float(s)/cnt))
+      ret[x][y] = math.log(p)
 
 
-    s,cnt = stats_obj.get_stat_based_edge_weight(sem_group2, sem_group1)
-    if cnt == 0 or s == 0:
+    p = stats_obj.get_stat_based_edge_prob(sem_group2, sem_group1)
+    if p == 0:
       ret[y][x] =  -100
     else:
-      ret[y][x] = math.log((float(s)/cnt))
+      ret[y][x] = math.log(p)
 
 
     pass
