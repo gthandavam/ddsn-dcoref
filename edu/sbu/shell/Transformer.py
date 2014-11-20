@@ -38,69 +38,6 @@ statFileForEval = ""
 train_files_hash = {}
 ########################
 
-def get_text(swirl_output):
-  """
-  Parse the swirl output and return the structured data in a 3darray sent, row, column
-  """
-
-  ret = []
-  #ret has 3 dimensions - sent, row, column
-  with open(swirl_output) as f:
-    sent_matrix = []
-    for line in f.readlines():
-      line = line.strip()
-      line_matrix = line.split('\t')
-      if len(line_matrix) == 1:
-        if(len(sent_matrix) != 0):#for handling the case of consecutive empty lines in output
-          ret.append(sent_matrix)
-        sent_matrix = []
-        continue #read next line
-        pass
-
-      sent_matrix.append(line_matrix)
-      pass
-
-  return ret
-  pass
-
-def get_semantic_roles(recipe_file):
-  """
-  Runs a SRL tool to get pred argument structure and
-  returns pnodes and rnodes
-  """
-  ret = []
-
-  #pre-process
-  # with open(recipe_file) as f:
-  #   lines = f.readlines()
-  #
-  # with open(recipe_file, 'w') as f:
-  #   for line in lines:
-  #     f.write('3 ' + line)
-
-
-  swirl_file = recipe_file.replace(recipeName + '-3-steps', recipeName + '-swirl-files')
-  #Polina - I need to setup swirl on your mac for you to be able to run this directly
-  #I had to make changes to Swirl to get it running; on top of it I have made changes to
-  #get output in the required format as well; so for now we could exchange swirl output files
-  #and continue with development
-  # if sys.platform != "linux2":
-  #   senna_cmd = "senna-osx"
-  # else:
-  #   senna_cmd = "senna-linux64"
-  cmd = 'cd /home/gt/Downloads/swirl-1.1.0/; swirl_parse_classify' + ' model_swirl/ model_charniak/ ' \
-        + recipe_file + ' 1> ' + swirl_file
-
-  # mod_logger.error(cmd)
-  status, output = commands.getstatusoutput(cmd)
-
-  if(status != 0):
-    print 'error getting swirl output'
-    return ret
-
-  ret = get_text(swirl_file)
-  return ret
-
 def special_predicate_processing(sem_group):
   '''
   To handle special cases
@@ -181,9 +118,6 @@ def special_pp_processing(sem_group):
     else:
       sem_group['arg2'] = None
       sem_group['arg2POS'] = None
-
-
-    # mod_logger.critical(' split up as ' + arg1POS + ' and ' + arg2POS)
 
   return sem_group
   pass
@@ -382,22 +316,9 @@ def learnStat(useArbo, iter_num=-1,transitive=False):
   if len(sys.argv) > 1:
     option = sys.argv[1]
 
-  # try:
-  #   os.makedirs(dirName+recipeName + '-dot-files'+option + 'iter' + str(iter_num))
-  # except OSError:
-  #   pass
-  #
-  # try:
-  #   os.makedirs(dirName+recipeName + '-svg-files'+option + 'iter' + str(iter_num))
-  # except OSError:
-  #   pass
-
   i=0
   if useArbo:
     r_stats = joblib.load(statFile)
-    # f = open(statFile)
-    # r_stats = pickle.load(f)
-    # f.close()
   else:
     r_stats = RecipeStats2()
     r_stats.computeStat(recipeName)
@@ -411,7 +332,6 @@ def learnStat(useArbo, iter_num=-1,transitive=False):
       continue
 
     i+=1
-
 
     mod_logger.error(recipe_args_file)
     dcoref_graph = make_nodes(recipe_args_file)
@@ -427,24 +347,6 @@ def learnStat(useArbo, iter_num=-1,transitive=False):
     if useArbo:
       pnodes_resolved, rnodes_resolved, arbor_edges = connect_arbor(weighted_graph, arbor_adapter, r_stats)
     #End of MST Section
-
-      #no need to create diagrams here
-      # dot_graph = arbor_adapter.dot_builder
-      # gv_file_name = recipe_args_file.replace(recipeName +'Args',recipeName + '-dot-files'+option + 'iter' + str(iter_num))
-      #
-      # gv_file_name = gv_file_name.replace('.txt', '.gv')
-      # try:
-      #   dot_graph.write_gv(pnodes_resolved, rnodes_resolved, arbor_edges, gv_file_name)
-      # except Exception as inst:
-      #   print inst.args
-      #   print inst.message
-      #   print inst
-      #   print recipe_args_file
-      #   print "Error!!! 421" # temporal!!!
-      #   pass
-      #
-      # make_svg(gv_file_name)
-
 
     stat_data.append([recipe_args_file, weighted_graph, arbor_adapter, arbor_edges])
 
@@ -462,23 +364,15 @@ def learnStat(useArbo, iter_num=-1,transitive=False):
 
   if useArbo:
     joblib.dump(r_stats, statFile2)
-    # f = open(statFile2,"w")
   else:
     joblib.dump(r_stats, statFile)
-    # f = open(statFile,"w")
-  # pickle.dump(r_stats,f, pickle.HIGHEST_PROTOCOL)
   print 'Recipes Processed: ' + str(i)
-  # f.close()
 
 def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_num=-1):
   #files sentence split using stanford sentence splitter - fsm based
   i=0
   if stFile!="":
-    # f = open(stFile)
-    # r_stats = pickle.load(f)
-    # f.close()
     r_stats = joblib.load(stFile)
-    # r_stats.args_verb_score = r_stats.test_flag # due to some pickle bug!!!
   else:
     r_stats = RecipeStats2()
     r_stats.computeStat(recipeName)
@@ -560,4 +454,3 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_
 if __name__ == '__main__':
 
   main()
-
