@@ -648,3 +648,93 @@ class RecipeStats2:
       return 0
     print sum12/math.sqrt(sum1*sum2)
     return sum12/math.sqrt(sum1*sum2)
+
+
+def get_whole_graph(pnodes_resolved, rnodes_resolved, arbor_edges):
+  '''
+  Get graph for stat calculation based on the mode of operation CC or arbor
+
+  cc mode operates only on pnodes_resolved and rnodes_resolved
+  arbor mode operates on pnodes_resolved, rnodes_resolved and arbor_edges
+  '''
+  #TODO: add check for cc or arbor mode
+  w_g = {}
+  for i in xrange(len(pnodes_resolved)):
+    for j in xrange(len(pnodes_resolved[i])):
+      pred_id = pnodes_resolved[i][j].id
+      w_g[pred_id] = {}
+
+      for k in xrange(1,3):
+        r_id = rnodes_resolved[i][j][k].id
+        #consider only non-null nodes
+        if not rnodes_resolved[i][j][k].is_null:
+          if not r_id in w_g:
+            w_g[r_id] = {}
+
+          w_g[r_id][pred_id] = 1 #adjacency matrix
+
+          #update evolution edge
+          if(len(rnodes_resolved[i][j][k].shell_coref) > 0):
+            x,y = rnodes_resolved[i][j][k].shell_coref[0][0]
+            p1_id = pnodes_resolved[x][y].id
+            if not p1_id in w_g:
+              w_g[p1_id] = {}
+
+            w_g[p1_id][r_id] = 1 #adjacency matrix
+
+        elif (len(rnodes_resolved[i][j][k].shell_coref) > 0):
+          #implicit edge
+          x,y = rnodes_resolved[i][j][k].shell_coref[0][0]
+          p1_id = pnodes_resolved[x][y].id
+          if not p1_id in w_g:
+            w_g[p1_id] = {}
+
+          w_g[p1_id][pred_id] = 1 #adjacency matrix
+
+      pass
+
+  for n1 in arbor_edges:
+    for n2 in arbor_edges[n1]:
+      if not n1 in w_g:
+        w_g[n1] = {}
+
+      w_g[n1][n2] = 1
+
+  w_g = get_transitive_closure(w_g)
+
+  return w_g
+  pass
+
+#public static method
+def get_transitive_closure(g):
+  '''
+  g is assumed to have dictionary representation of graph
+  so to find vertices get all distinct nodes via set operation on the graph
+  warshall's transitive closure algorithm
+  '''
+  vertices = set(g.keys())
+
+  ret_g = {}
+
+  for key in g.keys():
+    vertices = vertices.union(set(g[key].keys()))
+
+  vertices = list(vertices)
+
+  for vertex in vertices:
+    for vertex2 in vertices:
+      if not vertex in ret_g:
+        ret_g[vertex] = {}
+
+      if vertex in g and vertex2 in g[vertex]:
+        ret_g[vertex][vertex2] = 1
+      else:
+        ret_g[vertex][vertex2] = 0
+
+  for k in xrange(len(vertices)):
+    for i in xrange(len(vertices)):
+      for j in xrange(len(vertices)):
+        if ret_g[vertices[i]][vertices[j]] == 0 and ret_g[vertices[i]][vertices[k]] !=0 and ret_g[vertices[k]][vertices[j]] != 0:
+          ret_g[vertices[i]][vertices[j]] = ret_g[vertices[i]][vertices[k]] + ret_g[vertices[k]][vertices[j]]
+
+  return ret_g

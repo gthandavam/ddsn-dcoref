@@ -11,6 +11,7 @@ import os
 from edu.sbu.mst.MSTGraphTransformer import MSTGraphTransformer
 from edu.sbu.mst.weighted_graph.solver.edmonds import upside_down_arborescence
 from edu.sbu.stats.RecipeStats2 import RecipeStats2
+from edu.sbu.stats.RecipeStats_new import get_whole_graph
 
 mod_logger = log.setup_custom_logger('root')
 
@@ -455,91 +456,6 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_
   print 'Recipes Processed: ' + str(i)
   pass
 
-def get_whole_graph(pnodes_resolved, rnodes_resolved, arbor_edges):
-  '''
-  Get graph for stat calculation based on the mode of operation CC or arbor
-
-  cc mode operates only on pnodes_resolved and rnodes_resolved
-  arbor mode operates on pnodes_resolved, rnodes_resolved and arbor_edges
-  '''
-  #TODO: add check for cc or arbor mode
-  w_g = {}
-  for i in xrange(len(pnodes_resolved)):
-    for j in xrange(len(pnodes_resolved[i])):
-      pred_id = pnodes_resolved[i][j].id
-      w_g[pred_id] = {}
-
-      for k in xrange(1,3):
-        r_id = rnodes_resolved[i][j][k].id
-        #consider only non-null nodes
-        if not rnodes_resolved[i][j][k].is_null:
-          if not r_id in w_g:
-            w_g[r_id] = {}
-
-          w_g[r_id][pred_id] = 1 #adjacency matrix
-
-          #update evolution edge
-          if(len(rnodes_resolved[i][j][k].shell_coref) > 0):
-            x,y = rnodes_resolved[i][j][k].shell_coref[0][0]
-            p1_id = pnodes_resolved[x][y].id
-            if not p1_id in w_g:
-              w_g[p1_id] = {}
-
-            w_g[p1_id][r_id] = 1 #adjacency matrix
-
-        elif (len(rnodes_resolved[i][j][k].shell_coref) > 0):
-          #implicit edge
-          x,y = rnodes_resolved[i][j][k].shell_coref[0][0]
-          p1_id = pnodes_resolved[x][y].id
-          if not p1_id in w_g:
-            w_g[p1_id] = {}
-
-          w_g[p1_id][pred_id] = 1 #adjacency matrix
-
-      pass
-
-  for n1 in arbor_edges:
-    for n2 in arbor_edges[n1]:
-      if not n1 in w_g:
-        w_g[n1] = {}
-
-      w_g[n1][n2] = 1
-
-  w_g = get_transitive_closure(w_g)
-
-  return w_g
-  pass
-
-def get_transitive_closure(g):
-  '''
-  g is assumed to have dictionary representation of graph
-  so to find vertices get all distinct nodes via set operation on the graph
-  warshall's transitive closure algorithm
-  '''
-  vertices = set(g.keys())
-
-  for key in g.keys():
-    vertices = vertices.union(set(g[key].keys()))
-
-  vertices = list(vertices)
-
-  for i in xrange(len(vertices)):
-    for j in xrange(len(vertices)):
-      for k in xrange(len(vertices)):
-
-        if vertices[i] in g:
-          if vertices[j] in g[vertices[i]]:
-            #i,j is in graph and not adjacent
-            if(g[vertices[i]][vertices[j]] == 0):
-              if vertices[k] in g[vertices[i]] and vertices[k] in g and vertices[i] in g[vertices[k]] and g[vertices[i]][vertices[k]] != 0 and g[vertices[k]][vertices[j]] != 0:
-                g[vertices[i]][vertices[j]] = g[vertices[i]][vertices[k]] + g[vertices[k]][vertices[j]]
-
-          else:
-            #i,j is not in graph
-            if vertices[k] in g[vertices[i]] and vertices[k] in g and vertices[i] in g[vertices[k]] and g[vertices[i]][vertices[k]] != 0 and g[vertices[k]][vertices[j]] != 0:
-              g[vertices[i]][vertices[j]] = g[vertices[i]][vertices[k]] + g[vertices[k]][vertices[j]]
-
-  return g
 
 if __name__ == '__main__':
 
