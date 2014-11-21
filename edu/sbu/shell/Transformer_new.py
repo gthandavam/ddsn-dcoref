@@ -12,8 +12,6 @@ from edu.sbu.mst.MSTGraphTransformer import MSTGraphTransformer
 from edu.sbu.mst.weighted_graph.solver.edmonds import upside_down_arborescence
 from edu.sbu.stats.RecipeStats2 import RecipeStats2
 from edu.sbu.stats.RecipeStats_new import get_whole_graph
-from deepdiff import DeepDiff
-from pprint import pprint
 
 mod_logger = log.setup_custom_logger('root')
 
@@ -25,9 +23,6 @@ chipotle-macaroni-and-cheese
 dannys-macaroni-and-cheese
 reuben-mac-and-cheese
 """
-
-# recipeName = 'ChickenSalad'
-# recipeName = 'MacAndCheese'
 
 #global variables that are over-written based on command line args passed by
 #iterative_learning script
@@ -204,14 +199,13 @@ def connect_arbor(weighted_graph, arbor_adapter, r_stats):
   g = weighted_graph.get_adj_ghost_graph('order_close_together')
 
   root = "Ghost"
-  arbor_graph = upside_down_arborescence(root, g, weighted_graph.id_node_map)
-  # arbor_graph = g #to visualize all edges
+  arbor_edges = upside_down_arborescence(root, g)
 
-  pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, arbor_graph, weighted_graph.adj_list)
+  pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, arbor_edges, weighted_graph.adj_list)
   #for seeing coref-output comment the above line, uncomment the below line
-  # pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, {}, weighted_graph.adj_list)
+  #pnodes_resolved, rnodes_resolved = arbor_adapter.reverse_transform(weighted_graph, {}, weighted_graph.adj_list)
 
-  return pnodes_resolved, rnodes_resolved, arbor_graph
+  return pnodes_resolved, rnodes_resolved, arbor_edges
   pass
 
 '''
@@ -322,13 +316,10 @@ def learnStat(useArbo, iter_num=-1,transitive=False):
 
   i=0
   if useArbo:
-    r_stats_old = joblib.load(statFile)
     r_stats = joblib.load(statFile)
   else:
     r_stats = RecipeStats2()
     r_stats.computeStat(recipeName)
-    r_stats_old = RecipeStats2()
-    r_stats_old.computeStat(recipeName)
   stat_data = []
 
 
@@ -360,14 +351,14 @@ def learnStat(useArbo, iter_num=-1,transitive=False):
   # Calculate statistics
   r_stats.calcStatFromGraph(stat_data, useArbo, transitive)
   # r_stats.test_flag = r_stats.args_verb_score
-  pprint(DeepDiff(r_stats_old.args1_args2_verb_args_score, r_stats.args1_args2_verb_args_score).changes)
-  pprint(DeepDiff(r_stats_old.args1_verb_args_score, r_stats.args1_verb_args_score).changes)
-  pprint(DeepDiff(r_stats_old.args1_args2_args_score, r_stats.args1_args2_args_score).changes)
-  pprint(DeepDiff(r_stats_old.args1_args_score, r_stats.args1_args_score).changes)
-  pprint(DeepDiff(r_stats_old.args1_args2_verb_verb_score, r_stats.args1_args2_verb_verb_score).changes)
-  pprint(DeepDiff(r_stats_old.args1_verb_verb_score, r_stats.args1_verb_verb_score).changes)
-  pprint(DeepDiff(r_stats_old.args1_args2_verb_verb_args1_score, r_stats.args1_args2_verb_verb_args1_score).changes)
-  pprint(DeepDiff(r_stats_old.args1_verb_verb_args1_score, r_stats.args1_verb_verb_args1_score).changes)
+  print len(r_stats.args1_args2_verb_args_score)
+  print len(r_stats.args1_verb_args_score)
+  print len(r_stats.args1_args2_args_score)
+  print len(r_stats.args1_args_score)
+  print len(r_stats.args1_args2_verb_verb_score)
+  print len(r_stats.args1_verb_verb_score)
+  print len(r_stats.args1_args2_verb_verb_args1_score)
+  print len(r_stats.args1_verb_verb_args1_score)
 
   if useArbo:
     joblib.dump(r_stats, statFile2)
@@ -380,12 +371,9 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_
   i=0
   if stFile!="":
     r_stats = joblib.load(stFile)
-    r_stats_old = joblib.load(stFile)
   else:
     r_stats = RecipeStats2()
     r_stats.computeStat(recipeName)
-    r_stats_old = RecipeStats2()
-    r_stats_old.computeStat(recipeName)
 
   #need to take care of experiment type arbor/arbor_trans
   make_dir_no_exception('/home/gt/Documents/' + recipeName + '/Evolution/')
@@ -451,15 +439,14 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_
   if stat_for_eval:
     # Calculate statistics
     r_stats.calcStatFromGraph(stat_data, useArbo, transitive)
-    pprint(DeepDiff(r_stats_old.args1_args2_verb_args_score, r_stats.args1_args2_verb_args_score).changes)
-    pprint(DeepDiff(r_stats_old.args1_verb_args_score, r_stats.args1_verb_args_score).changes)
-    pprint(DeepDiff(r_stats_old.args1_args2_args_score, r_stats.args1_args2_args_score).changes)
-    pprint(DeepDiff(r_stats_old.args1_args_score, r_stats.args1_args_score).changes)
-    pprint(DeepDiff(r_stats_old.args1_args2_verb_verb_score, r_stats.args1_args2_verb_verb_score).changes)
-    pprint(DeepDiff(r_stats_old.args1_verb_verb_score, r_stats.args1_verb_verb_score).changes)
-    pprint(DeepDiff(r_stats_old.args1_args2_verb_verb_args1_score, r_stats.args1_args2_verb_verb_args1_score).changes)
-    pprint(DeepDiff(r_stats_old.args1_verb_verb_args1_score, r_stats.args1_verb_verb_args1_score).changes)
-
+    print len(r_stats.args1_args2_verb_args_score)
+    print len(r_stats.args1_verb_args_score)
+    print len(r_stats.args1_args2_args_score)
+    print len(r_stats.args1_args_score)
+    print len(r_stats.args1_args2_verb_verb_score)
+    print len(r_stats.args1_verb_verb_score)
+    print len(r_stats.args1_args2_verb_verb_args1_score)
+    print len(r_stats.args1_verb_verb_args1_score)
 
     joblib.dump(r_stats, statFileForEval)
 

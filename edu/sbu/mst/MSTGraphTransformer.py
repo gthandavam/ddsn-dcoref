@@ -88,7 +88,6 @@ class MSTGraphTransformer:
     pass
 
   def dfs(self, node, tkr, ccs):
-    # global adj_list #not needed for reading
     self.v_props[node][0] = tkr
     for neighbor in self.adj_list[node]:
       if self.v_props[neighbor][0] == -1: #if node not visited

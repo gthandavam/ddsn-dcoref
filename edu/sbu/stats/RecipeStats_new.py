@@ -36,7 +36,7 @@ class RecipeStats2:
 
   def log(self, val):
     if val==0:
-      return -100
+      return self.my_min
     else:
       return math.log(val)
 
@@ -283,7 +283,7 @@ class RecipeStats2:
     s, cnt = self.getArg1PredPredProb(a1s, verb, overb)
 
     if cnt == 0:
-      return 0
+      return self.my_max # no evidence so returning max wt 1-P min wt formulation
 
     return self.log(1 - (float(s)/cnt))
     pass
@@ -318,7 +318,7 @@ class RecipeStats2:
     '''
     s, cnt = self.getArg1PredPredArg1Prob(a1s, verb, overb, oas)
     if cnt == 0:
-      return 0
+      return self.my_max
 
     return self.log(1 - (float(s)/cnt))
     pass
@@ -364,7 +364,7 @@ class RecipeStats2:
             s+= self.args1_args2_verb_args_score[arg1][arg2][verb][o_arg]
           cnt+=1
     if cnt==0:
-      return 0
+      return self.my_max
     return self.log(1 - (float(s)/cnt))
 
   def getArg1Arg2PredPred(self, input_a1, input_a2, predicate, output_predicate):
@@ -381,7 +381,7 @@ class RecipeStats2:
     s, cnt = self.getArg1Arg2PredPredProb(a1s, a2s, verb, overb)
 
     if cnt == 0:
-      return 0
+      return self.my_max
 
     return self.log(1 - (float(s)/cnt))
     pass
@@ -422,7 +422,7 @@ class RecipeStats2:
     s, cnt = self.getArg1Arg2PredPredArg1Prob(a1s, a2s, verb, overb, oas)
 
     if cnt == 0:
-      return 0
+      return self.my_max
 
     return self.log(1 - (float(s)/cnt))
     pass
@@ -514,7 +514,7 @@ class RecipeStats2:
             s +=  self.verb_args2_score[verb][arg1]
         return self.log(1 - (float(s)/len(d)))
 
-    return 0
+    return self.my_max
 
   def getArg1ArgProb(self, input_argument0, input_argument1):
     ### Compute probability of edge predicate->arg2
@@ -531,7 +531,7 @@ class RecipeStats2:
             s +=  self.args1_args_score[arg0][arg1]
           cnt += 1
     if cnt==0:
-      return 0
+      return self.my_max
     return self.log(1 - (float(s)/cnt))
 
   def getArg1Arg2ArgProb(self, input_argument1,input_argument2, output_argument):
@@ -555,7 +555,7 @@ class RecipeStats2:
                 s +=  self.args1_args2_args_score[arg1][arg2][oarg]
               cnt += 1
     if cnt==0:
-      return 0
+      return self.my_max
     return self.log(1 - (float(s)/cnt))
 
   def getArgPredProb(self, arg, pred):
@@ -570,16 +570,16 @@ class RecipeStats2:
         s +=  self.args_verb_score[arg][verb]
       cnt += 1
     if cnt==0:
-      return 0
+      return self.my_max
     return self.log(1 - (float(s)/cnt))
 
   def getVerbVerbProb(self, predicate, predicate2):
     verb = self.stemmer.stem(predicate.predicate)
     verb2 = self.stemmer.stem(predicate2.predicate)
     if verb not in self.verbs_score:
-      return 0
+      return self.my_max
     if verb2 not in self.verbs_score[verb]:
-      return 0
+      return self.my_max
 
     return self.log(1 - self.verbs_score[verb][verb2])
 
