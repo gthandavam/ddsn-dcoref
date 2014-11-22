@@ -215,7 +215,7 @@ def upside_down_arborescence(root, g, id_node_map):
 
   if not h is None:
     res = _reverse(h)
-    print_graph(res, id_node_map)
+    # print_graph(res, id_node_map)
     return res
   else:
     print '*** None Arborescence ***'

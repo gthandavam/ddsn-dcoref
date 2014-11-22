@@ -659,6 +659,8 @@ def get_whole_graph(pnodes_resolved, rnodes_resolved, arbor_edges):
   '''
   #TODO: add check for cc or arbor mode
   w_g = {}
+
+  #this part is taken care of in WeightedGraph.get_adj_ghost_graph
   for i in xrange(len(pnodes_resolved)):
     for j in xrange(len(pnodes_resolved[i])):
       pred_id = pnodes_resolved[i][j].id
@@ -737,4 +739,14 @@ def get_transitive_closure(g):
         if ret_g[vertices[i]][vertices[j]] == 0 and ret_g[vertices[i]][vertices[k]] !=0 and ret_g[vertices[k]][vertices[j]] != 0:
           ret_g[vertices[i]][vertices[j]] = ret_g[vertices[i]][vertices[k]] + ret_g[vertices[k]][vertices[j]]
 
-  return ret_g
+
+  ret_dict_g = {}
+  for i in xrange(len(vertices)):
+    if vertices[i] not in ret_dict_g:
+        ret_dict_g[vertices[i]] = {}
+    for j in xrange(len(vertices)):
+      if ret_g[vertices[i]][vertices[j]] != 0:
+        ret_dict_g[vertices[i]][vertices[j]] = ret_g[vertices[i]][vertices[j]]
+
+
+  return ret_dict_g
