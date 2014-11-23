@@ -63,6 +63,7 @@ class RNode:
   def getNouns(self):
     if self.arg_text_nouns != None:
       return self.arg_text_nouns
+
     arr = self.argPOS.split()
     res = set()
     for a in arr:
@@ -71,7 +72,7 @@ class RNode:
       arr2 = a.split("/")
       if "NN" in arr2[1]:
         res.add(arr2[0].lower())
-        if self.arg_type=="arg2":
-          break # take only the first noun -- why ?
+        # if self.arg_type=="arg2":
+        #   break # take only the first noun -- why ?
     self.arg_text_nouns = list(res)
     return list(res)

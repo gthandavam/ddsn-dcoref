@@ -27,7 +27,7 @@ class DotGraphBuilder:
     self.adj_list = {}
     self.id_node_map = {}
     self.Ghost = 'Bon appetit!'
-    self.debug = False
+    self.debug = True
 
 
   def process_pnodes(self, pnodes):
