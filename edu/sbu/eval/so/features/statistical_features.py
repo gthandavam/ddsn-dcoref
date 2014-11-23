@@ -1,6 +1,8 @@
 __author__ = 'gt'
 import pickle
 from nltk.stem.porter import PorterStemmer
+from edu.sbu.shell.semgraph.PNode import PNode
+from edu.sbu.shell.semgraph.RNode import RNode
 
 class StatFeatures:
   def __init__(self, recipeName, stat_type, cp0, cp1, cp2, cp3, cp4):
@@ -268,31 +270,42 @@ class StatFeatures:
     :rtype : float
     '''
 
-    #CP1
-    s, cnt = self.getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)
+    # #CP1
+    # s, cnt = self.getArg1Arg2PredPredArg1Prob(sem_group1, sem_group2)
+    #
+    # if( s != 0 and cnt != 0 ): #if cp1 is zero, indicates no evidence
+    #   return float(s)/cnt
+    #
+    # #CP2
+    # s, cnt = self.getArg1Arg2PredPredProb(sem_group1, sem_group2)
+    #
+    # if( s != 0 and cnt != 0 ): #if cp2 is zero, indicates no evidence
+    #   return float(s)/cnt
+    #
+    # #CP3
+    # s, cnt = self.getArg1PredPredArg1Prob(sem_group1, sem_group2)
+    #
+    # if( s != 0 and cnt != 0 ): #if cp3 is zero, indicates no evidence
+    #   return float(s)/cnt
+    #
+    # #CP4
+    # s, cnt = self.getArg1PredPredProb(sem_group1, sem_group2)
+    # if( s != 0 and cnt != 0 ): #if cp4 is zero, indicates no evidence
+    #   return float(s)/cnt
 
-    if( s != 0 and cnt != 0 ): #if cp1 is zero, indicates no evidence
-      return float(s)/cnt
+    #TODO: CleanUP Not handling flow of nouns in predicate while using stat for extrinsic evaluation
 
-    #CP2
-    s, cnt = self.getArg1Arg2PredPredProb(sem_group1, sem_group2)
+    predicate =  PNode(sem_group1['pred'])
+    predicate2 = PNode(sem_group2['pred'])
 
-    if( s != 0 and cnt != 0 ): #if cp2 is zero, indicates no evidence
-      return float(s)/cnt
+    input_argument1 = RNode(text=sem_group1['arg1'], pnum=-1, snum=-1, arg_type='arg1' ,argPOS=sem_group1['arg1POS'], is_null=False, span_start = -1, span_end=-1)
+    input_argument2 = RNode(text=sem_group1['arg2'], pnum=-1, snum=-1, arg_type='arg2' ,argPOS=sem_group1['arg2POS'], is_null=False, span_start = -1, span_end=-1)
+    input2_argument = RNode(text=sem_group2['arg1'], pnum=-1, snum=-1, arg_type='arg1' ,argPOS=sem_group2['arg1POS'], is_null=False, span_start = -1, span_end=-1)
 
-    #CP3
-    s, cnt = self.getArg1PredPredArg1Prob(sem_group1, sem_group2)
+    return self.recipe_stat.getPredPredProb(predicate, input_argument1, input_argument2, predicate2, input2_argument)
 
-    if( s != 0 and cnt != 0 ): #if cp3 is zero, indicates no evidence
-      return float(s)/cnt
-
-    #CP4
-    s, cnt = self.getArg1PredPredProb(sem_group1, sem_group2)
-    if( s != 0 and cnt != 0 ): #if cp4 is zero, indicates no evidence
-      return float(s)/cnt
-
-    #return no evidence
-    return 0
+    # #return no evidence
+    # return 0
 
     pass
 

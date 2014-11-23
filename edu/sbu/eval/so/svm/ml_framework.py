@@ -188,7 +188,7 @@ def load_and_validate(ft_ext_file, scaler_file, clf_file, recipeName, expName, s
 
     #HERE: Experiment 2 : Global inference formulation with SVM probability weights
     if exp2:
-      edge_weights = tsp.pick_edge_weights(weights[prevItr : prevItr + itr ], pred_labels[prevItr : prevItr + itr ], pairs[prevItr: prevItr + itr], recipeLength[i][0])
+      edge_weights = tsp.pick_edge_probs(weights[prevItr : prevItr + itr ], pred_labels[prevItr : prevItr + itr ], pairs[prevItr: prevItr + itr], recipeLength[i][0])
       # print edge_weights
       order = get_viterbi_path(edge_weights)
 

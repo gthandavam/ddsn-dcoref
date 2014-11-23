@@ -1315,7 +1315,7 @@ class RecipeStats2:
     # score2 = self.getArgPredProb(input_argument1, predicate2)
     # return float(score+score2)/2
 
-    score1, score2, score3, score4, score5, score6 = 0,0,0,0,0,0
+    score1, score2, score3, score4, score5, score6 = 0.0,0.0,0.0,0.0,0.0,0.0
     if input_argument1!=None:#all possible assignments if arg1 of verb 1 is present
 
       if input2_argument!=None:
@@ -1346,9 +1346,13 @@ class RecipeStats2:
       score6 = self.getVerbVerbProb(predicate, predicate2)
 
 
-    ret = self.log(1-(score1 + score2 + score3 + score4 + score5 + score6)/6)
+    ret = (score1 + score2 + score3 + score4 + score5 + score6)/6
 
     return ret
+
+  def getPredPredWt(self, predicate, input_argument1, input_argument2, predicate2, input2_argument):
+    return self.log(1 - self.getPredPredProb(predicate, input_argument1, input_argument2, predicate2, input2_argument))
+    pass
 
   def stem(self, word):
     if word=="":

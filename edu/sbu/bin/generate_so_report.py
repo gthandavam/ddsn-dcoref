@@ -56,7 +56,7 @@ def main():
 
     for dish in dishes:
       writer.writerow([dish])
-      writer.writerow(['Features', 'TPR', 'FPR', 'Observed +', 'Observed -', 'SVM Classification Acc.', 'kTau average (TSP with SVM Prob)', 'global inference - Class. Acc. (TSP with Log Reg Dec Sco)', 'kTau average (TSP with CP{1,2,3,4})', 'global inference - Class. Acc. (TSP with CP{1,2,3,4})'])
+      writer.writerow(['Features', 'TPR', 'FPR', 'Observed +', 'Observed -', 'SVM Classification Acc.', 'kTau average (TSP with SVM Prob)', 'global inference - Class. Acc. (Viterbi with SVM Prob)', 'kTau average (Viterbi with CP{1,2,3,4})', 'global inference - Class. Acc. (Viterbi with CP{1,2,3,4})'])
       for experiment in experiments:
         fileName = docRoot + dish + '/log/' + dish + '_' + experiment + '.out'
         # row = [experiment]

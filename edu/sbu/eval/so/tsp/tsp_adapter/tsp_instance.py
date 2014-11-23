@@ -38,7 +38,6 @@ def get_best_order(weights, predicted_labels, pairs, number_of_nodes):
   order = argmax( score(x) ) for all x belongs to permutations of no of nodes
 
   '''
-
   max_score = -1
   max_order = []
 
@@ -56,21 +55,22 @@ def get_best_order(weights, predicted_labels, pairs, number_of_nodes):
   return max_order
   pass
 
-def pick_edge_weights(weights, predicted_labels, pairs, number_of_nodes):
+def pick_edge_probs(probs, predicted_labels, pairs, number_of_nodes):
   '''
-  constructing adjacency matrix based on prediction probabilities
+  constructing transition matrix based on prediction probabilities
+
+  using probability directly for viterbi formulation
   '''
-  ret = np.zeros((number_of_nodes, number_of_nodes))
+
+  #initializing with minimum for max prob sequence formulation
+  ret = [[-100000 for x in xrange(number_of_nodes)] for x in xrange(number_of_nodes)]
   for i in xrange(len(pairs)):
     x,y = pairs[i].rstrip().split(',')
     x = int(x)
     y = int(y)
 
-    ret[x][y] = log(weights[i][0])
-    ret[y][x] = log(weights[i][1])
-
-  for i in range(number_of_nodes):
-    ret[i][i] = -100.0
+    ret[x][y] = log(probs[i][0])
+    ret[y][x] = log(probs[i][1])
 
   return ret
 
@@ -78,8 +78,11 @@ def pick_edge_weights(weights, predicted_labels, pairs, number_of_nodes):
 def pick_stat_edge_weights(samples, pairs, number_of_nodes, stats_obj):
   '''
   constructing adjacency matrix based on CP1, CP2, CP3 and CP4
+  using probability directly for viterbi formulation
   '''
-  ret = np.zeros((number_of_nodes, number_of_nodes))
+
+  #initializing with minimum for max prob sequence formulation
+  ret = [[-100000 for x in xrange(number_of_nodes)] for x in xrange(number_of_nodes)]
 
   for i in xrange(len(pairs)):
     x,y = pairs[i].rstrip().split(',')
@@ -91,26 +94,18 @@ def pick_stat_edge_weights(samples, pairs, number_of_nodes, stats_obj):
     sem_group1 = get_sem_grouping(sent1)
     sem_group2 = get_sem_grouping(sent2)
 
-    #making use of log( values for min formulation
     p = stats_obj.get_stat_based_edge_prob(sem_group1, sem_group2)
-
     if p == 0 :
-      ret[x][y] =  -100
+      ret[x][y] =  -100000
     else:
       ret[x][y] = math.log(p)
 
-
     p = stats_obj.get_stat_based_edge_prob(sem_group2, sem_group1)
     if p == 0:
-      ret[y][x] =  -100
+      ret[y][x] =  -100000
     else:
       ret[y][x] = math.log(p)
-
-
     pass
-
-  for i in range(number_of_nodes):
-    ret[i][i] = -100.0
 
   return ret
   pass

@@ -54,7 +54,7 @@ class WeightedGraph:
           g[node][ch] = score
           reverse_g[ch][node] = score
         if isinstance(node_obj,PNode) and isinstance(ch_obj,PNode):
-          score = self.recipe_stats.getPredPredProb(node_obj,input_node,input_node2,ch_obj,ch_input_node)
+          score = self.recipe_stats.getPredPredWt(node_obj,input_node,input_node2,ch_obj,ch_input_node)
           g[node][ch] = score
           reverse_g[ch][node] = score
 
@@ -85,7 +85,7 @@ class WeightedGraph:
             wt = weight_heuristic(node1.id, node2.id, self.id_node_map, self.pNodes, self.rNodes)
             input2_node = self.recipe_stats.findInputArgument(node2,reverse_g,self.id_node_map)
 
-            arg_probability = self.recipe_stats.getPredPredProb(node1,input_node,input_node2,node2,input2_node)
+            arg_wt = self.recipe_stats.getPredPredWt(node1,input_node,input_node2,node2,input2_node)
             g[node1.id][node2.id] = self.Wwt*wt + self.Warg*arg_probability
 
 

@@ -69,6 +69,8 @@ class RNode:
     for a in arr:
       if "minute" in a:
         continue
+      if a.lower() == 'null':
+        continue
       arr2 = a.split("/")
       if "NN" in arr2[1]:
         res.add(arr2[0].lower())
