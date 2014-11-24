@@ -273,8 +273,8 @@ def test_tsp_solver(distances, dishName, index, tsp_exp):
 def main(i, recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logFile, indicator, useLinKern):
   # run_classifier()
   with open(logFile, 'w') as logF:
-    if i == 0:
-       train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator)
+    # if i == 0:
+    #    train_and_save(recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator)
     load_and_validate('models/ft_scale_' + recipeName + '_' + expName + '.pkl', 'models/scaler_' + recipeName + '_' + expName + '.pkl', 'models/clf_scale_' + recipeName + '_' + expName + '.pkl', recipeName, expName, stat_type, cp0, cp1, cp2, cp3, cp4, logF, indicator, exp1=True, exp2=True, exp3=True, useLinKern=useLinKern)
 
 

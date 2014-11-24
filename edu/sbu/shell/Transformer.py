@@ -357,19 +357,34 @@ def learnStat(useArbo, iter_num=-1,transitive=False):
       pnodes_resolved, rnodes_resolved, arbor_edges = connect_arbor(weighted_graph, arbor_adapter, r_stats)
     #End of MST Section
 
+    gv_file_name = recipe_args_file.replace(recipeName +'Args',recipeName + '-dot-files'+ option + 'iter' +str(iter_num))
+
+    gv_file_name = gv_file_name.replace('.txt', '.gv')
+    try:
+      arbor_adapter.dot_builder.write_gv(pnodes_resolved, rnodes_resolved, arbor_edges, gv_file_name)
+    except Exception as inst:
+      print inst.args
+      print inst.message
+      print recipe_args_file
+      print "Error!!!"
+      pass
+
+    make_svg(gv_file_name)
+
+
     stat_data.append([recipe_args_file, weighted_graph, arbor_adapter, arbor_edges])
 
   # Calculate statistics
   r_stats.calcStatFromGraph(stat_data, useArbo, transitive)
   # r_stats.test_flag = r_stats.args_verb_score
-  # pprint(DeepDiff(r_stats_old.args1_args2_verb_args_score, r_stats.args1_args2_verb_args_score).changes)
-  # pprint(DeepDiff(r_stats_old.args1_verb_args_score, r_stats.args1_verb_args_score).changes)
-  # pprint(DeepDiff(r_stats_old.args1_args2_args_score, r_stats.args1_args2_args_score).changes)
-  # pprint(DeepDiff(r_stats_old.args1_args_score, r_stats.args1_args_score).changes)
-  # pprint(DeepDiff(r_stats_old.args1_args2_verb_verb_score, r_stats.args1_args2_verb_verb_score).changes)
-  # pprint(DeepDiff(r_stats_old.args1_verb_verb_score, r_stats.args1_verb_verb_score).changes)
-  # pprint(DeepDiff(r_stats_old.args1_args2_verb_verb_args1_score, r_stats.args1_args2_verb_verb_args1_score).changes)
-  # pprint(DeepDiff(r_stats_old.args1_verb_verb_args1_score, r_stats.args1_verb_verb_args1_score).changes)
+  pprint(DeepDiff(r_stats_old.args1_args2_verb_args_score, r_stats.args1_args2_verb_args_score).changes)
+  pprint(DeepDiff(r_stats_old.args1_verb_args_score, r_stats.args1_verb_args_score).changes)
+  pprint(DeepDiff(r_stats_old.args1_args2_args_score, r_stats.args1_args2_args_score).changes)
+  pprint(DeepDiff(r_stats_old.args1_args_score, r_stats.args1_args_score).changes)
+  pprint(DeepDiff(r_stats_old.args1_args2_verb_verb_score, r_stats.args1_args2_verb_verb_score).changes)
+  pprint(DeepDiff(r_stats_old.args1_verb_verb_score, r_stats.args1_verb_verb_score).changes)
+  pprint(DeepDiff(r_stats_old.args1_args2_verb_verb_args1_score, r_stats.args1_args2_verb_verb_args1_score).changes)
+  pprint(DeepDiff(r_stats_old.args1_verb_verb_args1_score, r_stats.args1_verb_verb_args1_score).changes)
 
   if useArbo:
     joblib.dump(r_stats, statFile2)
@@ -457,14 +472,14 @@ def run(stFile, Wwt, stat_for_eval=False, useArbo=False, transitive=False, iter_
   if stat_for_eval:
     # Calculate statistics
     r_stats.calcStatFromGraph(stat_data, useArbo, transitive)
-    # pprint(DeepDiff(r_stats_old.args1_args2_verb_args_score, r_stats.args1_args2_verb_args_score).changes)
-    # pprint(DeepDiff(r_stats_old.args1_verb_args_score, r_stats.args1_verb_args_score).changes)
-    # pprint(DeepDiff(r_stats_old.args1_args2_args_score, r_stats.args1_args2_args_score).changes)
-    # pprint(DeepDiff(r_stats_old.args1_args_score, r_stats.args1_args_score).changes)
-    # pprint(DeepDiff(r_stats_old.args1_args2_verb_verb_score, r_stats.args1_args2_verb_verb_score).changes)
-    # pprint(DeepDiff(r_stats_old.args1_verb_verb_score, r_stats.args1_verb_verb_score).changes)
-    # pprint(DeepDiff(r_stats_old.args1_args2_verb_verb_args1_score, r_stats.args1_args2_verb_verb_args1_score).changes)
-    # pprint(DeepDiff(r_stats_old.args1_verb_verb_args1_score, r_stats.args1_verb_verb_args1_score).changes)
+    pprint(DeepDiff(r_stats_old.args1_args2_verb_args_score, r_stats.args1_args2_verb_args_score).changes)
+    pprint(DeepDiff(r_stats_old.args1_verb_args_score, r_stats.args1_verb_args_score).changes)
+    pprint(DeepDiff(r_stats_old.args1_args2_args_score, r_stats.args1_args2_args_score).changes)
+    pprint(DeepDiff(r_stats_old.args1_args_score, r_stats.args1_args_score).changes)
+    pprint(DeepDiff(r_stats_old.args1_args2_verb_verb_score, r_stats.args1_args2_verb_verb_score).changes)
+    pprint(DeepDiff(r_stats_old.args1_verb_verb_score, r_stats.args1_verb_verb_score).changes)
+    pprint(DeepDiff(r_stats_old.args1_args2_verb_verb_args1_score, r_stats.args1_args2_verb_verb_args1_score).changes)
+    pprint(DeepDiff(r_stats_old.args1_verb_verb_args1_score, r_stats.args1_verb_verb_args1_score).changes)
 
 
     joblib.dump(r_stats, statFileForEval)

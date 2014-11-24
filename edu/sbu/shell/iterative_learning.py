@@ -73,7 +73,7 @@ def learn_text_order(num_iter, recipe):
 
 if __name__ == '__main__':
   try:
-    learn_arbor(int(sys.argv[1]), sys.argv[2])
+    #learn_arbor(int(sys.argv[1]), sys.argv[2])
     learn_arbor_trans(int(sys.argv[1]), sys.argv[2])
     #learn_cc(int(sys.argv[1]), sys.argv[2])
     #learn_text_order(int(sys.argv[1]), sys.argv[2])

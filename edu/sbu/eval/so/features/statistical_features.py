@@ -292,6 +292,10 @@ class StatFeatures:
     # s, cnt = self.getArg1PredPredProb(sem_group1, sem_group2)
     # if( s != 0 and cnt != 0 ): #if cp4 is zero, indicates no evidence
     #   return float(s)/cnt
+    #
+    # #return no evidence
+    # return 0
+
 
     #TODO: CleanUP Not handling flow of nouns in predicate while using stat for extrinsic evaluation
 
@@ -300,12 +304,16 @@ class StatFeatures:
 
     input_argument1 = RNode(text=sem_group1['arg1'], pnum=-1, snum=-1, arg_type='arg1' ,argPOS=sem_group1['arg1POS'], is_null=False, span_start = -1, span_end=-1)
     input_argument2 = RNode(text=sem_group1['arg2'], pnum=-1, snum=-1, arg_type='arg2' ,argPOS=sem_group1['arg2POS'], is_null=False, span_start = -1, span_end=-1)
-    input2_argument = RNode(text=sem_group2['arg1'], pnum=-1, snum=-1, arg_type='arg1' ,argPOS=sem_group2['arg1POS'], is_null=False, span_start = -1, span_end=-1)
+    input2_argument1 = RNode(text=sem_group2['arg1'], pnum=-1, snum=-1, arg_type='arg1' ,argPOS=sem_group2['arg1POS'], is_null=False, span_start = -1, span_end=-1)
+    input2_argument2 = RNode(text=sem_group2['arg2'], pnum=-1, snum=-1, arg_type='arg2' ,argPOS=sem_group2['arg2POS'], is_null=False, span_start = -1, span_end=-1)
 
-    return self.recipe_stat.getPredPredProb(predicate, input_argument1, input_argument2, predicate2, input2_argument)
+    imp1 = self.recipe_stat.getPredPredProb(predicate, input_argument1, input_argument2, predicate2, input2_argument1)
+    imp2 = self.recipe_stat.getPredPredProb(predicate, input_argument1, input_argument2, predicate2, input2_argument2)
+    evo1 = self.recipe_stat.getPredOuputArgProb(predicate, input_argument1, input_argument2, input2_argument1)
+    evo2 = self.recipe_stat.getPredOuputArgProb(predicate, input_argument1, input_argument2, input2_argument2)
 
-    # #return no evidence
-    # return 0
+    return (imp1 + imp2)/2.0
+
 
     pass
 

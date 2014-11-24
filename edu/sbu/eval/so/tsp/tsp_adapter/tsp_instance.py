@@ -7,7 +7,7 @@ from edu.sbu.eval.so.data.prepare_data import sentSeparator
 import math
 
 def log(n):
-  return -100 if n == 0 else math.log(n)
+  return math.log(0.0001) if n == 0 else math.log(n)
 
 
 def get_score(weights, pairs, perm):
@@ -70,7 +70,7 @@ def pick_edge_probs(probs, predicted_labels, pairs, number_of_nodes):
     y = int(y)
 
     ret[x][y] = log(probs[i][0])
-    ret[y][x] = log(probs[i][1])
+    # ret[y][x] = log(probs[i][1])
 
   return ret
 
@@ -82,7 +82,7 @@ def pick_stat_edge_weights(samples, pairs, number_of_nodes, stats_obj):
   '''
 
   #initializing with minimum for max prob sequence formulation
-  ret = [[-100000 for x in xrange(number_of_nodes)] for x in xrange(number_of_nodes)]
+  ret = [[-100000 for x in xrange(number_of_nodes)] for x in xrange(number_of_nodes)] #heavy penalty for stayin in the same state
 
   for i in xrange(len(pairs)):
     x,y = pairs[i].rstrip().split(',')
@@ -95,17 +95,15 @@ def pick_stat_edge_weights(samples, pairs, number_of_nodes, stats_obj):
     sem_group2 = get_sem_grouping(sent2)
 
     p = stats_obj.get_stat_based_edge_prob(sem_group1, sem_group2)
-    if p == 0 :
-      ret[x][y] =  -100000
-    else:
-      ret[x][y] = math.log(p)
 
-    p = stats_obj.get_stat_based_edge_prob(sem_group2, sem_group1)
-    if p == 0:
-      ret[y][x] =  -100000
-    else:
-      ret[y][x] = math.log(p)
-    pass
+    ret[x][y] = log(p) #smoothing probability
+
+    # p = stats_obj.get_stat_based_edge_prob(sem_group2, sem_group1)
+    # if p == 0:
+    #   ret[y][x] =  -100000
+    # else:
+    #   ret[y][x] = math.log(p)
+    # pass
 
   return ret
   pass

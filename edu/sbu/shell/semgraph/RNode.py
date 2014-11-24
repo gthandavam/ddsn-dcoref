@@ -72,6 +72,9 @@ class RNode:
       if a.lower() == 'null':
         continue
       arr2 = a.split("/")
+
+      if not(len(arr2) > 1):
+        continue
       if "NN" in arr2[1]:
         res.add(arr2[0].lower())
         # if self.arg_type=="arg2":

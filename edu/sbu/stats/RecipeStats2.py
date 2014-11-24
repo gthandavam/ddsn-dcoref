@@ -468,8 +468,10 @@ class RecipeStats2:
             self.args1_verb_verb_args1_score[arg1][verb][verb2][arg] = self.calcFreq(self.args1_verb_verb_args1_score[arg1][verb][verb2][arg],self.cnt_arg1_verb[arg1][verb])
 
   def calcFreq(self, freq, cnt):
-    if freq==1 and cnt==1:
-      return 0
+    if cnt==0:
+      return 0.0
+    if freq == 1 and cnt == 1:
+      return 0.0
     return float(freq)/cnt
 
   def findInputArgument(self, node, reverse_g, id_node_map):
@@ -573,7 +575,7 @@ class RecipeStats2:
       elif isinstance(node1,RNode):
         pass
       for d in g[s]:
-        if g[s][d] > 3:
+        if g[s][d] > self.graph_path_window:
           continue
         # if not useArbo and d not in weighted_graph.adj_list[s] and g[s][d]!="use":
         #   continue
@@ -905,9 +907,6 @@ class RecipeStats2:
         cnt+=1
 
     return s,cnt
-    # if cnt==0:
-    #   return 0
-    # return self.log(1 - (float(s)/cnt))
 
   def getArg1PredPred(self, input_a1, predicate, output_predicate):
     a1s = input_a1.getNouns()
@@ -1006,9 +1005,6 @@ class RecipeStats2:
           cnt+=1
 
     return s,cnt
-    # if cnt==0:
-    #   return 0
-    # return self.log(1 - (float(s)/cnt))
 
   def getArg1Arg2PredPred(self, input_a1, input_a2, predicate, output_predicate):
     a1s = input_a1.getNouns()
@@ -1151,9 +1147,14 @@ class RecipeStats2:
           score5 = float(s)/cnt
 
     #zero is the maximum in log space; for min arbor formulation returning max value when there is no evidence
-    ret = self.log(1 - (score1 + score2 + score3 + score4 + score5)/5)
+    ret = (score1 + score2 + score3 + score4 + score5)/ 5.0
 
     return ret
+
+  def getPredOuputArgWt(self, predicate, input_argument1, input_argument2, output_argument):
+
+    return self.log(1 - self.getPredOuputArgProb(predicate, input_argument1, input_argument2, output_argument))
+
 
   def getPredOuputArg1Prob(self, predicate, input_argument, output_argument):
     ### Compute probability of edge predicate->arg1
@@ -1172,27 +1173,6 @@ class RecipeStats2:
         for arg1 in self.verb_args1_score[verb]:
           if arg1 in d:
             s +=  self.verb_args1_score[verb][arg1]
-        return self.log(1 - (float(s)/len(d)))
-        # return math.log(1-s+0.00000001)
-    return 0
-
-  def getPredOuputArg2Prob(self, predicate, input_argument, output_argument):
-    ### Compute probability of edge predicate->arg2
-    verb = self.stemmer.stem(predicate.predicate)
-    if verb in self.verb_args2_score:
-      s=0
-      d = {}
-      # arr = output_argument.argPOS.split()
-      arr = output_argument.getNouns()
-      for e in arr:
-        # arr2 = e.split("/")
-        # if arr2[1]=="NN":
-        #   d[self.stemmer.stem(arr2[0])] = 1
-        d[self.stemmer.stem(e)] = 1
-      if len(d)!=0:
-        for arg1 in self.verb_args2_score[verb]:
-          if arg1 in d:
-            s +=  self.verb_args2_score[verb][arg1]
         return self.log(1 - (float(s)/len(d)))
         # return math.log(1-s+0.00000001)
     return 0
