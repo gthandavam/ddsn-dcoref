@@ -37,10 +37,10 @@ class WeightedGraph:
     for node in self.adj_list:
       g[node] = {}
       for ch in self.adj_list[node]:
-        g[node][ch] = -100
+        g[node][ch] = math.log(0.0001) # for min-arborescence formulation, giving least weight to coref resolution output
         if ch not in reverse_g:
           reverse_g[ch] = {}
-        reverse_g[ch][node] = -100
+        reverse_g[ch][node] = math.log(0.0001)
 
     for node in self.adj_list:
       node_obj = self.id_node_map[node]
@@ -50,7 +50,7 @@ class WeightedGraph:
         ch_obj = self.id_node_map[ch]
         ch_input_node = self.recipe_stats.findInputArgument(ch_obj, reverse_g,self.id_node_map)
         if isinstance(node_obj,PNode) and isinstance(ch_obj,RNode):
-          score = self.recipe_stats.getPredOuputArgProb(node_obj,input_node,input_node2,ch_obj)
+          score = self.recipe_stats.getPredOuputArgWt(node_obj,input_node,input_node2,ch_obj)
           g[node][ch] = score
           reverse_g[ch][node] = score
         if isinstance(node_obj,PNode) and isinstance(ch_obj,PNode):
@@ -68,7 +68,7 @@ class WeightedGraph:
           continue
         g[node1.id] = {}
 
-        g[node1.id]['Ghost'] = -0.0000000000001
+        g[node1.id]['Ghost'] = -0.0000000000001 #in log prob space this is max value, slightly less than 0
         # extract input argument of type arg1
         input_node = self.recipe_stats.findInputArgument(node1,reverse_g,self.id_node_map)
         input_node2 = self.recipe_stats.findInputArgument2(node1,reverse_g,self.id_node_map)
@@ -86,7 +86,7 @@ class WeightedGraph:
             input2_node = self.recipe_stats.findInputArgument(node2,reverse_g,self.id_node_map)
 
             arg_wt = self.recipe_stats.getPredPredWt(node1,input_node,input_node2,node2,input2_node)
-            g[node1.id][node2.id] = self.Wwt*wt + self.Warg*arg_probability
+            g[node1.id][node2.id] = self.Wwt*wt + self.Warg*arg_wt
 
 
         for j in range(len(self.rNodes)):
@@ -103,8 +103,8 @@ class WeightedGraph:
                 continue
               wt = weight_heuristic(node1.id, node2.id, self.id_node_map, self.pNodes, self.rNodes)
               # probability of argument being the output of the predicate
-              arg_probability = self.recipe_stats.getPredOuputArgProb(node1,input_node,input_node2,node2)
-              g[node1.id][node2.id] = self.Wwt*wt + self.Warg*arg_probability
+              arg_wt = self.recipe_stats.getPredOuputArgWt(node1,input_node,input_node2,node2)
+              g[node1.id][node2.id] = self.Wwt*wt + self.Warg*arg_wt
 
     return g
     pass
